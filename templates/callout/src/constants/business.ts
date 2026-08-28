@@ -58,6 +58,18 @@ export const OPERATING_HOURS: OperatingHour[] = [
 export const COVERAGE = {
   placeholder: 'e.g. Highbury Grove',
   emptyMessage: 'Enter your street or postcode first.',
-  successMessage: (street: string) =>
-    `Good news — ${street} is in our callout area.`,
+  areaNames: [
+    'archway',
+    'barnsbury',
+    'canonbury',
+    'finsbury park',
+    'highbury',
+    'holloway',
+    'islington',
+  ],
+  postcodePrefixes: ['N1', 'N4', 'N5', 'N6', 'N7', 'N8', 'N16', 'N19'],
+  coveredMessage: (location: string) =>
+    `Good news — ${location} is in our listed callout area.`,
+  enquiryMessage: (location: string) =>
+    `We cannot confirm ${location} automatically. Call us and we will check availability.`,
 } as const;

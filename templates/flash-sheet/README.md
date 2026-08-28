@@ -4,7 +4,7 @@ A tactile multi-page tattoo studio site for browsing and enquiring about one-off
 
 ## Overview
 
-Flash Sheet gives independent tattoo artists a distinctive digital wall for ready-made work. Visitors can scan eight original pieces, filter by motif, inspect practical details, and open any artwork on its own direct-load route.
+Flash Sheet gives independent tattoo artists a distinctive digital wall for ready-made work. Visitors can scan eight original pieces, filter by motif, inspect practical details, and open any artwork on its own shareable route.
 
 Each claim action clearly opens a pre-filled email enquiry rather than taking a deposit or promising a booking. The flow keeps availability, size, suggested placement, and guide pricing transparent.
 
@@ -82,7 +82,16 @@ Original artwork lives in `src/assets/flash/` and is mapped once in `src/constan
 
 ### Routes and features
 
-Routes are declared in `src/App.tsx`. Page composition lives in `src/pages/`, while filters, enquiry links, and shared content exports live in `src/constants/content.ts`.
+Routes are declared in `src/App.tsx`. Page composition lives in `src/pages/`,
+while filters, enquiry links, and shared content exports live in
+`src/constants/content.ts`.
+
+The production build writes a standalone `index.html` into every
+`dist/flash/:id/` directory, generated from the IDs in `src/data/flash.json`.
+Deploy the complete `dist/` directory and clean design URLs work on static
+hosts that serve directory indexes; no SPA fallback is required. Hosts that do
+not serve directory indexes must rewrite unknown routes to the root
+`index.html`. Always rebuild after adding or renaming a design ID.
 
 ### Environment variables
 
@@ -96,6 +105,11 @@ npm run preview
 ```
 
 Production files are written to `dist`.
+
+## License
+
+MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
+projects.
 
 ## Screenshots
 

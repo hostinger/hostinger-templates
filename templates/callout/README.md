@@ -35,7 +35,7 @@ actions.
 
 ### Prerequisites
 
-- Node.js 20 or newer
+- Node.js 22 or newer
 - npm
 
 ### Installation
@@ -83,7 +83,9 @@ composed through `src/styles/index.css`.
 ### Content and business data
 
 Edit `src/constants/business.ts` to replace the brand name, phone number,
-service area, navigation, services, hours, and form messages.
+service area, navigation, services, hours, and form messages. Coverage checks
+use the editable `postcodePrefixes` and `areaNames` lists. Unmatched entries
+receive an honest invitation to call rather than a false coverage confirmation.
 
 ### Branding and styles
 
@@ -117,6 +119,11 @@ npm run preview
 ```
 
 Production files are written to `dist/`.
+
+## License
+
+MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
+projects.
 
 ## Screenshots
 

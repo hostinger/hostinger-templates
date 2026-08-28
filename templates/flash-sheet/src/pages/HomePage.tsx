@@ -29,7 +29,7 @@ export function HomePage() {
         <section className="hero section-shell">
           <div className="hero-aside">
             <p>{site.eyebrow}</p>
-            <span>Est. 2025</span>
+            <span>Est. {site.establishedYear}</span>
           </div>
           <div className="hero-title">
             <p>Ready-made tattoos / edition one of one</p>
@@ -41,8 +41,8 @@ export function HomePage() {
           </div>
           <div className="hero-sigil" aria-hidden="true">
             <span>✦</span>
-            <strong>BT</strong>
-            <small>Bristol</small>
+            <strong>{site.monogram}</strong>
+            <small>{site.city}</small>
           </div>
         </section>
 

@@ -23,5 +23,23 @@
     { "value": "4.9", "label": "average local rating" },
     { "value": "680+", "label": "homes cared for" },
     { "value": "100%", "label": "insured team" }
+  ],
+  "faqs": [
+    {
+      "question": "Is this the final price?",
+      "answer": "It is a transparent estimate based on bedrooms, bathrooms, and frequency. Before booking, we confirm the scope, access, pets, and any unusually heavy buildup by email—then you approve the final price."
+    },
+    {
+      "question": "What is included in a standard clean?",
+      "answer": "Kitchen and bathroom surfaces, exterior appliance faces, dusting, vacuuming, mopping, bed making, and bin emptying are included. Inside ovens, fridges, and cabinets are separate deep-clean requests."
+    },
+    {
+      "question": "Do I need to provide supplies?",
+      "answer": "No. Our insured team brings professional products and tools. Tell us in your email if you prefer fragrance-free products or have a delicate surface."
+    },
+    {
+      "question": "Can I change or cancel a visit?",
+      "answer": "Yes. Give us at least 24 hours’ notice and there is no cancellation fee. Repeat plans are flexible and never lock you into a contract."
+    }
   ]
 }

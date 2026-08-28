@@ -4,10 +4,11 @@ import rawSite from '../data/site.json';
 import type { SiteContent } from '../types/content';
 
 const site = rawSite as SiteContent;
+const bookingHref = `mailto:${site.email}?subject=${encodeURIComponent(site.booking.subject)}`;
 ---
 
 <BaseLayout
-  title="Visit Groom Room — North London dog groomer"
+  title={`Visit ${site.name} — North London dog groomer`}
   description="Find Groom Room, check opening times, and send a dog grooming appointment enquiry."
 >
   <section class="visit-grid">
@@ -45,7 +46,7 @@ const site = rawSite as SiteContent;
       <h2>Start with a quick hello.</h2>
     </div>
     <div class="booking-band-actions">
-      <a class="button button-cream" href={site.booking.href}>{site.booking.label}</a>
+      <a class="button button-cream" href={bookingHref}>{site.booking.label}</a>
       <a href={`mailto:${site.email}`}>{site.email}</a>
     </div>
   </section>

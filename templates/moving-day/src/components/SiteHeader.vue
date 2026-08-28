@@ -7,7 +7,7 @@ import site from '../data/site.json';
     <a
       class="brand"
       href="#"
-      aria-label="Moving Day home"
+      :aria-label="`${site.name} home`"
     >
       <span
         class="brand-mark"
@@ -22,7 +22,7 @@ import site from '../data/site.json';
     </nav>
     <a
       class="phone-link"
-      :href="`tel:${site.phoneHref}`"
+      :href="site.phoneHref"
     >
       <span aria-hidden="true">↗</span>
       {{ site.phoneDisplay }}

@@ -31,7 +31,7 @@ Visitors choose from six popular breeds to instantly update the recommended cut,
 
 ### Prerequisites
 
-- Node.js 20.19 or newer
+- Node.js 22 or newer
 - npm
 
 ### Installation
@@ -75,7 +75,9 @@ Astro page files provide static routes. Shared framing lives in `src/layouts/`, 
 
 ### Content and business data
 
-Edit `src/data/site.json` for brand copy, contact details, hours, navigation, and booking links. Edit `src/data/breeds.json` for breed names, cuts, prices, durations, descriptions, and image paths. Service and FAQ copy lives in `src/pages/services.astro` and `src/pages/index.astro`.
+Edit `src/data/site.json` for brand copy, contact details, hours, navigation,
+booking details, add-ons, services, and FAQs. Edit `src/data/breeds.json` for
+breed names, cuts, prices, durations, descriptions, and image paths.
 
 ### Branding and styles
 
@@ -101,6 +103,11 @@ npm run preview
 ```
 
 Production files are written to `dist/`.
+
+## License
+
+MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
+projects.
 
 ## Screenshots
 

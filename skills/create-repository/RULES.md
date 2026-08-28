@@ -23,6 +23,9 @@
 - Treat an explicitly requested language, framework, or build tool as
   authoritative.
 - Use npm and commit `package-lock.json`.
+- Use explicit dependency ranges and declare the supported Node.js version in
+  `engines`.
+- Include an explicit license for template reuse.
 - `npm install`, `npm run lint`, and `npm run build` must succeed.
 - Use ESLint. Do not install or configure Oxlint.
 
@@ -43,11 +46,22 @@
 - Separate components, content, icons, shared models or types, and styles into
   dedicated source directories where the framework supports them.
 - Keep repeated business content and configuration in structured data.
+- Keep user-owned copy and business details in one obvious content location;
+  keep calculations and functions in typed source modules.
+- Do not duplicate editable copy across pages, components, and styles.
 - Keep state close to its owning feature.
 - Prefer small named components over one large page component.
 - Use semantic HTML and accessible controls.
 - Keep common copy, links, images, theme values, and configuration easy to
   personalize without editing component logic.
+- Keep text and locale-sensitive formatting centralized. Add an i18n library
+  only when localization is part of the brief.
+- Never present local demo logic as a live availability, coverage, inventory,
+  payment, or booking check. Use a clear enquiry fallback for unknown results.
+- Build `tel:` and `mailto:` targets from the same contact data shown on screen.
+- When URL state is requested, hydrate valid input values from the URL and keep
+  it synchronized as the user changes them.
+- Keep print and screenshot summaries useful without controls or page chrome.
 - Do not add secrets, credentials, generated dependencies, or build output.
 
 ## Design quality
@@ -99,3 +113,5 @@
 - Keep `templates.json` strict JSON: no comments or trailing commas.
 - Add an entry only after install, lint, build, browser checks, and image
   inspection pass.
+- For multi-page templates, directly load every built preview route. Add static
+  host fallback handling or prerender routes when client routing needs it.

@@ -19,6 +19,57 @@
   ],
   "booking": {
     "label": "Ask for an appointment",
-    "href": "mailto:hello@groomroom.example?subject=Grooming%20appointment%20enquiry"
-  }
+    "subject": "Grooming appointment enquiry",
+    "message": "I'd like to book my {breed}."
+  },
+  "addOns": [
+    { "name": "Teeth clean", "price": 9, "mark": "01" },
+    { "name": "Nail trim", "price": 12, "mark": "02" },
+    { "name": "Blueberry facial", "price": 8, "mark": "03" },
+    { "name": "De-shed boost", "price": 16, "mark": "04" }
+  ],
+  "services": [
+    {
+      "number": "01",
+      "name": "Full groom",
+      "description": "Consultation, two shampoos, conditioning, blow-dry, brush-out, nail trim, ear clean, and your chosen cut.",
+      "price": "From £48"
+    },
+    {
+      "number": "02",
+      "name": "Bath & brush",
+      "description": "A thorough wash, condition, blow-dry, brush-out, eye and hygiene tidy, finished with paw balm.",
+      "price": "From £32"
+    },
+    {
+      "number": "03",
+      "name": "Puppy first visit",
+      "description": "A gentle 45-minute introduction to the bath, dryer, table, brush, and the person behind the clippers.",
+      "price": "£28"
+    },
+    {
+      "number": "04",
+      "name": "Hand strip",
+      "description": "Traditional coat care for suitable wire-haired breeds, preserving colour and weather-resistant texture.",
+      "price": "From £72"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What if my dog is matted?",
+      "answer": "We put comfort first. We will assess the coat with you and agree a shorter cut or extra de-matting time before the groom begins."
+    },
+    {
+      "question": "Is the breed price guaranteed?",
+      "answer": "It is a guide for a regularly groomed dog. Coat condition, size, temperament, and requested finish can change the final quote."
+    },
+    {
+      "question": "Can I stay during the appointment?",
+      "answer": "Most dogs settle more easily without their person in view. You are welcome to see the salon and meet the groomer at drop-off."
+    },
+    {
+      "question": "What should I bring?",
+      "answer": "Bring your dog on a secure lead and tell us about allergies, health needs, or anything that helps them feel safe."
+    }
+  ]
 }

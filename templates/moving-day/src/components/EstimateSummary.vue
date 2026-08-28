@@ -21,7 +21,7 @@ const mailto = computed(() => {
     .join(', ');
   const subject = 'Moving quote enquiry';
   const body = [
-    'Hello Moving Day,',
+    `Hello ${site.name},`,
     '',
     'I’d like a fixed quote for my move.',
     `Rooms: ${inventory || 'Not selected yet'}`,
@@ -125,7 +125,7 @@ const mailto = computed(() => {
     </a>
     <a
       class="summary-phone"
-      :href="`tel:${site.phoneHref}`"
+      :href="site.phoneHref"
     >Or call {{ site.phoneDisplay }}</a>
   </aside>
 </template>

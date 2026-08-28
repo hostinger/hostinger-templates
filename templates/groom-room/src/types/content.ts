@@ -14,7 +14,26 @@ export interface SiteContent {
   address: string;
   hours: string[];
   navigation: NavigationItem[];
-  booking: NavigationItem;
+  booking: {
+    label: string;
+    subject: string;
+    message: string;
+  };
+  addOns: Array<{
+    name: string;
+    price: number;
+    mark: string;
+  }>;
+  services: Array<{
+    number: string;
+    name: string;
+    description: string;
+    price: string;
+  }>;
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
 }
 
 export interface Breed {

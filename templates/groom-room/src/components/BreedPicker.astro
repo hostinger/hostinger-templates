@@ -6,6 +6,8 @@ import type { Breed, SiteContent } from '../types/content';
 const breeds = rawBreeds as Breed[];
 const site = rawSite as SiteContent;
 const initialBreed = breeds[0];
+const bookingHref = `mailto:${site.email}?subject=${encodeURIComponent(site.booking.subject)}`;
+const initialBookingMessage = site.booking.message.replace('{breed}', initialBreed.name);
 ---
 
 <section class="picker-section" id="breed-picker" aria-labelledby="picker-title">
@@ -55,7 +57,7 @@ const initialBreed = breeds[0];
           </div>
         </div>
         <p data-breed-note>{initialBreed.note}</p>
-        <a class="button" data-booking-link href={`${site.booking.href}&body=I%27d%20like%20to%20book%20my%20Cockapoo.`}>
+        <a class="button" data-booking-link href={`${bookingHref}&body=${encodeURIComponent(initialBookingMessage)}`}>
           Ask about this groom
         </a>
       </div>
@@ -69,7 +71,8 @@ const initialBreed = breeds[0];
   import type { Breed, SiteContent } from '../types/content';
 
   const breeds = breedData as Breed[];
-  const bookingHref = (siteData as SiteContent).booking.href;
+  const site = siteData as SiteContent;
+  const bookingHref = `mailto:${site.email}?subject=${encodeURIComponent(site.booking.subject)}`;
   const picker = document.querySelector('[data-breed-picker]');
 
   if (picker) {
@@ -100,7 +103,8 @@ const initialBreed = breeds[0];
         price.textContent = `£${breed.price}`;
         duration.textContent = breed.duration;
         note.textContent = breed.note;
-        bookingLink.href = `${bookingHref}&body=I%27d%20like%20to%20book%20my%20${encodeURIComponent(breed.name)}.`;
+        const message = site.booking.message.replace('{breed}', breed.name);
+        bookingLink.href = `${bookingHref}&body=${encodeURIComponent(message)}`;
       });
     });
   }

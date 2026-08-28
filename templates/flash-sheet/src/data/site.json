@@ -1,13 +1,19 @@
 {
   "studioName": "Black Thistle",
+  "monogram": "BT",
+  "city": "Bristol",
+  "establishedYear": "2025",
+  "specialties": "Blackwork · oddities · botanicals",
   "eyebrow": "Independent tattooing · Bristol",
   "headline": "Pick your mark.",
   "intro": "Eight one-off drawings, made for skin. No repeats once claimed.",
   "email": "hello@blackthistlestudio.example",
   "instagram": "@blackthistle.tattoo",
+  "instagramHref": "https://www.instagram.com/blackthistle.tattoo/",
   "address": "18 Wilder Street, Bristol BS2",
   "hours": "Tue–Sat · 11:00–18:00",
   "about": "Black Thistle is a quiet, appointment-only studio for bold blackwork, botanical oddities and strange little keepsakes. Every flash piece is drawn here, by hand, and tattooed once.",
+  "enquiryIntro": "I'd like to enquire about",
   "faqs": [
     {
       "question": "What does “available” mean?",

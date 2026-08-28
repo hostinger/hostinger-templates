@@ -21,6 +21,10 @@ export interface SiteContent {
   navigation: NavigationItem[];
   included: string[];
   proof: ProofItem[];
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
 }
 
 export interface Frequency {

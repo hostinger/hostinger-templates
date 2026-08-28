@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import site from '../data/site.json';
+
 defineProps<{
   faqs: Array<{ question: string; answer: string }>;
 }>();
@@ -16,7 +18,7 @@ defineProps<{
       <div class="faq-heading">
         <h2>Good to know<br><em>before the big day.</em></h2>
         <p>Still wondering about something?</p>
-        <a href="mailto:hello@movingdayremovals.co.uk">Ask us a question ↗</a>
+        <a :href="`mailto:${site.email}`">Ask us a question ↗</a>
       </div>
       <div class="faq-list">
         <details

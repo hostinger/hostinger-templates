@@ -18,13 +18,19 @@ export type Faq = {
 
 export type SiteContent = {
   studioName: string;
+  monogram: string;
+  city: string;
+  establishedYear: string;
+  specialties: string;
   eyebrow: string;
   headline: string;
   intro: string;
   email: string;
   instagram: string;
+  instagramHref: string;
   address: string;
   hours: string;
   about: string;
+  enquiryIntro: string;
   faqs: Faq[];
 };

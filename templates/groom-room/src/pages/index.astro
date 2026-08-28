@@ -5,34 +5,11 @@ import rawSite from '../data/site.json';
 import type { SiteContent } from '../types/content';
 
 const site = rawSite as SiteContent;
-const addOns = [
-  { name: 'Teeth clean', price: 9, mark: '01' },
-  { name: 'Nail trim', price: 12, mark: '02' },
-  { name: 'Blueberry facial', price: 8, mark: '03' },
-  { name: 'De-shed boost', price: 16, mark: '04' },
-];
-const faqs = [
-  {
-    question: 'What if my dog is matted?',
-    answer: 'We put comfort first. We will assess the coat with you and agree a shorter cut or extra de-matting time before the groom begins.',
-  },
-  {
-    question: 'Is the breed price guaranteed?',
-    answer: 'It is a guide for a regularly groomed dog. Coat condition, size, temperament, and requested finish can change the final quote.',
-  },
-  {
-    question: 'Can I stay during the appointment?',
-    answer: 'Most dogs settle more easily without their person in view. You are welcome to see the salon and meet the groomer at drop-off.',
-  },
-  {
-    question: 'What should I bring?',
-    answer: 'Bring your dog on a secure lead and tell us about allergies, health needs, or anything that helps them feel safe.',
-  },
-];
+const bookingHref = `mailto:${site.email}?subject=${encodeURIComponent(site.booking.subject)}`;
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: site.faqs.map((faq) => ({
     '@type': 'Question',
     name: faq.question,
     acceptedAnswer: { '@type': 'Answer', text: faq.answer },
@@ -41,7 +18,7 @@ const faqSchema = {
 ---
 
 <BaseLayout
-  title="Groom Room — Kind cuts, clear prices"
+  title={`${site.name} — Kind cuts, clear prices`}
   description="Choose your dog's breed to see a real grooming guide price, appointment duration, and recommended cut."
   schema={faqSchema}
 >
@@ -78,7 +55,7 @@ const faqSchema = {
       <p>Choose at drop-off. We only add what your dog needs.</p>
     </div>
     <div class="addon-list">
-      {addOns.map((addOn) => (
+      {site.addOns.map((addOn) => (
         <article>
           <span>{addOn.mark}</span>
           <h3>{addOn.name}</h3>
@@ -107,7 +84,7 @@ const faqSchema = {
       <h2 id="faq-title">Questions with straight answers.</h2>
     </div>
     <div class="faq-list">
-      {faqs.map((faq, index) => (
+      {site.faqs.map((faq, index) => (
         <details open={index === 0}>
           <summary>{faq.question}<span aria-hidden="true">+</span></summary>
           <p>{faq.answer}</p>
@@ -122,7 +99,7 @@ const faqSchema = {
       <h2>Tell us about your dog.</h2>
     </div>
     <div class="booking-band-actions">
-      <a class="button button-cream" href={site.booking.href}>{site.booking.label}</a>
+      <a class="button button-cream" href={bookingHref}>{site.booking.label}</a>
       <a href={site.phoneHref}>{site.phoneDisplay}</a>
     </div>
   </section>

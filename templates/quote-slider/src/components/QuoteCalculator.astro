@@ -11,6 +11,7 @@ const initialPrice = Math.round(initialSubtotal * (1 - initialFrequency.discount
 ---
 
 <section class="quote-section" id="quote" aria-labelledby="quote-title">
+  <div class="print-heading">{site.name} · Your cleaning estimate</div>
   <div class="quote-heading">
     <p class="kicker">Build your clean</p>
     <h2 id="quote-title">Slide into a tidier week.</h2>
@@ -33,7 +34,7 @@ const initialPrice = Math.round(initialSubtotal * (1 - initialFrequency.discount
           value={pricing.includedBedrooms}
           step="1"
         />
-        <div class="range-ends" aria-hidden="true"><span>1</span><span>6</span></div>
+        <div class="range-ends" aria-hidden="true"><span>{pricing.minimumBedrooms}</span><span>{pricing.maximumBedrooms}</span></div>
       </div>
 
       <div class="slider-field">
@@ -50,7 +51,7 @@ const initialPrice = Math.round(initialSubtotal * (1 - initialFrequency.discount
           value={pricing.includedBathrooms}
           step="1"
         />
-        <div class="range-ends" aria-hidden="true"><span>1</span><span>5</span></div>
+        <div class="range-ends" aria-hidden="true"><span>{pricing.minimumBathrooms}</span><span>{pricing.maximumBathrooms}</span></div>
       </div>
 
       <fieldset class="frequency-field">
@@ -95,6 +96,7 @@ const initialPrice = Math.round(initialSubtotal * (1 - initialFrequency.discount
         <button class="button button-secondary" type="button" data-print>Print one-pager</button>
       </div>
       <p class="fine-print">Estimate only. We confirm scope and final price by email before booking.</p>
+      <p class="print-contact">Contact: {site.email} · {site.phoneDisplay}</p>
     </aside>
   </div>
 
@@ -175,7 +177,7 @@ const initialPrice = Math.round(initialSubtotal * (1 - initialFrequency.discount
 
       const subject = `Cleaning quote — ${bedrooms} bed, ${bathrooms} bath`;
       const body = [
-        'Hello Tidy Assembly,',
+        `Hello ${site.name},`,
         '',
         `I’d like to ask about the ${money(total)} per clean estimate.`,
         `Home: ${bedrooms} bedroom${bedrooms === 1 ? '' : 's'}, ${bathrooms} bathroom${bathrooms === 1 ? '' : 's'}`,

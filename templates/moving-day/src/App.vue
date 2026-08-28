@@ -126,11 +126,11 @@ onMounted(() => {
     </div>
     <div class="footer-contact">
       <p>{{ site.serviceArea }}<br>{{ site.hours }}</p>
-      <a :href="`tel:${site.phoneHref}`">{{ site.phoneDisplay }}</a>
+      <a :href="site.phoneHref">{{ site.phoneDisplay }}</a>
       <a :href="`mailto:${site.email}`">{{ site.email }}</a>
     </div>
     <p class="footer-fine">
-      © 2026 Moving Day Removals Ltd. Guide prices only.
+      © 2026 {{ site.legalName }} {{ site.footerNotice }}
     </p>
   </footer>
 </template>

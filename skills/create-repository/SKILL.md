@@ -75,10 +75,14 @@ Required baseline:
 - React, TypeScript, and Vite when the user does not specify alternatives
 - the explicitly requested language and framework when provided
 - npm with committed `package-lock.json`
+- explicit dependency ranges and a matching Node.js `engines` requirement
+- an explicit reuse license
 - ESLint flat configuration
 - one intentional configuration file per tool
 - one `tsconfig.json` for TypeScript projects
 - one `vite.config.ts` for Vite projects
+- `.gitignore` coverage for `.env`, `.env.*`, dependencies, build output, and
+  framework caches
 
 Required scripts:
 
@@ -120,6 +124,9 @@ Architecture requirements:
 - Components are small, named, and reusable where reuse is real.
 - Content, business details, navigation, and configuration use typed constants
   or committed structured content files appropriate to the language.
+- Put user-owned copy and business data in one obvious content location. Keep
+  calculations, functions, and operational rules in typed source modules.
+- Do not duplicate editable copy across components, pages, and styles.
 - Shared domain shapes live in a predictable types or models location when the
   language supports them.
 - Shared SVG icons live in a predictable icons location; do not duplicate inline
@@ -141,6 +148,8 @@ entire app:
 - provide `.env.example` when environment variables exist
 - avoid unexplained magic values and unnecessary infrastructure
 - make common customizations possible without changing component logic
+- keep text and locale-sensitive formatting centralized so localization can be
+  added later; install an i18n library only when the brief requests localization
 
 ## 7. Build complete UX
 
@@ -150,6 +159,14 @@ them.
 
 Use semantic HTML, keyboard-accessible controls, useful alt text, visible focus
 states, and labelled forms. Avoid fake controls and dead links.
+
+Interactive claims must be honest. Static templates may use documented local
+rules, but must not imply a live postcode, inventory, availability, payment, or
+booking check. When a result cannot be verified locally, show an enquiry
+fallback. Build `tel:` and `mailto:` links from the displayed contact details.
+For calculators with URL-state requirements, restore valid values on load and
+update the URL as inputs change. Print or screenshot summaries must remain
+usable without hidden controls or surrounding page chrome.
 
 Mobile is a first-class layout:
 
@@ -184,8 +201,10 @@ npm run lint
 npm run build
 ```
 
-Then verify primary journeys in a browser on desktop and mobile. Check direct
-route loading for multi-page apps. Fix language diagnostics, ESLint, build, console,
+Then verify primary journeys in a browser on desktop and mobile. Check every
+multi-page route by loading its built preview URL directly, not only through
+client-side navigation. Add a static-host fallback or prerendered route when the
+chosen router requires it. Fix language diagnostics, ESLint, build, console,
 overflow, clipping, missing-image, and interaction failures before continuing.
 
 ## 10. Capture consistent images

@@ -4,6 +4,7 @@ import type { SiteContent } from '../types/content';
 
 const site = rawSite as SiteContent;
 const currentPath = Astro.url.pathname;
+const bookingHref = `mailto:${site.email}?subject=${encodeURIComponent(site.booking.subject)}`;
 ---
 
 <header class="site-header">
@@ -21,5 +22,5 @@ const currentPath = Astro.url.pathname;
       </a>
     ))}
   </nav>
-  <a class="button button-small" href={site.booking.href}>{site.booking.label}</a>
+  <a class="button button-small" href={bookingHref}>{site.booking.label}</a>
 </header>

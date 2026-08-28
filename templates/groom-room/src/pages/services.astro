@@ -4,36 +4,11 @@ import rawSite from '../data/site.json';
 import type { SiteContent } from '../types/content';
 
 const site = rawSite as SiteContent;
-const services = [
-  {
-    number: '01',
-    name: 'Full groom',
-    description: 'Consultation, two shampoos, conditioning, blow-dry, brush-out, nail trim, ear clean, and your chosen cut.',
-    price: 'From £48',
-  },
-  {
-    number: '02',
-    name: 'Bath & brush',
-    description: 'A thorough wash, condition, blow-dry, brush-out, eye and hygiene tidy, finished with paw balm.',
-    price: 'From £32',
-  },
-  {
-    number: '03',
-    name: 'Puppy first visit',
-    description: 'A gentle 45-minute introduction to the bath, dryer, table, brush, and the person behind the clippers.',
-    price: '£28',
-  },
-  {
-    number: '04',
-    name: 'Hand strip',
-    description: 'Traditional coat care for suitable wire-haired breeds, preserving colour and weather-resistant texture.',
-    price: 'From £72',
-  },
-];
+const bookingHref = `mailto:${site.email}?subject=${encodeURIComponent(site.booking.subject)}`;
 ---
 
 <BaseLayout
-  title="Dog grooming services — Groom Room"
+  title={`Dog grooming services — ${site.name}`}
   description="Full grooms, bath and brush appointments, puppy introductions, and hand stripping in North London."
 >
   <section class="page-intro">
@@ -43,7 +18,7 @@ const services = [
   </section>
 
   <section class="service-menu" aria-label="Grooming services">
-    {services.map((service) => (
+    {site.services.map((service) => (
       <article>
         <span>{service.number}</span>
         <div>
@@ -69,7 +44,7 @@ const services = [
       <h2>Let’s find a good time.</h2>
     </div>
     <div class="booking-band-actions">
-      <a class="button button-cream" href={site.booking.href}>{site.booking.label}</a>
+      <a class="button button-cream" href={bookingHref}>{site.booking.label}</a>
       <a href="/#breed-picker">Check breed pricing</a>
     </div>
   </section>

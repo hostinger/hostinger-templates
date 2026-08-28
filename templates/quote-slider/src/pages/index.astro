@@ -7,28 +7,10 @@ import rawSite from '../data/site.json';
 import type { SiteContent } from '../types/content';
 
 const site = rawSite as SiteContent;
-const faqs = [
-  {
-    question: 'Is this the final price?',
-    answer: 'It is a transparent estimate based on bedrooms, bathrooms, and frequency. Before booking, we confirm the scope, access, pets, and any unusually heavy buildup by email—then you approve the final price.',
-  },
-  {
-    question: 'What is included in a standard clean?',
-    answer: 'Kitchen and bathroom surfaces, exterior appliance faces, dusting, vacuuming, mopping, bed making, and bin emptying are included. Inside ovens, fridges, and cabinets are separate deep-clean requests.',
-  },
-  {
-    question: 'Do I need to provide supplies?',
-    answer: 'No. Our insured team brings professional products and tools. Tell us in your email if you prefer fragrance-free products or have a delicate surface.',
-  },
-  {
-    question: 'Can I change or cancel a visit?',
-    answer: 'Yes. Give us at least 24 hours’ notice and there is no cancellation fee. Repeat plans are flexible and never lock you into a contract.',
-  },
-];
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: site.faqs.map((faq) => ({
     '@type': 'Question',
     name: faq.question,
     acceptedAnswer: { '@type': 'Answer', text: faq.answer },
@@ -109,7 +91,7 @@ const faqSchema = {
         <h2 id="faq-title">Straight answers. Spotless corners.</h2>
       </div>
       <div class="faq-list">
-        {faqs.map((faq, index) => (
+        {site.faqs.map((faq, index) => (
           <details open={index === 0}>
             <summary><span>{faq.question}</span><b aria-hidden="true">+</b></summary>
             <p>{faq.answer}</p>

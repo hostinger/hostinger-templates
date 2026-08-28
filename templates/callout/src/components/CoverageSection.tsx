@@ -5,17 +5,41 @@ import { CoverageMap } from './CoverageMap';
 
 export const CoverageSection = () => {
   const [street, setStreet] = useState('');
-  const [result, setResult] = useState<string | null>(null);
+  const [result, setResult] = useState<{
+    kind: 'covered' | 'enquiry' | 'empty';
+    message: string;
+  } | null>(null);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const normalizedStreet = street.trim();
 
-    setResult(
-      normalizedStreet
-        ? COVERAGE.successMessage(normalizedStreet)
-        : COVERAGE.emptyMessage,
+    if (!normalizedStreet) {
+      setResult({ kind: 'empty', message: COVERAGE.emptyMessage });
+      return;
+    }
+
+    const comparableLocation = normalizedStreet.toLowerCase();
+    const postcode = normalizedStreet.toUpperCase().replace(/\s/g, '');
+    const outwardCode =
+      postcode.match(/^([A-Z]{1,2}\d[A-Z\d]?)\d[A-Z]{2}$/)?.[1] ??
+      postcode.match(/^[A-Z]{1,2}\d[A-Z\d]?$/)?.[0];
+    const matchesArea = COVERAGE.areaNames.some((area) =>
+      comparableLocation.includes(area),
     );
+    const matchesPostcode =
+      outwardCode !== undefined &&
+      COVERAGE.postcodePrefixes.includes(
+        outwardCode as (typeof COVERAGE.postcodePrefixes)[number],
+      );
+
+    setResult({
+      kind: matchesArea || matchesPostcode ? 'covered' : 'enquiry',
+      message:
+        matchesArea || matchesPostcode
+          ? COVERAGE.coveredMessage(normalizedStreet)
+          : COVERAGE.enquiryMessage(normalizedStreet),
+    });
   };
 
   return (
@@ -37,7 +61,10 @@ export const CoverageSection = () => {
               <input
                 autoComplete="street-address"
                 id="street"
-                onChange={(event) => setStreet(event.target.value)}
+                onChange={(event) => {
+                  setStreet(event.target.value);
+                  setResult(null);
+                }}
                 placeholder={COVERAGE.placeholder}
                 value={street}
               />
@@ -47,7 +74,7 @@ export const CoverageSection = () => {
             </div>
             {result && (
               <p className="coverage-result" role="status">
-                <CheckIcon /> {result}
+                {result.kind === 'covered' && <CheckIcon />} {result.message}
               </p>
             )}
           </form>

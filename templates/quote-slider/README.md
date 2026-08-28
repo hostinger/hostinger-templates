@@ -77,7 +77,10 @@ Astro statically renders the single route. The calculator owns its browser state
 
 ### Content and business data
 
-Edit `src/data/site.json` for brand copy, contact details, service area, navigation, checklist items, and proof points. Edit `src/data/pricing.json` for the base price, room increments, control limits, frequency labels, and discounts. FAQ copy lives in `src/pages/index.astro` beside its matching structured data.
+Edit `src/data/site.json` for brand copy, contact details, service area,
+navigation, checklist items, proof points, and FAQs. Edit
+`src/data/pricing.json` for the base price, room increments, control limits,
+frequency labels, and discounts.
 
 ### Branding and styles
 
@@ -103,6 +106,11 @@ npm run preview
 ```
 
 Production files are written to `dist/`.
+
+## License
+
+MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
+projects.
 
 ## Screenshots
 
