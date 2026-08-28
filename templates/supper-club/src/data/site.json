@@ -1,0 +1,62 @@
+{
+  "name": "The Ember Table",
+  "monogram": "ET",
+  "tagline": "A supper club of one long table, held by candlelight.",
+  "host": "Mara Ellison",
+  "hostRole": "Cook & host",
+  "email": "mara@embertable.example",
+  "phoneDisplay": "+1 (212) 555-0184",
+  "phoneHref": "tel:+12125550184",
+  "city": "New York",
+  "venuePolicy": "The exact address is emailed to confirmed guests two days before the dinner. Until then, all we will say is: a private dining room in the West Village, a short walk from the 1 train.",
+  "navigation": [
+    {
+      "label": "The night",
+      "href": "#the-night"
+    },
+    {
+      "label": "Menu",
+      "href": "#menu"
+    },
+    {
+      "label": "Details",
+      "href": "#details"
+    },
+    {
+      "label": "RSVP",
+      "href": "#rsvp"
+    }
+  ],
+  "socials": [
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/embertable.example/"
+    },
+    {
+      "label": "The dinner letter",
+      "href": "https://embertable.example.substack.com/"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Where exactly is the dinner?",
+      "answer": "A private dining room in the West Village, a short walk from the 1 train. The exact address goes out by email to confirmed guests two days before the dinner."
+    },
+    {
+      "question": "I have an allergy — can the kitchen cook for me?",
+      "answer": "Almost always. Note it in your RSVP and the menu is adjusted quietly at your place — no fuss at the table. For severe or airborne allergies, email first so we can talk it through honestly."
+    },
+    {
+      "question": "Can I come alone?",
+      "answer": "Please do. Half the table usually arrives solo — you will be seated mid-table, where the conversation is, never on the awkward end."
+    },
+    {
+      "question": "How do I pay? Do I need an account?",
+      "answer": "No accounts and no ticketing fees. You RSVP by email, the host confirms your seats and sends simple payment instructions in her reply. Seats are released if unpaid after 48 hours."
+    },
+    {
+      "question": "What if I need to cancel?",
+      "answer": "Tell us as soon as you can. Your seat goes to the waitlist, and if it is re-filled — it usually is — you are refunded in full. You may also pass your seat to a friend by email."
+    }
+  ]
+}

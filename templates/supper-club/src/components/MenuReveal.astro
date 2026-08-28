@@ -1,0 +1,95 @@
+---
+import rawEvent from '../data/event.json';
+import type { SupperEvent } from '../types/content';
+
+const event = rawEvent as SupperEvent;
+const ordinals = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth'];
+---
+
+<section class="menu-section" id="menu" aria-labelledby="menu-title">
+  <div class="measure">
+    <p class="eyebrow">The menu</p>
+    <h2 id="menu-title">Four courses, revealed one at a time.</h2>
+    <p class="section-lede">
+      At the table there is no printed menu — each course is announced as it leaves the fire.
+      The same rule applies here. Uncover them in order, or ask for the whole card at once.
+    </p>
+    <div class="menu-controls">
+      <button class="text-button" type="button" data-reveal-all>
+        Impatient? Uncover the whole menu
+      </button>
+      <p class="menu-complete" data-menu-complete role="status" hidden>
+        That is the table read. Save your appetite for {event.number}.
+      </p>
+    </div>
+    <ol class="course-list" data-course-list>
+      {event.courses.map((course, index) => (
+        <li class="course" data-course>
+          <button
+            class="course-cover"
+            type="button"
+            data-course-cover
+            aria-controls={`course-body-${index + 1}`}
+            aria-expanded="false"
+            disabled={index !== 0}
+          >
+            <span class="cover-numeral" aria-hidden="true">{course.numeral}</span>
+            <span class="cover-title">{ordinals[index] ?? 'Next'} course</span>
+            <span class="cover-status" data-cover-status>
+              {index === 0 ? 'Tap to reveal' : `Sealed until course ${event.courses[index - 1]?.numeral} is served`}
+            </span>
+          </button>
+          <div class="course-body" id={`course-body-${index + 1}`}>
+            <p class="course-kicker">Course {course.numeral} · {course.title}</p>
+            <h3 class="course-name" tabindex="-1" data-course-name>{course.name}</h3>
+            <p class="course-desc">{course.description}</p>
+            <p class="course-pairing"><span>Pour</span>{course.pairing}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<script>
+  const list = document.querySelector<HTMLElement>('[data-course-list]');
+  const revealAll = document.querySelector<HTMLButtonElement>('[data-reveal-all]');
+  const completeNote = document.querySelector<HTMLElement>('[data-menu-complete]');
+
+  if (list) {
+    const items = Array.from(list.querySelectorAll<HTMLLIElement>('[data-course]'));
+    let nextIndex = 0;
+
+    const reveal = (item: HTMLLIElement, moveFocus: boolean) => {
+      item.classList.add('is-revealed');
+      item.querySelector<HTMLButtonElement>('[data-course-cover]')?.setAttribute('aria-expanded', 'true');
+      if (moveFocus) item.querySelector<HTMLElement>('[data-course-name]')?.focus();
+
+      nextIndex += 1;
+      const upcoming = items[nextIndex];
+      if (upcoming) {
+        const cover = upcoming.querySelector<HTMLButtonElement>('[data-course-cover]');
+        const status = upcoming.querySelector<HTMLElement>('[data-cover-status]');
+        if (cover) cover.disabled = false;
+        if (status) status.textContent = 'Tap to reveal';
+        return;
+      }
+      revealAll?.setAttribute('hidden', '');
+      completeNote?.removeAttribute('hidden');
+    };
+
+    items.forEach((item) => {
+      item
+        .querySelector<HTMLButtonElement>('[data-course-cover]')
+        ?.addEventListener('click', () => reveal(item, true));
+    });
+
+    revealAll?.addEventListener('click', () => {
+      const first = items[nextIndex];
+      while (nextIndex < items.length) {
+        reveal(items[nextIndex], false);
+      }
+      first?.querySelector<HTMLElement>('[data-course-name]')?.focus();
+    });
+  }
+</script>

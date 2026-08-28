@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BoardMasthead from '../components/BoardMasthead.astro';
+import TapBoard from '../components/TapBoard.astro';
+import HouseNotes from '../components/HouseNotes.astro';
+import VisitSection from '../components/VisitSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const { faqs } = rawSite as SiteContent;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Copperline Taproom — Tonight's tap list"
+  description="Live keg board for Copperline Taproom: what's pouring, ABV, prices, and how full every keg is — including what's about to blow."
+  schema={faqSchema}
+>
+  <BoardMasthead />
+  <TapBoard />
+  <HouseNotes />
+  <VisitSection />
+  <FaqSection faqs={faqs} />
+</BaseLayout>

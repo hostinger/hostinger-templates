@@ -1,0 +1,32 @@
+---
+const notes = [
+  {
+    mark: '01',
+    title: 'If it is listed, it pours',
+    copy: 'The board updates at every keg change, not once a week. What you see behind the bar is exactly what you see here.',
+  },
+  {
+    mark: '02',
+    title: 'Low means low',
+    copy: 'Under 20% gets flagged. A low keg can blow mid-pour — and when it does, the last glass is on the house.',
+  },
+  {
+    mark: '03',
+    title: 'Growlers till late',
+    copy: '32 oz crowlers and 64 oz growlers filled from any tap that is not flagged, until 30 minutes before close.',
+  },
+];
+---
+
+<section class="house-notes" aria-labelledby="notes-title">
+  <h2 class="sr-only" id="notes-title">House rules for the board</h2>
+  <div class="notes-grid">
+    {notes.map((note) => (
+      <article>
+        <span aria-hidden="true">{note.mark}</span>
+        <h3>{note.title}</h3>
+        <p>{note.copy}</p>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,130 @@
+{
+  "currency": "$",
+  "tagLegend": [
+    { "tag": "V", "label": "vegetarian" },
+    { "tag": "VE", "label": "vegan" },
+    { "tag": "GF", "label": "gluten-free" },
+    { "tag": "N", "label": "contains nuts" }
+  ],
+  "dayparts": [
+    {
+      "id": "breakfast",
+      "label": "Breakfast",
+      "start": "07:00",
+      "end": "11:30",
+      "tagline": "Off the morning bakery run and the egg pan."
+    },
+    {
+      "id": "lunch",
+      "label": "Lunch",
+      "start": "11:30",
+      "end": "16:00",
+      "tagline": "Sandwiches, the deli counter, and one hot pot."
+    },
+    {
+      "id": "evening",
+      "label": "Evening",
+      "start": "16:00",
+      "end": "21:00",
+      "tagline": "Small plates, boards to share, and a glass of something."
+    }
+  ],
+  "dishes": [
+    {
+      "name": "Brown-butter porridge",
+      "description": "Steel-cut oats, burnt honey, toasted almonds, flaky salt.",
+      "price": 7.5,
+      "daypart": "breakfast",
+      "tags": ["V", "N"],
+      "soldOut": false
+    },
+    {
+      "name": "Marigold breakfast roll",
+      "description": "Fried egg, smoked bacon, tomato jam, and aioli on a potato bun.",
+      "price": 9,
+      "daypart": "breakfast",
+      "tags": [],
+      "soldOut": false
+    },
+    {
+      "name": "Whipped ricotta toast",
+      "description": "Grilled sourdough, lemon ricotta, marinated peaches, mint.",
+      "price": 10,
+      "daypart": "breakfast",
+      "tags": ["V"],
+      "soldOut": true
+    },
+    {
+      "name": "Green shakshuka",
+      "description": "Two baked eggs, chard, green chile, yogurt, grilled flatbread.",
+      "price": 12,
+      "daypart": "breakfast",
+      "tags": ["V"],
+      "soldOut": false
+    },
+    {
+      "name": "Roast chicken on rye",
+      "description": "Tarragon mayo, pickled celery, little gem lettuce on seeded rye.",
+      "price": 11,
+      "daypart": "lunch",
+      "tags": [],
+      "soldOut": false
+    },
+    {
+      "name": "Tomato & white bean stew",
+      "description": "Slow tomatoes, cannellini beans, basil oil, grilled focaccia.",
+      "price": 10,
+      "daypart": "lunch",
+      "tags": ["VE"],
+      "soldOut": false
+    },
+    {
+      "name": "Deli counter plate",
+      "description": "Any three salads from the case, seeded crackers, house pickles.",
+      "price": 13,
+      "daypart": "lunch",
+      "tags": ["V", "GF"],
+      "soldOut": false
+    },
+    {
+      "name": "Crispy lamb flatbread",
+      "description": "Spiced lamb, whipped feta, sumac onions, pomegranate seeds.",
+      "price": 14,
+      "daypart": "lunch",
+      "tags": [],
+      "soldOut": true
+    },
+    {
+      "name": "Sherry mushrooms on toast",
+      "description": "Cremini mushrooms, sherry cream, thyme, aged manchego.",
+      "price": 10,
+      "daypart": "evening",
+      "tags": ["V"],
+      "soldOut": false
+    },
+    {
+      "name": "Charred leeks & romesco",
+      "description": "Grilled leeks, smoked pepper romesco, hazelnut crumb.",
+      "price": 9,
+      "daypart": "evening",
+      "tags": ["VE", "GF", "N"],
+      "soldOut": false
+    },
+    {
+      "name": "Deli board for two",
+      "description": "Rotating cheeses, cured meats, olives, pickles, warm bread.",
+      "price": 19,
+      "daypart": "evening",
+      "tags": [],
+      "soldOut": false
+    },
+    {
+      "name": "Rye chocolate brownie",
+      "description": "Dark chocolate rye brownie, malted cream, cocoa nibs.",
+      "price": 6,
+      "daypart": "evening",
+      "tags": ["V"],
+      "soldOut": false
+    }
+  ]
+}

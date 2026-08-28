@@ -1,0 +1,20 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label={`${site.name} home`}>
+    <span class="brand-mark" aria-hidden="true">CT</span>
+    <span class="brand-name">{site.name}</span>
+  </a>
+  <nav aria-label="Main navigation">
+    {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+  <a class="button header-call" href={site.phoneHref}>
+    <span>Call</span>
+    <span class="call-number">{site.phoneDisplay}</span>
+  </a>
+</header>

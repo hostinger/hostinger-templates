@@ -437,6 +437,384 @@
         "local movers",
         "vue service business template"
       ]
+    },
+    {
+      "id": "todays-menu",
+      "name": "Today's Menu",
+      "summary": "A café and deli board that follows the clock — dayparts reorder by local time and sold-out dishes are greyed out.",
+      "description": "Today's Menu is a one-page website for a café or deli whose offer changes through the day and who wants the website to behave like the board behind the counter. It is designed for owners who are tired of static PDF menus that say nothing about what is actually available right now, and who want visitors to see the current service — and what has already sold out — before they walk over or call.\n\nThe page opens with an editorial masthead and a live clock card that reads the visitor's local time: a status line such as \"Serving lunch — until 4 pm\", a sun marker moving along a breakfast–lunch–evening day strip, and a background band that warms from morning gold to evening amber. The three daypart menus reorder themselves so the current service always leads, with a tomato \"Serving now\" badge on the active sheet and \"From 4 pm\" or \"Back tomorrow\" chips on the others; before opening and after close the page shows honest kitchen-closed messaging. Dishes are set in classic dotted-leader typography with dietary tag chips, and sold-out items stay on the board struck through with a Sold out chip. An hours strip highlights today, a café story section, a click-to-call and email band, and a structured FAQ complete the page.\n\nEverything an owner edits lives in two committed JSON files: site.json holds the name, contact details, weekly hours, and links, while menu.json holds the three daypart windows and every dish with its price, tags, and soldOut flag — flip one boolean to grey a dish out. The template ships as fully static Astro output with TypeScript content types, shared time utilities used by both the server render and the vanilla client scripts, plain hand-written CSS with tokens at the top of one stylesheet, FAQPage JSON-LD, accessible time labels and focus states, and layouts verified down to 320px.",
+      "bucket": "Non-technical",
+      "category": "Food and drink",
+      "whoItsFor": "A cafe or deli",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "local-business",
+          "food-and-drink",
+          "cafe-menu"
+        ],
+        "useCases": [
+          "daily-menu-publishing",
+          "sold-out-tracking",
+          "opening-hours",
+          "call-ahead-orders"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "clock-driven-dayparts",
+          "name": "Clock-driven dayparts",
+          "description": "Breakfast, lunch, and evening sections reorder by the visitor's local time so the current service always leads the board."
+        },
+        {
+          "id": "serving-now-indicators",
+          "name": "Serving-now indicators",
+          "description": "A live clock card, a sun-marker day strip, and a \"Serving now · until …\" badge show what the kitchen is serving at any hour, including closed states."
+        },
+        {
+          "id": "sold-out-treatment",
+          "name": "Sold-out treatment",
+          "description": "Dishes flagged soldOut in menu.json stay on the board struck through, muted, and chipped \"Sold out\" until tomorrow's run."
+        },
+        {
+          "id": "one-file-menu-editing",
+          "name": "One-file menu editing",
+          "description": "Daypart windows, dishes, prices, dietary tags, and availability are all edited in src/data/menu.json with typed shapes."
+        },
+        {
+          "id": "today-highlighted-hours",
+          "name": "Today-highlighted hours",
+          "description": "A seven-day opening-hours strip marks the current weekday with a gold \"Today\" chip."
+        },
+        {
+          "id": "call-and-email-contact",
+          "name": "Call and email contact",
+          "description": "Prominent click-to-call buttons and a mailto link replace any ordering backend, with a structured four-question FAQ and FAQPage JSON-LD."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/todays-menu/preview/todays-menu-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/todays-menu/preview/todays-menu-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/todays-menu/preview/todays-menu-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/todays-menu/preview/todays-menu-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 5183
+        }
+      },
+      "searchTerms": [
+        "cafe menu website",
+        "deli daily menu",
+        "restaurant menu that updates by time of day",
+        "sold out dishes",
+        "breakfast lunch dinner menu",
+        "opening hours",
+        "coffee shop site",
+        "astro"
+      ]
+    },
+    {
+      "id": "bakery-preorder",
+      "name": "Bakery Preorder",
+      "summary": "A weekend baker's page with a live order cut-off countdown, collection slots that fill up, and email reservations for loaves and cakes.",
+      "description": "Bakery Preorder is a single-page site for a weekend microbakery that sells small batches from a home kitchen and needs orders locked in before baking starts. It solves the two questions that decide whether a preorder lands: how long is left to order, and which collection slots still have space — answered by a live oven-timer countdown and a board of visibly filling slot tags.\n\nThe journey runs down one page: a hero introducing the bakery with the countdown to the configured Thursday 18:00 cut-off, this weekend's six bakes with photography and prices, four Saturday collection slots showing capacity meters with nearly-full and fully-booked states, and a reservation form with quantity steppers, a live order ticket, and a slot select that disables full slots. The countdown is computed from configuration, never a hardcoded date: it always targets the next occurrence of the cut-off weekday and time, and once this week's cut-off passes it rolls to next week and tells visitors that orders have reopened for the following collection date. Submitting the form composes a prefilled order email to the baker and confirms locally that nothing is sent until the visitor presses Send, with a copy-to-clipboard fallback — an honest pattern with no pretend server.\n\nPersonalization is two JSON files: src/data/site.json holds the bakery name, contact details, collection address, cut-off weekday and time, and bake day, while src/data/bakers.json holds the six bakes and four slots with capacity and reserved counts. The design is an original flour-and-blush direction with Yeseva One display type, an arched hero photo, tag-style slot cards, and a receipt-style order ticket, built as static Astro output with TypeScript content types, plain responsive CSS, accessible labelled controls, and FAQPage JSON-LD.",
+      "bucket": "Non-technical",
+      "category": "Food and drink",
+      "whoItsFor": "A weekend baker",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "food-and-drink",
+          "bakery",
+          "local-business"
+        ],
+        "useCases": [
+          "weekend-preorders",
+          "order-cutoff-countdown",
+          "collection-slot-management",
+          "email-reservations"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "rolling-cutoff-countdown",
+          "name": "Rolling cut-off countdown",
+          "description": "An oven-timer countdown always targets the next configured cut-off weekday and time, and after it passes it rolls to next week and announces that orders have reopened."
+        },
+        {
+          "id": "filling-collection-slots",
+          "name": "Filling collection slots",
+          "description": "Four tag-style slot cards show capacity meters and remaining counts from seed data, including nearly-full warnings and a stamped fully-booked state."
+        },
+        {
+          "id": "honest-email-reservations",
+          "name": "Honest email reservations",
+          "description": "The reserve form validates name, items, and slot, opens a prefilled order email to the baker, and states plainly that nothing is sent until the visitor presses Send."
+        },
+        {
+          "id": "live-order-ticket",
+          "name": "Live order ticket",
+          "description": "Quantity steppers update a receipt-style ticket with line items, running total, chosen slot, and the computed collection date."
+        },
+        {
+          "id": "six-bake-menu",
+          "name": "Six-bake weekend menu",
+          "description": "The weekend list presents six bakes with local photography, units, descriptions, and prices, all edited in one JSON file."
+        },
+        {
+          "id": "structured-faq",
+          "name": "Structured FAQ",
+          "description": "Five practical ordering answers are paired with FAQPage JSON-LD for search engines."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/bakery-preorder/preview/bakery-preorder-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/bakery-preorder/preview/bakery-preorder-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/bakery-preorder/preview/bakery-preorder-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/bakery-preorder/preview/bakery-preorder-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 6835
+        }
+      },
+      "searchTerms": [
+        "microbakery",
+        "bread preorder",
+        "sourdough",
+        "order cut-off countdown",
+        "collection slots",
+        "pickup scheduling",
+        "cottage food",
+        "home baker",
+        "astro"
+      ]
+    },
+    {
+      "id": "tap-list",
+      "name": "Tap List",
+      "summary": "A live taproom keg board showing what's pouring, ABV, and how full every keg is — so regulars see what's about to blow before they visit.",
+      "description": "Tap List is a single-page website for a taproom, brewery bar, or beer café whose real product changes nightly: the keg board. Printed menus and stale PDFs go out of date the moment a keg kicks, and regulars hate driving over for a beer that blew an hour ago. This template publishes the same board the staff keep behind the bar — eight numbered taps with beer name, brewery, style, ABV, pour size, price, and a vertical sight-glass gauge showing how full each keg actually is.\n\nThe board is the page. Each tap card pairs its specs and tasting note with a fill gauge that carries real states: fresh kegs get a brass \"Fresh keg\" chip, kegs under 20% turn to a pulsing \"About to blow\" warning with an amber-red gauge, and an empty keg is stamped \"Blown\" with a struck-through name and a drained, striped tube. Every gauge has an accessible text equivalent such as \"about 63% remaining.\" A masthead status panel computed from the data counts pouring, about-to-blow, and blown kegs and shows when the board was last updated; filter chips narrow the board to hoppy, crisp, dark, or sour pours with a live \"Showing X of 8 taps\" count. Prominent click-to-call and email actions, address, opening hours, house rules for the board, and a five-question FAQ with FAQPage JSON-LD turn board-watching into visits.\n\nEverything a bar owner needs to change lives in two committed JSON files: src/data/taps.json holds the eight taps (name, brewery, style, family, ABV, price, pour, fill percentage, note) and src/data/site.json holds the business details, hours, and links — update a fill percentage and the gauge, warning states, and masthead counts all follow. The design is an original industrial taproom direction — deep green-black board, brass accents, chalk-white type, Bebas Neue and Space Grotesk — implemented in plain hand-written CSS with tokens at the top of one stylesheet. Built with Astro and TypeScript as a fully static site with vanilla-TypeScript interactivity, it lints and type-checks clean and stays responsive without horizontal overflow down to 320px-wide screens.",
+      "bucket": "Non-technical",
+      "category": "Food and drink",
+      "whoItsFor": "A taproom",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "food-and-drink",
+          "local-business",
+          "hospitality"
+        ],
+        "useCases": [
+          "publish-a-live-tap-list",
+          "flag-kegs-before-they-blow",
+          "drive-taproom-visits-and-calls"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "keg-fill-gauges",
+          "name": "Keg fill gauges",
+          "description": "Vertical sight-glass gauges with tick marks and foam caps show how full each of the eight kegs is, each with an accessible percent-remaining label."
+        },
+        {
+          "id": "blow-state-flags",
+          "name": "About-to-blow and blown states",
+          "description": "Kegs under 20% get a pulsing 'About to blow' warning card, and empty kegs are stamped 'Blown' with a struck-through name and drained striped gauge."
+        },
+        {
+          "id": "style-filter-chips",
+          "name": "Style filter chips",
+          "description": "One-tap filters narrow the board to hoppy, crisp, dark, or sour pours, with a live 'Showing X of 8 taps' count announced to screen readers."
+        },
+        {
+          "id": "board-status-panel",
+          "name": "Board status panel",
+          "description": "A masthead panel computed from the tap data counts pouring, about-to-blow, and blown kegs and shows when the board was last updated."
+        },
+        {
+          "id": "click-to-call-visit",
+          "name": "Click-to-call visit section",
+          "description": "Prominent tel: and mailto: actions in the header, masthead, and visit section, alongside address and opening hours — no forms or fake backend."
+        },
+        {
+          "id": "faq-json-ld",
+          "name": "FAQ with structured data",
+          "description": "Five taproom FAQs rendered as an accessible accordion with FAQPage JSON-LD injected into the head."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/tap-list/preview/tap-list-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/tap-list/preview/tap-list-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/tap-list/preview/tap-list-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/tap-list/preview/tap-list-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3819
+        }
+      },
+      "searchTerms": [
+        "taproom keg board",
+        "beer menu",
+        "brewery tap list",
+        "what's on tap",
+        "draft beer levels",
+        "bar website",
+        "pub website",
+        "craft beer",
+        "astro template"
+      ]
+    },
+    {
+      "id": "supper-club",
+      "name": "Supper Club",
+      "summary": "A one-night pop-up dinner invitation with a live seats-remaining place card, countdown to doors, a menu revealed course by course, and RSVP by plain email.",
+      "description": "Supper Club is a single-page invitation site for anyone hosting a one-night dinner: a pop-up, a private dining room, a chef's table in an apartment. These nights do not need a restaurant website or a ticketing platform — they need one elegant page that answers the four questions every guest has: when is it, how many seats are left, what will we eat, and how do I get a chair. Everything is driven by one committed event file, so the host edits a date, a seat count, and four courses instead of touching layout code.\n\nThe page reads like a candlelit invitation. Guests land on the club name, the dinner's theme, and a place-card counter showing seats remaining out of the cap — with a pulsing urgency state when the table is nearly full and an automatic waitlist mode when seats hit zero — above a countdown to doors that ticks live from the configured date. The tasting menu behaves the way it does at the table: four sealed course cards are uncovered one at a time, in strict order, by tap or keyboard, with an impatient-guest shortcut that reveals the whole card (and the full menu stays readable with JavaScript disabled). The RSVP form validates name, email, seats, and dietary notes, then composes a ready-to-send email to the host and says exactly what happened — nothing pretends a server received anything, and no seat is held until the host replies. If the date has passed, the page degrades gracefully into a join-the-list-for-the-next-dinner state. A five-question FAQ ships with FAQPage JSON-LD.\n\nPersonalization is two JSON files: site.json holds the club name, host, contact details, socials, and the venue-reveal policy; event.json holds the date (one ISO field drives the countdown, the displayed date, and the past-date fallback), price per seat, inclusions, seat cap, seats remaining, and the four courses with pairings. The design system — near-black aubergine, candle gold, ivory paper cards, Cormorant Garamond and Jost — lives in one hand-written CSS file with tokens at the top. Technically it is Astro static output with strict TypeScript, typed content models, vanilla-TS interactivity (no framework islands), ESLint, semantic HTML with labelled inputs and visible focus states, and layouts verified down to 320px-wide screens.",
+      "bucket": "Non-technical",
+      "category": "Food and drink",
+      "whoItsFor": "A pop-up or private dining night",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "food-and-drink",
+          "events",
+          "landing-page"
+        ],
+        "useCases": [
+          "pop-up-dinner-invitation",
+          "event-rsvp-by-email",
+          "seats-remaining-countdown",
+          "tasting-menu-presentation",
+          "waitlist-collection"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "seats-place-card",
+          "name": "Seats-remaining place card",
+          "description": "An ivory place card shows seats left out of the cap, switches to a pulsing urgency state when the table is nearly full, and flips the whole page into waitlist mode at zero."
+        },
+        {
+          "id": "doors-countdown",
+          "name": "Live countdown to doors",
+          "description": "Days, hours, minutes, and seconds tick down from the single configured event date; when the date passes, the page gracefully swaps to a this-dinner-has-passed notice."
+        },
+        {
+          "id": "course-by-course-reveal",
+          "name": "Course-by-course menu reveal",
+          "description": "Four sealed menu cards uncover in strict order by tap or keyboard, like courses announced at the table, with a reveal-all shortcut and full no-JavaScript readability."
+        },
+        {
+          "id": "honest-email-rsvp",
+          "name": "Honest email RSVP and waitlist",
+          "description": "A validated form composes a prefilled mailto to the host — RSVP, waitlist, or next-dinner subject depending on state — and confirms locally that nothing sends until the guest presses send."
+        },
+        {
+          "id": "faq-structured-data",
+          "name": "FAQ with structured data",
+          "description": "Five host-voice questions (venue reveal, allergies, solo guests, payment, cancellations) rendered as accessible disclosures with FAQPage JSON-LD in the head."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/supper-club/preview/supper-club-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/supper-club/preview/supper-club-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/supper-club/preview/supper-club-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/supper-club/preview/supper-club-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 6942
+        }
+      },
+      "searchTerms": [
+        "pop-up dinner",
+        "private dining night",
+        "dinner party rsvp",
+        "tasting menu",
+        "seats remaining",
+        "event countdown",
+        "one night event",
+        "chef's table",
+        "astro template"
+      ]
     }
   ]
 }

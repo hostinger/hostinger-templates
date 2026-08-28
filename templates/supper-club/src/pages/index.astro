@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SeatsCard from '../components/SeatsCard.astro';
+import MenuReveal from '../components/MenuReveal.astro';
+import RsvpForm from '../components/RsvpForm.astro';
+import rawEvent from '../data/event.json';
+import rawSite from '../data/site.json';
+import type { SiteContent, SupperEvent } from '../types/content';
+
+const event = rawEvent as SupperEvent;
+const site = rawSite as SiteContent;
+
+const eventDate = new Date(event.date);
+const dateDisplay = new Intl.DateTimeFormat('en-US', {
+  weekday: 'long',
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: event.timezone,
+}).format(eventDate);
+const isSoldOut = event.seatsRemaining <= 0;
+const heroCta = isSoldOut ? 'Join the waitlist' : 'Request seats';
+
+const faqs = site.faqs;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={`${site.name} — ${event.theme} · ${dateDisplay}`}
+  description={`${site.name} is a one-night supper club: ${event.seatCap} chairs, four courses, ${dateDisplay}. ${event.seatsRemaining} seats remain — RSVP by email, no ticketing accounts.`}
+  schema={faqSchema}
+>
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">You are invited</p>
+      <h1>{site.name}</h1>
+      <p class="hero-theme">Dinner {event.number} — {event.theme}</p>
+      <p class="hero-dateline">
+        <span>{dateDisplay}</span>
+        <span aria-hidden="true">·</span>
+        <span>Doors {event.doors}</span>
+        <span aria-hidden="true">·</span>
+        <span>{event.venue}</span>
+      </p>
+      <div class="ornament" aria-hidden="true"><span></span>✦<span></span></div>
+      <div class="hero-actions">
+        <a class="button" href="#rsvp">{heroCta}</a>
+        <a class="text-button" href="#menu">Read the menu</a>
+      </div>
+      <SeatsCard />
+    </div>
+  </section>
+
+  <section class="night-section" id="the-night" aria-labelledby="night-title">
+    <div class="night-grid">
+      <div class="night-letter">
+        <p class="eyebrow">The night</p>
+        <h2 id="night-title">One table. {event.seatCap} chairs. Four courses.</h2>
+        <p>
+          {site.name} began three winters ago as twelve friends around a borrowed table, and it
+          has stayed deliberately small: one night at a time, one long table, everything cooked
+          within arm's reach of the people eating it.
+        </p>
+        <p>
+          Come at {event.doors} for a welcome pour by the fire. We sit at {event.seated}, and
+          from there the kitchen sets the pace — courses arrive when they are ready, announced
+          out loud, never printed. Strangers on your left, and by the custard, not so much.
+        </p>
+        <p>
+          Bring an appetite and, if you like, a story for the table. Everything else — the wine,
+          the candles, the address two days before — is taken care of.
+        </p>
+        <p class="letter-signoff">— {site.host}, {site.hostRole.toLowerCase()}</p>
+      </div>
+      <figure class="night-figure">
+        <img
+          src="/images/plated-course.jpg"
+          alt="Hands plating a delicate course with tweezers in a warm, dim kitchen"
+          width="800"
+          height="1200"
+          loading="lazy"
+        />
+        <figcaption>From dinner No. 11 — course III leaving the pass.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <MenuReveal />
+
+  <section class="details-section" id="details" aria-labelledby="details-title">
+    <div class="measure">
+      <p class="eyebrow">The particulars</p>
+      <h2 id="details-title">Everything worth knowing.</h2>
+      <dl class="details-list">
+        <div class="details-row">
+          <dt>When</dt>
+          <dd>{dateDisplay}. Doors {event.doors}, seated {event.seated}. Plan on three unhurried hours.</dd>
+        </div>
+        <div class="details-row">
+          <dt>Where</dt>
+          <dd>{event.venue}. {site.venuePolicy}</dd>
+        </div>
+        <div class="details-row">
+          <dt>The seat</dt>
+          <dd>
+            <p class="details-price">{event.currency}{event.pricePerSeat} <span>per seat, all in</span></p>
+            <ul class="includes-list">
+              {event.includes.map((item) => <li>{item}</li>)}
+            </ul>
+            <p class="details-note">
+              Payment is arranged by email once your seats are confirmed — there is no ticketing
+              platform and nothing to sign up for.
+            </p>
+          </dd>
+        </div>
+        <div class="details-row">
+          <dt>The table</dt>
+          <dd>
+            {event.seatCap} chairs at one long table, {event.seatsRemaining} still open. Dress
+            for candlelight; come as you are otherwise.
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <RsvpForm />
+
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <div class="measure">
+      <p class="eyebrow">Asked at every dinner</p>
+      <h2 id="faq-title">Fair questions, straight answers.</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details open={index === 0}>
+            <summary>{faq.question}<span aria-hidden="true">+</span></summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

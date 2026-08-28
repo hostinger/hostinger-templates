@@ -1,0 +1,64 @@
+---
+import rawBakers from '../data/bakers.json';
+import rawSite from '../data/site.json';
+import type { BakersContent, SiteContent } from '../types/content';
+
+const { slots } = rawBakers as BakersContent;
+const site = rawSite as SiteContent;
+
+const slotView = slots.map((slot) => {
+  const remaining = Math.max(0, slot.capacity - slot.reserved);
+  const fillPercent = Math.min(100, Math.round((slot.reserved / slot.capacity) * 100));
+  const state = remaining === 0 ? 'full' : remaining <= 2 ? 'low' : 'open';
+  return { ...slot, remaining, fillPercent, state };
+});
+---
+
+<section class="slots-section" id="collection" aria-labelledby="slots-title">
+  <div class="section-heading">
+    <p class="eyebrow">Collection slots</p>
+    <h2 id="slots-title">Slots fill as orders land.</h2>
+    <p>
+      Collection on <span data-collection-date>the next {site.bakeDay}</span> from
+      {site.collectionAddress}. {site.collectionNote}
+    </p>
+  </div>
+  <ul class="slot-list" role="list">
+    {
+      slotView.map((slot) => (
+        <li class:list={['slot-card', `is-${slot.state}`]}>
+          <span class="slot-hole" aria-hidden="true"></span>
+          <p class="slot-day">{site.bakeDay}</p>
+          <p class="slot-time">{slot.timeRange}</p>
+          <div
+            class="slot-meter"
+            role="img"
+            aria-label={
+              slot.remaining === 0
+                ? `${slot.timeRange}: fully booked`
+                : `${slot.timeRange}: ${slot.remaining} of ${slot.capacity} pickups still free`
+            }
+          >
+            <span class="slot-meter-fill" style={`width: ${slot.fillPercent}%`}></span>
+          </div>
+          <p class="slot-status">
+            {slot.remaining === 0
+              ? 'Fully booked'
+              : slot.state === 'low'
+                ? `Nearly full — ${slot.remaining} left`
+                : `${slot.remaining} of ${slot.capacity} left`}
+          </p>
+          {slot.state === 'full' && (
+            <span class="slot-stamp" aria-hidden="true">
+              Full
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+  <p class="slot-note">
+    Counts update as reservations are confirmed by reply. If two emails race for the last spot, the
+    first one sent wins — the other gets first refusal on the next slot.
+  </p>
+</section>

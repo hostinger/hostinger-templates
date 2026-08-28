@@ -1,0 +1,195 @@
+---
+import rawEvent from '../data/event.json';
+import rawSite from '../data/site.json';
+import type { SiteContent, SupperEvent } from '../types/content';
+
+const event = rawEvent as SupperEvent;
+const site = rawSite as SiteContent;
+
+const isSoldOut = event.seatsRemaining <= 0;
+const isPastAtBuild = new Date(event.date).getTime() - Date.now() <= 0;
+const maxSeats = isSoldOut ? 4 : Math.min(4, event.seatsRemaining);
+const seatOptions = Array.from({ length: maxSeats }, (_, index) => index + 1);
+---
+
+<section class="rsvp-section" id="rsvp" aria-label="Request seats">
+  <div class="measure">
+    <div class="rsvp-copy" data-when-upcoming hidden={isPastAtBuild || isSoldOut}>
+      <p class="eyebrow">RSVP</p>
+      <h2>Ask for your seats.</h2>
+      <p class="section-lede">
+        No ticketing site, no account, no fees. Your request opens as a plain email
+        to {site.host} — she reads every one and replies personally, usually within a day.
+      </p>
+    </div>
+    <div class="rsvp-copy" data-when-upcoming hidden={isPastAtBuild || !isSoldOut}>
+      <p class="eyebrow">Waitlist</p>
+      <h2>The table is full — join the waitlist.</h2>
+      <p class="section-lede">
+        Seats free up more often than you would think. Leave your details,
+        and {site.host} will write the moment a chair opens.
+      </p>
+    </div>
+    <div class="rsvp-copy" data-when-past hidden={!isPastAtBuild}>
+      <p class="eyebrow">Next time</p>
+      <h2>This dinner has passed.</h2>
+      <p class="section-lede">
+        The candles are out and the plates are washed. Join the list for the next one and
+        you will hear about the date before anyone else.
+      </p>
+    </div>
+
+    <form class="rsvp-form" data-rsvp-form novalidate>
+      <div class="field-row">
+        <div class="field">
+          <label for="rsvp-name">Your name</label>
+          <input
+            id="rsvp-name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+            aria-describedby="rsvp-name-error"
+          />
+          <p class="field-error" id="rsvp-name-error" hidden>Please tell us your name.</p>
+        </div>
+        <div class="field">
+          <label for="rsvp-email">Email</label>
+          <input
+            id="rsvp-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            aria-describedby="rsvp-email-error"
+          />
+          <p class="field-error" id="rsvp-email-error" hidden>
+            Enter an email address we can reply to.
+          </p>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field field-seats">
+          <label for="rsvp-seats">Seats</label>
+          <select id="rsvp-seats" name="seats">
+            {seatOptions.map((count) => (
+              <option value={count} selected={count === Math.min(2, maxSeats)}>
+                {count} {count === 1 ? 'seat' : 'seats'}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div class="field">
+          <label for="rsvp-dietary">Dietary notes <span class="label-soft">(optional)</span></label>
+          <textarea
+            id="rsvp-dietary"
+            name="dietary"
+            rows="3"
+            maxlength="400"
+            placeholder="Allergies, aversions, something to celebrate…"
+          ></textarea>
+        </div>
+      </div>
+      <button class="button" type="submit">
+        <span data-when-upcoming hidden={isPastAtBuild || isSoldOut}>Request seats by email</span>
+        <span data-when-upcoming hidden={isPastAtBuild || !isSoldOut}>Join the waitlist by email</span>
+        <span data-when-past hidden={!isPastAtBuild}>Ask about the next dinner</span>
+      </button>
+      <p class="form-hint">
+        Submitting opens a ready-to-send email in your own mail app — nothing is sent until you
+        press send there. Prefer plain email? Write
+        to <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+      <div class="form-confirm" data-confirm role="status" hidden>
+        <p class="confirm-title">Almost there — press send.</p>
+        <p>
+          Your mail app should have opened a prefilled request addressed to {site.email}.
+          Nothing reaches {site.host} until you press send there, and no seat is held until
+          she replies to confirm.
+        </p>
+        <p>
+          If nothing opened, <a data-confirm-link href={`mailto:${site.email}`}>use this prefilled email link</a> instead.
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  import rawEvent from '../data/event.json';
+  import rawSite from '../data/site.json';
+  import type { SiteContent, SupperEvent } from '../types/content';
+
+  const event = rawEvent as SupperEvent;
+  const site = rawSite as SiteContent;
+  const form = document.querySelector<HTMLFormElement>('[data-rsvp-form]');
+
+  if (form) {
+    const nameInput = form.querySelector<HTMLInputElement>('#rsvp-name');
+    const emailInput = form.querySelector<HTMLInputElement>('#rsvp-email');
+    const seatsSelect = form.querySelector<HTMLSelectElement>('#rsvp-seats');
+    const dietaryInput = form.querySelector<HTMLTextAreaElement>('#rsvp-dietary');
+    const confirmBlock = form.querySelector<HTMLElement>('[data-confirm]');
+    const confirmLink = form.querySelector<HTMLAnchorElement>('[data-confirm-link]');
+
+    const setFieldError = (input: HTMLElement, errorId: string, show: boolean) => {
+      const error = form.querySelector<HTMLElement>(`#${errorId}`);
+      if (error) error.hidden = !show;
+      input.setAttribute('aria-invalid', String(show));
+    };
+
+    form.addEventListener('submit', (submitEvent) => {
+      submitEvent.preventDefault();
+      if (!nameInput || !emailInput || !seatsSelect) return;
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const seats = seatsSelect.value;
+      const dietary = dietaryInput?.value.trim() ?? '';
+
+      const nameValid = name.length >= 2;
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      setFieldError(nameInput, 'rsvp-name-error', !nameValid);
+      setFieldError(emailInput, 'rsvp-email-error', !emailValid);
+      if (!nameValid) {
+        nameInput.focus();
+        return;
+      }
+      if (!emailValid) {
+        emailInput.focus();
+        return;
+      }
+
+      const isPast = Date.now() >= new Date(event.date).getTime();
+      const mode = isPast ? 'next' : event.seatsRemaining <= 0 ? 'waitlist' : 'rsvp';
+      const seatWord = seats === '1' ? 'seat' : 'seats';
+      const subjects = {
+        rsvp: `RSVP — ${site.name} ${event.number} — ${seats} ${seatWord} for ${name}`,
+        waitlist: `Waitlist — ${site.name} ${event.number} — ${seats} ${seatWord} for ${name}`,
+        next: `Next dinner — keep ${name} posted`,
+      };
+      const intros = {
+        rsvp: `I'd love to take ${seats} ${seatWord} at dinner ${event.number} (${event.theme}).`,
+        waitlist: `The table is full, but please add me to the waitlist for ${seats} ${seatWord} at dinner ${event.number}.`,
+        next: `I missed dinner ${event.number} — please tell me first when the next date is set.`,
+      };
+      const bodyLines = [
+        `Hello ${site.host},`,
+        '',
+        intros[mode],
+        '',
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Seats: ${seats}`,
+        `Dietary notes: ${dietary || 'None'}`,
+        '',
+        `Sent from the ${site.name} website.`,
+      ];
+      const mailto = `mailto:${site.email}?subject=${encodeURIComponent(subjects[mode])}&body=${encodeURIComponent(bodyLines.join('\r\n'))}`;
+
+      if (confirmLink) confirmLink.href = mailto;
+      if (confirmBlock) confirmBlock.hidden = false;
+      window.location.href = mailto;
+    });
+  }
+</script>

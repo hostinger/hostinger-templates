@@ -1,0 +1,23 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+---
+
+<header class="site-header">
+  <a class="brand" href="#top">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="16" cy="18" rx="12" ry="9" fill="currentColor" opacity="0.9" />
+        <path d="M9 14.5c2-3.5 4.5-3.5 7-3.5s5 0 7 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" />
+        <path d="M11 17l2.6 4M16 16l2.6 4.5M21 17l2 3.6" stroke="#f8f0e4" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+    </span>
+    <span>{site.name}</span>
+  </a>
+  <nav aria-label="Sections">
+    {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+  <a class="button button-small" href="#reserve">Reserve bakes</a>
+</header>

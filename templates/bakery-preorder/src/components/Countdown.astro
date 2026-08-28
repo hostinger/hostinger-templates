@@ -1,0 +1,98 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+const { day, time } = site.orderCutoff;
+---
+
+<div class="oven-timer" data-countdown>
+  <div class="timer-head">
+    <span class="timer-light" aria-hidden="true"></span>
+    <p class="timer-label">Order cut-off · every {day} at {time}</p>
+  </div>
+  <div class="timer-display">
+    <div class="timer-cell">
+      <strong data-count="days">––</strong>
+      <span>days</span>
+    </div>
+    <span class="timer-colon" aria-hidden="true">:</span>
+    <div class="timer-cell">
+      <strong data-count="hours">––</strong>
+      <span>hrs</span>
+    </div>
+    <span class="timer-colon" aria-hidden="true">:</span>
+    <div class="timer-cell">
+      <strong data-count="minutes">––</strong>
+      <span>min</span>
+    </div>
+    <span class="timer-colon" aria-hidden="true">:</span>
+    <div class="timer-cell">
+      <strong data-count="seconds">––</strong>
+      <span>sec</span>
+    </div>
+  </div>
+  <p class="timer-note" data-countdown-note>
+    Everything ordered before the cut-off is baked for the next {site.bakeDay}.
+  </p>
+  <noscript>
+    <p class="timer-noscript">
+      The timer needs JavaScript, but the rule is simple: order by {day} at {time} and collect on {site.bakeDay}.
+    </p>
+  </noscript>
+</div>
+
+<script>
+  import rawSite from '../data/site.json';
+  import type { SiteContent } from '../types/content';
+  import { getCutoffStatus } from '../utils/cutoff';
+  import { formatDayDate, padTwo } from '../utils/format';
+
+  const site = rawSite as SiteContent;
+  const timer = document.querySelector<HTMLElement>('[data-countdown]');
+
+  if (timer) {
+    const cells = {
+      days: timer.querySelector<HTMLElement>('[data-count="days"]'),
+      hours: timer.querySelector<HTMLElement>('[data-count="hours"]'),
+      minutes: timer.querySelector<HTMLElement>('[data-count="minutes"]'),
+      seconds: timer.querySelector<HTMLElement>('[data-count="seconds"]'),
+    };
+    const note = timer.querySelector<HTMLElement>('[data-countdown-note]');
+
+    let status = getCutoffStatus(site.orderCutoff, site.bakeDay);
+
+    const renderStatusCopy = () => {
+      if (note) {
+        note.textContent =
+          status.reopened && status.missedCollectionDate
+            ? `This week's cut-off has passed, so ${formatDayDate(status.missedCollectionDate)} is fully spoken for — orders are open again for ${formatDayDate(status.collectionDate)}.`
+            : `Everything ordered before the cut-off is baked for collection on ${formatDayDate(status.collectionDate)}.`;
+      }
+      document.querySelectorAll<HTMLElement>('[data-collection-date]').forEach((el) => {
+        el.textContent = formatDayDate(status.collectionDate);
+      });
+    };
+
+    const tick = () => {
+      const now = new Date();
+      if (now.getTime() >= status.nextCutoff.getTime()) {
+        status = getCutoffStatus(site.orderCutoff, site.bakeDay, now);
+        renderStatusCopy();
+      }
+      const remaining = Math.max(0, status.nextCutoff.getTime() - now.getTime());
+      const days = Math.floor(remaining / 86_400_000);
+      const hours = Math.floor((remaining % 86_400_000) / 3_600_000);
+      const minutes = Math.floor((remaining % 3_600_000) / 60_000);
+      const seconds = Math.floor((remaining % 60_000) / 1_000);
+      if (cells.days) cells.days.textContent = padTwo(days);
+      if (cells.hours) cells.hours.textContent = padTwo(hours);
+      if (cells.minutes) cells.minutes.textContent = padTwo(minutes);
+      if (cells.seconds) cells.seconds.textContent = padTwo(seconds);
+    };
+
+    renderStatusCopy();
+    tick();
+    window.setInterval(tick, 1_000);
+  }
+</script>

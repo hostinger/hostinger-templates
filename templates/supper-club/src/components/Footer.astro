@@ -1,0 +1,33 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-brand">{site.name}</p>
+      <p class="footer-tagline">{site.tagline}</p>
+    </div>
+    <div>
+      <p class="footer-label">Write to the host</p>
+      <p>
+        {site.host}, {site.hostRole.toLowerCase()}<br />
+        <a href={`mailto:${site.email}`}>{site.email}</a><br />
+        <a href={site.phoneHref}>{site.phoneDisplay}</a>
+      </p>
+    </div>
+    <div>
+      <p class="footer-label">Elsewhere</p>
+      <p>
+        {site.socials.map((social) => (
+          <a class="footer-social" href={social.href}>{social.label}</a>
+        ))}
+      </p>
+    </div>
+  </div>
+  <p class="footer-fineprint">© {year} {site.name} · {site.city} · One table, one night at a time.</p>
+</footer>

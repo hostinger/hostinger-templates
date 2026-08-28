@@ -1,0 +1,41 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+---
+
+<section class="hours-band" id="hours" aria-labelledby="hours-title">
+  <div class="hours-heading">
+    <div>
+      <p class="eyebrow">Opening hours</p>
+      <h2 id="hours-title">Seven days at the counter.</h2>
+    </div>
+    <p class="hours-note">{site.hoursNote}</p>
+  </div>
+  <ol class="hours-grid" data-hours-grid>
+    {site.hours.map((entry, index) => (
+      <li class="hours-cell" data-day-index={index}>
+        <span class="today-chip" hidden>Today</span>
+        <span class="hours-day">{entry.day}</span>
+        <span class="hours-time">{entry.hours}</span>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<script>
+  const grid = document.querySelector<HTMLElement>('[data-hours-grid]');
+
+  if (grid) {
+    const todayIndex = (new Date().getDay() + 6) % 7;
+
+    grid.querySelectorAll<HTMLElement>('[data-day-index]').forEach((cell) => {
+      const isToday = Number(cell.dataset.dayIndex) === todayIndex;
+      cell.classList.toggle('is-today', isToday);
+
+      const chip = cell.querySelector<HTMLElement>('.today-chip');
+      if (chip) chip.hidden = !isToday;
+    });
+  }
+</script>

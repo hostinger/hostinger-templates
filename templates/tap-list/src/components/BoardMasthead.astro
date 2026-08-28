@@ -1,0 +1,45 @@
+---
+import rawSite from '../data/site.json';
+import rawTaps from '../data/taps.json';
+import { getTapStatus } from '../types/content';
+import type { SiteContent, Tap } from '../types/content';
+
+const site = rawSite as SiteContent;
+const taps = rawTaps as Tap[];
+const statuses = taps.map((tap) => getTapStatus(tap.fillPercent));
+const pouringCount = statuses.filter((status) => status === 'fresh' || status === 'pouring').length;
+const lowCount = statuses.filter((status) => status === 'low').length;
+const blownCount = statuses.filter((status) => status === 'blown').length;
+---
+
+<section class="masthead" aria-labelledby="masthead-title">
+  <div>
+    <p class="eyebrow">{site.city} · {site.tagline}</p>
+    <h1 id="masthead-title">On tap tonight</h1>
+    <p class="masthead-intro">{site.intro}</p>
+    <div class="masthead-actions">
+      <a class="button" href={site.phoneHref}>Call {site.phoneDisplay}</a>
+      <a class="text-link" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </div>
+  <aside class="board-meta" aria-label="Keg board status">
+    <p class="meta-updated">
+      <span class="pulse-dot dot-live" aria-hidden="true"></span>
+      {site.boardStatus}
+    </p>
+    <dl>
+      <div class="meta-row">
+        <dt>Pouring</dt>
+        <dd>{pouringCount}</dd>
+      </div>
+      <div class="meta-row meta-low">
+        <dt>About to blow</dt>
+        <dd>{lowCount}</dd>
+      </div>
+      <div class="meta-row meta-blown">
+        <dt>Blown</dt>
+        <dd>{blownCount}</dd>
+      </div>
+    </dl>
+  </aside>
+</section>

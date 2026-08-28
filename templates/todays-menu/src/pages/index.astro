@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DayBoard from '../components/DayBoard.astro';
+import MenuBoard from '../components/MenuBoard.astro';
+import HoursStrip from '../components/HoursStrip.astro';
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+
+const cafePoints = [
+  'Counter seats for solo lunches',
+  'A deli case to take home by the pound',
+  'Beans from a roaster four blocks away',
+];
+
+const faqs = site.faqs;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={`${site.name} — Today’s menu`}
+  description="A café and deli board that follows the clock: breakfast, lunch, and evening service, with today’s sold-out dishes struck through. Call ahead and we’ll wrap it."
+  schema={faqSchema}
+>
+  <DayBoard />
+  <MenuBoard />
+  <HoursStrip />
+
+  <section class="cafe-section" aria-labelledby="cafe-title">
+    <div class="cafe-photos">
+      <figure class="cafe-photo cafe-photo-room">
+        <img
+          src="/images/cafe-room.jpg"
+          alt="Wooden café tables by the front window, with the street beyond"
+          width="900"
+          height="1200"
+        />
+      </figure>
+      <figure class="cafe-photo cafe-photo-counter">
+        <img
+          src="/images/cafe-counter.jpg"
+          alt="Espresso pouring into yellow cups on the café espresso machine"
+          width="900"
+          height="680"
+        />
+      </figure>
+    </div>
+    <div class="cafe-copy">
+      <p class="eyebrow">The café</p>
+      <h2 id="cafe-title">Twelve tables, one board.</h2>
+      <p>
+        Marigold &amp; Rye is a twelve-table café and deli two blocks off the square. The kitchen
+        cooks in small batches all day: pastries and eggs while the ovens are hot, the deli counter
+        through the afternoon, and small plates once the lights drop.
+      </p>
+      <p>
+        There is no printed menu — this page is the board. When the clock moves, the menu moves
+        with it, and when a dish sells out it is struck through until the next morning’s run.
+      </p>
+      <ul class="cafe-points">
+        {cafePoints.map((point) => <li>{point}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="findus-band" id="find-us" aria-labelledby="findus-title">
+    <div class="findus-copy">
+      <p class="eyebrow">Find us</p>
+      <h2 id="findus-title">On Alder Street, under the red awning.</h2>
+      <p class="findus-address">{site.address}</p>
+      <p class="findus-note">{site.addressNote}</p>
+    </div>
+    <div class="findus-actions">
+      <a class="button button-cream" href={site.phoneHref}>Call {site.phoneDisplay}</a>
+      <a class="text-link" href={`mailto:${site.email}?subject=A%20question%20for%20the%20counter`}>
+        Email {site.email}
+      </a>
+      <p class="findus-small">No online ordering — call ahead and we’ll have it wrapped.</p>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <div class="faq-heading">
+      <p class="eyebrow">Questions</p>
+      <h2 id="faq-title">Asked at the counter.</h2>
+    </div>
+    <div class="faq-list">
+      {faqs.map((faq, index) => (
+        <details open={index === 0}>
+          <summary>
+            <span class="faq-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <span class="faq-question">{faq.question}</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

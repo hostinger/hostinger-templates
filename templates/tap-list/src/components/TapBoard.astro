@@ -1,0 +1,144 @@
+---
+import rawTaps from '../data/taps.json';
+import { getTapStatus } from '../types/content';
+import type { Tap, TapFamily } from '../types/content';
+
+const taps = rawTaps as Tap[];
+
+const filters: { id: TapFamily | 'all'; label: string }[] = [
+  { id: 'all', label: 'All taps' },
+  { id: 'hoppy', label: 'Hoppy' },
+  { id: 'crisp', label: 'Crisp & lagered' },
+  { id: 'dark', label: 'Dark & roasty' },
+  { id: 'wild', label: 'Sour & farmhouse' },
+];
+
+const statusFlags = {
+  fresh: 'Fresh keg',
+  low: 'About to blow',
+  blown: 'Blown',
+} as const;
+
+function gaugeLabel(tap: Tap): string {
+  const status = getTapStatus(tap.fillPercent);
+  if (status === 'blown') return 'Keg empty — this one just blew';
+  if (status === 'low') return `Keg low: about ${tap.fillPercent}% remaining — about to blow`;
+  return `Keg level: about ${tap.fillPercent}% remaining`;
+}
+---
+
+<section class="board-section" id="tap-board" aria-labelledby="board-title" data-tap-board>
+  <h2 class="sr-only" id="board-title">The keg board</h2>
+  <div class="board-frame">
+    <span class="screw screw-tl" aria-hidden="true"></span>
+    <span class="screw screw-tr" aria-hidden="true"></span>
+    <span class="screw screw-bl" aria-hidden="true"></span>
+    <span class="screw screw-br" aria-hidden="true"></span>
+    <div class="board-rail">
+      <span>Copperline draft board · pours &amp; keg levels</span>
+    </div>
+    <div class="board-toolbar">
+      <div class="chip-row" role="group" aria-label="Filter taps by style">
+        {filters.map((filter, index) => (
+          <button
+            class:list={['chip', { active: index === 0 }]}
+            type="button"
+            data-filter={filter.id}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          >
+            {filter.label}
+          </button>
+        ))}
+      </div>
+      <p class="board-count" data-tap-count aria-live="polite">Showing all {taps.length} taps</p>
+    </div>
+    <ul class="board-legend" aria-label="How to read the gauges">
+      <li><span class="legend-swatch swatch-pouring" aria-hidden="true"></span>Pouring</li>
+      <li><span class="legend-swatch swatch-low" aria-hidden="true"></span>Under 20% — about to blow</li>
+      <li><span class="legend-swatch swatch-blown" aria-hidden="true"></span>Blown — waiting on the next keg</li>
+    </ul>
+    <ol class="tap-grid">
+      {taps.map((tap) => {
+        const status = getTapStatus(tap.fillPercent);
+        return (
+          <li class="tap-card" data-tap-card data-family={tap.family} data-status={status}>
+            {status === 'blown' && <span class="blown-stamp" aria-hidden="true">Blown</span>}
+            <div class="tap-number">
+              <span>Tap</span>
+              <strong>{String(tap.number).padStart(2, '0')}</strong>
+            </div>
+            <div class="tap-info">
+              <div class="tap-headline">
+                <h3>{tap.name}</h3>
+                {status !== 'pouring' && (
+                  <p class:list={['tap-flag', `flag-${status}`]}>
+                    {status === 'low' && <span class="pulse-dot" aria-hidden="true"></span>}
+                    {statusFlags[status]}
+                  </p>
+                )}
+              </div>
+              <p class="tap-brewery">{tap.brewery}</p>
+              <ul class="tap-specs">
+                <li class="spec-style">{tap.style}</li>
+                <li>{tap.abv}% ABV</li>
+                <li>{tap.pour} · ${tap.price}</li>
+              </ul>
+              <p class="tap-note">{tap.note}</p>
+            </div>
+            <div class="tap-gauge">
+              <div class="gauge-tube" role="img" aria-label={gaugeLabel(tap)}>
+                <div class="gauge-fill" style={`--fill: ${tap.fillPercent}%;`}></div>
+              </div>
+              <p class="gauge-reading" aria-hidden="true">
+                {status === 'blown' ? (
+                  <span class="gauge-empty">Empty</span>
+                ) : (
+                  <>
+                    <strong>{tap.fillPercent}</strong>
+                    <span>% left</span>
+                  </>
+                )}
+              </p>
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</section>
+
+<script>
+  const board = document.querySelector<HTMLElement>('[data-tap-board]');
+
+  if (board) {
+    const chips = Array.from(board.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+    const cards = Array.from(board.querySelectorAll<HTMLElement>('[data-tap-card]'));
+    const count = board.querySelector<HTMLElement>('[data-tap-count]');
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const family = chip.dataset.filter ?? 'all';
+
+        chips.forEach((button) => {
+          const selected = button === chip;
+          button.classList.toggle('active', selected);
+          button.setAttribute('aria-pressed', String(selected));
+        });
+
+        let visible = 0;
+        cards.forEach((card) => {
+          const show = family === 'all' || card.dataset.family === family;
+          card.toggleAttribute('hidden', !show);
+          if (show) visible += 1;
+        });
+
+        if (count) {
+          count.textContent =
+            visible === cards.length
+              ? `Showing all ${cards.length} taps`
+              : `Showing ${visible} of ${cards.length} taps`;
+        }
+      });
+    });
+  }
+</script>

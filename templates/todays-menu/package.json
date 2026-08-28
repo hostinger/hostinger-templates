@@ -1,0 +1,36 @@
+{
+  "name": "todays-menu",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Caf\u00e9 and deli menu that follows the clock: breakfast, lunch, and evening reorder by local time, with sold-out dishes greyed out.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "lint": "eslint .",
+    "preview": "astro preview"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "astro",
+    "typescript",
+    "cafe",
+    "deli",
+    "menu",
+    "local-business"
+  ],
+  "dependencies": {
+    "astro": "^7.2.9"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.9.1",
+    "eslint-plugin-astro": "^1.7.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0"
+  },
+  "license": "MIT"
+}

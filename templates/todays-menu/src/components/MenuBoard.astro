@@ -1,0 +1,145 @@
+---
+import rawMenu from '../data/menu.json';
+import type { Dish, MenuContent } from '../types/content';
+import { formatPrice, formatTimeLabel } from '../utils/menu';
+
+const menu = rawMenu as MenuContent;
+const legendByTag = new Map(menu.tagLegend.map((entry) => [entry.tag, entry.label]));
+const dishesFor = (daypartId: string): Dish[] =>
+  menu.dishes.filter((dish) => dish.daypart === daypartId);
+---
+
+<section class="menu-section" id="menu" aria-labelledby="menu-title">
+  <div class="menu-heading">
+    <div>
+      <p class="eyebrow">The board</p>
+      <h2 id="menu-title">Cooked to the clock.</h2>
+    </div>
+    <p class="menu-note">
+      Whatever the clock says leads the board. Struck-through dishes are sold out and back with
+      tomorrow’s run.
+    </p>
+  </div>
+
+  <div class="menu-board" data-menu-board>
+    {menu.dayparts.map((daypart) => (
+      <section
+        class="daypart-sheet"
+        data-daypart-section={daypart.id}
+        aria-labelledby={`daypart-${daypart.id}`}
+      >
+        <header class="daypart-head">
+          <div class="daypart-title">
+            <h3 id={`daypart-${daypart.id}`}>{daypart.label}</h3>
+            <p class="daypart-tagline">{daypart.tagline}</p>
+          </div>
+          <div class="daypart-when">
+            <p class="daypart-window">
+              <time datetime={daypart.start}>{formatTimeLabel(daypart.start)}</time>
+              {' – '}
+              <time datetime={daypart.end}>{formatTimeLabel(daypart.end)}</time>
+            </p>
+            <p class="daypart-flag" data-daypart-flag hidden></p>
+          </div>
+        </header>
+        <ul class="dish-list">
+          {dishesFor(daypart.id).map((dish) => (
+            <li class:list={['dish', { 'dish--sold-out': dish.soldOut }]}>
+              <div class="dish-line">
+                <span class="dish-name">{dish.name}</span>
+                <span class="dish-leader" aria-hidden="true"></span>
+                <span class="dish-price">{formatPrice(dish.price, menu.currency)}</span>
+              </div>
+              <p class="dish-desc">{dish.description}</p>
+              {(dish.soldOut || dish.tags.length > 0) && (
+                <p class="dish-meta">
+                  {dish.soldOut && <span class="soldout-chip">Sold out</span>}
+                  {dish.tags.map((tag) => (
+                    <span class="tag-chip">
+                      {tag}
+                      <span class="sr-only"> — {legendByTag.get(tag)}</span>
+                    </span>
+                  ))}
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+
+  <p class="board-legend">
+    {menu.tagLegend.map((entry) => (
+      <span class="board-legend-item">
+        <strong>{entry.tag}</strong> {entry.label}
+      </span>
+    ))}
+  </p>
+</section>
+
+<script>
+  import rawMenu from '../data/menu.json';
+  import type { MenuContent } from '../types/content';
+  import {
+    formatTimeLabel,
+    getLocalMinutes,
+    parseTimeToMinutes,
+    resolveDaypartIndex,
+  } from '../utils/menu';
+
+  const menu = rawMenu as MenuContent;
+  const dayparts = menu.dayparts;
+  const board = document.querySelector<HTMLElement>('[data-menu-board]');
+
+  if (board) {
+    const sections = new Map(
+      Array.from(board.querySelectorAll<HTMLElement>('[data-daypart-section]')).map((section) => [
+        section.dataset.daypartSection ?? '',
+        section,
+      ]),
+    );
+
+    const applyOrder = () => {
+      const nowMinutes = getLocalMinutes();
+      const index = resolveDaypartIndex(dayparts, nowMinutes);
+      const ordered =
+        index === -1
+          ? dayparts
+          : dayparts.map((_, offset) => dayparts[(index + offset) % dayparts.length]);
+
+      ordered.forEach((daypart) => {
+        const section = sections.get(daypart.id);
+        if (section) board.appendChild(section);
+      });
+
+      dayparts.forEach((daypart, daypartIndex) => {
+        const section = sections.get(daypart.id);
+        if (!section) return;
+
+        const isNow = daypartIndex === index;
+        section.classList.toggle('daypart--now', isNow);
+
+        const flag = section.querySelector<HTMLElement>('[data-daypart-flag]');
+        if (!flag) return;
+
+        flag.hidden = false;
+        flag.classList.remove('daypart-flag--now', 'daypart-flag--next', 'daypart-flag--later');
+
+        if (isNow) {
+          flag.textContent = `Serving now · until ${formatTimeLabel(daypart.end)}`;
+          flag.classList.add('daypart-flag--now');
+        } else if (nowMinutes < parseTimeToMinutes(daypart.start)) {
+          flag.textContent = `From ${formatTimeLabel(daypart.start)}`;
+          flag.classList.add('daypart-flag--next');
+        } else {
+          flag.textContent = `Back tomorrow · ${formatTimeLabel(daypart.start)}`;
+          flag.classList.add('daypart-flag--later');
+        }
+      });
+    };
+
+    applyOrder();
+    window.setInterval(applyOrder, 30_000);
+  }
+</script>

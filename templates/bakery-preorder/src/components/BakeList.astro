@@ -1,0 +1,38 @@
+---
+import rawBakers from '../data/bakers.json';
+import type { BakersContent } from '../types/content';
+import { formatPrice } from '../utils/format';
+
+const { bakes } = rawBakers as BakersContent;
+---
+
+<section class="bakes-section" id="bakes" aria-labelledby="bakes-title">
+  <div class="section-heading">
+    <p class="eyebrow">This weekend's list</p>
+    <h2 id="bakes-title">Six bakes, mixed to order.</h2>
+    <p>
+      The list shifts with the seasons; the crust does not. Every price includes the paper bag and a
+      slightly smug walk home.
+    </p>
+  </div>
+  <ul class="bake-grid" role="list">
+    {
+      bakes.map((bake) => (
+        <li class="bake-card">
+          <div class="bake-photo">
+            <img src={bake.image} alt={bake.alt} width="640" height="480" loading="lazy" />
+          </div>
+          <div class="bake-body">
+            <h3>{bake.name}</h3>
+            <p class="bake-unit">{bake.unit}</p>
+            <p class="bake-description">{bake.description}</p>
+            <div class="bake-price-row">
+              <strong>{formatPrice(bake.price)}</strong>
+              <a href="#reserve">Add to your order ↓</a>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

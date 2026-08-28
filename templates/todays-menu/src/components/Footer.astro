@@ -1,0 +1,29 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-brand-block">
+    <p class="footer-brand">{site.name}</p>
+    <p>{site.intro}</p>
+  </div>
+  <div>
+    <p class="footer-label">Find us</p>
+    <p>{site.address}</p>
+    <p><a href={site.phoneHref}>{site.phoneDisplay}</a></p>
+    <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+  </div>
+  <div>
+    <p class="footer-label">Follow along</p>
+    {site.socials.map((social) => (
+      <p>
+        <a href={social.href} rel="noopener">{social.label}</a>
+      </p>
+    ))}
+    <p class="footer-small">© {year} {site.name}. The board changes daily.</p>
+  </div>
+</footer>

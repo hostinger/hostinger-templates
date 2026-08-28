@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Countdown from '../components/Countdown.astro';
+import BakeList from '../components/BakeList.astro';
+import SlotBoard from '../components/SlotBoard.astro';
+import ReserveForm from '../components/ReserveForm.astro';
+import rawBakers from '../data/bakers.json';
+import rawSite from '../data/site.json';
+import type { BakersContent, SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+const { bakes } = rawBakers as BakersContent;
+const tickerLine = bakes.map(({ name }) => name).join('  ·  ');
+
+const faqs = site.faqs;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={`${site.name} — weekend bakes, ordered by ${site.orderCutoff.day}`}
+  description={`Preorder this weekend's bakes from ${site.name}. Order before ${site.orderCutoff.day} ${site.orderCutoff.time}, pick a collection slot, and collect on ${site.bakeDay}.`}
+  schema={faqSchema}
+>
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow">{site.eyebrow}</p>
+      <h1>{site.headline}</h1>
+      <p class="hero-intro">{site.intro}</p>
+      <Countdown />
+      <ul class="hero-chips" role="list">
+        <li>Collection only</li>
+        <li>Card or cash at the gate</li>
+        <li>Registered home kitchen</li>
+      </ul>
+    </div>
+    <div class="hero-photo">
+      <img
+        src="/images/hero-bakes.jpg"
+        alt="Rustic scored sourdough boules and flour-dusted buns piled on parchment in warm light"
+        width="880"
+        height="1056"
+      />
+      <div class="hero-badge">
+        <span>Baked for</span>
+        <strong>{site.bakeDay}</strong>
+        <span>mornings</span>
+      </div>
+    </div>
+  </section>
+
+  <p class="ticker" aria-hidden="true">{tickerLine}</p>
+
+  <BakeList />
+
+  <SlotBoard />
+
+  <ReserveForm />
+
+  <section class="how-section" id="how-it-works" aria-labelledby="how-title">
+    <div class="how-grid">
+      <div>
+        <p class="eyebrow">How collection works</p>
+        <h2 id="how-title">No queue, no till. Just a gate and your name.</h2>
+        <ol class="step-list">
+          <li>
+            <span aria-hidden="true">1</span>
+            <div>
+              <h3>Order by {site.orderCutoff.day} at {site.orderCutoff.time}</h3>
+              <p>
+                Send the reserve form below the bake list. You get a reply confirming your bakes and
+                your slot — that reply is your ticket.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true">2</span>
+            <div>
+              <h3>The oven runs through the night</h3>
+              <p>
+                Doughs are mixed after the cut-off and proved slowly, so everything comes out of the
+                oven on {site.bakeDay} morning — never the day before.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true">3</span>
+            <div>
+              <h3>Collect at your slot</h3>
+              <p>
+                Come to {site.collectionAddress} at your chosen time. {site.collectionNote} Pay by
+                card or cash when you pick up.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <aside class="about-card">
+        <p class="eyebrow">The baker</p>
+        <p>{site.about}</p>
+        <p class="about-signature">{site.aboutSignature}</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <div class="section-heading">
+      <p class="eyebrow">Before you order</p>
+      <h2 id="faq-title">Fair questions, straight answers.</h2>
+    </div>
+    <div class="faq-list">
+      {
+        faqs.map((faq, index) => (
+          <details open={index === 0}>
+            <summary>
+              {faq.question}
+              <span aria-hidden="true">+</span>
+            </summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

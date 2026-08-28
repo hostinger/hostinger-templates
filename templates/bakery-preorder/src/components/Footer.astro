@@ -1,0 +1,32 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+const cutoffLine = `Orders close every ${site.orderCutoff.day} at ${site.orderCutoff.time}`;
+---
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-brand">{site.name}</p>
+      <p class="footer-tag">
+        A one-oven weekend microbakery. Everything is preordered, nothing goes stale.
+      </p>
+    </div>
+    <div>
+      <p class="footer-label">Orders</p>
+      <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      <p><a href={site.phoneHref}>{site.phoneDisplay}</a></p>
+      <p>{cutoffLine}</p>
+    </div>
+    <div>
+      <p class="footer-label">Collection</p>
+      <p>{site.collectionAddress}</p>
+      <p>{site.bakeDay}s only · side gate</p>
+    </div>
+  </div>
+  <p class="footer-smallprint">
+    Baked in a registered home kitchen. Reservations by email — payment on collection.
+  </p>
+</footer>

@@ -1,0 +1,84 @@
+{
+  "bakes": [
+    {
+      "id": "country-sourdough",
+      "name": "Country Sourdough",
+      "unit": "800g loaf",
+      "description": "The house loaf: white and stoneground wheat, a 24-hour cold prove, and a deep amber crust that crackles as it cools.",
+      "price": 5.2,
+      "image": "/images/country-sourdough.jpg",
+      "alt": "Flour-dusted round sourdough boule with leaf-pattern scoring on a linen cloth"
+    },
+    {
+      "id": "seeded-rye",
+      "name": "Seeded Rye",
+      "unit": "900g tin loaf",
+      "description": "Dense, dark, and Nordic-leaning — cracked rye, sunflower, flax, and a spoonful of black treacle. Keeps all week.",
+      "price": 5.8,
+      "image": "/images/seeded-rye.jpg",
+      "alt": "Fanned slices of dense dark rye bread with a seeded crust"
+    },
+    {
+      "id": "overnight-focaccia",
+      "name": "Overnight Focaccia",
+      "unit": "half tray",
+      "description": "An olive-oil slab proved overnight, dimpled with rosemary and flaky salt. Blistered top, custardy crumb.",
+      "price": 6.5,
+      "image": "/images/focaccia.jpg",
+      "alt": "Golden rosemary focaccia cut into slices, glossy with olive oil"
+    },
+    {
+      "id": "cinnamon-knots",
+      "name": "Cinnamon Knots",
+      "unit": "box of four",
+      "description": "Cardamom-scented dough rolled through cinnamon butter, knotted by hand, and baked to a sticky finish.",
+      "price": 9,
+      "image": "/images/cinnamon-knots.jpg",
+      "alt": "Glazed hand-tied cinnamon knots on a parchment-lined baking tray"
+    },
+    {
+      "id": "chocolate-babka",
+      "name": "Chocolate Babka",
+      "unit": "700g loaf",
+      "description": "Braided brioche wound around dark chocolate and burnt honey. Historically, it does not survive Sunday.",
+      "price": 8.5,
+      "image": "/images/chocolate-babka.jpg",
+      "alt": "Chocolate swirl babka in a parchment-lined loaf tin seen from above"
+    },
+    {
+      "id": "lemon-almond-cake",
+      "name": "Lemon & Almond Cake",
+      "unit": "whole cake",
+      "description": "Whole-lemon and ground-almond cake with a crunchy sugar top — gluten-free by accident rather than by design.",
+      "price": 7,
+      "image": "/images/lemon-almond-cake.jpg",
+      "alt": "Homemade lemon cake dusted with icing sugar, one slice cut"
+    }
+  ],
+  "slots": [
+    {
+      "id": "early-batch",
+      "timeRange": "08:00 – 09:30",
+      "capacity": 10,
+      "reserved": 3
+    },
+    {
+      "id": "mid-morning",
+      "timeRange": "09:30 – 11:00",
+      "capacity": 10,
+      "reserved": 8
+    },
+    {
+      "id": "midday",
+      "timeRange": "11:00 – 12:30",
+      "capacity": 8,
+      "reserved": 8
+    },
+    {
+      "id": "teatime",
+      "timeRange": "16:00 – 17:30",
+      "capacity": 6,
+      "reserved": 1
+    }
+  ]
+}

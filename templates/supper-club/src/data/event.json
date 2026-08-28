@@ -1,0 +1,48 @@
+{
+  "number": "No. 12",
+  "theme": "Autumn, by candlelight",
+  "date": "2026-11-14T19:00:00-05:00",
+  "timezone": "America/New_York",
+  "doors": "7:00 PM",
+  "seated": "7:30 PM",
+  "venue": "A private dining room, West Village",
+  "pricePerSeat": 145,
+  "currency": "$",
+  "includes": [
+    "Four courses from one kitchen, cooked that day",
+    "A welcome pour, and a paired glass with each course",
+    "Coffee, a parting sweet, and the recipe card to take home"
+  ],
+  "seatCap": 22,
+  "seatsRemaining": 5,
+  "courses": [
+    {
+      "numeral": "I",
+      "title": "To begin",
+      "name": "Embered leeks",
+      "description": "Young leeks cooked in the dying coals, brown butter, toasted hazelnut, a sharpness of cider vinegar.",
+      "pairing": "A dry sparkling from the Finger Lakes"
+    },
+    {
+      "numeral": "II",
+      "title": "The pasta",
+      "name": "Chestnut agnolotti",
+      "description": "Hand-folded agnolotti of chestnut and ricotta, crisped sage, a ladle of parmesan broth at the table.",
+      "pairing": "Savagnin from the Jura, faintly oxidative"
+    },
+    {
+      "numeral": "III",
+      "title": "The fire",
+      "name": "Duck over the coals",
+      "description": "Dry-aged duck rested over embers, quince glaze, black garlic, bitter leaves dressed while you watch.",
+      "pairing": "Old-vine Beaujolais, served just cool"
+    },
+    {
+      "numeral": "IV",
+      "title": "To finish",
+      "name": "Burnt-honey custard",
+      "description": "A set custard of burnt honey, bay-poached pear, buckwheat shortbread still warm from the oven.",
+      "pairing": "A small glass of Tokaji — or chamomile from the pot"
+    }
+  ]
+}

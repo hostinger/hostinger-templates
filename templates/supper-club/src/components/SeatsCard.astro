@@ -1,0 +1,105 @@
+---
+import rawEvent from '../data/event.json';
+import type { SupperEvent } from '../types/content';
+
+const event = rawEvent as SupperEvent;
+const lowSeatsThreshold = Math.max(2, Math.ceil(event.seatCap * 0.2));
+const isSoldOut = event.seatsRemaining <= 0;
+const isLowSeats = !isSoldOut && event.seatsRemaining <= lowSeatsThreshold;
+
+const msLeft = new Date(event.date).getTime() - Date.now();
+const isPastAtBuild = msLeft <= 0;
+const safeLeft = Math.max(0, msLeft);
+const pad = (value: number) => String(value).padStart(2, '0');
+const initial = {
+  days: String(Math.floor(safeLeft / 86_400_000)),
+  hours: pad(Math.floor(safeLeft / 3_600_000) % 24),
+  minutes: pad(Math.floor(safeLeft / 60_000) % 60),
+  seconds: pad(Math.floor(safeLeft / 1_000) % 60),
+};
+const units = [
+  { key: 'days', label: 'days', value: initial.days },
+  { key: 'hours', label: 'hours', value: initial.hours },
+  { key: 'minutes', label: 'min', value: initial.minutes },
+  { key: 'seconds', label: 'sec', value: initial.seconds },
+] as const;
+---
+
+<aside
+  class:list={['place-card', { 'is-low': isLowSeats, 'is-soldout': isSoldOut }]}
+  aria-label="Seats remaining and countdown"
+>
+  <p class="place-card-kicker">Dinner {event.number} · the place card</p>
+  <div class="seats-figure">
+    <span class="seats-number">{event.seatsRemaining}</span>
+    <span class="seats-caption">
+      seats remaining<span class="seats-cap">of {event.seatCap} at the table</span>
+    </span>
+  </div>
+  {isLowSeats && (
+    <p class="seats-urgency" data-when-upcoming hidden={isPastAtBuild}>
+      <span class="urgency-dot" aria-hidden="true"></span>
+      Only {event.seatsRemaining} left — the table is nearly full.
+    </p>
+  )}
+  {isSoldOut && (
+    <p class="seats-urgency" data-when-upcoming hidden={isPastAtBuild}>
+      <span class="urgency-dot" aria-hidden="true"></span>
+      Sold out — the waitlist is open below.
+    </p>
+  )}
+  <div class="countdown" data-when-upcoming hidden={isPastAtBuild}>
+    <p class="countdown-label">Doors open in</p>
+    <p class="countdown-row" role="timer" aria-label="Time remaining until doors open">
+      {units.map((unit) => (
+        <span class="cd-cell">
+          <span class="cd-num" data-cd={unit.key}>{unit.value}</span>
+          <span class="cd-unit">{unit.label}</span>
+        </span>
+      ))}
+    </p>
+  </div>
+  <p class="past-notice" data-when-past hidden={!isPastAtBuild}>
+    This dinner has passed — join the list below and be first to hear about the next one.
+  </p>
+</aside>
+
+<script>
+  import rawEvent from '../data/event.json';
+  import type { SupperEvent } from '../types/content';
+
+  const event = rawEvent as SupperEvent;
+  const target = new Date(event.date).getTime();
+  const cells = {
+    days: document.querySelector<HTMLElement>('[data-cd="days"]'),
+    hours: document.querySelector<HTMLElement>('[data-cd="hours"]'),
+    minutes: document.querySelector<HTMLElement>('[data-cd="minutes"]'),
+    seconds: document.querySelector<HTMLElement>('[data-cd="seconds"]'),
+  };
+  const pad = (value: number) => String(value).padStart(2, '0');
+  let timer: number | undefined;
+
+  const showPastState = () => {
+    document.body.dataset.eventState = 'past';
+    document.querySelectorAll('[data-when-upcoming]').forEach((el) => el.setAttribute('hidden', ''));
+    document.querySelectorAll('[data-when-past]').forEach((el) => el.removeAttribute('hidden'));
+    if (timer) window.clearInterval(timer);
+  };
+
+  const tick = () => {
+    const left = target - Date.now();
+    if (left <= 0) {
+      showPastState();
+      return;
+    }
+    if (cells.days) cells.days.textContent = String(Math.floor(left / 86_400_000));
+    if (cells.hours) cells.hours.textContent = pad(Math.floor(left / 3_600_000) % 24);
+    if (cells.minutes) cells.minutes.textContent = pad(Math.floor(left / 60_000) % 60);
+    if (cells.seconds) cells.seconds.textContent = pad(Math.floor(left / 1_000) % 60);
+  };
+
+  tick();
+  if (target - Date.now() > 0) {
+    timer = window.setInterval(tick, 1000);
+  }
+</script>

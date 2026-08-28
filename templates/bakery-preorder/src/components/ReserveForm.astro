@@ -1,0 +1,357 @@
+---
+import rawBakers from '../data/bakers.json';
+import rawSite from '../data/site.json';
+import type { BakersContent, SiteContent } from '../types/content';
+import { formatPrice } from '../utils/format';
+
+const { bakes, slots } = rawBakers as BakersContent;
+const site = rawSite as SiteContent;
+
+const slotOptions = slots.map((slot) => ({
+  ...slot,
+  remaining: Math.max(0, slot.capacity - slot.reserved),
+}));
+---
+
+<section class="reserve-section" id="reserve" aria-labelledby="reserve-title">
+  <div class="section-heading">
+    <p class="eyebrow">Reserve your bakes</p>
+    <h2 id="reserve-title">Get on the {site.bakeDay} list.</h2>
+    <p>
+      Reservations go straight to the baker by email. Nothing is charged online — you pay by card or
+      cash when you collect.
+    </p>
+  </div>
+
+  <div class="reserve-grid">
+    <form class="reserve-form" data-reserve-form novalidate>
+      <div class="field">
+        <label for="reserve-name">Your name</label>
+        <input
+          id="reserve-name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          required
+          aria-describedby="name-error"
+        />
+        <p class="field-error" id="name-error" hidden>Add your name so we know whose bag to label.</p>
+      </div>
+
+      <fieldset class="field bake-fieldset" aria-describedby="items-error">
+        <legend>Your bakes</legend>
+        <ul class="qty-list" role="list">
+          {
+            bakes.map((bake) => (
+              <li class="qty-row">
+                <div class="qty-info">
+                  <label for={`qty-${bake.id}`}>{bake.name}</label>
+                  <span>
+                    {bake.unit} · {formatPrice(bake.price)}
+                  </span>
+                </div>
+                <div class="qty-stepper">
+                  <button
+                    type="button"
+                    data-step="-1"
+                    data-target={`qty-${bake.id}`}
+                    aria-label={`One fewer ${bake.name}`}
+                  >
+                    −
+                  </button>
+                  <input
+                    id={`qty-${bake.id}`}
+                    data-bake-qty
+                    data-bake-id={bake.id}
+                    name={`qty-${bake.id}`}
+                    type="number"
+                    inputmode="numeric"
+                    min="0"
+                    max="6"
+                    step="1"
+                    value="0"
+                  />
+                  <button
+                    type="button"
+                    data-step="1"
+                    data-target={`qty-${bake.id}`}
+                    aria-label={`One more ${bake.name}`}
+                  >
+                    +
+                  </button>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="field-error" id="items-error" hidden>Add at least one bake to the order.</p>
+      </fieldset>
+
+      <div class="field">
+        <label for="reserve-slot">Collection slot · {site.bakeDay}</label>
+        <select id="reserve-slot" name="slot" required aria-describedby="slot-error">
+          <option value="">Choose a collection slot…</option>
+          {
+            slotOptions.map((slot) => (
+              <option value={slot.id} disabled={slot.remaining === 0}>
+                {slot.remaining === 0
+                  ? `${slot.timeRange} — full`
+                  : `${slot.timeRange} — ${slot.remaining} left`}
+              </option>
+            ))
+          }
+        </select>
+        <p class="field-error" id="slot-error" hidden>Pick a collection slot that still has space.</p>
+      </div>
+
+      <div class="field">
+        <label for="reserve-note">Anything we should know? <span class="label-optional">(optional)</span></label>
+        <textarea
+          id="reserve-note"
+          name="note"
+          rows="3"
+          placeholder="Allergies, swaps, or “leave it with the neighbour at no. 45”…"></textarea>
+      </div>
+
+      <button class="button button-submit" type="submit">Reserve by email</button>
+      <p class="form-honesty">
+        This opens your email app with the order written out and addressed to {site.email}. Nothing
+        is reserved — and nothing is sent — until you press <strong>Send</strong> there.
+      </p>
+    </form>
+
+    <aside class="order-ticket" aria-label="Order summary">
+      <h3>Order ticket</h3>
+      <ul class="ticket-lines" data-summary-list role="list">
+        <li class="ticket-empty">No bakes yet — the list is on the left.</li>
+      </ul>
+      <div class="ticket-total">
+        <span>Total at the gate</span>
+        <strong data-summary-total>£0.00</strong>
+      </div>
+      <dl class="ticket-meta">
+        <div>
+          <dt>Slot</dt>
+          <dd data-summary-slot>Choose a slot</dd>
+        </div>
+        <div>
+          <dt>Day</dt>
+          <dd><span data-collection-date>The next {site.bakeDay}</span></dd>
+        </div>
+        <div>
+          <dt>Payment</dt>
+          <dd>Card or cash at the gate</dd>
+        </div>
+      </dl>
+    </aside>
+
+    <div class="reserve-confirmation" data-confirmation hidden>
+      <h3 tabindex="-1" data-confirmation-heading>One last step — press send.</h3>
+      <p>
+        Your email app should have opened with the order below, addressed to
+        <a href={`mailto:${site.email}`}>{site.email}</a>. This page has not sent anything for you —
+        the reservation only exists once you press <strong>Send</strong>, and it is only confirmed
+        when the baker replies.
+      </p>
+      <pre class="confirmation-summary" data-confirmation-summary></pre>
+      <div class="confirmation-actions">
+        <button class="button button-ghost" type="button" data-copy-summary>Copy order text</button>
+        <a class="text-link" data-mailto-again href={`mailto:${site.email}`}>Open the email again</a>
+      </div>
+      <p class="copy-feedback" data-copy-feedback role="status" hidden></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import rawBakers from '../data/bakers.json';
+  import rawSite from '../data/site.json';
+  import type { BakersContent, SiteContent } from '../types/content';
+  import { getCutoffStatus } from '../utils/cutoff';
+  import { formatDayDate, formatPrice } from '../utils/format';
+
+  interface OrderLine {
+    name: string;
+    unit: string;
+    qty: number;
+    lineTotal: number;
+  }
+
+  const { bakes, slots } = rawBakers as BakersContent;
+  const site = rawSite as SiteContent;
+  const form = document.querySelector<HTMLFormElement>('[data-reserve-form]');
+
+  if (form) {
+    const nameInput = form.querySelector<HTMLInputElement>('#reserve-name');
+    const slotSelect = form.querySelector<HTMLSelectElement>('#reserve-slot');
+    const noteInput = form.querySelector<HTMLTextAreaElement>('#reserve-note');
+    const qtyInputs = Array.from(form.querySelectorAll<HTMLInputElement>('[data-bake-qty]'));
+    const summaryList = document.querySelector<HTMLElement>('[data-summary-list]');
+    const summaryTotal = document.querySelector<HTMLElement>('[data-summary-total]');
+    const summarySlot = document.querySelector<HTMLElement>('[data-summary-slot]');
+    const confirmation = document.querySelector<HTMLElement>('[data-confirmation]');
+    const confirmationHeading = document.querySelector<HTMLElement>('[data-confirmation-heading]');
+    const confirmationSummary = document.querySelector<HTMLElement>('[data-confirmation-summary]');
+    const mailtoAgain = document.querySelector<HTMLAnchorElement>('[data-mailto-again]');
+    const copyButton = document.querySelector<HTMLButtonElement>('[data-copy-summary]');
+    const copyFeedback = document.querySelector<HTMLElement>('[data-copy-feedback]');
+    const errors = {
+      name: document.querySelector<HTMLElement>('#name-error'),
+      items: document.querySelector<HTMLElement>('#items-error'),
+      slot: document.querySelector<HTMLElement>('#slot-error'),
+    };
+
+    let currentSummaryText = '';
+
+    const readQty = (input: HTMLInputElement): number => {
+      const max = Number(input.max) || 6;
+      const parsed = Math.round(Number(input.value));
+      if (Number.isNaN(parsed)) return 0;
+      return Math.min(max, Math.max(0, parsed));
+    };
+
+    const orderLines = (): OrderLine[] =>
+      qtyInputs.flatMap((input) => {
+        const bake = bakes.find(({ id }) => id === input.dataset.bakeId);
+        const qty = readQty(input);
+        if (!bake || qty === 0) return [];
+        return [{ name: bake.name, unit: bake.unit, qty, lineTotal: bake.price * qty }];
+      });
+
+    const selectedSlot = () => slots.find(({ id }) => id === slotSelect?.value);
+
+    const renderSummary = () => {
+      const lines = orderLines();
+      const total = lines.reduce((sum, line) => sum + line.lineTotal, 0);
+      if (summaryList) {
+        summaryList.textContent = '';
+        if (lines.length === 0) {
+          const empty = document.createElement('li');
+          empty.className = 'ticket-empty';
+          empty.textContent = 'No bakes yet — the list is on the left.';
+          summaryList.append(empty);
+        }
+        lines.forEach((line) => {
+          const item = document.createElement('li');
+          const label = document.createElement('span');
+          label.textContent = `${line.qty} × ${line.name}`;
+          const price = document.createElement('span');
+          price.textContent = formatPrice(line.lineTotal);
+          item.append(label, price);
+          summaryList.append(item);
+        });
+      }
+      if (summaryTotal) summaryTotal.textContent = formatPrice(total);
+      if (summarySlot) {
+        const slot = selectedSlot();
+        summarySlot.textContent = slot ? slot.timeRange : 'Choose a slot';
+      }
+    };
+
+    const setError = (element: HTMLElement | null, visible: boolean) => {
+      if (element) element.hidden = !visible;
+    };
+
+    const buildSummaryText = (name: string, note: string): string => {
+      const status = getCutoffStatus(site.orderCutoff, site.bakeDay);
+      const lines = orderLines();
+      const total = lines.reduce((sum, line) => sum + line.lineTotal, 0);
+      const slot = selectedSlot();
+      const rows = [
+        `Weekend bake order for ${site.name}`,
+        '',
+        ...lines.map((line) => `${line.qty} x ${line.name} (${line.unit}) — ${formatPrice(line.lineTotal)}`),
+        '',
+        `Total to pay at collection: ${formatPrice(total)}`,
+        `Collection: ${formatDayDate(status.collectionDate)}, ${slot ? slot.timeRange : ''}`.trim(),
+        `Name: ${name}`,
+      ];
+      if (note) rows.push(`Note: ${note}`);
+      rows.push('', 'Sent from the preorder page.');
+      return rows.join('\n');
+    };
+
+    qtyInputs.forEach((input) => {
+      input.addEventListener('input', () => {
+        setError(errors.items, false);
+        renderSummary();
+      });
+      input.addEventListener('change', () => {
+        input.value = String(readQty(input));
+        renderSummary();
+      });
+    });
+
+    form.querySelectorAll<HTMLButtonElement>('[data-step]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = form.querySelector<HTMLInputElement>(`#${button.dataset.target}`);
+        if (!target) return;
+        const next = readQty(target) + Number(button.dataset.step);
+        target.value = String(Math.min(Number(target.max) || 6, Math.max(0, next)));
+        setError(errors.items, false);
+        renderSummary();
+      });
+    });
+
+    nameInput?.addEventListener('input', () => {
+      nameInput.removeAttribute('aria-invalid');
+      setError(errors.name, false);
+    });
+
+    slotSelect?.addEventListener('change', () => {
+      slotSelect.removeAttribute('aria-invalid');
+      setError(errors.slot, false);
+      renderSummary();
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = nameInput?.value.trim() ?? '';
+      const note = noteInput?.value.trim() ?? '';
+      const lines = orderLines();
+      const slot = selectedSlot();
+      const slotFree = slot ? slot.capacity - slot.reserved > 0 : false;
+
+      setError(errors.name, name === '');
+      setError(errors.items, lines.length === 0);
+      setError(errors.slot, !slotFree);
+      if (name === '') nameInput?.setAttribute('aria-invalid', 'true');
+      if (!slotFree) slotSelect?.setAttribute('aria-invalid', 'true');
+
+      const firstInvalid =
+        (name === '' && nameInput) ||
+        (lines.length === 0 && qtyInputs[0]) ||
+        (!slotFree && slotSelect) ||
+        null;
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      currentSummaryText = buildSummaryText(name, note);
+      const subject = `Weekend bake order — ${name}`;
+      const mailto = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(currentSummaryText.replace(/\n/g, '\r\n'))}`;
+
+      if (confirmationSummary) confirmationSummary.textContent = currentSummaryText;
+      if (mailtoAgain) mailtoAgain.href = mailto;
+      if (confirmation) confirmation.hidden = false;
+      if (copyFeedback) copyFeedback.hidden = true;
+
+      window.location.href = mailto;
+      confirmationHeading?.focus();
+    });
+
+    copyButton?.addEventListener('click', async () => {
+      if (!copyFeedback) return;
+      try {
+        await navigator.clipboard.writeText(currentSummaryText);
+        copyFeedback.textContent = `Copied — paste it into any email to ${site.email}.`;
+      } catch {
+        copyFeedback.textContent = 'Copying was blocked — select the text above and copy it by hand.';
+      }
+      copyFeedback.hidden = false;
+    });
+
+    renderSummary();
+  }
+</script>

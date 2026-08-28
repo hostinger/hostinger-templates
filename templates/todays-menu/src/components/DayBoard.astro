@@ -1,0 +1,135 @@
+---
+import rawMenu from '../data/menu.json';
+import rawSite from '../data/site.json';
+import type { MenuContent, SiteContent } from '../types/content';
+import { formatTimeLabel, parseTimeToMinutes } from '../utils/menu';
+
+const menu = rawMenu as MenuContent;
+const site = rawSite as SiteContent;
+const dayparts = menu.dayparts;
+const dayStart = parseTimeToMinutes(dayparts[0].start);
+const dayEnd = parseTimeToMinutes(dayparts[dayparts.length - 1].end);
+const segments = dayparts.map((daypart) => ({
+  ...daypart,
+  width: (
+    ((parseTimeToMinutes(daypart.end) - parseTimeToMinutes(daypart.start)) / (dayEnd - dayStart)) *
+    100
+  ).toFixed(2),
+}));
+---
+
+<section class="day-board" data-day-board aria-labelledby="day-title">
+  <div class="day-masthead">
+    <div class="day-masthead-copy">
+      <p class="eyebrow">{site.name} · {site.eyebrow}</p>
+      <h1 id="day-title">Today’s menu</h1>
+      <p class="day-intro">{site.intro}</p>
+    </div>
+    <div class="day-clock-card">
+      <p class="day-date" data-day-date>Fresh every morning</p>
+      <p class="day-clock" data-day-clock>The board follows the clock</p>
+      <p class="day-status" data-day-status aria-live="polite">
+        Breakfast from {formatTimeLabel(dayparts[0].start)}, then lunch, then evening.
+      </p>
+      <a class="text-link" href="#menu">Jump to what’s serving</a>
+    </div>
+  </div>
+
+  <div class="day-strip">
+    <div class="day-track" aria-hidden="true">
+      {segments.map((segment) => (
+        <span class="day-track-segment" data-segment-id={segment.id} style={`width: ${segment.width}%`}
+        ></span>
+      ))}
+      <span class="day-marker" data-day-marker></span>
+    </div>
+    <ol class="day-strip-labels">
+      {segments.map((segment) => (
+        <li data-segment-label={segment.id} style={`width: ${segment.width}%`}>
+          <span class="segment-name">{segment.label}</span>
+          <span class="segment-time">
+            <time datetime={segment.start}>{formatTimeLabel(segment.start)}</time>
+            {' – '}
+            <time datetime={segment.end}>{formatTimeLabel(segment.end)}</time>
+          </span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<script>
+  import rawMenu from '../data/menu.json';
+  import type { MenuContent } from '../types/content';
+  import {
+    formatTimeLabel,
+    getLocalMinutes,
+    parseTimeToMinutes,
+    resolveDaypartIndex,
+  } from '../utils/menu';
+
+  const menu = rawMenu as MenuContent;
+  const dayparts = menu.dayparts;
+  const board = document.querySelector<HTMLElement>('[data-day-board]');
+  const firstDaypart = dayparts[0];
+  const lastDaypart = dayparts[dayparts.length - 1];
+
+  if (board && firstDaypart && lastDaypart) {
+    const dateLine = board.querySelector<HTMLElement>('[data-day-date]');
+    const clock = board.querySelector<HTMLElement>('[data-day-clock]');
+    const status = board.querySelector<HTMLElement>('[data-day-status]');
+    const marker = board.querySelector<HTMLElement>('[data-day-marker]');
+    const segments = board.querySelectorAll<HTMLElement>('[data-segment-id]');
+    const labels = board.querySelectorAll<HTMLElement>('[data-segment-label]');
+    const dayStart = parseTimeToMinutes(firstDaypart.start);
+    const dayEnd = parseTimeToMinutes(lastDaypart.end);
+
+    const applyClock = () => {
+      const now = new Date();
+      const nowMinutes = getLocalMinutes();
+      const index = resolveDaypartIndex(dayparts, nowMinutes);
+      const current = index === -1 ? undefined : dayparts[index];
+      const daypartKey = current ? current.id : 'closed';
+
+      board.dataset.daypart = daypartKey;
+
+      if (dateLine) {
+        dateLine.textContent = now.toLocaleDateString(undefined, {
+          weekday: 'long',
+          month: 'long',
+          day: 'numeric',
+        });
+      }
+
+      if (clock) {
+        clock.textContent = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      }
+
+      if (status) {
+        if (current) {
+          status.textContent = `Serving ${current.label.toLowerCase()} — until ${formatTimeLabel(current.end)}.`;
+        } else if (nowMinutes < dayStart) {
+          status.textContent = `The kitchen opens at ${formatTimeLabel(firstDaypart.start)} — ${firstDaypart.label.toLowerCase()} first.`;
+        } else {
+          status.textContent = `Closed for the night — ${firstDaypart.label.toLowerCase()} returns at ${formatTimeLabel(firstDaypart.start)}.`;
+        }
+      }
+
+      if (marker) {
+        const progress = Math.min(Math.max((nowMinutes - dayStart) / (dayEnd - dayStart), 0), 1);
+        marker.style.left = `${(progress * 100).toFixed(2)}%`;
+        marker.classList.toggle('day-marker--closed', !current);
+      }
+
+      segments.forEach((segment) => {
+        segment.classList.toggle('is-now', segment.dataset.segmentId === daypartKey);
+      });
+      labels.forEach((label) => {
+        label.classList.toggle('is-now', label.dataset.segmentLabel === daypartKey);
+      });
+    };
+
+    applyClock();
+    window.setInterval(applyClock, 30_000);
+  }
+</script>

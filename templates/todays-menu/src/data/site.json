@@ -1,0 +1,87 @@
+{
+  "name": "Marigold & Rye",
+  "eyebrow": "Café & deli on Alder Street",
+  "intro": "A twelve-table café and deli in downtown Portland. The board follows the clock — breakfast off the bakery run, lunch from the deli counter, small plates and a glass in the evening. When a dish runs out, it stays on the board, struck through, until tomorrow.",
+  "phoneDisplay": "(503) 555-0148",
+  "phoneHref": "tel:+15035550148",
+  "email": "hello@marigoldandrye.example",
+  "address": "214 SW Alder Street, Portland, OR 97204",
+  "addressNote": "Two blocks from Pioneer Courthouse Square — look for the tomato-red awning.",
+  "hours": [
+    {
+      "day": "Monday",
+      "hours": "7 am – 9 pm"
+    },
+    {
+      "day": "Tuesday",
+      "hours": "7 am – 9 pm"
+    },
+    {
+      "day": "Wednesday",
+      "hours": "7 am – 9 pm"
+    },
+    {
+      "day": "Thursday",
+      "hours": "7 am – 9 pm"
+    },
+    {
+      "day": "Friday",
+      "hours": "7 am – 9 pm"
+    },
+    {
+      "day": "Saturday",
+      "hours": "8 am – 9 pm"
+    },
+    {
+      "day": "Sunday",
+      "hours": "8 am – 9 pm"
+    }
+  ],
+  "hoursNote": "The kitchen takes its last order thirty minutes before close.",
+  "navigation": [
+    {
+      "label": "Menu",
+      "href": "#menu"
+    },
+    {
+      "label": "Hours",
+      "href": "#hours"
+    },
+    {
+      "label": "Find us",
+      "href": "#find-us"
+    },
+    {
+      "label": "Questions",
+      "href": "#faq"
+    }
+  ],
+  "socials": [
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/marigoldandrye"
+    },
+    {
+      "label": "Facebook",
+      "href": "https://www.facebook.com/marigoldandrye"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do you take reservations?",
+      "answer": "No — we are walk-in first, and the room turns over quickly. For groups of six or more, call ahead and we will hold the window table when we can."
+    },
+    {
+      "question": "Can I order food to take away?",
+      "answer": "Everything on the board travels well. Call before you arrive and we will have it wrapped and waiting at the counter — there is no online ordering."
+    },
+    {
+      "question": "How do allergies and diets work?",
+      "answer": "Dishes are tagged V, VE, GF, and N on the board. Tell the counter about any allergy and the kitchen will walk you through what is safe today."
+    },
+    {
+      "question": "Why is a dish greyed out?",
+      "answer": "It is sold out. The kitchen cooks in small batches, so when something runs out it stays on the board — struck through — until tomorrow morning’s run."
+    }
+  ]
+}

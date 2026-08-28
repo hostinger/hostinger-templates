@@ -1,0 +1,16 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+---
+
+<header class="site-header">
+  <a class="brand" href="/">
+    <span class="brand-mark" aria-hidden="true">{site.monogram}</span>
+    <span class="brand-name">{site.name}</span>
+  </a>
+  <nav aria-label="Sections of this invitation">
+    {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+</header>

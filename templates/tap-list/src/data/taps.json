@@ -1,0 +1,98 @@
+[
+  {
+    "number": 1,
+    "name": "First Light",
+    "brewery": "Copperline Brewing",
+    "style": "Hazy IPA",
+    "family": "hoppy",
+    "abv": 6.8,
+    "price": 8,
+    "pour": "16 oz",
+    "fillPercent": 96,
+    "note": "Tapped this afternoon. Mango, white peach, and a soft oat body that drinks like juice with manners."
+  },
+  {
+    "number": 2,
+    "name": "Mill Whistle",
+    "brewery": "Iron Gate Brewing",
+    "style": "West Coast Pilsner",
+    "family": "crisp",
+    "abv": 5.2,
+    "price": 7,
+    "pour": "16 oz",
+    "fillPercent": 84,
+    "note": "Snappy noble hops over a cracker-dry lager base. The regulars' default first pour."
+  },
+  {
+    "number": 3,
+    "name": "Static Bloom",
+    "brewery": "Signal Hill Beer Co.",
+    "style": "Double Dry-Hopped Pale",
+    "family": "hoppy",
+    "abv": 6.2,
+    "price": 8,
+    "pour": "16 oz",
+    "fillPercent": 63,
+    "note": "Citra and Nelson stacked on a soft pale frame. This keg has never lasted two weekends."
+  },
+  {
+    "number": 4,
+    "name": "Velvet Antler",
+    "brewery": "Hollow Oak Brewery",
+    "style": "English Brown Ale",
+    "family": "dark",
+    "abv": 5.6,
+    "price": 7,
+    "pour": "16 oz",
+    "fillPercent": 52,
+    "note": "Toasted hazelnut, caramel, and brown bread. Quietly the best beer in the building."
+  },
+  {
+    "number": 5,
+    "name": "Third Shift",
+    "brewery": "Copperline Brewing",
+    "style": "Oatmeal Stout",
+    "family": "dark",
+    "abv": 7.4,
+    "price": 8,
+    "pour": "13 oz",
+    "fillPercent": 37,
+    "note": "Espresso, cocoa nib, and an oat-slick body. Built for the patio fire barrel."
+  },
+  {
+    "number": 6,
+    "name": "Gravel Road",
+    "brewery": "Fieldnote Farmhouse Ales",
+    "style": "Grisette",
+    "family": "wild",
+    "abv": 4.1,
+    "price": 6,
+    "pour": "16 oz",
+    "fillPercent": 17,
+    "note": "Lemon peel, white pepper, bone dry. When this one blows it is gone until spring."
+  },
+  {
+    "number": 7,
+    "name": "Paper Lantern",
+    "brewery": "Signal Hill Beer Co.",
+    "style": "Blood Orange Kettle Sour",
+    "family": "wild",
+    "abv": 4.8,
+    "price": 7,
+    "pour": "13 oz",
+    "fillPercent": 8,
+    "note": "Blood orange squeezed into a bright, clean tart base. A handful of pours left at best."
+  },
+  {
+    "number": 8,
+    "name": "Smokestack",
+    "brewery": "Banner Year Brewing",
+    "style": "Smoked Porter",
+    "family": "dark",
+    "abv": 6.0,
+    "price": 7,
+    "pour": "16 oz",
+    "fillPercent": 0,
+    "note": "Blew at 9:40 last night — campfire, dark chocolate, and a standing ovation. Back on next month."
+  }
+]

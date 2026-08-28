@@ -1,0 +1,35 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+---
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-brand">{site.name}</p>
+      <p class="footer-tagline">{site.tagline}</p>
+      <p class="footer-tagline">{site.city}</p>
+    </div>
+    <div>
+      <p class="footer-label">Find us</p>
+      <p>{site.address}</p>
+      <p>Patio open in fair weather.</p>
+    </div>
+    <div>
+      <p class="footer-label">Talk to the bar</p>
+      <div class="footer-links">
+        <a href={site.phoneHref}>{site.phoneDisplay}</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        {site.socials.map((social) => (
+          <a href={social.href} rel="noopener">{social.label}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="footer-fine">
+    <p>Please drink responsibly.</p>
+    <p>Board updated at every keg change.</p>
+  </div>
+</footer>

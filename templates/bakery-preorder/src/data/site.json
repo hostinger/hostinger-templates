@@ -1,0 +1,58 @@
+{
+  "name": "The Saturday Loaf",
+  "eyebrow": "Weekend microbakery · Walthamstow",
+  "headline": "Order by Thursday. Warm by Saturday.",
+  "intro": "One oven, one baker, six bakes a weekend. Reserve what you'd like before the Thursday cut-off and collect it from the side gate on Saturday — still warm if you take the early slot.",
+  "about": "The Saturday Loaf is me, Ida, a spreadsheet analyst on weekdays and a baker from Friday teatime onwards. Everything is mixed, proved, and baked in my registered home kitchen — small batches, long fermentation, no shortcuts. I bake exactly what has been ordered plus a couple of spares, which is why the list closes on Thursday and why the slots genuinely run out.",
+  "aboutSignature": "— Ida",
+  "email": "orders@saturdayloaf.example",
+  "phoneDisplay": "07700 900418",
+  "phoneHref": "tel:+447700900418",
+  "collectionAddress": "43 Chestnut Row, Walthamstow, London E17 4QP",
+  "collectionNote": "Collection is from the side gate — follow the smell of bread and the painted arrow.",
+  "orderCutoff": {
+    "day": "Thursday",
+    "time": "18:00"
+  },
+  "bakeDay": "Saturday",
+  "navigation": [
+    {
+      "label": "This weekend's bakes",
+      "href": "#bakes"
+    },
+    {
+      "label": "Collection slots",
+      "href": "#collection"
+    },
+    {
+      "label": "How it works",
+      "href": "#how-it-works"
+    },
+    {
+      "label": "FAQ",
+      "href": "#faq"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How do I pay?",
+      "answer": "At collection — contactless card or cash at the gate. The order email only reserves your bakes; no money changes hands online."
+    },
+    {
+      "question": "What happens after I send the order email?",
+      "answer": "You get a short reply confirming your bakes and slot, usually within a few hours. If a slot fills before your email lands, we offer you the nearest free one instead."
+    },
+    {
+      "question": "What if I miss my collection slot?",
+      "answer": "Reply to your confirmation or send a text and we will hold your bag until the last slot of the day ends. After that, unclaimed bakes are offered to the waiting list."
+    },
+    {
+      "question": "Is everything sourdough?",
+      "answer": "The breads are — naturally leavened with a rye starter and proved slowly in the fridge. The knots, babka, and cake use yeast or baking powder where it simply tastes better."
+    },
+    {
+      "question": "Do you list allergens?",
+      "answer": "Every bake comes from one small kitchen that handles gluten, nuts, dairy, eggs, sesame, and soy, so nothing can be guaranteed trace-free. Ask about any bake and you will get the full ingredient list by reply."
+    }
+  ]
+}

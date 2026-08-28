@@ -1,0 +1,71 @@
+{
+  "name": "Copperline Taproom",
+  "city": "Asheville, North Carolina",
+  "tagline": "Twelve stools, eight taps, zero televisions.",
+  "intro": "This board is the same one we chalk behind the bar, updated at every keg change. Check the gauges before you walk over — if something you love is about to blow, call and we will tell you straight how many pours are left.",
+  "boardStatus": "Updated tonight at 6:15",
+  "phoneDisplay": "(828) 555-0142",
+  "phoneHref": "tel:+18285550142",
+  "email": "pours@copperlinetaproom.example",
+  "address": "412 Foundry Street, Asheville, NC 28801",
+  "hours": [
+    {
+      "days": "Mon – Thu",
+      "time": "4:00 PM – 11:00 PM"
+    },
+    {
+      "days": "Fri – Sat",
+      "time": "2:00 PM – 12:30 AM"
+    },
+    {
+      "days": "Sunday",
+      "time": "2:00 PM – 9:00 PM"
+    }
+  ],
+  "navigation": [
+    {
+      "label": "On tap",
+      "href": "/#tap-board"
+    },
+    {
+      "label": "Visit",
+      "href": "/#visit"
+    },
+    {
+      "label": "FAQ",
+      "href": "/#faq"
+    }
+  ],
+  "socials": [
+    {
+      "label": "Instagram",
+      "href": "https://instagram.com/copperlinetaproom"
+    },
+    {
+      "label": "Untappd",
+      "href": "https://untappd.com/copperlinetaproom"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How current is this tap list?",
+      "answer": "It is the same board we run behind the bar. Whoever changes a keg updates the page in the same minute, so if a beer shows as pouring, it is pouring — and the gauges reflect what is genuinely left."
+    },
+    {
+      "question": "Something I want is about to blow. Can you hold it?",
+      "answer": "We cannot reserve draft beer, but call before you head over and we will tell you honestly how many pours are left. House tradition: the last pour of any keg is on us."
+    },
+    {
+      "question": "Do you fill growlers and crowlers?",
+      "answer": "Yes — 32 oz crowlers and 64 oz growlers from any tap that is not flagged as about to blow, up to 30 minutes before close."
+    },
+    {
+      "question": "Do you serve food?",
+      "answer": "We keep pretzels and bar snacks behind the counter, and a food truck parks out front on Friday and Saturday evenings. You are also welcome to bring in takeaway from the neighborhood."
+    },
+    {
+      "question": "Are kids and dogs welcome?",
+      "answer": "Dogs are welcome on the patio year-round and inside on weekday afternoons. Minors are welcome with an adult until 8 PM."
+    }
+  ]
+}

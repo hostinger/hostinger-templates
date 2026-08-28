@@ -1,0 +1,40 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+---
+
+<section class="visit-section" id="visit" aria-labelledby="visit-title">
+  <div>
+    <p class="eyebrow">Visit the taproom</p>
+    <h2 id="visit-title">Find the taproom</h2>
+    <p class="visit-address">
+      <strong>{site.address}</strong><br />
+      Street parking opens up after 6. Bike rack by the patio gate.
+    </p>
+    <dl class="hours-list">
+      {site.hours.map((row) => (
+        <div class="hours-row">
+          <dt>{row.days}</dt>
+          <dd>{row.time}</dd>
+        </div>
+      ))}
+    </dl>
+    <div class="visit-actions">
+      <a class="button" href={site.phoneHref}>Call {site.phoneDisplay}</a>
+      <a class="button button-ghost" href={`mailto:${site.email}`}>Email the bar</a>
+    </div>
+    <p class="visit-hint">Chasing a keg that is about to blow? Call first — we will count the pours left for you.</p>
+  </div>
+  <figure class="visit-photo">
+    <img
+      src="/images/taproom.jpg"
+      alt="Row of copper draft taps with black handles along the taproom bar in warm low light"
+      width="1600"
+      height="1143"
+      loading="lazy"
+    />
+    <figcaption>The bar at ten past open</figcaption>
+  </figure>
+</section>

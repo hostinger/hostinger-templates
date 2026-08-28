@@ -1,0 +1,35 @@
+{
+  "name": "tap-list",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Live taproom keg board with fill gauges, ABV, styles, and prices for every tap.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "lint": "eslint .",
+    "preview": "astro preview"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "astro",
+    "typescript",
+    "taproom",
+    "beer",
+    "keg-board"
+  ],
+  "dependencies": {
+    "astro": "^7.2.9"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.9.1",
+    "eslint-plugin-astro": "^1.7.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0"
+  },
+  "license": "MIT"
+}
