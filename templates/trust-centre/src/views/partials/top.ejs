@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= pageTitle %></title>
+    <meta name="description" content="<%= metaDescription %>" />
+    <meta name="theme-color" content="#0b1d33" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <% if (typeof includeFaqJsonLd !== 'undefined' && includeFaqJsonLd) { %>
+    <script type="application/ld+json"><%- faqJsonLd %></script>
+    <% } %>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="/">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <path class="brand-mark-shield" d="M32 6 L54 14.5 V31 C54 45.5 45 56.5 32 61 C19 56.5 10 45.5 10 31 V14.5 Z" />
+            <circle class="brand-mark-keyhole" cx="32" cy="28.5" r="5.4" />
+            <rect class="brand-mark-keyhole" x="29.4" y="31.5" width="5.2" height="12" rx="2.6" />
+          </svg>
+          <span class="brand-text">
+            <span class="brand-name"><%= site.company.name %></span>
+            <span class="brand-page"><%= site.page.title %></span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Sections">
+          <% site.navigation.forEach((link) => { %>
+            <a href="<%= link.href %>"><%= link.label %></a>
+          <% }) %>
+        </nav>
+        <a class="header-contact mono" href="mailto:<%= site.securityContact.email %>"><%= site.securityContact.email %></a>
+      </div>
+    </header>
+    <main id="main">

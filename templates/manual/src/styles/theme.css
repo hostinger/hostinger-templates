@@ -1,0 +1,90 @@
+/*
+ * Tapeline docs theme.
+ *
+ * Starlight reads its palette from the custom properties below, so changing
+ * the brand color means editing the accent values in the two blocks at the
+ * top of this file. Dark theme values live on :root, light theme values on
+ * :root[data-theme='light'].
+ */
+
+/* Dark theme (default). */
+:root {
+  --sl-color-accent-low: #0a3d49;
+  --sl-color-accent: #0ea8bf;
+  --sl-color-accent-high: #a9e8f2;
+  --sl-color-white: #f4fbfc;
+  --sl-color-gray-1: #dcedf0;
+  --sl-color-gray-2: #b6c9cd;
+  --sl-color-gray-3: #7f979d;
+  --sl-color-gray-4: #4c6168;
+  --sl-color-gray-5: #2c3f45;
+  --sl-color-gray-6: #1a2c32;
+  --sl-color-black: #101d22;
+  --manual-hero-gradient-from: #e8fbfe;
+  --manual-hero-gradient-to: #4fd0e4;
+}
+
+/* Light theme. */
+:root[data-theme='light'] {
+  --sl-color-accent-low: #c9eef5;
+  --sl-color-accent: #077f97;
+  --sl-color-accent-high: #0b3a46;
+  --sl-color-white: #101d22;
+  --sl-color-gray-1: #1a2c32;
+  --sl-color-gray-2: #2c3f45;
+  --sl-color-gray-3: #4c6168;
+  --sl-color-gray-4: #7f979d;
+  --sl-color-gray-5: #c4d4d8;
+  --sl-color-gray-6: #e8f1f3;
+  --sl-color-gray-7: #f4f9fa;
+  --sl-color-black: #ffffff;
+  --manual-hero-gradient-from: #0b3a46;
+  --manual-hero-gradient-to: #0a94ae;
+}
+
+/* Header wordmark sizing. */
+.site-title img {
+  height: 1.375rem;
+  width: auto;
+}
+
+/* Landing page: soft accent glow behind the hero. */
+[data-has-hero] .main-frame {
+  background:
+    radial-gradient(
+      46rem 22rem at 82% -4rem,
+      color-mix(in oklab, var(--sl-color-accent) 16%, transparent),
+      transparent 68%
+    ),
+    radial-gradient(
+      30rem 16rem at 12% -6rem,
+      color-mix(in oklab, var(--sl-color-accent) 9%, transparent),
+      transparent 70%
+    );
+}
+
+/* Landing page: gradient hero headline. */
+[data-has-hero] .hero h1 {
+  background-image: linear-gradient(
+    92deg,
+    var(--manual-hero-gradient-from),
+    var(--manual-hero-gradient-to)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Keep landing cards on the brand accent instead of Starlight's color cycle. */
+.sl-markdown-content .card.sl-flex {
+  --sl-card-border: color-mix(in oklab, var(--sl-color-accent) 60%, transparent);
+  --sl-card-bg: color-mix(in oklab, var(--sl-color-accent) 10%, transparent);
+}
+
+/* Landing page: give the terminal illustration room and a glow. */
+[data-has-hero] .hero > img {
+  width: min(100%, 30rem);
+  border-radius: 1rem;
+  box-shadow: 0 28px 64px -28px
+    color-mix(in oklab, var(--sl-color-accent) 55%, transparent);
+}

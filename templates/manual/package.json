@@ -1,0 +1,38 @@
+{
+  "name": "manual",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A small product documentation site with instant local search and a copy-page-as-Markdown button, built on Astro Starlight.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "lint": "eslint .",
+    "preview": "astro preview"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "astro",
+    "starlight",
+    "typescript",
+    "documentation",
+    "docs",
+    "markdown"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@astrojs/starlight": "^0.41.9",
+    "astro": "^7.1.6",
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.9.1",
+    "eslint-plugin-astro": "^1.7.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0"
+  }
+}

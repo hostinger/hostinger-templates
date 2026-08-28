@@ -1,0 +1,50 @@
+[
+  {
+    "id": "act-01",
+    "kind": "deploy",
+    "title": "delivery-workers v2.41.3 rolled out",
+    "detail": "Canary passed and the fleet reached 100% in 14 minutes.",
+    "actor": "release-bot",
+    "at": "2026-08-28T09:12:00Z"
+  },
+  {
+    "id": "act-02",
+    "kind": "config",
+    "title": "Retry policy updated for eu-central-1",
+    "detail": "Max attempts raised from 6 to 8; exponential backoff now capped at 15 minutes.",
+    "actor": "Dana Okafor",
+    "at": "2026-08-27T16:05:00Z"
+  },
+  {
+    "id": "act-03",
+    "kind": "member",
+    "title": "Priya Raman joined the workspace",
+    "detail": "Role: analyst (read-only), invited by Dana Okafor.",
+    "actor": "Priya Raman",
+    "at": "2026-08-26T11:48:00Z"
+  },
+  {
+    "id": "act-04",
+    "kind": "endpoint",
+    "title": "New endpoint verified: nimbus-staging",
+    "detail": "hooks.nimbus.example/events answered the challenge ping on the first try.",
+    "actor": "Marcus Webb",
+    "at": "2026-08-24T08:30:00Z"
+  },
+  {
+    "id": "act-05",
+    "kind": "endpoint",
+    "title": "acme-prod resumed",
+    "detail": "Retry backlog drained after the receiver fix; failure rate recovered within the hour.",
+    "actor": "platform",
+    "at": "2026-08-21T19:03:00Z"
+  },
+  {
+    "id": "act-06",
+    "kind": "alert",
+    "title": "Endpoint paused: acme-prod",
+    "detail": "Retry backlog passed 5,000 deliveries; daily failures spiked to 1,254.",
+    "actor": "platform",
+    "at": "2026-08-21T14:22:00Z"
+  }
+]

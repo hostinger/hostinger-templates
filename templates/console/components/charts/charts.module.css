@@ -1,0 +1,211 @@
+.chartBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.chartRoot {
+  min-width: 0;
+}
+
+.interactive {
+  position: relative;
+  border-radius: var(--radius-small);
+}
+
+.svg {
+  display: block;
+  touch-action: pan-y;
+}
+
+.gridline {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+
+.axisLine {
+  stroke: var(--axis);
+  stroke-width: 1;
+}
+
+.tickLabel {
+  fill: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.areaFill {
+  fill: var(--series-1);
+  fill-opacity: 0.11;
+}
+
+.lineStroke {
+  fill: none;
+  stroke: var(--series-1);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pointDot {
+  fill: var(--series-1);
+  stroke: var(--bg-surface);
+  stroke-width: 2;
+}
+
+.endLabel {
+  fill: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.peakLabel {
+  fill: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.crosshair {
+  stroke: var(--ink-muted);
+  stroke-width: 1;
+  opacity: 0.55;
+}
+
+.bar {
+  fill: var(--status-critical);
+  transition: filter 100ms ease;
+}
+
+.barActive {
+  filter: brightness(1.22);
+}
+
+/* --- Tooltip --- */
+
+.tooltip {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px 11px 9px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-small);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+.tooltipDate {
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.tooltipRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tooltipKey {
+  flex: none;
+  width: 12px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--series-1);
+}
+
+.tooltipKeyCritical {
+  background: var(--status-critical);
+}
+
+.tooltipKeySpacer {
+  flex: none;
+  width: 12px;
+}
+
+.tooltipValue {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tooltipLabel {
+  color: var(--ink-secondary);
+  font-size: 12px;
+}
+
+/* --- Table view --- */
+
+.tableToggle {
+  border-top: 1px solid var(--stroke-subtle);
+  padding-top: 8px;
+}
+
+.tableSummary {
+  display: inline-flex;
+  width: fit-content;
+  color: var(--ink-muted);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+  padding: 2px 0;
+}
+
+.tableSummary::-webkit-details-marker {
+  display: none;
+}
+
+.tableSummary::before {
+  content: "";
+  align-self: center;
+  width: 0;
+  height: 0;
+  margin-right: 7px;
+  border-left: 5px solid var(--ink-muted);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  transition: transform 120ms ease;
+}
+
+.tableToggle[open] .tableSummary::before {
+  transform: rotate(90deg);
+}
+
+.tableSummary:hover {
+  color: var(--ink-secondary);
+}
+
+.dataTable {
+  width: 100%;
+  margin-top: 8px;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 5px 10px 5px 0;
+  text-align: left;
+  border-bottom: 1px solid var(--stroke-subtle);
+}
+
+.dataTable thead th {
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+.dataTable tbody th {
+  color: var(--ink-secondary);
+  font-weight: 500;
+}
+
+.dataTable td {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}

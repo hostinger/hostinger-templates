@@ -1,0 +1,111 @@
+{
+  "systemName": "Vitrine",
+  "tagline": "A tiny design system with live playgrounds",
+  "version": "0.4.2",
+  "packageName": "@vitrine/kit",
+  "skipLinkLabel": "Skip to content",
+  "nav": {
+    "ariaLabel": "Components",
+    "componentsLabel": "Components",
+    "faqLabel": "FAQ"
+  },
+  "hero": {
+    "kicker": "Design system · three components · zero excuses",
+    "headline": "Flip a prop. Watch it change.",
+    "headlineMark": "Ship the snippet.",
+    "intro": "Vitrine is the component kit behind our products, published the day it became real. Every component gets a live playground: set the props with real controls, watch the specimen respond, and copy the exact markup that reproduces what you see.",
+    "primaryCta": "Open the Button playground",
+    "secondaryCta": "Browse the components",
+    "stageLabel": "Specimens",
+    "stageCaption": "Rendered live by the same components the playgrounds document — nothing here is a screenshot."
+  },
+  "principles": {
+    "kicker": "The contract",
+    "heading": "How Vitrine stays small",
+    "items": [
+      {
+        "title": "Small on purpose",
+        "body": "A component joins the kit when three production screens need it, and not a screen sooner. That rule has rejected more components than it has admitted — and the kit fits in one afternoon because of it."
+      },
+      {
+        "title": "Props are the API",
+        "body": "No utility-class overrides, no theme forks, no local CSS patches. If a variation matters, it becomes a documented prop with a visible default. Everything else is a proposal, not a workaround."
+      },
+      {
+        "title": "The snippet is the truth",
+        "body": "Each playground writes the exact markup that reproduces its preview, omitting props that sit at their defaults. What you copy is what ships — nothing hides in a wrapper class."
+      }
+    ]
+  },
+  "componentIndex": {
+    "kicker": "The kit",
+    "heading": "Three components, honestly documented",
+    "intro": "Each page pairs a live playground with a prop table and usage notes. Open one, flip the props, and take the snippet with you — your last configuration is remembered on this device.",
+    "propsAriaLabel": "Documented props",
+    "openLabel": "Open playground"
+  },
+  "playground": {
+    "ariaLabel": "Component playground",
+    "previewLabel": "Preview",
+    "controlsHeading": "Props",
+    "resetLabel": "Reset props",
+    "persistNote": "Edits are saved on this device — reload the page and the playground picks up where you left it.",
+    "snippetLabel": "template",
+    "copyLabel": "Copy",
+    "copiedLabel": "Copied",
+    "copyFailedLabel": "Copy failed",
+    "copiedAnnouncement": "Snippet copied to the clipboard.",
+    "unregisteredNote": "This component has no preview yet. Register it in src/components/ui/index.ts.",
+    "propTableHeading": "Prop reference",
+    "guidanceHeading": "Usage notes",
+    "requiredLabel": "required",
+    "table": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "prevLabel": "Previous",
+    "nextLabel": "Next",
+    "pagerAriaLabel": "More components",
+    "breadcrumbAriaLabel": "Breadcrumb"
+  },
+  "faq": {
+    "kicker": "Questions",
+    "heading": "What teams ask before adopting Vitrine",
+    "items": [
+      {
+        "question": "Why does the kit ship only three components?",
+        "answer": "Because three are real. A component enters Vitrine once three production screens need it — that rule has killed more components than it has admitted, and it is why the whole kit can be learned in an afternoon."
+      },
+      {
+        "question": "Can I override a component with my own CSS?",
+        "answer": "Please don't. Every supported variation is a prop, and the playground shows the full set. If a design needs something the props cannot express, that is a proposal for a new prop — not a local override that the next release silently breaks."
+      },
+      {
+        "question": "Does the playground save my configuration?",
+        "answer": "Yes, in this browser. Each playground stores the last props you set on your device and restores them when you come back. Nothing leaves your machine, and Reset props returns the playground to its documented starting point."
+      },
+      {
+        "question": "How do I propose a new component or prop?",
+        "answer": "Bring three screens that need it, plus the markup you wish you could write. The core team reviews proposals every Thursday; accepted work lands with a playground, a prop table, and usage notes like everything else here."
+      },
+      {
+        "question": "Which stack do the snippets target?",
+        "answer": "Vue 3 single-file components with TypeScript props. The snippet under each preview is plain template markup — paste it into any SFC that imports the kit and it renders exactly what the playground showed you."
+      }
+    ]
+  },
+  "notFound": {
+    "title": "Not on display",
+    "unknownComponent": "That component is not in the kit — it may have been renamed, or it never survived the three-screens rule.",
+    "unknownPage": "This page is not part of the system. The exhibits live on the index and the three component pages.",
+    "homeLabel": "Back to the index",
+    "browseLabel": "Browse the components"
+  },
+  "footer": {
+    "line": "The component kit behind our products — documented in the open, one honest playground per component.",
+    "navAriaLabel": "Footer",
+    "editNote": "Vitrine ships as a template with demo content. The system name, copy, and FAQs live in src/data/site.json; the components and their props in src/data/components.ts."
+  }
+}

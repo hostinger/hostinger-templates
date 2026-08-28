@@ -1,0 +1,42 @@
+{
+  "metric": "Webhook deliveries",
+  "granularity": "day",
+  "current": {
+    "label": "Aug 14 – 27, 2026",
+    "days": [
+      { "date": "2026-08-14", "delivered": 131420, "failed": 284, "p50Ms": 121 },
+      { "date": "2026-08-15", "delivered": 108116, "failed": 196, "p50Ms": 118 },
+      { "date": "2026-08-16", "delivered": 104882, "failed": 172, "p50Ms": 116 },
+      { "date": "2026-08-17", "delivered": 128904, "failed": 302, "p50Ms": 124 },
+      { "date": "2026-08-18", "delivered": 133650, "failed": 318, "p50Ms": 127 },
+      { "date": "2026-08-19", "delivered": 136208, "failed": 296, "p50Ms": 125 },
+      { "date": "2026-08-20", "delivered": 134972, "failed": 340, "p50Ms": 126 },
+      { "date": "2026-08-21", "delivered": 129340, "failed": 1254, "p50Ms": 138 },
+      { "date": "2026-08-22", "delivered": 107268, "failed": 208, "p50Ms": 120 },
+      { "date": "2026-08-23", "delivered": 105530, "failed": 190, "p50Ms": 117 },
+      { "date": "2026-08-24", "delivered": 132116, "failed": 312, "p50Ms": 124 },
+      { "date": "2026-08-25", "delivered": 137842, "failed": 286, "p50Ms": 126 },
+      { "date": "2026-08-26", "delivered": 139480, "failed": 270, "p50Ms": 124 },
+      { "date": "2026-08-27", "delivered": 141904, "failed": 258, "p50Ms": 122 }
+    ]
+  },
+  "previous": {
+    "label": "Jul 31 – Aug 13, 2026",
+    "days": [
+      { "date": "2026-07-31", "delivered": 126310, "failed": 296, "p50Ms": 128 },
+      { "date": "2026-08-01", "delivered": 103542, "failed": 204, "p50Ms": 124 },
+      { "date": "2026-08-02", "delivered": 100918, "failed": 188, "p50Ms": 122 },
+      { "date": "2026-08-03", "delivered": 123684, "failed": 310, "p50Ms": 131 },
+      { "date": "2026-08-04", "delivered": 127952, "failed": 322, "p50Ms": 133 },
+      { "date": "2026-08-05", "delivered": 130540, "failed": 288, "p50Ms": 130 },
+      { "date": "2026-08-06", "delivered": 128872, "failed": 334, "p50Ms": 132 },
+      { "date": "2026-08-07", "delivered": 125438, "failed": 306, "p50Ms": 129 },
+      { "date": "2026-08-08", "delivered": 102314, "failed": 214, "p50Ms": 125 },
+      { "date": "2026-08-09", "delivered": 100206, "failed": 182, "p50Ms": 123 },
+      { "date": "2026-08-10", "delivered": 126598, "failed": 318, "p50Ms": 130 },
+      { "date": "2026-08-11", "delivered": 131270, "failed": 292, "p50Ms": 131 },
+      { "date": "2026-08-12", "delivered": 133416, "failed": 276, "p50Ms": 129 },
+      { "date": "2026-08-13", "delivered": 135102, "failed": 262, "p50Ms": 127 }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="hook-gradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2fd4e6"/>
+      <stop offset="1" stop-color="#0e94a8"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#hook-gradient)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="20.5" cy="6.5" r="3.2"/>
+    <path d="M20.5 9.7V20a8 8 0 0 1-16 0v-3.6"/>
+    <path d="M4.5 16.4l5-3"/>
+  </g>
+</svg>

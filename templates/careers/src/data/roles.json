@@ -1,0 +1,163 @@
+{
+  "teams": [
+    { "name": "Engineering", "hue": "periwinkle" },
+    { "name": "Design", "hue": "teal" },
+    { "name": "Support", "hue": "coral" }
+  ],
+  "roles": [
+    {
+      "slug": "senior-product-engineer",
+      "title": "Senior Product Engineer",
+      "team": "Engineering",
+      "location": "Anywhere in US time zones",
+      "remotePolicy": "remote",
+      "salaryRange": "$140,000 – $170,000",
+      "oneLiner": "Own features end to end in the codebase 400 boatyards use to run haul-outs, invoices, and winter storage.",
+      "whatYoudDo": [
+        "Ship one meaningful thing most weeks — a clearer schedule view, a billing fix, faster search — and watch real yards use it within days.",
+        "Work the whole stack: Rails, Postgres, and a React front end, plus the occasional gnarly CSV import from a twenty-year-old yard system.",
+        "Talk to customers directly. A few times a month you'll get on a call with a yard manager and see your feature running in their shed office.",
+        "Review teammates' work kindly and get the same back — two engineers look at everything before it ships.",
+        "Take a real on-call rotation: roughly one week in six, almost always quiet, paid extra when it isn't.",
+        "Spend your first month shipping small fixes with a buddy, not sitting through onboarding decks."
+      ],
+      "whatYouWont": [
+        "No sprint theater. We plan in six-week cycles with slack built in, and nobody rearranges your tickets overnight.",
+        "You won't wait on a platform team. There are nine engineers; if the deploy pipeline annoys you, you're allowed to fix it.",
+        "No growth-hack work. We don't build dark patterns, and marketing can't file engineering tickets."
+      ],
+      "howWeHire": [
+        {
+          "title": "Intro call — 30 minutes",
+          "detail": "With our head of engineering. What you've built, what you want next, and an honest picture of the codebase, warts included."
+        },
+        {
+          "title": "Technical conversation — 60 minutes",
+          "detail": "Walk us through something real you shipped. No live-coding gotchas, no whiteboard algorithms."
+        },
+        {
+          "title": "Paid work sample — half a day, $400",
+          "detail": "A small task from our actual backlog, done on your own schedule, followed by a call about the choices you made."
+        },
+        {
+          "title": "Offer within a week",
+          "detail": "We check two references, put numbers in writing, and give you a full week to decide. No exploding offers."
+        }
+      ]
+    },
+    {
+      "slug": "product-designer",
+      "title": "Product Designer",
+      "team": "Design",
+      "location": "Anywhere in US time zones",
+      "remotePolicy": "remote",
+      "salaryRange": "$118,000 – $142,000",
+      "oneLiner": "Design calm, unfancy screens for people who run a boatyard from a shed office with mud on the keyboard.",
+      "whatYoudDo": [
+        "Design real workflows — invoicing, slip assignments, work orders — then pair with engineers until the shipped thing matches the design.",
+        "Visit customers. A few times a year you'll stand in a yard office in Maine or Maryland watching someone use your screens.",
+        "Own the design system with our other designer: one component library, boring on purpose, documented as you go.",
+        "Write the words. Labels, empty states, and error messages are part of the design here, not someone else's job.",
+        "Run usability calls with real yard managers, not proxies — we book them, you lead them."
+      ],
+      "whatYouWont": [
+        "No portfolio-driven redesigns. The product looks plain because our users are busy; your job is clarity, not spectacle.",
+        "You won't fight for a seat at the table. Design has been in the room since the founding team."
+      ],
+      "howWeHire": [
+        {
+          "title": "Intro call — 30 minutes",
+          "detail": "With our design lead. Where you've worked, how you like to work, and what we're honestly like to design for."
+        },
+        {
+          "title": "Portfolio walk-through — 60 minutes",
+          "detail": "Two projects, your choice. We care about the decisions and trade-offs, not the polish of the shots."
+        },
+        {
+          "title": "Paid design exercise — half a day, $400",
+          "detail": "A real problem from our roadmap, on your schedule. Sketch-level fidelity is completely fine."
+        },
+        {
+          "title": "Offer within a week",
+          "detail": "Two references, numbers in writing, a week to decide. We'll tell you the band before you start the exercise."
+        }
+      ]
+    },
+    {
+      "slug": "support-engineer",
+      "title": "Support Engineer",
+      "team": "Support",
+      "location": "Portland, Maine",
+      "remotePolicy": "hybrid",
+      "salaryRange": "$72,000 – $92,000",
+      "oneLiner": "Answer the hard tickets, reproduce the weird bugs, and be the reason a yard manager's Tuesday gets better.",
+      "whatYoudDo": [
+        "Own the support inbox with two teammates — around forty conversations a day over email and phone, mostly from friendly non-technical yard staff.",
+        "Reproduce bugs properly and file reports engineers thank you for. You get a real staging environment and read access to the codebase.",
+        "Write and update the help docs whenever the same question shows up twice.",
+        "Spend Thursday afternoons with the product team, turning support patterns into roadmap arguments.",
+        "Work from the Portland office two or three days a week — spring launch season is all hands on deck, winters are genuinely quiet."
+      ],
+      "whatYouWont": [
+        "No ticket quotas and no CSAT leaderboard. We measure whether problems actually got solved.",
+        "You won't be a human shield for engineering. Engineers take support rotations too and read tickets every week."
+      ],
+      "howWeHire": [
+        {
+          "title": "Intro call — 30 minutes",
+          "detail": "With our support lead. Your story, our setup, and what a normal Tuesday actually looks like in the inbox."
+        },
+        {
+          "title": "Paid ticket exercise — 2 hours, $150",
+          "detail": "Three real anonymized tickets. You write the replies on your own schedule; we talk through them together after."
+        },
+        {
+          "title": "Meet the team — 45 minutes",
+          "detail": "Casual call with the two people you'd share the inbox with. Ask them anything — including what's annoying."
+        },
+        {
+          "title": "Offer within a week",
+          "detail": "One reference, numbers in writing, a week to decide, and a proposed office-days schedule you can push back on."
+        }
+      ]
+    },
+    {
+      "slug": "onboarding-specialist",
+      "title": "Onboarding Specialist",
+      "team": "Support",
+      "location": "Portland, Maine",
+      "remotePolicy": "on-site",
+      "salaryRange": "$58,000 – $74,000",
+      "oneLiner": "Move new boatyards off paper binders and a 2004 Access database without losing a single slip record.",
+      "whatYoudDo": [
+        "Run onboarding for four to six new yards a month: kickoff call, data import, training, and a check-in after their first billing run.",
+        "Clean up messy customer data — spreadsheets, ancient exports, sometimes literal paper — with our import tools and a careful eye.",
+        "Teach over video, and occasionally in person; some yards want you to walk their dock once before they trust the software.",
+        "Feed what you learn back to product. You'll know before anyone else which screens confuse new customers.",
+        "Work from the Portland office — imports run on a big second monitor next to the support team, and half the job is grabbing them for edge cases."
+      ],
+      "whatYouWont": [
+        "No sales quotas. By the time a yard reaches you they've already bought; your job is making them glad they did.",
+        "You won't read from a script. Every yard's mess is different, and you're trusted to handle it your way."
+      ],
+      "howWeHire": [
+        {
+          "title": "Intro call — 30 minutes",
+          "detail": "With our support lead. Your background, the job as it really is, and why this one is on-site."
+        },
+        {
+          "title": "Paid data exercise — 2 hours, $150",
+          "detail": "One genuinely messy anonymized spreadsheet. Show us how you'd get it clean and what you'd ask the customer."
+        },
+        {
+          "title": "Office visit — half a day",
+          "detail": "Sit with the team in Portland, watch a real onboarding call, and see the desk, the docks, and the coffee machine."
+        },
+        {
+          "title": "Offer within a week",
+          "detail": "One reference, numbers in writing, and a week to decide. We'll cover travel costs for the visit either way."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.counts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  margin-top: 6px;
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink-muted);
+  font-size: 13px;
+}
+
+.countValue {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.countDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.dotGood {
+  background: var(--status-good);
+}
+
+.dotWarn {
+  background: var(--status-warn);
+}
+
+.dotCritical {
+  background: var(--status-critical);
+}
+
+.tableCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--stroke-subtle);
+  border-radius: var(--radius);
+  overflow: hidden;
+}

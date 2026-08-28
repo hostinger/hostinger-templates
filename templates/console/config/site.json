@@ -1,0 +1,67 @@
+{
+  "product": "Windrose",
+  "console": "Console",
+  "tagline": "Event delivery, observed",
+  "description": "An admin and analytics console for a fictional webhook delivery platform, fully populated from committed mock data — no backend required.",
+  "orgLabel": "Atlas Labs",
+  "workspaceLabel": "Production",
+  "demoBadge": "Demo data",
+  "footerNote": "Windrose and Atlas Labs are fictional. Every value in this console renders from committed JSON in mocks/ — nothing is live.",
+  "overview": {
+    "title": "Overview",
+    "subtitle": "Atlas Labs production workspace",
+    "deliveredChart": {
+      "title": "Events delivered",
+      "subtitle": "Successful deliveries per day"
+    },
+    "failuresChart": {
+      "title": "Failed deliveries",
+      "subtitle": "Retries exhausted per day — the Aug 21 spike traces to the paused acme-prod endpoint"
+    },
+    "activity": {
+      "title": "Recent activity",
+      "subtitle": "Deploys, config changes, and endpoint events"
+    }
+  },
+  "eventsPage": {
+    "title": "Events",
+    "subtitle": "The most recent webhook deliveries in this workspace — a fixed 10-row sample from mocks/rows.json"
+  },
+  "settingsPage": {
+    "title": "Settings",
+    "subtitle": "Workspace, profile, and API configuration",
+    "notice": "Read-only demo: this template ships without a backend, so everything below renders from mocks/org.json. Wire these fields to your own API when you add one.",
+    "sections": {
+      "workspace": "Workspace",
+      "profile": "Profile",
+      "api": "API credentials"
+    },
+    "apiNote": "Placeholder credentials — the demo never signs or sends anything."
+  },
+  "faq": {
+    "title": "About this template",
+    "intro": "How the demo works and how to make it yours.",
+    "items": [
+      {
+        "question": "Where do the numbers come from?",
+        "answer": "Every metric, chart point, table row, and settings field renders from committed JSON files in mocks/. Headline totals are computed from the same series the charts draw, so the overview always agrees with itself, and builds are deterministic because nothing is randomized at runtime."
+      },
+      {
+        "question": "Is any of this live data?",
+        "answer": "No. Windrose and Atlas Labs are fictional, and the console never calls a network API. It is an honest, fully populated shell that demos before any backend exists."
+      },
+      {
+        "question": "How do I connect a real backend?",
+        "answer": "Replace the typed loaders in lib/data.ts with your own fetches. Components receive plain typed props, so once your API returns the shapes defined in lib/types.ts, every page renders your real data."
+      },
+      {
+        "question": "Does it include auth or a database?",
+        "answer": "Neither. The build is a fully static export (out/) you can host anywhere. Add authentication and persistence in whatever stack you prefer — nothing in the template assumes one."
+      },
+      {
+        "question": "How do I add another page?",
+        "answer": "Create app/your-page/page.tsx and add the route to NAV_ITEMS in lib/nav.ts so it appears in the sidebar. The shared shell, fonts, and design tokens apply automatically."
+      }
+    ]
+  }
+}

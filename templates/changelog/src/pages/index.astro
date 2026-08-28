@@ -1,0 +1,132 @@
+---
+import { getCollection } from 'astro:content';
+import FaqSection from '../components/FaqSection.astro';
+import FilterBar from '../components/FilterBar.astro';
+import Hero from '../components/Hero.astro';
+import ReleaseTimeline from '../components/ReleaseTimeline.astro';
+import rawSite from '../data/site.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { SiteContent } from '../types/content';
+import { countByTag, sortByDateDesc } from '../utils/changelog';
+
+const site = rawSite as SiteContent;
+const entries = sortByDateDesc(await getCollection('changelog'));
+const latest = entries[0];
+if (!latest) {
+  throw new Error('Add at least one entry to src/content/changelog/.');
+}
+
+const counts = {
+  all: entries.length,
+  feature: countByTag(entries, 'feature'),
+  fix: countByTag(entries, 'fix'),
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: site.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={`${site.name} Changelog — What's new`}
+  description={`Release notes for ${site.name}: every feature, fix, and improvement, with a marker for what shipped since your last visit.`}
+  schema={faqSchema}
+>
+  <Hero latestVersion={latest.data.version} latestDate={latest.data.date} totalReleases={entries.length} />
+  <section id="releases" aria-label="Release history">
+    <FilterBar counts={counts} />
+    <div class="wrap releases">
+      <ReleaseTimeline entries={entries} />
+    </div>
+  </section>
+  <FaqSection intro={site.faqIntro} faqs={site.faqs} />
+
+  <template data-new-divider-template>
+    <li class="new-divider" data-new-divider>
+      <span class="new-divider-line" aria-hidden="true"></span>
+      <span class="new-divider-pill">
+        <span aria-hidden="true">↑</span>
+        New since your last visit · <span data-last-visit-label></span>
+      </span>
+      <span class="new-divider-line" aria-hidden="true"></span>
+    </li>
+  </template>
+</BaseLayout>
+
+<script>
+  import {
+    describeFilterResult,
+    matchesFilter,
+    parseTagFilter,
+    parseTagList,
+    type TagFilter,
+  } from '../utils/filter';
+  import { formatVisitDate } from '../utils/format';
+  import { isNewSince, readLastVisit, saveLastVisit } from '../utils/lastVisit';
+
+  const releaseItems = Array.from(document.querySelectorAll<HTMLElement>('[data-entry]'));
+  const totalReleases = releaseItems.length;
+
+  // --- "New since your last visit" marker -----------------------------------
+  const previousVisit = readLastVisit(window.localStorage);
+
+  if (previousVisit !== null) {
+    const freshItems = releaseItems.filter((item) => isNewSince(item.dataset.date ?? '', previousVisit));
+
+    freshItems.forEach((item) => {
+      item.classList.add('is-new');
+      item.querySelector('[data-new-badge]')?.removeAttribute('hidden');
+    });
+
+    const template = document.querySelector<HTMLTemplateElement>('[data-new-divider-template]');
+    const lastFresh = freshItems.at(-1);
+    if (template && lastFresh) {
+      const fragment = template.content.cloneNode(true) as DocumentFragment;
+      const label = fragment.querySelector('[data-last-visit-label]');
+      if (label) label.textContent = formatVisitDate(new Date(previousVisit));
+      lastFresh.after(fragment);
+    }
+
+    const banner = document.querySelector<HTMLElement>('[data-new-banner]');
+    if (banner && freshItems.length > 0) {
+      banner.textContent =
+        freshItems.length === 1
+          ? '1 new release since your last visit'
+          : `${freshItems.length} new releases since your last visit`;
+      banner.removeAttribute('hidden');
+    }
+  }
+
+  saveLastVisit(window.localStorage, Date.now());
+
+  // --- Instant tag filter ----------------------------------------------------
+  const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+  const filterStatus = document.querySelector<HTMLElement>('[data-filter-status]');
+
+  const applyFilter = (filter: TagFilter) => {
+    let visible = 0;
+    releaseItems.forEach((item) => {
+      const show = matchesFilter(parseTagList(item.dataset.tags), filter);
+      item.toggleAttribute('hidden', !show);
+      if (show) visible += 1;
+    });
+    filterButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(parseTagFilter(button.dataset.filter) === filter));
+    });
+    document.querySelector<HTMLElement>('[data-new-divider]')?.toggleAttribute('hidden', filter !== 'all');
+    if (filterStatus) filterStatus.textContent = describeFilterResult(filter, visible, totalReleases);
+  };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = parseTagFilter(button.dataset.filter);
+      if (filter) applyFilter(filter);
+    });
+  });
+</script>

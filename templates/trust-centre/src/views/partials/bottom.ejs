@@ -1,0 +1,31 @@
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <p class="footer-name"><%= site.company.legalName %></p>
+            <p class="footer-description"><%= site.company.product %> is <%= site.company.productDescription %>. <%= site.company.headquarters %>.</p>
+            <p class="footer-note"><%= site.footer.note %></p>
+          </div>
+          <nav class="footer-links" aria-label="<%= site.footer.linksLabel %>">
+            <p class="footer-heading"><%= site.footer.linksLabel %></p>
+            <ul>
+              <% site.links.forEach((link) => { %>
+                <li><a href="<%= link.href %>"><%= link.label %></a></li>
+              <% }) %>
+            </ul>
+          </nav>
+          <div class="footer-security">
+            <p class="footer-heading"><%= site.footer.securityLabel %></p>
+            <a class="mono footer-email" href="mailto:<%= site.securityContact.email %>"><%= site.securityContact.email %></a>
+            <p class="footer-response"><%= site.securityContact.responseNote %></p>
+          </div>
+        </div>
+        <p class="footer-legal"><%= site.page.lastReviewedLabel %>: <span class="mono"><%= lastReviewedLabel %></span></p>
+      </div>
+    </footer>
+    <% pageScripts.forEach((src) => { %>
+    <script src="<%= src %>" defer></script>
+    <% }) %>
+  </body>
+</html>

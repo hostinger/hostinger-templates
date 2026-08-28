@@ -1,0 +1,19 @@
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="footer-brand">
+          <p class="footer-name">{{site.apiName}} <span>· {{site.productTagline}}</span></p>
+          <p class="footer-note">{{site.footerNote}}</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer">
+          {{#each site.footerLinks}}
+            <a href="{{href}}">{{label}}</a>
+          {{/each}}
+        </nav>
+      </div>
+    </footer>
+    {{#each pageScripts}}
+      <script src="{{this}}" defer></script>
+    {{/each}}
+  </body>
+</html>

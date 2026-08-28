@@ -1,0 +1,14 @@
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  output: 'static',
+  site: 'https://example.com',
+  devToolbar: {
+    enabled: false,
+  },
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark',
+    },
+  },
+});

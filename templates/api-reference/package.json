@@ -1,0 +1,44 @@
+{
+  "name": "api-reference",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A server-rendered API reference with a try-it panel that builds a copyable curl command from the form — it never calls your API.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "nest start --watch",
+    "build": "nest build",
+    "lint": "eslint .",
+    "preview": "node dist/main.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "nestjs",
+    "handlebars",
+    "typescript",
+    "api-reference",
+    "documentation",
+    "curl"
+  ],
+  "dependencies": {
+    "@nestjs/common": "^12.0.1",
+    "@nestjs/core": "^12.0.1",
+    "@nestjs/platform-express": "^12.0.1",
+    "hbs": "^4.3.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@nestjs/cli": "^12.0.0",
+    "@nestjs/schematics": "^12.0.0",
+    "@types/express": "^5.0.0",
+    "@types/hbs": "^4.0.5",
+    "@types/node": "^24.0.0",
+    "eslint": "^10.9.1",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.68.0"
+  }
+}

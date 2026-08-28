@@ -1,0 +1,83 @@
+---
+title: Webhooks you can rewind
+description: Tapeline is a local-first CLI that captures every webhook reaching your dev machine, shows you the exact payload, and replays events against your app on demand.
+template: splash
+hero:
+  title: Webhooks you can rewind.
+  tagline: Tapeline is a small CLI that captures every webhook hitting your dev machine, shows you the exact payload, and replays it against your app until the handler works.
+  image:
+    file: ../../assets/terminal.svg
+    alt: Terminal session where tapeline captures webhook events, forwards them to localhost, and replays a failed delivery
+  actions:
+    - text: Get started
+      link: /start/getting-started/
+      icon: right-arrow
+    - text: CLI reference
+      link: /reference/cli/
+      icon: open-book
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import FaqSection from '../../components/FaqSection.astro';
+
+## Why Tapeline
+
+<CardGrid stagger>
+	<Card title="Capture everything" icon="approve-check">
+		Every request that reaches the listener is appended to a plain-text store
+		on your machine — headers, body, and timing. Nothing is uploaded anywhere.
+	</Card>
+	<Card title="Inspect the real payload" icon="magnifier">
+		`tapeline tail` streams captured events with method, path, event name, and
+		response status, and `--json` gives you the full request for close reading.
+	</Card>
+	<Card title="Replay until it passes" icon="rocket">
+		`tapeline replay` resends a captured event byte for byte — original
+		signature headers included — so you can fix a failing handler without
+		begging the provider for another delivery.
+	</Card>
+	<Card title="Script every step" icon="setting">
+		Stable exit codes, NDJSON export, and `--json` output make Tapeline easy
+		to wire into test scripts and CI smoke checks.
+	</Card>
+</CardGrid>
+
+## Start exploring
+
+<CardGrid>
+	<LinkCard
+		title="Getting started"
+		description="Install the CLI, capture your first event, and forward it to your app."
+		href="/start/getting-started/"
+	/>
+	<LinkCard
+		title="Configuration"
+		description="Every tapeline.toml option and environment variable, with defaults."
+		href="/start/configuration/"
+	/>
+	<LinkCard
+		title="Forward webhooks to your app"
+		description="Pair Tapeline with a tunnel and debug real provider events locally."
+		href="/guides/forward-webhooks/"
+	/>
+	<LinkCard
+		title="CLI reference"
+		description="Synopsis, options, and exit codes for every command."
+		href="/reference/cli/"
+	/>
+</CardGrid>
+
+## Docs that travel well
+
+These docs are written for people *and* for the tools that help them. Every
+page has a **Copy page as Markdown** button next to its title, and the same
+content is served as plain Markdown under `/raw/` — so you can paste clean
+context into an AI coding assistant instead of scraped HTML.
+
+```text title="Raw Markdown path convention"
+/reference/cli/        →  /raw/reference/cli.md
+/start/configuration/  →  /raw/start/configuration.md
+```
+
+<FaqSection />

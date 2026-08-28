@@ -1,0 +1,47 @@
+{
+  "company": {
+    "name": "Harborline",
+    "legalName": "Harborline Software Ltd",
+    "product": "Harborline",
+    "productDescription": "the contract and vendor workflow platform for finance and legal teams",
+    "headquarters": "Bristol, United Kingdom"
+  },
+  "page": {
+    "title": "Trust Centre",
+    "tagline": "Security, privacy and compliance at Harborline",
+    "intro": "Everything your security review needs on one page: our current compliance posture, the subprocessors we rely on, how customer data is handled, and a private channel for reporting security issues.",
+    "audienceNote": "Written for the people who fill in vendor questionnaires — procurement, security and legal. If something you need is missing, ask and we will add it.",
+    "ctaLabel": "Report a security issue",
+    "lastReviewedLabel": "Last reviewed",
+    "lastReviewed": "2026-08-03",
+    "metaDescription": "Harborline's compliance posture, subprocessor list, data-handling practices and private security disclosure channel — the page that answers a vendor security review."
+  },
+  "navigation": [
+    { "label": "Compliance", "href": "/#posture" },
+    { "label": "Subprocessors", "href": "/#subprocessors" },
+    { "label": "Data handling", "href": "/#data-handling" },
+    { "label": "Disclosure", "href": "/#disclosure" },
+    { "label": "FAQ", "href": "/#faq" }
+  ],
+  "securityContact": {
+    "email": "security@harborline.example",
+    "team": "Harborline security team",
+    "responseNote": "We acknowledge new reports within two business days."
+  },
+  "links": [
+    { "label": "Main website", "href": "https://harborline.example" },
+    { "label": "Status page", "href": "https://status.harborline.example" },
+    { "label": "Privacy policy", "href": "https://harborline.example/privacy" },
+    { "label": "Terms of service", "href": "https://harborline.example/terms" }
+  ],
+  "footer": {
+    "linksLabel": "Company",
+    "securityLabel": "Security contact",
+    "note": "This trust centre is reviewed quarterly by the Harborline security team. If anything here looks out of date, tell us at the security address above."
+  },
+  "notFound": {
+    "heading": "This page is not in the trust centre",
+    "lead": "The address may have changed or never existed — everything we publish lives on one page.",
+    "backLabel": "Back to the trust centre"
+  }
+}

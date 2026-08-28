@@ -1,0 +1,88 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--stroke-subtle);
+  border-radius: var(--radius);
+  min-width: 0;
+}
+
+.label {
+  font-family: var(--font-text);
+  color: var(--ink-secondary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.value {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.unit {
+  margin-left: 5px;
+  color: var(--ink-muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.deltaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  min-width: 0;
+}
+
+.deltaGood,
+.deltaBad {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.deltaGood {
+  color: var(--delta-good);
+}
+
+.deltaBad {
+  color: var(--delta-bad);
+}
+
+.deltaIcon {
+  flex: none;
+}
+
+.comparison {
+  color: var(--ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spark {
+  margin-top: 6px;
+}
+
+.sparkLine {
+  fill: none;
+  stroke: var(--spark);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sparkDot {
+  fill: var(--series-1);
+  stroke: var(--bg-surface);
+  stroke-width: 2;
+}

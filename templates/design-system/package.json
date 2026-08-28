@@ -1,0 +1,38 @@
+{
+  "name": "design-system",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build && cp dist/index.html dist/404.html",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.40",
+    "vue-router": "^5.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/eslint-config-typescript": "^14.9.0",
+    "@vue/tsconfig": "^0.9.1",
+    "eslint": "^10.7.0",
+    "eslint-plugin-vue": "~10.9.2",
+    "typescript": "~6.0.0",
+    "vite": "^8.1.5",
+    "vue-tsc": "^3.3.7"
+  },
+  "description": "A tiny design-system playground: flip component props, watch the live preview change, and copy the exact snippet that reproduces it.",
+  "keywords": [
+    "vue",
+    "typescript",
+    "design-system",
+    "component-playground",
+    "documentation"
+  ],
+  "license": "MIT"
+}

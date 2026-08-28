@@ -1,0 +1,37 @@
+{
+  "name": "quickstart",
+  "version": "0.0.0",
+  "private": true,
+  "description": "An open-source project quickstart page: install tabs per package manager, copy-to-clipboard commands, and the five-minute result shown up front.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.tsx",
+    "build": "tsc",
+    "lint": "eslint .",
+    "preview": "node dist/server.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "hono",
+    "typescript",
+    "quickstart",
+    "documentation",
+    "open-source",
+    "developer-landing"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@hono/node-server": "^2.1.1",
+    "hono": "^4.13.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.4.0",
+    "eslint": "^10.9.1",
+    "tsx": "^4.23.12",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0"
+  }
+}

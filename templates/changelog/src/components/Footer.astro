@@ -1,0 +1,53 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+import BrandMark from './BrandMark.astro';
+
+const site = rawSite as SiteContent;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="brand brand-invert" href="/">
+        <BrandMark size={26} />
+        <span class="brand-name">{site.name}</span>
+        <span class="brand-slash" aria-hidden="true">/</span>
+        <span class="brand-section">changelog</span>
+      </a>
+      <p>{site.footerNote}</p>
+    </div>
+    <nav class="footer-col" aria-label="Changelog">
+      <h2>Changelog</h2>
+      <ul role="list">
+        {
+          site.navigation.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Elsewhere">
+      <h2>Elsewhere</h2>
+      <ul role="list">
+        {
+          site.socials.map((item) => (
+            <li>
+              <a href={item.href} rel="noreferrer">
+                {item.label}
+                <span aria-hidden="true"> ↗</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-legal">
+    <p>© {year} {site.legalName}</p>
+    <p>{site.tagline}</p>
+  </div>
+</footer>

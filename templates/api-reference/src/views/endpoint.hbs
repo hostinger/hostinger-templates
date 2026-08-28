@@ -1,0 +1,141 @@
+{{> top}}
+    <div class="container endpoint-layout">
+      <aside class="docs-nav" aria-label="All endpoints">
+        <a class="docs-nav-back" href="/#endpoints">&larr; All endpoints</a>
+        {{#each docsNav}}
+          <p class="docs-nav-group">{{name}}</p>
+          <ul class="docs-nav-list">
+            {{#each endpoints}}
+              <li>
+                <a class="docs-nav-link{{#if active}} is-active{{/if}}" href="{{href}}" {{#if active}}aria-current="page"{{/if}}>
+                  <span class="method-mini {{methodClass}}">{{method}}</span>
+                  <span class="docs-nav-path mono">{{path}}</span>
+                </a>
+              </li>
+            {{/each}}
+          </ul>
+        {{/each}}
+      </aside>
+
+      <article class="endpoint-main">
+        <header class="endpoint-header">
+          <p class="endpoint-crumb">
+            <a href="/">Reference</a>
+            <span aria-hidden="true">/</span>
+            <span>{{endpoint.group}}</span>
+          </p>
+          <div class="endpoint-title">
+            <span class="method-badge {{methodClass}}">{{endpoint.method}}</span>
+            <h1 class="endpoint-path-title mono">{{{pathHtml}}}</h1>
+          </div>
+          <p class="endpoint-lead">{{endpoint.summary}}</p>
+          <p class="endpoint-desc">{{endpoint.description}}</p>
+          <a class="try-jump" href="#try-panel">Jump to the request builder &darr;</a>
+        </header>
+
+        {{#if paramDocGroups}}
+          <section class="params-section" aria-label="Parameters">
+            <h2>Parameters</h2>
+            {{#each paramDocGroups}}
+              <h3 class="param-group-title">{{legend}}</h3>
+              <ul class="param-list">
+                {{#each params}}
+                  <li class="param-row">
+                    <div class="param-head">
+                      <code class="param-name">{{name}}</code>
+                      <span class="param-type">{{typeLabel}}</span>
+                      {{#if required}}
+                        <span class="param-flag param-required">required</span>
+                      {{else}}
+                        <span class="param-flag param-optional">optional</span>
+                      {{/if}}
+                    </div>
+                    <p class="param-desc">{{description}}</p>
+                    {{#if enumValues}}
+                      <p class="param-enum">
+                        {{#each enumValues}}<code>{{this}}</code>{{/each}}
+                      </p>
+                    {{/if}}
+                    <p class="param-example">Example: <code>{{exampleLabel}}</code></p>
+                  </li>
+                {{/each}}
+              </ul>
+            {{/each}}
+          </section>
+        {{/if}}
+
+        <section class="response-section" aria-label="Response">
+          <h2>Response</h2>
+          <p class="response-lead">{{endpoint.responseDescription}}</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="dot dot-r" aria-hidden="true"></span>
+              <span class="dot dot-y" aria-hidden="true"></span>
+              <span class="dot dot-g" aria-hidden="true"></span>
+              <span class="terminal-title mono">200 &middot; application/json</span>
+            </div>
+            <pre class="terminal-body"><code class="code-json">{{{responseHtml}}}</code></pre>
+          </div>
+        </section>
+      </article>
+
+      <aside class="try-panel" id="try-panel" data-try-panel aria-label="Request builder">
+        <div class="try-card">
+          <h2 class="try-title">{{site.tryIt.title}}</h2>
+          {{#if fromUrl}}
+            <p class="restored-chip">Restored from shared link</p>
+          {{/if}}
+          <form class="try-form" method="get" action="">
+            {{#each formGroups}}
+              <fieldset class="try-fieldset">
+                <legend>{{legend}}</legend>
+                {{#each fields}}
+                  <div class="try-field">
+                    <label for="{{id}}">
+                      <span class="try-field-name mono">{{name}}</span>
+                      {{#if required}}<span class="req-star" title="Required">*</span>{{/if}}
+                    </label>
+                    {{#if isSelect}}
+                      <select id="{{id}}" name="{{name}}" data-param="{{name}}">
+                        {{#each options}}
+                          <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+                        {{/each}}
+                      </select>
+                    {{else}}
+                      <input
+                        type="text"
+                        id="{{id}}"
+                        name="{{name}}"
+                        value="{{value}}"
+                        placeholder="{{placeholder}}"
+                        data-param="{{name}}"
+                        {{#if isInteger}}inputmode="numeric"{{/if}}
+                        autocomplete="off"
+                        spellcheck="false"
+                      />
+                    {{/if}}
+                  </div>
+                {{/each}}
+              </fieldset>
+            {{/each}}
+            <button class="btn btn-ghost btn-update" type="submit">Update command</button>
+          </form>
+
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="dot dot-r" aria-hidden="true"></span>
+              <span class="dot dot-y" aria-hidden="true"></span>
+              <span class="dot dot-g" aria-hidden="true"></span>
+              <span class="terminal-title mono">terminal</span>
+              <button type="button" class="copy-btn" data-copy-target="#try-curl">Copy</button>
+            </div>
+            <pre class="terminal-body"><code id="try-curl" class="code-curl" data-curl-output>{{{curlHtml}}}</code></pre>
+          </div>
+          <p class="copy-status" data-copy-status aria-live="polite"></p>
+          <p class="try-note">{{site.tryIt.note}}</p>
+          <p class="try-share">{{site.tryIt.shareHint}}</p>
+        </div>
+        <script type="application/json" data-try-data>{{{tryDataJson}}}</script>
+      </aside>
+    </div>
+{{> bottom}}

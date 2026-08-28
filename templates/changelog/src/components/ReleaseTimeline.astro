@@ -1,0 +1,55 @@
+---
+import { render } from 'astro:content';
+import { releasePath, type ChangelogEntry } from '../utils/changelog';
+import { formatDate, formatIsoDay } from '../utils/format';
+import TagChips from './TagChips.astro';
+
+interface Props {
+  entries: ChangelogEntry[];
+}
+
+const { entries } = Astro.props;
+
+const rendered = await Promise.all(
+  entries.map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
+);
+---
+
+<ol class="timeline">
+  {
+    rendered.map(({ entry, Content }) => (
+      <li
+        class="release"
+        id={entry.id}
+        data-entry
+        data-date={entry.data.date.toISOString()}
+        data-tags={entry.data.tags.join(',')}
+      >
+        <div class="release-rail">
+          <time datetime={formatIsoDay(entry.data.date)}>{formatDate(entry.data.date)}</time>
+          <span class="version-chip">v{entry.data.version}</span>
+        </div>
+        <span class="timeline-node" aria-hidden="true"></span>
+        <article class="release-card">
+          <div class="release-meta">
+            <TagChips tags={entry.data.tags} />
+            <span class="new-badge" data-new-badge hidden>
+              New
+            </span>
+          </div>
+          <h2 class="release-title">
+            <a href={releasePath(entry)}>{entry.data.title}</a>
+          </h2>
+          <div class="release-body">
+            <Content />
+          </div>
+          <p class="release-permalink">
+            <a href={releasePath(entry)}>
+              Permalink<span aria-hidden="true"> →</span>
+            </a>
+          </p>
+        </article>
+      </li>
+    ))
+  }
+</ol>

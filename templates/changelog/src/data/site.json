@@ -1,0 +1,36 @@
+{
+  "name": "Relaycast",
+  "legalName": "Relaycast Labs, Inc.",
+  "tagline": "Reliable webhook delivery for product teams.",
+  "intro": "Every change that ships to Relaycast Cloud lands here first — new features, fixes, and the plumbing work in between. Filter what you care about, and when you come back we mark everything that shipped since your last visit.",
+  "navigation": [
+    { "label": "Releases", "href": "/#releases" },
+    { "label": "FAQ", "href": "/#faq" },
+    { "label": "RSS", "href": "/rss.xml" }
+  ],
+  "socials": [
+    { "label": "GitHub", "href": "https://github.com/relaycast-labs" },
+    { "label": "X", "href": "https://x.com/relaycasthq" },
+    { "label": "Bluesky", "href": "https://bsky.app/profile/relaycast.dev" }
+  ],
+  "faqIntro": "Short answers about how this changelog works and how to stay in the loop.",
+  "faqs": [
+    {
+      "question": "How often is this changelog updated?",
+      "answer": "Every user-facing change ships with an entry — typically two to four releases a month. Version numbers track the Relaycast platform release, so an entry tagged v2.19.0 covers the dashboard, API, and CLI changes that shipped together."
+    },
+    {
+      "question": "How does the “new since your last visit” marker work?",
+      "answer": "Your browser remembers when you last opened this page using localStorage — nothing is sent to us and no account is involved. On your next visit, releases published after that moment get a New badge and sit above a divider so you can catch up at a glance. Clearing site data resets the marker."
+    },
+    {
+      "question": "Can I subscribe to new releases?",
+      "answer": "Yes. The RSS feed at /rss.xml lists every entry with its version and tags — point your feed reader at it and release notes arrive as they are published."
+    },
+    {
+      "question": "Where do I report a bug or request a feature?",
+      "answer": "Open an issue in the public tracker on GitHub, or nudge us on X. Confirmed bugs are prioritized for the next patch release, and the fix is credited in its changelog entry."
+    }
+  ],
+  "footerNote": "Relaycast receives, retries, and replays your webhooks so your team doesn't have to page anyone about a missed event."
+}

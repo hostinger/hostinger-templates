@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "title": "Mynah — record your API once, replay it offline",
+    "description": "Mynah is an open-source record-and-replay proxy for HTTP APIs: capture real responses in one recording pass, commit them as plain JSON tapes, and replay them byte-for-byte offline."
+  },
+  "project": {
+    "name": "Mynah",
+    "binary": "mynah",
+    "version": "1.4.2",
+    "oneLiner": "Mynah sits in front of any HTTP API, records real responses to plain JSON tapes, and replays them byte-for-byte — on a plane, in CI, or two years from now.",
+    "licenseName": "MIT",
+    "repoUrl": "https://github.com/mynah-dev/mynah",
+    "docsUrl": "https://mynah.dev/docs"
+  },
+  "nav": [
+    { "label": "Install", "href": "#install" },
+    { "label": "Quickstart", "href": "#quickstart" },
+    { "label": "FAQ", "href": "#faq" },
+    { "label": "Docs", "href": "$docs" },
+    { "label": "GitHub", "href": "$repo" }
+  ],
+  "hero": {
+    "kicker": "Open-source record & replay proxy for HTTP APIs",
+    "headline": "Record your API once. Work offline forever.",
+    "quickstartCta": "Read the quickstart",
+    "githubCta": "View on GitHub",
+    "installLead": "Install it now",
+    "primaryInstallId": "npm"
+  },
+  "result": {
+    "eyebrow": "The payoff, up front",
+    "title": "In five minutes you'll have",
+    "items": [
+      {
+        "title": "A tapes/ directory of real responses",
+        "detail": "Every request your app made while recording, saved as readable JSON you can commit, diff and review."
+      },
+      {
+        "title": "Your app running fully offline",
+        "detail": "Point its base URL at localhost:9090 and keep building with zero network — the same bytes production sent."
+      },
+      {
+        "title": "Deterministic tests and demos",
+        "detail": "Replays never change under you, so flaky API-dependent tests and live-demo surprises stop."
+      },
+      {
+        "title": "Secrets scrubbed by default",
+        "detail": "Authorization, Cookie and Set-Cookie headers are redacted before anything touches disk."
+      }
+    ],
+    "terminal": {
+      "title": "~/shop — mynah replay",
+      "ariaLabel": "Terminal showing mynah replay serving three recorded API responses while fully offline",
+      "lines": [
+        { "kind": "cmd", "text": "mynah replay" },
+        { "kind": "info", "text": "▸ loaded 42 tapes from ./tapes" },
+        { "kind": "info", "text": "▸ replaying on localhost:9090" },
+        { "kind": "ok", "text": "GET  /v2/products        200  3ms  tape" },
+        { "kind": "ok", "text": "GET  /v2/products/42     200  2ms  tape" },
+        { "kind": "ok", "text": "POST /v2/checkout        201  4ms  tape" },
+        { "kind": "muted", "text": "offline — no request left this machine" }
+      ]
+    }
+  },
+  "install": {
+    "heading": "Install",
+    "sub": "One binary, no daemon, no account. Pick the package manager you already use.",
+    "tabsLabel": "Install method",
+    "methods": [
+      {
+        "id": "npm",
+        "label": "npm",
+        "command": "npm install -g mynah",
+        "note": "Installs the CLI globally. Requires Node.js 18 or newer."
+      },
+      {
+        "id": "homebrew",
+        "label": "Homebrew",
+        "command": "brew install mynah-dev/tap/mynah",
+        "note": "macOS and Linux. Ships a self-contained binary — Node.js not required."
+      },
+      {
+        "id": "curl",
+        "label": "curl",
+        "command": "curl -fsSL https://get.mynah.dev/install.sh | sh",
+        "note": "Installs the standalone binary to ~/.local/bin. The script is short — read it first if you like."
+      }
+    ],
+    "verifyLead": "Then check the install:"
+  },
+  "quickstart": {
+    "heading": "Quickstart",
+    "sub": "From zero to an offline copy of your API in five steps.",
+    "steps": [
+      {
+        "title": "Point Mynah at your API",
+        "command": "mynah init https://api.yourshop.dev",
+        "explanation": "Writes a commented mynah.toml with the upstream target, the proxy port (9090) and the tape directory."
+      },
+      {
+        "title": "Start recording",
+        "command": "mynah record",
+        "explanation": "Starts the proxy on localhost:9090 — every request is forwarded upstream and every response is written to tapes/ as pretty-printed JSON."
+      },
+      {
+        "title": "Run your app through the proxy",
+        "command": "BASE_URL=http://localhost:9090 npm run dev",
+        "explanation": "One environment variable, zero code changes — click through the flows you care about once and they are on tape."
+      },
+      {
+        "title": "Go offline",
+        "command": "mynah replay",
+        "explanation": "Serves the recorded tapes on the same port; requests without a tape get a 501 and the closest recorded route, so you know exactly what to re-record."
+      },
+      {
+        "title": "Commit the tapes",
+        "command": "git add tapes/ mynah.toml && git commit -m \"Record shop API\"",
+        "explanation": "Tapes are plain JSON, so every teammate and CI job now replays exactly the API you recorded."
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Questions, answered",
+    "sub": "The five things people ask before their first recording.",
+    "items": [
+      {
+        "question": "How is this different from hand-written mocks?",
+        "answer": "Mocks encode what you think the API returns. Tapes are what it actually returned — status codes, headers, pagination quirks and all — captured once and replayed byte-for-byte."
+      },
+      {
+        "question": "Do secrets end up in my tapes?",
+        "answer": "No. Authorization, Cookie and Set-Cookie headers are replaced with placeholders before a tape is written, and you can list any other header or JSON field under [redact] in mynah.toml."
+      },
+      {
+        "question": "What happens when a request has no tape?",
+        "answer": "In replay mode Mynah answers 501 with the method, the path and the closest recorded match, so you immediately know what to re-record. Pass --fallthrough to send unmatched requests to the real API instead."
+      },
+      {
+        "question": "Can I edit a tape by hand?",
+        "answer": "Yes. Tapes are pretty-printed JSON, one file per request — tweak a price or an error body in your editor and the next replay serves your edit."
+      },
+      {
+        "question": "Does it only work with Node.js?",
+        "answer": "No. Mynah is a plain HTTP proxy in front of your app, so anything that can change its API base URL can record and replay: Node, Python, Go, Rails, mobile emulators, even curl."
+      }
+    ]
+  },
+  "footer": {
+    "blurb": "Mynah is maintained in the open. Issues, tape ideas and pull requests are welcome — the whole proxy is a weekend read.",
+    "links": [
+      { "label": "GitHub", "href": "$repo" },
+      { "label": "Documentation", "href": "$docs" },
+      { "label": "Report an issue", "href": "$issues" }
+    ],
+    "finePrint": "MIT licensed. No telemetry, no accounts, no cloud."
+  },
+  "notFound": {
+    "title": "No tape for this route",
+    "message": "Nothing was ever recorded at this address. Head back to the quickstart — it only takes five minutes.",
+    "ctaLabel": "Back to the quickstart",
+    "terminal": {
+      "title": "mynah replay",
+      "ariaLabel": "Terminal showing mynah replay answering a request with 404, no tape recorded",
+      "lines": [
+        { "kind": "cmd", "text": "mynah replay" },
+        { "kind": "err", "text": "GET  /this-page    404  no tape" },
+        { "kind": "muted", "text": "hint: the closest recorded route is /" }
+      ]
+    }
+  }
+}

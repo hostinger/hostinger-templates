@@ -1,0 +1,89 @@
+---
+import { getCollection, render } from 'astro:content';
+import TagChips from '../../components/TagChips.astro';
+import rawSite from '../../data/site.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { SiteContent } from '../../types/content';
+import { releasePath, sortByDateDesc, type ChangelogEntry } from '../../utils/changelog';
+import { formatDate, formatIsoDay } from '../../utils/format';
+
+export async function getStaticPaths() {
+  const sorted = sortByDateDesc(await getCollection('changelog'));
+  return sorted.map((entry, index) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+      newer: sorted[index - 1] ?? null,
+      older: sorted[index + 1] ?? null,
+    },
+  }));
+}
+
+interface Props {
+  entry: ChangelogEntry;
+  newer: ChangelogEntry | null;
+  older: ChangelogEntry | null;
+}
+
+const site = rawSite as SiteContent;
+const { entry, newer, older } = Astro.props as Props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout
+  title={`${entry.data.title} — ${site.name} v${entry.data.version}`}
+  description={`${site.name} v${entry.data.version}, released ${formatDate(entry.data.date)}: ${entry.data.title}.`}
+>
+  <article class="release-page">
+    <div class="wrap-narrow">
+      <p class="back-link-row">
+        <a class="back-link" href="/#releases"><span aria-hidden="true">←</span> All releases</a>
+      </p>
+      <header class="release-page-head">
+        <div class="release-page-meta">
+          <time datetime={formatIsoDay(entry.data.date)}>{formatDate(entry.data.date)}</time>
+          <span class="version-chip">v{entry.data.version}</span>
+          <TagChips tags={entry.data.tags} />
+        </div>
+        <h1>{entry.data.title}</h1>
+      </header>
+      <div class="release-body release-page-body">
+        <Content />
+      </div>
+      <nav class="release-pager" aria-label="More releases">
+        {
+          newer ? (
+            <a class="pager-card" href={releasePath(newer)}>
+              <span class="pager-label">
+                <span aria-hidden="true">←</span> Newer release
+              </span>
+              <span class="pager-title">{newer.data.title}</span>
+              <span class="pager-version">v{newer.data.version}</span>
+            </a>
+          ) : (
+            <span class="pager-card pager-empty">
+              <span class="pager-label">You're on the latest release</span>
+              <span class="pager-title">Nothing newer yet</span>
+            </span>
+          )
+        }
+        {
+          older ? (
+            <a class="pager-card pager-next" href={releasePath(older)}>
+              <span class="pager-label">
+                Older release <span aria-hidden="true">→</span>
+              </span>
+              <span class="pager-title">{older.data.title}</span>
+              <span class="pager-version">v{older.data.version}</span>
+            </a>
+          ) : (
+            <span class="pager-card pager-empty pager-next">
+              <span class="pager-label">The very first public note</span>
+              <span class="pager-title">Nothing older</span>
+            </span>
+          )
+        }
+      </nav>
+    </div>
+  </article>
+</BaseLayout>

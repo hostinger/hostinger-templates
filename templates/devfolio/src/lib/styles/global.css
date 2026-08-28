@@ -1,0 +1,336 @@
+/*
+ * Devfolio — global foundation.
+ * CRT terminal theme: design tokens, base element styles, and the shared
+ * man-page / terminal utilities. Section-specific rules live in each
+ * component's scoped <style>.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+	/* Palette — true black, phosphor green, classic amber */
+	--color-bg: #000000;
+	--color-panel: #020a04;
+	--color-raised: #05130a;
+	--color-green: #37f26d;
+	--color-green-bright: #8dffae;
+	--color-text: #c3e6c8;
+	--color-muted: #7ba887;
+	--color-dim: #48704f;
+	--color-amber: #ffb000;
+	--color-error: #ff6d64;
+	--color-line: #14301c;
+	--color-line-strong: #275233;
+
+	/* Typography */
+	--font-mono: 'Space Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+	/* Effects */
+	--glow-green: 0 0 10px rgba(55, 242, 109, 0.35);
+	--glow-amber: 0 0 8px rgba(255, 176, 0, 0.45);
+
+	/* Shape and rhythm */
+	--radius-panel: 10px;
+	--radius-small: 4px;
+	--container-max: 1120px;
+
+	/* Room left for the sticky status bar when jumping to anchors */
+	--anchor-offset: 84px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: 1rem;
+	line-height: 1.65;
+	color: var(--color-text);
+	background:
+		radial-gradient(120% 55% at 50% 0%, rgba(55, 242, 109, 0.06), transparent 60%)
+		var(--color-bg);
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Very subtle CRT scanlines — static, so nothing moves for anyone. */
+body::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 60;
+	pointer-events: none;
+	background: repeating-linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0.22) 0,
+		rgba(0, 0, 0, 0.22) 1px,
+		transparent 1px,
+		transparent 3px
+	);
+	opacity: 0.35;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dt,
+dd,
+figure,
+pre {
+	margin: 0;
+}
+
+ol,
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	color: var(--color-green);
+	text-decoration: underline;
+	text-decoration-color: var(--color-dim);
+	text-underline-offset: 3px;
+}
+
+a:hover {
+	color: var(--color-green-bright);
+	text-decoration-color: currentColor;
+}
+
+button {
+	font: inherit;
+	cursor: pointer;
+}
+
+code,
+kbd,
+pre {
+	font-family: var(--font-mono);
+}
+
+kbd {
+	padding: 0 0.4em;
+	border: 1px solid var(--color-line-strong);
+	border-radius: var(--radius-small);
+	background: var(--color-raised);
+	color: var(--color-green);
+	font-size: 0.9em;
+}
+
+::selection {
+	background: var(--color-green);
+	color: #001b06;
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-amber);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+[id] {
+	scroll-margin-top: var(--anchor-offset);
+}
+
+/* Layout */
+
+.container {
+	width: min(100% - 2.5rem, var(--container-max));
+	margin-inline: auto;
+}
+
+@media (max-width: 480px) {
+	.container {
+		width: calc(100% - 1.75rem);
+	}
+}
+
+/* Buttons — bordered phosphor blocks that invert on hover */
+
+.btn {
+	display: inline-block;
+	padding: 0.6rem 1.15rem;
+	border: 1px solid var(--color-green);
+	border-radius: var(--radius-small);
+	background: transparent;
+	color: var(--color-green);
+	font-weight: 700;
+	font-size: 0.92rem;
+	text-decoration: none;
+	transition: background 140ms ease, color 140ms ease, box-shadow 140ms ease;
+}
+
+.btn:hover {
+	background: var(--color-green);
+	color: #001b06;
+	box-shadow: var(--glow-green);
+}
+
+.btn--amber {
+	border-color: var(--color-amber);
+	color: var(--color-amber);
+}
+
+.btn--amber:hover {
+	background: var(--color-amber);
+	color: #1c1200;
+	box-shadow: var(--glow-amber);
+}
+
+/* Man-page section scaffolding, shared by the résumé sections */
+
+.man-section {
+	padding-top: 3.4rem;
+}
+
+.section-cmd {
+	color: var(--color-dim);
+	font-size: 0.88rem;
+	overflow-wrap: anywhere;
+}
+
+.section-cmd .cmd {
+	color: var(--color-amber);
+}
+
+.man-section h2 {
+	margin-top: 0.35rem;
+	color: var(--color-green);
+	font-size: 1.2rem;
+	letter-spacing: 0.14em;
+	text-shadow: var(--glow-green);
+	text-transform: uppercase;
+}
+
+.man-body {
+	margin-top: 1.15rem;
+	padding-left: 2ch;
+}
+
+@media (max-width: 640px) {
+	.man-body {
+		padding-left: 0;
+	}
+}
+
+/* Small bordered tags for stacks and skills */
+
+.chip {
+	display: inline-block;
+	padding: 0.05rem 0.5rem;
+	border: 1px solid var(--color-line-strong);
+	border-radius: var(--radius-small);
+	color: var(--color-muted);
+	font-size: 0.78rem;
+	line-height: 1.5;
+	white-space: nowrap;
+}
+
+/* Bracketed terminal-style links: [label] */
+
+.bracket-link {
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.bracket-link::before {
+	content: '[';
+	color: var(--color-dim);
+}
+
+.bracket-link::after {
+	content: ']';
+	color: var(--color-dim);
+}
+
+.bracket-link:hover {
+	text-shadow: var(--glow-green);
+}
+
+/* Accessibility helpers */
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.skip-link {
+	position: fixed;
+	top: 0.75rem;
+	left: 0.75rem;
+	z-index: 100;
+	padding: 0.55rem 0.9rem;
+	border: 1px solid var(--color-amber);
+	border-radius: var(--radius-small);
+	background: var(--color-bg);
+	color: var(--color-amber);
+	font-weight: 700;
+	text-decoration: none;
+	transform: translateY(-300%);
+}
+
+.skip-link:focus-visible {
+	transform: none;
+}
+
+/* Print — recruiters get a plain black-on-white résumé */
+
+@media print {
+	:root {
+		--color-bg: #ffffff;
+		--color-panel: #ffffff;
+		--color-raised: #ffffff;
+		--color-green: #111111;
+		--color-green-bright: #111111;
+		--color-text: #1a1a1a;
+		--color-muted: #444444;
+		--color-dim: #666666;
+		--color-amber: #111111;
+		--color-line: #bbbbbb;
+		--color-line-strong: #999999;
+		--glow-green: none;
+		--glow-amber: none;
+	}
+
+	body {
+		background: #ffffff;
+	}
+
+	body::after {
+		display: none;
+	}
+
+	.man-section h2 {
+		text-shadow: none;
+	}
+}

@@ -1,0 +1,158 @@
+{
+	"meta": {
+		"siteTitle": "Devfolio",
+		"username": "june",
+		"hostname": "devfolio",
+		"tagline": "Sync engines, collaborative editors, and the boring reliability work in between. Explore ten years of it from the terminal — or just scroll, the whole résumé is plain HTML underneath.",
+		"synopsis": "june-park [--hire] [--freelance] [--coffee-chat]"
+	},
+	"name": "June Park",
+	"role": "Senior Full-Stack Engineer",
+	"location": "Berlin, Germany",
+	"summary": "I build web software that stays fast on hotel Wi-Fi and legible six months later. Ten years in, my favourite problems still live where the browser meets the backend: sync engines, collaborative editors, and the boring reliability work that makes products feel expensive.",
+	"about": [
+		"Currently at Fernweh Labs, where I lead the web side of a collaborative trip-planning editor used by around 300,000 travellers a month. Before that I spent three years keeping point-of-sale software selling through dropped connections at Kassenwerk, and three more at Studio Brandt & Co shipping agency work fast enough to survive any audit.",
+		"Outside work hours I maintain a small stable of open-source tools — a status-page generator, a Postgres migration linter — and answer more U-Bahn timetable questions than any hobby project justifies. Open to senior full-stack or platform roles in Berlin, or remote across the EU."
+	],
+	"email": "june@junepark.example",
+	"emailSubject": "Hello June — found your devfolio",
+	"contactLede": "The inbox is open — for roles, contract work, or U-Bahn timetable questions.",
+	"socials": [
+		{
+			"label": "GitHub",
+			"href": "https://github.com/junepark-dev"
+		},
+		{
+			"label": "LinkedIn",
+			"href": "https://www.linkedin.com/in/junepark-dev"
+		},
+		{
+			"label": "Bluesky",
+			"href": "https://bsky.app/profile/junepark.example"
+		}
+	],
+	"experience": [
+		{
+			"company": "Fernweh Labs",
+			"title": "Senior Full-Stack Engineer",
+			"start": "2022",
+			"end": "present",
+			"location": "Berlin",
+			"bullets": [
+				"Led the rebuild of the collaborative trip editor from a jQuery monolith to SvelteKit and TypeScript; p75 interaction latency dropped from 480 ms to 90 ms.",
+				"Designed the itinerary sync service (Fastify, PostgreSQL, Redis) that now carries 40,000 concurrent editing sessions in peak season without paging anyone.",
+				"Introduced contract tests and preview deployments; releases went from fortnightly to daily and rollbacks fell by two thirds.",
+				"Mentor two engineers and run the guild that owns the web performance budget."
+			]
+		},
+		{
+			"company": "Kassenwerk",
+			"title": "Full-Stack Engineer",
+			"start": "2019",
+			"end": "2022",
+			"location": "Berlin",
+			"bullets": [
+				"Built the offline-first order queue for a point-of-sale web app — IndexedDB plus background sync — so cafés kept selling through network drops.",
+				"Shipped the payout reconciliation dashboard used by 1,200 merchants a day; support tickets about missing payouts fell 35%.",
+				"Replaced REST polling with server-sent events on live order boards, roughly halving API traffic."
+			]
+		},
+		{
+			"company": "Studio Brandt & Co",
+			"title": "Frontend Developer",
+			"start": "2016",
+			"end": "2019",
+			"location": "Hamburg",
+			"bullets": [
+				"Delivered twenty-plus marketing and e-commerce sites; owned performance budgets (LCP under 2 s on throttled 3G) and accessibility sign-off.",
+				"Built the studio's internal component library, reused across a dozen client projects."
+			]
+		}
+	],
+	"projects": [
+		{
+			"name": "tidewatch",
+			"description": "Static status-page generator: point it at your health-check endpoints and it renders uptime history as a fast, dependency-free page.",
+			"stack": ["Go", "SQLite", "SvelteKit"],
+			"links": [
+				{
+					"label": "source",
+					"href": "https://github.com/junepark-dev/tidewatch"
+				},
+				{
+					"label": "demo",
+					"href": "https://tidewatch.junepark.example"
+				}
+			]
+		},
+		{
+			"name": "pgline",
+			"description": "CI linter for Postgres migrations that flags locking foot-guns — table rewrites, unindexed foreign keys — before they reach production.",
+			"stack": ["TypeScript", "Node.js"],
+			"links": [
+				{
+					"label": "source",
+					"href": "https://github.com/junepark-dev/pgline"
+				},
+				{
+					"label": "docs",
+					"href": "https://pgline.junepark.example"
+				}
+			]
+		},
+		{
+			"name": "shelfmark",
+			"description": "Self-hosted read-it-later app with full-text search and EPUB export; the whole library syncs as a single SQLite file.",
+			"stack": ["Node.js", "Fastify", "Svelte", "SQLite"],
+			"links": [
+				{
+					"label": "source",
+					"href": "https://github.com/junepark-dev/shelfmark"
+				}
+			]
+		},
+		{
+			"name": "ubahn-live",
+			"description": "Terminal dashboard for Berlin U-Bahn departures, because leaving the flat ninety seconds earlier matters.",
+			"stack": ["Go", "Bubble Tea"],
+			"links": [
+				{
+					"label": "source",
+					"href": "https://github.com/junepark-dev/ubahn-live"
+				}
+			]
+		}
+	],
+	"skills": [
+		{
+			"group": "languages",
+			"items": ["TypeScript", "JavaScript", "Go", "SQL", "Bash"]
+		},
+		{
+			"group": "frontend",
+			"items": ["Svelte & SvelteKit", "React", "HTML & modern CSS", "Accessibility (WCAG 2.2)", "Performance profiling"]
+		},
+		{
+			"group": "backend",
+			"items": ["Node.js", "Fastify", "PostgreSQL", "Redis", "SQLite", "REST & server-sent events"]
+		},
+		{
+			"group": "tooling",
+			"items": ["Docker", "GitHub Actions", "Terraform", "Grafana", "Playwright", "Vitest"]
+		}
+	],
+	"education": [
+		{
+			"school": "Technische Universität Berlin",
+			"program": "B.Sc. Computer Science",
+			"years": "2012 – 2016",
+			"note": "Thesis: CRDT-based collaborative editing over unreliable connections."
+		},
+		{
+			"school": "Recurse Center, New York",
+			"program": "Self-directed programming retreat",
+			"years": "2018",
+			"note": "Twelve weeks of compilers, generative ASCII art, and pair programming."
+		}
+	]
+}

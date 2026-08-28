@@ -1,0 +1,47 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.delivered {
+  background: var(--status-good-soft);
+  border-color: var(--status-good-border);
+  color: var(--status-good-text);
+}
+
+.delivered .dot {
+  background: var(--status-good);
+}
+
+.retrying {
+  background: var(--status-warn-soft);
+  border-color: var(--status-warn-border);
+  color: var(--status-warn-text);
+}
+
+.retrying .dot {
+  background: var(--status-warn);
+}
+
+.failed {
+  background: var(--status-critical-soft);
+  border-color: var(--status-critical-border);
+  color: var(--status-critical-text);
+}
+
+.failed .dot {
+  background: var(--status-critical);
+}

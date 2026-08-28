@@ -1,0 +1,24 @@
+{
+  "organization": {
+    "name": "Atlas Labs",
+    "slug": "atlas-labs-prod",
+    "plan": "Scale (annual)",
+    "region": "eu-central-1 · Frankfurt",
+    "dataRetention": "90 days",
+    "createdAt": "2023-11-02"
+  },
+  "profile": {
+    "name": "Dana Okafor",
+    "initials": "DO",
+    "email": "dana@atlaslabs.example",
+    "role": "Workspace admin",
+    "timezone": "UTC+02:00 · Europe/Vilnius",
+    "twoFactor": "Enabled · TOTP app"
+  },
+  "api": {
+    "publishableKey": "wr_pub_demo_4f8a2c1b9e77",
+    "signingSecret": "whsec_····························",
+    "apiVersion": "2026-06-01",
+    "environment": "Production"
+  }
+}

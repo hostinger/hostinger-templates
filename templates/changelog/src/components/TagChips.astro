@@ -1,0 +1,13 @@
+---
+import { TAG_LABELS, type Tag } from '../utils/filter';
+
+interface Props {
+  tags: readonly Tag[];
+}
+
+const { tags } = Astro.props;
+---
+
+<ul class="tag-list" role="list">
+  {tags.map((tag) => <li class={`tag tag-${tag}`}>{TAG_LABELS[tag]}</li>)}
+</ul>

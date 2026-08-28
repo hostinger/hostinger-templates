@@ -1,0 +1,179 @@
+{
+  "posture": {
+    "heading": "Compliance posture",
+    "intro": "Where we stand today, stated in words rather than badges. Each programme below is either audited, contractually covered or honestly marked as in progress — and the paperwork is available on request.",
+    "items": [
+      {
+        "id": "soc2",
+        "name": "SOC 2 Type II",
+        "status": "Report available under NDA",
+        "summary": "An independent auditor examines our security, availability and confidentiality controls every year. The current report covers the twelve months to March 2026. Request it through the disclosure form below or from your account manager — a mutual NDA applies."
+      },
+      {
+        "id": "gdpr",
+        "name": "GDPR",
+        "status": "DPA available",
+        "summary": "We act as a processor for customer content. Our standard data processing agreement includes the EU Standard Contractual Clauses and the UK Addendum, and stays aligned with the subprocessor list on this page. Countersigned copies usually come back within two business days."
+      },
+      {
+        "id": "iso27001",
+        "name": "ISO 27001",
+        "status": "Certification in progress",
+        "summary": "Our information security management system follows ISO 27001:2022 and the stage 1 audit is complete. We expect certification in the first half of 2027 and will publish the certificate number here once issued — until then we make no certification claim."
+      }
+    ]
+  },
+  "subprocessors": {
+    "heading": "Subprocessors",
+    "intro": "Third parties that may process customer data on our behalf. We give customers thirty days' written notice before adding or replacing a subprocessor, with the right to object in the DPA.",
+    "lastUpdatedLabel": "Last updated",
+    "lastUpdated": "2026-07-14",
+    "columns": {
+      "name": "Subprocessor",
+      "purpose": "Purpose",
+      "region": "Region"
+    },
+    "items": [
+      {
+        "name": "Amazon Web Services",
+        "purpose": "Application hosting, storage and managed databases",
+        "region": "EU (Ireland), backups in EU (Frankfurt)"
+      },
+      {
+        "name": "Cloudflare",
+        "purpose": "Content delivery, DNS and DDoS protection",
+        "region": "Global edge network"
+      },
+      {
+        "name": "Postmark",
+        "purpose": "Transactional email delivery",
+        "region": "United States"
+      },
+      {
+        "name": "Stripe",
+        "purpose": "Payment processing — cardholder data never touches our systems",
+        "region": "United States / EU"
+      },
+      {
+        "name": "Datadog",
+        "purpose": "Infrastructure monitoring, logging and alerting",
+        "region": "EU (Germany)"
+      },
+      {
+        "name": "Plain",
+        "purpose": "Customer support conversations",
+        "region": "EU (Ireland)"
+      }
+    ]
+  },
+  "dataHandling": {
+    "heading": "How we handle customer data",
+    "intro": "The short version of our data-handling practices. The full detail lives in the DPA and the SOC 2 report — both available through the disclosure form below.",
+    "items": [
+      {
+        "id": "encryption",
+        "icon": "lock",
+        "title": "Encryption",
+        "body": "Data in transit is protected with TLS 1.2 or newer; data at rest with AES-256. Keys live in a managed key management service, rotate automatically and are never stored alongside the data they protect."
+      },
+      {
+        "id": "retention",
+        "icon": "clock",
+        "title": "Retention and deletion",
+        "body": "Customer content is kept for as long as your contract runs. After termination we delete it from production within 30 days and from encrypted backups within 90 days — sooner on written request."
+      },
+      {
+        "id": "access",
+        "icon": "key",
+        "title": "Access to your data",
+        "body": "Production access is limited to a small on-call group behind single sign-on and hardware-key MFA, granted just-in-time and fully logged. Support engineers see customer content only with your written consent."
+      }
+    ]
+  },
+  "disclosure": {
+    "heading": "Report a security issue",
+    "intro": "Found a vulnerability, or have a security question your questionnaire does not cover? Use this private channel. We read every report and will not pursue good-faith research that respects user privacy and gives us reasonable time to respond.",
+    "formNote": "This form transmits nothing by itself — no mail service is connected to this page. Submitting prepares your report as an email to our security team, which you then send from your own mail client.",
+    "expectationsHeading": "What to expect",
+    "expectations": [
+      "We acknowledge new reports within two business days.",
+      "We keep you updated while we investigate and fix.",
+      "We ask that you avoid accessing other customers' data and give us time to remediate before any public disclosure."
+    ],
+    "form": {
+      "emailLabel": "Your email",
+      "emailOptionalTag": "optional",
+      "emailHint": "Used only to reply to you. Leave blank to report anonymously.",
+      "categoryLabel": "Category",
+      "categoryPlaceholder": "Choose a category…",
+      "descriptionLabel": "What did you find?",
+      "descriptionHint": "Steps to reproduce, affected URLs or a plain description — at least 20 characters. Please do not include real customer data.",
+      "submitLabel": "Prepare report",
+      "directEmailLead": "Prefer plain email? Write directly to",
+      "categories": [
+        { "id": "vulnerability", "label": "Security vulnerability" },
+        { "id": "privacy", "label": "Privacy or data-handling question" },
+        { "id": "documents", "label": "Document request (SOC 2 report, DPA)" },
+        { "id": "subprocessors", "label": "Subprocessor question" },
+        { "id": "other", "label": "Other security matter" }
+      ]
+    },
+    "validation": {
+      "errorSummaryHeading": "The report is not ready yet",
+      "errorSummaryLead": "Fix the following before preparing the report:",
+      "emailInvalid": "That does not look like an email address — correct it or leave the field blank.",
+      "categoryMissing": "Choose the category that fits best.",
+      "descriptionMissing": "Describe the issue so the team can act on it.",
+      "descriptionTooShort": "A little more detail, please — at least 20 characters.",
+      "descriptionTooLong": "Please keep the description under 4,000 characters."
+    },
+    "fallback": {
+      "heading": "Your report has not been sent",
+      "lead": "No mail service is connected to this page, so nothing was transmitted when you pressed submit. Your report exists only in this browser tab — to deliver it, email it to the security team using either option below.",
+      "toLabel": "To",
+      "subjectLabel": "Subject",
+      "mailtoCta": "Open a prefilled email",
+      "copyCta": "Copy report text",
+      "copiedLabel": "Copied",
+      "copyHint": "Or copy the report below and paste it into a message to",
+      "reportRegionLabel": "Prepared report text",
+      "truncationNote": "The prefilled email carries a shortened description to stay within mail-client limits — paste the full text from the box below before sending.",
+      "anonymousReporter": "Anonymous — no reply address given",
+      "backLabel": "Back to the trust centre"
+    },
+    "reportLabels": {
+      "subjectPrefix": "Security disclosure",
+      "title": "Security disclosure report",
+      "category": "Category",
+      "reporter": "Reporter",
+      "prepared": "Prepared",
+      "body": "Report"
+    }
+  },
+  "faqs": {
+    "heading": "Frequently asked questions",
+    "intro": "The questions vendor reviews ask most often. If yours is not here, send it through the disclosure form and we will answer — and usually add it.",
+    "items": [
+      {
+        "question": "Can we see your SOC 2 report?",
+        "answer": "Yes. The current SOC 2 Type II report is available under a mutual NDA — request it through the disclosure form on this page or from your account manager, and we will usually turn it around within two business days."
+      },
+      {
+        "question": "Will you sign our DPA, or do you have your own?",
+        "answer": "We offer a standard data processing agreement that includes the EU Standard Contractual Clauses and the UK Addendum, kept aligned with the subprocessor list published here. If your legal team needs changes, send the redline to the security address on this page."
+      },
+      {
+        "question": "Where is our data hosted?",
+        "answer": "Production runs on AWS in the EU (Ireland) region, with encrypted backups in EU (Frankfurt). Customer content stays in those regions; a small number of subprocessors listed above process limited data elsewhere, for example transactional email delivery in the United States."
+      },
+      {
+        "question": "How do you handle vulnerability reports?",
+        "answer": "Report privately through the disclosure form below or by email to the security address shown on this page. We acknowledge within two business days, keep you updated while we fix, and do not pursue good-faith researchers who respect user privacy and give us reasonable time to respond."
+      },
+      {
+        "question": "Do you support single sign-on?",
+        "answer": "Yes — SAML 2.0 single sign-on and SCIM provisioning are included on Business and Enterprise plans, with MFA enforcement available for members who sign in with a password."
+      }
+    ]
+  }
+}

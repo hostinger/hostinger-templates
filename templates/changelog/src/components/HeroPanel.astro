@@ -1,0 +1,41 @@
+---
+/**
+ * Purely decorative terminal panel shown next to the hero copy on wide
+ * screens. Edit the rows to match your product's flavor, or delete the
+ * component (and its usage in Hero.astro) for a plain typographic hero.
+ */
+interface PanelRow {
+  status: string;
+  ok: boolean;
+  path: string;
+  note: string;
+}
+
+const rows: PanelRow[] = [
+  { status: '200', ok: true, path: 'POST /hooks/orders', note: '12 ms' },
+  { status: '200', ok: true, path: 'POST /hooks/orders', note: '9 ms' },
+  { status: '429', ok: false, path: 'POST /hooks/billing', note: 'retry #3' },
+  { status: '200', ok: true, path: 'POST /hooks/billing', note: '31 ms' },
+  { status: '200', ok: true, path: 'POST /hooks/shipping', note: '14 ms' },
+];
+---
+
+<div class="hero-panel" aria-hidden="true">
+  <div class="hero-panel-bar">
+    <span class="hero-panel-dot"></span>
+    <span class="hero-panel-dot"></span>
+    <span class="hero-panel-dot"></span>
+    <span class="hero-panel-title">relaycast tail · checkout-live</span>
+  </div>
+  <div class="hero-panel-body">
+    {
+      rows.map((row) => (
+        <p class="hero-panel-row">
+          <span class={row.ok ? 'panel-ok' : 'panel-warn'}>{row.status}</span>
+          <span class="panel-path">{row.path}</span>
+          <span class="panel-note">{row.note}</span>
+        </p>
+      ))
+    }
+  </div>
+</div>

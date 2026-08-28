@@ -1,0 +1,35 @@
+---
+import type { Faq } from '../types/content';
+
+interface Props {
+  intro: string;
+  faqs: Faq[];
+}
+
+const { intro, faqs } = Astro.props;
+---
+
+<section class="faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <div class="faq-head">
+      <p class="eyebrow">FAQ</p>
+      <h2 id="faq-title">How this changelog works</h2>
+      <p class="faq-intro">{intro}</p>
+    </div>
+    <div class="faq-list">
+      {
+        faqs.map((faq, index) => (
+          <details open={index === 0}>
+            <summary>
+              {faq.question}
+              <span class="faq-icon" aria-hidden="true">
+                +
+              </span>
+            </summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

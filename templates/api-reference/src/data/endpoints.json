@@ -1,0 +1,204 @@
+[
+  {
+    "slug": "list-deliveries",
+    "method": "GET",
+    "path": "/v1/deliveries",
+    "group": "Deliveries",
+    "summary": "List delivery attempts across all subscriptions, newest first.",
+    "description": "Returns the delivery log: one record per delivery attempt, including the event type, outcome, response code from the receiving endpoint, and when the next retry is scheduled. Filter by subscription, status, or time window to trace exactly what Hooklane sent and when.",
+    "params": [
+      {
+        "name": "subscription_id",
+        "in": "query",
+        "type": "string",
+        "required": false,
+        "description": "Only return deliveries for this subscription.",
+        "example": "sub_9f2c1a"
+      },
+      {
+        "name": "status",
+        "in": "query",
+        "type": "string",
+        "required": false,
+        "description": "Filter by delivery outcome.",
+        "example": "failed",
+        "enum": ["queued", "delivered", "failed"]
+      },
+      {
+        "name": "limit",
+        "in": "query",
+        "type": "integer",
+        "required": false,
+        "description": "Maximum number of deliveries to return, between 1 and 100. Defaults to 20.",
+        "example": 25
+      },
+      {
+        "name": "since",
+        "in": "query",
+        "type": "string",
+        "required": false,
+        "description": "Only deliveries created at or after this ISO 8601 timestamp.",
+        "example": "2026-08-01T00:00:00Z"
+      }
+    ],
+    "responseDescription": "A list object wrapping delivery records, newest first. `has_more` signals another page; pass the last record's `created_at` as `since` to walk forward.",
+    "responseExample": {
+      "object": "list",
+      "url": "/v1/deliveries",
+      "has_more": false,
+      "data": [
+        {
+          "id": "dlv_7Hf3kQwR",
+          "object": "delivery",
+          "subscription_id": "sub_9f2c1a",
+          "event": "invoice.payment_failed",
+          "status": "failed",
+          "attempts": 3,
+          "response_code": 503,
+          "next_retry_at": "2026-08-28T16:40:00Z",
+          "created_at": "2026-08-28T14:05:11Z"
+        },
+        {
+          "id": "dlv_2xQp9mTa",
+          "object": "delivery",
+          "subscription_id": "sub_9f2c1a",
+          "event": "invoice.paid",
+          "status": "delivered",
+          "attempts": 1,
+          "response_code": 200,
+          "next_retry_at": null,
+          "created_at": "2026-08-28T13:58:02Z"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "create-subscription",
+    "method": "POST",
+    "path": "/v1/subscriptions",
+    "group": "Subscriptions",
+    "summary": "Create a subscription that delivers chosen events to your endpoint.",
+    "description": "Registers an HTTPS endpoint to receive signed event payloads. The response includes the subscription's signing secret — store it, because it is only returned once. Deliveries begin with the next matching event.",
+    "params": [
+      {
+        "name": "url",
+        "in": "body",
+        "type": "string",
+        "required": true,
+        "description": "HTTPS endpoint that receives signed event payloads. Must respond with a 2xx within 10 seconds.",
+        "example": "https://example.com/hooks/hooklane"
+      },
+      {
+        "name": "events",
+        "in": "body",
+        "type": "array",
+        "required": true,
+        "description": "Event types to deliver, as a comma-separated list. Use * to subscribe to every event.",
+        "example": ["invoice.paid", "invoice.payment_failed"]
+      },
+      {
+        "name": "description",
+        "in": "body",
+        "type": "string",
+        "required": false,
+        "description": "Internal label shown in the dashboard and the delivery log.",
+        "example": "Production billing endpoint"
+      },
+      {
+        "name": "active",
+        "in": "body",
+        "type": "boolean",
+        "required": false,
+        "description": "Set to false to create the subscription paused; no deliveries are attempted until it is activated.",
+        "example": true
+      }
+    ],
+    "responseDescription": "The new subscription. `secret` is the signing key for the `X-Hooklane-Signature` header and is only included in this response.",
+    "responseExample": {
+      "id": "sub_9f2c1a",
+      "object": "subscription",
+      "url": "https://example.com/hooks/hooklane",
+      "events": ["invoice.paid", "invoice.payment_failed"],
+      "description": "Production billing endpoint",
+      "active": true,
+      "secret": "whsec_Zr8kP2mQ4tVxCn6b",
+      "created_at": "2026-08-28T09:12:44Z"
+    }
+  },
+  {
+    "slug": "update-subscription",
+    "method": "PUT",
+    "path": "/v1/subscriptions/{subscription_id}",
+    "group": "Subscriptions",
+    "summary": "Update a subscription's endpoint, events, or active state.",
+    "description": "Changes take effect for the next delivery; attempts already queued keep the settings they were created with. Omitted fields keep their current value, so send only what you want to change. Pausing with active: false stops new deliveries but keeps the delivery log intact.",
+    "params": [
+      {
+        "name": "subscription_id",
+        "in": "path",
+        "type": "string",
+        "required": true,
+        "description": "Identifier of the subscription to update, from the create response or the dashboard.",
+        "example": "sub_9f2c1a"
+      },
+      {
+        "name": "url",
+        "in": "body",
+        "type": "string",
+        "required": false,
+        "description": "New HTTPS endpoint for future deliveries. The signing secret does not change.",
+        "example": "https://example.com/hooks/hooklane-eu"
+      },
+      {
+        "name": "events",
+        "in": "body",
+        "type": "array",
+        "required": false,
+        "description": "Replacement list of event types, comma-separated. This replaces the whole list — include every event you still want.",
+        "example": ["invoice.paid", "invoice.payment_failed", "invoice.refunded"]
+      },
+      {
+        "name": "active",
+        "in": "body",
+        "type": "boolean",
+        "required": false,
+        "description": "Pause (false) or resume (true) deliveries for this subscription.",
+        "example": false
+      }
+    ],
+    "responseDescription": "The full subscription with the updated fields applied. The signing secret is never returned again — only `create` responds with it.",
+    "responseExample": {
+      "id": "sub_9f2c1a",
+      "object": "subscription",
+      "url": "https://example.com/hooks/hooklane-eu",
+      "events": ["invoice.paid", "invoice.payment_failed", "invoice.refunded"],
+      "description": "Production billing endpoint",
+      "active": false,
+      "created_at": "2026-08-28T09:12:44Z"
+    }
+  },
+  {
+    "slug": "delete-subscription",
+    "method": "DELETE",
+    "path": "/v1/subscriptions/{subscription_id}",
+    "group": "Subscriptions",
+    "summary": "Delete a subscription and stop all future deliveries.",
+    "description": "Deletion is immediate and permanent: queued retries are cancelled and the signing secret is invalidated. The delivery log for the subscription remains readable through GET /v1/deliveries. To stop deliveries temporarily, update the subscription with active: false instead.",
+    "params": [
+      {
+        "name": "subscription_id",
+        "in": "path",
+        "type": "string",
+        "required": true,
+        "description": "Identifier of the subscription to delete.",
+        "example": "sub_9f2c1a"
+      }
+    ],
+    "responseDescription": "A confirmation object. Deleting an already-deleted subscription returns 404.",
+    "responseExample": {
+      "id": "sub_9f2c1a",
+      "object": "subscription",
+      "deleted": true
+    }
+  }
+]

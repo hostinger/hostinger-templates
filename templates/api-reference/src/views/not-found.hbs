@@ -1,0 +1,32 @@
+{{> top}}
+    <section class="section notfound">
+      <div class="container narrow">
+        <p class="notfound-code mono" aria-hidden="true">404</p>
+        <h1>That route is not in this reference</h1>
+        <div class="terminal notfound-terminal">
+          <div class="terminal-bar">
+            <span class="dot dot-r" aria-hidden="true"></span>
+            <span class="dot dot-y" aria-hidden="true"></span>
+            <span class="dot dot-g" aria-hidden="true"></span>
+            <span class="terminal-title mono">404 &middot; application/json</span>
+          </div>
+          <pre class="terminal-body"><code class="code-curl">{{{notFound.commandHtml}}}
+
+{{{notFound.responseHtml}}}</code></pre>
+        </div>
+        <h2 class="notfound-subtitle">Documented endpoints</h2>
+        <ul class="endpoint-list">
+          {{#each notFound.endpoints}}
+            <li>
+              <a class="endpoint-row" href="{{href}}">
+                <span class="method-badge {{methodClass}}">{{method}}</span>
+                <code class="endpoint-path">{{path}}</code>
+                <span class="endpoint-summary">{{summary}}</span>
+                <span class="endpoint-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </section>
+{{> bottom}}

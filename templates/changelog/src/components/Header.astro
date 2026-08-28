@@ -1,0 +1,30 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+import BrandMark from './BrandMark.astro';
+
+const site = rawSite as SiteContent;
+const primarySocial = site.socials[0];
+---
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="/">
+      <BrandMark />
+      <span class="brand-name">{site.name}</span>
+      <span class="brand-slash" aria-hidden="true">/</span>
+      <span class="brand-section">changelog</span>
+    </a>
+    <nav aria-label="Site">
+      {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+      {
+        primarySocial && (
+          <a class="nav-external" href={primarySocial.href} rel="noreferrer">
+            {primarySocial.label}
+            <span aria-hidden="true"> ↗</span>
+          </a>
+        )
+      }
+    </nav>
+  </div>
+</header>

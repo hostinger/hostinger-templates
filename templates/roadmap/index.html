@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ site.name }} roadmap — {{ site.tagline }}</title>
+    <meta name="description" content="{{ site.metaDescription }}" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="src/styles/main.css" />
+    <script type="application/ld+json">
+      {{{ faqJsonLd }}}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#board">{{ site.skipLabel }}</a>
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 28 28" fill="none">
+              <rect x="3" y="6" width="6.4" height="12" rx="2.2" fill="#34d399" />
+              <rect x="10.8" y="6" width="6.4" height="16.5" rx="2.2" fill="#38bdf8" />
+              <rect x="18.6" y="6" width="6.4" height="8.5" rx="2.2" fill="#a78bfa" />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">{{ site.name }}</span>
+            <span class="brand-tagline">{{ site.tagline }}</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Site">
+          <each loop="link in site.navigation">
+            <a href="{{ link.href }}">{{ link.label }}</a>
+          </each>
+        </nav>
+        <a class="button button-suggest" href="{{ suggestHref }}">
+          <svg viewBox="0 0 14 14" aria-hidden="true">
+            <path
+              d="M7 1.4v11.2M1.4 7h11.2"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span>{{ site.suggest.buttonLabel }}</span>
+        </a>
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="section-inner hero-inner">
+          <div class="hero-copy">
+            <p class="kicker">
+              <span class="kicker-dot" aria-hidden="true"></span>{{ site.hero.kicker }}
+            </p>
+            <h1 id="hero-title">{{ site.hero.title }}</h1>
+            <p class="hero-lede">{{ site.hero.lede }}</p>
+          </div>
+          <div class="hero-note">
+            <p class="hero-note-title">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <rect
+                  x="4.2"
+                  y="1.6"
+                  width="7.6"
+                  height="12.8"
+                  rx="1.8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <circle cx="8" cy="11.4" r="1" fill="currentColor" />
+              </svg>
+              {{ site.hero.noteTitle }}
+            </p>
+            <p class="hero-note-body">{{ site.hero.note }}</p>
+          </div>
+        </div>
+      </section>
+      <section class="board-section" id="board" aria-labelledby="board-title">
+        <div class="section-inner">
+          <div class="section-head board-head">
+            <div>
+              <p class="kicker">{{ site.board.kicker }}</p>
+              <h2 id="board-title">{{ site.board.title }}</h2>
+            </div>
+            <p class="section-note">{{ site.board.note }}</p>
+          </div>
+          <noscript>
+            <p class="noscript-note">{{ site.board.noscriptNote }}</p>
+          </noscript>
+          <div class="board-columns">
+            <each loop="column in columns">
+              <section class="board-column column-{{ column.id }}" aria-labelledby="column-{{ column.id }}-title">
+                <header class="column-head">
+                  <span class="column-dot" aria-hidden="true"></span>
+                  <h3 id="column-{{ column.id }}-title">{{ column.label }}</h3>
+                  <span class="column-count">{{ column.itemCountLabel }}</span>
+                </header>
+                <p class="column-desc">{{ column.description }}</p>
+                <ol class="column-items" role="list">
+                  <each loop="item in column.items">
+                    <li class="board-card">
+                      <div class="card-top">
+                        <h4 class="card-title">{{ item.title }}</h4>
+                        <button
+                          type="button"
+                          class="vote-pill"
+                          data-item="{{ item.id }}"
+                          aria-pressed="false"
+                          aria-label="{{ item.voteLabel }}"
+                          disabled
+                        >
+                          <svg class="vote-icon vote-icon-up" viewBox="0 0 12 12" aria-hidden="true">
+                            <path
+                              d="M2.4 7.6 6 4l3.6 3.6"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                          <svg class="vote-icon vote-icon-check" viewBox="0 0 12 12" aria-hidden="true">
+                            <path
+                              d="M2 6.4 4.8 9 10 3.4"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                          <span class="vote-count">{{ item.baseVotes }}</span>
+                          <span class="vote-flag">{{ site.board.votedFlag }}</span>
+                        </button>
+                      </div>
+                      <p class="card-desc">{{ item.description }}</p>
+                      <ul class="card-tags" role="list">
+                        <each loop="tag in item.tags">
+                          <li class="tag">{{ tag }}</li>
+                        </each>
+                      </ul>
+                    </li>
+                  </each>
+                </ol>
+              </section>
+            </each>
+          </div>
+        </div>
+      </section>
+      <section class="how-section" id="how-it-works" aria-labelledby="how-title">
+        <div class="section-inner">
+          <div class="section-head">
+            <p class="kicker">{{ site.howItWorks.kicker }}</p>
+            <h2 id="how-title">{{ site.howItWorks.title }}</h2>
+          </div>
+          <ol class="how-steps" role="list">
+            <each loop="step, index in site.howItWorks.steps">
+              <li class="how-step how-step-{{ index + 1 }}">
+                <span class="how-num" aria-hidden="true">0{{ index + 1 }}</span>
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.body }}</p>
+              </li>
+            </each>
+          </ol>
+        </div>
+      </section>
+      <section class="faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="section-inner">
+          <div class="section-head">
+            <p class="kicker">{{ site.faq.kicker }}</p>
+            <h2 id="faq-title">{{ site.faq.title }}</h2>
+          </div>
+          <div class="faq-list">
+            <each loop="item in site.faq.items">
+              <details class="faq-item">
+                <summary>
+                  {{ item.question }}
+                  <span class="faq-marker" aria-hidden="true">+</span>
+                </summary>
+                <p>{{ item.answer }}</p>
+              </details>
+            </each>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="section-inner footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 28 28" fill="none">
+              <rect x="3" y="6" width="6.4" height="12" rx="2.2" fill="#34d399" />
+              <rect x="10.8" y="6" width="6.4" height="16.5" rx="2.2" fill="#38bdf8" />
+              <rect x="18.6" y="6" width="6.4" height="8.5" rx="2.2" fill="#a78bfa" />
+            </svg>
+          </span>
+          <div>
+            <p class="footer-name">{{ site.name }}</p>
+            <p class="footer-line">{{ site.footer.line }}</p>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <p class="footer-email-lead">{{ site.footer.emailLead }}</p>
+          <a class="footer-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <each loop="link in site.navigation">
+            <a href="{{ link.href }}">{{ link.label }}</a>
+          </each>
+        </nav>
+      </div>
+      <div class="footer-small">
+        <div class="section-inner">
+          <p>{{ site.footer.smallPrint }}</p>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="src/main.ts"></script>
+  </body>
+</html>

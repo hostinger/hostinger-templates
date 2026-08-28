@@ -1,0 +1,119 @@
+{
+  "apiName": "Hooklane",
+  "productTagline": "Webhook delivery you can audit",
+  "heading": "Send events. Prove they arrived.",
+  "intro": "Hooklane sits between your product's events and your customers' endpoints: subscriptions, signed deliveries, automatic retries with backoff, and a delivery log you can query. This reference documents the full v1 surface — four endpoints, JSON over HTTPS, no SDK required.",
+  "metaDescription": "Reference documentation for the Hooklane v1 API: manage webhook subscriptions, query the delivery log, and build every request as a copyable curl command.",
+  "baseUrl": "https://api.hooklane.example",
+  "apiVersion": "v1",
+  "auth": {
+    "headerName": "Authorization",
+    "scheme": "Bearer",
+    "tokenPlaceholder": "$HOOKLANE_API_KEY",
+    "intro": "Every request is authenticated with a secret API key sent in the Authorization header. Keys are scoped per environment: hk_live_ keys touch production subscriptions, hk_test_ keys only ever deliver to test endpoints.",
+    "note": "Examples keep the key as a $HOOKLANE_API_KEY shell variable — export it once and every copied command works as-is. Your key stays in your terminal: this reference never asks for it and never sends a request.",
+    "exportHint": "export HOOKLANE_API_KEY=\"hk_test_your_key_here\""
+  },
+  "sections": {
+    "quickstart": {
+      "title": "First request",
+      "caption": "Assembled by this reference — nothing runs in the browser."
+    },
+    "endpoints": {
+      "title": "Endpoints",
+      "lead": "Four calls cover the surface: read the delivery log, then create, update, or delete subscriptions. Every page below has a request builder wired to the parameter list."
+    },
+    "authentication": {
+      "title": "Authentication"
+    },
+    "howItWorks": {
+      "title": "How the request builder works",
+      "steps": [
+        {
+          "title": "Pick an endpoint",
+          "text": "Each page documents one call: every parameter with its type and an honest example, plus the exact response shape."
+        },
+        {
+          "title": "Fill in the form",
+          "text": "The curl command rewrites itself as you type — correct method, headers, query string, and JSON body, with shell quoting handled for you."
+        },
+        {
+          "title": "Copy and run it",
+          "text": "The copy button grabs exactly what you see. Nothing is sent from the page — the request runs in your terminal, on your keys."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Questions, answered",
+      "lead": "The short version of what developer support gets asked most."
+    },
+    "contact": {
+      "title": "Still stuck?"
+    }
+  },
+  "tryIt": {
+    "title": "Build this request",
+    "note": "This panel only assembles the command. Nothing is sent from this page — copy it and run it in your own terminal.",
+    "shareHint": "The page URL tracks the form, so a filled example can be shared as a link."
+  },
+  "navigation": [
+    {
+      "label": "Endpoints",
+      "href": "/#endpoints"
+    },
+    {
+      "label": "Authentication",
+      "href": "/#authentication"
+    },
+    {
+      "label": "FAQ",
+      "href": "/#faq"
+    }
+  ],
+  "contact": {
+    "teamName": "Hooklane developer support",
+    "email": "devs@hooklane.example",
+    "note": "Stuck on a delivery you can't explain? Send the delivery id and we'll trace it."
+  },
+  "footerLinks": [
+    {
+      "label": "Endpoint index",
+      "href": "/#endpoints"
+    },
+    {
+      "label": "Authentication",
+      "href": "/#authentication"
+    },
+    {
+      "label": "FAQ",
+      "href": "/#faq"
+    },
+    {
+      "label": "devs@hooklane.example",
+      "href": "mailto:devs@hooklane.example"
+    }
+  ],
+  "footerNote": "JSON over HTTPS. Timestamps are ISO 8601 in UTC. Identifiers are opaque strings — never parse them.",
+  "faqs": [
+    {
+      "question": "Does the try-it panel call the API?",
+      "answer": "No. The panel assembles a curl command from the endpoint definition and your inputs, and the copy button copies exactly what you see. Nothing is ever sent from this page — you stay in control of when and where the request runs."
+    },
+    {
+      "question": "Where do I get an API key?",
+      "answer": "Keys are created in the Hooklane dashboard under Settings → API keys. Live keys start with hk_live_, test keys with hk_test_. The reference examples read the key from a $HOOKLANE_API_KEY shell variable, so export it once and every copied command works unchanged."
+    },
+    {
+      "question": "How are deliveries signed?",
+      "answer": "Every delivery carries an X-Hooklane-Signature header: an HMAC-SHA256 of the raw request body, keyed with the subscription's signing secret (the whsec_ value returned when you create the subscription). Verify it before trusting a payload, and rotate the secret by recreating the subscription."
+    },
+    {
+      "question": "What happens when an endpoint is down?",
+      "answer": "Hooklane retries failed deliveries with exponential backoff — eight attempts spread over roughly 24 hours. Each attempt is a row in the delivery log with the response code we saw, so GET /v1/deliveries?status=failed shows you exactly what still needs attention."
+    },
+    {
+      "question": "Can I test without touching production?",
+      "answer": "Yes. Requests made with an hk_test_ key operate on an isolated set of subscriptions and deliveries. The API surface is identical, so every command in this reference behaves the same in test mode."
+    }
+  ]
+}

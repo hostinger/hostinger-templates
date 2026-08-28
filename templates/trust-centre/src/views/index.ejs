@@ -1,0 +1,147 @@
+<%- include('partials/top', { includeFaqJsonLd: true }) %>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="hero-eyebrow mono"><%= site.company.name %> · <%= site.page.title %></p>
+      <h1><%= site.page.tagline %></h1>
+      <p class="hero-intro"><%= site.page.intro %></p>
+      <p class="hero-audience"><%= site.page.audienceNote %></p>
+      <ul class="hero-chips" aria-label="<%= trust.posture.heading %>">
+        <% trust.posture.items.forEach((item) => { %>
+          <li class="posture-chip"><strong><%= item.name %></strong><span aria-hidden="true"> — </span><%= item.status %></li>
+        <% }) %>
+      </ul>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#disclosure"><%= site.page.ctaLabel %></a>
+        <a class="hero-email mono" href="mailto:<%= site.securityContact.email %>"><%= site.securityContact.email %></a>
+      </div>
+      <p class="hero-meta"><%= site.page.lastReviewedLabel %>: <span class="mono"><%= lastReviewedLabel %></span></p>
+    </div>
+    <div class="hero-motif" aria-hidden="true">
+      <svg viewBox="0 0 320 360" fill="none" focusable="false">
+        <path class="motif-outer" d="M160 14 L296 62 V172 C296 254 240 314 160 346 C80 314 24 254 24 172 V62 Z" />
+        <path class="motif-inner" d="M160 58 L258 92 V174 C258 236 218 280 160 304 C102 280 62 236 62 174 V92 Z" />
+        <line class="motif-line" x1="62" y1="140" x2="258" y2="140" />
+        <line class="motif-line" x1="62" y1="222" x2="258" y2="222" />
+        <circle class="motif-keyhole" cx="160" cy="164" r="20" />
+        <rect class="motif-keyhole-fill" x="150" y="176" width="20" height="46" rx="10" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="posture">
+  <div class="section-head">
+    <span class="section-number mono" aria-hidden="true">01</span>
+    <div class="section-head-text">
+      <h2><%= trust.posture.heading %></h2>
+      <p class="section-intro"><%= trust.posture.intro %></p>
+    </div>
+  </div>
+  <div class="posture-grid">
+    <% trust.posture.items.forEach((item) => { %>
+      <article class="posture-card">
+        <h3><%= item.name %></h3>
+        <p class="posture-status"><%= item.status %></p>
+        <p class="posture-summary"><%= item.summary %></p>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section" id="subprocessors">
+  <div class="section-head">
+    <span class="section-number mono" aria-hidden="true">02</span>
+    <div class="section-head-text">
+      <h2><%= trust.subprocessors.heading %></h2>
+      <p class="section-intro"><%= trust.subprocessors.intro %></p>
+    </div>
+  </div>
+  <div class="table-card">
+    <table class="subprocessor-table">
+      <caption class="visually-hidden"><%= trust.subprocessors.heading %></caption>
+      <thead>
+        <tr>
+          <th scope="col"><%= trust.subprocessors.columns.name %></th>
+          <th scope="col"><%= trust.subprocessors.columns.purpose %></th>
+          <th scope="col"><%= trust.subprocessors.columns.region %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% trust.subprocessors.items.forEach((item) => { %>
+          <tr>
+            <td class="cell-name" data-label="<%= trust.subprocessors.columns.name %>"><%= item.name %></td>
+            <td class="cell-purpose" data-label="<%= trust.subprocessors.columns.purpose %>"><%= item.purpose %></td>
+            <td class="cell-region mono" data-label="<%= trust.subprocessors.columns.region %>"><%= item.region %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <p class="table-meta"><%= trust.subprocessors.lastUpdatedLabel %>: <span class="mono"><%= subprocessorsUpdatedLabel %></span></p>
+  </div>
+</section>
+
+<section class="section" id="data-handling">
+  <div class="section-head">
+    <span class="section-number mono" aria-hidden="true">03</span>
+    <div class="section-head-text">
+      <h2><%= trust.dataHandling.heading %></h2>
+      <p class="section-intro"><%= trust.dataHandling.intro %></p>
+    </div>
+  </div>
+  <div class="handling-grid">
+    <% trust.dataHandling.items.forEach((item) => { %>
+      <article class="handling-card">
+        <span class="handling-icon"><%- include('partials/icon', { name: item.icon }) %></span>
+        <h3><%= item.title %></h3>
+        <p><%= item.body %></p>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<section class="disclosure-band" id="disclosure">
+  <div class="section disclosure-section">
+    <div class="disclosure-grid">
+      <div class="disclosure-copy">
+        <div class="section-head section-head-dark">
+          <span class="section-number mono" aria-hidden="true">04</span>
+          <div class="section-head-text">
+            <h2><%= trust.disclosure.heading %></h2>
+            <p class="section-intro"><%= trust.disclosure.intro %></p>
+          </div>
+        </div>
+        <h3 class="expectations-heading"><%= trust.disclosure.expectationsHeading %></h3>
+        <ul class="expectations-list">
+          <% trust.disclosure.expectations.forEach((item) => { %>
+            <li><%= item %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <div class="disclosure-form-card">
+        <%- include('partials/disclosure-form') %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="section-head">
+    <span class="section-number mono" aria-hidden="true">05</span>
+    <div class="section-head-text">
+      <h2><%= trust.faqs.heading %></h2>
+      <p class="section-intro"><%= trust.faqs.intro %></p>
+    </div>
+  </div>
+  <div class="faq-list">
+    <% trust.faqs.items.forEach((faq) => { %>
+      <details class="faq-item">
+        <summary><%= faq.question %></summary>
+        <p><%= faq.answer %></p>
+      </details>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('partials/bottom') %>

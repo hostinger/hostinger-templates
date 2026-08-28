@@ -1,0 +1,32 @@
+---
+import { describeFilterResult, FILTER_LABELS, FILTER_ORDER, type TagFilter } from '../utils/filter';
+
+interface Props {
+  counts: Record<TagFilter, number>;
+}
+
+const { counts } = Astro.props;
+---
+
+<div class="filter-bar">
+  <div class="wrap filter-row">
+    <div class="filter-chips" role="group" aria-label="Filter releases by tag">
+      {
+        FILTER_ORDER.map((filter) => (
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter={filter}
+            aria-pressed={filter === 'all' ? 'true' : 'false'}
+          >
+            {FILTER_LABELS[filter]}
+            <span class="filter-count">{counts[filter]}</span>
+          </button>
+        ))
+      }
+    </div>
+    <p class="filter-status" data-filter-status aria-live="polite">
+      {describeFilterResult('all', counts.all, counts.all)}
+    </p>
+  </div>
+</div>

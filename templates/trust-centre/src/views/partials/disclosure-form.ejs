@@ -1,0 +1,73 @@
+<form
+  class="disclosure-form"
+  method="post"
+  action="/disclosure"
+  data-disclosure-form
+  data-msg-email-invalid="<%= trust.disclosure.validation.emailInvalid %>"
+  data-msg-category-missing="<%= trust.disclosure.validation.categoryMissing %>"
+  data-msg-description-missing="<%= trust.disclosure.validation.descriptionMissing %>"
+  data-msg-description-too-short="<%= trust.disclosure.validation.descriptionTooShort %>"
+  data-msg-description-too-long="<%= trust.disclosure.validation.descriptionTooLong %>"
+>
+  <p class="form-note"><%= trust.disclosure.formNote %></p>
+
+  <div class="form-field">
+    <label for="disclosure-email">
+      <%= trust.disclosure.form.emailLabel %>
+      <span class="optional-tag"><%= trust.disclosure.form.emailOptionalTag %></span>
+    </label>
+    <p class="field-hint" id="disclosure-email-hint"><%= trust.disclosure.form.emailHint %></p>
+    <input
+      type="email"
+      id="disclosure-email"
+      name="email"
+      value="<%= formValues.email %>"
+      maxlength="254"
+      autocomplete="email"
+      aria-describedby="disclosure-email-hint disclosure-email-error"
+      <% if (formErrors.email) { %>aria-invalid="true"<% } %>
+    />
+    <p class="field-error" id="disclosure-email-error"<% if (!formErrors.email) { %> hidden<% } %>><%= formErrors.email ?? '' %></p>
+  </div>
+
+  <div class="form-field">
+    <label for="disclosure-category"><%= trust.disclosure.form.categoryLabel %></label>
+    <select
+      id="disclosure-category"
+      name="category"
+      required
+      aria-describedby="disclosure-category-error"
+      <% if (formErrors.category) { %>aria-invalid="true"<% } %>
+    >
+      <option value=""<% if (formValues.category === '') { %> selected<% } %> disabled><%= trust.disclosure.form.categoryPlaceholder %></option>
+      <% trust.disclosure.form.categories.forEach((category) => { %>
+        <option value="<%= category.id %>"<% if (formValues.category === category.id) { %> selected<% } %>><%= category.label %></option>
+      <% }) %>
+    </select>
+    <p class="field-error" id="disclosure-category-error"<% if (!formErrors.category) { %> hidden<% } %>><%= formErrors.category ?? '' %></p>
+  </div>
+
+  <div class="form-field">
+    <label for="disclosure-description"><%= trust.disclosure.form.descriptionLabel %></label>
+    <p class="field-hint" id="disclosure-description-hint"><%= trust.disclosure.form.descriptionHint %></p>
+    <textarea
+      id="disclosure-description"
+      name="description"
+      rows="7"
+      required
+      minlength="<%= descriptionMinLength %>"
+      maxlength="<%= descriptionMaxLength %>"
+      aria-describedby="disclosure-description-hint disclosure-description-error"
+      <% if (formErrors.description) { %>aria-invalid="true"<% } %>
+    ><%= formValues.description %></textarea>
+    <p class="field-error" id="disclosure-description-error"<% if (!formErrors.description) { %> hidden<% } %>><%= formErrors.description ?? '' %></p>
+  </div>
+
+  <div class="form-footer">
+    <button type="submit" class="button button-primary"><%= trust.disclosure.form.submitLabel %></button>
+    <p class="form-direct-email">
+      <%= trust.disclosure.form.directEmailLead %>
+      <a class="mono" href="mailto:<%= site.securityContact.email %>"><%= site.securityContact.email %></a>
+    </p>
+  </div>
+</form>

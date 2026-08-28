@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{pageTitle}}</title>
+    <meta name="description" content="{{metaDescription}}" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    {{#if faqJsonLd}}
+      <script type="application/ld+json">{{{faqJsonLd}}}</script>
+    {{/if}}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="/" aria-label="{{site.apiName}} API reference home">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <rect width="64" height="64" rx="14" fill="#131822" />
+            <path d="M24 14c-6 0-8 3-8 8v6c0 3-1.5 4-4 4v4c2.5 0 4 1 4 4v6c0 5 2 8 8 8" fill="none" stroke="#a78bfa" stroke-width="4.5" stroke-linecap="round" />
+            <path d="M40 14c6 0 8 3 8 8v6c0 3 1.5 4 4 4v4c-2.5 0-4 1-4 4v6c0 5-2 8-8 8" fill="none" stroke="#a78bfa" stroke-width="4.5" stroke-linecap="round" />
+            <circle cx="32" cy="32" r="4.5" fill="#34d399" />
+          </svg>
+          <span class="brand-name">{{site.apiName}}</span>
+          <span class="brand-sub">API Reference</span>
+        </a>
+        <nav class="site-nav" aria-label="Site">
+          {{#each site.navigation}}
+            <a href="{{href}}">{{label}}</a>
+          {{/each}}
+          <span class="version-chip" title="API version">{{site.apiVersion}}</span>
+        </nav>
+      </div>
+    </header>
+    <main id="main">

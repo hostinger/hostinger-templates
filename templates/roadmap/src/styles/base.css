@@ -1,0 +1,206 @@
+/* Design tokens: edit colors, fonts, and radii here. */
+:root {
+  --bg: #0b111b;
+  --surface: #121a29;
+  --surface-raised: #17202f;
+  --line: #22304a;
+  --line-soft: #182338;
+  --ink: #e9eef8;
+  --ink-mid: #a9b6cb;
+  --ink-dim: #7e8ca3;
+  --now: #34d399;
+  --now-strong: #6ee7b9;
+  --now-tint: rgba(52, 211, 153, 0.13);
+  --next: #38bdf8;
+  --next-strong: #7dd3fc;
+  --next-tint: rgba(56, 189, 248, 0.13);
+  --later: #a78bfa;
+  --later-strong: #c4b5fd;
+  --later-tint: rgba(167, 139, 250, 0.14);
+  --font-body: 'Onest', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Menlo', 'Consolas', monospace;
+  --radius-card: 14px;
+  --content-width: 1200px;
+  --shadow-card: 0 14px 30px rgba(3, 8, 16, 0.45);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background:
+    radial-gradient(1000px 460px at 12% -6%, rgba(52, 211, 153, 0.09), transparent 62%),
+    radial-gradient(900px 420px at 52% -10%, rgba(56, 189, 248, 0.07), transparent 60%),
+    radial-gradient(1000px 460px at 90% -6%, rgba(167, 139, 250, 0.09), transparent 62%),
+    var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.12;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+p,
+ul,
+ol,
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+svg {
+  display: block;
+}
+
+button {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--next);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.32);
+}
+
+.section-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.kicker-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--now);
+  box-shadow:
+    0 0 0 4px var(--now-tint),
+    0 0 14px var(--now);
+}
+
+.section-head h2 {
+  font-size: 1.7rem;
+  margin-top: 10px;
+  letter-spacing: -0.02em;
+}
+
+.section-note {
+  color: var(--ink-dim);
+  font-size: 0.88rem;
+  max-width: 46ch;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.button svg {
+  width: 12px;
+  height: 12px;
+}
+
+.button:hover {
+  border-color: var(--next);
+  background: var(--surface);
+  transform: translateY(-1px);
+}
+
+.skip-link {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--next);
+  color: #06121d;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-300%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+.noscript-note {
+  margin: 0 0 22px;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--now);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink-mid);
+  font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "columns": [
+    {
+      "id": "now",
+      "label": "Now",
+      "description": "In active development — shipping in weeks, not quarters."
+    },
+    {
+      "id": "next",
+      "label": "Next",
+      "description": "Scoped and queued — the order still moves with your votes."
+    },
+    {
+      "id": "later",
+      "label": "Later",
+      "description": "Direction agreed, timing open. Loud interest pulls things left."
+    }
+  ],
+  "items": [
+    {
+      "id": "recurring-invoices",
+      "title": "Recurring invoices",
+      "description": "Set an invoice to repeat weekly, monthly, or per quarter and Ledgerline drafts and sends it for you — with pause, skip-one, and end-date controls so retainers don't need a calendar reminder.",
+      "tags": ["invoicing", "automation"],
+      "baseVotes": 128,
+      "status": "now"
+    },
+    {
+      "id": "client-portal",
+      "title": "Client portal",
+      "description": "A private link where each client sees every invoice you've sent them, downloads PDFs, and checks what's outstanding — no more \"can you resend that?\" emails in week three.",
+      "tags": ["clients", "payments"],
+      "baseVotes": 96,
+      "status": "now"
+    },
+    {
+      "id": "receipt-scanning",
+      "title": "Receipt scanning on mobile",
+      "description": "Photograph a receipt and Ledgerline reads the merchant, date, amount, and tax into a draft expense — so the shoebox of paper slips stops being a January problem.",
+      "tags": ["expenses", "mobile"],
+      "baseVotes": 121,
+      "status": "next"
+    },
+    {
+      "id": "multi-currency",
+      "title": "Multi-currency billing",
+      "description": "Invoice clients in their currency with a daily reference rate, while your dashboard and reports stay in your base currency. Rate and conversion date printed on the invoice.",
+      "tags": ["invoicing", "international"],
+      "baseVotes": 74,
+      "status": "next"
+    },
+    {
+      "id": "late-payment-nudges",
+      "title": "Late-payment nudges",
+      "description": "Polite, automatic reminders on a schedule you set — friendly at day 3, firmer at day 14 — with optional late-fee lines calculated from your invoice terms.",
+      "tags": ["payments", "automation"],
+      "baseVotes": 58,
+      "status": "next"
+    },
+    {
+      "id": "tax-pack",
+      "title": "Year-end tax pack",
+      "description": "One export with everything your accountant asks for: income summary, tax collected, deductible expenses by category, and every receipt attached — zipped and labelled.",
+      "tags": ["taxes", "reports"],
+      "baseVotes": 87,
+      "status": "later"
+    },
+    {
+      "id": "public-api",
+      "title": "Public API and webhooks",
+      "description": "Read and write invoices, clients, and expenses from your own scripts, with signed webhooks for paid, overdue, and refunded events — build the automation we haven't.",
+      "tags": ["platform", "integrations"],
+      "baseVotes": 43,
+      "status": "later"
+    },
+    {
+      "id": "team-seats",
+      "title": "Team seats",
+      "description": "Invite a bookkeeper or a second pair of hands with their own login and a role that fits — full access, expenses-only, or read-only for tax season.",
+      "tags": ["collaboration"],
+      "baseVotes": 31,
+      "status": "later"
+    }
+  ]
+}

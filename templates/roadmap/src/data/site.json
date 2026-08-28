@@ -1,0 +1,83 @@
+{
+  "name": "Ledgerline",
+  "tagline": "Invoicing and expenses for one-person studios",
+  "metaDescription": "The Ledgerline public roadmap — what we're building now, what's queued next, and what's on the horizon. Vote for what matters to you; votes stay on your device.",
+  "skipLabel": "Skip to the board",
+  "email": "roadmap@ledgerline.example",
+  "navigation": [
+    { "label": "The board", "href": "#board" },
+    { "label": "How it works", "href": "#how-it-works" },
+    { "label": "FAQ", "href": "#faq" }
+  ],
+  "suggest": {
+    "buttonLabel": "Suggest an idea",
+    "subject": "Roadmap idea for {product}",
+    "body": "Hi {product} team,\n\nThe job I'm trying to get done:\n\nWhy the current workaround hurts:\n\nThanks!"
+  },
+  "hero": {
+    "kicker": "Public roadmap",
+    "title": "Vote on what ships next",
+    "lede": "This is the whole Ledgerline build queue, in the open — what's in progress now, what's queued next, and what's still on the horizon. Tap the pill on any card to vote it up; tap again to take your vote back.",
+    "noteTitle": "Before you vote — the honest bit",
+    "note": "Votes are saved in your browser, on this device only. No account, nothing sent anywhere. Each count is the baseline we published with the last board update, plus your own vote — an indicator of interest, not a live tally."
+  },
+  "board": {
+    "kicker": "Now · Next · Later",
+    "title": "The board",
+    "note": "Your votes stay on this device. Counts are indicative and refresh when we publish a board update.",
+    "voteLabelTemplate": "Vote for {title} — {count} votes so far",
+    "unvoteLabelTemplate": "Remove your vote for {title} — showing {count} votes",
+    "votedFlag": "Voted",
+    "itemCountTemplate": "{count} items",
+    "noscriptNote": "JavaScript is off in this browser, so the vote buttons are disabled — the board itself is fully readable. Counts show the published baseline."
+  },
+  "howItWorks": {
+    "kicker": "No accounts, no tracking",
+    "title": "How this board works",
+    "steps": [
+      {
+        "title": "Vote from this device",
+        "body": "Tap the vote pill on any card. Your vote lands in this browser's local storage — nothing is sent to a server and there is no account to create. Tap again to un-vote."
+      },
+      {
+        "title": "Counts are indicative",
+        "body": "Every card shows the baseline count from our last published board update, plus your own vote on top. Two people can see slightly different numbers — it's a signal of interest, not a live synced tally."
+      },
+      {
+        "title": "Make it count",
+        "body": "Your on-device vote is a private marker of what matters to you. To move the published numbers, send us a quick email — we tally emails and support requests every time we refresh the board."
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "Fair questions",
+    "title": "Straight answers",
+    "items": [
+      {
+        "question": "Do I need an account to vote?",
+        "answer": "No. Votes are stored in your browser's local storage, on this device only. Nothing is sent to a server, there is nothing to sign up for, and clearing this site's data resets your votes."
+      },
+      {
+        "question": "Are the vote counts a live tally?",
+        "answer": "No — and we'd rather be straight about it. Each count is an indicative baseline we set when we publish a board update, plus your own on-device vote. Someone else looking at this page right now may see slightly different numbers."
+      },
+      {
+        "question": "How does my vote reach the team, then?",
+        "answer": "By itself it doesn't leave your device — it's a private marker of what matters to you. If you want to move the published numbers, email us the feature name. We tally emails and support conversations whenever we refresh the board."
+      },
+      {
+        "question": "How often does the board change?",
+        "answer": "After every planning cycle — usually every few weeks. Items move from Later to Next as they get scoped, into Now when we start building, and out of the board into release notes when they ship."
+      },
+      {
+        "question": "Can I suggest something that isn't on the board?",
+        "answer": "Please do. The suggest button opens a pre-filled email — describe the job you're trying to get done rather than a feature spec. That's the most useful shape of feedback for us."
+      }
+    ]
+  },
+  "footer": {
+    "line": "Built in the open by the Ledgerline team.",
+    "emailLead": "Ideas, corrections, or a vote you want counted:",
+    "smallPrint": "Votes are stored in your browser on this device only. Counts are indicative baselines from the last board update, not a live tally."
+  }
+}

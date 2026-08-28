@@ -1,0 +1,13 @@
+<%- include('partials/top') %>
+
+<section class="section subpage not-found">
+  <p class="not-found-code mono" aria-hidden="true">404</p>
+  <h1><%= site.notFound.heading %></h1>
+  <p class="not-found-lead"><%= site.notFound.lead %></p>
+  <div class="not-found-actions">
+    <a class="button button-primary" href="/"><%= site.notFound.backLabel %></a>
+    <a class="mono not-found-email" href="mailto:<%= site.securityContact.email %>"><%= site.securityContact.email %></a>
+  </div>
+</section>
+
+<%- include('partials/bottom') %>

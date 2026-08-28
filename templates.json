@@ -2696,6 +2696,1122 @@
         "is it down",
         "astro reliability page"
       ]
+    },
+    {
+      "id": "changelog",
+      "name": "Changelog",
+      "summary": "A product release-notes site with instant feature/fix filters and a marker for everything that shipped since a visitor's last look.",
+      "description": "Changelog is a static release-notes site for a shipping product — a SaaS, a developer tool, an app — whose team wants its progress to be visible and easy to trust. Release notes scattered across Slack messages, emails, and tweets convince nobody; a changelog that reads like part of the product does. Every entry here is a plain markdown file with four frontmatter fields (title, date, version, tags), so publishing a release note is a commit, not a CMS session.\n\nThe index lays all releases on a vertical timeline with a date rail, monospace version chips, and colored tag chips — emerald Feature, amber Fix, indigo Improvement. Filter chips narrow the timeline to features or fixes instantly, with per-tag counts and a live \"Showing X of Y releases\" line, all without a reload. The signature behavior is the last-visit marker: the browser stores the time of a visitor's last look in localStorage, and on their next visit every newer release gets a New badge and a highlighted timeline node, an indigo \"New since your last visit\" divider (labeled with that date) separates new from seen, and a hero banner counts the new releases. A first visit shows no marker — the timestamp is saved silently. Each entry also gets a statically prerendered permalink page at /releases/<slug>/ with newer/older navigation cards, code blocks are syntax-highlighted by Shiki, an RSS feed at /rss.xml lists every release, and a four-question FAQ ships with FAQPage JSON-LD. The seed content documents five believable releases of Relaycast, a fictional webhook-delivery platform, spread across three months.\n\nPersonalizing is deliberately small: add or edit markdown files in src/content/changelog/ (validated by a zod collection schema) and change the product name, tagline, links, and FAQ copy in src/data/site.json. The visual direction is a crisp modern-SaaS changelog — white and cool zinc neutrals, indigo primary, Hanken Grotesk with Fira Code for versions and code, a dot-grid hero with a decorative delivery-log terminal panel — implemented as design tokens at the top of one hand-written stylesheet. Built on Astro's content collections with TypeScript throughout, the filter and last-visit logic live as small typed utilities driving a vanilla-TypeScript island; the project lints, type-checks, and builds clean, and every route loads directly and stays overflow-free down to a 320px viewport.",
+      "bucket": "Technical and SaaS",
+      "category": "Trust and transparency",
+      "whoItsFor": "A shipping product",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "saas",
+          "developer-tools",
+          "product-communication"
+        ],
+        "useCases": [
+          "publish-release-notes",
+          "show-whats-new-since-a-users-last-visit",
+          "let-users-filter-features-and-fixes"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "release-timeline",
+          "name": "Vertical release timeline",
+          "description": "Every release on one timeline with a date rail, monospace version chips, node dots, and emerald/amber/indigo tag chips for Feature, Fix, and Improvement."
+        },
+        {
+          "id": "instant-tag-filter",
+          "name": "Instant feature/fix filter",
+          "description": "All / Features / Fixes chips with per-tag counts filter the timeline in place — no reload — and update a live \"Showing X of Y releases\" status line."
+        },
+        {
+          "id": "last-visit-marker",
+          "name": "New-since-your-last-visit marker",
+          "description": "localStorage remembers the last visit; returning visitors see New badges, highlighted timeline nodes, a labeled divider between new and seen releases, and a hero banner counting what shipped. First visits stay unmarked."
+        },
+        {
+          "id": "markdown-entries",
+          "name": "Markdown entries with permalink pages",
+          "description": "Each release is a markdown file with title, date, version, and tags, rendered with Shiki-highlighted code blocks and prerendered to its own /releases/<slug>/ page with newer/older navigation."
+        },
+        {
+          "id": "rss-feed",
+          "name": "RSS feed",
+          "description": "An /rss.xml feed built with @astrojs/rss lists every release with its version, date, and tags so users can subscribe in any feed reader."
+        },
+        {
+          "id": "faq-jsonld",
+          "name": "FAQ with structured data",
+          "description": "A four-question accordion explains update cadence, the last-visit marker, and how to subscribe or report bugs, emitted as FAQPage JSON-LD for search engines."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/changelog/preview/changelog-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/changelog/preview/changelog-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/changelog/preview/changelog-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/changelog/preview/changelog-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 5314
+        }
+      },
+      "searchTerms": [
+        "release notes",
+        "product updates",
+        "version history",
+        "what's new page",
+        "ship log",
+        "saas changelog",
+        "astro content collections",
+        "markdown release notes"
+      ]
+    },
+    {
+      "id": "roadmap",
+      "name": "Roadmap",
+      "summary": "A public now / next / later board where visitors vote on what ships next — votes stay on their device, no accounts or backend.",
+      "description": "Roadmap is a public product board for a team that wants to build in the open and gather interest without standing up a feedback platform, user accounts, or any backend at all. It ships styled as Ledgerline, a believable fictional invoicing app for one-person studios, and it solves the honest version of a common problem: showing customers what's coming, letting them lean on the queue, and never pretending the page is something it isn't.\n\nThe single board reads at a glance — three columns for Now, Next, and Later, each with its own glowing accent identity (emerald, sky, violet), a description of what the column means, and elevated dark cards seeded with eight roadmap items: title, one-paragraph description, tags, and a baseline vote count. Every card carries a real vote button with aria-pressed state, keyboard operation, and a visible focus ring. Tapping it bumps the displayed count to baseline plus your vote and marks the card Voted in the column's accent; tapping again un-votes. Votes persist in localStorage across visits, and the copy in the hero note, the three-step explainer, the FAQ, and the footer small print states plainly that votes stay on this device and counts are indicative — never a live synced tally. A Suggest-an-idea button opens a pre-filled email built from the address displayed in the footer, and the five-question FAQ ships with matching FAQPage JSON-LD.\n\nEverything a team would edit lives in two JSON files: src/data/roadmap.json for columns and items, src/data/site.json for the product name, tagline, email templates, and every line of page copy. The page is rendered from that JSON at build time via posthtml-expressions, so the whole board stays readable with JavaScript off — a small typed hydration module only enables the vote pills, with the vote and storage logic kept in pure, unit-testable functions. Design tokens (including the three column accents) sit at the top of one CSS file, typography pairs the Onest typeface with a system mono stack for counts, and the layout holds from 1440px down to 320px with columns stacking cleanly on mobile.",
+      "bucket": "Technical and SaaS",
+      "category": "Trust and transparency",
+      "whoItsFor": "A product gathering feedback",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "saas",
+          "product-roadmap",
+          "feedback-board"
+        ],
+        "useCases": [
+          "publish-a-public-roadmap",
+          "collect-feature-votes-on-device",
+          "show-now-next-later-priorities",
+          "invite-ideas-by-email"
+        ],
+        "frameworks": [
+          "parcel",
+          "typescript"
+        ]
+      },
+      "features": [
+        {
+          "id": "now-next-later-board",
+          "name": "Now / Next / Later board",
+          "description": "Three columns with distinct glowing accent identities, column descriptions, item counts, and eight seeded roadmap cards with titles, paragraphs, tags, and baseline vote counts."
+        },
+        {
+          "id": "device-local-voting",
+          "name": "Device-local voting",
+          "description": "Real vote buttons with aria-pressed state and keyboard support bump the displayed count to baseline plus your vote, mark the card Voted, and toggle off when tapped again."
+        },
+        {
+          "id": "vote-persistence",
+          "name": "Votes persist across visits",
+          "description": "Voted items are stored in localStorage under a single key, restored on every visit, and handled by pure typed functions that degrade gracefully when storage is blocked."
+        },
+        {
+          "id": "honest-count-copy",
+          "name": "Honest indicative counts",
+          "description": "Hero note, explainer steps, FAQ, and footer small print all state that votes stay on this device and counts are indicative baselines — the page never implies a live synced tally."
+        },
+        {
+          "id": "readable-without-js",
+          "name": "Readable without JavaScript",
+          "description": "The full board is rendered from JSON at build time, so with JavaScript off only the vote buttons deactivate and a noscript note explains why."
+        },
+        {
+          "id": "suggest-idea-mailto",
+          "name": "Suggest-an-idea email",
+          "description": "A header button opens a pre-filled mailto with subject and body templates, built from the same contact address displayed in the footer."
+        },
+        {
+          "id": "faq-json-ld",
+          "name": "FAQ with structured data",
+          "description": "Five straight-talking questions rendered from JSON as native details/summary disclosures, with matching FAQPage JSON-LD injected at build time."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/roadmap/preview/roadmap-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/roadmap/preview/roadmap-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/roadmap/preview/roadmap-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/roadmap/preview/roadmap-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 2473
+        }
+      },
+      "searchTerms": [
+        "public roadmap",
+        "feature voting board",
+        "now next later",
+        "product feedback",
+        "feature requests",
+        "kanban style board",
+        "build in public",
+        "changelog companion",
+        "localstorage votes",
+        "vanilla typescript",
+        "parcel template"
+      ]
+    },
+    {
+      "id": "trust-centre",
+      "name": "Trust Centre",
+      "summary": "A B2B trust and security page with compliance posture, a subprocessor table and a private disclosure form that falls back to email honestly.",
+      "description": "Trust Centre is the page that unblocks procurement: a single server-rendered trust and security page for a product selling to businesses. When a prospect's security team asks for your compliance posture, your subprocessor list and a way to report vulnerabilities, this template answers all three without a deck of PDFs. The demo content is a fictional B2B SaaS — Harborline, a contract and vendor workflow platform — and every statement is worded honestly: posture is presented as text chips such as \"SOC 2 Type II — report available under NDA\" and \"ISO 27001 — certification in progress\", with no fake logos and no claims the copy does not qualify.\n\nThe visitor journey runs down one page: a deep-navy hero with the three posture statements and the security contact, numbered sections for compliance posture cards, a generous subprocessor table (name, purpose, region, last-updated stamp) that collapses into labelled cards on phones, a three-part data-handling summary (encryption, retention and deletion, production access), a private disclosure form and a five-question FAQ with FAQPage JSON-LD. The form validates in the browser (inline messages, focus management, aria-invalid) and again on the server, which re-renders a 422 error page with an error summary and preserved values when a hostile or script-free client submits bad data. Because no mail backend is configured, a valid submission never pretends delivery happened: a dedicated response page states the report was NOT transmitted, then offers a prefilled mailto: to the same security address displayed on the page, the full report as copyable text with a Clipboard-API copy button, and a truncation note when the description exceeds mail-client-safe length. Unknown routes get a designed 404 page.\n\nEverything a company would edit lives in two JSON files — src/data/site.json (company, product, links, security contact, navigation, footer, 404 copy) and src/data/trust.json (postures, subprocessors, data handling, the entire disclosure flow copy including validation messages, FAQs) — while validation rules and report/mailto building sit in typed utilities. The stack is Fastify 5 with EJS views via @fastify/view, @fastify/static and @fastify/formbody, TypeScript compiled with tsc and run with tsx in development, ESLint flat config, and hand-written CSS with all design tokens (deep navy, steel blue, Libre Franklin, system mono for emails and regions) in one :root block. Layouts are verified at 1440px, 390px and 320px with no horizontal overflow, and the compiled server runs from dist/ with no copy step.",
+      "bucket": "Technical and SaaS",
+      "category": "Trust and transparency",
+      "whoItsFor": "A product selling to businesses",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "trust-centre",
+          "security-page",
+          "compliance",
+          "b2b-saas"
+        ],
+        "useCases": [
+          "publish-compliance-posture",
+          "list-subprocessors",
+          "receive-security-disclosures",
+          "answer-vendor-security-reviews"
+        ],
+        "frameworks": [
+          "fastify"
+        ]
+      },
+      "features": [
+        {
+          "id": "compliance-posture-statements",
+          "name": "Compliance posture in plain words",
+          "description": "Three posture cards with bordered text status chips — report under NDA, DPA available, certification in progress — honest wording with no fake certification logos."
+        },
+        {
+          "id": "subprocessor-table",
+          "name": "Subprocessor table",
+          "description": "Six seeded subprocessors with purpose and region (region in mono), a last-updated stamp, and a stacked labelled-card layout on small screens."
+        },
+        {
+          "id": "validated-disclosure-form",
+          "name": "Dual-validated disclosure form",
+          "description": "Optional reporter email, category select and description validated client-side with inline messages and focus management, then authoritatively on the server with a 422 error-summary page that preserves entered values."
+        },
+        {
+          "id": "honest-mailto-fallback",
+          "name": "Honest no-backend fallback",
+          "description": "Submitting renders a page stating the report was not transmitted, with a prefilled mailto: to the displayed security address, the full report text to copy, a clipboard button and a truncation note for long descriptions."
+        },
+        {
+          "id": "data-handling-summary",
+          "name": "Data-handling summary",
+          "description": "Encryption, retention/deletion and access-control cards with original stroke icons, mirroring the DPA language procurement teams look for."
+        },
+        {
+          "id": "faq-jsonld",
+          "name": "FAQ with FAQPage JSON-LD",
+          "description": "Five vendor-review questions in accessible details/summary disclosures, serialized into schema.org FAQPage JSON-LD from the same JSON copy."
+        },
+        {
+          "id": "not-found-page",
+          "name": "Designed 404 route",
+          "description": "Unknown paths render a branded 404 page with a route back home and the security contact; GET /disclosure redirects to the form section."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/trust-centre/preview/trust-centre-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/trust-centre/preview/trust-centre-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/trust-centre/preview/trust-centre-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/trust-centre/preview/trust-centre-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 4826
+        }
+      },
+      "searchTerms": [
+        "trust page",
+        "security page",
+        "soc 2",
+        "gdpr dpa",
+        "subprocessor list",
+        "vulnerability disclosure",
+        "responsible disclosure",
+        "vendor security review",
+        "procurement questionnaire",
+        "b2b saas",
+        "fastify",
+        "ejs",
+        "typescript",
+        "server rendered"
+      ]
+    },
+    {
+      "id": "manual",
+      "name": "Manual",
+      "summary": "A small docs site with sidebar navigation, instant local search, and a copy-page-as-Markdown button so humans and AI assistants both get clean context.",
+      "description": "Manual is a product documentation starter for any team that needs real docs fast — a dev tool, an API, a SaaS feature set. It ships as a complete working site for a fictional webhook-debugging CLI called Tapeline, so instead of lorem ipsum you get five genuinely written documentation pages full of titled code frames, option tables, callout asides, and cross-links that show exactly how finished docs should read. Built on Astro's Starlight theme, the whole site compiles to static files that work on any host.\n\nThe reader journey starts on a splash landing page with a gradient hero, an original SVG terminal illustration, quick-link cards, and an FAQ accordion that injects matching FAQPage JSON-LD from a single data file. From there, a sidebar autogenerated from the content file tree organizes pages into Start here, Guides, and Reference groups, with a clean drawer menu on mobile. Site search is Starlight's built-in Pagefind index: it runs entirely on the built site with no service, and returns per-heading sub-results — searching \"exit codes\" from the landing page jumps straight to that section of the CLI reference. The signature feature is Markdown portability: every docs page has a Copy page as Markdown button and a .md link beside its title, backed by /raw/<page>.md routes that serve each page's source byte for byte, so pasting a page into an AI coding assistant gives it actual Markdown instead of scraped HTML.\n\nPersonalizing is deliberately shallow: docs pages are plain Markdown files in src/content/docs/ (add a file and it becomes a route and a sidebar entry), FAQ copy lives in one typed data file, and the site title and sidebar labels sit in astro.config.ts. The cyan/teal identity — automatic light and dark themes, stroked-letterform SVG wordmark in both variants, hero gradient — is controlled by CSS custom properties grouped at the top of one stylesheet. TypeScript throughout, astro check runs in the build, ESLint flat config, and every route including the raw Markdown endpoints loads directly as a static file.",
+      "bucket": "Technical and SaaS",
+      "category": "Documentation",
+      "whoItsFor": "Any product needing docs",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "documentation",
+          "developer-tools",
+          "content-site"
+        ],
+        "useCases": [
+          "product-documentation",
+          "developer-docs",
+          "knowledge-base",
+          "ai-ready-docs"
+        ],
+        "frameworks": [
+          "astro",
+          "starlight"
+        ]
+      },
+      "features": [
+        {
+          "id": "copy-page-as-markdown",
+          "name": "Copy page as Markdown",
+          "description": "Every docs page has a button beside its title that puts the page's exact Markdown source on the clipboard, with Copied! feedback, plus a .md link to the raw file."
+        },
+        {
+          "id": "raw-markdown-endpoints",
+          "name": "Raw Markdown endpoints",
+          "description": "Each page's source is served byte for byte at a predictable /raw/<page>.md URL, so AI assistants and scripts can fetch clean context directly."
+        },
+        {
+          "id": "pagefind-search",
+          "name": "Instant local search",
+          "description": "Starlight's bundled Pagefind index runs on the built site with no external service and returns per-heading sub-results that deep-link to section anchors."
+        },
+        {
+          "id": "autogenerated-sidebar",
+          "name": "Sidebar from the file tree",
+          "description": "Start here, Guides, and Reference groups are autogenerated from src/content/docs/ directories and ordered by frontmatter — adding a Markdown file adds a page and a nav entry."
+        },
+        {
+          "id": "faq-json-ld",
+          "name": "FAQ with FAQPage JSON-LD",
+          "description": "A four-question landing-page accordion rendered from one typed data file that also injects matching schema.org FAQPage structured data."
+        },
+        {
+          "id": "dual-theme-identity",
+          "name": "Light/dark cyan identity",
+          "description": "Automatic light and dark themes with a cyan/teal accent palette, theme-specific SVG wordmarks, gradient hero, and an original SVG terminal illustration."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/manual/preview/manual-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/manual/preview/manual-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/manual/preview/manual-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/manual/preview/manual-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 2451
+        }
+      },
+      "searchTerms": [
+        "documentation site",
+        "docs template",
+        "knowledge base",
+        "developer documentation",
+        "starlight",
+        "astro docs",
+        "pagefind search",
+        "llm friendly docs",
+        "copy as markdown",
+        "technical writing"
+      ]
+    },
+    {
+      "id": "api-reference",
+      "name": "API Reference",
+      "summary": "An endpoint-by-endpoint reference whose try-it panel assembles the exact curl command from your inputs — copy it, share it as a link, run it in your own terminal.",
+      "description": "API Reference is documentation for an API product that treats the copy-paste moment as the whole point. Most small API docs either dump static snippets that drift out of date or bolt on a \"console\" that proxies real requests and asks developers for keys. This template takes the honest middle path: every endpoint page carries a request builder that assembles the exact curl command from the endpoint definition and the reader's inputs — correct method, auth header, query string, and JSON body with all shell quoting handled — and never sends anything. No keys are collected, no proxy exists, and a visible note says so. The seeded content documents Hooklane, a fictional webhook delivery API with four endpoints spread across GET, POST, PUT, and DELETE, so the shape of a finished reference is visible before a single edit.\n\nThe home page opens with the product pitch, a quickstart terminal built by the same command builder, an endpoint index grouped by resource with color-coded method badges (GET emerald, POST sky, PUT amber, DELETE red), the authentication story, and a five-question FAQ shipped with FAQPage JSON-LD. Each endpoint lives at /endpoints/<slug>, server-rendered and direct-loadable, with parameter reference tables (type, required flag, description, example, allowed values) and a realistic JSON response example. In the try panel, labelled inputs — text fields, numeric fields, and selects for enums and booleans — live-update a syntax-highlighted, terminal-styled curl block: query params become readable -G --data-urlencode lines, path params are URI-encoded into the URL, and body params are typed into pretty-printed JSON. The copy button copies exactly the visible text, the form state syncs into the page URL as you type, and a shared link restores the same filled state — server-side too, so restored examples work before JavaScript loads, and a plain GET form submit covers the no-JS case entirely. Unknown slugs and paths get a terminal-styled 404 that echoes the request as a JSON error and lists the real endpoints.\n\nEverything an API team would change lives in two JSON files: src/data/site.json for the product name, base URL, auth header, section copy, links, and FAQs, and src/data/endpoints.json for the endpoints, their parameters, and response examples — pages, forms, and commands are all derived from them. The command assembly is a set of typed pure functions in src/utils/curl.ts (token-based, so the copyable text and the highlighting can never disagree), mirrored by a small dependency-free enhancement script in public/js. Technically it is a NestJS 12 server (ESM, strict TypeScript) rendering Handlebars views with escaping on, an ESLint flat config with typescript-eslint, and an original dark code-editor design system — near-black canvas, elevated panels, a syntax-spectrum hairline, Red Hat Display and Red Hat Mono — with semantic labelled controls, visible focus states, and layouts verified down to 320 px.",
+      "bucket": "Technical and SaaS",
+      "category": "Documentation",
+      "whoItsFor": "An API product",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "documentation",
+          "developer-tools",
+          "api-reference"
+        ],
+        "useCases": [
+          "document-a-rest-api",
+          "build-copyable-curl-commands",
+          "share-prefilled-api-examples",
+          "publish-an-endpoint-reference"
+        ],
+        "frameworks": [
+          "nestjs"
+        ]
+      },
+      "features": [
+        {
+          "id": "curl-request-builder",
+          "name": "Curl request builder",
+          "description": "Labelled inputs for every parameter live-update a syntax-highlighted curl command with the correct method, auth header, -G --data-urlencode query lines, and a typed pretty-printed JSON body, shell escaping included."
+        },
+        {
+          "id": "exact-copy-button",
+          "name": "Exact-copy button",
+          "description": "The copy button copies precisely the visible command text — the same token stream drives the highlighting and the clipboard — with a fallback path and an aria-live confirmation."
+        },
+        {
+          "id": "shareable-form-state",
+          "name": "Shareable form state",
+          "description": "The try-it form syncs into the page URL query as you type, and a shared link restores the identical filled state server-side, flagged with a restored-from-link chip."
+        },
+        {
+          "id": "honest-no-request-panel",
+          "name": "Honest, request-free panel",
+          "description": "The page never calls the documented API: no fetch, no key input, no proxy, and a visible note explaining that commands run in the reader's own terminal."
+        },
+        {
+          "id": "method-coded-endpoint-index",
+          "name": "Method-coded endpoint index",
+          "description": "Endpoints are grouped by resource with GET/POST/PUT/DELETE badges color-coded per verb, a persistent docs-nav rail on endpoint pages, and a terminal-styled 404 for unknown routes."
+        },
+        {
+          "id": "json-seeded-reference",
+          "name": "JSON-seeded reference",
+          "description": "Endpoints, parameters, response examples, and every line of site copy live in src/data/endpoints.json and src/data/site.json; pages, forms, and commands are derived from them."
+        },
+        {
+          "id": "faq-json-ld",
+          "name": "FAQ with structured data",
+          "description": "A five-question FAQ renders from JSON as accessible disclosure widgets and ships FAQPage JSON-LD on the home page."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/api-reference/preview/api-reference-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/api-reference/preview/api-reference-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/api-reference/preview/api-reference-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/api-reference/preview/api-reference-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3142
+        }
+      },
+      "searchTerms": [
+        "api documentation",
+        "developer docs",
+        "curl builder",
+        "try it console",
+        "rest api reference",
+        "webhook api",
+        "developer portal",
+        "docs site",
+        "handlebars",
+        "server rendered"
+      ]
+    },
+    {
+      "id": "quickstart",
+      "name": "Quickstart",
+      "summary": "A one-page quickstart for an open-source tool: install tabs per package manager, copy-exact command blocks, and the five-minute result shown up front.",
+      "description": "Quickstart is a server-rendered landing page for an open-source CLI or library — the page a project links from its README so a first-time user gets from \"what is this?\" to a working install in five minutes. Instead of burying the payoff at the bottom of the docs, it leads with a boxed \"In five minutes you'll have\" panel beside the headline: a typographic terminal illustration of the tool running, plus a checklist of the concrete things you end up with. The seeded content is a believable fictional tool — Mynah, a record-and-replay proxy for HTTP APIs — with internally consistent commands, flags and version numbers, so the shape of a finished page is visible before a single edit.\n\nThe page walks the whole adoption journey. The hero pairs the kicker, headline and one-liner with the primary install command and its copy button. The install section offers one tab per package manager (npm, Homebrew, curl) with proper tablist semantics — arrow-key, Home and End navigation with roving tabindex — and, crucially, it is rendered as stacked labelled blocks on the server, so with JavaScript disabled every command is still visible and readable. Every command block gets a copy button that copies the code element's exact text content; the $ prompt is drawn with CSS, so it can never land on the clipboard. A five-step quickstart follows — each step one token-colored command plus a one-sentence explanation — then a five-question FAQ built from native details/summary disclosures and emitted as FAQPage JSON-LD, and a themed 404 (\"no tape for this route\") for unknown paths.\n\nEverything a project owner would change lives in src/data/site.json: name, binary, version, one-liner, repository and docs URLs (written once and referenced via $repo/$docs/$issues tokens), nav, the result-panel checklist and terminal lines, install methods, quickstart steps, FAQ and footer copy. Commands are plain data — a typed tokenizer in the CommandBlock component colors binaries, flags, env vars, URLs and strings without ever altering the text, and the hero reuses the npm method's data so no command is written twice. Technically it is a compact Hono 4 app on @hono/node-server rendering hono/jsx on the server: strict TypeScript compiled by tsc to dist/, tsx for the dev loop, ESLint flat config, static assets via serve-static, and an original bright developer-landing design — clean white base, one electric blue-to-cyan gradient accent, near-black terminals with colored prompt glyphs, Plus Jakarta Sans with IBM Plex Mono — verified keyboard-accessible and overflow-free down to 320 px.",
+      "bucket": "Technical and SaaS",
+      "category": "Documentation",
+      "whoItsFor": "An open-source project",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "documentation",
+          "developer-tools",
+          "open-source",
+          "landing-page"
+        ],
+        "useCases": [
+          "publish-a-project-quickstart",
+          "document-cli-installation",
+          "copy-paste-install-commands",
+          "show-the-five-minute-payoff",
+          "answer-adoption-faqs"
+        ],
+        "frameworks": [
+          "hono"
+        ]
+      },
+      "features": [
+        {
+          "id": "install-tabs",
+          "name": "Per-package-manager install tabs",
+          "description": "npm, Homebrew and curl tabs with real tablist semantics — arrow-key, Home/End navigation and roving tabindex — that degrade to stacked labelled command blocks when JavaScript is off."
+        },
+        {
+          "id": "copy-exact-commands",
+          "name": "Copy-exact command blocks",
+          "description": "Every command carries a copy button that copies the code element's exact visible text; the $ prompt is CSS-drawn so it is excluded by construction, and a live region announces the copy."
+        },
+        {
+          "id": "five-minute-result-panel",
+          "name": "Five-minute result panel up front",
+          "description": "A gradient-bordered \"In five minutes you'll have\" panel sits beside the headline, pairing a typographic terminal illustration with a checklist of concrete outcomes."
+        },
+        {
+          "id": "five-step-quickstart",
+          "name": "Five-step quickstart",
+          "description": "Numbered steps with a connector rail, each one command in a token-colored terminal block plus a one-sentence explanation, ending with committing the results."
+        },
+        {
+          "id": "faq-jsonld",
+          "name": "FAQ with FAQPage JSON-LD",
+          "description": "Five native details/summary disclosures rendered from site.json and emitted as FAQPage structured data from the same entries."
+        },
+        {
+          "id": "single-source-content",
+          "name": "Single-source content and links",
+          "description": "All copy, commands, terminal lines and FAQ entries live in src/data/site.json; repository and docs URLs are written once and resolved everywhere via $repo/$docs/$issues tokens."
+        },
+        {
+          "id": "themed-404",
+          "name": "Themed 404 page",
+          "description": "Unknown paths get a real 404 status and an on-brand \"no tape for this route\" terminal page linking back to the quickstart."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/quickstart/preview/quickstart-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quickstart/preview/quickstart-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/quickstart/preview/quickstart-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quickstart/preview/quickstart-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3835
+        }
+      },
+      "searchTerms": [
+        "open source landing page",
+        "developer documentation site",
+        "readme quickstart page",
+        "install instructions",
+        "cli documentation",
+        "getting started guide",
+        "copy to clipboard commands",
+        "hono server template",
+        "developer tool marketing"
+      ]
+    },
+    {
+      "id": "design-system",
+      "name": "Design System",
+      "summary": "A tiny component playground: flip props with real controls, watch the live preview change, and copy the exact snippet that reproduces it — three components, honestly documented.",
+      "description": "Design System is a documentation site for a team publishing components, shipped as the fictional \"Vitrine\" kit. It solves the problem every young design system has: docs that drift from the code. Instead of static examples, each of the three components — Button, Input, Card — gets a live playground where the rendered specimen, the prop controls, and the copyable snippet are all driven by one typed metadata file, so what a teammate reads is always what the component actually does.\n\nThe journey starts on an index page whose hero specimens are rendered by the real kit components, followed by the team's working rules, a component index, and an FAQ with FAQPage JSON-LD. Opening a component page reveals the playground: selects for union props, switches for booleans, and text fields for strings, each labelled and keyboard-accessible. Every change updates the preview instantly and regenerates the template snippet under one deterministic rule — required props always appear, optional props appear only when they differ from the component's default, and long tags wrap one attribute per line — so the snippet matches the current configuration exactly. A copy button puts that markup on the clipboard with a confirmation, each playground's last configuration persists per device in localStorage and restores after reload, and \"Reset props\" returns to the documented start and forgets the saved copy. A prop reference table and usage notes on each page come from the same metadata that powers the controls.\n\nPersonalization is deliberately shallow: all copy — system name, tagline, version, principles, FAQs, and every label — lives in src/data/site.json, while the components, their prop metadata, defaults, and usage notes live in src/data/components.ts; adding a fourth component is a data entry, an SFC, and one registry line. The design is a neutral gallery — white and zinc surfaces, near-black ink, one signature chartreuse accent, dotted-grid preview stages, and Familjen Grotesk with Martian Mono for code — that steps back so the documented components carry the color. Technically it is Vue 3 with strict TypeScript and Vite, vue-router with direct-load support on static hosts (the build emits a 404.html SPA fallback plus an honest not-found page), ESLint flat config, vue-tsc type-checking in the build, semantic labelled controls with visible focus states, and layouts verified down to 320 px with no horizontal overflow.",
+      "bucket": "Technical and SaaS",
+      "category": "Documentation",
+      "whoItsFor": "A team publishing components",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "documentation",
+          "developer-tools",
+          "design-systems"
+        ],
+        "useCases": [
+          "component-library-documentation",
+          "live-prop-playground",
+          "copyable-code-snippets",
+          "design-system-adoption",
+          "ui-kit-showcase"
+        ],
+        "frameworks": [
+          "vue",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "live-prop-playground",
+          "name": "Live playground per component",
+          "description": "Selects, switches, and text controls generated from typed prop metadata update the rendered specimen instantly on a dotted-grid preview stage."
+        },
+        {
+          "id": "exact-snippet-generation",
+          "name": "Snippet that always matches the preview",
+          "description": "The template markup under each preview is regenerated deterministically on every change — required props always shown, defaults omitted, long tags wrapped — and a copy button puts exactly that snippet on the clipboard with a confirmation."
+        },
+        {
+          "id": "per-device-persistence",
+          "name": "Configurations that survive reloads",
+          "description": "Each playground stores its last prop configuration in localStorage, validates and restores it on return, and offers a Reset props action that returns to the documented defaults and clears the saved copy."
+        },
+        {
+          "id": "metadata-driven-docs",
+          "name": "Prop tables and usage notes from one source",
+          "description": "The same typed entries in src/data/components.ts drive the controls, the snippet, the prop reference table (name, type, default, description), the index cards, and the navigation."
+        },
+        {
+          "id": "real-kit-components",
+          "name": "Three real, reusable kit components",
+          "description": "VButton (variant, size, disabled), VInput (label, state, hint with aria-invalid and non-color state markers), and VCard (title, padding, elevated) are working Vue SFCs the homepage renders live as specimens."
+        },
+        {
+          "id": "spa-static-hosting",
+          "name": "Direct-loading routes on static hosts",
+          "description": "The build copies index.html to 404.html so /components/button loads directly on fallback-aware static hosts, and unknown ids or paths get an honest not-found page."
+        },
+        {
+          "id": "faq-json-ld",
+          "name": "FAQ with structured data",
+          "description": "A five-question FAQ accordion sourced from site.json is injected on the index with FAQPage JSON-LD for rich search results."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/design-system/preview/design-system-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/design-system/preview/design-system-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/design-system/preview/design-system-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/design-system/preview/design-system-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 2899
+        }
+      },
+      "searchTerms": [
+        "design system documentation",
+        "component playground",
+        "storybook alternative",
+        "ui kit docs",
+        "prop controls",
+        "code snippet copy",
+        "component library site",
+        "vue 3",
+        "vite",
+        "typescript"
+      ]
+    },
+    {
+      "id": "console",
+      "name": "Console",
+      "summary": "An admin and analytics dashboard shell that demos fully populated from committed mock data — charts, a sortable table, and honest read-only settings, no backend required.",
+      "description": "Console is for anyone who needs an admin or analytics UI standing before the backend exists — founders demoing a product idea, teams prototyping an internal tool, or developers who want a serious-looking ops dashboard to grow into. It plays the part of \"Windrose\", a fictional webhook delivery platform, seen from the workspace of the equally fictional customer Atlas Labs, and every number on screen traces to committed JSON in mocks/, so the demo is realistic without pretending anything is live.\n\nThe overview leads with four stat cards — events delivered, delivery success rate, median latency, and active endpoints — each with a signed delta against the previous 14 days and a sparkline, all derived at build time from the same 14-day series the charts draw, so totals always match the plots. Two interactive inline-SVG charts (an area chart of daily deliveries and a bar chart of daily failures) support crosshair and bar hover tooltips, arrow-key inspection with a screen-reader live region, and a \"View as table\" fallback. The Events page is a real semantic table of ten recent deliveries with status chips (delivered, retrying, failed) and client-side sorting on six columns through aria-sort header buttons, plus a stacked card layout with its own sort controls on small screens. Settings renders workspace, profile, and API placeholder fields read-only from mock JSON under an honest \"ships without a backend\" notice, and closes with a template FAQ emitted as FAQPage JSON-LD. The mock story is internally consistent end to end: the Aug 21 failure spike in the chart is the same 1,254 quoted by the paused-endpoint alert in the activity feed.\n\nPersonalization is deliberately shallow: swap the numbers by editing mocks/*.json (charts, cards, table, feed, and settings all recompute), rename the product and rewrite page copy in config/site.json, and retheme from the token block at the top of app/globals.css — graphite surfaces, a cyan action accent, a CVD-validated chart palette, and Wix Madefor Display, Wix Madefor Text, and Roboto Mono type. Under the hood it is Next.js App Router with TypeScript and plain CSS Modules, statically exported to out/ with every route directly loadable on any static host; data flows through typed loaders in lib/data.ts, so pointing the console at a real API is a one-file change. Builds are deterministic — no runtime randomness anywhere.",
+      "bucket": "Technical and SaaS",
+      "category": "Internal and team",
+      "whoItsFor": "An admin or analytics UI",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "admin-dashboard",
+          "analytics",
+          "internal-tools",
+          "saas"
+        ],
+        "useCases": [
+          "demo an admin console before the backend exists",
+          "prototype an internal ops or analytics tool",
+          "start a customer-facing SaaS dashboard",
+          "present realistic product metrics from mock data"
+        ],
+        "frameworks": [
+          "nextjs",
+          "react"
+        ]
+      },
+      "features": [
+        {
+          "id": "derived-stat-cards",
+          "name": "Build-time derived stat cards",
+          "description": "Four KPI cards — events delivered, success rate, median latency, active endpoints — computed from the committed time series with signed deltas vs the previous 14 days and sparklines, so headlines always match the charts."
+        },
+        {
+          "id": "interactive-svg-charts",
+          "name": "Interactive inline-SVG charts",
+          "description": "An area chart of daily deliveries and a bar chart of daily failures with crosshair or bar-highlight tooltips, arrow-key inspection announced to screen readers, direct labels on the endpoint and the spike, and a table view under each chart."
+        },
+        {
+          "id": "sortable-deliveries-table",
+          "name": "Sortable deliveries table",
+          "description": "A real semantic table of ten webhook deliveries with status chips, sortable client-side on six columns via aria-sort header buttons; on phones it becomes stacked cards with a dedicated sort select and direction toggle."
+        },
+        {
+          "id": "honest-settings-stub",
+          "name": "Honest read-only settings",
+          "description": "Workspace, profile, and API placeholder fields rendered from mocks/org.json beneath a clear note that the template ships without a backend — no fake inputs, no pretend saves."
+        },
+        {
+          "id": "console-shell",
+          "name": "Persistent console shell",
+          "description": "Sidebar navigation with active states, a sticky topbar with an amber \"Demo data\" badge, and a keyboard-accessible mobile drawer, shared across all three statically exported routes."
+        },
+        {
+          "id": "faq-json-ld",
+          "name": "Template FAQ with FAQPage JSON-LD",
+          "description": "Five config-driven questions about how the demo works and how to wire a real backend, rendered as accessible disclosure widgets and emitted as schema.org FAQPage structured data."
+        },
+        {
+          "id": "deterministic-mock-data",
+          "name": "Deterministic committed mock data",
+          "description": "Every value on screen traces to JSON in mocks/ — no runtime randomness — and the story is internally consistent: the chart's 1,254-failure spike is the same number quoted by the activity feed's incident alert."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/console/preview/console-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/console/preview/console-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/console/preview/console-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/console/preview/console-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 1344
+        }
+      },
+      "searchTerms": [
+        "admin dashboard",
+        "analytics dashboard",
+        "internal tool",
+        "ops console",
+        "saas dashboard",
+        "data table",
+        "charts",
+        "mock data",
+        "dark theme",
+        "static export",
+        "nextjs",
+        "typescript"
+      ]
+    },
+    {
+      "id": "engineering-blog",
+      "name": "Engineering Blog",
+      "summary": "Team engineering blog with syntax-highlighted code blocks, copy buttons, reading time, and threaded multi-part series.",
+      "description": "Engineering Blog is a publishing home for a technical team that writes publicly — postmortems, design writeups, and running-in-production notes. Most blog templates treat code as an afterthought; this one treats it as the main event. It ships as the blog of Halyard, a fictional webhook-delivery platform, seeded with two genuinely substantial posts: a postmortem of a retry storm that took delivery down for 41 minutes, and the design writeup of the pipeline rebuilt afterwards. The two posts form a worked example of the template's signature feature — a two-part series threaded together on every page.\n\nEvery post is a markdown file in content/posts/: drop a file in and its page exists at /writing/<filename>/, statically built and directly loadable. Frontmatter carries title, date, author, tags, and an optional series name and part number. Fenced code blocks render at build time onto a dark, crisply contrasting surface with a language label, custom cool-toned syntax highlighting, and a copy button that copies the code exactly (verified byte-for-byte) with a Copied confirmation — added after hydration, so prose stays fully readable without JavaScript. Each post shows a reading time computed in a typed utility from prose word count plus code-line count. Posts sharing a series name are stitched together: a crimson thread connects them in the index list, each post carries a series chip with its part label, and previous/next series navigation links the parts to each other. The index lists every post with date, tags, reading time, and excerpt, followed by an about section with the authors and a four-question FAQ that emits FAQPage JSON-LD; every post adds BlogPosting JSON-LD.\n\nPersonalization is two files deep: content/posts/*.md for the writing and src/data/site.json for every word of site chrome — blog name and wordmark words, masthead copy, navigation, about paragraphs, author roles, FAQ, and footer. The visual identity is a cool editorial reading experience: pure white and cool zinc surfaces, near-black ink, one crimson accent, Newsreader serif prose at a ~68ch measure with Source Sans 3 UI and Courier Prime code, and an original SVG pennant wordmark — no photography anywhere. Under the hood it is a Gatsby 5 static build with React 18 and TypeScript: gatsby-transformer-remark with Prism highlighting, typed utilities for reading time, series resolution, and dates, an ESLint flat config, semantic article markup with keyboard-accessible controls and visible focus states, and layouts verified down to a 320px viewport with code blocks scrolling internally rather than breaking the page.",
+      "bucket": "Technical and SaaS",
+      "category": "Internal and team",
+      "whoItsFor": "A technical team writing publicly",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "blog",
+          "engineering-content",
+          "documentation"
+        ],
+        "useCases": [
+          "team-engineering-blog",
+          "incident-postmortems",
+          "technical-writing",
+          "multi-part-series"
+        ],
+        "frameworks": [
+          "gatsby",
+          "react"
+        ]
+      },
+      "features": [
+        {
+          "id": "markdown-posts",
+          "name": "Markdown-driven posts",
+          "description": "One markdown file per post in content/posts/ becomes a statically built, directly loadable page under /writing/, with frontmatter for title, date, author, tags, and series."
+        },
+        {
+          "id": "code-copy-buttons",
+          "name": "Copy buttons on highlighted code",
+          "description": "Every fenced code block renders dark with build-time Prism highlighting and a language label, plus a keyboard-operable copy button that copies the code exactly and confirms with a Copied state."
+        },
+        {
+          "id": "series-navigation",
+          "name": "Threaded series navigation",
+          "description": "Posts sharing a series name get part labels, a crimson thread connecting them in the index, and previous/next series cards on each post linking the parts to each other."
+        },
+        {
+          "id": "reading-time",
+          "name": "Computed reading time",
+          "description": "A typed utility derives minutes from prose word count plus code-line count at build time, shown on every index row and post header."
+        },
+        {
+          "id": "faq-json-ld",
+          "name": "FAQ with structured data",
+          "description": "A config-driven FAQ section on the index emits FAQPage JSON-LD, and every post emits BlogPosting JSON-LD with author, date, and word count."
+        },
+        {
+          "id": "single-config-chrome",
+          "name": "Single-file site chrome",
+          "description": "Blog name, wordmark words, masthead copy, navigation, about paragraphs, author roles, FAQ answers, and footer all live in src/data/site.json."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/engineering-blog/preview/engineering-blog-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/engineering-blog/preview/engineering-blog-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/engineering-blog/preview/engineering-blog-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/engineering-blog/preview/engineering-blog-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 2703
+        }
+      },
+      "searchTerms": [
+        "developer blog",
+        "tech blog",
+        "postmortem",
+        "incident review",
+        "markdown blog",
+        "code snippets",
+        "syntax highlighting",
+        "series posts",
+        "gatsby",
+        "static site"
+      ]
+    },
+    {
+      "id": "careers",
+      "name": "Careers",
+      "summary": "A hiring board with combinable team, location, and remote filters and plain-language role pages that say what you'd actually do, applied to by prefilled email.",
+      "description": "Careers is a hiring page for a small team that wants candidates to know what the job really is before they apply. Most careers pages are either a legal spec dump pasted into an applicant-tracking widget or a vague \"join our rocketship\" wall — this template takes the opposite position. The board lists every open role as a big friendly card with a colored team tag, the work setup stated honestly (fully remote, hybrid, or on-site), the location, and a real salary range set in mono type, and every role page opens with plain language about the actual work.\n\nThe board filters by team, location, and work setup with real checkboxes that combine instantly on the client — OR within a group, AND across groups. Counts are live everywhere: the results line reads \"Showing 2 of 4 open roles\" and every filter chip carries a faceted count that updates as the other filters change, so a dead-end combination is visible before it is clicked. When nothing matches, the empty state says so honestly and offers one-click clearing or an \"Email us anyway\" mailto. Each role's prerendered page at /roles/<slug> leads with four to six \"What you'd actually do\" bullets, follows with \"What you won't be doing\" and the exact hiring steps for that role (paid exercises say what they pay), and the apply button is a mailto built from the address displayed on the page, prefilled with the role title — applications land in a human inbox with no fake ATS in between. A five-question hiring FAQ ships with FAQPage JSON-LD.\n\nEverything an editor touches lives in two committed JSON files: src/data/roles.json (teams with named chip hues, plus each role's slug, title, team, location, remote policy, salary, bullets, and hiring steps) and src/data/site.json (company name, values line, contact email, facts, every label, FAQs, and footer). Filter matching, toggling, and faceted counting are small pure TypeScript functions in src/utils, and the prerender list is generated from roles.json, so adding a role is one JSON entry. Technically it is React 19 in React Router 8 framework mode with ssr disabled and every route prerendered — the board and all four role pages direct-load as static HTML from any file host, readable before JavaScript runs. The design is an original bright hiring aesthetic: clean white base, electric periwinkle primary, coral accents, per-team accessible chip hues, a hand-drawn SVG \"team of shapes\" motif instead of stock office photos, Gabarito display type with system mono for salaries and counts, semantic fieldsets with visible focus states, and layouts verified down to 320px.",
+      "bucket": "Technical and SaaS",
+      "category": "Internal and team",
+      "whoItsFor": "A team hiring",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "careers-page",
+          "jobs-board",
+          "hiring"
+        ],
+        "useCases": [
+          "open-roles-listing",
+          "role-filtering",
+          "plain-language-job-descriptions",
+          "email-applications"
+        ],
+        "frameworks": [
+          "react-router",
+          "react"
+        ]
+      },
+      "features": [
+        {
+          "id": "combinable-role-filters",
+          "name": "Combinable role filters",
+          "description": "Team, location, and work-setup checkboxes filter the board instantly on the client — OR within a group, AND across groups — with keyboard-accessible chips."
+        },
+        {
+          "id": "live-faceted-counts",
+          "name": "Live faceted counts",
+          "description": "The results line and a count on every filter chip recompute as other filters change, so empty combinations are visible before they are clicked."
+        },
+        {
+          "id": "plain-language-role-pages",
+          "name": "Plain-language role pages",
+          "description": "Each prerendered /roles/<slug> page leads with \"What you'd actually do\" bullets, then \"What you won't be doing\" and the role's exact hiring steps with pay for paid exercises."
+        },
+        {
+          "id": "prefilled-email-applications",
+          "name": "Prefilled email applications",
+          "description": "Apply and question buttons are mailto links built from the address displayed on the page, with the role title prefilled in the subject — no fake applicant-tracking system."
+        },
+        {
+          "id": "honest-empty-state",
+          "name": "Honest empty state",
+          "description": "When no roles match, the board says so plainly and offers one-click clear-all-filters plus an \"Email us anyway\" mailto; it never implies hidden roles."
+        },
+        {
+          "id": "faq-with-jsonld",
+          "name": "Hiring FAQ with structured data",
+          "description": "Five questions on process, remote policy, interviews, and salary render from site.json as native keyboard-accessible accordions with FAQPage JSON-LD."
+        },
+        {
+          "id": "static-prerendered-routes",
+          "name": "Static prerendered routes",
+          "description": "React Router framework mode with ssr: false prerenders the board and every role page generated from roles.json, so each URL direct-loads from any static host."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/careers/preview/careers-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/careers/preview/careers-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/careers/preview/careers-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/careers/preview/careers-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3222
+        }
+      },
+      "searchTerms": [
+        "careers page",
+        "jobs board",
+        "open roles",
+        "hiring page",
+        "job listings",
+        "recruiting site",
+        "work with us",
+        "startup jobs",
+        "team page",
+        "react router"
+      ]
+    },
+    {
+      "id": "devfolio",
+      "name": "Devfolio",
+      "summary": "A developer résumé explored through an interactive terminal, with the same content readable as plain HTML for everyone else.",
+      "description": "Devfolio is a single-page portfolio site for a developer on the job hunt who wants their résumé to be remembered. The page opens on a working terminal styled after a phosphor-green CRT: recruiters and fellow engineers type projects, experience, or skills and the matching résumé block prints into the scrollback — while everyone else simply scrolls, because the complete CV also sits on the page as clean, man-page-styled semantic HTML.\n\nThe terminal is a real command loop, not a gimmick: nine registered commands plus a work alias, arrow-key history with draft restore, bash-style tab completion that lists candidates on ambiguous prefixes, an edit-distance \"did you mean\" suggestion for typos, clear, and tappable quick-command chips for phones. Output is an aria-live log with visible focus states, links render as bracketed anchors, and the mailto action is built from the same email address shown on screen. The FAQ ships with FAQPage JSON-LD, and the whole page holds up with JavaScript disabled — the prompt politely disables itself, a noscript note points at the HTML résumé below, and the prerendered markup contains every job bullet, project, and skill for view-source sceptics and search engines alike.\n\nPersonalization is one JSON file: src/lib/data/resume.json holds the identity, the prompt's username and hostname, the summary, three jobs with impact bullets, four projects with stacks and links, grouped skills, education, and contact details, while faq.json holds the FAQ copy. The terminal's command registry is a small typed module — append an entry and help, completion, and suggestions adapt automatically. The CRT theme (true-black background, phosphor green, amber block cursor, static scanlines, Space Mono) lives as tokens in one global stylesheet with a print palette that flips to black-on-white, and the build is SvelteKit 2 with Svelte 5 runes and adapter-static, passing ESLint and svelte-check with no horizontal overflow down to 320 px.",
+      "bucket": "Technical and SaaS",
+      "category": "Internal and team",
+      "whoItsFor": "A developer job-hunting",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "portfolio",
+          "personal-site",
+          "resume",
+          "developer-tools"
+        ],
+        "useCases": [
+          "publish a developer résumé recruiters can skim or explore",
+          "stand out in a job hunt with an interactive terminal cv",
+          "keep one json file as the single source for cv content",
+          "collect hiring enquiries by email from the displayed address"
+        ],
+        "frameworks": [
+          "sveltekit",
+          "svelte"
+        ]
+      },
+      "features": [
+        {
+          "id": "interactive-terminal-resume",
+          "name": "Interactive terminal résumé",
+          "description": "Nine commands (help, about, whoami, experience/work, projects, skills, education, contact, clear) print résumé blocks rendered from the same resume.json the HTML sections use."
+        },
+        {
+          "id": "history-and-tab-completion",
+          "name": "History and tab completion",
+          "description": "Up and down arrows walk command history with draft restore; Tab completes unique prefixes bash-style and echoes the candidate list when a prefix is ambiguous."
+        },
+        {
+          "id": "did-you-mean-suggestions",
+          "name": "\"Did you mean\" suggestions",
+          "description": "Unknown commands get an edit-distance-based suggestion plus a pointer to help, so a typo never dead-ends the visitor."
+        },
+        {
+          "id": "no-javascript-fallback",
+          "name": "Works without JavaScript",
+          "description": "The full résumé is prerendered semantic HTML; with scripts off the prompt disables itself and a noscript note points readers at the man-page sections below."
+        },
+        {
+          "id": "single-source-content",
+          "name": "Single-source content",
+          "description": "Terminal output, HTML sections, page metadata, and the mailto contact action all render from src/lib/data/resume.json — edit one file to rewrite the whole site."
+        },
+        {
+          "id": "faq-with-json-ld",
+          "name": "FAQ with JSON-LD",
+          "description": "A five-question FAQ about reusing and editing the template ships with FAQPage structured data generated from the same committed copy."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/devfolio/preview/devfolio-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/devfolio/preview/devfolio-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/devfolio/preview/devfolio-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/devfolio/preview/devfolio-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 4816
+        }
+      },
+      "searchTerms": [
+        "terminal resume",
+        "interactive cli portfolio",
+        "developer cv website",
+        "job hunt personal site",
+        "crt phosphor theme",
+        "command line",
+        "svelte 5",
+        "prerendered static site"
+      ]
     }
   ]
 }

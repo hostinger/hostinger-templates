@@ -1,0 +1,38 @@
+{
+  "name": "roadmap",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Public product roadmap board with now/next/later columns and on-device voting — no accounts, no backend.",
+  "type": "module",
+  "scripts": {
+    "dev": "parcel index.html --port 4372",
+    "build": "tsc --noEmit && parcel build index.html --dist-dir dist --public-url ./",
+    "lint": "eslint .",
+    "preview": "serve dist"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "keywords": [
+    "parcel",
+    "typescript",
+    "roadmap",
+    "product-board",
+    "voting"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@parcel/packager-raw-url": "^2.16.4",
+    "@parcel/transformer-jsonld": "^2.16.4",
+    "eslint": "^10.9.1",
+    "parcel": "^2.16.4",
+    "posthtml-expressions": "^1.11.4",
+    "serve": "^14.2.6",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0"
+  }
+}

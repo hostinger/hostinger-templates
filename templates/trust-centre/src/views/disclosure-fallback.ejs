@@ -1,0 +1,55 @@
+<%- include('partials/top') %>
+
+<section class="section subpage">
+  <p class="subpage-eyebrow mono"><%= site.company.name %> · <%= site.page.title %></p>
+  <div class="fallback-header">
+    <span class="fallback-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+        <rect x="3" y="5.5" width="18" height="13" rx="2" />
+        <path d="M3.8 6.5 12 12.6 20.2 6.5" />
+      </svg>
+    </span>
+    <h1><%= trust.disclosure.fallback.heading %></h1>
+    <p class="fallback-lead"><%= trust.disclosure.fallback.lead %></p>
+  </div>
+
+  <div class="fallback-card">
+    <dl class="envelope-meta">
+      <div class="envelope-row">
+        <dt class="mono"><%= trust.disclosure.fallback.toLabel %></dt>
+        <dd class="mono"><%= site.securityContact.email %></dd>
+      </div>
+      <div class="envelope-row">
+        <dt class="mono"><%= trust.disclosure.fallback.subjectLabel %></dt>
+        <dd><%= report.subject %></dd>
+      </div>
+    </dl>
+
+    <div class="fallback-actions">
+      <a class="button button-primary" href="<%= report.mailtoHref %>"><%= trust.disclosure.fallback.mailtoCta %></a>
+      <button
+        type="button"
+        class="button button-secondary"
+        data-copy-report
+        data-copied-label="<%= trust.disclosure.fallback.copiedLabel %>"
+        hidden
+      ><%= trust.disclosure.fallback.copyCta %></button>
+    </div>
+
+    <% if (report.mailtoTruncated) { %>
+      <p class="truncation-note"><%= trust.disclosure.fallback.truncationNote %></p>
+    <% } %>
+
+    <p class="copy-hint">
+      <%= trust.disclosure.fallback.copyHint %>
+      <span class="mono"><%= site.securityContact.email %></span>.
+    </p>
+
+    <pre class="report-text" id="report-text" tabindex="0" aria-label="<%= trust.disclosure.fallback.reportRegionLabel %>"><%= report.text %></pre>
+  </div>
+
+  <p class="fallback-response"><%= site.securityContact.responseNote %></p>
+  <p class="subpage-back"><a class="back-link" href="/"><%= trust.disclosure.fallback.backLabel %></a></p>
+</section>
+
+<%- include('partials/bottom') %>

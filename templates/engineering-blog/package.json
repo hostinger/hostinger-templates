@@ -1,0 +1,42 @@
+{
+  "name": "engineering-blog",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Team engineering blog with markdown posts, dark syntax-highlighted code blocks with copy buttons, reading time, and series navigation.",
+  "scripts": {
+    "dev": "gatsby develop",
+    "build": "tsc --noEmit && gatsby build",
+    "lint": "eslint .",
+    "preview": "gatsby serve"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "gatsby",
+    "react",
+    "typescript",
+    "blog",
+    "engineering-blog",
+    "markdown",
+    "developer-blog"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "gatsby": "^5.16.1",
+    "gatsby-remark-prismjs": "^7.16.0",
+    "gatsby-source-filesystem": "^5.16.0",
+    "gatsby-transformer-remark": "^6.16.0",
+    "prismjs": "^1.30.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^26.4.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react": "^7.37.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.68.0"
+  }
+}

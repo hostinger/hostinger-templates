@@ -1,0 +1,174 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+
+/**
+ * Starlight `PageTitle` override: keeps the default title and adds actions
+ * that hand the page to humans and AI assistants as clean Markdown.
+ *
+ * The raw source of every docs page is exposed by
+ * `src/pages/raw/[...slug].md.ts`; the button copies it to the clipboard and
+ * the `.md` link opens it directly.
+ */
+const { entry } = Astro.locals.starlightRoute;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const rawHref = `${base}/raw/${entry.id}.md`;
+---
+
+<div class="page-title-row">
+  <Default />
+  <div class="markdown-actions">
+    <button class="copy-markdown" type="button" data-raw-url={rawHref}>
+      <svg
+        aria-hidden="true"
+        width="15"
+        height="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      <span class="copy-markdown-label" aria-live="polite">Copy page as Markdown</span>
+    </button>
+    <a class="view-markdown" href={rawHref} aria-label="View this page as plain Markdown">.md</a>
+  </div>
+</div>
+
+<script>
+  const COPY_IDLE_LABEL = 'Copy page as Markdown';
+  const COPY_DONE_LABEL = 'Copied!';
+  const COPY_ERROR_LABEL = 'Copy failed';
+  const RESET_DELAY_MS = 2000;
+
+  async function fetchMarkdown(url: string): Promise<string> {
+    const response = await fetch(url, { headers: { Accept: 'text/markdown' } });
+    if (!response.ok) {
+      throw new Error(`Fetching ${url} failed with status ${response.status}`);
+    }
+    return response.text();
+  }
+
+  async function copyMarkdown(url: string): Promise<void> {
+    // Safari only allows clipboard writes triggered by a user gesture when
+    // the payload is a promise-based ClipboardItem, so try that first.
+    if (typeof ClipboardItem !== 'undefined' && navigator.clipboard?.write) {
+      try {
+        const item = new ClipboardItem({
+          'text/plain': fetchMarkdown(url).then(
+            (text) => new Blob([text], { type: 'text/plain' }),
+          ),
+        });
+        await navigator.clipboard.write([item]);
+        return;
+      } catch {
+        // Fall through to the plain-text path.
+      }
+    }
+    const text = await fetchMarkdown(url);
+    await navigator.clipboard.writeText(text);
+  }
+
+  for (const button of document.querySelectorAll<HTMLButtonElement>('button.copy-markdown')) {
+    const label = button.querySelector<HTMLSpanElement>('.copy-markdown-label');
+    const rawUrl = button.dataset.rawUrl;
+    if (!label || !rawUrl) continue;
+
+    let resetTimer: number | undefined;
+
+    button.addEventListener('click', async () => {
+      window.clearTimeout(resetTimer);
+      button.disabled = true;
+      try {
+        await copyMarkdown(rawUrl);
+        button.dataset.state = 'copied';
+        label.textContent = COPY_DONE_LABEL;
+      } catch {
+        button.dataset.state = 'error';
+        label.textContent = COPY_ERROR_LABEL;
+      } finally {
+        button.disabled = false;
+      }
+      resetTimer = window.setTimeout(() => {
+        delete button.dataset.state;
+        label.textContent = COPY_IDLE_LABEL;
+      }, RESET_DELAY_MS);
+    });
+  }
+</script>
+
+<style>
+  .page-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .markdown-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .copy-markdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 999px;
+    background-color: transparent;
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-xs);
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      color 0.15s,
+      border-color 0.15s;
+  }
+
+  .copy-markdown:hover {
+    border-color: var(--sl-color-accent);
+    color: var(--sl-color-white);
+  }
+
+  .copy-markdown:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+
+  .copy-markdown[data-state='copied'] {
+    border-color: var(--sl-color-green);
+    color: var(--sl-color-green);
+  }
+
+  .copy-markdown[data-state='error'] {
+    border-color: var(--sl-color-red);
+    color: var(--sl-color-red);
+  }
+
+  .view-markdown {
+    padding: 0.375rem 0.6rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 999px;
+    color: var(--sl-color-gray-2);
+    font-family: var(--__sl-font-mono, ui-monospace, monospace);
+    font-size: var(--sl-text-xs);
+    line-height: 1;
+    text-decoration: none;
+    transition:
+      color 0.15s,
+      border-color 0.15s;
+  }
+
+  .view-markdown:hover {
+    border-color: var(--sl-color-accent);
+    color: var(--sl-color-white);
+  }
+</style>

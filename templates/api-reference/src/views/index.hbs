@@ -1,0 +1,126 @@
+{{> top}}
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">{{site.productTagline}}</p>
+          <h1>{{site.heading}}</h1>
+          <p class="hero-intro">{{site.intro}}</p>
+          <div class="hero-meta" aria-label="API facts">
+            <span class="meta-chip mono">{{site.baseUrl}}</span>
+            <span class="meta-chip">{{endpointCount}} endpoints</span>
+            <span class="meta-chip">JSON over HTTPS</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#endpoints">Browse endpoints</a>
+            <a class="btn btn-ghost" href="{{quickstart.href}}">Open the request builder</a>
+          </div>
+        </div>
+        <div class="hero-terminal">
+          <h2 class="visually-hidden">{{site.sections.quickstart.title}}</h2>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="dot dot-r" aria-hidden="true"></span>
+              <span class="dot dot-y" aria-hidden="true"></span>
+              <span class="dot dot-g" aria-hidden="true"></span>
+              <span class="terminal-title mono">{{site.sections.quickstart.title}}</span>
+              <button type="button" class="copy-btn" data-copy-target="#quickstart-curl">Copy</button>
+            </div>
+            <pre class="terminal-body"><code id="quickstart-curl" class="code-curl">{{{quickstart.curlHtml}}}</code></pre>
+          </div>
+          <p class="terminal-caption">{{site.sections.quickstart.caption}}</p>
+          <p class="copy-status" data-copy-status aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="endpoints" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2>{{site.sections.endpoints.title}}</h2>
+          <p>{{site.sections.endpoints.lead}}</p>
+        </header>
+        {{#each groups}}
+          <h3 class="group-name">{{name}}</h3>
+          <ul class="endpoint-list">
+            {{#each endpoints}}
+              <li>
+                <a class="endpoint-row" href="{{href}}">
+                  <span class="method-badge {{methodClass}}">{{method}}</span>
+                  <code class="endpoint-path">{{path}}</code>
+                  <span class="endpoint-summary">{{summary}}</span>
+                  <span class="endpoint-arrow" aria-hidden="true">&rarr;</span>
+                </a>
+              </li>
+            {{/each}}
+          </ul>
+        {{/each}}
+      </div>
+    </section>
+
+    <section id="authentication" class="section section-alt">
+      <div class="container auth-grid">
+        <div class="auth-copy">
+          <h2>{{site.sections.authentication.title}}</h2>
+          <p>{{site.auth.intro}}</p>
+          <p>{{site.auth.note}}</p>
+        </div>
+        <div class="auth-code">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="dot dot-r" aria-hidden="true"></span>
+              <span class="dot dot-y" aria-hidden="true"></span>
+              <span class="dot dot-g" aria-hidden="true"></span>
+              <span class="terminal-title mono">request header</span>
+            </div>
+            <pre class="terminal-body"><code class="code-curl"><span class="tok tok-hname">{{site.auth.headerName}}</span><span class="tok tok-punct">: </span><span class="tok tok-hval">{{site.auth.scheme}} {{site.auth.tokenPlaceholder}}</span>
+
+<span class="tok tok-punct"># once per shell:</span>
+<span class="tok tok-cmd">{{site.auth.exportHint}}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2>{{site.sections.howItWorks.title}}</h2>
+        </header>
+        <ol class="steps-grid">
+          {{#each site.sections.howItWorks.steps}}
+            <li class="step-card">
+              <h3>{{title}}</h3>
+              <p>{{text}}</p>
+            </li>
+          {{/each}}
+        </ol>
+      </div>
+    </section>
+
+    <section id="faq" class="section section-alt">
+      <div class="container narrow">
+        <header class="section-head">
+          <h2>{{site.sections.faq.title}}</h2>
+          <p>{{site.sections.faq.lead}}</p>
+        </header>
+        <div class="faq-list">
+          {{#each site.faqs}}
+            <details class="faq-item" {{#if @first}}open{{/if}}>
+              <summary>{{question}}</summary>
+              <p>{{answer}}</p>
+            </details>
+          {{/each}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-band">
+        <div>
+          <h2>{{site.sections.contact.title}}</h2>
+          <p>{{site.contact.note}}</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:{{site.contact.email}}">Email {{site.contact.teamName}}</a>
+      </div>
+    </section>
+{{> bottom}}

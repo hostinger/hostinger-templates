@@ -1,0 +1,22 @@
+[
+	{
+		"question": "Can I use this template for my own résumé?",
+		"answer": "Yes. Devfolio is MIT-licensed — fork it, gut it, and ship it as your own site, personal or commercial. Swap the contents of src/lib/data/resume.json for your career and the terminal, the HTML sections, and the page metadata all update together."
+	},
+	{
+		"question": "How do I edit the content?",
+		"answer": "Everything you read here — including this FAQ — lives in two JSON files: src/lib/data/resume.json for the résumé and src/lib/data/faq.json for these answers. There is no CMS and no copy hidden inside components; edit the JSON, save, and the dev server reloads."
+	},
+	{
+		"question": "Does the site work without JavaScript?",
+		"answer": "Yes. The page is fully prerendered, so the complete résumé is plain semantic HTML that loads without running a single script. The terminal is a progressive enhancement on top — with JavaScript off, its prompt politely disables itself and points you at the text below."
+	},
+	{
+		"question": "How do I add a new terminal command?",
+		"answer": "Commands are a typed registry in src/lib/terminal/commands.ts. Add an entry with a name, optional aliases, a one-line summary for help, and a run function that returns output lines — history, tab completion, and unknown-command suggestions pick it up automatically."
+	},
+	{
+		"question": "Will recruiters actually use a terminal?",
+		"answer": "Some will play, most will scroll — and both get the same information, rendered from the same resume.json. The terminal is the memorable handshake; the man-page sections underneath are the skimmable, printable résumé."
+	}
+]

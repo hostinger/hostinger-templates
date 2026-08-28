@@ -1,0 +1,71 @@
+{
+  "name": "Halyard Engineering",
+  "wordmark": {
+    "lead": "Halyard",
+    "tail": "Engineering"
+  },
+  "siteUrl": "https://example.com",
+  "description": "The engineering blog of Halyard, the webhook delivery platform. Postmortems with real numbers and design writeups with real code, written by the engineers on call.",
+  "masthead": {
+    "eyebrow": "The engineering blog of Halyard",
+    "headline": "Notes from the team that keeps nine million webhooks a day moving.",
+    "dek": "Postmortems with real numbers. Design writeups with real code. This is how we build — and occasionally break — the delivery pipeline.",
+    "meta": [
+      "Written by the engineers on call",
+      "Real incidents, real code",
+      "New posts when there is something to say"
+    ]
+  },
+  "nav": [
+    { "label": "Writing", "href": "/#writing" },
+    { "label": "About", "href": "/#about" },
+    { "label": "FAQ", "href": "/#faq" }
+  ],
+  "writing": {
+    "heading": "Writing",
+    "lede": "Everything we have published, newest first. Series posts are threaded — follow the crimson line."
+  },
+  "about": {
+    "heading": "About this blog",
+    "paragraphs": [
+      "Halyard delivers webhooks for commerce and billing platforms — about nine million a day, from checkout events to subscription renewals. This blog is the paper trail: when something breaks we publish the postmortem, and when we build something worth copying we publish the design.",
+      "We write the way we run incidents — plain language, real numbers, and code you can check. Nothing here is ghostwritten, and nothing goes through marketing."
+    ],
+    "authorsHeading": "Behind the posts"
+  },
+  "authors": [
+    { "name": "Mara Iversen", "role": "Infrastructure lead" },
+    { "name": "Tomás Rey", "role": "Platform engineer" }
+  ],
+  "faq": {
+    "heading": "Questions we get",
+    "lede": "How this blog works, in four answers.",
+    "items": [
+      {
+        "question": "Who writes the posts?",
+        "answer": "The engineers who did the work. Every draft gets a technical review from someone else on the incident or project, and one edit for clarity. Nothing is ghostwritten and nothing goes through marketing."
+      },
+      {
+        "question": "Can I republish or translate a post?",
+        "answer": "Yes. Republish or translate any post with attribution and a link to the original. The code snippets are MIT-licensed — use them without asking."
+      },
+      {
+        "question": "Do you publish a postmortem for every incident?",
+        "answer": "We publish when customers felt the impact or when the failure taught us something transferable. Internal-only incidents get the same written review; it just stays internal."
+      },
+      {
+        "question": "Do you take guest posts or sponsorships?",
+        "answer": "No. Everything here was written by someone at Halyard, about systems we run in production. That is the whole editorial policy."
+      }
+    ]
+  },
+  "footer": {
+    "note": "Halyard moves webhooks for commerce and billing platforms. The engineering team writes here.",
+    "links": [
+      { "label": "Writing", "href": "/#writing" },
+      { "label": "About", "href": "/#about" },
+      { "label": "FAQ", "href": "/#faq" }
+    ],
+    "colophon": "© 2026 Halyard. Set in Newsreader, Source Sans 3, and Courier Prime."
+  }
+}

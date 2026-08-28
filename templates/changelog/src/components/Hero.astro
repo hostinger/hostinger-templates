@@ -1,0 +1,39 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+import { formatDate, formatIsoDay } from '../utils/format';
+import HeroPanel from './HeroPanel.astro';
+
+interface Props {
+  latestVersion: string;
+  latestDate: Date;
+  totalReleases: number;
+}
+
+const site = rawSite as SiteContent;
+const { latestVersion, latestDate, totalReleases } = Astro.props;
+---
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Changelog</p>
+      <h1>What's new in {site.name}</h1>
+      <p class="hero-intro">{site.intro}</p>
+      <div class="hero-meta">
+        <span class="version-chip version-latest">
+          <span class="version-label">Latest</span>
+          v{latestVersion}
+        </span>
+        <span class="meta-dot" aria-hidden="true"></span>
+        <span>Updated <time datetime={formatIsoDay(latestDate)}>{formatDate(latestDate)}</time></span>
+        <span class="meta-dot" aria-hidden="true"></span>
+        <span>{totalReleases} releases</span>
+        <span class="meta-dot" aria-hidden="true"></span>
+        <a class="rss-link" href="/rss.xml">RSS feed</a>
+      </div>
+      <p class="new-banner" data-new-banner hidden role="status"></p>
+    </div>
+    <HeroPanel />
+  </div>
+</section>

@@ -1,0 +1,25 @@
+{
+  "windowLabel": "Last 14 days",
+  "windowRange": "Aug 14 – 27, 2026",
+  "comparisonLabel": "vs previous 14 days",
+  "cards": {
+    "delivered": {
+      "label": "Events delivered",
+      "hint": "Successful webhook deliveries across all endpoints in the window"
+    },
+    "successRate": {
+      "label": "Delivery success rate",
+      "hint": "Delivered events as a share of all delivery attempts"
+    },
+    "latency": {
+      "label": "Median delivery latency",
+      "hint": "Median of the daily p50 delivery times"
+    },
+    "endpoints": {
+      "label": "Active endpoints",
+      "hint": "Endpoints that accepted at least one delivery",
+      "current": 412,
+      "previous": 403
+    }
+  }
+}

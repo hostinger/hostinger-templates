@@ -1,0 +1,97 @@
+{
+  "companyName": "Slipway",
+  "product": "Scheduling, billing, and storage software for independent boatyards and marinas.",
+  "valuesLine": "Small team, calm pace, real customers — we build the boring software 400 working waterfronts run their seasons on.",
+  "email": "hiring@slipway.example",
+  "city": "Portland, Maine",
+  "nav": {
+    "skip": "Skip to open roles",
+    "roles": "Open roles",
+    "hiring": "How we hire",
+    "hello": "Say hi"
+  },
+  "hero": {
+    "kicker": "Careers at Slipway",
+    "headline": "Help 400 boatyards run on software instead of binders.",
+    "intro": "We're 28 people — some in Portland, Maine, the rest scattered across US time zones — making scheduling and billing tools for working waterfronts. Every role below says what you'd actually do all day. No legal spec dumps, no \"rockstar\" anything.",
+    "ctaLabel": "See open roles",
+    "artCaption": "The team — artist's impression."
+  },
+  "facts": [
+    { "label": "People", "value": "28" },
+    { "label": "Profitable since", "value": "2021" },
+    { "label": "Yards on Slipway", "value": "400+" },
+    { "label": "Legalese per role", "value": "0 lines" }
+  ],
+  "board": {
+    "kicker": "The board",
+    "title": "Open roles",
+    "note": "Filters combine, counts are live, and if nothing matches we'll say so — we only list roles we're actively hiring for.",
+    "teamLegend": "Team",
+    "locationLegend": "Location",
+    "policyLegend": "Work setup",
+    "filtersLabel": "Filter roles",
+    "clearLabel": "Clear all filters",
+    "resultsTemplate": "Showing {shown} of {total} open roles",
+    "cardCta": "Read the real job",
+    "emptyTitle": "Nothing matches those filters.",
+    "emptyBody": "That's the honest answer — every role we're hiring for is on this page, and nothing is hiding behind a login. Clear the filters, or email us what you're looking for; new roles post here first.",
+    "emptyCtaLabel": "Email us anyway"
+  },
+  "policyLabels": {
+    "remote": "Fully remote",
+    "hybrid": "Hybrid",
+    "on-site": "On-site"
+  },
+  "rolePage": {
+    "backLabel": "All roles",
+    "applyLabel": "Apply by email",
+    "applyNote": "Opens a pre-filled email. Applications go straight to a human at",
+    "doTitle": "What you'd actually do",
+    "dontTitle": "What you won't be doing",
+    "hireTitle": "How we hire for this role",
+    "aboutTitle": "About Slipway",
+    "aboutBody": "Slipway makes scheduling, billing, and storage software for independent boatyards and marinas — the family-run kind with a travel lift, a dockmaster, and a filing cabinet that has seen things. We're 28 people, profitable since 2021, and we'd rather stay small and useful than grow fast and weird.",
+    "questionsTitle": "Questions before you apply?",
+    "questionsBody": "Email us the question. A real person answers within two working days, and asking never counts against you.",
+    "questionsCtaLabel": "Email a question first",
+    "bottomTitle": "Sound like your kind of Tuesdays?",
+    "notFoundTitle": "That role isn't on the board.",
+    "notFoundBody": "It may have been filled, or the link is old. Every role we're hiring for is listed on the board."
+  },
+  "faqSection": {
+    "kicker": "Before you ask",
+    "title": "How hiring works here"
+  },
+  "faqs": [
+    {
+      "question": "What does the hiring process look like?",
+      "answer": "Every role follows the exact steps listed on its page — usually an intro call, one real conversation about your work, and a paid exercise drawn from our actual backlog. No whiteboard puzzles, no six-round gauntlets. Start to offer typically takes two to three weeks."
+    },
+    {
+      "question": "What's the remote policy, honestly?",
+      "answer": "Each role is labeled with how it really works: fully remote roles can be anywhere in US time zones, hybrid roles are in the Portland office two or three days a week, and on-site roles are on-site because the work genuinely needs it. We don't relabel roles after you join."
+    },
+    {
+      "question": "What happens in the interviews?",
+      "answer": "Conversations, not exams. We ask about real things you've shipped or handled, and you can ask us anything — salary, on-call, why the last person left. Anything take-home is time-boxed and paid at a fair rate."
+    },
+    {
+      "question": "Are the salary ranges real?",
+      "answer": "Yes. The range on the page is the range we offer inside, based on experience. We won't lowball under it, and everyone in the same role sits inside the same band."
+    },
+    {
+      "question": "No role fits me. Should I email anyway?",
+      "answer": "If what we're building excites you, yes. New roles post to this page first, and we keep a short list of people we liked — several of us got hired exactly that way."
+    }
+  ],
+  "footer": {
+    "kicker": "Talk to a human",
+    "title": "Hiring questions, accommodations, or just curious?"
+  },
+  "links": [
+    { "label": "LinkedIn", "href": "https://linkedin.com/company/slipway-example" },
+    { "label": "Bluesky", "href": "https://bsky.app/profile/slipway.example" }
+  ],
+  "footerNote": "Slipway is an equal opportunity employer. If you need an accommodation at any step, say the word — adjusting the process is normal here, not a favor."
+}
