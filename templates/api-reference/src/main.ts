@@ -12,10 +12,10 @@ async function bootstrap(): Promise<void> {
 
   (app.getHttpAdapter().getInstance() as Express).disable('x-powered-by');
   app.useStaticAssets(path.join(projectRoot, 'public'));
-  app.setBaseViewsDir(path.join(projectRoot, 'src', 'views'));
+  app.setBaseViewsDir(path.join(projectRoot, 'views'));
   app.setViewEngine('hbs');
   await new Promise<void>((resolve) => {
-    hbs.registerPartials(path.join(projectRoot, 'src', 'views', 'partials'), resolve);
+    hbs.registerPartials(path.join(projectRoot, 'views', 'partials'), resolve);
   });
 
   const parsedPort = Number.parseInt(process.env.PORT ?? '', 10);
@@ -29,4 +29,7 @@ async function bootstrap(): Promise<void> {
   );
 }
 
-await bootstrap();
+bootstrap().catch((error: unknown) => {
+  console.error(error);
+  process.exitCode = 1;
+});

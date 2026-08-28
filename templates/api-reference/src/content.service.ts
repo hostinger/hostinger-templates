@@ -25,6 +25,6 @@ export class ContentService {
 }
 
 function readJson<T>(fileName: string): T {
-  const filePath = path.join(projectRoot, 'src', 'data', fileName);
+  const filePath = path.join(projectRoot, 'data', fileName);
   return JSON.parse(readFileSync(filePath, 'utf8')) as T;
 }

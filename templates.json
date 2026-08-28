@@ -2903,7 +2903,7 @@
       "bucket": "Technical and SaaS",
       "category": "Trust and transparency",
       "whoItsFor": "A product selling to businesses",
-      "demoUrl": null,
+      "demoUrl": "https://trust-centre.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "trust-centre",
@@ -3108,7 +3108,7 @@
       "bucket": "Technical and SaaS",
       "category": "Documentation",
       "whoItsFor": "An API product",
-      "demoUrl": null,
+      "demoUrl": "https://api-reference.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "documentation",

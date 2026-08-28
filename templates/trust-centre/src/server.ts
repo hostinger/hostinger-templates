@@ -33,11 +33,12 @@ const trust = loadTrustContent(rootDir);
 const EMPTY_FORM: DisclosureInput = { email: '', category: '', description: '' };
 const NO_ERRORS: DisclosureErrors = {};
 
-const app = Fastify();
+async function start(): Promise<void> {
+  const app = Fastify();
 
-await app.register(formbody);
-await app.register(fastifyStatic, { root: path.join(rootDir, 'public') });
-await app.register(view, {
+  await app.register(formbody);
+  await app.register(fastifyStatic, { root: path.join(rootDir, 'public') });
+  await app.register(view, {
   engine: { ejs },
   root: path.join(rootDir, 'src', 'views'),
   viewExt: 'ejs',
@@ -50,7 +51,7 @@ await app.register(view, {
     descriptionMinLength: DESCRIPTION_MIN_LENGTH,
     descriptionMaxLength: DESCRIPTION_MAX_LENGTH,
   },
-});
+  });
 
 app.get('/', (_request, reply) => {
   return reply.view('index', {
@@ -134,7 +135,13 @@ app.setErrorHandler((error, _request, reply) => {
 const parsedPort = Number.parseInt(process.env.PORT ?? '', 10);
 const port = Number.isInteger(parsedPort) && parsedPort > 0 ? parsedPort : 4373;
 
-await app.listen({ port, host: '0.0.0.0' });
-console.log(
-  `${site.company.name} trust centre running at http://localhost:${port}`,
-);
+  await app.listen({ port, host: '0.0.0.0' });
+  console.log(
+    `${site.company.name} trust centre running at http://localhost:${port}`,
+  );
+}
+
+start().catch((error: unknown) => {
+  console.error(error);
+  process.exitCode = 1;
+});

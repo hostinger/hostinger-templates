@@ -4,6 +4,7 @@
   "private": true,
   "description": "A B2B trust and security page: compliance posture, subprocessor list, data-handling summary and a private disclosure form with an honest mailto fallback.",
   "type": "module",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",

@@ -5,9 +5,10 @@
   "description": "A server-rendered API reference with a try-it panel that builds a copyable curl command from the form — it never calls your API.",
   "license": "MIT",
   "type": "module",
+  "main": "main.js",
   "scripts": {
     "dev": "nest start --watch",
-    "build": "nest build",
+    "build": "nest build && cp -R public dist/public && cp -R src/data dist/data && cp -R src/views dist/views",
     "lint": "eslint .",
     "preview": "node dist/main.js"
   },
