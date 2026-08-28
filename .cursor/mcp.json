@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "unsplash": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@hanoak/unsplash-mcp-server"
+      ],
+      "env": {
+        "UNSPLASH_ACCESS_KEY": "${env:UNSPLASH_ACCESS_KEY}",
+        "UNSPLASH_APP_NAME": "nodejs-repos"
+      }
+    }
+  }
+}

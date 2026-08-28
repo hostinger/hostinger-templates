@@ -1,0 +1,84 @@
+{
+  "templates": [
+    {
+      "id": "callout",
+      "name": "Callout",
+      "summary": "A one-page local trades site with services, hours, coverage checking, and emergency callouts.",
+      "description": "Callout is a complete service-business website designed for an independent plumber, electrician, or other local tradesperson who needs to build trust quickly and turn nearby visitors into phone enquiries. The template gives a small operator the credibility of a larger company without introducing a complicated CMS or administrative workflow.\n\nThe customer journey is focused on practical questions people ask before booking: what the business repairs, whether emergency help is available tonight, which neighbourhoods are covered, and how to call. Service cards, opening hours, click-to-call actions, an interactive street checker, project photography, and a clear coverage map keep those answers visible throughout the page.\n\nAll business details, services, navigation, hours, and validation messages are centralized in typed constants for quick personalization. Original illustrations, responsive layouts, accessible form behavior, and carefully tuned mobile interactions make the template ready for vibecoding into a distinctive real-world trade website.",
+      "bucket": "Non-technical",
+      "category": "Trades and local services",
+      "whoItsFor": "A one-van plumber or electrician",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "local-business",
+          "trades",
+          "services"
+        ],
+        "useCases": [
+          "lead-generation",
+          "emergency-callouts",
+          "service-area-checking"
+        ],
+        "frameworks": [
+          "react",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "service-overview",
+          "name": "Service overview",
+          "description": "Clear cards for repairs, heating work, and emergency callouts."
+        },
+        {
+          "id": "coverage-checker",
+          "name": "Coverage checker",
+          "description": "Interactive street or postcode form with an immediate status response."
+        },
+        {
+          "id": "availability-and-hours",
+          "name": "Availability and hours",
+          "description": "Prominent opening hours and tonight's emergency cover."
+        },
+        {
+          "id": "click-to-call",
+          "name": "Click to call",
+          "description": "Mobile-friendly phone actions placed throughout the page."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "20+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "callout/preview/callout-thumbnail.png",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "callout/preview/callout-homepage.png",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3355
+        }
+      },
+      "searchTerms": [
+        "plumber",
+        "electrician",
+        "local services",
+        "emergency callout",
+        "react landing page"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+@media (max-width: 900px) {
+  .site-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    padding: 75px 40px;
+  }
+
+  .hero-visual {
+    min-height: 560px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: 270px;
+  }
+
+  .service-card + .service-card {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .coverage-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hours-section {
+    gap: 55px;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-header {
+    height: 78px;
+  }
+
+  .header-phone span {
+    display: none;
+  }
+
+  .header-phone {
+    background: var(--copper);
+    border-radius: 50%;
+    color: white;
+    padding: 10px;
+  }
+
+  .hero-copy {
+    padding: 60px 24px;
+  }
+
+  h1 {
+    font-size: 52px;
+    letter-spacing: -3.4px;
+  }
+
+  .hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .trust-row p {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero-visual {
+    min-height: 460px;
+  }
+
+  .sun {
+    height: 320px;
+    width: 320px;
+  }
+
+  .experience-stamp {
+    bottom: 22px;
+    height: 105px;
+    right: 18px;
+    width: 105px;
+  }
+
+  .services {
+    padding-bottom: 80px;
+    padding-top: 80px;
+  }
+
+  .service-card {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .coverage-section {
+    padding: 0 0 80px;
+  }
+
+  .coverage-copy {
+    padding: 52px 24px;
+  }
+
+  .map {
+    min-height: 390px;
+  }
+
+  .hours-section {
+    padding-bottom: 80px;
+  }
+
+  .hours-list > div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .hours-list .emergency-row {
+    align-items: flex-start;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+    padding-bottom: 35px;
+  }
+
+  .footer-call {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .footer-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
