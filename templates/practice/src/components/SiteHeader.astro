@@ -1,0 +1,44 @@
+---
+import site from '../data/site.json';
+
+const currentPath = Astro.url.pathname;
+const navItems = [
+  { href: '/#care', label: 'Our care' },
+  { href: '/#first-visit', label: 'First visit' },
+  { href: '/#practice', label: 'The practice' },
+];
+---
+
+<header class="site-header">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label={`${site.name} home`}>
+      <span class="brand-mark" aria-hidden="true">
+        <span></span>
+      </span>
+      <span>
+        <strong>{site.shortName}</strong>
+        <small>Family Dental</small>
+      </span>
+    </a>
+
+    <nav aria-label="Primary navigation">
+      <ul>
+        {navItems.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <a class="header-call" href={`tel:${site.phoneHref}`}>
+      <span>Call the practice</span>
+      <strong>{site.phoneDisplay}</strong>
+    </a>
+  </div>
+  {currentPath.startsWith('/services/') && (
+    <div class="service-ribbon">
+      <a href="/#care">← All services</a>
+      <span>Maplewood · Portland, Oregon</span>
+    </div>
+  )}
+</header>

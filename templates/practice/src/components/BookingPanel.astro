@@ -1,0 +1,33 @@
+---
+import site from '../data/site.json';
+import ArrowIcon from '../icons/ArrowIcon.astro';
+
+interface Props {
+  compact?: boolean;
+  title?: string;
+}
+
+const {
+  compact = false,
+  title = 'Ready when you are. Start with a conversation.',
+} = Astro.props;
+---
+
+<section class:list={['booking-panel', { 'booking-panel--compact': compact }]} aria-labelledby="booking-title">
+  <div>
+    <p class="eyebrow">Your next step</p>
+    <h2 id="booking-title">{title}</h2>
+    <p>
+      Our booking link sends a request—it does not confirm an appointment.
+      Prefer to talk? Call and a real person will help.
+    </p>
+  </div>
+  <div class="booking-actions">
+    <a class="button button--light" href={site.bookingUrl}>
+      Request an appointment <ArrowIcon />
+    </a>
+    <a class="phone-link" href={`tel:${site.phoneHref}`}>
+      Call {site.phoneDisplay}
+    </a>
+  </div>
+</section>

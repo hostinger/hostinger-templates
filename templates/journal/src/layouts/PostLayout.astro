@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import SeriesNav from '../components/SeriesNav.astro';
+import { getReadingStats } from '../utils/readingTime';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  previous?: CollectionEntry<'posts'>;
+  next?: CollectionEntry<'posts'>;
+}
+
+const { post, previous, next } = Astro.props;
+const reading = getReadingStats(post.body ?? '');
+const date = post.data.publishedAt.toLocaleDateString('en-GB', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <main id="main" class="article-main">
+    <div class="article-rail" aria-hidden="true">
+      <span>No. {String(post.data.number).padStart(2, '0')}</span>
+      <p>{post.data.marginalia}</p>
+    </div>
+    <article class="article">
+      <header class="article-header">
+        <a class="back-link" href="/#index">← Back to index</a>
+        {
+          post.data.series && (
+            <p class="series-label">
+              {post.data.series} · Part {post.data.seriesOrder}
+            </p>
+          )
+        }
+        <h1>{post.data.title}</h1>
+        <p class="article-deck">{post.data.description}</p>
+        <div class="article-meta">
+          <time datetime={post.data.publishedAt.toISOString()}>{date}</time>
+          <span>{reading.minutes} min read</span>
+          <span>{reading.words} words</span>
+        </div>
+      </header>
+      <div class="article-body">
+        <slot />
+      </div>
+      {
+        post.data.series && (
+          <SeriesNav series={post.data.series} previous={previous} next={next} />
+        )
+      }
+      <footer class="article-signoff">
+        <span aria-hidden="true">✣</span>
+        <p>Written by Mara Vale<br />for <a href="/">The Near Field</a></p>
+      </footer>
+    </article>
+  </main>
+</BaseLayout>

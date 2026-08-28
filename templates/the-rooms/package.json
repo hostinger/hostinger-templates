@@ -1,0 +1,30 @@
+{
+  "name": "the-rooms",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A static coastal guesthouse field guide with room comparison and honest booking links.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt typecheck && nuxt generate",
+    "lint": "eslint .",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@fontsource-variable/newsreader": "^5.2.8",
+    "@fontsource-variable/work-sans": "^5.2.8",
+    "nuxt": "^3.21.11",
+    "vue": "^3.5.42"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.17.0",
+    "eslint": "^9.39.5",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.3.11"
+  }
+}

@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getReadingStats } from '../utils/readingTime';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const reading = getReadingStats(post.body ?? '');
+const date = post.data.publishedAt.toLocaleDateString('en-GB', {
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<article class="post-card">
+  <div class="post-number" aria-hidden="true">{String(post.data.number).padStart(2, '0')}</div>
+  <div class="post-card-body">
+    <div class="eyebrow">
+      <time datetime={post.data.publishedAt.toISOString()}>{date}</time>
+      <span>{reading.minutes} min read · {reading.words} words</span>
+    </div>
+    <h3><a href={`/posts/${post.id}/`}>{post.data.title}</a></h3>
+    <p>{post.data.description}</p>
+    {
+      post.data.series && (
+        <span class="series-label">
+          {post.data.series} · Part {post.data.seriesOrder}
+        </span>
+      )
+    }
+  </div>
+  <a class="post-arrow" href={`/posts/${post.id}/`} aria-label={`Read ${post.data.title}`}>↗</a>
+</article>

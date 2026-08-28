@@ -1,0 +1,141 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FirstVisitSteps from '../components/FirstVisitSteps.astro';
+import FaqList from '../components/FaqList.astro';
+import BookingPanel from '../components/BookingPanel.astro';
+import ArrowIcon from '../icons/ArrowIcon.astro';
+import site from '../data/site.json';
+import heroImage from '../assets/images/hero-dentist.jpg';
+import familyImage from '../assets/images/family-dentistry.jpg';
+import restorativeImage from '../assets/images/restorative-care.jpg';
+import urgentImage from '../assets/images/urgent-visit.jpg';
+import teamImage from '../assets/images/practice-team.jpg';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const serviceImages = {
+  'family-dentistry': familyImage,
+  'gentle-restorative-care': restorativeImage,
+  'emergency-dentist': urgentImage,
+};
+
+const faqs = [
+  {
+    question: 'Do I need to know what treatment I need before booking?',
+    answer: 'No. Tell us what you are noticing or what you hope to change. The first visit is for understanding your needs and deciding on next steps together.',
+  },
+  {
+    question: 'Can I ask for extra time or breaks?',
+    answer: 'Yes. Let the team know when you book, and we will note your preferences. You can also use an agreed pause signal at any point during a visit.',
+  },
+  {
+    question: 'Does the online request confirm my appointment?',
+    answer: 'No. It sends your preferred times to the team. We will contact you to confirm availability and appointment details.',
+  },
+  {
+    question: 'Do you offer an online insurance checker?',
+    answer: 'No. Coverage varies by plan and treatment. Call the practice and we can help you understand what information to ask your insurer for before care.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+---
+
+<BaseLayout schema={faqSchema}>
+  <section class="hero section-shell">
+    <div class="hero-copy">
+      <p class="eyebrow">Neighborhood dentistry · Maplewood, Portland</p>
+      <h1>Care that meets you at the door.</h1>
+      <p class="hero-lede">
+        Thoughtful family dentistry with time to ask questions, take a breath,
+        and understand every next step.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href={site.bookingUrl}>Request a visit <ArrowIcon /></a>
+        <a class="text-link" href={`tel:${site.phoneHref}`}>Or call {site.phoneDisplay}</a>
+      </div>
+      <div class="hero-note">
+        <span class="note-number">12</span>
+        <span>years caring for<br />Portland neighbors</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="arch-image">
+        <Image src={heroImage} alt="Dentist listening to a patient in a calm treatment room" loading="eager" />
+      </div>
+      <div class="paper-note">
+        <span aria-hidden="true">✦</span>
+        <p><strong>Nervous about visiting?</strong><br />Tell us. We will plan around you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="care-section section-shell" id="care" aria-labelledby="care-title">
+    <div class="section-intro section-intro--split">
+      <div>
+        <p class="eyebrow">How we can help</p>
+        <h2 id="care-title">The care you need.<br />None of the pressure.</h2>
+      </div>
+      <p>
+        Clear recommendations, useful context, and room to decide. Every service
+        starts with listening—not assumptions.
+      </p>
+    </div>
+    <div class="service-list">
+      {services.map((service, index) => (
+        <article class="service-row">
+          <a href={`/services/${service.id}/`} aria-label={`Learn about ${service.data.shortTitle}`}>
+            <span class="service-index">0{index + 1}</span>
+            <div class="service-thumb">
+              <Image src={serviceImages[service.id as keyof typeof serviceImages]} alt={service.data.imageAlt} />
+            </div>
+            <div class="service-copy">
+              <h3>{service.data.shortTitle}</h3>
+              <p>{service.data.summary}</p>
+            </div>
+            <span class="round-arrow"><ArrowIcon /></span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <FirstVisitSteps />
+
+  <section class="practice-story section-shell" id="practice" aria-labelledby="practice-title">
+    <div class="story-image">
+      <Image src={teamImage} alt="Two dental team members smiling in the practice" />
+      <span class="story-stamp">Here to<br />listen</span>
+    </div>
+    <div class="story-copy">
+      <p class="eyebrow">Meet Porchlight</p>
+      <h2 id="practice-title">A small practice with a long memory.</h2>
+      <p class="story-lede">
+        We remember that you prefer the window chair, that your kid wants to
+        know what every tool does, and that a little warning goes a long way.
+      </p>
+      <p>
+        Porchlight is an independent Maplewood practice for adults and children
+        age six and up. We keep the team small, appointments unhurried, and
+        recommendations grounded in what matters to you.
+      </p>
+      <dl class="story-facts">
+        <div><dt>6+</dt><dd>Children<br />welcome</dd></div>
+        <div><dt>1</dt><dd>Consistent<br />care team</dd></div>
+        <div><dt>0</dt><dd>Pressure to<br />decide today</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="section-shell"><FaqList items={faqs} /></div>
+  <div class="section-shell"><BookingPanel /></div>
+</BaseLayout>

@@ -1,0 +1,32 @@
+[
+  {
+    "season": "Drift",
+    "months": "November–March",
+    "note": "Quiet coast, fires lit",
+    "nightly": {
+      "lookout": 145,
+      "boat-house": 135,
+      "salt-store": 115
+    }
+  },
+  {
+    "season": "Tide",
+    "months": "April–June · September–October",
+    "note": "Long walks, softer roads",
+    "nightly": {
+      "lookout": 175,
+      "boat-house": 165,
+      "salt-store": 140
+    }
+  },
+  {
+    "season": "High Water",
+    "months": "July–August",
+    "note": "Brightest, busiest days",
+    "nightly": {
+      "lookout": 210,
+      "boat-house": 195,
+      "salt-store": 165
+    }
+  }
+]

@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import ArrowIcon from '../icons/ArrowIcon.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const { data } = project;
+---
+
+<article
+  class:list={['project-card', `project-${index + 1}`, data.orientation]}
+  data-reveal
+>
+  <a href={`/projects/${project.id}/`} aria-label={`View ${data.title} case study`}>
+    <div class="project-image">
+      <Image
+        src={data.cover}
+        alt={data.coverAlt}
+        widths={[480, 760, 1100]}
+        sizes="(max-width: 700px) 100vw, 55vw"
+        loading="eager"
+      />
+      <span class="view-mark"><ArrowIcon /></span>
+    </div>
+    <div class="project-caption">
+      <span class="project-number">({data.number})</span>
+      <h3>{data.title}</h3>
+      <p>{data.discipline} · {data.year}</p>
+    </div>
+  </a>
+</article>

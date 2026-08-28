@@ -1,0 +1,19 @@
+---
+import { site } from '../content/site';
+---
+
+<footer class="site-footer">
+  <p class="footer-prompt">Have a project<br />taking shape?</p>
+  <a class="footer-email" href={`mailto:${site.email}`}>{site.email}</a>
+  <div class="footer-meta">
+    <p>{site.location}</p>
+    <div>
+      {
+        site.social.map((item) => (
+          <a href={item.href} target="_blank" rel="noreferrer">{item.label}</a>
+        ))
+      }
+    </div>
+    <p>© {new Date().getFullYear()} {site.studio}</p>
+  </div>
+</footer>

@@ -1,0 +1,21 @@
+{
+  "name": "Porchlight Family Dental",
+  "shortName": "Porchlight",
+  "description": "Calm, practical dental care for neighbors of Maplewood in Portland, Oregon.",
+  "websiteUrl": "https://porchlightdental.example",
+  "phoneDisplay": "(503) 555-0148",
+  "phoneHref": "+15035550148",
+  "email": "hello@porchlightdental.example",
+  "bookingUrl": "https://example.com/request-appointment",
+  "address": {
+    "street": "1842 SE Maplewood Avenue",
+    "locality": "Portland",
+    "region": "OR",
+    "postalCode": "97214"
+  },
+  "hours": [
+    { "days": "Monday–Thursday", "time": "8am–5pm" },
+    { "days": "Friday", "time": "8am–1pm" }
+  ],
+  "socialProof": "Serving Maplewood families since 2012"
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "lookout",
+    "key": "01 · EAST KEY",
+    "name": "The Lookout",
+    "deck": "Wide water, first light",
+    "description": "Our high room, looking east across the harbour mouth.",
+    "longDescription": "Climb to the top floor for uninterrupted water and weather. The Lookout is bright at dawn, quiet after dark, and made for slow cups of tea in the window seat.",
+    "sleeps": 2,
+    "bed": "King bed",
+    "size": "24 m²",
+    "outlook": "Harbour & headland",
+    "image": "/images/lookout.jpg",
+    "imageAlt": "Calm guest room with white linen and a wide sea-facing window",
+    "details": ["Window seat with binoculars", "Rainfall shower", "Breakfast included", "Second-floor room"],
+    "goodToKnow": "Two flights of stairs and no lift. Morning light arrives early in midsummer."
+  },
+  {
+    "slug": "boat-house",
+    "key": "02 · BRASS KEY",
+    "name": "The Boat House",
+    "deck": "Sheltered, low and roomy",
+    "description": "A ground-floor room with its own door onto the old slipway garden.",
+    "longDescription": "The Boat House sits closest to the garden and has the easiest access. Limewashed walls, a broad bed and a sheltered bench outside make it our room for unhurried weekends.",
+    "sleeps": 2,
+    "bed": "Super king or twin",
+    "size": "29 m²",
+    "outlook": "Slipway garden",
+    "image": "/images/boat-house.jpg",
+    "imageAlt": "Textured coastal bedroom with pale walls and warm wood furniture",
+    "details": ["Private garden entrance", "Walk-in shower", "Breakfast included", "Ground-floor access"],
+    "goodToKnow": "The garden path is gently sloped but laid with old stone; ask us about access needs before booking."
+  },
+  {
+    "slug": "salt-store",
+    "key": "03 · IRON KEY",
+    "name": "The Salt Store",
+    "deck": "Small, snug, west-facing",
+    "description": "A compact room under the eaves, warm with evening sun.",
+    "longDescription": "Once used to dry nets and store salt, this is the smallest room in the house. Its pitched ceiling, old rafters and west window give it the feeling of a well-kept hideaway.",
+    "sleeps": 2,
+    "bed": "Double bed",
+    "size": "18 m²",
+    "outlook": "Village rooftops",
+    "image": "/images/salt-store.jpg",
+    "imageAlt": "Small inviting bedroom beneath timber rafters with rust-coloured textiles",
+    "details": ["Original timber rafters", "Compact shower room", "Breakfast included", "First-floor room"],
+    "goodToKnow": "Sloped ceilings make this room less suitable for very tall guests."
+  }
+]

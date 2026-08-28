@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import FaqList from '../components/FaqList.astro';
+import { faq, site } from '../data/site';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+---
+
+<BaseLayout>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <main id="main">
+    <section class="hero">
+      <div class="hero-marginalia" aria-hidden="true">
+        <svg viewBox="0 0 120 190">
+          <path d="M89 3C62 49 51 99 60 181M83 14l10-10-1 15M50 168l10 14 7-16" />
+          <path class="thin" d="M17 38c34-9 61 0 84 27M16 43c35-10 65-2 86 24" />
+        </svg>
+        <span>Begin at<br />the edges</span>
+      </div>
+      <div class="hero-copy">
+        <p class="issue-line"><span>Personal essays & field notes</span> Issue 01 / Spring</p>
+        <h1>Notes on the<br /><em>near at hand.</em></h1>
+        <p class="hero-intro">{site.intro}</p>
+        <a class="read-latest" href={`/posts/${posts[0].id}/`}>
+          <span>Read the latest</span>
+          <strong>{posts[0].data.title}</strong>
+          <i aria-hidden="true">↗</i>
+        </a>
+      </div>
+      <div class="hero-mark" aria-hidden="true">
+        <span>NF</span>
+        <svg viewBox="0 0 220 140">
+          <path d="M5 112C52 63 89 43 149 37c31-3 53 7 65 27" />
+          <path d="M3 119C54 76 103 60 170 62" />
+          <circle cx="170" cy="62" r="5" />
+        </svg>
+        <p>Written from<br />51.5072° N</p>
+      </div>
+    </section>
+
+    <section class="index-section" id="index" aria-labelledby="index-title">
+      <aside class="section-note">
+        <span aria-hidden="true">↘</span>
+        Ordered by arrival,<br />not importance.
+      </aside>
+      <div class="index-content">
+        <div class="index-heading">
+          <div>
+            <p class="section-label">The index</p>
+            <h2 id="index-title">Latest writing</h2>
+          </div>
+          <p>{posts.length} pieces<br />{posts.filter((post) => post.data.series).length} in series</p>
+        </div>
+        <div class="post-list">
+          {posts.map((post) => <PostCard post={post} />)}
+        </div>
+      </div>
+    </section>
+
+    <blockquote class="manifesto">
+      <p>“Looking closely is not a way<br />to make the world smaller.”</p>
+      <footer><span></span> Note to self, written in a margin</footer>
+    </blockquote>
+
+    <FaqList />
+  </main>
+</BaseLayout>

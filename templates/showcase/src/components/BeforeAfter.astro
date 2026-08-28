@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import beforeImage from '../assets/images/afterimage-before.jpg';
+import afterImage from '../assets/images/afterimage-after.jpg';
+---
+
+<figure class="comparison" data-comparison style="--position: 56%">
+  <div class="comparison-stage">
+    <Image
+      src={beforeImage}
+      alt="Afterimage House facade before the identity intervention"
+      widths={[640, 1000, 1440]}
+      sizes="(max-width: 800px) 100vw, 85vw"
+    />
+    <div class="comparison-after" aria-hidden="true">
+      <Image
+        src={afterImage}
+        alt=""
+        widths={[640, 1000, 1440]}
+        sizes="(max-width: 800px) 100vw, 85vw"
+      />
+    </div>
+    <div class="comparison-line" aria-hidden="true">
+      <span>↔</span>
+    </div>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="56"
+      aria-label="Compare facade before and after"
+      aria-valuetext="56 percent after image"
+    />
+    <span class="comparison-label before-label">Before</span>
+    <span class="comparison-label after-label">After</span>
+  </div>
+  <figcaption>Facade study, before / after. Drag or use arrow keys.</figcaption>
+</figure>

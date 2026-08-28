@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  series: string;
+  previous?: CollectionEntry<'posts'>;
+  next?: CollectionEntry<'posts'>;
+}
+
+const { series, previous, next } = Astro.props;
+---
+
+<nav class="series-nav" aria-label={`${series} series navigation`}>
+  <p class="series-kicker">Continue “{series}”</p>
+  <div class="series-links">
+    <div>
+      {
+        previous ? (
+          <a href={`/posts/${previous.id}/`}>
+            <span>← Previous</span>
+            <strong>{previous.data.title}</strong>
+          </a>
+        ) : (
+          <p class="series-end">You are at the beginning.</p>
+        )
+      }
+    </div>
+    <div>
+      {
+        next ? (
+          <a href={`/posts/${next.id}/`}>
+            <span>Next →</span>
+            <strong>{next.data.title}</strong>
+          </a>
+        ) : (
+          <p class="series-end">You have reached the end.</p>
+        )
+      }
+    </div>
+  </div>
+</nav>

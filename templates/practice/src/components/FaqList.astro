@@ -1,0 +1,28 @@
+---
+import type { FaqItem } from '../types/site';
+
+interface Props {
+  items: FaqItem[];
+  title?: string;
+}
+
+const { items, title = 'Questions, answered plainly' } = Astro.props;
+---
+
+<section class="faq-section" aria-labelledby="faq-title">
+  <div class="section-intro">
+    <p class="eyebrow">Good to know</p>
+    <h2 id="faq-title">{title}</h2>
+  </div>
+  <div class="faq-list">
+    {items.map((item, index) => (
+      <details open={index === 0}>
+        <summary>
+          <span>{item.question}</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <p>{item.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>

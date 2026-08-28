@@ -1,0 +1,85 @@
+{
+  "name": "Mara Bell",
+  "role": "Independent strategy consultant & leadership coach",
+  "metaDescription": "Focused strategy and coaching for leaders ready to turn a knotty business moment into a clear, owned next move.",
+  "eyebrow": "Strategy for the moment you're in",
+  "headline": "Less circling. More clarity you can move on.",
+  "intro": "I help thoughtful founders and leadership teams make the hard call, align the room and turn strategy into work people actually own.",
+  "location": "London · working worldwide",
+  "availability": "Taking on one new engagement in October",
+  "email": "hello@marabell.co",
+  "bookingUrl": "",
+  "labels": {
+    "booking": "Book a call",
+    "backToTop": "Back to top",
+    "mainNavigation": "Main navigation",
+    "servicesEyebrow": "What shifts",
+    "faqEyebrow": "Before you ask",
+    "faqNote": "No awkward question.\nOnly useful ones."
+  },
+  "navigation": [
+    { "label": "How I help", "href": "#services" },
+    { "label": "Approach", "href": "#approach" },
+    { "label": "FAQ", "href": "#faq" }
+  ],
+  "proof": {
+    "quote": "Mara gave us the language for what we already knew — then helped us make the decision we'd been avoiding.",
+    "attribution": "COO, climate technology scale-up"
+  },
+  "servicesIntro": "Bring me the messy middle: the strategy that will not land, the team pulling in three directions, or the next chapter that still feels blurry.",
+  "services": [
+    {
+      "number": "01",
+      "title": "Find the decision inside the noise",
+      "summary": "Move from competing opinions and endless analysis to one sharp strategic choice your team can explain — and act on.",
+      "annotation": "clarity → momentum"
+    },
+    {
+      "number": "02",
+      "title": "Get the room moving as one",
+      "summary": "Turn polite disagreement into useful tension, shared language and genuine ownership across your leadership team.",
+      "annotation": "alignment, not agreement"
+    },
+    {
+      "number": "03",
+      "title": "Lead the next chapter on purpose",
+      "summary": "Step out of reactive mode with a clearer leadership stance, firmer boundaries and decisions that sound like you.",
+      "annotation": "your pace, your terms"
+    }
+  ],
+  "approach": {
+    "eyebrow": "How we work",
+    "title": "A working session, not a performance.",
+    "body": "No theatre. No strategy deck that gathers dust. We name what is actually happening, find the useful edge of the problem and leave each conversation with a move worth making.",
+    "steps": [
+      { "label": "Notice", "text": "What is true, but not yet being said?" },
+      { "label": "Choose", "text": "What matters enough to rule other things out?" },
+      { "label": "Move", "text": "What is the smallest action that changes the picture?" }
+    ]
+  },
+  "faqTitle": "Questions before we begin",
+  "faqs": [
+    {
+      "question": "How do I know whether I need consulting or coaching?",
+      "answer": "You do not need to diagnose it first. Consulting is useful when the business needs a clearer choice; coaching when your leadership within that choice is the work. Most engagements use a deliberate mix of both."
+    },
+    {
+      "question": "Will this create more work for an already stretched team?",
+      "answer": "The aim is subtraction. We focus on the few decisions that release energy, stop low-value work and make existing effort more coherent. I will be clear about any time commitment before we agree to proceed."
+    },
+    {
+      "question": "What if our leadership team does not agree?",
+      "answer": "Agreement is not the entry ticket. A well-held process makes disagreement usable: assumptions become visible, trade-offs get named and the team can commit to a decision even when preferences differ."
+    },
+    {
+      "question": "Can we start with one conversation?",
+      "answer": "Yes. A 45-minute fit call is a real working conversation, not a sales script. We will clarify the knot, decide whether I am useful and leave you with a sensible next step either way."
+    }
+  ],
+  "closing": {
+    "eyebrow": "Your move",
+    "title": "Bring the knot. We'll find the thread.",
+    "body": "Tell me what keeps returning to the agenda. The first conversation is 45 minutes, candid and free."
+  },
+  "footerNote": "Independent thinking for consequential moments."
+}

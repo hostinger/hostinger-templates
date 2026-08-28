@@ -1,0 +1,75 @@
+{
+	"couple": {
+		"first": "Maya",
+		"second": "Theo",
+		"monogram": "M & T"
+	},
+	"date": {
+		"display": "Saturday, 22 August 2026",
+		"short": "22 · 08 · 26"
+	},
+	"venue": {
+		"name": "The Glasshouse at Fernhill",
+		"location": "Somerset, England",
+		"address": "Fernhill Lane, Bruton, BA10 0AA",
+		"mapUrl": "https://maps.google.com/?q=Bruton+Somerset"
+	},
+	"rsvp": {
+		"deadline": "20 June 2026",
+		"email": ""
+	},
+	"navigation": [
+		{ "label": "Our story", "href": "#story" },
+		{ "label": "The day", "href": "#schedule" },
+		{ "label": "Travel", "href": "#travel" },
+		{ "label": "RSVP", "href": "#rsvp" }
+	],
+	"hero": {
+		"eyebrow": "Please join us in the garden",
+		"title": "The beginning of always",
+		"note": "Dinner, dancing and midsummer mischief under the Somerset sky."
+	},
+	"story": {
+		"kicker": "A long story, made short",
+		"title": "From a rainy bookshop to a summer garden",
+		"paragraphs": [
+			"We met reaching for the same dog-eared cookbook on a wet Tuesday in Bristol. Theo offered it to Maya; Maya offered coffee in return. Neither of us made the recipe.",
+			"Seven years, three homes and one very opinionated spaniel later, we are gathering our favourite people for one glorious day. We cannot imagine it without you."
+		]
+	},
+	"schedule": [
+		{ "time": "2:00 pm", "title": "Garden welcome", "detail": "Lemonade, lawn games and plenty of time for hellos." },
+		{ "time": "3:00 pm", "title": "The ceremony", "detail": "Meet us beneath the old copper beech." },
+		{ "time": "4:00 pm", "title": "Drinks & photographs", "detail": "Fizz, canapés and wandering through the kitchen garden." },
+		{ "time": "6:00 pm", "title": "Supper", "detail": "A long-table feast inside the glasshouse." },
+		{ "time": "8:30 pm", "title": "Dancing", "detail": "Cake first. Then questionable moves until midnight." }
+	],
+	"travel": {
+		"intro": "Fernhill is a ten-minute taxi from Bruton station. Trains run from London Paddington via Westbury. Please book your return taxi ahead of time.",
+		"hotels": [
+			{
+				"name": "At the Chapel",
+				"distance": "10 minutes by taxi",
+				"detail": "Light-filled rooms in central Bruton, with breakfast from the bakery downstairs.",
+				"url": "https://www.atthechapel.co.uk/"
+			},
+			{
+				"name": "The Three Horseshoes",
+				"distance": "15 minutes by taxi",
+				"detail": "A relaxed country inn with six rooms and a very good Sunday breakfast.",
+				"url": "https://threehorseshoesbatcombe.co.uk/"
+			}
+		]
+	},
+	"faq": [
+		{ "question": "What should I wear?", "answer": "Garden party finery. Think colour, comfortable shoes and one warm layer for after sunset. The ceremony and drinks are on grass." },
+		{ "question": "Can I bring children?", "answer": "We adore your little ones, but our celebration will be adults-only apart from immediate family. Thank you for understanding." },
+		{ "question": "Is there parking?", "answer": "Yes. There is a signed field beside the venue. Cars may be collected before noon on Sunday, but please do not leave valuables inside." },
+		{ "question": "What about gifts?", "answer": "Your company is the only gift we need. If you feel strongly, a small contribution to our honeymoon train journey would be lovely." },
+		{ "question": "Who can help on the day?", "answer": "For anything urgent, speak to our coordinator at the venue. Her name is Rosa and she will be wearing a raspberry ribbon." }
+	],
+	"footer": {
+		"signoff": "With all our love",
+		"note": "Made for one very big day"
+	}
+}

@@ -2705,7 +2705,7 @@
       "bucket": "Technical and SaaS",
       "category": "Trust and transparency",
       "whoItsFor": "A shipping product",
-      "demoUrl": null,
+      "demoUrl": "https://changelog.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "saas",
@@ -2799,7 +2799,7 @@
       "bucket": "Technical and SaaS",
       "category": "Trust and transparency",
       "whoItsFor": "A product gathering feedback",
-      "demoUrl": null,
+      "demoUrl": "https://roadmap.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "saas",
@@ -3010,7 +3010,7 @@
       "bucket": "Technical and SaaS",
       "category": "Documentation",
       "whoItsFor": "Any product needing docs",
-      "demoUrl": null,
+      "demoUrl": "https://manual.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "documentation",
@@ -3210,7 +3210,7 @@
       "bucket": "Technical and SaaS",
       "category": "Documentation",
       "whoItsFor": "An open-source project",
-      "demoUrl": null,
+      "demoUrl": "https://quickstart.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "documentation",
@@ -3313,7 +3313,7 @@
       "bucket": "Technical and SaaS",
       "category": "Documentation",
       "whoItsFor": "A team publishing components",
-      "demoUrl": null,
+      "demoUrl": "https://design-system.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "documentation",
@@ -3417,7 +3417,7 @@
       "bucket": "Technical and SaaS",
       "category": "Internal and team",
       "whoItsFor": "An admin or analytics UI",
-      "demoUrl": null,
+      "demoUrl": "https://console.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "admin-dashboard",
@@ -3523,7 +3523,7 @@
       "bucket": "Technical and SaaS",
       "category": "Internal and team",
       "whoItsFor": "A technical team writing publicly",
-      "demoUrl": null,
+      "demoUrl": "https://engineering-blog.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "blog",
@@ -3621,7 +3621,7 @@
       "bucket": "Technical and SaaS",
       "category": "Internal and team",
       "whoItsFor": "A team hiring",
-      "demoUrl": null,
+      "demoUrl": "https://careers.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "careers-page",
@@ -3724,7 +3724,7 @@
       "bucket": "Technical and SaaS",
       "category": "Internal and team",
       "whoItsFor": "A developer job-hunting",
-      "demoUrl": null,
+      "demoUrl": "https://devfolio.kieciausias-domenas.xyz",
       "classification": {
         "categories": [
           "portfolio",
@@ -3811,6 +3811,745 @@
         "command line",
         "svelte 5",
         "prerendered static site"
+      ]
+    },
+    {
+      "id": "showcase",
+      "name": "Showcase",
+      "summary": "An editorial portfolio with image-led project stories, before-and-after work, and a keyboard-friendly lightbox.",
+      "description": "Showcase is an art-book-inspired portfolio for a designer, illustrator, or photographer who needs selected work to carry the story. Its asymmetric layouts and restrained studio details create a distinctive home for visual projects without requiring a CMS or client account.\n\nVisitors move from a strong typographic introduction into six image-led projects, then open directly loadable Markdown case studies. The featured project includes a draggable before-and-after comparison and a full-screen lightbox with keyboard navigation, while studio context, FAQs, and a working email enquiry complete the journey.\n\nStudio details, navigation, FAQs, and contact copy are centralized in typed content, with project narratives managed as Astro content entries and imagery kept locally. Astro 7, static generation, optimized assets, structured FAQ data, accessible interactions, and responsive editorial CSS make the template straightforward to personalize and publish.",
+      "bucket": "Non-technical",
+      "category": "Creators and shops",
+      "whoItsFor": "A designer, illustrator or photographer showing work",
+      "demoUrl": "https://showcase.kieciausias-domenas.xyz",
+      "classification": {
+        "categories": [
+          "creative-portfolio",
+          "visual-arts",
+          "case-studies"
+        ],
+        "useCases": [
+          "show-selected-work",
+          "publish-project-case-studies",
+          "win-creative-enquiries"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "editorial-project-grid",
+          "name": "Editorial project grid",
+          "description": "Six visual projects appear in an asymmetric responsive composition built for strong cover imagery."
+        },
+        {
+          "id": "markdown-case-studies",
+          "name": "Markdown case studies",
+          "description": "Every project receives a directly loadable static route generated from a validated content entry."
+        },
+        {
+          "id": "before-after-comparison",
+          "name": "Before-and-after comparison",
+          "description": "A range control lets visitors compare two project states with pointer and keyboard input."
+        },
+        {
+          "id": "accessible-lightbox",
+          "name": "Accessible image lightbox",
+          "description": "A full-screen gallery supports arrow keys, Escape, focus return, and descriptive image text."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.12+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/showcase/preview/showcase-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/showcase/preview/showcase-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/showcase/preview/showcase-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/showcase/preview/showcase-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 6798
+        }
+      },
+      "searchTerms": [
+        "designer portfolio",
+        "photographer case studies",
+        "illustrator website",
+        "before and after gallery",
+        "astro creative portfolio"
+      ]
+    },
+    {
+      "id": "consultancy",
+      "name": "Consultancy",
+      "summary": "A confident consultant site that turns complex advisory work into clear outcomes and an honest booking path.",
+      "description": "Consultancy is a focused one-page site for an independent consultant or coach who needs to explain intangible work with confidence. Its annotated notebook art direction helps strategy, alignment, and leadership services feel specific, practical, and personal rather than corporate.\n\nThe page leads prospective clients through a sharp positioning statement, three outcome-led offers, a simple working process, buying-blocker FAQs, and a direct conversation prompt. Booking can use a configured external calendar, while an automatically prepared email provides an honest fallback when no booking service exists.\n\nAll visible copy, services, contact details, availability, navigation, and FAQs live in one JSON file, with booking rules separated into a typed utility. Nuxt 4, Vue 3, static generation, FAQ structured data, native disclosure controls, and responsive custom CSS provide a clean base for another advisor's brand and offer.",
+      "bucket": "Non-technical",
+      "category": "Professional services",
+      "whoItsFor": "An independent consultant or coach",
+      "demoUrl": "https://consultancy.kieciausias-domenas.xyz",
+      "classification": {
+        "categories": [
+          "consulting",
+          "coaching",
+          "professional-services"
+        ],
+        "useCases": [
+          "explain-consulting-outcomes",
+          "present-advisory-services",
+          "book-client-conversations"
+        ],
+        "frameworks": [
+          "nuxt",
+          "vue"
+        ]
+      },
+      "features": [
+        {
+          "id": "outcome-led-services",
+          "name": "Outcome-led services",
+          "description": "Three annotated service notes connect common client problems to concrete advisory outcomes."
+        },
+        {
+          "id": "working-process",
+          "name": "Clear working process",
+          "description": "A visual three-step process explains how a consulting engagement moves from notice to action."
+        },
+        {
+          "id": "booking-fallback",
+          "name": "Honest booking fallback",
+          "description": "Calls to action use an external booking URL when configured or generate a pre-addressed email."
+        },
+        {
+          "id": "buyer-faqs",
+          "name": "Buyer-focused FAQs",
+          "description": "Accessible disclosures answer practical questions about fit, scope, timing, and disagreement."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.19–22.x",
+              "24.11–24.x",
+              "26+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/consultancy/preview/consultancy-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/consultancy/preview/consultancy-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/consultancy/preview/consultancy-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/consultancy/preview/consultancy-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3913
+        }
+      },
+      "searchTerms": [
+        "independent consultant website",
+        "leadership coach landing page",
+        "strategy advisor services",
+        "consultation booking",
+        "nuxt professional website"
+      ]
+    },
+    {
+      "id": "practice",
+      "name": "Practice",
+      "summary": "A reassuring dental-practice site with service guides, first-visit steps, and clear appointment handoffs.",
+      "description": "Practice is a calm multi-page website for a dental, legal, or accounting practice, implemented as a neighborhood family dentist. It helps prospective patients understand the team, the available care, and what happens next without using pressure, vague claims, or a generic clinic layout.\n\nThe homepage introduces three services, a four-step first-visit guide, practice context, FAQs, and appointment options. Each service has a directly loadable detail route with focused explanations, service-specific questions, structured metadata, and working phone, email, or configured booking links.\n\nPractice details are centralized in JSON, service content lives in validated Markdown entries, and local photography is organized with Astro assets. Astro 7, static routes, Dentist, Service, and FAQPage structured data, reusable appointment components, and responsive accessible CSS make the design easy to adapt to another local professional practice.",
+      "bucket": "Non-technical",
+      "category": "Professional services",
+      "whoItsFor": "A dental, legal or accounting practice",
+      "demoUrl": "https://practice.kieciausias-domenas.xyz",
+      "classification": {
+        "categories": [
+          "dental-practice",
+          "local-business",
+          "professional-services"
+        ],
+        "useCases": [
+          "explain-professional-services",
+          "prepare-first-time-clients",
+          "request-an-appointment"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "service-detail-routes",
+          "name": "Service detail routes",
+          "description": "Three Markdown-backed care guides build to direct-load static pages with service-specific FAQs."
+        },
+        {
+          "id": "first-visit-guide",
+          "name": "First-visit guide",
+          "description": "A four-step walkthrough explains what patients can expect before, during, and after a first visit."
+        },
+        {
+          "id": "appointment-handoffs",
+          "name": "Appointment handoffs",
+          "description": "Configured booking, telephone, and email links offer clear next steps without claiming live availability."
+        },
+        {
+          "id": "local-business-data",
+          "name": "Local business structured data",
+          "description": "Dentist, Service, and FAQPage schemas describe the practice and its care accurately."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.12+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/practice/preview/practice-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/practice/preview/practice-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/practice/preview/practice-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/practice/preview/practice-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 5609
+        }
+      },
+      "searchTerms": [
+        "dentist website",
+        "local professional practice",
+        "patient appointment request",
+        "service detail pages",
+        "astro small business"
+      ]
+    },
+    {
+      "id": "the-big-day",
+      "name": "The Big Day",
+      "summary": "A warm garden-wedding invitation with travel guidance, practical FAQs, and an email-based RSVP.",
+      "description": "The Big Day is a personal wedding website for a couple getting married who want one warm, easy-to-follow invitation for their guests. Its editorial garden styling gives names, date, venue, and story a memorable setting without relying on a wedding-platform account.\n\nGuests can read the couple's story, follow the day's schedule, review travel and hotel suggestions, open a venue map, and check practical FAQs before replying. The RSVP validates attendance, guest, dietary, and message details, then prepares an email when configured or clearly confirms a local-only demonstration when it is not.\n\nNames, dates, links, schedule items, accommodation, FAQs, and RSVP settings are centralized in committed JSON, with shared TypeScript types and local photography. SvelteKit 2, Svelte 5, Vite, static output, Event and FAQPage data, accessible form states, and responsive custom CSS make personalization direct.",
+      "bucket": "Non-technical",
+      "category": "Weddings and events",
+      "whoItsFor": "A couple getting married",
+      "demoUrl": "https://the-big-day.kieciausias-domenas.xyz",
+      "classification": {
+        "categories": [
+          "wedding",
+          "invitation",
+          "event-website"
+        ],
+        "useCases": [
+          "share-wedding-details",
+          "guide-travelling-guests",
+          "collect-rsvp-emails"
+        ],
+        "frameworks": [
+          "sveltekit",
+          "svelte",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "wedding-story",
+          "name": "Personal wedding story",
+          "description": "A photo-led editorial section introduces the couple and their celebration in their own voice."
+        },
+        {
+          "id": "day-schedule",
+          "name": "Day schedule",
+          "description": "A clear event ribbon lays out arrival, ceremony, drinks, supper, and dancing."
+        },
+        {
+          "id": "travel-guidance",
+          "name": "Travel guidance",
+          "description": "Venue directions, map access, and hotel suggestions help guests plan an overnight stay."
+        },
+        {
+          "id": "validated-rsvp",
+          "name": "Validated RSVP",
+          "description": "An accessible form handles attendance, conditional plus-one details, dietary needs, and an honest email handoff."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.12+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/the-big-day/preview/the-big-day-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/the-big-day/preview/the-big-day-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/the-big-day/preview/the-big-day-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/the-big-day/preview/the-big-day-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 4873
+        }
+      },
+      "searchTerms": [
+        "wedding invitation website",
+        "couple event page",
+        "wedding RSVP form",
+        "guest travel details",
+        "sveltekit wedding"
+      ]
+    },
+    {
+      "id": "storefront",
+      "name": "Storefront",
+      "summary": "An editorial product catalogue with static detail pages, a persistent local cart, and honest checkout handoffs.",
+      "description": "Storefront is a complete catalogue site for a small shop selling a real collection of physical products. The example presents eight independent desk accessories through precise editorial layouts that balance product photography, useful specifications, and the character of a small studio.\n\nCustomers can browse the collection, open a pre-rendered detail page for every object, add products to a persistent local cart, change quantities, remove items, and review totals. A configured hosted checkout can complete the handoff, while a prepared order-enquiry email remains available when no payment service is connected.\n\nProducts, prices, specifications, imagery, shop copy, contact details, shipping notes, and checkout settings are centralized in typed JSON content. Next.js 16, React 19, static export, hydration-safe localStorage state, product and FAQ structured data, accessible cart announcements, and responsive CSS provide a strong commerce foundation without pretending to process payments.",
+      "bucket": "Non-technical",
+      "category": "Commerce",
+      "whoItsFor": "A small shop selling a real catalogue",
+      "demoUrl": "https://storefront.kieciausias-domenas.xyz",
+      "classification": {
+        "categories": [
+          "storefront",
+          "product-catalogue",
+          "small-business-commerce"
+        ],
+        "useCases": [
+          "sell-a-product-catalogue",
+          "present-product-details",
+          "prepare-order-enquiries"
+        ],
+        "frameworks": [
+          "nextjs",
+          "react"
+        ]
+      },
+      "features": [
+        {
+          "id": "product-catalogue",
+          "name": "Typed product catalogue",
+          "description": "Eight editable products include pricing, specifications, lead times, images, and descriptive copy."
+        },
+        {
+          "id": "static-product-pages",
+          "name": "Static product pages",
+          "description": "Every catalogue item receives a directly loadable exported route with product structured data."
+        },
+        {
+          "id": "persistent-cart",
+          "name": "Persistent local cart",
+          "description": "Customers can add, remove, and adjust quantities with totals stored safely in localStorage."
+        },
+        {
+          "id": "checkout-handoff",
+          "name": "Checkout handoff",
+          "description": "Orders continue to a configured hosted checkout or an honest prefilled email enquiry."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/storefront/preview/storefront-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/storefront/preview/storefront-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/storefront/preview/storefront-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/storefront/preview/storefront-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 6687
+        }
+      },
+      "searchTerms": [
+        "small shop website",
+        "static ecommerce catalogue",
+        "persistent shopping cart",
+        "product detail pages",
+        "nextjs storefront"
+      ]
+    },
+    {
+      "id": "journal",
+      "name": "Journal",
+      "summary": "A print-inspired writing site with Markdown essays, calculated reading times, and connected series navigation.",
+      "description": "Journal is a static editorial home for someone who writes and wants long-form work to feel considered without adopting a publishing backend. Its warm newsprint palette, oxblood ink, blue-pencil annotations, and generous reading measure recall a small independent literary journal.\n\nReaders arrive at a complete essay index with dates, descriptions, series labels, word counts, and calculated reading times, then open any post on a direct route. Two entries demonstrate ordered series navigation, a standalone essay shows flexible publishing, and a compact colophon and FAQ explain the publication.\n\nEssay bodies and metadata live in validated Markdown content, while publication identity, author details, contact information, and FAQs are centralized in typed data. Astro 7, static generation, automatic reading calculations, FAQ structured data, semantic article layouts, reduced-motion support, and responsive print-inspired CSS keep the site lightweight and easy to reshape.",
+      "bucket": "Non-technical",
+      "category": "Creators and shops",
+      "whoItsFor": "Someone who writes",
+      "demoUrl": "https://journal.kieciausias-domenas.xyz",
+      "classification": {
+        "categories": [
+          "personal-journal",
+          "writing",
+          "editorial"
+        ],
+        "useCases": [
+          "publish-personal-essays",
+          "organize-writing-series",
+          "build-an-author-archive"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "essay-index",
+          "name": "Complete essay index",
+          "description": "The homepage lists every post with date, description, issue number, series, reading time, and word count."
+        },
+        {
+          "id": "markdown-publishing",
+          "name": "Markdown publishing",
+          "description": "Validated content entries build into semantic, directly loadable long-form article routes."
+        },
+        {
+          "id": "series-navigation",
+          "name": "Series navigation",
+          "description": "Related essays receive contextual previous and next links ordered by committed metadata."
+        },
+        {
+          "id": "calculated-reading-time",
+          "name": "Calculated reading time",
+          "description": "Reading time and word count update automatically from each essay body."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.12+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/journal/preview/journal-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/journal/preview/journal-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/journal/preview/journal-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/journal/preview/journal-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3090
+        }
+      },
+      "searchTerms": [
+        "personal essay website",
+        "writer journal",
+        "markdown publication",
+        "long form reading",
+        "astro blog"
+      ]
+    },
+    {
+      "id": "on-sale",
+      "name": "On Sale",
+      "summary": "A high-energy event page with a live countdown, transparent ticket counts, and flexible booking handoffs.",
+      "description": "On Sale is a vivid ticket page for a workshop, class, or one-day event that needs urgency without hiding essential details. The example promotes a screen-print workshop and poster show through bold poster typography, clear venue information, and three distinctly priced passes.\n\nVisitors can watch a hydration-safe early-bird countdown, compare ticket inclusions and committed remaining counts, and choose the right tier. Each call to action can open an external checkout or prepare a booking email, while a visible disclaimer makes clear that availability is manually maintained rather than live inventory.\n\nEvent details, dates, venue, organizer contact, ticket tiers, counts, links, and FAQs live in one JSON file, with countdown and destination rules isolated in typed utilities. SvelteKit, Svelte 5, Vite, static output, Event and FAQPage data, reduced-motion handling, and responsive custom CSS make the page easy to repurpose for another limited event.",
+      "bucket": "Non-technical",
+      "category": "Weddings and events",
+      "whoItsFor": "A workshop, class or one-day event",
+      "demoUrl": "https://on-sale.kieciausias-domenas.xyz",
+      "classification": {
+        "categories": [
+          "event-tickets",
+          "workshop",
+          "event-landing-page"
+        ],
+        "useCases": [
+          "promote-a-one-day-event",
+          "compare-ticket-tiers",
+          "send-visitors-to-booking"
+        ],
+        "frameworks": [
+          "sveltekit",
+          "svelte",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "early-bird-countdown",
+          "name": "Early-bird countdown",
+          "description": "A client-safe countdown updates days, hours, minutes, and seconds with accessible text."
+        },
+        {
+          "id": "ticket-tiers",
+          "name": "Ticket tier comparison",
+          "description": "Three perforated passes present prices, inclusions, and manually maintained remaining counts."
+        },
+        {
+          "id": "booking-fallbacks",
+          "name": "Flexible booking handoffs",
+          "description": "Each tier can use its own checkout URL or a prefilled organizer email."
+        },
+        {
+          "id": "event-faqs",
+          "name": "Practical event FAQs",
+          "description": "Expandable answers cover experience, clothing, materials, refunds, and venue accessibility."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.12+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/on-sale/preview/on-sale-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/on-sale/preview/on-sale-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/on-sale/preview/on-sale-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/on-sale/preview/on-sale-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3872
+        }
+      },
+      "searchTerms": [
+        "workshop ticket page",
+        "event countdown website",
+        "class booking landing page",
+        "ticket tier comparison",
+        "sveltekit event"
+      ]
+    },
+    {
+      "id": "the-rooms",
+      "name": "The Rooms",
+      "summary": "A coastal guesthouse guide with room comparisons, seasonal rates, and date-led booking enquiries.",
+      "description": "The Rooms is a complete hospitality website for a B&B or small guesthouse that needs to balance atmosphere with practical booking information. Its coastal field-guide art direction gives an independent property a memorable identity while keeping beds, room size, access notes, views, and rates easy to understand.\n\nGuests can browse three rooms, open directly loadable detail pages, compare characteristics and seasonal prices, and choose arrival and departure dates. Valid dates persist in the URL and pass to a configured booking service; without one, the same journey creates a prefilled email enquiry and never implies that availability was checked.\n\nGuesthouse details, room content, seasonal pricing, FAQs, and booking configuration are centralized in typed TypeScript and JSON files, with local photography and packaged fonts. Nuxt 3, Vue 3, static prerendering, synchronized URL state, FAQ structured data, accessible comparison markup, and responsive CSS provide a practical base for another small stay.",
+      "bucket": "Non-technical",
+      "category": "Hospitality and travel",
+      "whoItsFor": "A B&B or small guesthouse",
+      "demoUrl": "https://the-rooms.kieciausias-domenas.xyz",
+      "classification": {
+        "categories": [
+          "guesthouse",
+          "bed-and-breakfast",
+          "hospitality"
+        ],
+        "useCases": [
+          "present-guest-rooms",
+          "compare-seasonal-rates",
+          "prepare-booking-enquiries"
+        ],
+        "frameworks": [
+          "nuxt",
+          "vue"
+        ]
+      },
+      "features": [
+        {
+          "id": "room-guides",
+          "name": "Room guides",
+          "description": "Three data-driven rooms have dedicated static pages with facilities, dimensions, outlook, and access notes."
+        },
+        {
+          "id": "rate-comparison",
+          "name": "Seasonal rate comparison",
+          "description": "An accessible table compares room characteristics and nightly prices across three seasons."
+        },
+        {
+          "id": "date-planner",
+          "name": "URL-aware date planner",
+          "description": "Arrival and departure values are validated, restored from the URL, and kept synchronized."
+        },
+        {
+          "id": "booking-enquiry",
+          "name": "Honest booking enquiry",
+          "description": "Selected dates and room flow to a booking engine or a prefilled email without claiming live availability."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.12+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/the-rooms/preview/the-rooms-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/the-rooms/preview/the-rooms-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/the-rooms/preview/the-rooms-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/the-rooms/preview/the-rooms-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 7357
+        }
+      },
+      "searchTerms": [
+        "bed and breakfast website",
+        "small guesthouse booking",
+        "room rate comparison",
+        "hotel enquiry form",
+        "nuxt hospitality"
+      ]
+    },
+    {
+      "id": "model",
+      "name": "Model",
+      "summary": "A transparent AI-product site with a browser-only ticket classifier, evidence, and drafted next actions.",
+      "description": "Model is a technical product-marketing page for an AI product that helps support teams evaluate automated ticket triage. It demonstrates useful output in context while clearly distinguishing a deterministic local prototype from a production machine-learning system.\n\nVisitors can select one of three example requests or paste their own, then receive a category, urgency, confidence score, detected evidence, recommended action, and draft response. A responsive calibration plot, readable methodology, FAQs, and a waitlist email let buyers inspect how the product behaves before deciding whether to continue.\n\nProduct copy, examples, metadata, FAQs, and contact details live in typed content, while classification signals, scoring, actions, and drafting rules are isolated in a testable source module. Next.js 16, React 19, static export, browser-only inference, accessible live results, FAQ structured data, and split responsive CSS create an honest foundation for another AI product.",
+      "bucket": "Technical and SaaS",
+      "category": "Product marketing",
+      "whoItsFor": "An AI product",
+      "demoUrl": "https://model.kieciausias-domenas.xyz",
+      "classification": {
+        "categories": [
+          "ai-product",
+          "support-automation",
+          "product-marketing"
+        ],
+        "useCases": [
+          "demonstrate-ai-output",
+          "explain-model-behavior",
+          "collect-product-interest"
+        ],
+        "frameworks": [
+          "nextjs",
+          "react"
+        ]
+      },
+      "features": [
+        {
+          "id": "ticket-classifier",
+          "name": "Interactive ticket classifier",
+          "description": "Example or custom support requests receive category, urgency, confidence, and action results in the browser."
+        },
+        {
+          "id": "evidence-signals",
+          "name": "Visible evidence signals",
+          "description": "Detected keywords and contextual evidence show why the local rules produced each result."
+        },
+        {
+          "id": "response-draft",
+          "name": "Drafted next response",
+          "description": "Every evaluation includes a recommended operational step and an editable customer-response draft."
+        },
+        {
+          "id": "calibration-plot",
+          "name": "Confidence calibration plot",
+          "description": "A responsive SVG chart frames confidence as a value to evaluate rather than an unquestioned claim."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/model/preview/model-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/model/preview/model-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/model/preview/model-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/model/preview/model-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3213
+        }
+      },
+      "searchTerms": [
+        "AI product landing page",
+        "support ticket classifier",
+        "interactive model demo",
+        "transparent AI marketing",
+        "nextjs SaaS website"
       ]
     }
   ]

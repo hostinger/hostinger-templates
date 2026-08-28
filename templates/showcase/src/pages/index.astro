@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import FaqList from '../components/FaqList.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ArrowIcon from '../icons/ArrowIcon.astro';
+import { site } from '../content/site';
+
+const projects = (await getCollection('projects')).sort((a, b) =>
+  a.data.number.localeCompare(b.data.number),
+);
+---
+
+<BaseLayout faqSchema>
+  <SiteHeader />
+  <main id="main">
+    <section class="home-intro" aria-labelledby="intro-title">
+      <p class="eyebrow">Selected work · 2023—26</p>
+      <h1 id="intro-title">
+        Images with
+        <span>something to say.</span>
+      </h1>
+      <div class="intro-note">
+        <p>{site.intro}</p>
+        <a href="#work">View work <ArrowIcon direction="down" /></a>
+      </div>
+      <p class="availability"><span></span>{site.availability}</p>
+    </section>
+
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="work-heading">
+        <p>(Selected projects)</p>
+        <h2 id="work-title">Work, in<br />six acts</h2>
+      </div>
+      <div class="project-grid">
+        {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
+      </div>
+    </section>
+
+    <section class="about" id="about" data-reveal aria-labelledby="about-title">
+      <p>(Approach)</p>
+      <h2 id="about-title">
+        Built from a sharp idea,<br />
+        <span>then made to be felt.</span>
+      </h2>
+      <div class="about-copy">
+        <p>
+          Mara Voss is an independent designer and image-maker working across identity,
+          editorial and cultural projects. The studio brings concept, art direction and
+          production into one close conversation.
+        </p>
+        <p>
+          Each collaboration starts by finding the tension worth keeping—between order
+          and accident, the useful and the strange, what a thing says and how it lands.
+        </p>
+      </div>
+    </section>
+
+    <FaqList />
+  </main>
+  <SiteFooter />
+</BaseLayout>

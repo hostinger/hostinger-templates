@@ -1,0 +1,27 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+import { getSeriesNeighbors } from '../../utils/series';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post, posts },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  posts: CollectionEntry<'posts'>[];
+}
+
+const { post, posts } = Astro.props;
+const { Content } = await render(post);
+const { previous, next } = getSeriesNeighbors(post, posts);
+---
+
+<PostLayout post={post} previous={previous} next={next}>
+  <Content />
+</PostLayout>

@@ -1,0 +1,24 @@
+---
+import { faqs } from '../content/site';
+---
+
+<section class="faq" aria-labelledby="faq-title">
+  <div class="section-label">
+    <p>(Questions)</p>
+    <h2 id="faq-title">Before we<br />begin</h2>
+  </div>
+  <div class="faq-list">
+    {
+      faqs.map((faq, index) => (
+        <details>
+          <summary>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            {faq.question}
+            <b aria-hidden="true">+</b>
+          </summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>

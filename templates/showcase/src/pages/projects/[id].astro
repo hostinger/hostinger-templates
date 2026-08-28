@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import BeforeAfter from '../../components/BeforeAfter.astro';
+import LightboxGallery from '../../components/LightboxGallery.astro';
+import ArrowIcon from '../../icons/ArrowIcon.astro';
+import { site } from '../../content/site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { Content, headings } = await render(project);
+const isFeatured = project.data.featured;
+---
+
+<BaseLayout
+  title={`${project.data.title} — ${site.studio}`}
+  description={project.data.excerpt}
+>
+  <SiteHeader />
+  <main id="main" class="case-study">
+    <header class="case-hero">
+      <a class="back-link" href="/#work"><ArrowIcon direction="left" /> All work</a>
+      <p class="case-number">Project {project.data.number} / 06</p>
+      <h1>{project.data.title}</h1>
+      <div class="case-meta">
+        <p>{project.data.discipline}</p>
+        <p>{project.data.client}</p>
+        <p>{project.data.year}</p>
+      </div>
+      <div class="case-cover">
+        <Image
+          src={project.data.cover}
+          alt={project.data.coverAlt}
+          widths={[720, 1100, 1600]}
+          sizes="100vw"
+          loading="eager"
+        />
+        <p>{project.data.excerpt}</p>
+      </div>
+    </header>
+
+    <article class="case-body">
+      <aside>
+        <p>Contents</p>
+        <ol>
+          {headings.map((heading) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}
+        </ol>
+      </aside>
+      <div class="prose"><Content /></div>
+    </article>
+
+    {isFeatured && <BeforeAfter />}
+    {isFeatured && <LightboxGallery />}
+
+    <section class="case-enquiry" aria-labelledby="enquiry-title">
+      <p>(Next project)</p>
+      <h2 id="enquiry-title">Let’s make the<br />next one visible.</h2>
+      <a href={`mailto:${site.email}?subject=Project enquiry`}>
+        Start a conversation <ArrowIcon />
+      </a>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

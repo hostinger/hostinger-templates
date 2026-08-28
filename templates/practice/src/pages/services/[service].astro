@@ -1,0 +1,98 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FaqList from '../../components/FaqList.astro';
+import BookingPanel from '../../components/BookingPanel.astro';
+import site from '../../data/site.json';
+import familyImage from '../../assets/images/family-dentistry.jpg';
+import restorativeImage from '../../assets/images/restorative-care.jpg';
+import urgentImage from '../../assets/images/urgent-visit.jpg';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((service) => ({
+    params: { service: service.id },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+const serviceImages = {
+  'family-dentistry': familyImage,
+  'gentle-restorative-care': restorativeImage,
+  'emergency-dentist': urgentImage,
+};
+const currentImage = serviceImages[service.id as keyof typeof serviceImages];
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: service.data.title,
+      description: service.data.seoDescription,
+      provider: {
+        '@type': 'Dentist',
+        name: site.name,
+        telephone: site.phoneDisplay,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: site.address.street,
+          addressLocality: site.address.locality,
+          addressRegion: site.address.region,
+          postalCode: site.address.postalCode,
+        },
+      },
+      areaServed: { '@type': 'City', name: 'Portland' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: service.data.faqs.map((item: { question: string; answer: string }) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={service.data.seoTitle}
+  description={service.data.seoDescription}
+  schema={pageSchema}
+>
+  <section class="service-hero section-shell">
+    <div class="service-hero-copy">
+      <p class="eyebrow">{service.data.eyebrow}</p>
+      <h1>{service.data.title}</h1>
+      <p class="hero-lede">{service.data.description}</p>
+      <div class="service-meta">
+        <div><span>Good to know</span><strong>{service.data.duration}</strong></div>
+        <div><span>Designed for</span><strong>{service.data.bestFor}</strong></div>
+      </div>
+      <a class="button" href={site.bookingUrl}>Request this visit</a>
+    </div>
+    <div class="service-hero-image">
+      <Image src={currentImage} alt={service.data.imageAlt} loading="eager" />
+      <span class="image-caption">Care in Maplewood<br />Portland, Oregon</span>
+    </div>
+  </section>
+
+  <section class="service-body section-shell">
+    <article class="prose">
+      <Content />
+    </article>
+    <aside class="service-contact">
+      <p class="eyebrow">Not sure what to book?</p>
+      <h2>Start with a call.</h2>
+      <p>Describe what you are noticing. Our team will help identify the most appropriate next step.</p>
+      <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>
+    </aside>
+  </section>
+
+  <div class="section-shell"><FaqList items={service.data.faqs} title={`Questions about ${service.data.shortTitle.toLowerCase()}`} /></div>
+  <div class="section-shell"><BookingPanel compact title="You can take the next step without committing to treatment." /></div>
+</BaseLayout>

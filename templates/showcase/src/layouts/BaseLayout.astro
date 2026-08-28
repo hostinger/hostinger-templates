@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import { faqs, site } from '../content/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  faqSchema?: boolean;
+}
+
+const {
+  title = `${site.name} — ${site.studio}`,
+  description = site.intro,
+  faqSchema = false,
+} = Astro.props;
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f3f0e8" />
+    <title>{title}</title>
+    {faqSchema && <script is:inline type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <script>
+      import '../scripts/interactions';
+    </script>
+  </body>
+</html>

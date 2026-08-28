@@ -1,0 +1,70 @@
+{
+  "name": "Print Loud",
+  "eyebrow": "One night. Infinite impressions.",
+  "description": "A hands-on screen-print workshop and late-night poster show for people who like their ink loud, their edges imperfect, and their sleeves rolled up.",
+  "startDate": "2026-11-14T18:00:00+00:00",
+  "endDate": "2026-11-14T23:30:00+00:00",
+  "earlyBirdEndsAt": "2026-10-18T23:59:59+00:00",
+  "venue": {
+    "name": "The Ink Yard",
+    "address": "18 Press Lane",
+    "city": "Manchester M1 4AB"
+  },
+  "contactEmail": "tickets@printloud.example",
+  "organizer": "Loud Press Collective",
+  "ticketDisclaimer": "Remaining ticket counts are committed static values, updated manually by the organizer. They are not live inventory and availability is confirmed only when booking.",
+  "ticketTiers": [
+    {
+      "id": "first-pull",
+      "name": "First Pull",
+      "price": 28,
+      "currency": "GBP",
+      "remaining": 9,
+      "description": "Workshop entry, blank tote, and first access to the ink tables.",
+      "perks": ["2-colour tote print", "All materials", "Poster show entry"],
+      "ticketUrl": "https://example.com/print-loud/first-pull"
+    },
+    {
+      "id": "full-bleed",
+      "name": "Full Bleed",
+      "price": 42,
+      "currency": "GBP",
+      "remaining": 5,
+      "description": "The full workshop with an extra tee and a guided colour-separation session.",
+      "perks": ["Everything in First Pull", "Organic cotton tee", "Colour clinic"],
+      "ticketUrl": null
+    },
+    {
+      "id": "night-pass",
+      "name": "Night Pass",
+      "price": 12,
+      "currency": "GBP",
+      "remaining": 17,
+      "description": "Skip the workshop and join the poster exhibition, DJs, and print swap.",
+      "perks": ["Entry from 8:30 PM", "Print swap token", "Closing DJ set"],
+      "ticketUrl": null
+    }
+  ],
+  "faq": [
+    {
+      "question": "Do I need screen-printing experience?",
+      "answer": "No. First-time printers are welcome, and every station has an experienced printmaker nearby."
+    },
+    {
+      "question": "What should I wear?",
+      "answer": "Wear something you do not mind getting inky. Aprons and gloves are provided, but screen-print ink has a talent for travel."
+    },
+    {
+      "question": "Can I bring my own garment?",
+      "answer": "Yes. Bring one light-coloured cotton item with a smooth print area. Textured, waterproof, and heavily stretchy fabrics may not print cleanly."
+    },
+    {
+      "question": "Are tickets refundable?",
+      "answer": "Tickets can be transferred to another person. Refund requests received at least seven days before the event are handled by the organizer."
+    },
+    {
+      "question": "Is the venue accessible?",
+      "answer": "The workshop floor and toilets are step-free. Email the organizer before booking if you need a seated workstation or other adjustments."
+    }
+  ]
+}

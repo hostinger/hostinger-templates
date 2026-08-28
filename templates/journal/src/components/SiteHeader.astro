@@ -1,0 +1,22 @@
+---
+import { site } from '../data/site';
+---
+
+<header class="site-header">
+  <a class="skip-link" href="#main">Skip to writing</a>
+  <div class="header-rule" aria-hidden="true">
+    <span>Vol. I</span>
+    <svg viewBox="0 0 44 12" role="img" aria-label="Blue pencil registration mark">
+      <path d="M1 6h42M22 1v10" />
+      <circle cx="22" cy="6" r="3.5" />
+    </svg>
+    <span>2026</span>
+  </div>
+  <nav aria-label="Primary navigation">
+    <a class="wordmark" href="/">
+      <span class="wordmark-the">The</span>
+      <span>{site.name.replace('The ', '')}</span>
+    </a>
+    <a class="index-link" href="/#index">Index <span aria-hidden="true">↘</span></a>
+  </nav>
+</header>

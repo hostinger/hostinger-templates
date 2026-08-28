@@ -1,0 +1,21 @@
+---
+import { site } from '../content/site';
+
+interface Props {
+  inverse?: boolean;
+}
+
+const { inverse = false } = Astro.props;
+---
+
+<header class:list={['site-header', { inverse }]}>
+  <a class="wordmark" href="/" aria-label={`${site.name} home`}>
+    <span>{site.name}</span>
+    <span class="wordmark-mark">●</span>
+  </a>
+  <nav aria-label="Primary navigation">
+    <a href="/#work">Work</a>
+    <a href="/#about">About</a>
+    <a href={`mailto:${site.email}`}>Enquire</a>
+  </nav>
+</header>

@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import detailOne from '../assets/images/afterimage-detail-1.jpg';
+import detailTwo from '../assets/images/afterimage-detail-2.jpg';
+import detailThree from '../assets/images/afterimage-detail-3.jpg';
+
+const images = [
+  {
+    src: detailOne,
+    alt: 'Blue and vermilion geometric facade detail',
+    caption: 'Exterior colour study / 01',
+  },
+  {
+    src: detailTwo,
+    alt: 'Rhythmic windows across a modern exhibition building',
+    caption: 'Wayfinding in context / 02',
+  },
+  {
+    src: detailThree,
+    alt: 'Abstract angular architecture under blue sky',
+    caption: 'Seasonal campaign crop / 03',
+  },
+];
+---
+
+<section class="gallery" aria-labelledby="gallery-title">
+  <div class="section-label">
+    <p>(Gallery)</p>
+    <h2 id="gallery-title">The identity<br />in the room</h2>
+  </div>
+  <div class="gallery-grid">
+    {
+      images.map((image, index) => (
+        <button
+          class={`gallery-item gallery-item-${index + 1}`}
+          type="button"
+          data-lightbox-trigger
+          data-index={index}
+          aria-label={`Open image ${index + 1} of ${images.length}: ${image.alt}`}
+        >
+          <Image src={image.src} alt={image.alt} widths={[480, 800, 1200]} />
+          <span>{image.caption}</span>
+        </button>
+      ))
+    }
+  </div>
+</section>
+
+<dialog class="lightbox" data-lightbox aria-label="Image viewer">
+  <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close image viewer">Close ×</button>
+  <button class="lightbox-arrow lightbox-prev" type="button" data-lightbox-prev aria-label="Previous image">←</button>
+  <figure>
+    <img data-lightbox-image src="" alt="" />
+    <figcaption data-lightbox-caption></figcaption>
+  </figure>
+  <button class="lightbox-arrow lightbox-next" type="button" data-lightbox-next aria-label="Next image">→</button>
+  <p class="lightbox-count" aria-live="polite" data-lightbox-count></p>
+  <script is:inline type="application/json" data-lightbox-data set:html={JSON.stringify(images.map((image) => ({
+    src: image.src.src,
+    alt: image.alt,
+    caption: image.caption,
+  })))} />
+</dialog>

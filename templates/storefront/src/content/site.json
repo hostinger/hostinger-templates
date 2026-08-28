@@ -1,0 +1,31 @@
+{
+  "studioName": "Kado Objects",
+  "eyebrow": "Tools for considered work",
+  "headline": "The desk, edited.",
+  "intro": "Small-run objects for the place where ideas become real. Designed in Kyoto, finished by hand, and built to age with use.",
+  "currency": "USD",
+  "locale": "en-US",
+  "checkoutUrl": "",
+  "enquiryEmail": "studio@kado-objects.example",
+  "location": "Kyoto / Japan",
+  "shippingNote": "Complimentary tracked shipping on orders over $200.",
+  "announcement": "Edition 01 — Eight permanent desk objects",
+  "faq": [
+    {
+      "question": "Where are Kado objects made?",
+      "answer": "We work with three small workshops in Kyoto and Osaka. Wood pieces are finished by hand; metalwork is cut, folded and powder-coated in short production runs."
+    },
+    {
+      "question": "Do materials vary?",
+      "answer": "Yes. Natural ash grain and unlacquered brass change from piece to piece. These differences are expected and make each object distinct."
+    },
+    {
+      "question": "How does shipping work?",
+      "answer": "In-stock objects leave the studio within their listed lead time. Tracking is sent by email. Import duties, where applicable, are the customer’s responsibility."
+    },
+    {
+      "question": "Can I order for a studio or team?",
+      "answer": "Yes. For quantities of six or more, email the studio for lead times, finish options and a consolidated shipping quote."
+    }
+  ]
+}

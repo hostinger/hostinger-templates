@@ -1,0 +1,21 @@
+---
+import { faq } from '../data/site';
+---
+
+<section class="faq-section" aria-labelledby="faq-title">
+  <div class="section-note" aria-hidden="true">Questions, answered plainly</div>
+  <div>
+    <p class="section-label">About this journal</p>
+    <h2 id="faq-title">A small colophon</h2>
+    <div class="faq-list">
+      {
+        faq.map((item, index) => (
+          <details open={index === 0}>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
