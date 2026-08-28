@@ -1,0 +1,26 @@
+{
+  "name": "northstar-cloud-status",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "lint": "eslint .",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^7.2.9"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@astrojs/check": "^0.9.10",
+    "@typescript-eslint/parser": "^8.68.0",
+    "eslint": "^10.9.1",
+    "eslint-plugin-astro": "^1.7.0",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

@@ -1,0 +1,48 @@
+---
+import { site } from '../content/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  schema?: Record<string, unknown>;
+}
+
+const { title, description, schema } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/icons/integrations.svg#northstar" />
+    <title>{title}</title>
+    {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Relay integrations home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        Relay
+      </a>
+      <nav aria-label="Main navigation">
+        {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <a class="header-cta" href={`mailto:${site.email}?subject=Relay partner inquiry`}>Become a partner <span>↗</span></a>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <div>
+        <a class="brand brand--footer" href="/">Relay</a>
+        <p>Work moves better when tools talk.</p>
+      </div>
+      <div class="footer-route" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="footer-meta">
+        <span>Integration directory · 2026</span>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+    </footer>
+  </body>
+</html>

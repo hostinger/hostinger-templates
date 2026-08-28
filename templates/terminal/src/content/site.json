@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "relayctl",
+    "version": "v1.8.2",
+    "eyebrow": "A field manual for reliable releases",
+    "headline": "Keep every release handoff on the same frequency.",
+    "description": "relayctl turns service context, preflight checks, and deploy notes into one inspectable command trail—without hiding the work behind a dashboard.",
+    "availability": "Open source · MIT · macOS & Linux"
+  },
+  "navigation": [
+    { "label": "Docs", "href": "#workflow" },
+    { "label": "Install", "href": "#install" },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/topics/command-line-interface",
+      "external": true
+    }
+  ],
+  "heroDemo": {
+    "command": "relayctl deploy api --env production --watch",
+    "output": [
+      "✓ context     northwind / production",
+      "✓ preflight   12 checks passed in 1.4s",
+      "→ release     api@2026.08.28-rc3",
+      "● rollout     8/8 healthy · 00:42",
+      "✓ handoff     runbook + diff attached"
+    ]
+  },
+  "install": {
+    "title": "Tune in from your terminal.",
+    "description": "Pick one channel. Every package installs the same signed relayctl binary.",
+    "options": [
+      { "id": "npm", "label": "npm", "command": "npm install --global relayctl" },
+      { "id": "brew", "label": "Homebrew", "command": "brew install relayctl/tap/relayctl" },
+      { "id": "curl", "label": "curl", "command": "curl -fsSL https://example.com/relayctl/install.sh | sh" }
+    ]
+  },
+  "workflow": {
+    "kicker": "Operating procedure / 01",
+    "title": "From local intent to shared record.",
+    "steps": [
+      {
+        "number": "01",
+        "command": "relayctl link",
+        "title": "Name the context",
+        "description": "Attach a local directory to a service, environment, owner, and runbook."
+      },
+      {
+        "number": "02",
+        "command": "relayctl check",
+        "title": "Run the preflight",
+        "description": "Evaluate declared checks locally and print every result before release."
+      },
+      {
+        "number": "03",
+        "command": "relayctl deploy",
+        "title": "Leave a clean handoff",
+        "description": "Stream rollout health and produce a compact release record for the next operator."
+      }
+    ]
+  },
+  "features": [
+    {
+      "label": "Context files",
+      "title": "Readable by humans and tools",
+      "description": "Committed YAML keeps service metadata reviewable. No hidden remote state required."
+    },
+    {
+      "label": "Preflight",
+      "title": "Failures before fan-out",
+      "description": "Compose shell, HTTP, and policy checks with clear exit codes for CI."
+    },
+    {
+      "label": "Output modes",
+      "title": "Calm for people, strict for scripts",
+      "description": "Use the guided terminal view or switch to newline-delimited JSON."
+    },
+    {
+      "label": "Release notes",
+      "title": "Every handoff has receipts",
+      "description": "Capture revision, actor, checks, timings, and links in one portable record."
+    }
+  ],
+  "examples": [
+    {
+      "title": "Inspect current context",
+      "command": "relayctl status",
+      "output": ["service   api", "owner     platform-edge", "target    production", "revision  8d4f2a1"]
+    },
+    {
+      "title": "Pipe structured output",
+      "command": "relayctl releases --limit 2 --jsonl",
+      "output": [
+        "{\"release\":\"api@rc3\",\"state\":\"healthy\",\"elapsed\":42}",
+        "{\"release\":\"api@rc2\",\"state\":\"replaced\",\"elapsed\":58}"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is relayctl a real deployment service?",
+      "answer": "No. relayctl is a fictional CLI used to demonstrate this static landing-page template. The interface does not run commands or connect to a backend."
+    },
+    {
+      "question": "Does the page collect terminal or account data?",
+      "answer": "No. Every terminal sample is committed content rendered in the browser, and no environment variables, analytics, or network APIs are required."
+    },
+    {
+      "question": "Can teams adapt the command examples?",
+      "answer": "Yes. Product copy, commands, output, links, workflow steps, and FAQ entries all live in one site.json file."
+    },
+    {
+      "question": "What happens when JavaScript is reduced or motion is disabled?",
+      "answer": "The content remains semantic and readable. With reduced motion enabled, the hero command and output render immediately instead of typing in."
+    }
+  ],
+  "footer": {
+    "note": "No cloud control plane. No hidden state. Just a clear signal.",
+    "copyright": "© 2026 relayctl field manual."
+  }
+}

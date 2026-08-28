@@ -1,0 +1,281 @@
+@media (max-width: 900px) {
+  :root {
+    --page: calc(100% - 40px);
+  }
+
+  .overall-status {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-block: 70px;
+  }
+
+  .status-seal {
+    position: absolute;
+    right: 10px;
+    bottom: 42px;
+    width: 170px;
+    height: 170px;
+    opacity: 0.14;
+  }
+
+  .snapshot-notice {
+    grid-template-columns: 110px 1fr;
+    padding-inline: 20px;
+  }
+
+  .snapshot-notice time {
+    grid-column: 2;
+  }
+
+  .section-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading h2,
+  .section-heading .eyebrow,
+  .section-intro,
+  .legend {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .service-row {
+    grid-template-columns: 48px 1fr;
+  }
+
+  .service-copy {
+    padding-left: 22px;
+  }
+
+  .uptime-bars {
+    gap: 2px;
+  }
+
+  .subscribe-section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .subscribe-section .button {
+    grid-column: 2;
+  }
+
+  footer {
+    grid-template-columns: 1fr auto;
+  }
+
+  footer p {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --page: calc(100% - 32px);
+  }
+
+  .site-header {
+    min-height: 76px;
+  }
+
+  .header-meta span:first-child,
+  .header-meta span:last-child {
+    display: none;
+  }
+
+  .overall-status {
+    padding-block: 60px 54px;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 13.2vw, 3.2rem);
+    letter-spacing: -0.07em;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+  }
+
+  .contour-lines {
+    top: -40px;
+    right: -250px;
+  }
+
+  .snapshot-label {
+    max-width: 230px;
+  }
+
+  .snapshot-notice {
+    display: block;
+    padding-block: 16px;
+  }
+
+  .snapshot-notice p {
+    margin-block: 7px;
+  }
+
+  .snapshot-notice time {
+    white-space: normal;
+  }
+
+  .services-section,
+  .incidents-section,
+  .faq-section {
+    padding-block: 78px;
+  }
+
+  .section-heading {
+    margin-bottom: 34px;
+  }
+
+  .legend {
+    flex-wrap: wrap;
+    gap: 10px 18px;
+  }
+
+  .service-row {
+    display: block;
+    position: relative;
+  }
+
+  .service-index {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .service-copy {
+    padding: 26px 0 30px;
+  }
+
+  .service-heading {
+    display: block;
+    padding-right: 34px;
+  }
+
+  .service-heading p {
+    margin-bottom: 16px;
+  }
+
+  .service-metric {
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .uptime-bars {
+    grid-template-columns: repeat(45, 1fr);
+    grid-template-rows: repeat(2, 30px);
+    height: 63px;
+    gap: 3px 2px;
+  }
+
+  .tape-scale span:nth-child(2) {
+    display: none;
+  }
+
+  .textual-record ol {
+    grid-template-columns: 1fr;
+  }
+
+  .incident-stack,
+  .faq-list {
+    width: var(--page);
+  }
+
+  .incident-stack {
+    margin-top: 40px;
+  }
+
+  .incident-clipping {
+    padding: 32px 22px 38px;
+    box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .incident-header {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .date-stamp {
+    width: 140px;
+  }
+
+  .incident-facts {
+    display: block;
+    margin: 28px 0 18px;
+  }
+
+  .incident-facts span {
+    display: block;
+  }
+
+  .incident-facts span + span {
+    margin-top: 5px;
+  }
+
+  .incident-facts span + span::before {
+    display: none;
+  }
+
+  .incident-timeline {
+    margin-left: 0;
+  }
+
+  .incident-timeline li {
+    grid-template-columns: 78px 1fr;
+    gap: 12px;
+  }
+
+  .subscribe-section {
+    display: block;
+    padding-block: 76px;
+  }
+
+  .subscribe-section > p {
+    margin-block: 24px;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .faq-list details p {
+    margin-left: 0;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-inline: 20px;
+  }
+}
+
+@media (max-width: 340px) {
+  :root {
+    --page: calc(100% - 24px);
+  }
+
+  .brand {
+    font-size: 0.96rem;
+  }
+
+  .northstar-mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  h1 {
+    font-size: 2.65rem;
+  }
+
+  .service-heading h3 {
+    max-width: 220px;
+  }
+
+  .incident-timeline li {
+    grid-template-columns: 1fr;
+  }
+}

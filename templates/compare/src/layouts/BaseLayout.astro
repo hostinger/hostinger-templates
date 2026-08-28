@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  structuredData: object;
+}
+
+const { title, description, structuredData } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f5f0e5" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href={Astro.url} />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231f43d8%22/><path d=%22M24 51h52M50 25v52%22 stroke=%22%23f6c945%22 stroke-width=%2212%22/></svg>" />
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to comparison</a>
+    <slot />
+  </body>
+</html>

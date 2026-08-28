@@ -1,0 +1,87 @@
+/* Design tokens and base rules for the whole page. */
+
+:root {
+  --color-cream: #faf6ef;
+  --color-cream-deep: #f1e9da;
+  --color-card: #fffdf7;
+  --color-pine: #2b5240;
+  --color-pine-deep: #1d382c;
+  --color-pine-hairline: rgba(43, 82, 64, 0.22);
+  --color-blush: #d99aa2;
+  --color-blush-deep: #a95f6b;
+  --color-blush-wash: #f6e9e5;
+  --color-ink: #2e2a24;
+  --color-ink-soft: #6f675b;
+
+  --font-display: 'Fraunces', 'Iowan Old Style', georgia, serif;
+  --font-ui: 'Karla', 'Avenir Next', 'Segoe UI', sans-serif;
+
+  --space-section: clamp(4rem, 9vw, 7rem);
+  --width-page: 68rem;
+  --width-prose: 38rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-cream);
+  background-image: radial-gradient(rgba(43, 82, 64, 0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
+  color: var(--color-ink);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--color-pine-deep);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--color-pine);
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blush-deep);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.motif {
+  display: block;
+  color: var(--color-pine);
+}
+
+.page {
+  max-width: var(--width-page);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem) 3rem;
+  border-top: 4px double var(--color-pine-hairline);
+}

@@ -1,0 +1,60 @@
+---
+import ComparisonTable from '../components/ComparisonTable.astro';
+import DecisionBrief from '../components/DecisionBrief.astro';
+import FaqSection from '../components/FaqSection.astro';
+import FinalCta from '../components/FinalCta.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import contentJson from '../content/compare.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { CompareContent } from '../types/compare';
+
+const content = contentJson as CompareContent;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      name: content.meta.title,
+      description: content.meta.description,
+      dateModified: '2026-08-28',
+      about: content.products.map((product) => ({
+        '@type': 'SoftwareApplication',
+        name: product.name,
+        applicationCategory: 'BusinessApplication',
+        offers: {
+          '@type': 'Offer',
+          price: product.price.replace('$', ''),
+          priceCurrency: 'USD',
+        },
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: content.faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={content.meta.title}
+  description={content.meta.description}
+  structuredData={structuredData}
+>
+  <div class="page-frame">
+    <SiteHeader email={content.meta.email} />
+    <main id="main-content">
+      <DecisionBrief email={content.meta.email} lastReviewed={content.meta.lastReviewed} />
+      <ComparisonTable products={content.products} features={content.features} />
+      <FaqSection items={content.faq} />
+      <FinalCta email={content.meta.email} />
+    </main>
+  </div>
+</BaseLayout>

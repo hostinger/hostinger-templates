@@ -1,0 +1,29 @@
+---
+interface Props {
+  email: string;
+}
+
+const { email } = Astro.props;
+const signupHref = `mailto:${email}?subject=${encodeURIComponent('Plainly trial request')}&body=${encodeURIComponent('Hello Plainly team,\n\nI would like to try Plainly with my team.')}`;
+---
+
+<section class="final-cta" aria-labelledby="cta-title">
+  <p class="cta-kicker">Decision made?</p>
+  <h2 id="cta-title">Put Plainly against<br />your real workflow.</h2>
+  <p>
+    Bring one process, five teammates, and fourteen days. We will help with setup.
+    No credit card. No sales maze.
+  </p>
+  <a class="button button-inverse" href={signupHref}>Start by email <span aria-hidden="true">↗</span></a>
+  <span class="cta-note">Replies from humans · usually within one workday</span>
+</section>
+
+<footer class="site-footer">
+  <a class="wordmark wordmark-light" href="/" aria-label="Plainly home">
+    <span class="wordmark-mark" aria-hidden="true">P</span>
+    Plainly
+  </a>
+  <p>Clear work, without the software theatre.</p>
+  <a href={`mailto:${email}`}>{email}</a>
+  <span>© 2026 Plainly</span>
+</footer>

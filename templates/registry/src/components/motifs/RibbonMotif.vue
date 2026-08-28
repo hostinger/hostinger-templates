@@ -1,0 +1,36 @@
+<template>
+  <svg
+    class="motif"
+    viewBox="0 0 160 24"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      d="M4 12 C 30 4, 50 20, 80 12 C 110 4, 130 20, 156 12"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+    />
+    <circle
+      cx="80"
+      cy="12"
+      r="3"
+      fill="currentColor"
+    />
+    <circle
+      cx="4"
+      cy="12"
+      r="2"
+      fill="currentColor"
+      opacity="0.6"
+    />
+    <circle
+      cx="156"
+      cy="12"
+      r="2"
+      fill="currentColor"
+      opacity="0.6"
+    />
+  </svg>
+</template>

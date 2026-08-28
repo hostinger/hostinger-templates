@@ -4,6 +4,7 @@
   "private": true,
   "description": "A running club route book: filter routes by distance and climb, read elevation profiles, download GPX.",
   "type": "module",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",

@@ -1,0 +1,390 @@
+/* Section and component styles, top of page to bottom. */
+
+/* ---------- Header ---------- */
+
+.registry-header {
+  text-align: center;
+  padding: clamp(3.5rem, 8vw, 6rem) 0 var(--space-section);
+}
+
+.registry-header__motif {
+  width: 84px;
+  margin: 0 auto 1.5rem;
+  color: var(--color-blush-deep);
+}
+
+.registry-header__eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-blush-deep);
+}
+
+.registry-header__names {
+  font-size: clamp(2.9rem, 8vw, 5.25rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.registry-header__event {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.registry-header__event::before,
+.registry-header__event::after {
+  content: '';
+  width: 3rem;
+  height: 1px;
+  background: var(--color-pine-hairline);
+}
+
+.registry-header__intro {
+  max-width: var(--width-prose);
+  margin: 2.25rem auto 0;
+  font-size: 1.05rem;
+  color: var(--color-ink-soft);
+}
+
+/* ---------- Summary ---------- */
+
+.claim-summary {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.claim-summary__ribbon {
+  width: 150px;
+  margin: 0 auto 1.25rem;
+  color: var(--color-blush);
+}
+
+.claim-summary__heading {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+}
+
+.claim-summary__count {
+  margin-top: 0.75rem;
+  font-size: 1.05rem;
+  color: var(--color-pine);
+}
+
+.claim-summary__count strong {
+  font-weight: 600;
+}
+
+.claim-summary__note {
+  max-width: var(--width-prose);
+  margin: 1rem auto 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-ink-soft);
+}
+
+/* ---------- Gift list ---------- */
+
+.gift-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 2rem;
+  padding-top: 1.25rem;
+}
+
+.gift-card-slot:nth-child(odd) .gift-card {
+  transform: rotate(-0.5deg);
+}
+
+.gift-card-slot:nth-child(even) .gift-card {
+  transform: rotate(0.4deg);
+}
+
+.gift-card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-card);
+  border: 1px solid var(--color-pine-hairline);
+  border-radius: 6px 6px 12px 12px;
+  padding: 2.4rem 1.6rem 1.5rem;
+  box-shadow: 0 10px 24px -18px rgba(29, 56, 44, 0.45);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.gift-card:hover {
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow: 0 16px 30px -18px rgba(29, 56, 44, 0.5);
+}
+
+.gift-card__string {
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  width: 1px;
+  height: 1.35rem;
+  background: var(--color-pine-hairline);
+  transform: rotate(4deg);
+}
+
+.gift-card__hole {
+  position: absolute;
+  top: 0.8rem;
+  left: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--color-cream);
+  border: 1px solid var(--color-pine-hairline);
+  box-shadow: inset 0 1px 2px rgba(29, 56, 44, 0.18);
+}
+
+.gift-card__category {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-blush-deep);
+}
+
+.gift-card__title {
+  font-size: 1.45rem;
+  line-height: 1.2;
+  margin: 0.6rem 0 0.7rem;
+}
+
+.gift-card__note {
+  font-size: 0.94rem;
+  color: var(--color-ink-soft);
+  flex-grow: 1;
+}
+
+.gift-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-pine);
+  white-space: nowrap;
+}
+
+.gift-card__price-leader {
+  flex: 1;
+  border-bottom: 1px dotted var(--color-pine-hairline);
+}
+
+.gift-card__footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--color-pine-hairline);
+}
+
+.gift-card__claim {
+  appearance: none;
+  cursor: pointer;
+  min-height: 2.75rem;
+  border: 1.5px solid var(--color-pine);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-pine);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.55rem 1.3rem;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.gift-card__claim:hover {
+  background: var(--color-pine);
+  color: var(--color-cream);
+}
+
+.gift-card__shop-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-ink-soft);
+  text-decoration-color: var(--color-blush);
+  text-underline-offset: 3px;
+}
+
+.gift-card__shop-link:hover {
+  color: var(--color-blush-deep);
+}
+
+/* Claimed state */
+
+.gift-card--claimed {
+  background: var(--color-blush-wash);
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.gift-card--claimed:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.gift-card--claimed .gift-card__title {
+  color: var(--color-ink-soft);
+}
+
+.gift-card--claimed .gift-card__note,
+.gift-card--claimed .gift-card__price {
+  color: var(--color-ink-soft);
+  opacity: 0.75;
+}
+
+.gift-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-blush-deep);
+}
+
+.gift-card__stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-style: normal;
+}
+
+.gift-card__release {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  appearance: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0.15rem 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--color-ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--color-blush);
+  text-underline-offset: 3px;
+}
+
+.gift-card__release:hover {
+  color: var(--color-blush-deep);
+}
+
+/* ---------- FAQ ---------- */
+
+.faq {
+  max-width: 44rem;
+  margin: var(--space-section) auto 0;
+  text-align: center;
+}
+
+.faq__motif {
+  width: 96px;
+  margin: 0 auto 1.25rem;
+}
+
+.faq__heading {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.faq__intro {
+  margin-top: 0.75rem;
+  color: var(--color-ink-soft);
+}
+
+.faq__list {
+  margin-top: 2.5rem;
+  text-align: left;
+  border-top: 1px solid var(--color-pine-hairline);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--color-pine-hairline);
+}
+
+.faq__question {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  padding: 1.15rem 2.5rem 1.15rem 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-pine-deep);
+}
+
+.faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq__question::after {
+  content: '+';
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-ui);
+  font-size: 1.3rem;
+  color: var(--color-blush-deep);
+}
+
+.faq__item[open] .faq__question::after {
+  content: '−';
+}
+
+.faq__answer {
+  padding: 0 2.5rem 1.3rem 0.25rem;
+  color: var(--color-ink-soft);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  text-align: center;
+  margin-top: var(--space-section);
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-pine-hairline);
+}
+
+.site-footer__motif {
+  width: 72px;
+  margin: 0 auto 1rem;
+  color: var(--color-blush);
+}
+
+.site-footer__signoff {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--color-pine-deep);
+}
+
+.site-footer__note {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
+}

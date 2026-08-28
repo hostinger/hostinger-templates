@@ -1,0 +1,248 @@
+@media (max-width: 980px) {
+  .hero-shell {
+    min-height: 0;
+    background: var(--paper-light);
+  }
+
+  .site-header {
+    border-bottom-color: var(--line);
+  }
+
+  .site-nav {
+    color: var(--ink);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    min-height: 690px;
+  }
+
+  .hero-demo {
+    min-height: 560px;
+    background: var(--terminal);
+  }
+
+  .hero-terminal {
+    margin: 0 auto;
+  }
+
+  .giant-prompt {
+    top: 55%;
+    left: auto;
+    right: 0;
+    transform: translate(20%, -50%);
+  }
+
+  .install-section {
+    grid-template-columns: auto 1fr;
+  }
+
+  .install-console {
+    grid-column: 2;
+  }
+
+  .workflow-section,
+  .examples-section,
+  .faq-section {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-heading {
+    position: static;
+  }
+
+  .features-section {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-rail {
+    border-right: 0;
+    border-bottom: 1px solid rgba(241, 234, 216, 0.2);
+  }
+}
+
+@media (max-width: 620px) {
+  :root {
+    --page-gutter: 1.15rem;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .site-header {
+    min-height: 72px;
+  }
+
+  .site-nav {
+    gap: 0.8rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.05em;
+  }
+
+  .site-nav a,
+  .wordmark,
+  .site-footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .wordmark {
+    font-size: 0.9rem;
+  }
+
+  .wordmark small {
+    display: none;
+  }
+
+  .hero-copy {
+    min-height: 570px;
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  h1 {
+    max-width: 390px;
+    font-size: clamp(3.45rem, 17vw, 4.8rem);
+  }
+
+  .hero-description {
+    font-size: 0.78rem;
+  }
+
+  .hero-demo {
+    min-height: 485px;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .giant-prompt {
+    top: 55.5%;
+    font-size: 10rem;
+  }
+
+  .terminal-screen {
+    min-height: 300px;
+    padding: 1.6rem 1rem;
+  }
+
+  .terminal-bar span:nth-child(2) {
+    display: none;
+  }
+
+  .terminal-command {
+    grid-template-columns: auto 1fr;
+    gap: 0.55rem;
+    font-size: 0.69rem;
+    overflow-wrap: anywhere;
+  }
+
+  .terminal-cursor {
+    display: none;
+  }
+
+  .terminal-output {
+    font-size: 0.61rem;
+  }
+
+  .install-section {
+    grid-template-columns: 1fr;
+  }
+
+  .section-index {
+    writing-mode: initial;
+  }
+
+  .install-console {
+    grid-column: auto;
+  }
+
+  .install-panel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .copy-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .workflow-list li {
+    grid-template-columns: 2rem 1fr;
+  }
+
+  .workflow-list li > div {
+    grid-column: 2;
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-list article,
+  .feature-list article:nth-child(even) {
+    min-height: 245px;
+    border-right: 0;
+  }
+
+  .annotation {
+    right: 1rem;
+  }
+
+  .output-example figcaption {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .faq-list summary {
+    grid-template-columns: 2rem 1fr;
+    padding-right: 2rem;
+    font-size: 0.78rem;
+  }
+
+  .faq-list details > p {
+    padding-left: 2rem;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 350px) {
+  .site-nav li:first-child {
+    display: none;
+  }
+
+  h1 {
+    font-size: 3.25rem;
+  }
+
+  .hero-cta {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .install-tabs button {
+    font-size: 0.56rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .terminal-output p {
+    opacity: 1;
+  }
+}

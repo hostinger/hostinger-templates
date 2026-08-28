@@ -1,0 +1,84 @@
+{
+  "currency": "$",
+  "cycles": {
+    "monthly": "Monthly",
+    "annual": "Annual"
+  },
+  "annualNote": "Save 20% with annual billing",
+  "priceSuffix": "/ month",
+  "annualBillingNote": "Billed annually",
+  "plans": [
+    {
+      "id": "signal",
+      "name": "Signal",
+      "eyebrow": "For first launches",
+      "description": "Turn one sharp idea into a launch page people remember.",
+      "monthlyPrice": 19,
+      "annualMonthlyPrice": 15,
+      "recommended": false,
+      "cta": "Join for Signal"
+    },
+    {
+      "id": "momentum",
+      "name": "Momentum",
+      "eyebrow": "For growing teams",
+      "description": "Run the full launch room with shared campaigns and live proof.",
+      "monthlyPrice": 49,
+      "annualMonthlyPrice": 39,
+      "recommended": true,
+      "cta": "Join for Momentum"
+    },
+    {
+      "id": "headline",
+      "name": "Headline",
+      "eyebrow": "For category leaders",
+      "description": "Coordinate high-stakes releases across brands and markets.",
+      "monthlyPrice": 99,
+      "annualMonthlyPrice": 79,
+      "recommended": false,
+      "cta": "Join for Headline"
+    }
+  ],
+  "features": [
+    {
+      "name": "Active launch rooms",
+      "description": "Campaign workspaces available at once.",
+      "values": { "signal": "1", "momentum": "5", "headline": "Unlimited" }
+    },
+    {
+      "name": "Collaborators",
+      "description": "Teammates with editing access.",
+      "values": { "signal": "2", "momentum": "10", "headline": "Unlimited" }
+    },
+    {
+      "name": "Proof board",
+      "description": "Organize quotes, metrics, and customer evidence.",
+      "values": { "signal": true, "momentum": true, "headline": true }
+    },
+    {
+      "name": "Launch timeline",
+      "description": "Coordinate every release milestone.",
+      "values": { "signal": true, "momentum": true, "headline": true }
+    },
+    {
+      "name": "Custom domains",
+      "description": "Publish launch pages on your own domain.",
+      "values": { "signal": false, "momentum": "1", "headline": "5" }
+    },
+    {
+      "name": "Audience segments",
+      "description": "Tailor messages to defined customer groups.",
+      "values": { "signal": false, "momentum": "10", "headline": "Unlimited" }
+    },
+    {
+      "name": "Approval workflows",
+      "description": "Review gates for brand and legal teams.",
+      "values": { "signal": false, "momentum": true, "headline": true }
+    },
+    {
+      "name": "Priority support",
+      "description": "Faster answers when launch day is close.",
+      "values": { "signal": false, "momentum": false, "headline": true }
+    }
+  ]
+}

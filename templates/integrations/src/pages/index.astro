@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import IntegrationDirectory from '../components/IntegrationDirectory.astro';
+import IntegrationIcon from '../components/IntegrationIcon.astro';
+import FaqList from '../components/FaqList.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { indexFaqs, site } from '../content/site';
+
+const integrations = (await getCollection('integrations')).sort((a, b) => a.data.name.localeCompare(b.data.name));
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: indexFaqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout title="Relay Integrations — Connect your workflow" description="Explore eight Relay workflow automation integrations across finance, CRM, support, marketing, and more." schema={faqSchema}>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow"><span>Relay connector board</span><span>08 / active lines</span></div>
+      <h1>Your tools,<br /><em>moving as one.</em></h1>
+      <p>Connect the apps your team already trusts. Relay carries each signal to its next stop—cleanly, quickly, automatically.</p>
+      <div class="hero-actions">
+        <a class="button" href="#directory">Explore connections <span>↓</span></a>
+        <span>No code · setup in minutes</span>
+      </div>
+    </div>
+    <div class="network-map" aria-label="Diagram showing Relay connected to integration partners">
+      <svg class="network-lines" viewBox="0 0 620 420" aria-hidden="true">
+        <path d="M310 205C235 205 260 77 150 77H55" />
+        <path d="M310 205C220 205 220 170 90 170H15" />
+        <path d="M310 205C220 205 245 325 135 325H48" />
+        <path d="M310 205C390 205 365 65 470 65h95" />
+        <path d="M310 205C405 205 390 180 520 180h80" />
+        <path d="M310 205C390 205 370 345 485 345h85" />
+      </svg>
+      <div class="relay-node"><span>R</span><strong>RELAY</strong><small>routing live</small></div>
+      {integrations.slice(0, 6).map(({ data }, index) => (
+        <div class:list={['map-node', `map-node--${index + 1}`, `integration-card--${data.accent}`]}>
+          <IntegrationIcon name={data.icon} label={data.name} />
+          <span>{data.name}</span>
+        </div>
+      ))}
+      <span class="map-note map-note--a">INPUT SIGNAL</span>
+      <span class="map-note map-note--b">OUTPUT ACTION</span>
+    </div>
+  </section>
+
+  <div class="status-strip">
+    <span>ALL SYSTEMS CONNECTED</span><i></i><span>8 NATIVE INTEGRATIONS</span><i></i><span>1 WORKFLOW, ENDLESS ROUTES</span>
+  </div>
+
+  <IntegrationDirectory integrations={integrations} />
+
+  <section class="how-it-works" id="how-it-works" aria-labelledby="how-title">
+    <div>
+      <div class="section-kicker">Operating logic / 03 stops</div>
+      <h2 id="how-title">From signal<br />to done.</h2>
+      <p>Every Relay route follows one legible path. Choose an event, add your logic, and send work exactly where it belongs.</p>
+    </div>
+    <ol>
+      <li><span>01</span><div><h3>Listen</h3><p>Pick the event that starts work—a submission, stage change, approval, or customer milestone.</p></div></li>
+      <li><span>02</span><div><h3>Route</h3><p>Add conditions and ownership so each signal takes the correct path through your process.</p></div></li>
+      <li><span>03</span><div><h3>Deliver</h3><p>Relay completes the next action in your connected tool and keeps the outcome visible.</p></div></li>
+    </ol>
+  </section>
+
+  <FaqList faqs={indexFaqs} />
+
+  <section class="partner-cta">
+    <span class="cta-orbit" aria-hidden="true"></span>
+    <div class="section-kicker">New line proposal</div>
+    <h2>Building something<br />Relay should know?</h2>
+    <p>Bring your product into the workflow. Tell us what your customers want to automate.</p>
+    <a class="button button--light" href={`mailto:${site.email}?subject=Build a Relay integration`}>Talk to partnerships <span>↗</span></a>
+  </section>
+</BaseLayout>

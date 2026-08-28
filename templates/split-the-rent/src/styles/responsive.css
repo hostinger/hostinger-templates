@@ -1,0 +1,79 @@
+/* Breakpoints, largest to smallest. */
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .receipt {
+    position: static;
+  }
+
+  .faq__items {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__doodles {
+    position: static;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero__doodle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .room-card__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .room-card__remove {
+    position: static;
+    float: right;
+    margin-bottom: 0.5rem;
+  }
+
+  .share-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .share-bar__button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .page {
+    gap: 1.8rem;
+  }
+
+  .rent-card,
+  .room-card,
+  .receipt,
+  .share-bar,
+  .faq__item {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .rent-card__input {
+    max-width: 100%;
+    font-size: 1.4rem;
+  }
+
+  .receipt__room-final {
+    font-size: 1.05rem;
+  }
+
+  .receipt__line {
+    font-size: 0.85rem;
+  }
+
+  .window-chip {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.82rem;
+  }
+}

@@ -1,0 +1,15 @@
+---
+interface Props {
+  name: string;
+  label: string;
+  size?: 'small' | 'large';
+}
+
+const { name, label, size = 'small' } = Astro.props;
+---
+
+<span class:list={['integration-icon', `integration-icon--${size}`]} aria-hidden="true">
+  <svg role="img" aria-label={`${label} icon`}>
+    <use href={`/icons/integrations.svg#${name}`}></use>
+  </svg>
+</span>

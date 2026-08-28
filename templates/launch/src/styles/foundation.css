@@ -1,0 +1,136 @@
+:root {
+  --paper: #f3eedf;
+  --ink: #11110f;
+  --blue: #1547d8;
+  --orange: #ff5a1f;
+  --acid: #d9ff43;
+  --muted: #706d64;
+  --line: 2px solid var(--ink);
+  --pad: clamp(1.25rem, 4vw, 4.5rem);
+  --display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --body: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 4px solid var(--orange);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--display);
+  font-stretch: condensed;
+  letter-spacing: -0.035em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: clamp(3.5rem, 7.5vw, 8rem);
+}
+
+.section-pad {
+  padding: clamp(4.5rem, 8vw, 8rem) var(--pad);
+}
+
+.eyebrow {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--orange);
+  border: 1px solid var(--ink);
+  content: "";
+}
+
+.button {
+  display: inline-flex;
+  min-height: 3.4rem;
+  padding: 0.85rem 1.2rem;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: var(--blue);
+  border: var(--line);
+  box-shadow: 4px 4px 0 var(--ink);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.button:hover {
+  box-shadow: 2px 2px 0 var(--ink);
+  transform: translate(2px, 2px);
+}
+
+.button-small {
+  min-height: 2.7rem;
+  box-shadow: none;
+}
+
+.button-orange {
+  color: var(--ink);
+  background: var(--orange);
+}
+
+.section-heading {
+  max-width: 72rem;
+}
+
+.section-heading > p:last-child {
+  max-width: 34rem;
+  margin-top: 1.5rem;
+  font-size: 1.12rem;
+}

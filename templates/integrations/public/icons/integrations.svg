@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ledgerly" viewBox="0 0 48 48"><path d="M10 7h24a4 4 0 0 1 4 4v30H14a4 4 0 0 1-4-4V7Z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 16h12M18 24h12M18 32h7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="chatwire" viewBox="0 0 48 48"><path d="M7 10h34v24H22l-9 7v-7H7V10Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="16" cy="22" r="2"/><circle cx="24" cy="22" r="2"/><circle cx="32" cy="22" r="2"/></symbol>
+  <symbol id="formstacker" viewBox="0 0 48 48"><path d="M12 6h24v36H12z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 16h13M18 24h13M18 32h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="m31 31 3 3 6-7" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+  <symbol id="cloudbox" viewBox="0 0 48 48"><path d="M14 37h23a8 8 0 0 0 1-16 13 13 0 0 0-25-2 9 9 0 0 0 1 18Z" fill="none" stroke="currentColor" stroke-width="3"/><path d="m18 27 6-6 6 6M24 21v13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="northstar" viewBox="0 0 48 48"><path d="m24 4 5 14 15 6-15 6-5 14-5-14-15-6 15-6 5-14Z" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="24" cy="24" r="4" fill="currentColor"/></symbol>
+  <symbol id="beacon" viewBox="0 0 48 48"><path d="M8 39h32M13 34V24h7v10M21 34V14h7v20M29 34V7h7v27" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+  <symbol id="helpnest" viewBox="0 0 48 48"><path d="M8 25a16 16 0 0 1 32 0v10h-8V24h8M8 24h8v11H8V24ZM32 38c0 3-3 5-8 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="42" r="2" fill="currentColor"/></symbol>
+  <symbol id="mailflow" viewBox="0 0 48 48"><path d="M5 10h38v28H5z" fill="none" stroke="currentColor" stroke-width="3"/><path d="m7 13 17 14 17-14M7 36l12-12M41 36 29 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+</svg>

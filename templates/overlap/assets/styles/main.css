@@ -1,0 +1,167 @@
+/* ------------------------------------------------------------------ */
+/* Design tokens — edit these to retheme the whole app                 */
+/* ------------------------------------------------------------------ */
+
+:root {
+  /* Night-panorama base */
+  --color-bg: #12142e;
+  --color-bg-deep: #0d0f24;
+  --color-surface: #191c3d;
+  --color-plate: #1f2249;
+  --color-border: #2c2f5c;
+
+  /* Text */
+  --color-ink: #eceaff;
+  --color-ink-dim: #aaa8d0;
+  --color-ink-faint: #8280ad;
+
+  /* Aurora accents for interactive elements */
+  --color-aurora-mint: #6ee7c8;
+  --color-aurora-blue: #7aa2ff;
+  --color-aurora-violet: #c77dff;
+  --gradient-aurora: linear-gradient(
+    100deg,
+    var(--color-aurora-mint),
+    var(--color-aurora-blue) 55%,
+    var(--color-aurora-violet)
+  );
+
+  /* Overlap band spotlight */
+  --color-band: #8ff5d2;
+  --shadow-band: 0 0 22px rgba(110, 231, 200, 0.35);
+
+  /* Typography */
+  --font-sans: 'Outfit Variable', 'Outfit', system-ui, -apple-system, sans-serif;
+
+  /* Layout rhythm */
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 22px;
+  --page-max: 1180px;
+  --label-w: 176px;
+  --cell-min: 32px;
+  --strip-h: 52px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Foundation                                                          */
+/* ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 480px at 78% -8%, rgba(122, 162, 255, 0.14), transparent 65%),
+    radial-gradient(900px 420px at 8% 4%, rgba(199, 125, 255, 0.1), transparent 60%),
+    var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-aurora-mint);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: rgba(122, 162, 255, 0.4);
+}
+
+/* Tabular numerals everywhere hour digits appear */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visually hidden but available to assistive tech */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Shared interactive styles                                           */
+/* ------------------------------------------------------------------ */
+
+.aurora-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    var(--gradient-aurora) border-box;
+  color: var(--color-ink);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.aurora-button:hover {
+  box-shadow: 0 0 18px rgba(110, 231, 200, 0.25);
+  transform: translateY(-1px);
+}
+
+.aurora-button:active {
+  transform: translateY(0);
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--color-ink-dim);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.select-control {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.select-control:hover {
+  border-color: var(--color-aurora-blue);
+}

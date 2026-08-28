@@ -1,0 +1,90 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import IntegrationIcon from './IntegrationIcon.astro';
+
+interface Props {
+  integrations: CollectionEntry<'integrations'>[];
+}
+
+const { integrations } = Astro.props;
+const categories = ['All', ...integrations.map(({ data }) => data.category)];
+---
+
+<section class="directory" id="directory" aria-labelledby="directory-title">
+  <aside class="filter-rail">
+    <div class="section-kicker">Directory / 08 routes</div>
+    <h2 id="directory-title">Find your connection</h2>
+    <label class="search-field">
+      <span>Search integrations</span>
+      <span class="search-input"><b aria-hidden="true">⌕</b><input type="search" placeholder="Search name or task…" data-search /></span>
+    </label>
+    <fieldset>
+      <legend>Filter by category</legend>
+      <div class="filter-list">
+        {categories.map((category, index) => (
+          <button type="button" class:list={{ active: index === 0 }} data-filter={category}>
+            <span>{String(index).padStart(2, '0')}</span>{category}
+          </button>
+        ))}
+      </div>
+    </fieldset>
+    <p class="result-count" aria-live="polite"><strong data-count>{integrations.length}</strong> live connections</p>
+  </aside>
+
+  <div class="connector-board">
+    <div class="board-legend"><span><i class="dot dot--mint"></i> Native connection</span><span><i class="dot dot--orange"></i> Setup ~5 min</span></div>
+    <div class="route-line route-line--a" aria-hidden="true"></div>
+    <div class="route-line route-line--b" aria-hidden="true"></div>
+    <div class="integration-list" data-list>
+      {integrations.map(({ id, data }, index) => (
+        <article class:list={['integration-card', `integration-card--${data.accent}`]} data-card data-name={data.name.toLowerCase()} data-summary={data.summary.toLowerCase()} data-category={data.category}>
+          <div class="card-index">{String(index + 1).padStart(2, '0')}<span></span></div>
+          <IntegrationIcon name={data.icon} label={data.name} />
+          <div class="card-copy">
+            <p>{data.category}</p>
+            <h3><a href={`/integrations/${id}/`}>{data.name}<span aria-hidden="true">↗</span></a></h3>
+            <p>{data.summary}</p>
+          </div>
+          <dl>
+            <div><dt>WHEN</dt><dd>{data.trigger}</dd></div>
+            <div><dt>THEN</dt><dd>{data.action}</dd></div>
+          </dl>
+        </article>
+      ))}
+    </div>
+    <div class="empty-state" data-empty hidden>
+      <strong>No route found.</strong>
+      <span>Try a broader search or another category.</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>('[data-search]');
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const cards = [...document.querySelectorAll<HTMLElement>('[data-card]')];
+  const count = document.querySelector<HTMLElement>('[data-count]');
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
+  let activeCategory = 'All';
+
+  const update = () => {
+    const query = search?.value.trim().toLowerCase() ?? '';
+    let visible = 0;
+    cards.forEach((card) => {
+      const matchesCategory = activeCategory === 'All' || card.dataset.category === activeCategory;
+      const haystack = `${card.dataset.name} ${card.dataset.summary} ${card.dataset.category}`.toLowerCase();
+      const matchesSearch = haystack.includes(query);
+      card.hidden = !(matchesCategory && matchesSearch);
+      if (!card.hidden) visible += 1;
+    });
+    if (count) count.textContent = String(visible);
+    if (empty) empty.hidden = visible !== 0;
+  };
+
+  search?.addEventListener('input', update);
+  buttons.forEach((button) => button.addEventListener('click', () => {
+    activeCategory = button.dataset.filter ?? 'All';
+    buttons.forEach((item) => item.classList.toggle('active', item === button));
+    update();
+  }));
+</script>

@@ -1,0 +1,43 @@
+{
+  "product": {
+    "name": "Vectorline",
+    "eyebrow": "PRICING INSTRUMENT / V1.4",
+    "headline": "Price infrastructure without the spreadsheet.",
+    "description": "Model a production workspace by seats and monthly API traffic. Every charge stays visible, predictable, and ready to share.",
+    "currency": "USD",
+    "billingPeriod": "month"
+  },
+  "defaults": {
+    "seats": 12,
+    "usage": 680000
+  },
+  "limits": {
+    "seats": { "min": 1, "max": 250, "step": 1 },
+    "usage": { "min": 0, "max": 5000000, "step": 10000 }
+  },
+  "pricing": {
+    "baseFee": 49,
+    "includedSeats": 5,
+    "seatUnitPrice": 14,
+    "includedUsage": 100000,
+    "usageTiers": [
+      { "upTo": 500000, "unitPrice": 0.00008, "label": "100K–500K calls" },
+      { "upTo": 2000000, "unitPrice": 0.000055, "label": "500K–2M calls" },
+      { "upTo": null, "unitPrice": 0.000035, "label": "2M+ calls" }
+    ]
+  },
+  "howTo": [
+    {
+      "question": "What counts as an API call?",
+      "answer": "Each accepted request to the production API counts once. Retries caused by Vectorline infrastructure and traffic to sandbox environments are excluded."
+    },
+    {
+      "question": "How do usage tiers work?",
+      "answer": "Rates are progressive. Each slice of traffic is priced at its tier rate, so crossing a threshold never reprices earlier calls."
+    },
+    {
+      "question": "Is this a binding quote?",
+      "answer": "No. This local calculator creates a planning estimate only. Taxes, negotiated terms, and optional support packages are not included."
+    }
+  ]
+}

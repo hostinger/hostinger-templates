@@ -1,0 +1,79 @@
+---
+import type { Feature, Product } from '../types/compare';
+
+interface Props {
+  products: Product[];
+  features: Feature[];
+}
+
+const { products, features } = Astro.props;
+---
+
+<section class="matrix-section" id="matrix" aria-labelledby="matrix-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">The evidence board</p>
+      <h2 id="matrix-title">Feature-by-feature</h2>
+    </div>
+    <p class="matrix-intro">
+      “Best” means strongest published offer for this criterion—not a universal
+      verdict. Pricing shown before tax.
+    </p>
+  </div>
+
+  <div class="legend" aria-label="Comparison legend">
+    <span><i class="legend-best" aria-hidden="true"></i> strongest offer</span>
+    <span><i class="legend-loss" aria-hidden="true"></i> where Plainly loses</span>
+    <span class="scroll-hint">Swipe table →</span>
+  </div>
+
+  <div class="table-shell" tabindex="0" role="region" aria-label="Scrollable product comparison table">
+    <table>
+      <caption class="sr-only">
+        Plainly compared with Orbit, Stackform, and Metricly across ten product features
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col" class="criterion-heading">Buying criterion</th>
+          {products.map((product) => (
+            <th scope="col" class:list={['product-heading', { 'is-plainly': product.recommended }]}>
+              <span class="product-label">{product.label}</span>
+              <strong>{product.name}</strong>
+              <span class="price">{product.price}</span>
+              <small>{product.priceNote}</small>
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {features.map((feature, index) => (
+          <tr class:list={{ 'loss-row': feature.loss }}>
+            <th scope="row">
+              <span class="row-number">{String(index + 1).padStart(2, '0')}</span>
+              <span class="feature-name">{feature.name}</span>
+              <small>{feature.category} · {feature.note}</small>
+              {feature.callout && <mark>{feature.callout}</mark>}
+            </th>
+            {products.map((product) => (
+              <td class:list={{ winner: feature.winner === product.id }}>
+                {feature.winner === product.id && <span class="sr-only">Strongest offer: </span>}
+                {feature.values[product.id]}
+                {feature.winner === product.id && <span class="best-mark" aria-hidden="true">✓</span>}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict-grid" aria-label="Product fit summary">
+    {products.map((product) => (
+      <article class:list={['verdict', { 'verdict-primary': product.recommended }]}>
+        <p>{product.label}</p>
+        <h3>{product.name}</h3>
+        <span>{product.summary}</span>
+      </article>
+    ))}
+  </div>
+</section>

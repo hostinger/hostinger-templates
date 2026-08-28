@@ -1,0 +1,41 @@
+---
+import type { Incident } from '../types/status';
+
+interface Props {
+  incident: Incident;
+  number: number;
+}
+
+const { incident, number } = Astro.props;
+---
+
+<article class="incident-clipping">
+  <header class="incident-header">
+    <div class="date-stamp">
+      <span>FILED</span>
+      <time>{incident.date}</time>
+    </div>
+    <div>
+      <p class="eyebrow">Incident report #{String(number).padStart(3, '0')}</p>
+      <h3>{incident.title}</h3>
+      <p class="incident-summary">{incident.summary}</p>
+    </div>
+  </header>
+  <div class="incident-facts">
+    <span>{incident.duration}</span>
+    <span>{incident.affected}</span>
+  </div>
+  <ol class="incident-timeline">
+    {
+      incident.updates.map((update) => (
+        <li>
+          <time>{update.time}</time>
+          <div>
+            <strong>{update.label}</strong>
+            <p>{update.detail}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</article>

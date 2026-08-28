@@ -1,12 +1,14 @@
 ---
 name: deploy-nodejs-templates
-description: Deploys static templates from this repository to separate Hostinger temporary-domain websites, verifies each live deployment, and updates templates.json demoUrl values. Use when publishing, deploying, or refreshing template demos on Hostinger.
+description: Deploys static and server-backed Node.js templates from this repository to separate Hostinger websites, attaches public template-ID subdomains, verifies each live deployment, and updates templates.json demoUrl values. Use when publishing, deploying, or refreshing template demos on Hostinger.
 ---
 
 # Deploy template demos to Hostinger
 
 Deploy each template as a separate website. Never place multiple templates under
-paths of one domain.
+paths of one domain. Public demos in this repository use
+`https://<template-id>.kieciausias-domenas.xyz`; Hostinger temporary domains
+remain the hosting origins.
 
 ## 1. Inventory the work
 
@@ -50,8 +52,15 @@ npm run build
 
 Do not deploy a failed build.
 
-Archive the contents of the build output, not the containing directory. For
-the usual `dist/` output:
+Determine the deployment type from the production build:
+
+- **Static:** the configured output directory contains `index.html` and can run
+  without a Node.js process.
+- **Server-backed Node.js:** production starts from a Node.js entry file, such
+  as an Express server compiled to `dist/server.js`.
+
+For static templates, archive the contents of the build output, not the
+containing directory. For the usual `dist/` output:
 
 ```bash
 archive="<template-id>_$(date +%Y%m%d_%H%M%S).zip"
@@ -59,6 +68,17 @@ archive="<template-id>_$(date +%Y%m%d_%H%M%S).zip"
 ```
 
 The archive root must contain `index.html`.
+
+For server-backed Node.js templates, archive application source instead. Exclude
+`node_modules`, previews, local archives, and generated build output. Ensure
+`package.json` identifies the built production entry with `main` when automatic
+detection would otherwise choose the wrong file:
+
+```json
+{
+  "main": "dist/server.js"
+}
+```
 
 ## 4. Create one temporary website per template
 
@@ -72,9 +92,27 @@ The archive root must contain `index.html`.
 
 Keep a clear template-to-domain mapping throughout.
 
-## 5. Deploy static output
+## 4a. Attach the public demo subdomain
 
-Use the static website deployment tool with:
+For each created Hostinger website:
+
+1. Add a CNAME record to the `kieciausias-domenas.xyz` DNS zone:
+   - name: the exact template ID
+   - target: the generated `*.hostingersite.com` origin, with a trailing dot
+   - TTL: 300
+2. Add `<template-id>.kieciausias-domenas.xyz` as a parked or alias domain on
+   that template's Hostinger website.
+3. Preserve the generated temporary domain as the website origin. Do not delete
+   it or replace the website.
+4. Confirm the parked-domain listing maps the public subdomain to the correct
+   origin before live verification.
+
+Use `overwrite = true` only for the exact template-ID CNAME records being
+managed. Do not overwrite apex, mail, verification, or unrelated DNS records.
+
+## 5. Deploy output
+
+For static output, use the static website deployment tool with:
 
 - the generated domain
 - the template archive path
@@ -89,23 +127,32 @@ Failed to fetch upload credentials: Request failed with status code 500
 Treat this as transient after recent website creation. Wait briefly, confirm the
 website exists, then retry that deployment once sequentially.
 
+For server-backed Node.js templates, use the JavaScript application deployment
+tool with the source archive and archive removal enabled. Confirm its resolved
+settings use the intended build script, Node version, application type, and
+entry file. Poll the deployment until it reaches `completed`; if it fails, read
+the deployment logs, fix the exact cause, rebuild, and redeploy before attaching
+the catalog URL.
+
 ## 6. Verify live websites
 
-Wait for accepted deployments to finish, then verify each HTTPS URL returns the
-expected template content.
+Wait for accepted deployments to finish, then verify both the temporary origin
+and `https://<template-id>.kieciausias-domenas.xyz` return the expected template
+content. The public subdomain must return HTTP 200 over HTTPS.
 
 For multi-page templates, also request at least one non-home direct URL. Do not
 mark deployment complete when only the homepage works.
 
-If a live page is stale or unavailable, wait briefly and retry once. Report a
-persistent failure without writing its `demoUrl`.
+New aliases may briefly show Hostinger's browser-check page while DNS, CDN, and
+TLS provisioning settle. Confirm the alias exists, wait briefly, and retry once.
+Report a persistent failure without writing its `demoUrl`.
 
 ## 7. Update the catalog
 
-Set each successfully verified catalog entry:
+Set each successfully verified catalog entry to its public custom subdomain:
 
 ```json
-"demoUrl": "https://generated-domain.hostingersite.com"
+"demoUrl": "https://<template-id>.kieciausias-domenas.xyz"
 ```
 
 Then verify:
@@ -127,7 +174,7 @@ lockfiles, previews, and deployed websites.
 Report:
 
 - hosting plan used
-- template names and clickable live URLs
+- template names, clickable public URLs, and their temporary origins
 - build and live verification results
 - catalog update status
 

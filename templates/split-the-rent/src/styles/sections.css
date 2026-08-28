@@ -1,0 +1,561 @@
+/* Section and component styles, top of page to bottom. */
+
+.page {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-page);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  padding: 1.5rem 0 0.5rem;
+  max-width: 44rem;
+}
+
+.hero__doodles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.hero__doodle {
+  width: 64px;
+  height: 64px;
+}
+
+.hero__doodle--house {
+  color: var(--coral);
+  transform: rotate(-6deg);
+}
+
+.hero__doodle--plant {
+  color: var(--teal);
+  transform: rotate(5deg);
+}
+
+.hero__kicker {
+  display: inline-block;
+  background: var(--teal-soft);
+  border: var(--border-width) solid var(--ink);
+  border-radius: 999px;
+  padding: 0.25rem 0.9rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: var(--card-shadow-small);
+}
+
+.hero__title {
+  font-size: clamp(2.6rem, 7vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-top: 0.9rem;
+  color: var(--ink);
+}
+
+.hero__title::after {
+  content: '';
+  display: block;
+  width: 5.5rem;
+  height: 0.5rem;
+  margin-top: 0.6rem;
+  background: var(--coral);
+  border: var(--border-width) solid var(--ink);
+  border-radius: 999px;
+}
+
+.hero__intro {
+  margin-top: 1.1rem;
+  font-size: 1.05rem;
+  max-width: 38rem;
+}
+
+/* ---------- Layout ---------- */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.layout__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ---------- Rent card ---------- */
+
+.rent-card {
+  background: var(--coral-soft);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+  padding: 1.4rem 1.5rem;
+  transform: rotate(-0.4deg);
+}
+
+.rent-card__label {
+  display: block;
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.rent-card__field {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+}
+
+.rent-card__symbol {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--coral-deep);
+}
+
+.rent-card__input {
+  width: 100%;
+  max-width: 14rem;
+  background: #fff;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-control);
+  padding: 0.55rem 0.85rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.rent-card__hint {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--teal-deep);
+}
+
+/* ---------- Rooms ---------- */
+
+.rooms {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.rooms__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rooms__header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.rooms__header p {
+  font-size: 0.85rem;
+  color: var(--teal-deep);
+}
+
+.room-card {
+  position: relative;
+  background: #fff;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.room-card:nth-of-type(even) {
+  transform: rotate(0.35deg);
+}
+
+.room-card:nth-of-type(odd) {
+  transform: rotate(-0.35deg);
+}
+
+.room-card__legend {
+  float: left;
+  background: var(--sun);
+  border: var(--border-width) solid var(--ink);
+  border-radius: 999px;
+  padding: 0.1rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.room-card__grid {
+  clear: both;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+  gap: 0.9rem 1rem;
+}
+
+.room-card__field label,
+.room-card__windows legend {
+  display: block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.room-card__field input[type='text'],
+.room-card__field input[type='number'] {
+  width: 100%;
+  background: var(--paper-warm);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-control);
+  padding: 0.55rem 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.room-card__windows {
+  grid-column: 1 / -1;
+}
+
+.room-card__window-options {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.window-chip {
+  display: inline-flex;
+  align-items: center;
+  border: var(--border-width) solid var(--ink);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: #fff;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.window-chip--active {
+  background: var(--teal);
+  color: #fff;
+  box-shadow: var(--card-shadow-small);
+}
+
+.window-chip input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0 0 0 0);
+}
+
+.window-chip:has(input:focus-visible) {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.room-card__field--ensuite {
+  grid-column: 1 / -1;
+}
+
+.ensuite-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.ensuite-toggle input {
+  width: 1.35rem;
+  height: 1.35rem;
+  accent-color: var(--coral);
+  border: var(--border-width) solid var(--ink);
+}
+
+.room-card__remove {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  background: #fff;
+  border: var(--border-width) solid var(--ink);
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--coral-deep);
+}
+
+.room-card__remove:hover {
+  background: var(--coral-soft);
+}
+
+.rooms__add {
+  align-self: flex-start;
+  background: var(--coral);
+  color: #fff;
+  border: var(--border-width) solid var(--ink);
+  border-radius: 999px;
+  box-shadow: var(--card-shadow-small);
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 800;
+  min-height: 48px;
+}
+
+.rooms__add:hover:not(:disabled) {
+  background: var(--coral-deep);
+}
+
+.rooms__add:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.rooms__add:disabled {
+  background: #d8d3c8;
+  color: var(--ink);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ---------- Fairness receipt ---------- */
+
+.receipt {
+  background: #fff;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+  padding: 1.5rem 1.5rem 1.4rem;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.receipt__header h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.receipt__header p {
+  font-size: 0.85rem;
+  color: var(--teal-deep);
+  margin-top: 0.2rem;
+}
+
+.receipt__empty {
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  background: var(--paper-warm);
+  border: 2px dashed var(--ink);
+  border-radius: var(--radius-control);
+  font-weight: 600;
+}
+
+.receipt__rooms {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.receipt__room {
+  border-top: 2px dashed var(--ink);
+  padding-top: 1rem;
+}
+
+.receipt__room-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.receipt__room-final {
+  color: var(--coral-deep);
+  font-size: 1.25rem;
+  white-space: nowrap;
+}
+
+.receipt__lines {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.receipt__line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.92rem;
+}
+
+.receipt__line dt {
+  font-weight: 600;
+}
+
+.receipt__line dt small {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--teal-deep);
+}
+
+.receipt__line dd {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.receipt__line--final {
+  border-top: 2px solid var(--ink);
+  margin-top: 0.35rem;
+  padding-top: 0.45rem;
+  font-size: 1rem;
+}
+
+.receipt__line--final dd {
+  font-weight: 800;
+  color: var(--teal-deep);
+}
+
+.receipt__total {
+  margin-top: 1.3rem;
+  background: var(--teal);
+  color: #fff;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-control);
+  padding: 0.9rem 1.1rem;
+}
+
+.receipt__total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.receipt__total-check {
+  margin-top: 0.15rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.receipt__note {
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--teal-soft);
+}
+
+/* ---------- Share bar ---------- */
+
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  background: var(--sun);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+  padding: 1.3rem 1.6rem;
+  flex-wrap: wrap;
+}
+
+.share-bar__doodle {
+  width: 52px;
+  height: 52px;
+  color: var(--ink);
+  flex-shrink: 0;
+  transform: rotate(-8deg);
+}
+
+.share-bar__text {
+  flex: 1 1 16rem;
+}
+
+.share-bar__text h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.share-bar__text p {
+  margin-top: 0.25rem;
+  font-size: 0.92rem;
+}
+
+.share-bar__button {
+  background: var(--ink);
+  color: #fff;
+  border: var(--border-width) solid var(--ink);
+  border-radius: 999px;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 800;
+  min-height: 48px;
+  box-shadow: 3px 3px 0 rgba(30, 42, 43, 0.35);
+}
+
+.share-bar__button:hover {
+  background: var(--teal-deep);
+}
+
+.share-bar__button:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* ---------- FAQ ---------- */
+
+.faq h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.faq__items {
+  margin-top: 1.1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.faq__item {
+  background: #fff;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow-small);
+  padding: 1.2rem 1.3rem;
+}
+
+.faq__item h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.faq__item p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  text-align: center;
+  padding: 1rem 0 1.5rem;
+  font-size: 0.9rem;
+  color: var(--teal-deep);
+  font-weight: 600;
+}

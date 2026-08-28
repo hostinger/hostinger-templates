@@ -1,0 +1,64 @@
+/*
+ * Print: flip the blueprint to ink-on-white and hide every control so the
+ * sheet prints as a clean plan — tables, names, and empty seats only.
+ */
+@media print {
+  :root {
+    --paper: #fff;
+    --paper-deep: #fff;
+    --paper-raised: #fff;
+    --paper-inset: #fff;
+    --table-fill: #fff;
+    --ink: #14212e;
+    --ink-dim: #4a5a6a;
+    --line: #22384d;
+    --line-soft: #7e93a8;
+    --accent: #14212e;
+    --accent-soft: transparent;
+    --select: #14212e;
+  }
+
+  body {
+    padding: 0;
+    background: #fff none;
+  }
+
+  /* Hide interactive chrome. */
+  .toolbar,
+  .how-to,
+  .remove,
+  .hint,
+  .drop-hint,
+  .tagline {
+    display: none !important;
+  }
+
+  .sheet {
+    margin: 0 !important;
+    max-width: none !important;
+    border-width: 1px !important;
+  }
+
+  .plan-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .floor {
+    gap: 0.5rem 2rem !important;
+  }
+
+  .table-map,
+  .roster {
+    break-inside: avoid;
+  }
+
+  .chip {
+    cursor: default !important;
+  }
+
+  .occupant {
+    color: var(--ink) !important;
+    background: transparent !important;
+  }
+}

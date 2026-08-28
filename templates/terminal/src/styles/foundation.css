@@ -1,0 +1,253 @@
+:root {
+  --ink: #12160f;
+  --terminal: #0b110c;
+  --phosphor: #c7ff43;
+  --phosphor-dim: #7ca52a;
+  --paper: #f1ead8;
+  --paper-light: #faf5e8;
+  --red: #d9472f;
+  --line: rgba(18, 22, 15, 0.25);
+  --mono: "SFMono-Regular", "Cascadia Code", "Roboto Mono", Consolas, monospace;
+  --page-gutter: clamp(1rem, 4vw, 4.5rem);
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--mono);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--paper);
+  background-image: radial-gradient(rgba(18, 22, 15, 0.13) 0.7px, transparent 0.7px);
+  background-size: 6px 6px;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+code,
+pre {
+  font-family: var(--mono);
+}
+
+::selection {
+  color: var(--terminal);
+  background: var(--phosphor);
+}
+
+:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: var(--paper-light);
+  background: var(--red);
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.hero-shell {
+  min-height: 900px;
+  background:
+    linear-gradient(90deg, transparent 49.95%, rgba(199, 255, 67, 0.34) 50%, transparent 50.1%),
+    linear-gradient(90deg, var(--paper-light) 0 50%, var(--terminal) 50% 100%);
+  overflow: hidden;
+}
+
+.site-header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 84px;
+  padding: 0 var(--page-gutter);
+  border-bottom: 1px solid rgba(241, 234, 216, 0.24);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.wordmark__prompt {
+  color: var(--red);
+}
+
+.wordmark small {
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  opacity: 0.65;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.4rem);
+  color: var(--paper-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.site-nav a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35rem;
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 816px;
+}
+
+.hero-copy,
+.hero-demo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 7vw, 7.5rem) var(--page-gutter);
+}
+
+.hero-copy {
+  align-items: flex-start;
+}
+
+.hero-eyebrow,
+.manual-heading > p,
+.features-section header > p,
+.examples-section header > p,
+.faq-section header > p,
+.feature-rail > p {
+  margin-bottom: 2rem;
+  color: var(--red);
+  font-size: 0.69rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-eyebrow::before {
+  content: "●";
+  margin-right: 0.75rem;
+}
+
+h1 {
+  max-width: 650px;
+  font-size: clamp(3.4rem, 6vw, 6.8rem);
+  font-weight: 700;
+  letter-spacing: -0.085em;
+  line-height: 0.89;
+}
+
+.hero-description {
+  max-width: 530px;
+  margin-top: 2.2rem;
+  font-family: ui-monospace, var(--mono);
+  font-size: clamp(0.87rem, 1.1vw, 1rem);
+  line-height: 1.65;
+}
+
+.hero-cta {
+  display: inline-flex;
+  gap: 2.5rem;
+  align-items: center;
+  margin-top: 2.4rem;
+  padding: 0.9rem 1.05rem;
+  border: 2px solid var(--ink);
+  color: var(--paper-light);
+  background: var(--ink);
+  font-size: 0.71rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.hero-cta:hover {
+  color: var(--ink);
+  background: var(--phosphor);
+}
+
+.hero-availability {
+  margin-top: 1.15rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.hero-demo {
+  color: var(--phosphor);
+}
+
+.giant-prompt {
+  position: absolute;
+  z-index: 3;
+  top: 48%;
+  left: 50%;
+  color: var(--red);
+  font-size: clamp(9rem, 18vw, 18rem);
+  font-weight: 900;
+  line-height: 0.5;
+  text-shadow: 8px 8px 0 var(--paper-light);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}

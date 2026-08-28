@@ -1,0 +1,91 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import FaqList from '../../components/FaqList.astro';
+import IntegrationIcon from '../../components/IntegrationIcon.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../content/site';
+
+export const getStaticPaths = (async () => {
+  const integrations = await getCollection('integrations');
+  return integrations.map((integration) => ({
+    params: { id: integration.id },
+    props: { integration },
+  }));
+}) satisfies GetStaticPaths;
+
+const { integration } = Astro.props;
+const { Content } = await render(integration);
+const { data } = integration;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: data.faqs.map((faq: { question: string; answer: string }) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout title={`${data.name} + Relay integration`} description={data.summary} schema={faqSchema}>
+  <div class="detail-shell">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Integrations</a><span>/</span><span aria-current="page">{data.name}</span>
+    </nav>
+
+    <section class:list={['detail-hero', `integration-card--${data.accent}`]}>
+      <div class="detail-intro">
+        <IntegrationIcon name={data.icon} label={data.name} size="large" />
+        <div class="section-kicker">{data.category} / native route</div>
+        <h1>{data.name}<br /><em>meets Relay.</em></h1>
+        <p>{data.summary}</p>
+        <a class="button" href={`mailto:${site.email}?subject=Connect ${data.name} to Relay`}>Request connection <span>↗</span></a>
+      </div>
+      <div class="detail-diagram">
+        <div class="diagram-node"><IntegrationIcon name={data.icon} label={data.name} /><strong>{data.name}</strong><span>{data.trigger}</span></div>
+        <div class="diagram-route"><span>01</span><i></i><b>WHEN</b></div>
+        <div class="diagram-center"><span>R</span><strong>Relay</strong><small>logic + routing</small></div>
+        <div class="diagram-route"><span>02</span><i></i><b>THEN</b></div>
+        <div class="diagram-node diagram-node--last"><span class="check">✓</span><strong>Action complete</strong><span>{data.action}</span></div>
+      </div>
+    </section>
+
+    <section class="detail-overview">
+      <div class="prose">
+        <div class="section-kicker">Connection overview</div>
+        <h2>Keep work in motion.</h2>
+        <Content />
+      </div>
+      <div class="route-spec">
+        <span>ROUTE SPEC / {integration.id.toUpperCase()}</span>
+        <dl>
+          <div><dt>Trigger</dt><dd>{data.trigger}</dd></div>
+          <div><dt>Action</dt><dd>{data.action}</dd></div>
+          <div><dt>Connection</dt><dd>Native</dd></div>
+          <div><dt>Setup</dt><dd>~5 minutes</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="use-cases">
+      <div><div class="section-kicker">Field notes / common routes</div><h2>Put it to work.</h2></div>
+      <div class="use-case-list">
+        {data.useCases.map((useCase: string, index: number) => <article><span>{String(index + 1).padStart(2, '0')}</span><p>{useCase}</p></article>)}
+      </div>
+    </section>
+
+    <section class="setup">
+      <div class="section-kicker">Connection protocol</div>
+      <h2>Three stops to live.</h2>
+      <ol>{data.setup.map((step: string, index: number) => <li><span>{index + 1}</span><p>{step}</p></li>)}</ol>
+    </section>
+
+    <FaqList faqs={data.faqs} title={`${data.name} questions`} />
+
+    <aside class="next-route">
+      <span>Need a route tailored to your team?</span>
+      <a href={`mailto:${site.email}?subject=${data.name} workflow question`}>Plan it with Relay <span>↗</span></a>
+    </aside>
+  </div>
+</BaseLayout>

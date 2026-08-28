@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Archivo:wght@400;500&display=swap');
+
+/*
+ * Design tokens — the blueprint theme lives here.
+ * The print stylesheet flips these to ink-on-white.
+ */
+:root {
+  --paper: #0f2a4a;
+  --paper-deep: #0a1e38;
+  --paper-raised: #16385f;
+  --paper-inset: rgb(10 30 56 / 55%);
+  --table-fill: rgb(22 56 95 / 55%);
+  --ink: #e8f1fb;
+  --ink-dim: #9db8d4;
+  --line: rgb(214 230 247 / 85%);
+  --line-soft: rgb(214 230 247 / 38%);
+  --grid-minor: rgb(126 167 210 / 13%);
+  --grid-major: rgb(126 167 210 / 24%);
+  --accent: #ffb454;
+  --accent-soft: rgb(255 180 84 / 22%);
+  --select: #ff6f61;
+  --seat-size: 4.25rem;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --font-sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 0 clamp(0.5rem, 2vw, 1.5rem);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px);
+  background-size:
+    1.5rem 1.5rem,
+    1.5rem 1.5rem,
+    7.5rem 7.5rem,
+    7.5rem 7.5rem;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 30rem) {
+  :root {
+    --seat-size: 3.4rem;
+  }
+}

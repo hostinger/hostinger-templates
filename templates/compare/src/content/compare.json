@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "title": "Plainly compared: a clear product decision",
+    "description": "An evidence-minded comparison of Plainly, Orbit, Stackform, and Metricly across ten features, pricing, and practical trade-offs.",
+    "email": "hello@plainly.example",
+    "lastReviewed": "August 2026"
+  },
+  "products": [
+    {
+      "id": "plainly",
+      "name": "Plainly",
+      "label": "You",
+      "price": "$39",
+      "priceNote": "per workspace / month",
+      "summary": "Focused workflows, predictable billing, and human support.",
+      "recommended": true
+    },
+    {
+      "id": "orbit",
+      "name": "Orbit",
+      "label": "Competitor 01",
+      "price": "$29",
+      "priceNote": "per seat / month",
+      "summary": "Broad integrations for teams that can absorb setup time."
+    },
+    {
+      "id": "stackform",
+      "name": "Stackform",
+      "label": "Competitor 02",
+      "price": "$49",
+      "priceNote": "per workspace / month",
+      "summary": "Deep automation with a steeper learning curve."
+    },
+    {
+      "id": "metricly",
+      "name": "Metricly",
+      "label": "Competitor 03",
+      "price": "$24",
+      "priceNote": "per seat / month",
+      "summary": "Reporting-first toolkit for analytics-heavy teams."
+    }
+  ],
+  "features": [
+    {
+      "name": "Unlimited collaborators",
+      "category": "Cost control",
+      "note": "No per-seat penalty as the team grows.",
+      "values": {
+        "plainly": "Included",
+        "orbit": "Per-seat",
+        "stackform": "Up to 15",
+        "metricly": "Per-seat"
+      },
+      "winner": "plainly"
+    },
+    {
+      "name": "Guided setup",
+      "category": "Onboarding",
+      "note": "A usable first workflow without paid consulting.",
+      "values": {
+        "plainly": "45 minutes",
+        "orbit": "1–2 days",
+        "stackform": "3–5 days",
+        "metricly": "2 hours"
+      },
+      "winner": "plainly"
+    },
+    {
+      "name": "Native integrations",
+      "category": "Ecosystem",
+      "note": "Direct connections maintained by each vendor.",
+      "values": {
+        "plainly": "38",
+        "orbit": "120+",
+        "stackform": "64",
+        "metricly": "27"
+      },
+      "winner": "orbit",
+      "loss": true,
+      "callout": "Where we lose"
+    },
+    {
+      "name": "Reusable workflow templates",
+      "category": "Workflow",
+      "note": "Save and share repeatable team processes.",
+      "values": {
+        "plainly": "Unlimited",
+        "orbit": "10 on base plan",
+        "stackform": "Unlimited",
+        "metricly": "5 on base plan"
+      },
+      "winner": "plainly"
+    },
+    {
+      "name": "Approval stages",
+      "category": "Governance",
+      "note": "Control review and sign-off before work moves.",
+      "values": {
+        "plainly": "All plans",
+        "orbit": "Business plan",
+        "stackform": "All plans",
+        "metricly": "Not available"
+      },
+      "winner": "plainly"
+    },
+    {
+      "name": "Audit history",
+      "category": "Governance",
+      "note": "A searchable record of changes and decisions.",
+      "values": {
+        "plainly": "24 months",
+        "orbit": "12 months",
+        "stackform": "Unlimited",
+        "metricly": "6 months"
+      },
+      "winner": "stackform"
+    },
+    {
+      "name": "Custom dashboards",
+      "category": "Reporting",
+      "note": "Build role-specific views without code.",
+      "values": {
+        "plainly": "Included",
+        "orbit": "Included",
+        "stackform": "Included",
+        "metricly": "Advanced"
+      },
+      "winner": "metricly"
+    },
+    {
+      "name": "Data export",
+      "category": "Ownership",
+      "note": "Leave with complete, usable copies of team data.",
+      "values": {
+        "plainly": "CSV + JSON",
+        "orbit": "CSV",
+        "stackform": "CSV + API",
+        "metricly": "CSV + PDF"
+      },
+      "winner": "plainly"
+    },
+    {
+      "name": "Human support",
+      "category": "Service",
+      "note": "Talk to a person without buying an enterprise plan.",
+      "values": {
+        "plainly": "All plans",
+        "orbit": "Business plan",
+        "stackform": "Email only",
+        "metricly": "All plans"
+      },
+      "winner": "plainly"
+    },
+    {
+      "name": "Annual price increase cap",
+      "category": "Cost control",
+      "note": "Contractual limit on renewal price changes.",
+      "values": {
+        "plainly": "5%",
+        "orbit": "Not published",
+        "stackform": "Not published",
+        "metricly": "8%"
+      },
+      "winner": "plainly"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Who is Plainly best for?",
+      "answer": "Plainly is built for teams of 5–100 people that want repeatable workflows without per-seat pricing or a long implementation project."
+    },
+    {
+      "question": "Is this comparison independent?",
+      "answer": "No. Plainly publishes this page. We show the criteria, mark areas where competitors lead, and recommend verifying current pricing and features before buying."
+    },
+    {
+      "question": "Can we migrate our existing data?",
+      "answer": "Yes. Plainly accepts CSV and JSON imports. The team provides a field-mapping review on every paid plan."
+    },
+    {
+      "question": "Why does Orbit win on integrations?",
+      "answer": "Orbit lists more maintained native integrations than Plainly. If a specific native connector is essential, Orbit may be the better fit."
+    },
+    {
+      "question": "Can we try Plainly before committing?",
+      "answer": "Yes. Email the team for a guided 14-day workspace with your own workflow and no credit card."
+    }
+  ]
+}

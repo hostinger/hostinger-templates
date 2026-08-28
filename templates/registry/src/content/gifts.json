@@ -1,0 +1,91 @@
+[
+  {
+    "id": "dutch-oven",
+    "title": "Cast-iron Dutch oven",
+    "note": "For slow Sunday ragùs and the sourdough phase Tom refuses to grow out of.",
+    "priceLabel": "around £90",
+    "category": "kitchen",
+    "seedClaimed": true
+  },
+  {
+    "id": "dinner-set",
+    "title": "Handthrown dinner set for six",
+    "note": "Speckled stoneware plates and bowls from a small pottery in St Ives.",
+    "priceLabel": "around £140",
+    "category": "kitchen",
+    "shopUrl": "https://example.com/shop/handthrown-dinner-set"
+  },
+  {
+    "id": "salad-servers",
+    "title": "Walnut serving board & servers",
+    "note": "Hand-oiled walnut, the kind of thing that outlives everyone at the table.",
+    "priceLabel": "around £45",
+    "category": "kitchen"
+  },
+  {
+    "id": "linen-tablecloth",
+    "title": "Heavy linen tablecloth",
+    "note": "Washed flax linen, generous enough for the long table we keep talking about.",
+    "priceLabel": "around £75",
+    "category": "home"
+  },
+  {
+    "id": "picnic-blanket",
+    "title": "Wool picnic blanket",
+    "note": "A proper tartan one for the meadow behind the cottage.",
+    "priceLabel": "around £60",
+    "category": "home",
+    "seedClaimed": true
+  },
+  {
+    "id": "turntable",
+    "title": "Turntable & a first record",
+    "note": "So Amelia's granddad's jazz collection can finally spin again.",
+    "priceLabel": "around £180",
+    "category": "home",
+    "shopUrl": "https://example.com/shop/turntable"
+  },
+  {
+    "id": "apple-tree",
+    "title": "Heritage apple tree",
+    "note": "A Blenheim Orange sapling to plant on our first anniversary.",
+    "priceLabel": "around £38",
+    "category": "garden"
+  },
+  {
+    "id": "pollinator-border",
+    "title": "Bee-friendly border kit",
+    "note": "Lavender, echinops and foxgloves for the sunny bed by the gate.",
+    "priceLabel": "around £55",
+    "category": "garden"
+  },
+  {
+    "id": "garden-chairs",
+    "title": "Two oak garden chairs",
+    "note": "For slow coffees while the apple tree gets on with growing.",
+    "priceLabel": "around £120",
+    "category": "garden"
+  },
+  {
+    "id": "pasta-workshop",
+    "title": "Pasta workshop for two",
+    "note": "An evening in Bristol learning tortellini from someone's actual nonna.",
+    "priceLabel": "around £110",
+    "category": "experience",
+    "seedClaimed": true
+  },
+  {
+    "id": "coastal-inn",
+    "title": "A night at a coastal inn",
+    "note": "One night by the sea in Cornwall, breakfast and a windswept walk included.",
+    "priceLabel": "around £150",
+    "category": "experience"
+  },
+  {
+    "id": "stargazing-trip",
+    "title": "Stargazing in the Brecon Beacons",
+    "note": "A guided dark-sky evening — flasks, blankets and far too many constellations.",
+    "priceLabel": "around £85",
+    "category": "experience"
+  }
+]

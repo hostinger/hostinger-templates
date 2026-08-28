@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,400;0,600;0,800;1,500&display=swap');
+
+:root {
+  --stone: #eee9de;
+  --paper: #f8f5ed;
+  --ink: #1d2925;
+  --forest: #173f35;
+  --forest-light: #2e6955;
+  --yellow: #efbf39;
+  --brick: #a74834;
+  --line: #a8a99f;
+  --muted: #616862;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --sans: 'Public Sans', Arial, sans-serif;
+  --page: min(1240px, calc(100% - 80px));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--stone);
+  background-image:
+    linear-gradient(rgba(23, 63, 53, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 63, 53, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  font-family: var(--sans);
+  line-height: 1.55;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: clamp(4.4rem, 8.7vw, 8.8rem);
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-size: clamp(2.25rem, 4.6vw, 4.8rem);
+  letter-spacing: -0.055em;
+}
+
+h3 {
+  font-size: clamp(1.35rem, 2.1vw, 2rem);
+  letter-spacing: -0.035em;
+}
+
+.eyebrow {
+  margin-bottom: 18px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  padding: 12px 18px;
+  color: white;
+  background: var(--forest);
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 4px;
+}
+
+.northstar-mark {
+  width: 36px;
+  height: 36px;
+  fill: var(--forest);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.brand b {
+  font-weight: 400;
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 2fr;
+  gap: 0 60px;
+  width: var(--page);
+  margin: 0 auto 48px;
+}
+
+.section-heading .eyebrow {
+  grid-column: 1;
+}
+
+.section-heading h2 {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.section-intro {
+  grid-column: 2;
+  max-width: 680px;
+  font-size: 1.08rem;
+}

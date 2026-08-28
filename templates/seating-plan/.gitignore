@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+
+# Environment files
+.env
+.env.*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Generated artifacts
+*.tsbuildinfo
+*.local
+
+# Editor directories and files
+.vscode
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,116 @@
+/* Design tokens + base element styles. Change the look of the whole app here. */
+
+:root {
+  /* Palette — friendly flat-share zine */
+  --paper: #fffdf6;
+  --paper-warm: #fff6ea;
+  --ink: #1e2a2b;
+  --coral: #ff6b5e;
+  --coral-deep: #e2493c;
+  --coral-soft: #ffe3df;
+  --teal: #0f6b66;
+  --teal-deep: #0a4844;
+  --teal-soft: #d8efed;
+  --sun: #ffc94d;
+
+  /* Chunky card language */
+  --border-width: 2.5px;
+  --radius-card: 20px;
+  --radius-control: 12px;
+  --shadow-offset: 5px;
+  --card-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  --card-shadow-small: 3px 3px 0 var(--ink);
+
+  /* Type */
+  --font-display: 'Bricolage Grotesque', 'Avenir Next', 'Trebuchet MS', sans-serif;
+
+  /* Rhythm */
+  --space-page: clamp(1rem, 4vw, 3rem);
+  --content-max: 72rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  background-image: radial-gradient(rgba(30, 42, 43, 0.07) 1.2px, transparent 1.2px);
+  background-size: 26px 26px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+input,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ul,
+dl,
+dd,
+dt {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Every money figure lines up like a ledger. */
+.receipt,
+.rent-card__input {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

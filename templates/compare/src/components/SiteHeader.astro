@@ -1,0 +1,21 @@
+---
+interface Props {
+  email: string;
+}
+
+const { email } = Astro.props;
+const signupHref = `mailto:${email}?subject=${encodeURIComponent('Plainly trial request')}`;
+---
+
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label="Plainly home">
+    <span class="wordmark-mark" aria-hidden="true">P</span>
+    Plainly
+  </a>
+  <nav aria-label="Primary navigation">
+    <a href="#method">Method</a>
+    <a href="#matrix">Matrix</a>
+    <a href="#faq">FAQ</a>
+    <a class="button button-small" href={signupHref}>Request a trial</a>
+  </nav>
+</header>

@@ -1,0 +1,28 @@
+---
+import type { FaqItem } from '../types/compare';
+
+interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="faq-section" id="faq" aria-labelledby="faq-title">
+  <div class="faq-heading">
+    <p class="eyebrow">Questions before commitment</p>
+    <h2 id="faq-title">The fine print,<br />made readable.</h2>
+    <p class="annotation">Procurement likes details. So do we.</p>
+  </div>
+  <div class="faq-list">
+    {items.map((item, index) => (
+      <details open={index === 0}>
+        <summary>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          {item.question}
+        </summary>
+        <p>{item.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>

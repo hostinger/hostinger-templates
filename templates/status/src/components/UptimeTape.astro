@@ -1,0 +1,57 @@
+---
+import type { UptimeDay } from '../types/status';
+
+interface Props {
+  serviceName: string;
+  days: UptimeDay[];
+}
+
+const { serviceName, days } = Astro.props;
+const firstDay = days.at(0);
+const lastDay = days.at(-1);
+const formatter = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+const formatDate = (date: string) => formatter.format(new Date(`${date}T00:00:00Z`));
+---
+
+<div class="uptime-tape">
+  <div
+    class="uptime-bars"
+    role="img"
+    aria-label={`${serviceName}: 90 daily availability readings from ${firstDay ? formatDate(firstDay.date) : ''} to ${lastDay ? formatDate(lastDay.date) : ''}`}
+  >
+    {
+      days.map((day) => (
+        <span
+          class={`uptime-bar uptime-bar--${day.status}`}
+          title={`${formatDate(day.date)} — ${day.value.toFixed(2)}% — ${day.status}`}
+          aria-hidden="true"
+        />
+      ))
+    }
+  </div>
+  <div class="tape-scale" aria-hidden="true">
+    <span>{firstDay ? formatDate(firstDay.date) : ''}</span>
+    <span>90-day record</span>
+    <span>{lastDay ? formatDate(lastDay.date) : ''}</span>
+  </div>
+  <details class="textual-record">
+    <summary>Read all 90 daily values</summary>
+    <ol>
+      {
+        days.map((day) => (
+          <li>
+            <time datetime={day.date}>{formatDate(day.date)}</time>
+            <span>{day.value.toFixed(2)}%</span>
+            <span>{day.status}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </details>
+</div>

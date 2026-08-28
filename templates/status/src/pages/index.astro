@@ -1,0 +1,144 @@
+---
+import FaqList from '../components/FaqList.astro';
+import IncidentClipping from '../components/IncidentClipping.astro';
+import ServiceRow from '../components/ServiceRow.astro';
+import { faqs, incidents, site } from '../content/site';
+import rawStatus from '../content/status.json';
+import NorthstarMark from '../icons/NorthstarMark.astro';
+import '../styles/foundation.css';
+import '../styles/sections.css';
+import '../styles/responsive.css';
+import type { Service } from '../types/status';
+
+const statusData = rawStatus as { snapshotDate: string; services: Service[] };
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={site.description} />
+    <meta name="theme-color" content="#173f35" />
+    <title>{site.title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to service status</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Northstar Cloud status home">
+        <NorthstarMark />
+        <span>Northstar <b>Cloud</b></span>
+      </a>
+      <div class="header-meta">
+        <span>PUBLIC NOTICEBOARD</span>
+        <span>REF. NSC–STATUS–0826</span>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="overall-status" aria-labelledby="overall-title">
+        <div class="contour-lines" aria-hidden="true"></div>
+        <div class="overall-copy">
+          <p class="eyebrow">Network condition · committed snapshot</p>
+          <h1 id="overall-title">All systems<br />operational</h1>
+          <p class="snapshot-label">{site.snapshotLabel}</p>
+        </div>
+        <div class="status-seal" aria-label="Overall status: operational">
+          <span class="seal-dot"></span>
+          <strong>OPERATIONAL</strong>
+          <small>03 / 03 SERVICES</small>
+        </div>
+      </section>
+
+      <aside class="snapshot-notice" aria-label="Data source notice">
+        <strong>STATUS NOTE</strong>
+        <p>{site.notice}</p>
+        <time datetime={statusData.snapshotDate}>Record date: 2026–08–28</time>
+      </aside>
+
+      <section class="services-section" aria-labelledby="services-title">
+        <div class="section-heading">
+          <p class="eyebrow">Section 01 · Service register</p>
+          <h2 id="services-title">90-day service record</h2>
+          <div class="legend" aria-label="Uptime legend">
+            <span><i class="legend-operational"></i> Operational</span>
+            <span><i class="legend-degraded"></i> Degraded</span>
+            <span><i class="legend-outage"></i> Outage</span>
+          </div>
+        </div>
+        <div class="service-register">
+          {
+            statusData.services.map((service, index) => (
+              <ServiceRow service={service} index={index} />
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="incidents-section" aria-labelledby="incidents-title">
+        <div class="section-heading section-heading--light">
+          <p class="eyebrow">Section 02 · Archive desk</p>
+          <h2 id="incidents-title">Past incident reports</h2>
+          <p class="section-intro">
+            Two resolved events from this 90-day record, written as narrative
+            reports with the decisions that moved each event toward recovery.
+          </p>
+        </div>
+        <div class="incident-stack">
+          {
+            incidents.map((incident, index) => (
+              <IncidentClipping incident={incident} number={incidents.length - index} />
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="subscribe-section" aria-labelledby="subscribe-title">
+        <div>
+          <p class="eyebrow">Public correspondence</p>
+          <h2 id="subscribe-title">Get service notices by email.</h2>
+        </div>
+        <p>
+          Ask to join the fictional Northstar Cloud notice list. This opens your
+          email app; no form or backend is connected.
+        </p>
+        <a
+          class="button"
+          href={`mailto:${site.supportEmail}?subject=Subscribe%20to%20Northstar%20Cloud%20status%20notices`}
+        >
+          Subscribe to notices <span aria-hidden="true">→</span>
+        </a>
+      </section>
+
+      <section class="faq-section" aria-labelledby="faq-title">
+        <div class="section-heading">
+          <p class="eyebrow">Section 03 · Reader notes</p>
+          <h2 id="faq-title">About this record</h2>
+        </div>
+        <FaqList items={faqs} />
+      </section>
+    </main>
+
+    <footer>
+      <div class="brand brand--footer">
+        <NorthstarMark />
+        <span>Northstar Cloud</span>
+      </div>
+      <p>Fictional public status template · No live monitoring connected</p>
+      <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>
+    </footer>
+  </body>
+</html>

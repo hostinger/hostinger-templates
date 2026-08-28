@@ -1,0 +1,26 @@
+---
+interface Faq {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: Faq[];
+  title?: string;
+}
+
+const { faqs, title = 'Questions, answered' } = Astro.props;
+---
+
+<section class="faq-section" id="faq" aria-labelledby="faq-title">
+  <div class="section-kicker">Signal notes / FAQ</div>
+  <h2 id="faq-title">{title}</h2>
+  <div class="faq-list">
+    {faqs.map((faq, index) => (
+      <details open={index === 0}>
+        <summary>{faq.question}<span aria-hidden="true">+</span></summary>
+        <p>{faq.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>
