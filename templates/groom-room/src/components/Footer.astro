@@ -1,0 +1,22 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+---
+
+<footer class="site-footer">
+  <div>
+    <p class="footer-brand">{site.name}</p>
+    <p>Kind hands. Clear prices. Excellent fringes.</p>
+  </div>
+  <div>
+    <p class="footer-label">Find us</p>
+    <p>{site.address}</p>
+  </div>
+  <div>
+    <p class="footer-label">Talk to a groomer</p>
+    <a href={site.phoneHref}>{site.phoneDisplay}</a><br />
+    <a href={`mailto:${site.email}`}>{site.email}</a>
+  </div>
+</footer>

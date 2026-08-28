@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cockapoo",
+    "name": "Cockapoo",
+    "cut": "Soft teddy trim",
+    "price": 58,
+    "duration": "2 hr",
+    "note": "Rounded face, tidy paws, and an even hand-scissored finish.",
+    "image": "/images/cockapoo.jpg",
+    "alt": "Freshly groomed apricot Cockapoo with a soft rounded trim"
+  },
+  {
+    "id": "miniature-poodle",
+    "name": "Miniature Poodle",
+    "cut": "Modern lamb cut",
+    "price": 62,
+    "duration": "2 hr 15",
+    "note": "Clean feet and face with a plush, balanced body shape.",
+    "image": "/images/poodle.jpg",
+    "alt": "Miniature Poodle during a professional grooming appointment"
+  },
+  {
+    "id": "shih-tzu",
+    "name": "Shih Tzu",
+    "cut": "Practical puppy cut",
+    "price": 52,
+    "duration": "1 hr 45",
+    "note": "A comfortable short style with a softly shaped face and ears.",
+    "image": "/images/shih-tzu.jpg",
+    "alt": "Shih Tzu receiving a gentle salon groom"
+  },
+  {
+    "id": "mini-schnauzer",
+    "name": "Mini Schnauzer",
+    "cut": "Classic breed trim",
+    "price": 55,
+    "duration": "1 hr 50",
+    "note": "Defined brows and beard with a neat skirt and close body.",
+    "image": "/images/schnauzer.jpg",
+    "alt": "Miniature Schnauzer with a tidy breed-standard trim"
+  },
+  {
+    "id": "yorkshire-terrier",
+    "name": "Yorkshire Terrier",
+    "cut": "Silky short trim",
+    "price": 48,
+    "duration": "1 hr 30",
+    "note": "Easy-care body length, blended legs, and a bright open face.",
+    "image": "/images/yorkie.jpg",
+    "alt": "Yorkshire Terrier being carefully trimmed by a groomer"
+  },
+  {
+    "id": "golden-retriever",
+    "name": "Golden Retriever",
+    "cut": "De-shed & feather tidy",
+    "price": 68,
+    "duration": "2 hr 30",
+    "note": "Deep coat release, outline tidy, paw shaping, and feather care.",
+    "image": "/images/golden.jpg",
+    "alt": "Golden Retriever with a clean brushed coat after grooming"
+  }
+]

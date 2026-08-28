@@ -23,8 +23,8 @@ finished project contributes one entry.
       "specific-use-case"
     ],
     "frameworks": [
-      "react",
-      "vite"
+      "requested-framework",
+      "build-tool-when-applicable"
     ]
   },
   "features": [

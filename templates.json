@@ -81,6 +81,93 @@
         "emergency callout",
         "react landing page"
       ]
+    },
+    {
+      "id": "groom-room",
+      "name": "Groom Room",
+      "summary": "A breed-led dog grooming site with instant guide prices, appointment times, cut photography, and booking handoff.",
+      "description": "Groom Room is a polished multi-page website for an independent dog groomer who wants to replace vague “prices from” messaging with a useful first estimate. It is designed for salon owners serving local dog owners who need confidence about cost, timing, and coat outcomes before making contact.\n\nThe primary journey starts with an interactive picker covering six popular breeds. Each selection immediately updates the recommended cut, locally stored photograph, guide price, duration, care note, and pre-filled enquiry link. Four add-ons, a full service menu, transparent quote guidance, salon details, opening hours, click-to-call actions, and a four-question FAQ complete the path from browsing to booking.\n\nBusiness copy, contact details, hours, links, and breed data are centralized in committed JSON files for fast personalization. The original editorial layout, responsive plain CSS, accessible controls, static multi-page Astro output, local imagery, TypeScript content shapes, and FAQPage structured data provide a strong base for a distinctive real-world grooming business site.",
+      "bucket": "Non-technical",
+      "category": "Trades and local services",
+      "whoItsFor": "A dog groomer",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "local-business",
+          "pet-services",
+          "dog-grooming"
+        ],
+        "useCases": [
+          "lead-generation",
+          "service-pricing",
+          "booking-enquiries"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "breed-price-picker",
+          "name": "Breed price picker",
+          "description": "Six breed choices instantly update the cut, guide price, appointment duration, care note, and photograph."
+        },
+        {
+          "id": "service-menu",
+          "name": "Service menu",
+          "description": "Dedicated service page explains full grooms, bath and brush visits, puppy introductions, and hand stripping."
+        },
+        {
+          "id": "booking-handoff",
+          "name": "Booking handoff",
+          "description": "Pre-filled email enquiries and click-to-call links carry visitors from their selected groom into direct contact."
+        },
+        {
+          "id": "salon-visit-details",
+          "name": "Salon visit details",
+          "description": "A dedicated route presents the address, opening hours, phone number, email, and arrival guidance."
+        },
+        {
+          "id": "structured-faq",
+          "name": "Structured FAQ",
+          "description": "Four practical first-visit answers are paired with FAQPage JSON-LD for search engines."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "20.19+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/groom-room/preview/groom-room-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/groom-room/preview/groom-room-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/groom-room/preview/groom-room-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/groom-room/preview/groom-room-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 4502
+        }
+      },
+      "searchTerms": [
+        "dog groomer website",
+        "pet salon",
+        "breed pricing",
+        "grooming appointment",
+        "local service business",
+        "astro static site"
+      ]
     }
   ]
 }

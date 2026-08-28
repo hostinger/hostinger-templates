@@ -4,7 +4,10 @@
 
 - Before any implementation, ask for name, description, tech stack, language,
   and framework.
-- Explicitly confirm TypeScript; all application code must use TypeScript.
+- Prefer TypeScript when the user does not specify a language.
+- Prefer React when the user does not specify a framework.
+- When the user explicitly supplies a language or framework, use it instead of
+  the defaults and adapt the project conventions accordingly.
 - Ask whether the app should be single-page or multi-page when scope is unclear.
 - Do not create files or install packages until required answers are available.
 
@@ -14,29 +17,32 @@
 - Use one unique lowercase kebab-case ID for its directory and catalog entry.
 - Never put project source directly in the collection root or in `skills/`.
 
-## Required stack
+## Stack defaults and requirements
 
-- Use React and TypeScript.
-- Use Vite for development and production builds.
+- Default to React, TypeScript, and Vite.
+- Treat an explicitly requested language, framework, or build tool as
+  authoritative.
 - Use npm and commit `package-lock.json`.
 - `npm install`, `npm run lint`, and `npm run build` must succeed.
 - Use ESLint. Do not install or configure Oxlint.
 
 ## Configuration hygiene
 
-- Keep exactly one `tsconfig.json`.
-- Keep exactly one `vite.config.ts`.
-- Use `tsc --noEmit` for type checking.
-- Do not leave generated `vite.config.js`, `vite.config.d.ts`,
-  `*.tsbuildinfo`, duplicate configs, unused scaffold files, or build output.
-- Ignore `node_modules`, `dist`, local environment files, and `*.tsbuildinfo`.
+- Keep one intentional configuration file per tool.
+- For TypeScript projects, keep one `tsconfig.json` and run the framework's
+  supported type check during `npm run build`.
+- For Vite projects, keep one `vite.config.ts`.
+- Do not leave generated duplicate configs, `*.tsbuildinfo`, unused scaffold
+  files, or build output.
+- Ignore `node_modules`, framework build/cache directories, local environment
+  files, and generated language artifacts.
 
 ## Code quality
 
-- Keep `App.tsx` focused on page composition.
-- Separate components, constants, icons, shared types, and styles into dedicated
-  `src/` directories.
-- Keep repeated business content and configuration in typed constants.
+- Keep the framework's root app, layout, or page files focused on composition.
+- Separate components, content, icons, shared models or types, and styles into
+  dedicated source directories where the framework supports them.
+- Keep repeated business content and configuration in structured data.
 - Keep state close to its owning feature.
 - Prefer small named components over one large page component.
 - Use semantic HTML and accessible controls.

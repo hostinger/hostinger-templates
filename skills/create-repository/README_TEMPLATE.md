@@ -15,9 +15,9 @@ two or three short paragraphs.
 
 ## Tech stack
 
-- **Language:** TypeScript
+- **Language:** {{LANGUAGE}}
 - **Framework:** {{FRAMEWORK}}
-- **Build tool:** Vite
+- **Build tool:** {{BUILD_TOOL}}
 - **Styling:** {{STYLING_APPROACH}}
 - Add only technologies actually used.
 
@@ -40,7 +40,7 @@ npm install
 npm run dev
 ```
 
-Open the local URL printed by Vite.
+Open the local URL printed by the development server.
 
 ## Available scripts
 
@@ -52,19 +52,10 @@ Open the local URL printed by Vite.
 ## Project structure
 
 ```text
-src/
-├── assets/
-├── components/
-├── constants/
-├── icons/
-├── pages/
-├── styles/
-├── types/
-├── App.tsx
-└── main.tsx
+{{PROJECT_STRUCTURE}}
 ```
 
-Describe any intentional differences from this baseline. Omit directories that
+Show the actual framework-appropriate project structure. Omit directories that
 do not exist.
 
 ## Personalizing
@@ -100,7 +91,7 @@ npm run build
 npm run preview
 ```
 
-Production files are written to `dist/`.
+Production files are written to `{{BUILD_OUTPUT_DIRECTORY}}`.
 
 ## Screenshots
 

@@ -1,0 +1,107 @@
+---
+import rawBreeds from '../data/breeds.json';
+import rawSite from '../data/site.json';
+import type { Breed, SiteContent } from '../types/content';
+
+const breeds = rawBreeds as Breed[];
+const site = rawSite as SiteContent;
+const initialBreed = breeds[0];
+---
+
+<section class="picker-section" id="breed-picker" aria-labelledby="picker-title">
+  <div class="section-heading">
+    <p class="eyebrow">The honest estimate</p>
+    <h2 id="picker-title">Pick your dog. See their groom.</h2>
+    <p>Guide prices assume a regularly groomed, mat-free coat. We confirm everything before clipping.</p>
+  </div>
+
+  <div class="breed-picker" data-breed-picker>
+    <div class="breed-options" role="list" aria-label="Dog breeds">
+      {breeds.map((breed, index) => (
+        <button
+          class:list={['breed-option', { active: index === 0 }]}
+          type="button"
+          data-breed-id={breed.id}
+          aria-pressed={index === 0 ? 'true' : 'false'}
+        >
+          <span>{breed.name}</span>
+          <small>From £{breed.price}</small>
+        </button>
+      ))}
+    </div>
+
+    <article class="groom-card" aria-live="polite">
+      <div class="groom-photo-frame">
+        <img
+          data-breed-image
+          src={initialBreed.image}
+          alt={initialBreed.alt}
+          width="720"
+          height="640"
+        />
+        <span class="photo-sticker">Our suggested cut</span>
+      </div>
+      <div class="groom-detail">
+        <p class="eyebrow" data-breed-name>{initialBreed.name}</p>
+        <h3 data-breed-cut>{initialBreed.cut}</h3>
+        <div class="estimate-row">
+          <div>
+            <span>Guide price</span>
+            <strong data-breed-price>£{initialBreed.price}</strong>
+          </div>
+          <div>
+            <span>Allow</span>
+            <strong data-breed-duration>{initialBreed.duration}</strong>
+          </div>
+        </div>
+        <p data-breed-note>{initialBreed.note}</p>
+        <a class="button" data-booking-link href={`${site.booking.href}&body=I%27d%20like%20to%20book%20my%20Cockapoo.`}>
+          Ask about this groom
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<script>
+  import breedData from '../data/breeds.json';
+  import siteData from '../data/site.json';
+  import type { Breed, SiteContent } from '../types/content';
+
+  const breeds = breedData as Breed[];
+  const bookingHref = (siteData as SiteContent).booking.href;
+  const picker = document.querySelector('[data-breed-picker]');
+
+  if (picker) {
+    const options = picker.querySelectorAll<HTMLButtonElement>('[data-breed-id]');
+    const image = picker.querySelector<HTMLImageElement>('[data-breed-image]');
+    const name = picker.querySelector<HTMLElement>('[data-breed-name]');
+    const cut = picker.querySelector<HTMLElement>('[data-breed-cut]');
+    const price = picker.querySelector<HTMLElement>('[data-breed-price]');
+    const duration = picker.querySelector<HTMLElement>('[data-breed-duration]');
+    const note = picker.querySelector<HTMLElement>('[data-breed-note]');
+    const bookingLink = picker.querySelector<HTMLAnchorElement>('[data-booking-link]');
+
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        const breed = breeds.find(({ id }) => id === option.dataset.breedId);
+        if (!breed || !image || !name || !cut || !price || !duration || !note || !bookingLink) return;
+
+        options.forEach((button) => {
+          const selected = button === option;
+          button.classList.toggle('active', selected);
+          button.setAttribute('aria-pressed', String(selected));
+        });
+
+        image.src = breed.image;
+        image.alt = breed.alt;
+        name.textContent = breed.name;
+        cut.textContent = breed.cut;
+        price.textContent = `£${breed.price}`;
+        duration.textContent = breed.duration;
+        note.textContent = breed.note;
+        bookingLink.href = `${bookingHref}&body=I%27d%20like%20to%20book%20my%20${encodeURIComponent(breed.name)}.`;
+      });
+    });
+  }
+</script>

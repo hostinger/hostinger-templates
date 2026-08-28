@@ -1,0 +1,24 @@
+{
+  "name": "Groom Room",
+  "eyebrow": "Neighbourhood dog grooming",
+  "headline": "Good hair days, measured in tail wags.",
+  "intro": "Choose your dog’s breed for a clear guide price, appointment time, and the cut we recommend—before you ever pick up the phone.",
+  "phoneDisplay": "020 7946 0284",
+  "phoneHref": "tel:+442079460284",
+  "email": "hello@groomroom.example",
+  "address": "18 Willow Parade, London, N16 8QH",
+  "hours": [
+    "Tue–Fri · 8:30–18:00",
+    "Saturday · 9:00–16:00",
+    "Sun–Mon · Closed"
+  ],
+  "navigation": [
+    { "label": "Find your cut", "href": "/#breed-picker" },
+    { "label": "Services", "href": "/services" },
+    { "label": "Visit us", "href": "/visit" }
+  ],
+  "booking": {
+    "label": "Ask for an appointment",
+    "href": "mailto:hello@groomroom.example?subject=Grooming%20appointment%20enquiry"
+  }
+}

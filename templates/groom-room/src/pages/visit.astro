@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+---
+
+<BaseLayout
+  title="Visit Groom Room — North London dog groomer"
+  description="Find Groom Room, check opening times, and send a dog grooming appointment enquiry."
+>
+  <section class="visit-grid">
+    <div class="visit-copy">
+      <p class="eyebrow">Come say hello</p>
+      <h1>A small salon with room to breathe.</h1>
+      <p>Find us just off the high street, away from the busiest foot traffic. There is short-stay parking opposite and a quiet five-minute loop nearby for pre-appointment sniffs.</p>
+      <div class="address-card">
+        <div>
+          <span>Address</span>
+          <strong>{site.address}</strong>
+        </div>
+        <div>
+          <span>Phone</span>
+          <a href={site.phoneHref}>{site.phoneDisplay}</a>
+        </div>
+      </div>
+    </div>
+    <img src="/images/salon.jpg" alt="Calm, bright dog grooming salon interior" width="800" height="900" />
+  </section>
+
+  <section class="hours-section">
+    <div>
+      <p class="eyebrow">Opening hours</p>
+      <h2>By appointment,<br />with time for each dog.</h2>
+    </div>
+    <ul>
+      {site.hours.map((hours) => <li>{hours}</li>)}
+    </ul>
+  </section>
+
+  <section class="booking-band">
+    <div>
+      <p class="eyebrow">First appointment</p>
+      <h2>Start with a quick hello.</h2>
+    </div>
+    <div class="booking-band-actions">
+      <a class="button button-cream" href={site.booking.href}>{site.booking.label}</a>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </section>
+</BaseLayout>

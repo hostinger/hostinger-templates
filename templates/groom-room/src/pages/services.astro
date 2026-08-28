@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+const services = [
+  {
+    number: '01',
+    name: 'Full groom',
+    description: 'Consultation, two shampoos, conditioning, blow-dry, brush-out, nail trim, ear clean, and your chosen cut.',
+    price: 'From £48',
+  },
+  {
+    number: '02',
+    name: 'Bath & brush',
+    description: 'A thorough wash, condition, blow-dry, brush-out, eye and hygiene tidy, finished with paw balm.',
+    price: 'From £32',
+  },
+  {
+    number: '03',
+    name: 'Puppy first visit',
+    description: 'A gentle 45-minute introduction to the bath, dryer, table, brush, and the person behind the clippers.',
+    price: '£28',
+  },
+  {
+    number: '04',
+    name: 'Hand strip',
+    description: 'Traditional coat care for suitable wire-haired breeds, preserving colour and weather-resistant texture.',
+    price: 'From £72',
+  },
+];
+---
+
+<BaseLayout
+  title="Dog grooming services — Groom Room"
+  description="Full grooms, bath and brush appointments, puppy introductions, and hand stripping in North London."
+>
+  <section class="page-intro">
+    <p class="eyebrow">The treatment menu</p>
+    <h1>Everything needed.<br />Nothing rushed.</h1>
+    <p>Every visit begins with a coat and comfort check. We agree the plan and price with you before your dog heads into the salon.</p>
+  </section>
+
+  <section class="service-menu" aria-label="Grooming services">
+    {services.map((service) => (
+      <article>
+        <span>{service.number}</span>
+        <div>
+          <h2>{service.name}</h2>
+          <p>{service.description}</p>
+        </div>
+        <strong>{service.price}</strong>
+      </article>
+    ))}
+  </section>
+
+  <section class="service-note">
+    <div>
+      <p class="eyebrow">What changes the quote?</p>
+      <h2>Coat first. Clock second.</h2>
+    </div>
+    <p>Breed prices are a clear starting point. An overgrown, compacted, extra-large, or anxious dog can need more time. We explain any change before work starts—never at collection.</p>
+  </section>
+
+  <section class="booking-band">
+    <div>
+      <p class="eyebrow">Found the right groom?</p>
+      <h2>Let’s find a good time.</h2>
+    </div>
+    <div class="booking-band-actions">
+      <a class="button button-cream" href={site.booking.href}>{site.booking.label}</a>
+      <a href="/#breed-picker">Check breed pricing</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label={`${site.name} home`}>
+    <span class="brand-mark" aria-hidden="true">GR</span>
+    <span>{site.name}</span>
+  </a>
+  <nav aria-label="Main navigation">
+    {site.navigation.map((item) => (
+      <a
+        href={item.href}
+        aria-current={item.href !== '/#breed-picker' && currentPath === item.href ? 'page' : undefined}
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+  <a class="button button-small" href={site.booking.href}>{site.booking.label}</a>
+</header>

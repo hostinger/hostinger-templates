@@ -1,6 +1,6 @@
 ---
 name: create-nodejs-repository
-description: Creates polished, production-ready React and TypeScript template apps, registers them in templates.json, and captures consistent preview images. Use whenever adding or rebuilding a template in this repository.
+description: Creates polished, production-ready Node.js template apps in the requested language and framework, registers them in templates.json, and captures consistent preview images. Defaults to React and TypeScript. Use whenever adding or rebuilding a template in this repository.
 ---
 
 # Create a Node.js template repository
@@ -16,11 +16,10 @@ choosing a design, ask the user for all five fields:
 1. **Name** — product or template name.
 2. **Description** — purpose, users, and required behavior.
 3. **Tech stack** — libraries, services, storage, auth, or other constraints.
-4. **Language** — explicitly confirm TypeScript. TypeScript is mandatory; if the
-   user requests another language, clarify that application code will still use
-   TypeScript.
-5. **Framework** — React is the default; confirm the requested framework before
-   starting.
+4. **Language** — TypeScript is preferred and is the default when unspecified.
+   If the user explicitly requests another language, use it.
+5. **Framework** — React is preferred and is the default when unspecified. If
+   the user explicitly requests another framework, use it.
 
 Do not infer missing required fields from a vague prompt. Ask one compact set of
 questions. Also ask whether the user wants a single-page or multi-page app when
@@ -42,8 +41,9 @@ Good multi-page candidates include:
 - dashboards with separate operational areas
 - editorial, documentation, portfolio, and directory products
 
-For multi-page React apps, use a maintained router and make every route work on
-direct load. Do not add empty routes to make a project appear larger.
+For client-routed apps, use a maintained router. For file-routed frameworks, use
+their native routing. Make every route work on direct load. Do not add empty
+routes to make a project appear larger.
 
 ## 3. Define a unique visual direction
 
@@ -72,22 +72,22 @@ kebab-case.
 
 Required baseline:
 
-- React
-- TypeScript for all application code
-- Vite
+- React, TypeScript, and Vite when the user does not specify alternatives
+- the explicitly requested language and framework when provided
 - npm with committed `package-lock.json`
 - ESLint flat configuration
-- one `tsconfig.json`
-- one `vite.config.ts`
+- one intentional configuration file per tool
+- one `tsconfig.json` for TypeScript projects
+- one `vite.config.ts` for Vite projects
 
 Required scripts:
 
 ```json
 {
-  "dev": "vite",
-  "build": "tsc --noEmit && vite build",
+  "dev": "<framework dev command>",
+  "build": "<type-check when supported> && <framework build command>",
   "lint": "eslint .",
-  "preview": "vite preview"
+  "preview": "<framework preview command>"
 }
 ```
 
@@ -95,7 +95,8 @@ Install current packages through npm. Do not invent dependency versions.
 
 ## 5. Use clean architecture
 
-Use this baseline and adapt only when the app genuinely needs more:
+For React/Vite projects, use this baseline and adapt only when the app genuinely
+needs more:
 
 ```text
 src/
@@ -113,12 +114,16 @@ src/
 
 Architecture requirements:
 
-- `App.tsx` composes routes or top-level sections.
+- The framework's root app, layout, or page files compose routes and top-level
+  sections.
 - Page files coordinate features; they do not contain the whole application.
 - Components are small, named, and reusable where reuse is real.
-- Content, business details, navigation, and configuration use typed constants.
-- Shared domain shapes live in `types/`.
-- SVG icons live in `icons/`; do not duplicate inline icon markup.
+- Content, business details, navigation, and configuration use typed constants
+  or committed structured content files appropriate to the language.
+- Shared domain shapes live in a predictable types or models location when the
+  language supports them.
+- Shared SVG icons live in a predictable icons location; do not duplicate inline
+  icon markup.
 - Styles are split by foundation, section/component, and responsive concerns.
 - State lives in the smallest component that owns it.
 - Avoid premature abstractions, wrapper components with no value, and deeply
@@ -180,7 +185,7 @@ npm run build
 ```
 
 Then verify primary journeys in a browser on desktop and mobile. Check direct
-route loading for multi-page apps. Fix TypeScript, ESLint, build, console,
+route loading for multi-page apps. Fix language diagnostics, ESLint, build, console,
 overflow, clipping, missing-image, and interaction failures before continuing.
 
 ## 10. Capture consistent images
@@ -189,13 +194,43 @@ Create `templates/<template-id>/preview/` only after final verification.
 
 Use the same `1440 × 900` landscape viewport for every template:
 
-1. Save the viewport thumbnail to
-   `preview/<template-id>-thumbnail.png` at `1440 × 900`.
-2. Save the whole page to `preview/<template-id>-homepage.png` using
-   `fullPage: true`.
-3. For multi-page apps, use the strongest representative route for the catalog
+1. Start the verified local dev or preview server.
+2. From `templates/<template-id>/`, capture the viewport thumbnail:
+
+   ```bash
+   npx --yes playwright@latest screenshot \
+     --browser chromium \
+     --viewport-size "1440,900" \
+     "http://127.0.0.1:<port>/" \
+     "preview/<template-id>-thumbnail.png"
+   ```
+
+3. Capture the whole homepage:
+
+   ```bash
+   npx --yes playwright@latest screenshot \
+     --browser chromium \
+     --viewport-size "1440,900" \
+     --full-page \
+     "http://127.0.0.1:<port>/" \
+     "preview/<template-id>-homepage.png"
+   ```
+
+4. If Chromium is missing, run
+   `npx --yes playwright@latest install chromium`, then retry.
+5. Confirm the thumbnail is exactly `1440 × 900` and record the full-page
+   image's actual dimensions. On macOS:
+
+   ```bash
+   sips -g pixelWidth -g pixelHeight \
+     "preview/<template-id>-thumbnail.png" \
+     "preview/<template-id>-homepage.png"
+   ```
+
+6. For multi-page apps, use the strongest representative route for the catalog
    images. Extra route screenshots are allowed but not required.
-4. Inspect saved files for stale UI, missing fonts, clipping, excess blank
+7. Inspect both saved files visually for stale UI, missing fonts, clipping,
+   broken images, excess blank
    space, and failed images.
 
 ## 11. Register rich catalog metadata
@@ -224,15 +259,16 @@ Do not add dropped fields: `repository`, `kind`, `databases`, `license`,
 Remove:
 
 - unused scaffold assets and components
-- duplicate or generated Vite configs
-- duplicate TypeScript configs
+- duplicate or generated framework and build-tool configs
+- duplicate language configs
 - `*.tsbuildinfo`
 - build output
 - obsolete lint tooling
 - unused dependencies
 - temporary downloads
 
-Ensure `.gitignore` covers `node_modules`, `dist`, `.env*`, and
+Ensure `.gitignore` covers `node_modules`, the framework's build and cache
+directories, `.env*`, and generated language artifacts such as
 `*.tsbuildinfo`.
 
 Finish only after:
@@ -245,3 +281,9 @@ Finish only after:
 - README follows the fixed structure
 - `templates.json` is valid and rich
 - project tree contains only intentional files
+
+## 13. Hand off and offer publishing
+
+After all checks pass, tell the user the template is complete and summarize the
+verification results. Ask whether they want the changes committed and pushed.
+Do not commit or push until the user explicitly confirms.
