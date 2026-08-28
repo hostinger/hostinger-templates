@@ -10,9 +10,9 @@
 
 ## Project placement
 
-- Put each project directly under the collection root.
+- Put each project under `templates/<id>/`.
 - Use one unique lowercase kebab-case ID for its directory and catalog entry.
-- Never put project source in the collection root or `skills/`.
+- Never put project source directly in the collection root or in `skills/`.
 
 ## Required stack
 
@@ -76,6 +76,9 @@
 - Set thumbnail `source` to `"viewport"` and dimensions to `1440 × 900`.
 - Set preview `source` to `"fullPage"`, width to `1440`, and height to the
   actual saved image height.
+- Add a GitHub `blob/main/...?...raw=true` URL for each catalog image.
+- Push the image before verification, then confirm each URL returns an image
+  response rather than a GitHub error page.
 - Inspect saved images before catalog registration.
 
 ## Catalog

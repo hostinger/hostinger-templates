@@ -46,14 +46,16 @@ finished project contributes one entry.
   },
   "media": {
     "thumbnail": {
-      "path": "<id>/preview/<id>-thumbnail.png",
+      "path": "templates/<id>/preview/<id>-thumbnail.png",
+      "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/<id>/preview/<id>-thumbnail.png?raw=true",
       "source": "viewport",
       "width": 1440,
       "height": 900,
       "aspectRatio": "16:10"
     },
     "preview": {
-      "path": "<id>/preview/<id>-homepage.png",
+      "path": "templates/<id>/preview/<id>-homepage.png",
+      "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/<id>/preview/<id>-homepage.png?raw=true",
       "source": "fullPage",
       "width": 1440,
       "height": 2800
@@ -70,7 +72,7 @@ finished project contributes one entry.
 
 ## Content rules
 
-- `id` matches the project directory exactly.
+- `id` matches the `templates/<id>/` project directory exactly.
 - `summary` is short enough for a card and does not repeat the name.
 - `description` is a rich multi-paragraph overview, not short card copy.
 - Write at least three paragraphs separated by `\n\n`.
@@ -85,6 +87,8 @@ finished project contributes one entry.
 - Feature IDs are unique within the entry.
 - Runtime versions match `package.json` and README requirements.
 - Media paths are relative to the collection root and point to existing files.
+- Media URLs use the GitHub `blob/main/...?...raw=true` form and must return the
+  image successfully after publishing.
 - Preview height records the actual full-page image height; do not copy the
   example value blindly.
 - `searchTerms` contains useful synonyms not already obvious from the name.

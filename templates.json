@@ -59,14 +59,16 @@
       },
       "media": {
         "thumbnail": {
-          "path": "callout/preview/callout-thumbnail.png",
+          "path": "templates/callout/preview/callout-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/callout/preview/callout-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
           "aspectRatio": "16:10"
         },
         "preview": {
-          "path": "callout/preview/callout-homepage.png",
+          "path": "templates/callout/preview/callout-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/callout/preview/callout-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3355

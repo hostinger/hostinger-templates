@@ -67,7 +67,8 @@ of application code. Record source details only in the README if required.
 
 ## 4. Scaffold cleanly
 
-Create `<root>/<template-id>/`, where the ID is unique lowercase kebab-case.
+Create `<root>/templates/<template-id>/`, where the ID is unique lowercase
+kebab-case.
 
 Required baseline:
 
@@ -184,7 +185,7 @@ overflow, clipping, missing-image, and interaction failures before continuing.
 
 ## 10. Capture consistent images
 
-Create `<template-id>/preview/` only after final verification.
+Create `templates/<template-id>/preview/` only after final verification.
 
 Use the same `1440 × 900` landscape viewport for every template:
 
@@ -211,6 +212,8 @@ Write specific, useful metadata:
 - describe meaningful features and interactions
 - include accurate categories, use cases, frameworks, runtime, and search terms
 - record both image paths and actual dimensions
+- add GitHub raw-view URLs for both images and verify each URL returns an image
+  after the commit is pushed
 - keep strict JSON with no comments or trailing commas
 
 Do not add dropped fields: `repository`, `kind`, `databases`, `license`,

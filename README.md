@@ -1,11 +1,12 @@
 # Node.js repositories
 
-Collection of runnable Node.js projects. Every project lives in its own
-top-level directory:
+Collection of runnable Node.js projects. Every project lives under
+`templates/`:
 
 ```text
 nodejs-repos/
-├── <repository-id>/
+├── templates/
+│   └── <repository-id>/
 ├── skills/
 └── templates.json
 ```
@@ -27,22 +28,11 @@ Each entry can contain these fields:
 - `media`: thumbnail and preview metadata
 - `searchTerms`
 
-Project directory names must match their catalog `id`.
+Project paths use `templates/<id>/`, where the directory name matches the
+catalog `id`.
 
 ## Adding a project
 
 Follow `skills/create-repository/SKILL.md`. It defines the creation workflow;
 `skills/create-repository/RULES.md` defines constraints every project must
 follow.
-
-## Unsplash MCP
-
-Project-scoped Unsplash tools are configured in `.cursor/mcp.json`. Export your
-Unsplash developer access key before starting Cursor:
-
-```bash
-export UNSPLASH_ACCESS_KEY="your-access-key"
-```
-
-Restart Cursor after setting the variable. The key is read from the environment
-and must never be committed.
