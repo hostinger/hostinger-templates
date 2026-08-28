@@ -1,0 +1,59 @@
+{
+  "shopName": "Worn Twice",
+  "tagline": "One-of-one vintage. No restocks, no cart, no algorithm.",
+  "sellerName": "Nadia Ferro",
+  "email": "claims@worntwice.example",
+  "city": "Brooklyn, NY",
+  "intro": "Eight pieces go up every few weeks. Each one is the only one — when the stamp says sold, it is gone for good. Claims happen over plain email: first message in wins.",
+  "claimNote": "There is no cart, no checkout, and no live stock counter on this page. I stamp a piece SOLD by hand the moment a claim lands in my inbox — so if a claim button is still here, the piece is worth a shot.",
+  "howItWorks": [
+    {
+      "step": "01",
+      "title": "Watch the clock",
+      "text": "Every drop opens on a Friday at the exact time on the board. Until then the rail below is a preview — study the pieces, ask for measurements, plan your move."
+    },
+    {
+      "step": "02",
+      "title": "Email to claim",
+      "text": "When the clock hits zero, hit the claim button on the piece you need. It opens an email with the piece name already filled in. First message in the inbox wins; timestamps settle ties."
+    },
+    {
+      "step": "03",
+      "title": "Pay, then it ships",
+      "text": "I reply within a few hours with a payment link. Once it clears, the piece ships tracked within 48 hours, wrapped like it matters."
+    }
+  ],
+  "socials": [
+    {
+      "label": "Instagram",
+      "href": "https://instagram.com/worntwice"
+    },
+    {
+      "label": "Depop",
+      "href": "https://depop.com/worntwice"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How do drops work?",
+      "answer": "Eight one-of-one pieces go live at the exact time on the clock. From that moment, the first email naming a piece gets it — no carts, no bots, no checkout race. Mailing-list members get a short early window, which is why a piece can already be stamped SOLD before the public time."
+    },
+    {
+      "question": "Can you hold a piece for me?",
+      "answer": "No holds — that is the whole deal of a drop. A claim only counts once your email lands in the inbox, and an unpaid claim is released after 24 hours so the next person in line gets a fair shot."
+    },
+    {
+      "question": "What does shipping cost and how fast is it?",
+      "answer": "Flat 12 dollars tracked anywhere in the US, 30 dollars worldwide, added to your payment link. Everything ships from Brooklyn within 48 hours of payment, boxed, not bagged."
+    },
+    {
+      "question": "What if it doesn't fit?",
+      "answer": "Every listing carries era, size, and condition, and I will send flat measurements or extra photos before the drop — just ask through the button on the piece. Because each piece is one of one, all sales are final; the measurements are the fitting room."
+    },
+    {
+      "question": "Are flaws listed?",
+      "answer": "Yes. The condition line on each card says exactly how a piece has aged — repairs, fading, patina, all of it. Vintage means worn; a surprise is the only thing I refuse to ship."
+    }
+  ],
+  "footerNote": "Independent one-person shop. Photographs show the actual pieces on offer."
+}

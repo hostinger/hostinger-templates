@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72">
+  <defs>
+    <clipPath id="shield">
+      <path d="M32 2 58 10v28c0 18-12 28-26 32C18 66 6 56 6 38V10Z"/>
+    </clipPath>
+  </defs>
+  <path d="M32 2 58 10v28c0 18-12 28-26 32C18 66 6 56 6 38V10Z" fill="#1d5a3a"/>
+  <g clip-path="url(#shield)">
+    <rect y="28" width="64" height="9" fill="#f4f1e6"/>
+    <rect y="46" width="64" height="9" fill="#f4f1e6"/>
+  </g>
+  <polygon points="32,8 34.2,13 39.6,13.5 35.6,17.1 36.8,22.4 32,19.6 27.2,22.4 28.4,17.1 24.4,13.5 29.8,13" fill="#e6b94d"/>
+  <path d="M32 2 58 10v28c0 18-12 28-26 32C18 66 6 56 6 38V10Z" fill="none" stroke="#081f14" stroke-width="2.5"/>
+</svg>

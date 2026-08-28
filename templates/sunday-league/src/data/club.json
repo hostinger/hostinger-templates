@@ -1,0 +1,42 @@
+{
+  "name": "Ashcombe Rovers FC",
+  "shortName": "Ashcombe Rovers",
+  "founded": 1978,
+  "league": "Vale of Ashcombe Sunday League",
+  "division": "Division Two",
+  "crest": "crests/ashcombe-rovers.svg",
+  "ground": "Ashcombe Recreation Ground",
+  "groundAddress": "Mill Lane, Lower Ashcombe, AV12 4QP",
+  "colorsNote": "Green and white hoops with white shorts. Gold is the change strip, so pack both pairs of socks.",
+  "trainingNote": "Every Wednesday, 7:00 PM, under the Rec floodlights — all season, whatever the weather.",
+  "kickoffNote": "Boots on by 10:00 — warm-up starts 45 minutes before kick-off.",
+  "about": "Ashcombe Rovers have played Sunday football on the Rec since 1978, when the Mill Lane social club needed somewhere to settle its arguments. Two open-age squads, one battered kit bag, and a post-match debrief at the Wheatsheaf that regularly runs longer than the match.",
+  "noticeboardNote": "This page is the club noticeboard, not a live feed. The secretary updates the season file after every final whistle — no logins, no CMS, just one file and five minutes.",
+  "secretary": {
+    "name": "Pat Whitlow",
+    "role": "Club secretary",
+    "email": "secretary@ashcomberovers.example"
+  },
+  "faqs": [
+    {
+      "question": "How do I join the club?",
+      "answer": "Come along to Wednesday training at the Rec — 7:00 PM, no need to book — or email Pat, the club secretary, and you will get a friendly reply. New players train free for a month before match fees start."
+    },
+    {
+      "question": "What are the match fees?",
+      "answer": "£5 a match, £3 for students and anyone between jobs, collected in the changing room before kick-off. Your first game is free. Fees cover referees, pitch hire, and the end-of-season presentation night."
+    },
+    {
+      "question": "Where is the ground?",
+      "answer": "Ashcombe Recreation Ground on Mill Lane, Lower Ashcombe, AV12 4QP. Park by the pavilion and follow the hedge line — the far pitch is ours. The number 42 bus stops at the Mill Lane corner on Sunday mornings."
+    },
+    {
+      "question": "How up to date are the table and fixtures?",
+      "answer": "This site is a static noticeboard, not a live feed. The secretary updates the season file after every final whistle, usually by Sunday teatime — if a score has not appeared yet, it is still being debated in the clubhouse."
+    },
+    {
+      "question": "Do I need to be good to get a game?",
+      "answer": "No. We pick on turnout and effort, not trials. If you can make Sunday mornings, bring shin pads, and put up with the group chat, there is a shirt in the bag for you."
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.group-title {
+  margin: 18px 0 4px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--pitch-900);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.fixture-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fixture-row {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding-block: 12px;
+  border-bottom: 1px dashed var(--line-soft);
+}
+
+.fixture-when {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+}
+
+.fixture-date {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pitch-700);
+}
+
+.fixture-tag {
+  align-self: flex-start;
+  padding: 2px 8px;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.fixture-main {
+  min-width: 0;
+}
+
+.fixture-line {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.fixture-venue {
+  margin: 3px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+.result-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--chalk-bright);
+  white-space: nowrap;
+}
+
+.result-chip.is-win {
+  background: var(--win);
+}
+
+.result-chip.is-draw {
+  background: var(--draw);
+}
+
+.result-chip.is-loss {
+  background: var(--loss);
+}
+
+.result-chip.is-pending {
+  background: none;
+  border: 1px dashed var(--gold-deep);
+  color: var(--gold-deep);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.fixture-time {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold-deep);
+  font-variant-numeric: tabular-nums;
+}
+
+.group-note {
+  margin: 10px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+.group-empty {
+  margin: 12px 0 0;
+  padding: 14px;
+  border: 1px dashed var(--line-soft);
+  border-radius: 10px;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 420px) {
+  .fixture-row {
+    grid-template-columns: 72px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+}

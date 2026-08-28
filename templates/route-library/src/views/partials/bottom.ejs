@@ -1,0 +1,21 @@
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-club">
+          <p class="footer-name"><%= site.clubName %> · est. <%= site.founded %></p>
+          <p class="footer-tagline"><%= site.tagline %></p>
+        </div>
+        <div class="footer-meta">
+          <p class="footer-note"><%= site.disclaimer %></p>
+          <p class="footer-contact">
+            Corrections and new routes:
+            <a href="mailto:<%= site.librarian.email %>"><%= site.librarian.email %></a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <% (locals.pageScripts || []).forEach((src) => { %>
+      <script type="module" src="<%= src %>"></script>
+    <% }) %>
+  </body>
+</html>

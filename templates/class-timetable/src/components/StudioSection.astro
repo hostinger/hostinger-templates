@@ -1,0 +1,46 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+---
+
+<section class="studio" id="studio" aria-labelledby="studio-title">
+  <div class="studio-media">
+    <img
+      class="studio-photo-main"
+      src="/images/studio-practice.jpg"
+      alt="Three people holding a side plank on their mats in a bright, calm studio"
+      width="1600"
+      height="1067"
+    />
+    <img
+      class="studio-photo-detail"
+      src="/images/studio-mats.jpg"
+      alt="Rolled cork mats stored on a wall rack by the studio door"
+      width="1600"
+      height="2400"
+    />
+  </div>
+  <div class="studio-copy">
+    <p class="eyebrow">The studio</p>
+    <h2 id="studio-title">A room that <em>breathes</em></h2>
+    <p class="studio-intro">{site.intro}</p>
+    <ul class="studio-notes">
+      {site.studioNotes.map((note) => <li>{note}</li>)}
+    </ul>
+    <address class="studio-contact">
+      <p class="contact-label">Find us</p>
+      <p class="contact-line">{site.address}</p>
+      <p class="contact-links">
+        <a href={site.phoneHref}>{site.phoneDisplay}</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+      <p class="contact-links">
+        {site.socials.map((social) => (
+          <a href={social.href} rel="noopener">{social.label}</a>
+        ))}
+      </p>
+    </address>
+  </div>
+</section>

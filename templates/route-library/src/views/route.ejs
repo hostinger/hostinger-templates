@@ -1,0 +1,111 @@
+<%- include('partials/top') %>
+
+      <div class="route-page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/"><span aria-hidden="true">←</span> All routes</a>
+        </nav>
+
+        <header class="route-head">
+          <p class="eyebrow">From the route book</p>
+          <h1><%= route.name %></h1>
+          <p class="route-start">Starts at <%= route.startPoint %></p>
+          <%- include('partials/stat-row', {
+            distanceLabel: distanceLabel,
+            climbLabel: climbLabel,
+            surface: route.surface,
+            difficulty: route.difficulty,
+          }) %>
+          <div class="route-actions">
+            <a class="button" href="<%= gpxHref %>" download="<%= gpxFileName %>">Download GPX</a>
+            <span class="gpx-note mono"><%= gpxFileName %></span>
+          </div>
+        </header>
+
+        <section class="profile-section" aria-labelledby="profile-title">
+          <div class="profile-head">
+            <h2 id="profile-title">Elevation profile</h2>
+            <p class="profile-peak">High point <span class="mono"><%= chart.peakLabel %></span></p>
+          </div>
+          <figure class="profile-figure">
+            <div
+              class="profile-chart"
+              data-profile-chart
+              data-points="<%= JSON.stringify({ points: chart.points, plot: { top: chart.plot.top, bottom: chart.plot.bottom } }) %>"
+            >
+              <svg
+                class="profile-svg"
+                viewBox="0 0 <%= chart.width %> <%= chart.height %>"
+                role="img"
+                aria-label="<%= chart.ariaLabel %>"
+              >
+                <g class="chart-grid">
+                  <% chart.yTicks.forEach((tick) => { %>
+                    <line x1="<%= chart.plot.left %>" x2="<%= chart.plot.right %>" y1="<%= tick.pos %>" y2="<%= tick.pos %>"></line>
+                  <% }) %>
+                </g>
+                <path class="chart-area" d="<%= chart.areaPath %>"></path>
+                <path class="chart-line" d="<%= chart.linePath %>"></path>
+                <g class="chart-axis">
+                  <line class="axis-line" x1="<%= chart.plot.left %>" x2="<%= chart.plot.right %>" y1="<%= chart.plot.bottom %>" y2="<%= chart.plot.bottom %>"></line>
+                  <% chart.xTicks.forEach((tick) => { %>
+                    <line class="axis-tick" x1="<%= tick.pos %>" x2="<%= tick.pos %>" y1="<%= chart.plot.bottom %>" y2="<%= chart.plot.bottom + 5 %>"></line>
+                    <text class="axis-text axis-text-x" x="<%= tick.pos %>" y="<%= chart.plot.bottom + 24 %>" text-anchor="middle"><%= tick.label %></text>
+                  <% }) %>
+                  <% chart.yTicks.forEach((tick) => { %>
+                    <text class="axis-text axis-text-y" x="<%= chart.plot.left - 10 %>" y="<%= tick.pos + 4 %>" text-anchor="end"><%= tick.label %></text>
+                  <% }) %>
+                </g>
+                <g class="chart-peak">
+                  <circle cx="<%= chart.peak.x %>" cy="<%= chart.peak.y %>" r="4.5"></circle>
+                  <text x="<%= chart.peakLabelX %>" y="<%= chart.peak.y - 14 %>" text-anchor="middle"><%= chart.peakLabel %></text>
+                </g>
+              </svg>
+            </div>
+            <figcaption class="profile-caption">
+              Distance in kilometres across, elevation in metres up. Hover the chart, or open the data table, for exact figures.
+            </figcaption>
+          </figure>
+          <details class="profile-data">
+            <summary>Profile data table</summary>
+            <table>
+              <caption class="visually-hidden">Elevation by distance for <%= route.name %></caption>
+              <thead>
+                <tr>
+                  <th scope="col">Distance</th>
+                  <th scope="col">Elevation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% route.profile.forEach((point) => { %>
+                  <tr>
+                    <td><%= point.km %> km</td>
+                    <td><%= point.m %> m</td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </details>
+        </section>
+
+        <section class="route-notes" aria-labelledby="notes-title">
+          <h2 id="notes-title">What to expect</h2>
+          <p class="route-description"><%= route.description %></p>
+          <aside class="judgment-note">
+            <p><%= site.disclaimer %></p>
+          </aside>
+        </section>
+
+        <section class="route-more" aria-labelledby="more-title">
+          <h2 id="more-title">More from the route book</h2>
+          <ul class="more-list">
+            <% otherRoutes.forEach((other) => { %>
+              <li>
+                <a href="<%= other.href %>"><%= other.name %></a>
+                <span class="more-meta mono"><%= other.distanceLabel %> · <%= other.climbLabel %> ↑ · <%= other.difficulty %></span>
+              </li>
+            <% }) %>
+          </ul>
+        </section>
+      </div>
+
+<%- include('partials/bottom') %>

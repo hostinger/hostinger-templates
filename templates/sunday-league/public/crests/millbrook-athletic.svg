@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72">
+  <defs>
+    <clipPath id="shield">
+      <path d="M32 2 58 10v28c0 18-12 28-26 32C18 66 6 56 6 38V10Z"/>
+    </clipPath>
+  </defs>
+  <path d="M32 2 58 10v28c0 18-12 28-26 32C18 66 6 56 6 38V10Z" fill="#1f2c56"/>
+  <g clip-path="url(#shield)">
+    <rect y="11" width="64" height="6" fill="#e6b94d"/>
+  </g>
+  <g stroke="#f4f1e6" stroke-width="2.5" fill="none">
+    <circle cx="32" cy="40" r="13"/>
+    <path d="M32 28v24M20 40h24M23.5 31.5l17 17M40.5 31.5l-17 17"/>
+  </g>
+  <circle cx="32" cy="40" r="3.5" fill="#f4f1e6"/>
+  <path d="M32 2 58 10v28c0 18-12 28-26 32C18 66 6 56 6 38V10Z" fill="none" stroke="#0d1430" stroke-width="2.5"/>
+</svg>

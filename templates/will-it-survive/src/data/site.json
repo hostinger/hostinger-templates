@@ -1,0 +1,95 @@
+{
+  "name": "The Unkillables",
+  "city": "Bristol",
+  "tagline": "Plants matched to your habits, not your aspirations.",
+  "email": "hello@theunkillables.example",
+  "address": "14 Cotham Hill, Bristol BS6 6LF",
+  "currencySymbol": "£",
+  "hours": [
+    { "days": "Tue – Fri", "time": "10:00 – 18:00" },
+    { "days": "Saturday", "time": "9:00 – 17:00" },
+    { "days": "Sun – Mon", "time": "Closed (watering day)" }
+  ],
+  "navigation": [
+    { "label": "The quiz", "href": "#quiz" },
+    { "label": "The bench", "href": "#catalogue" },
+    { "label": "FAQ", "href": "#faq" },
+    { "label": "Visit", "href": "#visit" }
+  ],
+  "socials": [
+    { "label": "Instagram", "href": "https://instagram.com/theunkillables" }
+  ],
+  "emailButtonLabel": "Email the shop",
+  "sections": {
+    "quiz": {
+      "kicker": "A plant shop that tells the truth",
+      "title": "Will it survive?",
+      "lede": "Three questions about your flat — the light, your watering track record, and who else lives there — and we'll show you only the plants that will actually cope. No aspirational ferns, no guilt.",
+      "urlNote": "Your answers update the page address, so you can send your results to whoever waters the plants when you're away.",
+      "benchLine": "The whole bench: eight plants, honestly tagged."
+    },
+    "results": {
+      "kicker": "Your matches",
+      "title": "The survivors",
+      "placeholderTitle": "No verdict yet",
+      "placeholderBody": "The survivors appear here once we know your light, your watering habits, and your housemates.",
+      "progressTemplate": "{answered} of 3 questions answered.",
+      "completeTemplate": "{count} survivors found for your answers.",
+      "honestyNote": "Matches come from the care tags on this page, not live stock — email before you cross town and we'll confirm what's on the bench.",
+      "fallbackNote": "Straight talk: nothing on the bench ticks every box for that combination. These are the closest survivors, with the catch spelled out.",
+      "closeFlag": "Close call",
+      "copyLinkLabel": "Copy link to these results",
+      "copiedLabel": "Link copied",
+      "copyFailedLabel": "Copying failed — share the address bar instead",
+      "reserveLabel": "Reserve one"
+    },
+    "catalogue": {
+      "kicker": "The whole bench",
+      "title": "Every plant we stock",
+      "lede": "Eight plants, tagged honestly. This is a bench, not a warehouse — what you see is the shortlist we actually stand behind.",
+      "reserveLabel": "Reserve one"
+    },
+    "faq": {
+      "kicker": "Before you email",
+      "title": "Fair questions"
+    },
+    "visit": {
+      "kicker": "Find us",
+      "title": "Come and squint at a leaf",
+      "lede": "Bring a photo of the corner you're trying to fill — we'll tell you honestly what will cope there, even if the answer is a candle.",
+      "addressTitle": "The shop",
+      "hoursTitle": "Opening hours",
+      "emailLead": "Reserving, asking, or sending a photo of a sad fern:"
+    },
+    "footer": {
+      "line": "Every plant leaves with a care card and a fighting chance.",
+      "smallPrint": "Quiz results are guidance from our care tags, not a live stock check."
+    }
+  },
+  "reserve": {
+    "subject": "Reserving a {plant}",
+    "body": "Hi {shop},\n\nThe quiz says a {plant} ({botanical}) would survive my place — could you set one aside?\n\nName:\nPickup day:\n\nThanks!"
+  },
+  "faqs": [
+    {
+      "question": "Are the quiz results checked against live stock?",
+      "answer": "No — matches come from the care tags on this page, not a stock system. The bench changes weekly, so email us with the plant name and we'll confirm what's actually here and put one aside."
+    },
+    {
+      "question": "What does the pet-safe tag mean?",
+      "answer": "Pet-safe plants are ones widely listed as non-toxic to cats and dogs. A nibble shouldn't cause harm — but no plant enjoys being a salad, so still keep leaves out of reach of committed grazers."
+    },
+    {
+      "question": "Can you hold a plant for me?",
+      "answer": "Yes. Send the reserve email from any plant card and we'll keep one on the bench with your name on it for three days. No deposit — if you change your mind, just tell us."
+    },
+    {
+      "question": "Every plant I've owned has died. Is it hopeless?",
+      "answer": "It's almost always too much water or too little light, not a curse. Answer the quiz honestly — especially the watering question — and start with whatever it suggests. Our unofficial record is four snake plants thriving in one very dark flat."
+    },
+    {
+      "question": "Do you deliver?",
+      "answer": "Within Bristol, yes — we do a cargo-bike round on Fridays. Mention delivery in your email and we'll confirm a slot. Further afield, plants travel badly and we'd rather be honest about that."
+    }
+  ]
+}

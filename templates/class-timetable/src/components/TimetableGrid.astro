@@ -1,0 +1,83 @@
+---
+import rawSite from '../data/site.json';
+import rawTimetable from '../data/timetable.json';
+import { CLASS_LEVEL_ORDER, type ClassEntry, type SiteContent } from '../types/content';
+import { getBookingActions } from '../utils/booking';
+import { formatDuration, formatStartTime, getLevelSlug } from '../utils/format';
+import { WEEK_ORDER, getClassesForWeekday } from '../utils/schedule';
+
+const site = rawSite as SiteContent;
+const entries = rawTimetable as ClassEntry[];
+const { primary } = getBookingActions(site);
+
+const week = WEEK_ORDER.map((weekday) => ({
+  weekday,
+  classes: getClassesForWeekday(entries, weekday),
+}));
+const levels = CLASS_LEVEL_ORDER.filter((level) =>
+  entries.some((entry) => entry.level === level),
+);
+---
+
+<section class="timetable" id="timetable" aria-labelledby="timetable-title">
+  <div class="timetable-head">
+    <div>
+      <p class="eyebrow">The weekly rhythm</p>
+      <h2 id="timetable-title">One week, <em>on one page</em></h2>
+    </div>
+    <ul class="legend" aria-label="Class levels">
+      {levels.map((level) => (
+        <li>
+          <span class={`level level-${getLevelSlug(level)}`}>{level}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <ol class="week-grid">
+    {week.map(({ weekday, classes }) => (
+      <li class="day-col" data-weekday={weekday}>
+        <h3 class="day-name">
+          {weekday}
+          <span class="today-flag" data-today-flag hidden>today</span>
+        </h3>
+        {classes.length > 0 ? (
+          <ul class="day-list">
+            {classes.map((entry) => (
+              <li class="class-card" data-class-id={entry.id}>
+                <p class="card-chips">
+                  <span class="next-chip" data-next-chip hidden>
+                    next · <span data-next-countdown></span>
+                  </span>
+                  <span class="live-chip" data-live-chip hidden>
+                    <span class="live-dot" aria-hidden="true"></span>in session
+                  </span>
+                </p>
+                <p class="class-time">
+                  {formatStartTime(entry.startTime)}
+                  <span class="class-duration"> · {formatDuration(entry.durationMinutes)}</span>
+                </p>
+                <h4 class="class-name">{entry.name}</h4>
+                <p class="class-focus">{entry.focus}</p>
+                <p class="class-meta">
+                  <span class={`level level-${getLevelSlug(entry.level)}`}>{entry.level}</span>
+                  {entry.instructor && <span class="class-instructor">with {entry.instructor}</span>}
+                </p>
+                <a
+                  class="card-book"
+                  href={primary.href}
+                  target={primary.external ? '_blank' : undefined}
+                  rel={primary.external ? 'noopener' : undefined}
+                  aria-label={`${primary.label} — ${entry.name}, ${weekday} ${formatStartTime(entry.startTime)}`}
+                >
+                  {primary.shortLabel}<span aria-hidden="true"> →</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="rest-day">Rest day</p>
+        )}
+      </li>
+    ))}
+  </ol>
+</section>

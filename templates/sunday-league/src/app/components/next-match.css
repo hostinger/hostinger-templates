@@ -1,0 +1,184 @@
+:host {
+  display: block;
+}
+
+.poster {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 20px clamp(16px, 4vw, 40px) 26px;
+  background: radial-gradient(circle at 50% 18%, var(--pitch-700), var(--pitch-900) 62%);
+  border: 1px solid rgb(230 185 77 / 0.55);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  color: var(--chalk);
+  text-align: center;
+}
+
+/* Chalked centre circle and halfway line behind the teams. */
+.poster::before {
+  content: '';
+  position: absolute;
+  top: 96px;
+  left: 50%;
+  width: min(430px, 84vw);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border: 2px solid rgb(244 241 230 / 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.poster::after {
+  content: '';
+  position: absolute;
+  top: 96px;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgb(244 241 230 / 0.08);
+  pointer-events: none;
+}
+
+.poster > * {
+  position: relative;
+  z-index: 1;
+}
+
+.poster-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  width: calc(100% + 2 * clamp(16px, 4vw, 40px));
+  padding: 10px clamp(16px, 4vw, 40px);
+  background: var(--gold);
+  color: var(--pitch-950);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+
+.poster-ribbon-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+}
+
+.poster-ribbon-meta {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--pitch-800);
+}
+
+.poster-kickoff {
+  margin: 2px 0 0;
+  color: var(--chalk-dim);
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 0.8rem + 0.6vw, 1.1rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.poster-teams {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(10px, 3vw, 28px);
+  margin: 0;
+  width: 100%;
+  max-width: 760px;
+}
+
+.poster-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.poster-crest {
+  width: clamp(56px, 5vw + 40px, 84px);
+  height: auto;
+  filter: drop-shadow(0 6px 12px rgb(8 31 20 / 0.55));
+}
+
+.poster-team-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 0.75rem + 1.6vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.poster-team-tag {
+  padding: 3px 10px;
+  border: 1px solid rgb(244 241 230 / 0.3);
+  border-radius: 999px;
+  color: var(--chalk-dim);
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.poster-vs {
+  color: var(--gold-bright);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 1rem + 2vw, 2.2rem);
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.poster-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+}
+
+.poster-venue {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--chalk);
+}
+
+.poster-note {
+  color: var(--chalk-dim);
+  font-size: 0.82rem;
+}
+
+.poster-complete {
+  gap: 14px;
+  padding-bottom: 34px;
+}
+
+.poster-complete-title {
+  margin: 10px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 1.2rem + 3vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.poster-complete-copy {
+  margin: 0;
+  max-width: 560px;
+  color: var(--chalk-dim);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}

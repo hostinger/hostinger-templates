@@ -1,0 +1,80 @@
+[
+  {
+    "slug": "individual-therapy",
+    "name": "Individual therapy",
+    "shortName": "Individual",
+    "tone": "dusk",
+    "forWhen": "For the seasons when the weight is yours, and carrying it alone has stopped working.",
+    "summary": "Weekly one-to-one sessions for adults working with anxiety, low mood, burnout, grief, or the quiet sense that something needs to change.",
+    "signals": [
+      "You are functioning on the outside and exhausted underneath.",
+      "Worry, low mood, or old patterns keep arriving uninvited.",
+      "Something ended — a relationship, a role, a version of yourself — and you have not caught up with it yet.",
+      "You keep meaning to talk to someone, and keep putting it off."
+    ],
+    "approach": [
+      "We start with what is actually happening in your weeks, not a life story on demand. Some people arrive with a clear problem; many arrive with a fog. Both are workable. My job in the early sessions is to help you say the thing plainly — sometimes for the first time out loud.",
+      "I work relationally, with practical edges: unhurried conversation, honest reflection back, and small experiments between sessions when they earn their place. By the third session you will have a shared sense of what we are working on and how we will both know it is helping."
+    ],
+    "session": {
+      "length": "50 minutes",
+      "feeAmount": 130,
+      "feeCurrency": "USD",
+      "frequency": "Weekly, moving to fortnightly when it fits",
+      "format": "In person or online"
+    },
+    "firstSession": "The first session is a slower conversation about what brings you in and what you would like to be different. You set the pace. Nothing has to be covered before you are ready to cover it."
+  },
+  {
+    "slug": "couples-counselling",
+    "name": "Couples counselling",
+    "shortName": "Couples",
+    "tone": "lavender",
+    "forWhen": "For two people who keep having the same argument and want a different conversation.",
+    "summary": "Longer sessions for couples at any stage — new, married, long-haul, undefined — who want to stop circling and start hearing each other again.",
+    "signals": [
+      "The same fight keeps arriving wearing different clothes.",
+      "Home has gone quiet in a way that does not feel like peace.",
+      "Trust took a knock, and you both want to know what rebuilding would look like.",
+      "A big decision — moving, marriage, children — keeps ending in deadlock."
+    ],
+    "approach": [
+      "Couples work is not a courtroom, and I am not a judge. Sessions run 75 minutes so nobody has to rush to be understood. Early on we slow the pattern down until you can both see it — who reaches, who retreats, what each of you is protecting — because the pattern, not either person, is usually the problem.",
+      "From there we practise the harder, warmer conversations in the room, where it is safe to get them wrong. You will leave most sessions with one specific thing to try before the next."
+    ],
+    "session": {
+      "length": "75 minutes",
+      "feeAmount": 165,
+      "feeCurrency": "USD",
+      "frequency": "Weekly to begin, then spacing out",
+      "format": "In person or online"
+    },
+    "firstSession": "You both come to the first session. I will ask how you met, what brings you in now, and what each of you hopes for — and I will make sure you both get equal room to answer."
+  },
+  {
+    "slug": "teen-counselling",
+    "name": "Teen counselling",
+    "shortName": "Teens",
+    "tone": "sand",
+    "forWhen": "For 13 to 18 year olds who need a steady adult in their corner who is not their parent.",
+    "summary": "One-to-one sessions for teenagers navigating anxiety, school pressure, identity, friendships, and family change — with parents kept usefully, not intrusively, in the loop.",
+    "signals": [
+      "Your teen has gone quiet, or the door slams more than it used to.",
+      "School avoidance, changed sleep, or worry that seems bigger than the situation.",
+      "Something happened — a move, a divorce, a loss — and they will not talk about it at home.",
+      "Your teen has asked to talk to someone, and you want that someone to be good."
+    ],
+    "approach": [
+      "Teenagers can tell instantly when an adult is performing, so I do not. Sessions are honest, sometimes funny, never scripted — we might talk, map the week out on paper, or sit with something hard until it gets smaller. The work belongs to the teen; they are never reported on like a school project.",
+      "Parents matter here too. We agree the confidentiality rules together in the first session: what stays private, and the safety concerns I will always share. Most families also get a short parent check-in every four to six weeks."
+    ],
+    "session": {
+      "length": "50 minutes",
+      "feeAmount": 130,
+      "feeCurrency": "USD",
+      "frequency": "Weekly",
+      "format": "In person, or online for ages 15+"
+    },
+    "firstSession": "The first session usually starts with a parent in the room for ten minutes, to agree how we will all work together. The rest of the hour belongs to the teen. Confidentiality — and its limits — is explained to everyone in plain language."
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "name": "class-timetable",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Weekly yoga and pilates studio timetable that highlights the next class with a live countdown and hands booking off to your scheduling link.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "lint": "eslint .",
+    "preview": "astro preview"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "astro",
+    "typescript",
+    "yoga",
+    "pilates",
+    "timetable",
+    "class-schedule"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "astro": "^7.2.9"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.9.1",
+    "eslint-plugin-astro": "^1.7.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0"
+  }
+}

@@ -1,0 +1,121 @@
+[
+  {
+    "id": "mon-sunrise-vinyasa",
+    "name": "Sunrise Vinyasa",
+    "weekday": "Monday",
+    "startTime": "07:00",
+    "durationMinutes": 60,
+    "level": "All levels",
+    "instructor": "Maya Chen",
+    "focus": "Wake the spine slowly, then build to a steady breath-led flow."
+  },
+  {
+    "id": "mon-mat-pilates",
+    "name": "Mat Pilates",
+    "weekday": "Monday",
+    "startTime": "18:30",
+    "durationMinutes": 50,
+    "level": "Strong",
+    "instructor": "Ruth Adeyemi",
+    "focus": "Classical mat work — slow, precise, and deceptively hard."
+  },
+  {
+    "id": "tue-hatha-foundations",
+    "name": "Hatha Foundations",
+    "weekday": "Tuesday",
+    "startTime": "09:30",
+    "durationMinutes": 60,
+    "level": "Gentle",
+    "instructor": "Priya Nair",
+    "focus": "The building blocks, one posture at a time. Ideal first class."
+  },
+  {
+    "id": "tue-candlelit-yin",
+    "name": "Candlelit Yin",
+    "weekday": "Tuesday",
+    "startTime": "19:00",
+    "durationMinutes": 75,
+    "level": "Gentle",
+    "instructor": "Maya Chen",
+    "focus": "Long, quiet holds by candlelight to close the day."
+  },
+  {
+    "id": "wed-core-pilates",
+    "name": "Core Pilates",
+    "weekday": "Wednesday",
+    "startTime": "07:00",
+    "durationMinutes": 50,
+    "level": "Strong",
+    "instructor": "Ruth Adeyemi",
+    "focus": "Centering, curl-ups, and control before the workday starts."
+  },
+  {
+    "id": "wed-lunch-hour-flow",
+    "name": "Lunch Hour Flow",
+    "weekday": "Wednesday",
+    "startTime": "12:15",
+    "durationMinutes": 45,
+    "level": "All levels",
+    "focus": "Forty-five minutes, no fuss — back at your desk by one."
+  },
+  {
+    "id": "thu-slow-flow",
+    "name": "Slow Flow",
+    "weekday": "Thursday",
+    "startTime": "09:30",
+    "durationMinutes": 60,
+    "level": "Gentle",
+    "instructor": "Priya Nair",
+    "focus": "Unhurried sequences with time to find each shape properly."
+  },
+  {
+    "id": "thu-power-vinyasa",
+    "name": "Power Vinyasa",
+    "weekday": "Thursday",
+    "startTime": "18:30",
+    "durationMinutes": 60,
+    "level": "Strong",
+    "instructor": "Jonas Lindqvist",
+    "focus": "The week's strongest practice — heat, balance, and grit."
+  },
+  {
+    "id": "fri-sunrise-vinyasa",
+    "name": "Sunrise Vinyasa",
+    "weekday": "Friday",
+    "startTime": "07:00",
+    "durationMinutes": 60,
+    "level": "All levels",
+    "instructor": "Maya Chen",
+    "focus": "The Monday flow's gentler sibling, easing into the weekend."
+  },
+  {
+    "id": "fri-deep-rest",
+    "name": "Deep Rest Restorative",
+    "weekday": "Friday",
+    "startTime": "17:45",
+    "durationMinutes": 75,
+    "level": "Gentle",
+    "instructor": "Priya Nair",
+    "focus": "Bolsters, blankets, and almost nothing to do. Pure recovery."
+  },
+  {
+    "id": "sat-long-flow",
+    "name": "The Long Saturday Flow",
+    "weekday": "Saturday",
+    "startTime": "08:30",
+    "durationMinutes": 90,
+    "level": "All levels",
+    "instructor": "Jonas Lindqvist",
+    "focus": "Ninety minutes to go further than a weeknight allows."
+  },
+  {
+    "id": "sun-slow-pilates",
+    "name": "Slow Sunday Pilates",
+    "weekday": "Sunday",
+    "startTime": "10:00",
+    "durationMinutes": 50,
+    "level": "All levels",
+    "instructor": "Ruth Adeyemi",
+    "focus": "Gentle mat work and mobility to set up the week ahead."
+  }
+]

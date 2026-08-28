@@ -1,0 +1,55 @@
+{
+	"planName": "Couch to 5K",
+	"clubName": "Sunrise Strides",
+	"coachName": "Marta Reyes",
+	"coachFirstName": "Marta",
+	"credential": "UESCA-certified running coach",
+	"tagline": "A nine-week couch-to-5K plan you tick off as you go — progress stays on your phone.",
+	"heroEyebrow": "A nine-week walk-run plan for absolute beginners",
+	"heroTitle": "From the couch to your first 5K.",
+	"heroLede": "Three short sessions a week, nine weeks, no heroics. Tick every session off as you finish it — repeating a week is always allowed, and the plan has no dates, only order.",
+	"privacyNote": "Ticks are saved in your browser on this device — no account, no sync, nothing uploaded.",
+	"planIntro": "Twenty-seven sessions, most of them around half an hour door to door. Do three a week and keep a rest day between each one.",
+	"email": "marta@sunrisestrides.example",
+	"emailSubject": "Couch to 5K — train with me",
+	"phoneDisplay": "(503) 555-0164",
+	"phoneHref": "tel:+15035550164",
+	"location": "Laurelhurst Park, Portland, Oregon",
+	"meetup": "Group session: Saturdays 8:00 AM at the oak lawn — plan runners welcome from week one.",
+	"coachBio": [
+		"I'm Marta. I started running at 41 with a plan exactly like this one, swearing at a park bench between sixty-second jogs. Three hundred-odd beginners later, my coaching rule hasn't changed: nobody gets dropped, nobody gets shamed, and the pace that lets you chat is the right pace.",
+		"Run the plan on your own with this page, or come do your week's third session with the Saturday group — same plan, better company. Stuck on a week, or unsure about a niggle? Email me and I'll adjust the plan for you."
+	],
+	"socials": [
+		{
+			"label": "Instagram",
+			"href": "https://instagram.com/sunrisestrides"
+		},
+		{
+			"label": "YouTube",
+			"href": "https://youtube.com/@sunrisestrides"
+		}
+	],
+	"faqs": [
+		{
+			"question": "I haven't run since school. Is this really for me?",
+			"answer": "Yes — the plan assumes zero running fitness. Week one asks for eight sixty-second jogs with walking breaks, and every week nudges that up only slightly. If a week feels too hard, repeat it before moving on; the plan cares about consistency, not the calendar."
+		},
+		{
+			"question": "What if I miss a session or a whole week?",
+			"answer": "Life happens. Miss one session and you simply do it the next time you are free — the plan has no dates, only order. Away for a week or more? Step back one week and rebuild. Your ticks stay exactly where you left them."
+		},
+		{
+			"question": "Where is my progress stored?",
+			"answer": "In your browser, on this device — nothing is uploaded and there is no account. That also means ticks won't follow you to another phone, and clearing your browser data or using a private window starts the plan fresh. The reset button at the top of the plan does the same on purpose."
+		},
+		{
+			"question": "Do I need special gear?",
+			"answer": "Comfortable running shoes with some cushioning are the only real requirement. Skip the gadgets for now: any phone stopwatch handles the intervals, and even week nine is measured in minutes, not GPS."
+		},
+		{
+			"question": "What happens after week nine?",
+			"answer": "You run your 5K, then you keep the habit: three easy thirty-minute runs a week holds your fitness. Come join the Saturday group session, or email me and we'll plan your next block — a faster 5K or the jump to 10K."
+		}
+	]
+}

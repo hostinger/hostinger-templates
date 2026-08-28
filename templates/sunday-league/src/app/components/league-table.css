@@ -1,0 +1,132 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin-top: 14px;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.league-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.league-table thead th {
+  padding: 8px 8px 10px;
+  border-bottom: 2px solid var(--pitch-900);
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.league-table thead th.col-team {
+  text-align: left;
+}
+
+.league-table abbr {
+  text-decoration: none;
+}
+
+.league-table tbody tr {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.league-table tbody tr:nth-child(even) {
+  background: rgb(29 90 58 / 0.05);
+}
+
+.league-table tbody tr.is-club {
+  background: rgb(201 154 46 / 0.14);
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+
+.league-table td,
+.league-table tbody th {
+  padding: 10px 8px;
+}
+
+.col-pos {
+  width: 44px;
+  text-align: center;
+}
+
+.pos-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.pos-badge.is-top {
+  background: var(--pitch-900);
+  color: var(--gold-bright);
+}
+
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.team-crest {
+  flex: none;
+  width: 24px;
+  height: 27px;
+}
+
+.team-name {
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.col-num {
+  min-width: 34px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.col-pts {
+  min-width: 44px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--pitch-700);
+}
+
+.league-table .col-pts {
+  padding-right: 12px;
+}
+
+.is-club .col-pts {
+  color: var(--gold-deep);
+}
+
+.table-legend {
+  margin: 12px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}

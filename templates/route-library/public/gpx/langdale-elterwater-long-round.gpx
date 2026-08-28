@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Bracken Fell Harriers Route Library" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Langdale and Elterwater Long Round</name>
+    <desc>28.7 km with 232 m of climb. From the Bracken Fell Harriers route book.</desc>
+  </metadata>
+  <trk>
+    <name>Langdale and Elterwater Long Round</name>
+    <desc>Our long steady one: valley tracks and bridleways linking Elterwater, Great Langdale, Little Langdale and Skelwith. Nothing steep and nowhere technical — just honest distance with the Langdale Pikes for company the whole way round. Two sensible exit points if the day stops being fun.</desc>
+    <trkseg>
+      <trkpt lat="54.42830" lon="-3.03500"><ele>70.0</ele></trkpt>
+      <trkpt lat="54.43520" lon="-3.04727"><ele>81.5</ele></trkpt>
+      <trkpt lat="54.44064" lon="-3.05606"><ele>93.0</ele></trkpt>
+      <trkpt lat="54.44638" lon="-3.06053"><ele>104.0</ele></trkpt>
+      <trkpt lat="54.45268" lon="-3.06456"><ele>114.6</ele></trkpt>
+      <trkpt lat="54.45771" lon="-3.07215"><ele>122.3</ele></trkpt>
+      <trkpt lat="54.45962" lon="-3.08342"><ele>108.4</ele></trkpt>
+      <trkpt lat="54.45889" lon="-3.09523"><ele>94.4</ele></trkpt>
+      <trkpt lat="54.45843" lon="-3.10523"><ele>100.6</ele></trkpt>
+      <trkpt lat="54.46101" lon="-3.11471"><ele>116.2</ele></trkpt>
+      <trkpt lat="54.46637" lon="-3.12704"><ele>125.9</ele></trkpt>
+      <trkpt lat="54.47108" lon="-3.14343"><ele>117.4</ele></trkpt>
+      <trkpt lat="54.47134" lon="-3.16072"><ele>108.9</ele></trkpt>
+      <trkpt lat="54.46604" lon="-3.17382"><ele>105.3</ele></trkpt>
+      <trkpt lat="54.45733" lon="-3.18042"><ele>122.4</ele></trkpt>
+      <trkpt lat="54.44826" lon="-3.18297"><ele>139.4</ele></trkpt>
+      <trkpt lat="54.44020" lon="-3.18582"><ele>152.1</ele></trkpt>
+      <trkpt lat="54.43241" lon="-3.19024"><ele>139.0</ele></trkpt>
+      <trkpt lat="54.42405" lon="-3.19274"><ele>125.8</ele></trkpt>
+      <trkpt lat="54.41599" lon="-3.18838"><ele>114.8</ele></trkpt>
+      <trkpt lat="54.41030" lon="-3.17602"><ele>122.6</ele></trkpt>
+      <trkpt lat="54.40798" lon="-3.15995"><ele>130.5</ele></trkpt>
+      <trkpt lat="54.40734" lon="-3.14643"><ele>137.3</ele></trkpt>
+      <trkpt lat="54.40517" lon="-3.13827"><ele>122.9</ele></trkpt>
+      <trkpt lat="54.39977" lon="-3.13302"><ele>108.4</ele></trkpt>
+      <trkpt lat="54.39268" lon="-3.12608"><ele>94.0</ele></trkpt>
+      <trkpt lat="54.38745" lon="-3.11533"><ele>106.5</ele></trkpt>
+      <trkpt lat="54.38648" lon="-3.10253"><ele>118.9</ele></trkpt>
+      <trkpt lat="54.38901" lon="-3.09040"><ele>131.4</ele></trkpt>
+      <trkpt lat="54.39227" lon="-3.07910"><ele>121.4</ele></trkpt>
+      <trkpt lat="54.39448" lon="-3.06614"><ele>110.2</ele></trkpt>
+      <trkpt lat="54.39656" lon="-3.05018"><ele>99.1</ele></trkpt>
+      <trkpt lat="54.40101" lon="-3.03420"><ele>110.8</ele></trkpt>
+      <trkpt lat="54.40901" lon="-3.02442"><ele>122.1</ele></trkpt>
+      <trkpt lat="54.41906" lon="-3.02522"><ele>96.0</ele></trkpt>
+      <trkpt lat="54.42830" lon="-3.03500"><ele>70.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

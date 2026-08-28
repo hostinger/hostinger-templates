@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NextClassBanner from '../components/NextClassBanner.astro';
+import TimetableGrid from '../components/TimetableGrid.astro';
+import StudioSection from '../components/StudioSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+const { faqs } = site;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={`${site.name} — Weekly yoga & pilates timetable`}
+  description={`${site.tagline}. The weekly class timetable for ${site.name} in ${site.city}, with the next class counted down to the second.`}
+  schema={faqSchema}
+>
+  <NextClassBanner />
+  <TimetableGrid />
+  <StudioSection />
+  <FaqSection faqs={faqs} />
+</BaseLayout>
+
+<script>
+  import rawTimetable from '../data/timetable.json';
+  import type { ClassEntry } from '../types/content';
+  import { WEEKDAY_BY_JS_DAY, findLiveClass, findNextClass } from '../utils/schedule';
+  import {
+    formatCountdownShort,
+    formatRelativeDay,
+    formatTimeFromDate,
+    getCountdownParts,
+    pad2,
+  } from '../utils/format';
+
+  const entries = rawTimetable as ClassEntry[];
+
+  const query = <T extends HTMLElement>(selector: string) =>
+    document.querySelector<T>(selector);
+
+  const cd = {
+    daysCell: query('[data-cd-cell="days"]'),
+    days: query('[data-cd="days"]'),
+    hours: query('[data-cd="hours"]'),
+    minutes: query('[data-cd="minutes"]'),
+    seconds: query('[data-cd="seconds"]'),
+  };
+  const nextLine = query('[data-next-line]');
+  const nextName = query('[data-next-name]');
+  const nextMeta = query('[data-next-meta]');
+  const nextFallback = query('[data-next-fallback]');
+  const liveLine = query('[data-live-line]');
+  const liveText = query('[data-live-text]');
+
+  let highlightedNextId: string | null = null;
+  let highlightedLiveId: string | null = null;
+  let flaggedWeekday: string | null = null;
+
+  const cardFor = (id: string | null) =>
+    id ? document.querySelector<HTMLElement>(`[data-class-id="${CSS.escape(id)}"]`) : null;
+
+  const setHidden = (element: Element | null | undefined, hidden: boolean) => {
+    if (!element) return;
+    if (hidden) element.setAttribute('hidden', '');
+    else element.removeAttribute('hidden');
+  };
+
+  const setNextHighlight = (id: string | null) => {
+    if (highlightedNextId === id) return;
+    const previous = cardFor(highlightedNextId);
+    previous?.classList.remove('is-next');
+    setHidden(previous?.querySelector('[data-next-chip]'), true);
+    const current = cardFor(id);
+    current?.classList.add('is-next');
+    setHidden(current?.querySelector('[data-next-chip]'), false);
+    highlightedNextId = id;
+  };
+
+  const setLiveHighlight = (id: string | null) => {
+    if (highlightedLiveId === id) return;
+    const previous = cardFor(highlightedLiveId);
+    previous?.classList.remove('is-live');
+    setHidden(previous?.querySelector('[data-live-chip]'), true);
+    const current = cardFor(id);
+    current?.classList.add('is-live');
+    setHidden(current?.querySelector('[data-live-chip]'), false);
+    highlightedLiveId = id;
+  };
+
+  const flagToday = (now: Date) => {
+    const weekday = WEEKDAY_BY_JS_DAY[now.getDay()] ?? null;
+    if (!weekday || flaggedWeekday === weekday) return;
+    document.querySelectorAll<HTMLElement>('.day-col').forEach((column) => {
+      const isToday = column.dataset.weekday === weekday;
+      column.classList.toggle('is-today', isToday);
+      setHidden(column.querySelector('[data-today-flag]'), !isToday);
+    });
+    flaggedWeekday = weekday;
+  };
+
+  const renderCountdown = (msLeft: number) => {
+    const parts = getCountdownParts(msLeft);
+    setHidden(cd.daysCell, parts.days === 0);
+    if (cd.days) cd.days.textContent = String(parts.days);
+    if (cd.hours) cd.hours.textContent = pad2(parts.hours);
+    if (cd.minutes) cd.minutes.textContent = pad2(parts.minutes);
+    if (cd.seconds) cd.seconds.textContent = pad2(parts.seconds);
+  };
+
+  const tick = () => {
+    const now = new Date();
+    flagToday(now);
+
+    const next = findNextClass(entries, now);
+    if (next) {
+      const msLeft = next.startsAt.getTime() - now.getTime();
+      renderCountdown(msLeft);
+      if (nextName) nextName.textContent = next.entry.name;
+      if (nextMeta) {
+        const teacher = next.entry.instructor ? ` · with ${next.entry.instructor}` : '';
+        nextMeta.textContent = `${formatRelativeDay(next.startsAt, now)} at ${formatTimeFromDate(next.startsAt)}${teacher} · ${next.entry.level}`;
+      }
+      setHidden(nextLine, false);
+      setHidden(nextFallback, true);
+      const chipCountdown = cardFor(next.entry.id)?.querySelector('[data-next-countdown]');
+      if (chipCountdown) chipCountdown.textContent = formatCountdownShort(msLeft);
+    }
+    setNextHighlight(next ? next.entry.id : null);
+
+    const live = findLiveClass(entries, now);
+    if (live && liveText) {
+      liveText.textContent = `In session now: ${live.entry.name} · ends ${formatTimeFromDate(live.endsAt)}`;
+    }
+    setHidden(liveLine, !live);
+    setLiveHighlight(live ? live.entry.id : null);
+  };
+
+  tick();
+  window.setInterval(tick, 1000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) tick();
+  });
+</script>

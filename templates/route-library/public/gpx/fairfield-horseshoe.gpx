@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Bracken Fell Harriers Route Library" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Fairfield Horseshoe</name>
+    <desc>17.5 km with 959 m of climb. From the Bracken Fell Harriers route book.</desc>
+  </metadata>
+  <trk>
+    <name>Fairfield Horseshoe</name>
+    <desc>The classic horseshoe over eight named tops: up by Nab Scar and Heron Pike, along the ridge to Fairfield's broad summit plateau, then back over Hart Crag, Dove Crag and the Pikes. This is serious mountain running — navigation gets genuinely hard on Fairfield's plateau in mist. Full fell kit, no exceptions.</desc>
+    <trkseg>
+      <trkpt lat="54.43100" lon="-2.96500"><ele>64.0</ele></trkpt>
+      <trkpt lat="54.43572" lon="-2.96184"><ele>108.6</ele></trkpt>
+      <trkpt lat="54.44168" lon="-2.95792"><ele>153.2</ele></trkpt>
+      <trkpt lat="54.44831" lon="-2.95723"><ele>201.9</ele></trkpt>
+      <trkpt lat="54.45366" lon="-2.96254"><ele>252.6</ele></trkpt>
+      <trkpt lat="54.45598" lon="-2.97277"><ele>303.8</ele></trkpt>
+      <trkpt lat="54.45549" lon="-2.98416"><ele>358.7</ele></trkpt>
+      <trkpt lat="54.45419" lon="-2.99371"><ele>413.6</ele></trkpt>
+      <trkpt lat="54.45389" lon="-3.00136"><ele>469.9</ele></trkpt>
+      <trkpt lat="54.45446" lon="-3.00869"><ele>526.6</ele></trkpt>
+      <trkpt lat="54.45413" lon="-3.01622"><ele>571.4</ele></trkpt>
+      <trkpt lat="54.45154" lon="-3.02244"><ele>603.4</ele></trkpt>
+      <trkpt lat="54.44722" lon="-3.02590"><ele>603.2</ele></trkpt>
+      <trkpt lat="54.44308" lon="-3.02760"><ele>652.4</ele></trkpt>
+      <trkpt lat="54.44037" lon="-3.03082"><ele>748.4</ele></trkpt>
+      <trkpt lat="54.43846" lon="-3.03788"><ele>748.0</ele></trkpt>
+      <trkpt lat="54.43564" lon="-3.04736"><ele>776.3</ele></trkpt>
+      <trkpt lat="54.43100" lon="-3.05479"><ele>864.4</ele></trkpt>
+      <trkpt lat="54.42537" lon="-3.05643"><ele>808.5</ele></trkpt>
+      <trkpt lat="54.42025" lon="-3.05238"><ele>755.3</ele></trkpt>
+      <trkpt lat="54.41616" lon="-3.04592"><ele>803.0</ele></trkpt>
+      <trkpt lat="54.41230" lon="-3.04002"><ele>794.6</ele></trkpt>
+      <trkpt lat="54.40792" lon="-3.03474"><ele>765.6</ele></trkpt>
+      <trkpt lat="54.40382" lon="-3.02809"><ele>789.2</ele></trkpt>
+      <trkpt lat="54.40204" lon="-3.01905"><ele>723.6</ele></trkpt>
+      <trkpt lat="54.40390" lon="-3.00927"><ele>646.9</ele></trkpt>
+      <trkpt lat="54.40844" lon="-3.00141"><ele>577.6</ele></trkpt>
+      <trkpt lat="54.41298" lon="-2.99623"><ele>508.4</ele></trkpt>
+      <trkpt lat="54.41539" lon="-2.99171"><ele>430.8</ele></trkpt>
+      <trkpt lat="54.41583" lon="-2.98542"><ele>353.1</ele></trkpt>
+      <trkpt lat="54.41629" lon="-2.97742"><ele>281.7</ele></trkpt>
+      <trkpt lat="54.41845" lon="-2.97038"><ele>211.4</ele></trkpt>
+      <trkpt lat="54.42232" lon="-2.96673"><ele>154.3</ele></trkpt>
+      <trkpt lat="54.42673" lon="-2.96594"><ele>109.1</ele></trkpt>
+      <trkpt lat="54.43100" lon="-2.96500"><ele>64.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

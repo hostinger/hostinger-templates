@@ -1,0 +1,22 @@
+<footer class="club-footer">
+  <div class="club-footer-inner shell">
+    <div class="footer-col">
+      <img class="footer-crest" [src]="club.crest" alt="" width="44" height="50" />
+      <p class="footer-name">{{ club.name }}</p>
+      <p class="footer-line">{{ club.league }} · {{ club.division }}</p>
+      <p class="footer-line">{{ club.ground }}, {{ club.groundAddress }}</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">{{ club.secretary.role }}</p>
+      <p class="footer-line">{{ club.secretary.name }}</p>
+      <a class="footer-mail" [href]="'mailto:' + club.secretary.email">{{ club.secretary.email }}</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">How this board works</p>
+      <p class="footer-line">{{ club.noticeboardNote }}</p>
+    </div>
+  </div>
+  <p class="footer-small shell">
+    {{ club.name }} · est. {{ club.founded }} · Season {{ season.label }}
+  </p>
+</footer>

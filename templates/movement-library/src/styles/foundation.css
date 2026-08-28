@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Zilla+Slab:ital,wght@0,500;0,600;0,700;1,600&display=swap');
+
+/* ------------------------------------------------------------------
+   Design tokens — edit these to rebrand the whole template.
+   ------------------------------------------------------------------ */
+:root {
+  --paper: #fbf6ee;
+  --paper-deep: #f3ecdd;
+  --card: #fffdf8;
+  --ink: #1e2a44;
+  --ink-soft: #4a5674;
+  --ink-faint: #7f889f;
+  --line: #ddd3c0;
+  --line-strong: #c9bea6;
+  --tape: #2e9b74;
+  --tape-strong: #1d7a57;
+  --tape-tint: #e2f1e8;
+  --amber: #a4650e;
+  --amber-ink: #7c4d08;
+  --amber-tint: #f8edd8;
+  --grid-line: rgba(30, 42, 68, 0.08);
+  --font-head: 'Zilla Slab', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Figtree', 'Avenir Next', 'Segoe UI', sans-serif;
+  --radius-card: 14px;
+  --shadow-card:
+    0 1px 0 rgba(30, 42, 68, 0.04), 0 14px 30px -26px rgba(30, 42, 68, 0.35);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: var(--tape-strong);
+}
+
+::selection {
+  background: var(--tape-tint);
+}
+
+:focus-visible {
+  outline: 3px solid var(--tape-strong);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tape-strong);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 30px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--tape);
+  opacity: 0.85;
+  rotate: -4deg;
+}
+
+/* Chart-paper texture used behind the line figures. */
+.card-plate,
+.hero-chart-plate {
+  background-color: var(--paper-deep);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Shared figure treatment. */
+.fig-ground {
+  opacity: 0.2;
+}
+
+.fig-prop {
+  opacity: 0.4;
+}
+
+.fig-accent {
+  stroke: var(--tape);
+}

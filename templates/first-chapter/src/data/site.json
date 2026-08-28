@@ -1,0 +1,114 @@
+{
+  "book": {
+    "title": "What the River Keeps",
+    "author": "Nora Halloran",
+    "coverSubtitle": "A novel",
+    "tagline": "A drowned village surfaces for one week of low water — and the last person to leave it left something behind.",
+    "genre": "Literary fiction",
+    "length": "308 pages",
+    "imprint": "Marsh Light Books",
+    "year": "2026"
+  },
+  "nav": [
+    { "label": "The book", "href": "#book" },
+    { "label": "Praise", "href": "#praise" },
+    { "label": "Author", "href": "#author" },
+    { "label": "FAQ", "href": "#faq" }
+  ],
+  "hero": {
+    "eyebrow": "A debut novel",
+    "readLabel": "Read chapter one",
+    "continueLabel": "Continue chapter one",
+    "readHint": "The full first chapter, free in your browser. No signup, nothing to download.",
+    "progressChipSaved": "of chapter one read — your place is saved",
+    "progressChipDone": "You have finished chapter one — the rest is in the book"
+  },
+  "blurb": {
+    "eyebrow": "The story",
+    "heading": "Sixty-two years under. Seven days above.",
+    "paragraphs": [
+      "In 1963 the village of Undercleeve was emptied, blessed, and drowned beneath a new reservoir, and Iris Aldous — its last postmistress — dropped her door key into the rising water rather than hand it over. For sixty-one years she lived above the dam, watching the lake the way other people watch a locked room.",
+      "Now Iris is gone, a record drought has pulled the water back, and for one week the county is opening the shore to the families. Her granddaughter Nell, a paper conservator who spends her days rescuing other people’s histories from water damage, drives west with a sealed box she was never told the meaning of — and finds, on the drying bed of the lake, a door standing open that should have fallen sixty years ago, and one line of footprints going in.",
+      "What the River Keeps is a novel about the weight of inherited silence: about the things institutions take, the things families refuse to surrender, and what rises when the water finally gives its hostages back."
+    ]
+  },
+  "praise": {
+    "eyebrow": "Early praise",
+    "heading": "What early readers are saying",
+    "quotes": [
+      {
+        "quote": "A debut with the patience of deep water. Halloran writes loss the way engineers build dams — quietly, and to hold.",
+        "source": "Jude Merrow, author of The Salt Meadow"
+      },
+      {
+        "quote": "The best kind of ghost story: one where the ghost is a village, and the haunting is done by paperwork, kindness, and a bent weathervane.",
+        "source": "The Fenland Review"
+      },
+      {
+        "quote": "I finished the first chapter standing up in my kitchen and did not notice. Buy it for the atmosphere; keep it for Iris.",
+        "source": "Colm Brady, Lantern & Ledger Books"
+      }
+    ]
+  },
+  "author": {
+    "eyebrow": "About the author",
+    "heading": "Nora Halloran",
+    "initials": "NH",
+    "bio": [
+      "Nora Halloran grew up in a market town at the mouth of a flooded valley, where her grandmother kept a framed photograph of a high street nobody could visit. She trained as an archivist and spent a decade cataloguing parish records, compensation ledgers, and other paperwork of quiet catastrophes — the raw material that eventually became this book.",
+      "What the River Keeps is her first novel. She lives within walking distance of a reservoir and checks the waterline more often than the forecast."
+    ],
+    "email": "nora@norahalloran.example",
+    "emailLabel": "Write to Nora",
+    "emailNote": "Book clubs, readers, and booksellers welcome. She answers her own post."
+  },
+  "buy": {
+    "url": "https://bookshop.example/what-the-river-keeps",
+    "label": "Buy the paperback",
+    "note": "The button hands you to the bookshop that stocks the novel. Nothing is sold or collected on this site.",
+    "endHeading": "End of chapter one",
+    "endMessage": "That is the whole first chapter — the rest of Undercleeve is in the book. If the water has you, it is waiting."
+  },
+  "reader": {
+    "backLabel": "Back to the book",
+    "chapterLabel": "Chapter One",
+    "smallerLabel": "Make the text smaller",
+    "largerLabel": "Make the text larger",
+    "textSizeLabel": "Text size",
+    "progressLabel": "Reading progress",
+    "metaTemplate": "{words} words · about {minutes} minutes",
+    "minutesLeftTemplate": "about {minutes} min left",
+    "finishedLabel": "chapter read",
+    "positionNote": "Your place and text size are saved on this device — close the tab and pick up where you left off."
+  },
+  "faq": {
+    "eyebrow": "Before you ask",
+    "heading": "Questions, answered plainly",
+    "items": [
+      {
+        "question": "Is this the whole book?",
+        "answer": "No — this site carries chapter one in full, exactly as it appears in the finished novel, and nothing past it. If you reach the last line and want chapter two, that is what the buy button is for."
+      },
+      {
+        "question": "Where can I buy the full novel?",
+        "answer": "Through the buy button on this page, which goes straight to the bookshop that stocks it. Your local bookshop can also order it by title and author. This site itself sells nothing and never asks for payment details."
+      },
+      {
+        "question": "What formats does the book come in?",
+        "answer": "Paperback and ebook, with both editions listed on the same shop page. The chapter you read here is set from the same text as the print edition."
+      },
+      {
+        "question": "Can I share this chapter with someone?",
+        "answer": "Please do — send them the link to this page. The chapter is free to read in the browser for anyone, and your reading position is saved only on your own device."
+      },
+      {
+        "question": "How do I contact the author?",
+        "answer": "By email, at the address in the author section below. Nora reads and answers her own messages, including book club and event enquiries."
+      }
+    ]
+  },
+  "footer": {
+    "line": "© 2026 Nora Halloran. All rights reserved.",
+    "smallPrint": "No cookies, no tracking, no mailing list — just the chapter and a door."
+  }
+}

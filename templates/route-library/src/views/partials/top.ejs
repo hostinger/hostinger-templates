@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= pageTitle %></title>
+    <meta name="description" content="<%= metaDescription %>" />
+    <meta name="theme-color" content="#f5efe0" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script type="application/ld+json"><%- faqJsonLd %></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+          <path d="M8 27c-2-8 3-16 12-18s17 3 18 11-5 15-14 16S10 35 8 27Z" />
+          <path d="M14 26c-1-5 2-10 8-11s11 2 12 7-4 9-9 10-10-1-11-6Z" />
+          <circle class="brand-mark-dot" cx="24" cy="21" r="3.4" />
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name"><%= site.clubName %></span>
+          <span class="brand-area"><%= site.area %></span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <% site.navigation.forEach((link) => { %>
+          <a href="<%= link.href %>"><%= link.label %></a>
+        <% }) %>
+      </nav>
+    </header>
+    <main id="main">

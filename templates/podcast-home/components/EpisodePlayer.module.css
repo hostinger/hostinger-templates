@@ -1,0 +1,235 @@
+.player {
+  --timeline-h: 92px;
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+  background: linear-gradient(160deg, rgba(44, 27, 94, 0.35), rgba(22, 15, 43, 0.9));
+  padding: clamp(16px, 2.4vw, 26px);
+}
+
+.transport {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.playButton {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: none;
+  background: var(--lime);
+  color: #12140a;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+  box-shadow: 0 8px 30px rgba(200, 246, 54, 0.25);
+}
+
+.playButton:hover {
+  transform: scale(1.06);
+  box-shadow: 0 10px 36px rgba(200, 246, 54, 0.35);
+}
+
+.playButton:active {
+  transform: scale(0.97);
+}
+
+.playIcon {
+  width: 26px;
+  height: 26px;
+}
+
+.readout {
+  min-width: 0;
+}
+
+.time {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-dim);
+}
+
+.timeNow {
+  color: var(--ink);
+}
+
+.nowChapter {
+  margin-top: 2px;
+  font-size: 0.9rem;
+  color: var(--violet-200);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timeline {
+  position: relative;
+  height: var(--timeline-h);
+  margin-top: 18px;
+  --wave-rest: var(--violet-800);
+  --wave-played: var(--lime);
+}
+
+.wave {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scrub {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.scrub:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.scrub::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 100%;
+}
+
+.scrub::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 4px;
+  height: var(--timeline-h);
+  border-radius: 2px;
+  background: var(--ink);
+  box-shadow: 0 0 12px rgba(243, 238, 255, 0.7);
+}
+
+.scrub::-moz-range-track {
+  background: transparent;
+  height: 100%;
+}
+
+.scrub::-moz-range-thumb {
+  width: 4px;
+  height: var(--timeline-h);
+  border: none;
+  border-radius: 2px;
+  background: var(--ink);
+  box-shadow: 0 0 12px rgba(243, 238, 255, 0.7);
+}
+
+.pip {
+  position: absolute;
+  top: -7px;
+  z-index: 3;
+  width: 14px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 2px solid var(--violet-400);
+  background: var(--bg);
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 140ms ease, transform 140ms ease, background 140ms ease;
+}
+
+.pip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  width: 2px;
+  height: calc(var(--timeline-h) - 4px);
+  transform: translateX(-50%);
+  background: rgba(154, 123, 247, 0.28);
+  pointer-events: none;
+}
+
+.pip:hover {
+  transform: translateX(-50%) scale(1.35);
+  border-color: var(--lime);
+}
+
+.pipPassed {
+  border-color: var(--lime);
+  background: var(--lime);
+}
+
+.chapters {
+  list-style: none;
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 14px;
+}
+
+.chapter {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink-mid);
+  text-align: left;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+
+.chapter:hover {
+  background: rgba(154, 123, 247, 0.12);
+  color: var(--ink);
+}
+
+.chapterActive {
+  border-color: rgba(200, 246, 54, 0.4);
+  background: rgba(200, 246, 54, 0.07);
+  color: var(--ink);
+}
+
+.chapterIndex {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--lime);
+}
+
+.chapterTitle {
+  flex: 1;
+  min-width: 0;
+}
+
+.chapterTime {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+}
+
+@media (max-width: 640px) {
+  .player {
+    --timeline-h: 68px;
+  }
+
+  .playButton {
+    width: 54px;
+    height: 54px;
+  }
+
+  .chapters {
+    grid-template-columns: 1fr;
+  }
+}

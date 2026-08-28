@@ -1,0 +1,35 @@
+{
+  "name": "will-it-survive",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Plant shop quiz that matches light, watering habits, and pets to plants that will actually survive, with shareable URL results.",
+  "type": "module",
+  "scripts": {
+    "dev": "parcel index.html --port 4359",
+    "build": "tsc --noEmit && parcel build index.html --dist-dir dist --public-url ./",
+    "lint": "eslint .",
+    "preview": "serve dist"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "keywords": [
+    "parcel",
+    "typescript",
+    "plant-shop",
+    "quiz",
+    "houseplants"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.9.1",
+    "parcel": "^2.16.4",
+    "serve": "^14.2.6",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0"
+  }
+}

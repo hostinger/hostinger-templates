@@ -1,0 +1,65 @@
+{
+  "practiceName": "Alder Lane Physiotherapy",
+  "physioName": "Maren Holt, DPT",
+  "tagline": "Movement library and take-home plans",
+  "email": "hello@alderlanephysio.example",
+  "phoneDisplay": "(503) 555-0177",
+  "phone": "+15035550177",
+  "address": "18 Alder Lane, Portland, Oregon",
+  "hero": {
+    "eyebrow": "Patient movement library",
+    "headline": "Find your exercises. Build today's plan. Take it home on paper.",
+    "intro": "Filter the library by the body part we are working on, add the movements from your last session, and print a clean card for the fridge door. Every exercise is written exactly the way we coach it in the treatment room.",
+    "steps": [
+      "Filter by body part",
+      "Add movements to your plan",
+      "Print the take-home card"
+    ],
+    "sampleExerciseId": "bird-dog"
+  },
+  "guidanceNote": "This library is general guidance, not a personalised prescription. Follow the plan agreed in your session, and stop and call us about any movement that causes sharp pain.",
+  "library": {
+    "heading": "The movement library",
+    "intro": "Ten clinic staples, tagged by body part. Sets, reps, and holds are our usual starting doses — your own plan may differ, so keep to what we agreed in the room."
+  },
+  "plan": {
+    "heading": "Today's plan",
+    "emptyHint": "No movements yet. Add exercises from the library and they will wait here, even if you close the page.",
+    "printLabel": "Print plan card",
+    "clearLabel": "Clear plan"
+  },
+  "printCard": {
+    "title": "Home exercise plan",
+    "preparedForLabel": "Prepared for",
+    "guidedByLabel": "Guided by",
+    "tickHint": "Tick a box each day you complete the movement.",
+    "emptyMessage": "No movements have been added to this plan yet. Open the movement library, add the exercises from your session, then print again.",
+    "footnote": "This card is general guidance, not a personalised prescription. Stop any movement that causes sharp pain and call the practice."
+  },
+  "faqHeading": "Questions patients ask",
+  "faqIntro": "The answers we give most often in the treatment room. Anything else — call or email and we will talk it through.",
+  "contactHeading": "Talk to us before changing your plan",
+  "contactBlurb": "Progressions, flare-ups, or a movement that does not feel right — a two-minute call saves a week of guessing.",
+  "faqs": [
+    {
+      "question": "How often should I do my plan?",
+      "answer": "Unless we agreed otherwise in your session, once a day is plenty. Consistency beats intensity — a calm ten minutes daily does more than a heroic hour on Sunday."
+    },
+    {
+      "question": "Should the exercises hurt?",
+      "answer": "Mild working discomfort of up to about three out of ten is normal, and it should settle within thirty minutes of finishing. Sharp, spreading, or worsening pain means stop that movement and call us before continuing."
+    },
+    {
+      "question": "Can I use this library without an appointment?",
+      "answer": "The library shows how we coach each movement, but it is general guidance rather than a personalised prescription. If you have not been assessed, book a session first so we can choose the right movements and doses for you."
+    },
+    {
+      "question": "I missed a few days. Do I start over?",
+      "answer": "No. Missed days are part of real life — just pick the plan back up at the same sets and reps. If it has been more than two weeks, drop to roughly half the dose for the first two days."
+    },
+    {
+      "question": "I lost my printed card. Can I get another?",
+      "answer": "Yes. Your plan is saved in the browser on the device you built it with — open this page again and the same plan will be waiting, ready to print."
+    }
+  ]
+}

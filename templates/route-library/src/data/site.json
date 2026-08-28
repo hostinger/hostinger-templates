@@ -1,0 +1,67 @@
+{
+  "clubName": "Bracken Fell Harriers",
+  "area": "Ambleside, Lake District",
+  "tagline": "A fell running club's route book — measured on club legs, argued over weekly.",
+  "heading": "Every route we trust, measured and mapped",
+  "intro": "Every route in this book was recorded on club runs and written up by whoever ran it last. Filter by how far and how much climb you fancy, read the profile before you commit, and take the GPX with you.",
+  "about": "We are forty-odd runners of every speed who meet in Ambleside and go up hills. The club has kept a handwritten route book since 1978; this is the same book, typed up, measured properly and shared. Visitors are welcome to borrow a route or join a run.",
+  "founded": "1978",
+  "meetPoint": {
+    "name": "Market Cross, Ambleside",
+    "detail": "We gather ten minutes before each run, whatever the weather is doing."
+  },
+  "clubNights": [
+    {
+      "day": "Tuesday",
+      "time": "18:30",
+      "detail": "Fell repetitions — short, steep and sociable."
+    },
+    {
+      "day": "Sunday",
+      "time": "09:00",
+      "detail": "The long steady run — nobody gets left behind."
+    }
+  ],
+  "librarian": {
+    "name": "Maggie Thornthwaite",
+    "role": "Route librarian",
+    "email": "routes@brackenfellharriers.example"
+  },
+  "disclaimer": "Routes are documented by club members from their own runs. Paths erode, becks flood and fell weather turns by the hour — check conditions before you set off, carry map and compass on the tops, and run at your own judgment.",
+  "navigation": [
+    {
+      "label": "Routes",
+      "href": "/"
+    },
+    {
+      "label": "Club runs",
+      "href": "/#club"
+    },
+    {
+      "label": "FAQ",
+      "href": "/#faq"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do I need to be a member to run these routes?",
+      "answer": "No. The whole library is public and every route follows public rights of way or open access land. If you enjoy them, come along to a club run and say hello — your first three runs with us are free."
+    },
+    {
+      "question": "How accurate are the distances and climb figures?",
+      "answer": "Each route was recorded on at least three separate club runs with GPS watches, then averaged and rounded honestly. Expect your own watch to disagree by a few percent — that is GPS being GPS, not you being slow."
+    },
+    {
+      "question": "What should I carry on the fell routes?",
+      "answer": "For anything graded Moderate or Hard: waterproof top and bottoms, hat, gloves, map, compass, whistle and some food. That is the standard fell kit list, and on the Fairfield Horseshoe we mean it even in July."
+    },
+    {
+      "question": "Can I add a route to the library?",
+      "answer": "Yes. Email the route librarian a GPX trace and a short honest description. Routes are adopted once a club run has checked the line, the distance and the climb — usually within a month."
+    },
+    {
+      "question": "When and where does the club meet?",
+      "answer": "Tuesdays at 18:30 for fell repetitions and Sundays at 09:00 for the long run, both from the Market Cross in Ambleside. No need to book — just turn up ten minutes early."
+    }
+  ]
+}

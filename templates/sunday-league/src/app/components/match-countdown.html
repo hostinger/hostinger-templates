@@ -1,0 +1,21 @@
+<div class="countdown" role="timer" aria-label="Counting down to kick-off">
+  <p class="countdown-title">Kick-off in</p>
+  <div class="countdown-grid" aria-hidden="true">
+    <span class="countdown-cell">
+      <span class="countdown-digits">{{ pad(parts().days) }}</span>
+      <span class="countdown-unit">Days</span>
+    </span>
+    <span class="countdown-cell">
+      <span class="countdown-digits">{{ pad(parts().hours) }}</span>
+      <span class="countdown-unit">Hrs</span>
+    </span>
+    <span class="countdown-cell">
+      <span class="countdown-digits">{{ pad(parts().minutes) }}</span>
+      <span class="countdown-unit">Min</span>
+    </span>
+    <span class="countdown-cell">
+      <span class="countdown-digits">{{ pad(parts().seconds) }}</span>
+      <span class="countdown-unit">Sec</span>
+    </span>
+  </div>
+</div>

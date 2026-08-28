@@ -1,0 +1,17 @@
+<header class="club-header">
+  <div class="club-header-inner shell">
+    <div class="club-mark">
+      <img class="club-crest" [src]="club.crest" alt="" width="52" height="60" />
+      <div class="club-mark-text">
+        <h1 class="club-name">{{ club.name }}</h1>
+        <p class="club-league">
+          {{ club.league }} · {{ club.division }} · Season {{ season.label }}
+        </p>
+      </div>
+    </div>
+    <div class="club-actions">
+      <p class="updated-chip">Board updated {{ season.updated | date: 'd MMM' }}</p>
+      <a class="btn btn-gold" [href]="'mailto:' + club.secretary.email">Email the secretary</a>
+    </div>
+  </div>
+</header>

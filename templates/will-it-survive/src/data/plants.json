@@ -1,0 +1,82 @@
+[
+  {
+    "id": "snake-plant",
+    "name": "Snake Plant",
+    "botanical": "Dracaena trifasciata",
+    "price": 14,
+    "light": ["low", "medium", "bright"],
+    "water": ["forgetful", "regular"],
+    "petSafe": false,
+    "personality": "Survives neglect, gloom, and your longest holidays — mostly by ignoring you."
+  },
+  {
+    "id": "golden-pothos",
+    "name": "Golden Pothos",
+    "botanical": "Epipremnum aureum",
+    "price": 12,
+    "light": ["low", "medium", "bright"],
+    "water": ["forgetful", "regular"],
+    "petSafe": false,
+    "personality": "Grows a metre of vine a year and asks for almost nothing in return."
+  },
+  {
+    "id": "zz-plant",
+    "name": "ZZ Plant",
+    "botanical": "Zamioculcas zamiifolia",
+    "price": 18,
+    "light": ["low", "medium"],
+    "water": ["forgetful"],
+    "petSafe": false,
+    "personality": "Runs on stored water and stubbornness; watering it weekly is the only way to lose it."
+  },
+  {
+    "id": "spider-plant",
+    "name": "Spider Plant",
+    "botanical": "Chlorophytum comosum",
+    "price": 10,
+    "light": ["medium", "bright"],
+    "water": ["forgetful", "regular"],
+    "petSafe": true,
+    "personality": "Churns out baby plants faster than you can rehome them."
+  },
+  {
+    "id": "boston-fern",
+    "name": "Boston Fern",
+    "botanical": "Nephrolepis exaltata",
+    "price": 16,
+    "light": ["medium"],
+    "water": ["attentive"],
+    "petSafe": true,
+    "personality": "Lush, dramatic, and thirsty — skip two waterings and it sheds like a headline."
+  },
+  {
+    "id": "calathea",
+    "name": "Calathea Orbifolia",
+    "botanical": "Goeppertia orbifolia",
+    "price": 22,
+    "light": ["low", "medium"],
+    "water": ["attentive"],
+    "petSafe": true,
+    "personality": "Folds its striped leaves up each night and silently judges your tap water."
+  },
+  {
+    "id": "parlour-palm",
+    "name": "Parlour Palm",
+    "botanical": "Chamaedorea elegans",
+    "price": 15,
+    "light": ["low", "medium"],
+    "water": ["regular"],
+    "petSafe": true,
+    "personality": "Has tolerated dim Victorian parlours since 1850; your hallway is no challenge."
+  },
+  {
+    "id": "aloe-vera",
+    "name": "Aloe Vera",
+    "botanical": "Aloe barbadensis miller",
+    "price": 9,
+    "light": ["bright"],
+    "water": ["forgetful"],
+    "petSafe": false,
+    "personality": "Wants your sunniest sill, a drink a month, and otherwise total independence."
+  }
+]

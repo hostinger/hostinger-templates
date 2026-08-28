@@ -1,0 +1,43 @@
+{
+  "name": "sunday-league",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Amateur football club noticeboard with a league table, fixtures, and the next match pinned and counting down.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ng serve",
+    "build": "ng build",
+    "lint": "eslint .",
+    "preview": "serve dist/sunday-league/browser"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "angular",
+    "typescript",
+    "football",
+    "sunday-league",
+    "league-table",
+    "club-noticeboard"
+  ],
+  "dependencies": {
+    "@angular/common": "^22.1.0",
+    "@angular/compiler": "^22.1.0",
+    "@angular/core": "^22.1.0",
+    "@angular/platform-browser": "^22.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^22.1.6",
+    "@angular/cli": "^22.1.6",
+    "@angular/compiler-cli": "^22.1.0",
+    "@eslint/js": "^10.0.1",
+    "angular-eslint": "22.1.0",
+    "eslint": "^10.6.0",
+    "serve": "^14.2.6",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "8.62.1"
+  }
+}

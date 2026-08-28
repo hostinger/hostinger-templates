@@ -1,0 +1,187 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: clamp(28px, 4.5vw, 64px);
+  align-items: center;
+  padding-top: clamp(36px, 5.5vw, 72px);
+}
+
+.crumb {
+  margin-bottom: 22px;
+}
+
+.crumb a {
+  color: var(--ink-dim);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.crumb a:hover {
+  color: var(--lime);
+}
+
+.title {
+  font-size: clamp(2.3rem, 5vw, 3.9rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-top: 14px;
+  text-wrap: balance;
+}
+
+.guestLine {
+  margin-top: 10px;
+  font-size: 1.08rem;
+  color: var(--violet-200);
+}
+
+.lede {
+  margin-top: 14px;
+  color: var(--ink-mid);
+  max-width: 56ch;
+}
+
+.heroArt {
+  position: relative;
+}
+
+.art {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  margin-left: auto;
+  border-radius: 24px;
+  border: 1px solid var(--stroke);
+  box-shadow: 0 26px 70px rgba(7, 4, 18, 0.55);
+}
+
+.bigNumber {
+  position: absolute;
+  right: -0.1em;
+  top: -0.34em;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(4.5rem, 8vw, 7.5rem);
+  line-height: 1;
+  color: rgba(154, 123, 247, 0.12);
+  -webkit-text-stroke: 2px var(--violet-400);
+  pointer-events: none;
+}
+
+.playerSection {
+  padding-top: 30px;
+}
+
+.transcriptSection {
+  display: grid;
+  grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
+  gap: clamp(28px, 4.5vw, 64px);
+  padding-top: clamp(48px, 7vw, 88px);
+}
+
+.transcriptIntro {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+.transcriptTitle {
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  margin-top: 10px;
+}
+
+.transcriptNote {
+  margin-top: 12px;
+  color: var(--ink-mid);
+  max-width: 30ch;
+}
+
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding-top: clamp(48px, 7vw, 80px);
+}
+
+.pagerLink {
+  display: grid;
+  gap: 4px;
+  padding: 18px 20px;
+  border: 1px solid var(--stroke-soft);
+  border-radius: 16px;
+  background: var(--bg-raised);
+  text-decoration: none;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.pagerLink:hover {
+  border-color: rgba(154, 123, 247, 0.55);
+  transform: translateY(-2px);
+}
+
+.pagerRight {
+  text-align: right;
+}
+
+.pagerLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--lime);
+}
+
+.pagerTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pagerSpacer {
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .heroArt {
+    order: -1;
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
+  .art {
+    width: 120px;
+    height: 120px;
+    margin-left: 0;
+    border-radius: 16px;
+  }
+
+  .bigNumber {
+    position: static;
+    order: 2;
+    font-size: 4rem;
+    line-height: 0.9;
+  }
+
+  .transcriptSection {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .transcriptIntro {
+    position: static;
+  }
+
+  .pager {
+    grid-template-columns: 1fr;
+  }
+
+  .pagerRight {
+    text-align: left;
+  }
+}

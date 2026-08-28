@@ -1,0 +1,85 @@
+{
+  "eyebrow": "A gentle place to begin",
+  "title": "Is this right for me?",
+  "lead": "Four small questions, no right answers and nothing recorded. Your answers land you on the service that fits what you described — a real page you can read, share, or come back to.",
+  "hint": "Two minutes, no sign-up",
+  "backLabel": "Previous question",
+  "routingLabel": "Taking you to the page that fits…",
+  "disclaimer": "A signpost, not a diagnosis: this check only helps you choose a starting point, and it is no substitute for a proper conversation.",
+  "fallbackLabel": "If nothing quite fits, email me a few lines about what is going on and I will point you somewhere good — even if it is not here",
+  "noscript": "The check needs JavaScript, which is switched off in your browser. No matter — the three services below describe exactly who each one is for.",
+  "questions": [
+    {
+      "id": "who",
+      "prompt": "Who would the sessions be for?",
+      "options": [
+        {
+          "label": "Just me",
+          "weights": { "individual-therapy": 4 }
+        },
+        {
+          "label": "Me and my partner",
+          "weights": { "couples-counselling": 4 }
+        },
+        {
+          "label": "My teenager",
+          "weights": { "teen-counselling": 4 }
+        }
+      ]
+    },
+    {
+      "id": "present",
+      "prompt": "What feels most present right now?",
+      "options": [
+        {
+          "label": "Worry, low mood, or feeling stuck",
+          "weights": { "individual-therapy": 2 }
+        },
+        {
+          "label": "Distance or friction with a partner",
+          "weights": { "couples-counselling": 2 }
+        },
+        {
+          "label": "A young person who seems to be struggling",
+          "weights": { "teen-counselling": 2 }
+        }
+      ]
+    },
+    {
+      "id": "hope",
+      "prompt": "What are you hoping sessions would give you?",
+      "options": [
+        {
+          "label": "Room to understand myself and shift old patterns",
+          "weights": { "individual-therapy": 2 }
+        },
+        {
+          "label": "Better conversations with someone I love",
+          "weights": { "couples-counselling": 2 }
+        },
+        {
+          "label": "Steady support for my teen — and for me as a parent",
+          "weights": { "teen-counselling": 2 }
+        }
+      ]
+    },
+    {
+      "id": "friend",
+      "prompt": "If a good friend summed it up, they might say…",
+      "options": [
+        {
+          "label": "“You have been carrying too much on your own.”",
+          "weights": { "individual-therapy": 2 }
+        },
+        {
+          "label": "“You two keep missing each other.”",
+          "weights": { "couples-counselling": 2 }
+        },
+        {
+          "label": "“You are worried sick about your kid.”",
+          "weights": { "teen-counselling": 2 }
+        }
+      ]
+    }
+  ]
+}

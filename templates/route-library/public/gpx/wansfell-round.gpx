@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Bracken Fell Harriers Route Library" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Wansfell Round</name>
+    <desc>11.6 km with 480 m of climb. From the Bracken Fell Harriers route book.</desc>
+  </metadata>
+  <trk>
+    <name>Wansfell Round</name>
+    <desc>Up the stone steps out of town and onto Wansfell Pike the direct way — half an hour of proper climbing, no apologies — then over the top and down through Troutbeck's lanes and Skelghyll Woods. The summit view down the length of Windermere is the photo every club member has.</desc>
+    <trkseg>
+      <trkpt lat="54.42870" lon="-2.96290"><ele>64.0</ele></trkpt>
+      <trkpt lat="54.43302" lon="-2.96853"><ele>108.4</ele></trkpt>
+      <trkpt lat="54.43498" lon="-2.97723"><ele>152.9</ele></trkpt>
+      <trkpt lat="54.43700" lon="-2.98163"><ele>206.1</ele></trkpt>
+      <trkpt lat="54.44144" lon="-2.98358"><ele>259.3</ele></trkpt>
+      <trkpt lat="54.44541" lon="-2.98893"><ele>328.0</ele></trkpt>
+      <trkpt lat="54.44576" lon="-2.99685"><ele>398.8</ele></trkpt>
+      <trkpt lat="54.44467" lon="-3.00455"><ele>453.0</ele></trkpt>
+      <trkpt lat="54.44443" lon="-3.01382"><ele>460.9</ele></trkpt>
+      <trkpt lat="54.44254" lon="-3.02390"><ele>415.5</ele></trkpt>
+      <trkpt lat="54.43706" lon="-3.02773"><ele>370.9</ele></trkpt>
+      <trkpt lat="54.43099" lon="-3.02335"><ele>326.6</ele></trkpt>
+      <trkpt lat="54.42680" lon="-3.01845"><ele>279.8</ele></trkpt>
+      <trkpt lat="54.42299" lon="-3.01731"><ele>234.1</ele></trkpt>
+      <trkpt lat="54.41915" lon="-3.01490"><ele>199.4</ele></trkpt>
+      <trkpt lat="54.41744" lon="-3.00843"><ele>183.0</ele></trkpt>
+      <trkpt lat="54.41691" lon="-3.00201"><ele>204.3</ele></trkpt>
+      <trkpt lat="54.41400" lon="-2.99658"><ele>193.9</ele></trkpt>
+      <trkpt lat="54.40987" lon="-2.98818"><ele>156.9</ele></trkpt>
+      <trkpt lat="54.40969" lon="-2.97804"><ele>158.2</ele></trkpt>
+      <trkpt lat="54.41418" lon="-2.97171"><ele>171.7</ele></trkpt>
+      <trkpt lat="54.41934" lon="-2.96856"><ele>133.9</ele></trkpt>
+      <trkpt lat="54.42373" lon="-2.96460"><ele>97.1</ele></trkpt>
+      <trkpt lat="54.42870" lon="-2.96290"><ele>64.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

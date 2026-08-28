@@ -1,0 +1,21 @@
+<%- include('partials/top') %>
+
+      <div class="not-found">
+        <p class="eyebrow">404</p>
+        <h1>That page is not in the book</h1>
+        <p>
+          Nobody has run it in, measured it, or written it up yet.
+          These routes are all present and correct, though:
+        </p>
+        <ul class="more-list">
+          <% allRoutes.forEach((route) => { %>
+            <li>
+              <a href="<%= route.href %>"><%= route.name %></a>
+              <span class="more-meta mono"><%= route.distanceLabel %></span>
+            </li>
+          <% }) %>
+        </ul>
+        <p><a class="button button-secondary" href="/">Back to the route book</a></p>
+      </div>
+
+<%- include('partials/bottom') %>

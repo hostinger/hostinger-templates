@@ -1,0 +1,112 @@
+{
+  "questions": [
+    {
+      "id": "light",
+      "legend": "How bright is your place?",
+      "hint": "Judge the exact spot the plant will live in, not the room's best hour.",
+      "options": [
+        {
+          "value": "low",
+          "label": "Gloomy",
+          "description": "North-facing, or a good stretch from the window",
+          "icon": "cloud"
+        },
+        {
+          "value": "medium",
+          "label": "Decent",
+          "description": "A bright room, but no direct sun on the spot",
+          "icon": "sun-cloud"
+        },
+        {
+          "value": "bright",
+          "label": "Sun-drenched",
+          "description": "Direct sun on the sill for a few hours a day",
+          "icon": "sun"
+        }
+      ]
+    },
+    {
+      "id": "care",
+      "legend": "What's your watering track record?",
+      "hint": "Be honest — the plants already know.",
+      "options": [
+        {
+          "value": "forgetful",
+          "label": "Forgetful",
+          "description": "Weeks can slip by; the watering can gathers dust",
+          "icon": "droplet-sleep"
+        },
+        {
+          "value": "regular",
+          "label": "Steady",
+          "description": "A reliable round with the can most weekends",
+          "icon": "watering-can"
+        },
+        {
+          "value": "attentive",
+          "label": "Devoted",
+          "description": "Misting, moisture checks, leaf-wiping — the full spa",
+          "icon": "mister"
+        }
+      ]
+    },
+    {
+      "id": "pets",
+      "legend": "Any nibbling housemates?",
+      "hint": "Cats, dogs, rabbits — anyone who treats houseplants as salad.",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Pets about",
+          "description": "Only show plants that are safe to nibble",
+          "icon": "paw"
+        },
+        {
+          "value": "no",
+          "label": "No pets",
+          "description": "The whole bench is fair game",
+          "icon": "house"
+        }
+      ]
+    }
+  ],
+  "reasons": {
+    "light": {
+      "low": "Genuinely copes with low light",
+      "medium": "Happy in decent indirect light",
+      "bright": "Loves a bright, sunny sill"
+    },
+    "care": {
+      "forgetful": "Forgives missed waterings",
+      "regular": "Content with a weekly water",
+      "attentive": "Repays the fussing — misting and all"
+    },
+    "pets": {
+      "yes": "Non-toxic to cats and dogs"
+    }
+  },
+  "mismatches": {
+    "light": {
+      "brighter": "Honestly wants more light than you've got — give it your brightest spot and expect slower growth",
+      "dimmer": "Prefers softer light than a blazing sill — set it a step back from the glass"
+    },
+    "care": {
+      "more": "Wants steadier watering than you're promising — a phone reminder would save it",
+      "less": "Easy to love to death — water it half as often as you're tempted to"
+    }
+  },
+  "tagLabels": {
+    "light": {
+      "low": "Low light",
+      "medium": "Medium light",
+      "bright": "Bright light"
+    },
+    "water": {
+      "forgetful": "Forgives forgetting",
+      "regular": "Weekly water",
+      "attentive": "Wants devotion"
+    },
+    "petSafe": "Pet-safe",
+    "notPetSafe": "Keep from pets"
+  }
+}

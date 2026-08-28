@@ -1,0 +1,37 @@
+{
+  "name": "quiet-practice",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A calm counselling practice site with a gentle four-question self-check that routes visitors to the matching service page.",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt typecheck && nuxt generate",
+    "lint": "eslint .",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "nuxt",
+    "vue",
+    "typescript",
+    "therapist",
+    "counselling",
+    "self-check"
+  ],
+  "dependencies": {
+    "nuxt": "^4.5.2",
+    "vue": "^3.5.41",
+    "vue-router": "^5.2.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@nuxt/eslint": "^1.17.0",
+    "eslint": "^10.9.1",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.11"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "amelia-james-june-2026",
+  "eyebrow": "Private client gallery",
+  "title": "Amelia & James",
+  "eventDate": "Saturday 14 June 2026",
+  "venue": "Foxglove Farm, Hudson Valley",
+  "photographerCredit": "Photographed by Mara Ellison",
+  "studio": "Mara Ellison Photography",
+  "deliveredLabel": "Delivered 2 July 2026",
+  "intro": "Your wedding selection, edited and ready to relive. Take your time with these twelve frames — they are the story of the day as it actually happened, in the order it unfolded.",
+  "howTo": "Star the frames you love as you go. Favourites are saved on this device, so you can come back tomorrow and keep choosing — then export the list and send it back with your reply.",
+  "usageNote": "These photographs are delivered for your personal use — share them with family and print them for your walls. For album design, retouching, or additional prints, mention the filename and Mara will take it from there.",
+  "photos": [
+    {
+      "filename": "wedding-01.jpg",
+      "alt": "Bride and groom exchanging vows beneath a blossom arch",
+      "caption": "The vows",
+      "width": 1600,
+      "height": 1067
+    },
+    {
+      "filename": "wedding-02.jpg",
+      "alt": "Two gold wedding bands resting on sunlit stone",
+      "caption": "The rings",
+      "width": 1600,
+      "height": 1068
+    },
+    {
+      "filename": "wedding-03.jpg",
+      "alt": "The couple embracing on a mountainside at golden sunset",
+      "caption": "Golden hour",
+      "width": 1600,
+      "height": 2400
+    },
+    {
+      "filename": "wedding-04.jpg",
+      "alt": "The bridal bouquet of peach and white roses held against the lace gown",
+      "caption": "The bouquet",
+      "width": 1600,
+      "height": 2400
+    },
+    {
+      "filename": "wedding-05.jpg",
+      "alt": "The lace wedding dress hanging against warm wooden shutters",
+      "caption": "Before everything",
+      "width": 1600,
+      "height": 2400
+    },
+    {
+      "filename": "wedding-06.jpg",
+      "alt": "The first kiss at the altar",
+      "caption": "First kiss",
+      "width": 1600,
+      "height": 2043
+    },
+    {
+      "filename": "wedding-07.jpg",
+      "alt": "Reception tables dressed in white linen, blush napkins, and roses",
+      "caption": "The long table",
+      "width": 1600,
+      "height": 1067
+    },
+    {
+      "filename": "wedding-08.jpg",
+      "alt": "The first dance under warm string lights",
+      "caption": "First dance",
+      "width": 1600,
+      "height": 2400
+    },
+    {
+      "filename": "wedding-09.jpg",
+      "alt": "Guests raising champagne glasses amid gold confetti",
+      "caption": "The toast",
+      "width": 1600,
+      "height": 1069
+    },
+    {
+      "filename": "wedding-10.jpg",
+      "alt": "Walking arm in arm across the lawn beneath the trees",
+      "caption": "A quiet walk",
+      "width": 1600,
+      "height": 2399
+    },
+    {
+      "filename": "wedding-11.jpg",
+      "alt": "The ivory wedding cake beside white roses",
+      "caption": "The cake",
+      "width": 1600,
+      "height": 1067
+    },
+    {
+      "filename": "wedding-12.jpg",
+      "alt": "Nose to nose beneath the string lights at night",
+      "caption": "Last light",
+      "width": 1600,
+      "height": 1067
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How do favourites work?",
+      "answer": "Select the star on any photograph to mark it as a favourite, and select it again to remove it. Favourites are saved in this browser on this device, so they will still be here when you come back later. Choosing on a different device starts a fresh list."
+    },
+    {
+      "question": "How do I send my favourites back?",
+      "answer": "Press “Export list” in the tray at the bottom of the page. It downloads a small CSV file naming each starred photograph — attach it to your reply and Mara will start the edit conversation from exactly those frames."
+    },
+    {
+      "question": "Do I have to choose everything in one sitting?",
+      "answer": "No. Star a few frames now, close the page, and return whenever you like — your selection will be waiting on this device. Export whenever the list feels right; you can export as many times as you want."
+    },
+    {
+      "question": "Can I print these photos or post them online?",
+      "answer": "Yes — this gallery is delivered for your personal use, so share, post, and print freely. A quiet credit is always appreciated but never required. The photographs may not be resold or entered into competitions without written permission."
+    }
+  ]
+}

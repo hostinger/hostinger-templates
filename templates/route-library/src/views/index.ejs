@@ -1,0 +1,162 @@
+<%- include('partials/top') %>
+
+      <section class="masthead">
+        <div class="masthead-inner">
+          <p class="eyebrow">The route book</p>
+          <h1><%= site.heading %></h1>
+          <p class="masthead-intro"><%= site.intro %></p>
+          <p class="masthead-stats">
+            <span class="mono"><%= totals.count %></span> routes
+            <span class="stat-dot" aria-hidden="true">·</span>
+            <span class="mono"><%= totals.distanceLabel %></span> documented
+            <span class="stat-dot" aria-hidden="true">·</span>
+            <span class="mono"><%= totals.climbLabel %></span> of recorded climb
+          </p>
+        </div>
+      </section>
+
+      <section class="library" aria-labelledby="routes-title">
+        <h2 class="visually-hidden" id="routes-title">Routes</h2>
+
+        <div class="filter-bar" data-filter-bar>
+          <div class="filter-group" role="group" aria-labelledby="filter-distance-label">
+            <span class="filter-label" id="filter-distance-label">Distance</span>
+            <ul class="chip-list">
+              <% distanceChips.forEach((chip) => { %>
+                <li>
+                  <a
+                    class="chip"
+                    href="<%= chip.href %>"
+                    data-filter-group="distance"
+                    data-filter-id="<%= chip.id %>"<% if (chip.active) { %>
+                    aria-current="true"<% } %>
+                  ><%= chip.label %></a>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+          <div class="filter-group" role="group" aria-labelledby="filter-climb-label">
+            <span class="filter-label" id="filter-climb-label">Climb</span>
+            <ul class="chip-list">
+              <% climbChips.forEach((chip) => { %>
+                <li>
+                  <a
+                    class="chip"
+                    href="<%= chip.href %>"
+                    data-filter-group="climb"
+                    data-filter-id="<%= chip.id %>"<% if (chip.active) { %>
+                    aria-current="true"<% } %>
+                  ><%= chip.label %></a>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+        </div>
+
+        <p class="result-count" data-result-count aria-live="polite">
+          Showing <%= matchedCount %> of <%= totals.count %> routes
+        </p>
+
+        <ul class="route-grid" data-route-grid>
+          <% cards.forEach((card) => { %>
+            <li
+              class="route-card"
+              data-distance="<%= card.distanceBucket %>"
+              data-climb="<%= card.climbBucket %>"<% if (!card.matched) { %>
+              hidden<% } %>
+            >
+              <article class="route-card-inner">
+                <a class="card-spark-wrap" href="<%= card.href %>" tabindex="-1" aria-hidden="true">
+                  <svg
+                    class="card-spark"
+                    viewBox="0 0 <%= card.sparkline.width %> <%= card.sparkline.height %>"
+                    preserveAspectRatio="none"
+                    focusable="false"
+                  >
+                    <path class="spark-area" d="<%= card.sparkline.areaPath %>"></path>
+                    <path class="spark-line" d="<%= card.sparkline.linePath %>" vector-effect="non-scaling-stroke"></path>
+                  </svg>
+                </a>
+                <div class="card-body">
+                  <h3 class="card-name"><a href="<%= card.href %>"><%= card.name %></a></h3>
+                  <%- include('partials/stat-row', {
+                    distanceLabel: card.distanceLabel,
+                    climbLabel: card.climbLabel,
+                    surface: card.surface,
+                    difficulty: card.difficulty,
+                  }) %>
+                  <p class="card-start">Starts at <%= card.startPoint %></p>
+                  <p class="card-description"><%= card.description %></p>
+                  <div class="card-actions">
+                    <a class="card-link" href="<%= card.href %>">Route &amp; profile<span aria-hidden="true"> →</span></a>
+                    <a class="card-gpx" href="<%= card.gpxHref %>" download>GPX<span class="visually-hidden"> for <%= card.name %></span></a>
+                  </div>
+                </div>
+              </article>
+            </li>
+          <% }) %>
+        </ul>
+
+        <div class="empty-state" data-empty-state<% if (matchedCount > 0) { %> hidden<% } %>>
+          <p class="empty-title">No routes match those filters.</p>
+          <p>
+            The book is short but growing. Widen a filter, or ask the
+            <%= site.librarian.role.toLowerCase() %> for a suggestion at
+            <a href="mailto:<%= site.librarian.email %>"><%= site.librarian.email %></a>.
+          </p>
+          <a class="chip chip-reset" href="/" data-filter-reset>Show all routes</a>
+        </div>
+      </section>
+
+      <section class="club" id="club" aria-labelledby="club-title">
+        <div class="club-inner">
+          <figure class="club-photo">
+            <img
+              src="/images/fell-runners.jpg"
+              alt="A runner following a narrow stony path across a steep green fellside under a blue sky"
+              width="1600"
+              height="2133"
+              loading="lazy"
+            />
+          </figure>
+          <div class="club-text">
+            <p class="eyebrow">The club</p>
+            <h2 id="club-title">Run one with us</h2>
+            <p class="club-about"><%= site.about %></p>
+            <div class="club-meet">
+              <h3>Where we meet</h3>
+              <p class="meet-point"><strong><%= site.meetPoint.name %></strong> — <%= site.meetPoint.detail %></p>
+              <ul class="club-nights">
+                <% site.clubNights.forEach((night) => { %>
+                  <li>
+                    <span class="night-day mono"><%= night.day %> <%= night.time %></span>
+                    <span class="night-detail"><%= night.detail %></span>
+                  </li>
+                <% }) %>
+              </ul>
+            </div>
+            <p class="club-contact">
+              <a class="button button-secondary" href="mailto:<%= site.librarian.email %>">
+                Email <%= site.librarian.name %>, <%= site.librarian.role.toLowerCase() %>
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq" id="faq" aria-labelledby="faq-title">
+        <div class="faq-head">
+          <p class="eyebrow">Before you ask</p>
+          <h2 id="faq-title">Questions from the clubhouse</h2>
+        </div>
+        <div class="faq-list">
+          <% site.faqs.forEach((faq, index) => { %>
+            <details<% if (index === 0) { %> open<% } %>>
+              <summary><%= faq.question %></summary>
+              <p><%= faq.answer %></p>
+            </details>
+          <% }) %>
+        </div>
+      </section>
+
+<%- include('partials/bottom') %>

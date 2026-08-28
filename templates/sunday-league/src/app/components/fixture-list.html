@@ -1,0 +1,63 @@
+<section class="panel" aria-labelledby="fixtures-heading">
+  <div class="panel-head">
+    <p class="eyebrow">Season {{ season.label }}</p>
+    <h2 class="panel-title" id="fixtures-heading">Results &amp; fixtures</h2>
+    <p class="panel-meta">Every {{ club.shortName }} match, straight from the season file.</p>
+  </div>
+
+  <h3 class="group-title">Latest results</h3>
+  @if (played().length > 0) {
+    <ol class="fixture-rows">
+      @for (fixture of played(); track fixture.matchday) {
+        <li class="fixture-row">
+          <p class="fixture-when">
+            <span class="fixture-date">{{ fixture.kickoff | date: 'EEE d MMM' }}</span>
+            <span class="fixture-tag">{{ fixture.homeAway === 'home' ? 'Home' : 'Away' }}</span>
+          </p>
+          <div class="fixture-main">
+            <p class="fixture-line">{{ matchLine(fixture) }}</p>
+            <p class="fixture-venue">{{ fixture.venue }}</p>
+          </div>
+          @if (fixture.result; as result) {
+            <span [class]="chipClass(result)">
+              <span class="visually-hidden">{{ outcomeWord(result) }}</span>
+              <span aria-hidden="true">{{ outcomeWord(result).charAt(0) }}</span>
+              {{ result.goalsFor }}–{{ result.goalsAgainst }}
+            </span>
+          } @else {
+            <span class="result-chip is-pending">Result to follow</span>
+          }
+        </li>
+      }
+    </ol>
+  } @else {
+    <p class="group-empty">No results yet — the season starts with the match pinned above.</p>
+  }
+
+  <h3 class="group-title">Coming up</h3>
+  @if (later().length > 0) {
+    <ol class="fixture-rows">
+      @for (fixture of later(); track fixture.matchday) {
+        <li class="fixture-row">
+          <p class="fixture-when">
+            <span class="fixture-date">{{ fixture.kickoff | date: 'EEE d MMM' }}</span>
+            <span class="fixture-tag">{{ fixture.homeAway === 'home' ? 'Home' : 'Away' }}</span>
+          </p>
+          <div class="fixture-main">
+            <p class="fixture-line">{{ matchLine(fixture) }}</p>
+            <p class="fixture-venue">{{ fixture.venue }}</p>
+          </div>
+          <span class="fixture-time">{{ fixture.kickoff | date: 'HH:mm' }}</span>
+        </li>
+      }
+    </ol>
+    <p class="group-note">Plus the next match, pinned at the top of the board.</p>
+  } @else if (seasonComplete()) {
+    <p class="group-empty">Season complete — next season's fixtures soon.</p>
+  } @else {
+    <p class="group-empty">
+      Nothing booked after the pinned match — new fixtures land here once the league confirms
+      them.
+    </p>
+  }
+</section>

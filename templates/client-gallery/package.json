@@ -1,0 +1,36 @@
+{
+  "name": "client-gallery",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Private wedding photo delivery gallery where clients star favourites and export the list for their photographer.",
+  "scripts": {
+    "dev": "gatsby develop",
+    "build": "tsc --noEmit && gatsby build",
+    "lint": "eslint .",
+    "preview": "gatsby serve"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "gatsby",
+    "react",
+    "typescript",
+    "photography",
+    "client-gallery",
+    "wedding"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "gatsby": "^5.16.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react": "^7.37.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.68.0"
+  }
+}

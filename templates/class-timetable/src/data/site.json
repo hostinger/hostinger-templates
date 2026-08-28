@@ -1,0 +1,49 @@
+{
+  "name": "The Willow Room",
+  "tagline": "A quiet studio for yoga and mat pilates",
+  "city": "Portland, Oregon",
+  "address": "18 Alder Lane, Portland, OR 97209",
+  "phoneDisplay": "(503) 555-0164",
+  "phoneHref": "tel:+15035550164",
+  "email": "hello@willowroom.example",
+  "bookingUrl": "https://bookings.example.com/the-willow-room",
+  "intro": "One bright room, fourteen mats, and the same gentle rhythm every week. This page is our timetable exactly as we teach it — find the next class, roll out your mat, and breathe.",
+  "scheduleNote": "The week repeats — same classes, same times, every week. Times are shown in your device's local time.",
+  "studioNotes": [
+    "Doors open fifteen minutes before each class.",
+    "Mats, blocks, straps, and blankets are all provided.",
+    "The room holds fourteen mats, so classes stay small and unhurried.",
+    "Street parking on Alder Lane is free after 6 PM; the streetcar stops one block away."
+  ],
+  "navigation": [
+    { "label": "Timetable", "href": "/#timetable" },
+    { "label": "The studio", "href": "/#studio" },
+    { "label": "FAQ", "href": "/#faq" }
+  ],
+  "socials": [
+    { "label": "Instagram", "href": "https://www.instagram.com/willowroom.example/" },
+    { "label": "Spotify playlists", "href": "https://open.spotify.com/user/willowroom.example" }
+  ],
+  "faqs": [
+    {
+      "question": "Do I need to book, or can I just turn up?",
+      "answer": "Booking through our scheduler (or a quick call) guarantees your mat. Drop-ins are always welcome too — the room holds fourteen mats, and if one is free when you arrive, it is yours."
+    },
+    {
+      "question": "I have never done yoga or pilates. Where should I start?",
+      "answer": "Any class marked Gentle. Hatha Foundations on Tuesday morning is taught slowly enough to learn the names of things, and Slow Flow on Thursday is a kind second step. Tell the teacher you are new and they will look after you."
+    },
+    {
+      "question": "What should I bring?",
+      "answer": "Just yourself and some water. Mats, blocks, straps, and blankets are provided, and there is a shelf for shoes and coats by the door. Arrive ten minutes early so you can settle in without rushing."
+    },
+    {
+      "question": "How much does a class cost?",
+      "answer": "A single class is $18, a five-class pass is $80, and your first week is $25 for as many classes as you like. Pay at the studio by card or cash, or through the booking link if you reserve online."
+    },
+    {
+      "question": "Is the timetable the same every week?",
+      "answer": "Yes — this page is our whole schedule, and it repeats weekly. On holidays or teacher retreats we post changes on Instagram and email everyone who has booked, so there are no surprises at the door."
+    }
+  ]
+}

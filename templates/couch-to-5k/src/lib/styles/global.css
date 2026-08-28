@@ -1,0 +1,214 @@
+/*
+ * Sunrise Strides — global foundation.
+ * Design tokens, base element styles, and small shared utilities live here;
+ * section-specific rules live in each component's scoped <style>.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
+
+:root {
+	/* Palette — energetic coral, deep navy, warm off-white */
+	--color-ink: #101d3a;
+	--color-ink-soft: #46536f;
+	--color-navy-800: #16264c;
+	--color-navy-700: #223662;
+	--color-coral: #ff5233;
+	--color-coral-dark: #c33317;
+	--color-coral-tint: #ffe9e1;
+	--color-cream: #faf5ee;
+	--color-card: #fffdf9;
+	--color-line: #e8dfd1;
+	--color-cream-on-dark: rgba(250, 245, 238, 0.75);
+
+	/* Typography */
+	--font-sans: 'Sora', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+	/* Shape and rhythm */
+	--radius-lg: 22px;
+	--radius-md: 14px;
+	--radius-pill: 999px;
+	--container-max: 1120px;
+	--shadow-card: 0 12px 32px rgba(16, 29, 58, 0.08);
+
+	/* Room left for the sticky header when jumping to anchors */
+	--anchor-offset: 108px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-sans);
+	font-size: 1rem;
+	line-height: 1.6;
+	color: var(--color-ink);
+	background: var(--color-cream);
+	-webkit-font-smoothing: antialiased;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dd,
+figure {
+	margin: 0;
+}
+
+ol,
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	color: inherit;
+}
+
+button {
+	font: inherit;
+}
+
+::selection {
+	background: var(--color-coral);
+	color: var(--color-cream);
+}
+
+:focus-visible {
+	outline: 3px solid var(--color-coral);
+	outline-offset: 2px;
+}
+
+[id] {
+	scroll-margin-top: var(--anchor-offset);
+}
+
+.container {
+	width: min(var(--container-max), 100% - 2.5rem);
+	margin-inline: auto;
+}
+
+/* Shared buttons */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.8rem 1.5rem;
+	border: 2px solid transparent;
+	border-radius: var(--radius-pill);
+	font-weight: 700;
+	font-size: 0.95rem;
+	line-height: 1.2;
+	text-decoration: none;
+	cursor: pointer;
+	transition:
+		filter 160ms ease,
+		border-color 160ms ease,
+		transform 160ms ease;
+}
+
+.btn:active {
+	transform: translateY(1px);
+}
+
+.btn-primary {
+	background: var(--color-coral);
+	border-color: var(--color-coral);
+	color: var(--color-ink);
+}
+
+.btn-primary:hover {
+	filter: brightness(0.94);
+}
+
+.btn-ghost {
+	background: transparent;
+	border-color: rgba(16, 29, 58, 0.3);
+	color: var(--color-ink);
+}
+
+.btn-ghost:hover {
+	border-color: var(--color-ink);
+}
+
+.btn-on-dark {
+	background: transparent;
+	border-color: rgba(250, 245, 238, 0.45);
+	color: var(--color-cream);
+}
+
+.btn-on-dark:hover {
+	border-color: var(--color-cream);
+}
+
+.btn-small {
+	padding: 0.5rem 1.05rem;
+	font-size: 0.85rem;
+}
+
+/* Shared text helpers */
+.eyebrow {
+	margin: 0;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: var(--color-coral-dark);
+}
+
+.eyebrow.on-dark {
+	color: #ff8a70;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.skip-link {
+	position: absolute;
+	top: 0.75rem;
+	left: 0.75rem;
+	z-index: 100;
+	padding: 0.6rem 1rem;
+	border-radius: var(--radius-pill);
+	background: var(--color-coral);
+	color: var(--color-ink);
+	font-weight: 700;
+	text-decoration: none;
+	transform: translateY(-300%);
+}
+
+.skip-link:focus-visible {
+	transform: none;
+}

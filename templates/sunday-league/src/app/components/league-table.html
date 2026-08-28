@@ -1,0 +1,65 @@
+<section class="panel" aria-labelledby="league-table-heading">
+  <div class="panel-head">
+    <p class="eyebrow">{{ club.league }}</p>
+    <h2 class="panel-title" id="league-table-heading">{{ club.division }} table</h2>
+    <p class="panel-meta">Season {{ season.label }} · updated {{ season.updated | date: 'd MMMM' }}</p>
+  </div>
+
+  <div class="table-scroll" role="region" aria-labelledby="league-table-heading" tabindex="0">
+    <table class="league-table">
+      <caption class="visually-hidden">
+        {{ club.division }} standings, updated {{ season.updated | date: 'd MMMM y' }}. Columns:
+        position, club, played, won, drawn, lost, goals for, goals against, goal difference,
+        points.
+      </caption>
+      <thead>
+        <tr>
+          <th class="col-pos" scope="col">
+            <span aria-hidden="true">#</span>
+            <span class="visually-hidden">Position</span>
+          </th>
+          <th class="col-team" scope="col">Club</th>
+          <th class="col-num" scope="col"><abbr title="Played">P</abbr></th>
+          <th class="col-num" scope="col"><abbr title="Won">W</abbr></th>
+          <th class="col-num" scope="col"><abbr title="Drawn">D</abbr></th>
+          <th class="col-num" scope="col"><abbr title="Lost">L</abbr></th>
+          <th class="col-num" scope="col"><abbr title="Goals for">GF</abbr></th>
+          <th class="col-num" scope="col"><abbr title="Goals against">GA</abbr></th>
+          <th class="col-num" scope="col"><abbr title="Goal difference">GD</abbr></th>
+          <th class="col-pts" scope="col"><abbr title="Points">Pts</abbr></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (team of teams; track team.name; let position = $index) {
+          <tr [class.is-club]="isClub(team)">
+            <td class="col-pos">
+              <span class="pos-badge" [class.is-top]="position === 0">{{ position + 1 }}</span>
+            </td>
+            <th class="col-team" scope="row">
+              <span class="team-cell">
+                <img class="team-crest" [src]="team.crest" alt="" width="24" height="27" />
+                <span class="team-name">{{ team.name }}</span>
+                @if (isClub(team)) {
+                  <span class="visually-hidden">(this club)</span>
+                }
+              </span>
+            </th>
+            <td class="col-num">{{ team.played }}</td>
+            <td class="col-num">{{ team.won }}</td>
+            <td class="col-num">{{ team.drawn }}</td>
+            <td class="col-num">{{ team.lost }}</td>
+            <td class="col-num">{{ team.goalsFor }}</td>
+            <td class="col-num">{{ team.goalsAgainst }}</td>
+            <td class="col-num">{{ goalDifferenceLabel(team) }}</td>
+            <td class="col-pts">{{ team.points }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <p class="table-legend">
+    P played · W won · D drawn · L lost · GF goals for · GA goals against · GD goal difference ·
+    Pts points. Rows render in the order of the season file — keep it sorted.
+  </p>
+</section>

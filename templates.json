@@ -815,6 +815,1068 @@
         "chef's table",
         "astro template"
       ]
+    },
+    {
+      "id": "class-timetable",
+      "name": "Class Timetable",
+      "summary": "Weekly yoga and pilates timetable that highlights the next class with a live countdown and hands booking to your scheduling link.",
+      "description": "Class Timetable is a single-page website for a yoga or pilates studio whose schedule repeats every week. Most studios run the same gentle rhythm — sunrise flows, lunch-hour sessions, candlelit evenings — yet publish it as a stale PDF or a screenshot on Instagram. This template treats the timetable itself as the product: the page opens with \"Next class starts in\" and a countdown ticking to the second, followed by the whole week laid out as one airy grid.\n\nThe next upcoming class is computed in the visitor's browser from recurring weekday-and-time rows, so it is correct at any moment with no hardcoded dates: after today's last class it rolls to tomorrow morning, and it looks ahead across the week when a day is empty. The highlighted card glows softly and carries a floating \"next\" pill with its own compact countdown, today's column is flagged, and a class that is currently running shows a pulsing \"in session\" chip with its end time. Booking is an honest handoff rather than a fake backend — when a scheduling link is set in the site data, the header button, the main call to action, and every one of the twelve class rows open it; when it is empty, the same buttons gracefully fall back to call and email links built from the contact details shown on the page. A five-question FAQ with FAQPage JSON-LD answers the things people ask at the door.\n\nEverything an owner edits lives in two committed JSON files: src/data/site.json for the studio name, address, phone, email, bookingUrl, socials, notes, and FAQ copy, and src/data/timetable.json for the classes — name, weekday, start time, duration, level, optional instructor, and a one-line focus. The schedule math sits in small typed utility modules, the design is a calm dawn-practice palette of sage, warm sand, and one terracotta accent set in Albert Sans with Lora italic accents, and the layout holds from a 1440px desktop grid down to stacked day groups at 320px, with reduced-motion support throughout. Astro ships it as fully static HTML with a single tiny script for the countdown.",
+      "bucket": "Non-technical",
+      "category": "Health and movement",
+      "whoItsFor": "A yoga or pilates studio",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "health-and-movement",
+          "fitness-studio",
+          "local-business"
+        ],
+        "useCases": [
+          "publish-a-weekly-class-timetable",
+          "next-class-countdown",
+          "booking-handoff-to-a-scheduler"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "live-next-class-countdown",
+          "name": "Live next-class countdown",
+          "description": "The banner counts down to the next class in days, hours, minutes, and seconds, computed client-side from recurring weekday and time rows — it rolls past today's last class and looks ahead across the week at any moment."
+        },
+        {
+          "id": "glowing-next-class-highlight",
+          "name": "Glowing next-class highlight",
+          "description": "The upcoming class card glows in the weekly grid with a floating \"next\" countdown pill, today's column is flagged, and a running class shows a pulsing \"in session\" chip with its end time."
+        },
+        {
+          "id": "booking-handoff",
+          "name": "Booking handoff with graceful fallback",
+          "description": "Every class row and call to action opens the owner's scheduling link when bookingUrl is set in site.json, and falls back to tel: and mailto: links built from the displayed contact details when it is empty."
+        },
+        {
+          "id": "weekly-grid",
+          "name": "Weekly grid, one page",
+          "description": "Twelve recurring classes across seven days with start time, duration, level chips (Gentle / All levels / Strong), optional instructor, and a one-line focus — day columns on desktop, stacked day groups on mobile."
+        },
+        {
+          "id": "faq-with-json-ld",
+          "name": "FAQ with structured data",
+          "description": "A five-question accordion sourced from site.json and emitted as FAQPage JSON-LD for search engines."
+        },
+        {
+          "id": "json-content-editing",
+          "name": "Two-file content editing",
+          "description": "Owners personalize the whole site from src/data/site.json and src/data/timetable.json; typed utility modules keep the schedule math and formatting out of the content."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/class-timetable/preview/class-timetable-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/class-timetable/preview/class-timetable-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/class-timetable/preview/class-timetable-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/class-timetable/preview/class-timetable-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3251
+        }
+      },
+      "searchTerms": [
+        "yoga studio website",
+        "pilates class schedule",
+        "weekly timetable",
+        "next class countdown",
+        "fitness class grid",
+        "booking link handoff",
+        "small studio site",
+        "astro template"
+      ]
+    },
+    {
+      "id": "quiet-practice",
+      "name": "Quiet Practice",
+      "summary": "A calm counselling site whose gentle four-question self-check routes visitors to the matching service page — individual, couples, or teen counselling — every page static and shareable.",
+      "description": "Quiet Practice is a multi-page website for a solo therapist or counsellor whose real problem is not looking pretty online — it is that prospective clients arrive anxious, skim a wall of text, and leave without knowing which service was meant for them. Instead of a long about page, the site leads with a gentle \"is this right for me?\" check: four small questions, one at a time in large serif type, that end by landing the visitor on the service page that fits what they described. The result is a real, shareable URL — not a generic contact form — and the check is honestly framed as a signpost, not a clinical assessment, with a disclaimer and an email fallback for people nothing quite fits.\n\nThe seed content ships three services — individual therapy, couples counselling, and teen counselling — each with its own statically generated page: an \"it might fit if\" list, how sessions would work, what the first session is like, and a sticky session-details card with length, fee, rhythm, format, and the booking action. Routing is a small typed utility: every answer adds weighted points to one or more services, the highest total wins, and ties resolve to whichever service led earliest — so \"who would the sessions be for?\" carries the most signal but consistent later answers can override it. Every service page also appears in normal navigation (homepage index rows, footer, cross-links), loads directly at its own URL, and a noscript note points no-JavaScript visitors to the plain service list. The homepage rounds out with a three-step \"how it starts\" strip, a four-question FAQ with FAQPage JSON-LD, and a dusk-dark contact panel whose primary action is the configured booking link or a warm click-to-call fallback, with tel: and mailto: links always built from the same contact details shown on screen.\n\nEverything a practice owner edits lives in three JSON files — site.json for names, credentials, phone, email, bookingUrl, hours, FAQs, and every section heading; services.json for the services, fees, and per-service accent tones; self-check.json for the questions and their routing weights — with scoring, contact-link, and currency-formatting logic kept in typed utilities. The design is a committed dusk-calm system: muted dusk blue, soft lavender, and warm grey on near-white paper, Source Serif 4 headings with IBM Plex Sans body, original abstract ripple SVG artwork instead of stock photography, and generous unhurried whitespace. Technically it is Nuxt 4 with Vue 3 and strict TypeScript, generated to fully static HTML (no server runtime) with all routes prerendered, ESLint flat config, vue-tsc type-checking in the build, reduced-motion support, visible focus states, semantic landmarks, and layouts verified down to 320 px wide.",
+      "bucket": "Non-technical",
+      "category": "Health and movement",
+      "whoItsFor": "A therapist or counsellor",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "health-and-wellness",
+          "professional-services",
+          "small-business"
+        ],
+        "useCases": [
+          "therapist-practice-website",
+          "guided-service-matching",
+          "counselling-service-pages",
+          "booking-handoff",
+          "faq-with-structured-data"
+        ],
+        "frameworks": [
+          "nuxt",
+          "vue"
+        ]
+      },
+      "features": [
+        {
+          "id": "self-check-router",
+          "name": "Four-question self-check that routes to a service",
+          "description": "One gentle question at a time with progress dots and a back button; completing the check computes a weighted score and lands the visitor on the matching service page at a real, shareable URL."
+        },
+        {
+          "id": "weighted-scoring-logic",
+          "name": "Transparent weighted routing logic",
+          "description": "Each answer adds points to one or more services in a typed utility; the highest total wins and ties resolve to the service that led earliest, so the \"who is it for?\" question carries the most signal but consistent answers can override it."
+        },
+        {
+          "id": "static-service-pages",
+          "name": "Statically generated service pages",
+          "description": "Each service in services.json gets its own prerendered page — fit signals, approach, first-session notes, and a sticky session-details card — reachable by direct URL, homepage index, footer, and cross-links."
+        },
+        {
+          "id": "honest-booking-handoff",
+          "name": "Honest booking handoff",
+          "description": "The primary call-to-action links to bookingUrl when configured and falls back to warm click-to-call when not; tel: and mailto: links are always built from the same contact details displayed on screen."
+        },
+        {
+          "id": "faq-json-ld",
+          "name": "FAQ with FAQPage JSON-LD",
+          "description": "Four data-driven questions render as an accessible accordion and emit FAQPage structured data in the head, alongside a self-check disclaimer and a crisis-line note in the footer."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/quiet-practice/preview/quiet-practice-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quiet-practice/preview/quiet-practice-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/quiet-practice/preview/quiet-practice-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quiet-practice/preview/quiet-practice-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 4538
+        }
+      },
+      "searchTerms": [
+        "therapist website",
+        "counselling practice",
+        "psychotherapy",
+        "mental health services",
+        "intake quiz",
+        "service finder",
+        "self-assessment",
+        "private practice",
+        "nuxt",
+        "vue",
+        "static site"
+      ]
+    },
+    {
+      "id": "couch-to-5k",
+      "name": "Couch to 5K",
+      "summary": "A nine-week running plan visitors tick off session by session, with progress saved on their own phone.",
+      "description": "Couch to 5K is a single-page training-plan site for a running coach whose beginner clients keep losing the printed handout. The classic nine-week walk-run progression — twenty-seven sessions of roughly half an hour — lives on one fast page the runner keeps open on their phone. Every session card carries a coach-style title, exact interval instructions such as \"Run 1 min / walk 90 sec — repeat × 8\", and an approximate duration, and every week comes with a short note in the coach's voice.\n\nThe page is built around progress the runner can feel. Ticking a session saves it to localStorage on the device — no account, no sync, nothing uploaded — and the ticks survive reloads and revisits. Per-week counters, segment bars, a sticky header with week chips 1–9, an aria-live \"12 of 27 sessions done\" counter, and a slim progress strip all update the moment a box is ticked, and an original SVG trail map in the hero fills in coral from START toward the 5K finish flag as weeks are completed in order. A reset control with an explicit confirm step clears the device, mailto and tel actions route enquiries straight to the coach, and a five-question FAQ ships with FAQPage JSON-LD. Because the site is fully prerendered, it even renders sensibly with JavaScript disabled — checkboxes still tick natively, they simply don't persist.\n\nPersonalization is two JSON files: src/lib/data/site.json holds the coach, contact, and FAQ copy, and src/lib/data/plan.json holds all nine weeks, so a coach can rewrite the whole programme without touching a component. The localStorage store, session-id scheme, and progress wording live in small typed modules, styling is hand-written CSS driven by coral/navy/off-white design tokens with the Sora typeface, and the build is SvelteKit 2 with Svelte 5 runes and adapter-static producing a fully static build/ directory that passes ESLint and svelte-check and stays overflow-free down to 320 px.",
+      "bucket": "Non-technical",
+      "category": "Health and movement",
+      "whoItsFor": "A running coach",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "health-and-fitness",
+          "coaching",
+          "training-plan",
+          "sports"
+        ],
+        "useCases": [
+          "publish a couch-to-5k programme clients follow on their phones",
+          "let runners track completed workouts without an account",
+          "collect coaching enquiries by email or phone",
+          "answer beginner running questions with a structured faq"
+        ],
+        "frameworks": [
+          "sveltekit",
+          "svelte"
+        ]
+      },
+      "features": [
+        {
+          "id": "tickable-nine-week-plan",
+          "name": "Tickable nine-week plan",
+          "description": "All 27 sessions on one page as anchored week sections, each card with interval instructions, an approximate duration, and a real checkbox."
+        },
+        {
+          "id": "on-device-progress",
+          "name": "On-device progress",
+          "description": "Ticks persist in localStorage on the visitor's own device and survive reloads — no account, no sync, and invalid stored data is ignored safely."
+        },
+        {
+          "id": "live-progress-indicators",
+          "name": "Live progress indicators",
+          "description": "Per-week counters and segment bars, sticky week chips, a header progress strip, and an aria-live overall counter all update as sessions are ticked."
+        },
+        {
+          "id": "svg-trail-map",
+          "name": "SVG trail map",
+          "description": "An original START-to-5K trail with nine milestone markers that deep-link to weeks, fill when a week is complete, and pull a coral progress line along the route."
+        },
+        {
+          "id": "reset-with-confirm",
+          "name": "Reset with confirm step",
+          "description": "An explicit reset-progress control asks \"Clear all 27 ticks saved on this device?\" before wiping, with a cancel option and a status announcement."
+        },
+        {
+          "id": "coach-contact-actions",
+          "name": "Coach contact actions",
+          "description": "Train-with-me mailto and click-to-call links built from the same contact details shown on screen, plus group-run details and a coach bio."
+        },
+        {
+          "id": "faq-with-json-ld",
+          "name": "FAQ with structured data",
+          "description": "Five beginner questions rendered as accessible details/summary items and emitted as FAQPage JSON-LD in the document head."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/couch-to-5k/preview/couch-to-5k-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/couch-to-5k/preview/couch-to-5k-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/couch-to-5k/preview/couch-to-5k-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/couch-to-5k/preview/couch-to-5k-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 6418
+        }
+      },
+      "searchTerms": [
+        "couch to 5k plan",
+        "running coach website",
+        "beginner running programme",
+        "workout tracker",
+        "training plan checklist",
+        "localstorage progress",
+        "walk run intervals",
+        "5k training",
+        "sveltekit static site"
+      ]
+    },
+    {
+      "id": "movement-library",
+      "name": "Movement Library",
+      "summary": "A physio exercise library where patients filter movements by body part, build a small home plan, and print it as a clean take-home card.",
+      "description": "Movement Library is a single-page website for a physiotherapy or physical-therapy practice that wants every patient to leave with a clear, repeatable home plan. Between appointments patients forget doses, lose handout sheets, and give up hunting through video links; this template puts the clinic's ten most-prescribed movements on one page, each written exactly the way it is coached in the treatment room — body-part tags, sets and reps or hold times, two-to-three numbered steps, and an honest caution note. No video hosting, patient accounts, or booking system is required, and a visible note states plainly that the library is general guidance, not a personalised prescription.\n\nThe patient journey is deliberately small: filter, add, print. Anatomical-tag filter chips for Neck, Shoulder, Back, Hip, Knee, and Ankle carry live exercise counts and update a \"Showing X of 10 movements\" status line. Every movement is a chart-style card pairing an original line-figure illustration with a kinesiology-tape dosage strip, numbered coaching steps, and a highlighted \"Take care\" warning. Add-to-plan buttons fill a plan tray that docks to the bottom of the viewport once it holds movements, with per-item remove, clear, and print actions — and the plan persists in localStorage, so it survives reloads and return visits. The centerpiece is the print flow: a dedicated print stylesheet hides the entire app and outputs only a clean black-and-white patient card with the practice name and date, a write-in \"Prepared for\" line, each movement's figure, dose, steps, and caution, Mon–Sun adherence tick boxes, and the practice contact line with the guidance disclaimer.\n\nEverything a practice needs to change lives in two committed JSON files: src/data/site.json holds the practice name, physiotherapist, phone, email, address, hero copy, disclaimer, tray and print-card labels, and five FAQs (rendered as an accessible accordion with FAQPage JSON-LD), while src/data/exercises.json holds the movements themselves — edit a dose or add an exercise and the filters, counts, tray, and printed card all follow. Call and email actions are real tel: and mailto: links built from the same displayed data. The design is an original warm clinic-chart direction — paper white, ink navy, and kinesiology-tape green with Zilla Slab and Figtree type, chart-paper grid textures, and ten hand-drawn SVG stick figures sharing one visual grammar. Built with React 19, TypeScript, and Vite as a fully static SPA, it lints and type-checks clean, keeps controls keyboard-accessible with aria-pressed states, visible focus rings, and polite live regions, and stays free of horizontal overflow down to 320px-wide screens.",
+      "bucket": "Non-technical",
+      "category": "Health and movement",
+      "whoItsFor": "A physiotherapist",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "health-and-movement",
+          "healthcare",
+          "local-business"
+        ],
+        "useCases": [
+          "share-a-clinic-exercise-library",
+          "build-and-print-home-exercise-plans",
+          "support-patients-between-sessions"
+        ],
+        "frameworks": [
+          "react",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "body-part-filter",
+          "name": "Body-part filter chips",
+          "description": "Anatomical-tag chips for Neck, Shoulder, Back, Hip, Knee, and Ankle with live exercise counts and a screen-reader-announced 'Showing X of 10 movements' status."
+        },
+        {
+          "id": "persistent-plan-tray",
+          "name": "Persistent plan tray",
+          "description": "Add-to-plan buttons fill a tray that docks to the bottom of the screen, with per-item remove and clear actions; the plan is saved in localStorage and survives reloads and return visits."
+        },
+        {
+          "id": "printable-patient-card",
+          "name": "Printable patient card",
+          "description": "A print stylesheet hides the app and outputs only a black-and-white take-home card: practice name and date, a write-in patient line, each movement's figure, dose, steps and caution, and Mon–Sun tick boxes."
+        },
+        {
+          "id": "line-figure-illustrations",
+          "name": "Original line-figure illustrations",
+          "description": "Ten hand-drawn SVG stick figures — one per movement — share a consistent visual grammar of ink strokes, faded props, and green motion arrows, and print cleanly in black and white."
+        },
+        {
+          "id": "faq-json-ld",
+          "name": "FAQ with structured data",
+          "description": "Five patient FAQs sourced from site data render as an accessible accordion with FAQPage JSON-LD injected for search engines."
+        },
+        {
+          "id": "honest-contact-actions",
+          "name": "Honest contact actions",
+          "description": "Click-to-call and click-to-email links are built from the same practice details shown on screen, alongside a visible 'general guidance, not a personalised prescription' note — no fake backend."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/movement-library/preview/movement-library-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/movement-library/preview/movement-library-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/movement-library/preview/movement-library-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/movement-library/preview/movement-library-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 4630
+        }
+      },
+      "searchTerms": [
+        "physiotherapy exercise library",
+        "home exercise program",
+        "printable exercise plan",
+        "physical therapy clinic",
+        "rehab exercises",
+        "patient handout",
+        "exercise prescription",
+        "stretching plan",
+        "react template"
+      ]
+    },
+    {
+      "id": "client-gallery",
+      "name": "Client Gallery",
+      "summary": "Private wedding photo delivery gallery where clients star favourites and export the list for their photographer.",
+      "description": "Client Gallery is the delivery page a wedding or event photographer sends when the final selection is ready. Handing over finished photographs is easy; getting a useful answer back is not — the edit conversation usually stalls on \"which ones do you want printed, retouched, or in the album?\". This template turns that question into the page itself: a private, single-page gallery where the couple simply stars what they love, and the reply writes itself.\n\nThe album opens on a print-room masthead — the couple's names in Libre Caslon serif, the event date, venue, photograph count, and a quiet \"Photographed by\" credit — then flows into a charcoal masonry wall of twelve matted frames, each with a proof-sheet number, a caption, and its exact filename. Every frame carries a real star button with aria-pressed state; favourites persist per device in localStorage keyed by the album id, so choosing can span several evenings. A sticky tray keeps the running count visible (\"7 of 12 favourited\") and holds the two actions that matter: clear, and export. Export builds a CSV of the starred photographs — number, filename, caption, in album order — as a client-side Blob download the couple attaches to their reply. A four-question FAQ covering how favourites work, how to send the list back, and usage rights ships with FAQPage JSON-LD.\n\nEvery word and photograph on the page lives in one committed JSON file, src/data/album.json — swap the names, date, venue, credit line, captions, FAQ answers, and the twelve files in static/images/, and the gallery is yours. Design tokens (charcoal surfaces, ivory type, a single muted-gold accent, and both Google Fonts) sit at the top of one stylesheet. Under the hood it is a Gatsby 5 static build with React 18 and TypeScript: typed content models, favourites and CSV logic in small typed utilities, an ESLint flat config, semantic keyboard-accessible controls with visible focus states, reduced-motion support, and layouts verified down to a 320px viewport. There is no server, no accounts, and no environment variables — the build output is a folder of static files.",
+      "bucket": "Non-technical",
+      "category": "Creators and shops",
+      "whoItsFor": "A photographer delivering to clients",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "photography",
+          "client-portal",
+          "creative-services"
+        ],
+        "useCases": [
+          "wedding-photo-delivery",
+          "favourite-selection",
+          "client-proofing",
+          "export-favourites-list"
+        ],
+        "frameworks": [
+          "gatsby",
+          "react"
+        ]
+      },
+      "features": [
+        {
+          "id": "per-device-favourites",
+          "name": "Per-device favourites",
+          "description": "Real star buttons with aria-pressed toggle each frame; selections persist in localStorage keyed by the album id and survive reloads, with stale filenames dropped automatically."
+        },
+        {
+          "id": "csv-export",
+          "name": "One-press CSV export",
+          "description": "Downloads a client-side Blob CSV listing each favourited photograph's number, filename, and caption in album order — ready to send back to the photographer."
+        },
+        {
+          "id": "selection-tray",
+          "name": "Sticky selection tray",
+          "description": "A fixed tray shows the live favourite count through a status region, offers a clear action, and keeps export disabled until at least one frame is starred."
+        },
+        {
+          "id": "print-room-grid",
+          "name": "Print-room masonry album",
+          "description": "Twelve matted photographs on a charcoal three-column masonry wall with proof-sheet numbering, captions, exact filenames, and one muted gold accent."
+        },
+        {
+          "id": "single-json-content",
+          "name": "Single JSON album file",
+          "description": "Couple names, date, venue, photographer credit, captions, alt text, and FAQ copy all live in src/data/album.json, typed by src/types/content.ts."
+        },
+        {
+          "id": "faq-structured-data",
+          "name": "Client FAQ with structured data",
+          "description": "Answers on how favourites work, how to send the list back, and image usage rights render as an accordion and emit FAQPage JSON-LD."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/client-gallery/preview/client-gallery-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/client-gallery/preview/client-gallery-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/client-gallery/preview/client-gallery-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/client-gallery/preview/client-gallery-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3567
+        }
+      },
+      "searchTerms": [
+        "wedding photo delivery",
+        "client proofing gallery",
+        "photo selection favourites",
+        "photographer client portal",
+        "export favourites csv",
+        "photo album delivery",
+        "gatsby template"
+      ]
+    },
+    {
+      "id": "podcast-home",
+      "name": "Podcast Home",
+      "summary": "A show site with a real player — chapter markers on a waveform timeline and searchable transcripts — plus a directly loadable static page for every episode.",
+      "description": "Podcast Home is a complete website for an independent podcast whose episodes deserve more than a bare embed. Podcast apps bury the back catalog and can't link to a moment, so when a listener is told \"skip to the bit about tape ninety,\" they scrub blindly. This template gives the show its own home where every episode carries a real player with chapter markers and a transcript the listener can search, turning word-of-mouth recommendations into seconds-long lookups.\n\nThe home page skips the generic hero and opens on the latest episode ready to play: a waveform timeline with chapter pips, play/pause, a scrubbable playhead that also works from the keyboard, and a numbered chapter list — clicking any chapter or pip jumps the audio to that timestamp and starts playback, and the current chapter stays highlighted as the episode runs. Every episode gets its own statically generated page with the same player plus a searchable transcript excerpt that highlights every match, announces the match count, and scrolls the first hit into view; transcripts are server-rendered so they stay readable without JavaScript. Around the player sit an archive of every episode with original SVG cover art and mini waveforms, about and host sections, a five-question FAQ with FAQPage JSON-LD, and mailto contact built from the same studio email shown on screen.\n\nEverything a podcaster edits lives in two obvious places: content/site.json holds the show name, tagline, host bio, email, socials, and FAQ copy, while each episode is one markdown file whose frontmatter (title, number, date, duration, audio path, guest, chapters with start seconds) and dialogue-formatted body drive the whole site — add a file and the archive, routes, and navigation follow. Five short spoken demo clips ship in public/audio so the player, chapters, and timestamps work out of the box until real recordings replace them. The design is a bold audio-first identity — near-black base, rich violet, one acid-lime accent, Bricolage Grotesque display type with Schibsted Grotesk body — implemented as design tokens atop one global stylesheet with CSS Modules per component. Built with Next.js (App Router) and TypeScript using output: 'export', it ships a fully static out/ directory where every episode route loads directly on any static host, lints and type-checks clean, supports reduced motion and visible focus states, and stays responsive down to 320px-wide screens.",
+      "bucket": "Non-technical",
+      "category": "Creators and shops",
+      "whoItsFor": "An independent podcast",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "podcast",
+          "audio",
+          "creators",
+          "media"
+        ],
+        "useCases": [
+          "publish-a-podcast-home",
+          "let-listeners-jump-to-a-chapter",
+          "offer-searchable-episode-transcripts"
+        ],
+        "frameworks": [
+          "nextjs",
+          "react"
+        ]
+      },
+      "features": [
+        {
+          "id": "chaptered-audio-player",
+          "name": "Chaptered audio player",
+          "description": "Play/pause, a scrubbable waveform timeline with a moving playhead, and chapter pips plus a chapter list — clicking either jumps the audio to that timestamp and starts playback, with the current chapter highlighted as the episode runs."
+        },
+        {
+          "id": "searchable-transcripts",
+          "name": "Searchable transcripts",
+          "description": "Every episode page carries a speaker-labeled transcript; searching highlights each match, announces the count via a live region, and scrolls the first hit into view. Transcripts are server-rendered and readable without JavaScript."
+        },
+        {
+          "id": "episode-pages-from-markdown",
+          "name": "Episode pages from markdown",
+          "description": "One markdown file per episode (frontmatter for title, number, date, duration, audio, guest, and chapters; body as dialogue) generates a directly loadable static page with newer/older navigation."
+        },
+        {
+          "id": "waveform-identity",
+          "name": "Original waveform identity",
+          "description": "Deterministic SVG waveforms seeded by episode number appear on the player timeline, episode cards, and footer, alongside five original SVG cover-art compositions — no stock photos anywhere."
+        },
+        {
+          "id": "faq-with-json-ld",
+          "name": "FAQ with structured data",
+          "description": "Five listener questions rendered from site config as accessible disclosure widgets, emitted as FAQPage JSON-LD for search engines."
+        },
+        {
+          "id": "demo-audio-included",
+          "name": "Working demo audio",
+          "description": "Five short spoken demo clips ship in public/audio with chapter timestamps that match, so the player is fully functional before the podcaster uploads real episodes."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/podcast-home/preview/podcast-home-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/podcast-home/preview/podcast-home-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/podcast-home/preview/podcast-home-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/podcast-home/preview/podcast-home-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3391
+        }
+      },
+      "searchTerms": [
+        "podcast website",
+        "audio player with chapters",
+        "searchable transcript",
+        "episode pages",
+        "show site",
+        "independent creator",
+        "next.js static export",
+        "react"
+      ]
+    },
+    {
+      "id": "first-chapter",
+      "name": "First Chapter",
+      "summary": "Author site with a built-in reader for the whole first chapter and an honest buy-link handoff — no store to configure.",
+      "description": "First Chapter is for a self-published author who needs one thing on launch day: a place where a stranger can fall into the book. Instead of a brochure page that points at retailers, the site carries the complete first chapter and lets visitors read it in the browser, in a real reader, before deciding to buy. There is no store, no checkout, and no signup to maintain — the site sells nothing itself and says so plainly, handing finished readers to whatever shop already stocks the book.\n\nThe landing view is set like a dust jacket: an original SVG/CSS clothbound cover drawn from the author's own title and imprint, a tagline, the blurb, praise quotes, an author bio with a working mailto link, and a five-question FAQ that also emits FAQPage JSON-LD. One click opens the reader view — a serif column of about 64 characters per line with a drop cap, epigraph, and scene-break ornaments, under a sticky chrome bar with a thin brass progress rule, live percent read, estimated minutes left, and A−/A+ text-size controls. Reading position and text size are saved to localStorage at paragraph level, so a reload — or a return visit days later — reopens the chapter exactly where the reader left off, and the landing hero switches to a \"Continue chapter one\" button with a percent-read chip. The chapter ends in a handoff card: buy the paperback at the configured shop URL, or write to the author.\n\nPersonalizing it is two files: replace src/content/book.md with your own opening chapter (plain Markdown; word count and reading time are recomputed automatically) and edit src/data/site.json for every visible string — title, author, blurb, praise, FAQ, buy URL and button copy, and even the reader chrome labels. The cover art redraws itself from the same data, so there is no cover image to produce. Technically it is a Svelte 5 + TypeScript single-page app built with Vite: Markdown is parsed into the bundle at build time with marked, reader logic lives in small typed modules, and the output is a fully static dist/ that any host can serve. Semantic HTML, keyboard-operable controls with visible focus, reduced-motion support, and layouts verified down to 320px wide are all in place.",
+      "bucket": "Non-technical",
+      "category": "Creators and shops",
+      "whoItsFor": "A self-published author",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "author-website",
+          "book-landing-page",
+          "reading-experience",
+          "personal-site"
+        ],
+        "useCases": [
+          "let readers sample a full first chapter in the browser",
+          "send ready-to-buy readers to an existing bookshop page",
+          "launch a book without setting up a store",
+          "collect reader and book-club enquiries by email"
+        ],
+        "frameworks": [
+          "svelte",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "in-browser-chapter-reader",
+          "name": "In-browser chapter reader",
+          "description": "The complete first chapter renders as a semantic article in a ~64ch serif column with a drop cap, epigraph, and scene-break ornaments, opened in-page at #read without leaving the site."
+        },
+        {
+          "id": "reading-progress-chrome",
+          "name": "Reading progress chrome",
+          "description": "A sticky bar shows a thin brass progress rule, live percent read, and an \"about N min left\" estimate computed from the chapter's real word count."
+        },
+        {
+          "id": "saved-reading-position",
+          "name": "Reading position that survives reload",
+          "description": "Paragraph-level position and progress are saved to localStorage as the visitor scrolls; reloading or revisiting reopens the reader at the same block, and the landing CTA becomes \"Continue chapter one\" with a percent chip."
+        },
+        {
+          "id": "adjustable-text-size",
+          "name": "A− / A+ text size",
+          "description": "Four persisted text-size steps; changing size re-anchors the paragraph being read so the visitor never loses their line."
+        },
+        {
+          "id": "honest-buy-handoff",
+          "name": "Honest buy handoff",
+          "description": "Hero, footer, and end-of-chapter CTAs use the buyUrl and button copy from site.json and state that nothing is sold on the site itself; author contact is a mailto built from the same displayed data."
+        },
+        {
+          "id": "data-driven-cover-and-faq",
+          "name": "Data-driven cover art and FAQ schema",
+          "description": "An original SVG/CSS clothbound cover redraws itself from the title, imprint, and author in site.json, and the FAQ section emits FAQPage JSON-LD from the same entries."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/first-chapter/preview/first-chapter-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/first-chapter/preview/first-chapter-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/first-chapter/preview/first-chapter-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/first-chapter/preview/first-chapter-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3442
+        }
+      },
+      "searchTerms": [
+        "author website",
+        "book landing page",
+        "novel sample chapter",
+        "read chapter one online",
+        "writer site",
+        "book launch",
+        "ebook preview",
+        "svelte",
+        "vite",
+        "typescript"
+      ]
+    },
+    {
+      "id": "drop",
+      "name": "Drop",
+      "summary": "A countdown drop page for vintage one-of-one pieces that flip to a stamped SOLD state and are claimed by email.",
+      "description": "Drop is a single-page shop for sellers whose stock is one of one — vintage jackets, worn-in boots, serviced watches, deadstock frames. Cart-based shop templates assume restocks and live inventory, which is exactly wrong for this kind of selling: each piece exists once, releases happen at an announced time, and the fastest email wins. Drop sells that ritual instead — a release the audience can watch approaching, pieces that visibly die when they are claimed, and rules stated plainly enough that nobody argues about who was first.\n\nThe masthead is a huge JetBrains Mono countdown ticking to the configured drop datetime, over an acid-orange marquee ticker that repeats the drop facts. Below it, eight pieces hang in a brutalist grid with era, size, condition, and price on every card. Before the drop, available pieces carry a \"Drops Fri\" chip and an \"Ask about this piece\" button that opens a pre-filled question email; the moment the datetime passes, the page flips in the browser to a giant LIVE NOW state — chips turn AVAILABLE and buttons become \"Claim by email\" with a CLAIM subject line, no redeploy needed. Sold pieces are unmistakably gone: greyscale photo, rotated SOLD stamp, struck-through price with a GONE flag, and no action at all. A three-step \"How a drop works\" section, an honesty strip explaining that SOLD stamps are updated by hand (no cart, no live stock counter), and a five-question FAQ with FAQPage JSON-LD round out the page.\n\nEverything a seller edits lives in two committed JSON files: src/data/site.json (name, email, city, intro, steps, socials, FAQs) and src/data/drops.json (drop name and number, ISO datetime with timezone, and the eight items with sold flags). Countdown math, the upcoming/live state machine, date formatting, and the mailto builder are small typed modules in src/utils, and design tokens sit at the top of one CSS file. Technically it is React 19 in React Router framework mode with ssr disabled and the route prerendered, so npm run build emits plain static HTML that any static host can serve, hydrated only to run the clock. Semantic markup, a keyboard-accessible native-details FAQ, visible focus states, reduced-motion fallbacks, and layouts verified down to 320px wide come standard.",
+      "bucket": "Non-technical",
+      "category": "Creators and shops",
+      "whoItsFor": "A vintage or one-of-one seller",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "online-shop",
+          "fashion-and-apparel",
+          "vintage-resale"
+        ],
+        "useCases": [
+          "drop-release-countdown",
+          "one-of-one-inventory",
+          "email-claim-enquiries",
+          "sold-piece-tracking"
+        ],
+        "frameworks": [
+          "react-router",
+          "react"
+        ]
+      },
+      "features": [
+        {
+          "id": "live-drop-countdown",
+          "name": "Live drop countdown",
+          "description": "A masthead-sized days : hours : minutes : seconds clock recomputed every second from the drop datetime configured in src/data/drops.json."
+        },
+        {
+          "id": "upcoming-to-live-flip",
+          "name": "Automatic upcoming-to-live flip",
+          "description": "When the configured datetime passes, the page switches in the browser to a LIVE NOW masthead, AVAILABLE chips, claim-mode buttons, and a live ticker — without a redeploy."
+        },
+        {
+          "id": "stamped-sold-states",
+          "name": "Hand-stamped SOLD states",
+          "description": "Pieces flagged sold in the data render with a desaturated photo, a rotated SOLD stamp, a struck-through price with a GONE flag, and no enquiry action."
+        },
+        {
+          "id": "prefilled-email-claims",
+          "name": "Pre-filled email claims",
+          "description": "Every available piece opens a mailto with the piece name, spec, and price filled in; the subject flips from Question to CLAIM once the drop is live, all built from the displayed seller address."
+        },
+        {
+          "id": "faq-with-jsonld",
+          "name": "FAQ with structured data",
+          "description": "Five drop-etiquette questions (holds, shipping, fit, flaws) rendered from site.json as keyboard-accessible accordions with FAQPage JSON-LD."
+        },
+        {
+          "id": "static-prerendered-output",
+          "name": "Static prerendered output",
+          "description": "React Router framework mode with ssr: false and a prerendered index route emits plain HTML in build/client that any static file host can serve."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/drop/preview/drop-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/drop/preview/drop-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/drop/preview/drop-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/drop/preview/drop-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3496
+        }
+      },
+      "searchTerms": [
+        "vintage shop",
+        "drop countdown",
+        "one of one",
+        "limited release",
+        "streetwear drop",
+        "sold out stamps",
+        "email claims",
+        "secondhand seller",
+        "react router"
+      ]
+    },
+    {
+      "id": "will-it-survive",
+      "name": "Will It Survive?",
+      "summary": "Three honest questions about light, watering habits, and pets return the plants that will actually cope — with shareable link results and a tagged eight-plant bench.",
+      "description": "Will It Survive? is a single-page site for a small plant shop that would rather sell one plant that lives than three that die. Most plant pages are aspirational catalogues; this one opens straight into a quiz about the buyer's real habits — how bright the flat honestly is, what their watering track record looks like, and whether anything in the house treats leaves as salad — and answers with the short list of plants the shop genuinely believes will survive there. The tone is the pitch: guidance from care tags, spelled out plainly, never dressed up as a live stock check.\n\nEvery answer is a real radio input inside a fieldset, presented as friendly icon cards, and every change is encoded into the page address (?light=low&care=forgetful&pets=yes) so results can be sent to a partner or flatmate; a shared link restores the same selections and the same verdict on load, and a copy-link button sits under the results. A complete set of answers returns two to four \"survivors\" as adoption-style cards with tag-derived reasoning lines like \"Genuinely copes with low light\" and \"Forgives missed waterings\". Combinations nothing fully fits never dead-end: the nearest plants appear flagged as close calls with the catch spelled out per plant, under a straight-talk note — and households with pets are never shown a non-pet-safe plant, not even as a fallback. Below the quiz, the whole bench is laid out as a tagged catalogue of eight plants with prices, personality one-liners, honest chips (including \"Keep from pets\"), and a \"Reserve one\" button that opens a pre-filled email built from the shop address shown on the page. A five-question FAQ ships with matching FAQPage JSON-LD, and the visit panel carries address and opening hours.\n\nPersonalizing needs no code spelunking: the shop identity, section copy, hours, reserve-email template, and FAQs live in src/data/site.json, the plants in src/data/plants.json, and every quiz label, reasoning line, and tag caption in src/data/quiz.json. The eight potted-plant illustrations are original inline SVGs keyed by plant id, with a fallback sprout so newly added plants render immediately. Under the hood it is Parcel 2 with vanilla TypeScript — no UI framework — with matching, reasoning, and URL-state logic in small pure typed functions, an ESLint flat config, design tokens at the top of one stylesheet, keyboard-operable controls with visible focus states, and layouts verified from 1440px down to a 320px viewport.",
+      "bucket": "Non-technical",
+      "category": "Creators and shops",
+      "whoItsFor": "A plant shop",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "local-business",
+          "retail",
+          "plant-shop"
+        ],
+        "useCases": [
+          "plant-recommendation-quiz",
+          "shareable-quiz-results",
+          "product-catalogue-browsing",
+          "reserve-by-email"
+        ],
+        "frameworks": [
+          "parcel",
+          "typescript"
+        ]
+      },
+      "features": [
+        {
+          "id": "three-question-habit-quiz",
+          "name": "Three-question habit quiz",
+          "description": "Light, watering track record, and pets asked through real fieldsets and radio inputs styled as big friendly icon cards, fully keyboard operable."
+        },
+        {
+          "id": "shareable-url-results",
+          "name": "Shareable URL results",
+          "description": "Answers encode into ?light=low&care=forgetful&pets=yes as they change; a shared link restores the same selections and verdict on load, with a copy-link button under the results."
+        },
+        {
+          "id": "honest-matching-with-fallback",
+          "name": "Honest matching that never dead-ends",
+          "description": "Two to four survivors with tag-derived reasoning lines; zero-match combinations fall back to flagged close calls with each plant's catch spelled out, and pet owners are never shown a non-pet-safe plant."
+        },
+        {
+          "id": "tagged-eight-plant-bench",
+          "name": "Tagged eight-plant bench",
+          "description": "The full catalogue with prices, botanical names, personality one-liners, and honest light, watering, and pet-safety chips — including an unvarnished Keep-from-pets flag."
+        },
+        {
+          "id": "reserve-by-email",
+          "name": "Pre-filled reserve emails",
+          "description": "Every plant card's Reserve one action opens a mailto built from the displayed shop address, pre-filled with the plant and botanical name."
+        },
+        {
+          "id": "original-svg-illustrations",
+          "name": "Original SVG plant illustrations",
+          "description": "Eight bespoke potted-plant drawings in one consistent style, keyed by plant id, with a fallback sprout so plants added to the JSON render immediately."
+        },
+        {
+          "id": "faq-structured-data",
+          "name": "FAQ with structured data",
+          "description": "Five straight-answer questions rendered from site.json with matching FAQPage JSON-LD injected into the head."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/will-it-survive/preview/will-it-survive-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/will-it-survive/preview/will-it-survive-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/will-it-survive/preview/will-it-survive-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/will-it-survive/preview/will-it-survive-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 4029
+        }
+      },
+      "searchTerms": [
+        "plant shop website",
+        "houseplant finder quiz",
+        "plant matchmaker",
+        "low light plants",
+        "pet safe plants",
+        "garden centre",
+        "quiz results in url",
+        "vanilla typescript",
+        "parcel template"
+      ]
+    },
+    {
+      "id": "sunday-league",
+      "name": "Sunday League",
+      "summary": "An amateur football club noticeboard with the league table, fixtures, and the next match pinned and counting down to kick-off.",
+      "description": "Sunday League is a club noticeboard for amateur football teams whose web presence is maintained by a volunteer secretary, not a developer. Grassroots clubs need one page that answers the questions people actually ask — where do we stand in the table, who do we play next, what time is kick-off, how do I join — without a CMS, logins, or a stats platform. Everything on the board comes from two committed JSON files the secretary edits after each final whistle, and the page says so honestly.\n\nThe board opens with a matchday poster that pins the next fixture: both club crests, home and away tags, the venue, the kick-off date, and a scoreboard-digit countdown ticking live to kick-off. The pinned match is computed from fixture kick-off times against the clock — nothing is hardcoded — so the poster rolls over to the following fixture on its own, and once every fixture has been played it degrades gracefully into a \"Season complete — next season's fixtures soon\" card. Below it sit a semantic HTML league table with the club's row highlighted and goal difference computed from the goals columns, a results list with won/drew/lost chips (including a \"Result to follow\" state for played games without a recorded score), upcoming fixtures with venues and times, an about-the-club strip, and a five-question FAQ that is also injected as schema.org FAQPage JSON-LD. Contact runs through mailto links built from the same secretary details displayed on the page.\n\nPersonalization is two files: src/data/club.json holds the club name, ground, colours note, secretary contact, about copy, and FAQs, while src/data/season.json holds the table rows and fixtures — the README documents every field, including how results are recorded from the club's point of view. The design is original club-noticeboard art direction: pitch greens, chalk white, one gold-trophy accent, Oswald scoreboard type with Inter body copy, six hand-drawn geometric SVG crests, and a chalked centre circle behind the poster. Technically it is Angular 22 with standalone components, signals and zoneless change detection driving the one-second clock, strict TypeScript over typed JSON imports, ESLint flat config with angular-eslint, keyboard-accessible controls with visible focus states, reduced-motion support, and layouts verified down to 320px where the table scrolls inside its panel rather than the page.",
+      "bucket": "Non-technical",
+      "category": "Clubs and community",
+      "whoItsFor": "An amateur football club",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "clubs-and-community",
+          "sports",
+          "noticeboard"
+        ],
+        "useCases": [
+          "publish-league-table-and-fixtures",
+          "announce-next-match-with-countdown",
+          "share-results-after-matchday",
+          "recruit-new-players"
+        ],
+        "frameworks": [
+          "angular"
+        ]
+      },
+      "features": [
+        {
+          "id": "pinned-next-match-countdown",
+          "name": "Pinned next match with live countdown",
+          "description": "The next fixture is computed from kick-off datetimes against a ticking clock and pinned as a matchday poster with both crests, venue, home/away tags, and a scoreboard-digit countdown to kick-off."
+        },
+        {
+          "id": "league-table",
+          "name": "Semantic league table",
+          "description": "A real HTML table with caption, column and row headers, zebra rows, a highlighted club row, computed goal difference, and an emphasized points column; on small screens it scrolls inside its panel, never the page."
+        },
+        {
+          "id": "results-and-fixtures",
+          "name": "Results and fixtures from one file",
+          "description": "Played fixtures show scores with won/drew/lost chips, games past kick-off without a recorded score show \"Result to follow\", and upcoming fixtures list venues, home/away tags, and kick-off times."
+        },
+        {
+          "id": "season-complete-fallback",
+          "name": "Graceful season-complete state",
+          "description": "When every fixture has kicked off, the poster becomes a \"Season complete — next season's fixtures soon\" card with an email action, so the board never shows a stale countdown."
+        },
+        {
+          "id": "secretary-owned-data",
+          "name": "Secretary-owned season file",
+          "description": "All copy, standings, fixtures, contact details, and FAQs live in src/data/club.json and src/data/season.json, typed by TypeScript interfaces and documented field by field in the README — no CMS."
+        },
+        {
+          "id": "faq-jsonld",
+          "name": "FAQ with FAQPage JSON-LD",
+          "description": "Five club questions (joining, match fees, finding the ground) render from data and are injected into the document head as schema.org FAQPage structured data."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/sunday-league/preview/sunday-league-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/sunday-league/preview/sunday-league-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/sunday-league/preview/sunday-league-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/sunday-league/preview/sunday-league-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 2688
+        }
+      },
+      "searchTerms": [
+        "football club website",
+        "soccer club template",
+        "league table",
+        "fixtures and results",
+        "kick-off countdown",
+        "grassroots sport",
+        "club secretary noticeboard",
+        "angular"
+      ]
+    },
+    {
+      "id": "route-library",
+      "name": "Route Library",
+      "summary": "A club route book with distance and climb filters, SVG elevation profiles, and a GPX download for every route.",
+      "description": "Route Library is a route book for a running or cycling club whose best routes usually live in long-standing members' heads, a dusty forum thread, or a drawer of printed maps. It turns that knowledge into a public, filterable library: every route has a measured distance, an honest climb figure, a surface and grade, a named start point, a written description and a downloadable GPX file, all presented under the club's own name and contact details. The seeded content is a fictional Lake District fell running club with five internally consistent routes, so the shape of a finished site is visible before a single edit.\n\nThe home page opens straight into the book: a filter bar for distance (under 10 km, 10–25 km, over 25 km) and climb (under 300 m, 300–700 m, over 700 m) above a grid of route cards, each carrying a mini elevation sparkline and stat blocks. Filtering is done on the server through query parameters, so every filtered view is a shareable URL that works without JavaScript, while a small enhancement script makes the same filters instant in the browser and keeps the URL in sync with history.pushState. Each route's server-rendered page at /routes/<slug> draws a full inline SVG elevation profile from the committed data points — area wash, axes, gridlines, a labelled high point and a hover crosshair with tooltip — backed by an accessible data table, a GPX download served with the correct application/gpx+xml content type and attachment header, a run-at-your-own-judgment note, and links to the rest of the book. Unknown slugs get a proper 404 page, no-match filters get an empty state with a mailto fallback, and a five-question FAQ ships with FAQPage JSON-LD in the layout.\n\nEverything a club would change lives in two JSON files: src/data/site.json for the club name, meet point, club-run times, librarian contact, disclaimer and FAQ copy, and src/data/routes.json for the routes themselves, with matching GPX files in public/gpx. Filtering, formatting and the SVG chart geometry are typed TypeScript modules in src/utils, so the data stays plain and the logic stays out of the templates. Technically it is a compact Express 5 server with EJS views and no client framework: TypeScript compiled by tsc to dist/, tsx for the dev loop, ESLint flat config, semantic keyboard-friendly HTML with visible focus states, an original topographic design system (cream paper, contour linework, one burnt-orange accent, Chivo and Spline Sans Mono), and layouts verified down to 320 px.",
+      "bucket": "Non-technical",
+      "category": "Clubs and community",
+      "whoItsFor": "A running or cycling club",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "clubs-and-community",
+          "sports-and-recreation",
+          "content-directory"
+        ],
+        "useCases": [
+          "publish-a-club-route-book",
+          "share-gpx-routes",
+          "filter-routes-by-distance-and-climb",
+          "show-elevation-profiles"
+        ],
+        "frameworks": [
+          "express"
+        ]
+      },
+      "features": [
+        {
+          "id": "distance-climb-filters",
+          "name": "Distance and climb filters",
+          "description": "Chip filters for distance and climb buckets work server-side via shareable query-parameter URLs, with progressive client-side instant filtering that keeps the URL in sync."
+        },
+        {
+          "id": "elevation-profile-charts",
+          "name": "SVG elevation profiles",
+          "description": "Every route page renders an inline SVG profile from the committed data points, with axes, gridlines, a labelled high point, a hover crosshair tooltip and an accessible data table."
+        },
+        {
+          "id": "gpx-downloads",
+          "name": "GPX downloads",
+          "description": "Each route ships a valid GPX 1.1 file served with the application/gpx+xml content type and an attachment header, linked from the card and the route page."
+        },
+        {
+          "id": "route-detail-pages",
+          "name": "Server-rendered route pages",
+          "description": "Every route loads directly at /routes/<slug>; unknown slugs are validated against the route book and answered with a helpful 404 page."
+        },
+        {
+          "id": "club-faq-jsonld",
+          "name": "Club section and FAQ with JSON-LD",
+          "description": "Meet point, club-run times, a route-librarian mailto built from the displayed data, and a five-question FAQ emitted as FAQPage structured data."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/route-library/preview/route-library-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/route-library/preview/route-library-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/route-library/preview/route-library-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/route-library/preview/route-library-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3156
+        }
+      },
+      "searchTerms": [
+        "running club website",
+        "cycling club routes",
+        "route book",
+        "gpx download",
+        "elevation profile chart",
+        "trail run directory",
+        "fell running",
+        "express ejs server template"
+      ]
     }
   ]
 }

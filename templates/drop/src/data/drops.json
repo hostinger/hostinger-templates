@@ -1,0 +1,97 @@
+{
+  "dropName": "The Autumn Archive",
+  "dropNumber": 8,
+  "dropDatetime": "2026-09-25T19:00:00-04:00",
+  "timezone": "America/New_York",
+  "timezoneLabel": "ET",
+  "items": [
+    {
+      "id": "steerhide-biker",
+      "name": "Steerhide Biker Jacket",
+      "era": "1980s",
+      "size": "40 / M",
+      "condition": "Broken in, zips true, no tears",
+      "price": 340,
+      "image": "/images/item-01.jpg",
+      "imageAlt": "Back of a black steerhide biker jacket in low light",
+      "sold": false
+    },
+    {
+      "id": "selvedge-denim",
+      "name": "Straight-Leg Selvedge Denim",
+      "era": "1970s",
+      "size": "34 × 32",
+      "condition": "Honest fade, one repaired hem",
+      "price": 265,
+      "image": "/images/item-02.jpg",
+      "imageAlt": "Faded selvedge denim jeans hanging on a shop rack",
+      "sold": true
+    },
+    {
+      "id": "snip-toe-westerns",
+      "name": "Snip-Toe Western Boots",
+      "era": "1978",
+      "size": "US 10.5",
+      "condition": "Resoled once, leather supple",
+      "price": 210,
+      "image": "/images/item-03.jpg",
+      "imageAlt": "Brown leather snip-toe western boots",
+      "sold": false
+    },
+    {
+      "id": "mail-satchel",
+      "name": "Bridle Leather Mail Satchel",
+      "era": "1960s",
+      "size": "13 in",
+      "condition": "Deep patina, brass hardware solid",
+      "price": 185,
+      "image": "/images/item-04.jpg",
+      "imageAlt": "Tan bridle leather satchel with brass buckles",
+      "sold": false
+    },
+    {
+      "id": "chronograph",
+      "name": "Leather-Strap Chronograph",
+      "era": "1989",
+      "size": "36 mm",
+      "condition": "Serviced, runs +4 s/day",
+      "price": 420,
+      "image": "/images/item-05.jpg",
+      "imageAlt": "Vintage chronograph watch on a worn leather strap",
+      "sold": true
+    },
+    {
+      "id": "blank-tee",
+      "name": "Single-Stitch Blank Tee",
+      "era": "1992",
+      "size": "L",
+      "condition": "Paper-thin hand, collar true",
+      "price": 120,
+      "image": "/images/item-06.jpg",
+      "imageAlt": "Black single-stitch t-shirt on a wire hanger",
+      "sold": false
+    },
+    {
+      "id": "teddy-coat",
+      "name": "Camel Teddy Coat",
+      "era": "1980s",
+      "size": "40 / M",
+      "condition": "Dense pile, no bald spots",
+      "price": 290,
+      "image": "/images/item-07.jpg",
+      "imageAlt": "Camel teddy coat hanging on a black garment rack",
+      "sold": false
+    },
+    {
+      "id": "acetate-frames",
+      "name": "Champagne Acetate Frames",
+      "era": "1970s",
+      "size": "58 mm",
+      "condition": "New lenses, hinges tight",
+      "price": 95,
+      "image": "/images/item-08.jpg",
+      "imageAlt": "Champagne acetate sunglasses resting on a vinyl record",
+      "sold": false
+    }
+  ]
+}

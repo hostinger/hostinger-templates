@@ -1,0 +1,38 @@
+<section class="about" aria-labelledby="about-heading">
+  <figure class="about-photo">
+    <img
+      src="images/matchday.jpg"
+      alt="Amateur footballers in blue and red kits contesting the ball on a bare Sunday-morning pitch"
+      width="1600"
+      height="1041"
+      loading="lazy"
+    />
+    <figcaption>Sunday morning, somewhere near the halfway line. Mud optional, rarely absent.</figcaption>
+  </figure>
+  <div class="about-body">
+    <p class="eyebrow">The club</p>
+    <h2 class="about-title" id="about-heading">Est. {{ club.founded }}, still turning up</h2>
+    <p class="about-copy">{{ club.about }}</p>
+    <dl class="about-facts">
+      <div class="about-fact">
+        <dt>Home ground</dt>
+        <dd>{{ club.ground }}, {{ club.groundAddress }}</dd>
+      </div>
+      <div class="about-fact">
+        <dt>Colours</dt>
+        <dd>{{ club.colorsNote }}</dd>
+      </div>
+      <div class="about-fact">
+        <dt>Training</dt>
+        <dd>{{ club.trainingNote }}</dd>
+      </div>
+      <div class="about-fact">
+        <dt>New players</dt>
+        <dd>
+          Always welcome — email {{ club.secretary.name }} at
+          <a [href]="'mailto:' + club.secretary.email">{{ club.secretary.email }}</a>.
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>

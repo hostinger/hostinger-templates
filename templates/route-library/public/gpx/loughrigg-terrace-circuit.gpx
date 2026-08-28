@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Bracken Fell Harriers Route Library" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Loughrigg Terrace Circuit</name>
+    <desc>9.4 km with 310 m of climb. From the Bracken Fell Harriers route book.</desc>
+  </metadata>
+  <trk>
+    <name>Loughrigg Terrace Circuit</name>
+    <desc>A proper little circuit with one honest pull up to Loughrigg's summit cairn, then the famous terrace path with Grasmere laid out below. Steep and loose in places on the drop to Rydal Cave, and worth every step of it. Trail shoes recommended after rain.</desc>
+    <trkseg>
+      <trkpt lat="54.44800" lon="-3.00600"><ele>62.0</ele></trkpt>
+      <trkpt lat="54.45259" lon="-3.00699"><ele>77.4</ele></trkpt>
+      <trkpt lat="54.45527" lon="-3.01459"><ele>92.9</ele></trkpt>
+      <trkpt lat="54.45589" lon="-3.02242"><ele>114.8</ele></trkpt>
+      <trkpt lat="54.45729" lon="-3.02679"><ele>138.5</ele></trkpt>
+      <trkpt lat="54.45963" lon="-3.03088"><ele>166.9</ele></trkpt>
+      <trkpt lat="54.46004" lon="-3.03641"><ele>198.5</ele></trkpt>
+      <trkpt lat="54.45848" lon="-3.04137"><ele>256.6</ele></trkpt>
+      <trkpt lat="54.45777" lon="-3.04679"><ele>329.6</ele></trkpt>
+      <trkpt lat="54.45762" lon="-3.05522"><ele>292.9</ele></trkpt>
+      <trkpt lat="54.45508" lon="-3.06286"><ele>247.5</ele></trkpt>
+      <trkpt lat="54.45031" lon="-3.06370"><ele>216.1</ele></trkpt>
+      <trkpt lat="54.44602" lon="-3.05963"><ele>185.2</ele></trkpt>
+      <trkpt lat="54.44254" lon="-3.05649"><ele>183.5</ele></trkpt>
+      <trkpt lat="54.43906" lon="-3.05379"><ele>190.6</ele></trkpt>
+      <trkpt lat="54.43727" lon="-3.04794"><ele>167.2</ele></trkpt>
+      <trkpt lat="54.43828" lon="-3.04091"><ele>136.6</ele></trkpt>
+      <trkpt lat="54.43903" lon="-3.03605"><ele>137.7</ele></trkpt>
+      <trkpt lat="54.43714" lon="-3.03115"><ele>144.3</ele></trkpt>
+      <trkpt lat="54.43538" lon="-3.02383"><ele>122.6</ele></trkpt>
+      <trkpt lat="54.43692" lon="-3.01733"><ele>97.6</ele></trkpt>
+      <trkpt lat="54.44046" lon="-3.01383"><ele>102.4</ele></trkpt>
+      <trkpt lat="54.44393" lon="-3.01016"><ele>92.0</ele></trkpt>
+      <trkpt lat="54.44800" lon="-3.00600"><ele>62.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

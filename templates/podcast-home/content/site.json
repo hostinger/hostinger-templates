@@ -1,0 +1,49 @@
+{
+  "showName": "Room Tone",
+  "tagline": "A show about people who can't stop making things.",
+  "about": [
+    "Room Tone is an independent interview show recorded in kitchens, barns, foundries, and one lamp room. Every other week, Mara Voss sits down with someone who has given a suspicious portion of their life to a craft — and stays until the room goes quiet enough to hear why.",
+    "No panel, no news hook, no fifteen-second version. One guest, one obsession, and the sound of the place where it happens."
+  ],
+  "host": {
+    "name": "Mara Voss",
+    "bio": "Mara spent a decade as a location sound recordist before she started asking the questions herself. She still mixes every episode, and she still records the minute of silence — the room tone — before each interview. That minute is where the show got its name."
+  },
+  "email": "studio@roomtone.example",
+  "socials": [
+    {
+      "label": "Instagram",
+      "href": "https://instagram.com/roomtoneshow"
+    },
+    {
+      "label": "Bluesky",
+      "href": "https://bsky.app/profile/roomtone.example"
+    },
+    {
+      "label": "Patreon",
+      "href": "https://patreon.com/roomtoneshow"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How often do new episodes come out?",
+      "answer": "Every other Tuesday. Between seasons we post short field recordings from places we visited but couldn't fit into a full episode."
+    },
+    {
+      "question": "Can I suggest a guest?",
+      "answer": "Please do — the seed vault episode started as a listener tip. Write to the studio with who they are and what they can't stop making. We read everything, even when we're slow to reply."
+    },
+    {
+      "question": "Where can I listen besides this site?",
+      "answer": "Anywhere you already get podcasts — search for Room Tone. This page is the show's home: every episode here has chapter markers and a searchable transcript, which the apps still can't do."
+    },
+    {
+      "question": "Are the transcripts complete?",
+      "answer": "Each episode page carries a transcript excerpt at launch, and full transcripts replace them as they're proofread. If you need one sooner for accessibility, email the studio and we'll move it up the queue."
+    },
+    {
+      "question": "Can I use clips from the show?",
+      "answer": "For classrooms, community radio, or anything non-commercial: yes, with credit to Room Tone and a link to the episode page. For commercial use, write to the studio first — we usually say yes."
+    }
+  ]
+}

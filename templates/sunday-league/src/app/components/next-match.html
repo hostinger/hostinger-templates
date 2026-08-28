@@ -1,0 +1,49 @@
+<section class="next-match" aria-labelledby="next-match-heading">
+  @if (fixture(); as next) {
+    <article class="poster">
+      <p class="poster-ribbon">
+        <span class="poster-ribbon-label">Next match</span>
+        <span class="poster-ribbon-meta">
+          Matchday {{ next.matchday }} · {{ next.homeAway === 'home' ? 'Home' : 'Away' }}
+        </span>
+      </p>
+      <p class="poster-kickoff">
+        {{ next.kickoff | date: 'EEEE d MMMM' }} · {{ next.kickoff | date: 'HH:mm' }} kick-off
+      </p>
+      <h2 class="poster-teams" id="next-match-heading">
+        <span class="poster-team">
+          <img class="poster-crest" [src]="homeCrest()" alt="" width="84" height="95" />
+          <span class="poster-team-name">{{ homeTeam() }}</span>
+          <span class="poster-team-tag">Home</span>
+        </span>
+        <span class="poster-vs" aria-hidden="true">v</span>
+        <span class="poster-team">
+          <img class="poster-crest" [src]="awayCrest()" alt="" width="84" height="95" />
+          <span class="poster-team-name">{{ awayTeam() }}</span>
+          <span class="poster-team-tag">Away</span>
+        </span>
+      </h2>
+      <app-match-countdown [kickoff]="next.kickoff" />
+      <p class="poster-foot">
+        <span class="poster-venue">{{ next.venue }}</span>
+        <span class="poster-note">{{ club.kickoffNote }}</span>
+      </p>
+    </article>
+  } @else {
+    <article class="poster poster-complete">
+      <p class="poster-ribbon">
+        <span class="poster-ribbon-label">Full time</span>
+        <span class="poster-ribbon-meta">Season {{ season.label }}</span>
+      </p>
+      <h2 class="poster-complete-title" id="next-match-heading">Season complete</h2>
+      <p class="poster-complete-copy">
+        Every fixture on the board has been played. Next season's fixtures will be pinned here as
+        soon as the league sends them over — until then, the table below is how history will
+        remember us.
+      </p>
+      <a class="btn btn-gold" [href]="'mailto:' + club.secretary.email">
+        Email {{ club.secretary.name }} about next season
+      </a>
+    </article>
+  }
+</section>

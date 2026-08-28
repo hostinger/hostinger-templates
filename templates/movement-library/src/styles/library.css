@@ -1,0 +1,524 @@
+/* ------------------------------------------------------------------
+   Library section
+   ------------------------------------------------------------------ */
+.library {
+  padding-block: clamp(52px, 7vw, 76px) 88px;
+}
+
+.library-head h2 {
+  font-size: clamp(1.7rem, 2.6vw, 2.1rem);
+}
+
+.library-intro {
+  margin-top: 12px;
+  max-width: 68ch;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* Body-part filter chips shaped like anatomical chart tags. */
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.chip {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.chip-body {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 15px 9px 24px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  background: var(--paper-deep);
+  clip-path: polygon(
+    12px 0,
+    100% 0,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.chip-body::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: 0 0 0 2px rgba(30, 42, 68, 0.28);
+}
+
+.chip:hover .chip-body {
+  background: #e7ddc8;
+  color: var(--ink);
+}
+
+.chip[aria-pressed='true'] .chip-body {
+  background: var(--tape-strong);
+  color: #fff;
+}
+
+.chip[aria-pressed='true'] .chip-body::before {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.65);
+}
+
+.chip-count {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(30, 42, 68, 0.08);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.chip[aria-pressed='true'] .chip-count {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.library-count {
+  margin: 18px 0 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------------------
+   Exercise chart cards
+   ------------------------------------------------------------------ */
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 22px;
+}
+
+.exercise-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.card-plate {
+  position: relative;
+  height: 152px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px dashed var(--line-strong);
+  color: var(--ink);
+}
+
+.card-index {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+}
+
+.card-figure {
+  width: 128px;
+  height: 128px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 20px 20px;
+  flex: 1;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-title-row h3 {
+  font-size: 1.28rem;
+}
+
+.part-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.part-tag {
+  padding: 3px 9px 3px 13px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tape-strong);
+  background: var(--tape-tint);
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 8px 100%, 0 50%);
+}
+
+.dosage-tape {
+  align-self: flex-start;
+  margin-top: 2px;
+  padding: 6px 12px;
+  rotate: -1.2deg;
+  border-radius: 3px;
+  background: var(--tape-strong);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  clip-path: polygon(
+    1% 12%,
+    3% 0,
+    98% 3%,
+    100% 14%,
+    99% 86%,
+    97% 100%,
+    2% 97%,
+    0 84%
+  );
+}
+
+.card-steps {
+  margin: 2px 0 0;
+  padding-left: 20px;
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.card-steps li + li {
+  margin-top: 6px;
+}
+
+.card-steps li::marker {
+  font-weight: 700;
+  color: var(--tape-strong);
+}
+
+.card-caution {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--amber-tint);
+  color: var(--amber-ink);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.caution-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 1rem;
+}
+
+.plan-toggle {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 9px;
+  border: 2px solid var(--ink);
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.plan-toggle:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.plan-toggle.in-plan {
+  border-color: var(--tape-strong);
+  background: var(--tape-tint);
+  color: var(--tape-strong);
+}
+
+.plan-toggle.in-plan:hover {
+  background: #d3e9dc;
+  color: #135c40;
+}
+
+.toggle-icon {
+  font-size: 1.05rem;
+}
+
+/* ------------------------------------------------------------------
+   Sticky plan tray
+   ------------------------------------------------------------------ */
+.plan-tray {
+  z-index: 20;
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px 24px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 20px 44px -18px rgba(17, 24, 42, 0.6);
+}
+
+/* Once the plan has movements, the tray docks to the viewport bottom
+   while the library is on screen. */
+.plan-tray.has-items {
+  position: sticky;
+  bottom: 18px;
+}
+
+.plan-tray :focus-visible {
+  outline-color: #7fd0ac;
+}
+
+.tray-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tray-icon {
+  font-size: 1.5rem;
+  color: #7fd0ac;
+  flex-shrink: 0;
+}
+
+.tray-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.tray-title strong {
+  font-family: var(--font-head);
+  font-size: 1.08rem;
+}
+
+.tray-count {
+  font-size: 0.8rem;
+  color: rgba(251, 246, 238, 0.7);
+}
+
+.tray-empty {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(251, 246, 238, 0.75);
+  max-width: 52ch;
+}
+
+.tray-items {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tray-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 7px 5px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(251, 246, 238, 0.22);
+  background: rgba(251, 246, 238, 0.1);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tray-remove {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(251, 246, 238, 0.16);
+  color: var(--paper);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.tray-remove:hover {
+  background: #b14a4a;
+}
+
+.tray-remove-icon {
+  font-size: 0.65rem;
+}
+
+.tray-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tray-clear {
+  padding: 10px 14px;
+  border-radius: 9px;
+  border: 1.5px solid rgba(251, 246, 238, 0.4);
+  background: transparent;
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.tray-clear:hover:enabled {
+  border-color: var(--paper);
+}
+
+.tray-clear:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tray-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 9px;
+  background: var(--tape-strong);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.tray-print:hover:enabled {
+  background: #176349;
+}
+
+.tray-print:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tray-print-icon {
+  font-size: 1.1rem;
+}
+
+/* ------------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------------ */
+@media (max-width: 1020px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-chart {
+    justify-content: flex-start;
+    padding-inline: 24px;
+  }
+
+  .faq-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-steps {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exercise-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .card-title-row {
+    flex-direction: column;
+  }
+
+  .part-tags {
+    justify-content: flex-start;
+  }
+
+  .plan-tray {
+    grid-template-columns: 1fr;
+    bottom: 12px;
+  }
+
+  .tray-actions {
+    justify-content: space-between;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-chart {
+    padding-inline: 6px;
+  }
+
+  .hero-chart-card {
+    padding: 18px 18px 20px;
+  }
+
+  .hero-chart-figure {
+    width: 160px;
+    height: 160px;
+  }
+
+  .tray-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tray-print,
+  .tray-clear {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+}

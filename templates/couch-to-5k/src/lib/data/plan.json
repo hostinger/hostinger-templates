@@ -1,0 +1,212 @@
+{
+	"sessionFrame": "Every session starts with a five-minute brisk warm-up walk and ends with a five-minute cool-down walk — both are already counted in the session times.",
+	"weeks": [
+		{
+			"week": 1,
+			"title": "Off the couch",
+			"focus": "Run 1 min / walk 90 sec",
+			"coachNote": "Slower than feels sensible is exactly right. If you can't say a full sentence out loud mid-run, ease off — this plan works at any speed.",
+			"sessions": [
+				{
+					"title": "First strides",
+					"workout": "Run 1 min / walk 90 sec — repeat × 8",
+					"minutes": 30
+				},
+				{
+					"title": "Same again, smoother",
+					"workout": "Run 1 min / walk 90 sec — repeat × 8",
+					"minutes": 30
+				},
+				{
+					"title": "Finding a rhythm",
+					"workout": "Run 1 min / walk 90 sec — repeat × 8",
+					"minutes": 30
+				}
+			]
+		},
+		{
+			"week": 2,
+			"title": "Stretch the run",
+			"focus": "Run 90 sec / walk 2 min",
+			"coachNote": "Legs may grumble after week one — that's adaptation, not injury. Keep the walking breaks brisk and shake your arms loose between runs.",
+			"sessions": [
+				{
+					"title": "Ninety-second club",
+					"workout": "Run 90 sec / walk 2 min — repeat × 6",
+					"minutes": 31
+				},
+				{
+					"title": "Steady, not speedy",
+					"workout": "Run 90 sec / walk 2 min — repeat × 6",
+					"minutes": 31
+				},
+				{
+					"title": "Comfortable is the goal",
+					"workout": "Run 90 sec / walk 2 min — repeat × 6",
+					"minutes": 31
+				}
+			]
+		},
+		{
+			"week": 3,
+			"title": "Three-minute mind",
+			"focus": "First 3-minute runs",
+			"coachNote": "Three minutes sounds long until you've done it once. Split it in your head: settle in the first minute, cruise the second, count the third one down.",
+			"sessions": [
+				{
+					"title": "Meet the three-minute run",
+					"workout": "Run 90 sec · walk 90 sec · run 3 min · walk 3 min — repeat × 2",
+					"minutes": 28
+				},
+				{
+					"title": "Trust the walk breaks",
+					"workout": "Run 90 sec · walk 90 sec · run 3 min · walk 3 min — repeat × 2",
+					"minutes": 28
+				},
+				{
+					"title": "Three minutes, no drama",
+					"workout": "Run 90 sec · walk 90 sec · run 3 min · walk 3 min — repeat × 2",
+					"minutes": 28
+				}
+			]
+		},
+		{
+			"week": 4,
+			"title": "Five in a row",
+			"focus": "First 5-minute runs",
+			"coachNote": "This is the week most people quietly realise they've become runners. Protect your rest days — they are where the fitness actually happens.",
+			"sessions": [
+				{
+					"title": "The five-minute wall",
+					"workout": "Run 3 min · walk 90 sec · run 5 min · walk 2½ min · run 3 min · walk 90 sec · run 5 min",
+					"minutes": 32
+				},
+				{
+					"title": "Wall? What wall?",
+					"workout": "Run 3 min · walk 90 sec · run 5 min · walk 2½ min · run 3 min · walk 90 sec · run 5 min",
+					"minutes": 32
+				},
+				{
+					"title": "Five feels normal",
+					"workout": "Run 3 min · walk 90 sec · run 5 min · walk 2½ min · run 3 min · walk 90 sec · run 5 min",
+					"minutes": 32
+				}
+			]
+		},
+		{
+			"week": 5,
+			"title": "The twenty-minute door",
+			"focus": "Up to a 20-minute run",
+			"coachNote": "Session three is the famous one — twenty minutes without a walking break. Everyone panics about it; nearly everyone does it. Go embarrassingly slow and let the door swing open.",
+			"sessions": [
+				{
+					"title": "Three fives",
+					"workout": "Run 5 min · walk 3 min · run 5 min · walk 3 min · run 5 min",
+					"minutes": 31
+				},
+				{
+					"title": "Two eights",
+					"workout": "Run 8 min · walk 5 min · run 8 min",
+					"minutes": 31
+				},
+				{
+					"title": "The twenty-minute run",
+					"workout": "Run 20 min with no walking breaks",
+					"minutes": 30
+				}
+			]
+		},
+		{
+			"week": 6,
+			"title": "Past the door",
+			"focus": "Up to a 22-minute run",
+			"coachNote": "After the twenty-minute run, intervals feel almost gentle again. Enjoy them — this week quietly builds the base for running every session without breaks.",
+			"sessions": [
+				{
+					"title": "Back to intervals",
+					"workout": "Run 5 min · walk 3 min · run 8 min · walk 3 min · run 5 min",
+					"minutes": 34
+				},
+				{
+					"title": "Ten and ten",
+					"workout": "Run 10 min · walk 3 min · run 10 min",
+					"minutes": 33
+				},
+				{
+					"title": "Twenty-two, straight through",
+					"workout": "Run 22 min with no walking breaks",
+					"minutes": 32
+				}
+			]
+		},
+		{
+			"week": 7,
+			"title": "All running now",
+			"focus": "Run 25 min",
+			"coachNote": "The same run three times: twenty-five minutes, easy. Change the route, not the effort — mild boredom is a sign the engine is getting stronger.",
+			"sessions": [
+				{
+					"title": "Twenty-five, easy does it",
+					"workout": "Run 25 min at a chatty, conversational pace",
+					"minutes": 35
+				},
+				{
+					"title": "New route, same legs",
+					"workout": "Run 25 min somewhere you have never run before",
+					"minutes": 35
+				},
+				{
+					"title": "Cruise control",
+					"workout": "Run 25 min at a chatty, conversational pace",
+					"minutes": 35
+				}
+			]
+		},
+		{
+			"week": 8,
+			"title": "Almost there",
+			"focus": "Run 28 min",
+			"coachNote": "Twenty-eight minutes is 5K territory for plenty of runners already. Keep the pace honest, keep the bedtime early, and let session two teach you what a strong finish feels like.",
+			"sessions": [
+				{
+					"title": "Twenty-eight minutes",
+					"workout": "Run 28 min steady",
+					"minutes": 38
+				},
+				{
+					"title": "Practice the strong finish",
+					"workout": "Run 28 min — easy start, brisk final 5 min",
+					"minutes": 38
+				},
+				{
+					"title": "Last one before race week",
+					"workout": "Run 28 min steady",
+					"minutes": 38
+				}
+			]
+		},
+		{
+			"week": 9,
+			"title": "Race week",
+			"focus": "Run 30 min — 5K",
+			"coachNote": "Nothing new this week: no new shoes, no new breakfast, no hero pace on day one. Then go run your 5K — and message me from the finish line.",
+			"sessions": [
+				{
+					"title": "Thirty, relaxed",
+					"workout": "Run 30 min, relaxed and easy",
+					"minutes": 40
+				},
+				{
+					"title": "Dress rehearsal",
+					"workout": "Run 30 min — same shoes, route and breakfast as race day",
+					"minutes": 40
+				},
+				{
+					"title": "Graduation day: your 5K",
+					"workout": "Run 5K — about 30 min. You are a runner now",
+					"minutes": 40
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,31 @@
+<template>
+  <svg
+    viewBox="0 0 32 32"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <circle
+      cx="16"
+      cy="16"
+      r="14.5"
+      stroke="currentColor"
+      stroke-opacity="0.3"
+      stroke-width="1.6"
+    />
+    <circle
+      cx="16"
+      cy="16"
+      r="8.5"
+      stroke="currentColor"
+      stroke-opacity="0.55"
+      stroke-width="1.6"
+    />
+    <circle
+      cx="16"
+      cy="16"
+      r="3"
+      fill="currentColor"
+    />
+  </svg>
+</template>

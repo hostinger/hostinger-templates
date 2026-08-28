@@ -1,0 +1,77 @@
+---
+import rawSite from '../data/site.json';
+import rawTimetable from '../data/timetable.json';
+import type { ClassEntry, SiteContent } from '../types/content';
+import { getBookingActions } from '../utils/booking';
+
+const site = rawSite as SiteContent;
+const entries = rawTimetable as ClassEntry[];
+const { primary, secondary } = getBookingActions(site);
+
+const classCount = entries.length;
+const dayCount = new Set(entries.map((entry) => entry.weekday)).size;
+---
+
+<section class="next-banner" aria-labelledby="next-title">
+  <div class="next-copy">
+    <p class="eyebrow">{site.tagline} · {site.city}</p>
+    <h1 id="next-title">Next class <em>starts in</em></h1>
+    <p class="countdown" role="timer" aria-label="Time until the next class begins">
+      <span class="cd-cell" data-cd-cell="days" hidden>
+        <span class="cd-num" data-cd="days">–</span>
+        <span class="cd-unit">days</span>
+      </span>
+      <span class="cd-cell">
+        <span class="cd-num" data-cd="hours">––</span>
+        <span class="cd-unit">hr</span>
+      </span>
+      <span class="cd-cell">
+        <span class="cd-num" data-cd="minutes">––</span>
+        <span class="cd-unit">min</span>
+      </span>
+      <span class="cd-cell">
+        <span class="cd-num" data-cd="seconds">––</span>
+        <span class="cd-unit">sec</span>
+      </span>
+    </p>
+    <p class="next-line" data-next-line hidden aria-live="polite">
+      <span class="next-name" data-next-name></span>
+      <span class="next-sep" aria-hidden="true">—</span>
+      <span class="next-meta" data-next-meta></span>
+    </p>
+    <p class="next-line is-fallback" data-next-fallback>
+      Warming up the week — the full timetable is just below.
+    </p>
+    <p class="live-line" data-live-line hidden>
+      <span class="live-dot" aria-hidden="true"></span>
+      <span data-live-text></span>
+    </p>
+    <div class="cta-row">
+      <a
+        class="button"
+        href={primary.href}
+        target={primary.external ? '_blank' : undefined}
+        rel={primary.external ? 'noopener' : undefined}
+      >
+        {primary.label}
+      </a>
+      {secondary && (
+        <a class="text-link" href={secondary.href}>
+          or {secondary.label.toLowerCase()}
+        </a>
+      )}
+    </div>
+    <p class="schedule-note">{site.scheduleNote}</p>
+    <noscript>
+      <p class="schedule-note">
+        JavaScript is off, so the countdown rests — the weekly timetable below is still complete.
+      </p>
+    </noscript>
+  </div>
+  <aside class="breath-card">
+    <div class="breath-circle" aria-hidden="true">
+      <span>inhale<br />exhale</span>
+    </div>
+    <p class="breath-stat">{classCount} classes · {dayCount} days · one room</p>
+  </aside>
+</section>

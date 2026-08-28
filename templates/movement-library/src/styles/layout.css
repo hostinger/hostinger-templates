@@ -1,0 +1,447 @@
+/* ------------------------------------------------------------------
+   Header
+   ------------------------------------------------------------------ */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-block: 14px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink);
+  border-radius: 10px;
+}
+
+.brand-mark {
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.brand-text strong {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.brand-text span {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.header-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.header-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line-strong);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.header-link:hover {
+  border-color: var(--ink);
+  background: var(--card);
+}
+
+.header-link-icon {
+  font-size: 1rem;
+  color: var(--tape-strong);
+}
+
+/* ------------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------------ */
+.hero {
+  background: linear-gradient(180deg, #f6efe1 0%, var(--paper) 82%);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(32px, 5vw, 64px);
+  padding-block: clamp(48px, 7vw, 84px);
+}
+
+.hero-copy h1 {
+  margin-top: 18px;
+  font-size: clamp(2.1rem, 4.3vw, 3.3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+.hero-intro {
+  margin-top: 20px;
+  max-width: 54ch;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.hero-steps {
+  list-style: none;
+  padding: 0;
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 26px;
+}
+
+.hero-steps li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.hero-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: var(--card);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.guidance-note {
+  margin-top: 28px;
+  display: flex;
+  gap: 10px;
+  max-width: 62ch;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1.5px dashed #cfa25c;
+  border-left: 4px solid var(--amber);
+  background: var(--amber-tint);
+  color: var(--amber-ink);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.guidance-icon {
+  flex-shrink: 0;
+  margin-top: 3px;
+  font-size: 1.05rem;
+}
+
+/* The pinned sample chart card. */
+.hero-chart {
+  display: flex;
+  justify-content: center;
+  padding: 16px 10px;
+}
+
+.hero-chart-card {
+  position: relative;
+  width: min(360px, 100%);
+  rotate: 1.6deg;
+  background: var(--card);
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  padding: 24px 26px 24px;
+  box-shadow: 0 30px 50px -32px rgba(30, 42, 68, 0.45);
+}
+
+.tape-piece {
+  position: absolute;
+  width: 88px;
+  height: 24px;
+  border-radius: 3px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.14) 0 7px,
+      transparent 7px 14px
+    ),
+    rgba(46, 155, 116, 0.72);
+}
+
+.tape-tl {
+  top: -11px;
+  left: -24px;
+  rotate: -38deg;
+}
+
+.tape-br {
+  bottom: -11px;
+  right: -26px;
+  rotate: -35deg;
+}
+
+.hero-chart-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.hero-chart-plate {
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  color: var(--ink);
+}
+
+.hero-chart-figure {
+  width: 200px;
+  height: 200px;
+}
+
+.hero-chart-name {
+  margin-top: 16px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.hero-chart-dose {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  rotate: -1.4deg;
+  border-radius: 3px;
+  background: var(--tape-strong);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  clip-path: polygon(
+    1% 12%,
+    3% 0,
+    98% 3%,
+    100% 14%,
+    99% 86%,
+    97% 100%,
+    2% 97%,
+    0 84%
+  );
+}
+
+/* ------------------------------------------------------------------
+   FAQ
+   ------------------------------------------------------------------ */
+.faq {
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--paper) 0%, #f5efe2 100%);
+  padding-block: clamp(56px, 7vw, 80px);
+}
+
+.faq-inner {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+
+.faq-head h2 {
+  font-size: clamp(1.7rem, 2.6vw, 2.1rem);
+}
+
+.faq-intro {
+  margin-top: 14px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 40ch;
+}
+
+.faq-item {
+  background: var(--card);
+  border: 1.5px solid var(--line-strong);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+}
+
+.faq-item + .faq-item {
+  margin-top: 12px;
+}
+
+.faq-item summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.08rem;
+  border-radius: 12px;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-marker {
+  position: relative;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+}
+
+.faq-marker::before,
+.faq-marker::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.faq-marker::after {
+  rotate: 90deg;
+  transition: rotate 0.15s ease;
+}
+
+.faq-item[open] .faq-marker::after {
+  rotate: 0deg;
+}
+
+.faq-answer {
+  padding: 0 18px 18px;
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.65;
+  max-width: 64ch;
+}
+
+/* ------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------ */
+.site-footer {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.site-footer :focus-visible {
+  outline-color: #7fd0ac;
+}
+
+.footer-inner {
+  padding-block: clamp(44px, 6vw, 64px) 30px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: clamp(28px, 4vw, 56px);
+  padding-bottom: 34px;
+  border-bottom: 1px solid rgba(251, 246, 238, 0.16);
+}
+
+.footer-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.45rem;
+}
+
+.footer-detail {
+  margin-top: 8px;
+  color: rgba(251, 246, 238, 0.72);
+  font-size: 0.95rem;
+}
+
+.footer-contact h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.footer-blurb {
+  margin-top: 10px;
+  color: rgba(251, 246, 238, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 52ch;
+}
+
+.footer-links {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 26px;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #9fd8be;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(159, 216, 190, 0.45);
+  padding-bottom: 2px;
+  transition: color 0.15s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.footer-link-icon {
+  font-size: 1rem;
+}
+
+.footer-note {
+  margin-top: 26px;
+  max-width: 76ch;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(251, 246, 238, 0.6);
+}
+
+.footer-legal {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: rgba(251, 246, 238, 0.45);
+}

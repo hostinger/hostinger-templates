@@ -1,0 +1,120 @@
+{
+  "label": "2026/27",
+  "updated": "2026-08-27",
+  "teams": [
+    {
+      "name": "Millbrook Athletic",
+      "crest": "crests/millbrook-athletic.svg",
+      "played": 4,
+      "won": 3,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 11,
+      "goalsAgainst": 4,
+      "points": 10
+    },
+    {
+      "name": "Ashcombe Rovers",
+      "crest": "crests/ashcombe-rovers.svg",
+      "played": 4,
+      "won": 3,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 9,
+      "goalsAgainst": 5,
+      "points": 9
+    },
+    {
+      "name": "Red Lion Casuals",
+      "crest": "crests/red-lion-casuals.svg",
+      "played": 4,
+      "won": 2,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 8,
+      "goalsAgainst": 7,
+      "points": 7
+    },
+    {
+      "name": "Foundry United",
+      "crest": "crests/foundry-united.svg",
+      "played": 4,
+      "won": 1,
+      "drawn": 2,
+      "lost": 1,
+      "goalsFor": 6,
+      "goalsAgainst": 6,
+      "points": 5
+    },
+    {
+      "name": "Hartfield Sports",
+      "crest": "crests/hartfield-sports.svg",
+      "played": 4,
+      "won": 1,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 4,
+      "goalsAgainst": 9,
+      "points": 3
+    },
+    {
+      "name": "Old Dockers AFC",
+      "crest": "crests/old-dockers-afc.svg",
+      "played": 4,
+      "won": 0,
+      "drawn": 0,
+      "lost": 4,
+      "goalsFor": 3,
+      "goalsAgainst": 10,
+      "points": 0
+    }
+  ],
+  "fixtures": [
+    {
+      "matchday": 3,
+      "opponent": "Hartfield Sports",
+      "homeAway": "home",
+      "kickoff": "2026-08-16T10:30:00",
+      "venue": "Ashcombe Recreation Ground",
+      "result": {
+        "goalsFor": 3,
+        "goalsAgainst": 1
+      }
+    },
+    {
+      "matchday": 4,
+      "opponent": "Old Dockers AFC",
+      "homeAway": "away",
+      "kickoff": "2026-08-23T14:00:00",
+      "venue": "Basin Road Playing Fields",
+      "result": {
+        "goalsFor": 2,
+        "goalsAgainst": 0
+      }
+    },
+    {
+      "matchday": 5,
+      "opponent": "Millbrook Athletic",
+      "homeAway": "home",
+      "kickoff": "2026-08-30T10:30:00",
+      "venue": "Ashcombe Recreation Ground",
+      "result": null
+    },
+    {
+      "matchday": 6,
+      "opponent": "Red Lion Casuals",
+      "homeAway": "away",
+      "kickoff": "2026-09-13T14:00:00",
+      "venue": "The Paddock, behind the Red Lion",
+      "result": null
+    },
+    {
+      "matchday": 7,
+      "opponent": "Foundry United",
+      "homeAway": "home",
+      "kickoff": "2026-09-27T10:30:00",
+      "venue": "Ashcombe Recreation Ground",
+      "result": null
+    }
+  ]
+}

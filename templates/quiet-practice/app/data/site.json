@@ -1,0 +1,109 @@
+{
+  "name": "Quiet Practice",
+  "descriptor": "Counselling & psychotherapy",
+  "location": "Northeast Portland, Oregon",
+  "addressLine": "2114 NE Alberta Street, Portland, Oregon",
+  "formatLine": "In person on Alberta Street, or secure video anywhere in Oregon",
+  "hours": "Sessions Tuesday to Friday, with evening times Tuesday through Thursday.",
+  "therapist": {
+    "name": "Maren Whitfield",
+    "credentials": "MA, LMFT",
+    "licence": "Licensed Marriage and Family Therapist · Oregon licence T-1837"
+  },
+  "phoneDisplay": "(503) 555-0164",
+  "phoneCountryCode": "+1",
+  "email": "hello@quietpractice.example",
+  "bookingUrl": "",
+  "bookingLabel": "Book a free intro call",
+  "responseNote": "I answer every call and email myself, within two working days — usually sooner.",
+  "hero": {
+    "eyebrow": "Counselling & psychotherapy · Portland, Oregon",
+    "heading": "You don’t need to have the words yet.",
+    "lead": "Finding the words is what the room is for. Quiet Practice offers individual therapy, couples counselling, and counselling for teenagers — and a two-minute check to help you find the right place to start.",
+    "primaryCta": "Find your starting point",
+    "secondaryCta": "Read about the three services"
+  },
+  "facts": [
+    "Maren Whitfield, MA, LMFT",
+    "In person on NE Alberta Street",
+    "Online across Oregon",
+    "Evening hours Tuesday to Thursday"
+  ],
+  "servicesSection": {
+    "eyebrow": "Three ways to work together",
+    "title": "The services",
+    "lead": "Each page below says who it is for, how sessions work, and what the first one is actually like — in plain words, so you can decide from your own sofa."
+  },
+  "steps": {
+    "eyebrow": "How it starts",
+    "title": "Three small steps, no forms",
+    "items": [
+      {
+        "title": "Say hello",
+        "body": "Call or email in whatever words you have. “I think I need to talk to someone” is plenty."
+      },
+      {
+        "title": "A free fifteen-minute call",
+        "body": "We talk about what is going on and whether I am the right fit. If I am not, I will say so and suggest someone who is."
+      },
+      {
+        "title": "Your first session",
+        "body": "Unhurried, confidential, and yours. By the third session we will have a shared plan that you have agreed to."
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Asked often",
+    "title": "Honest answers first",
+    "items": [
+      {
+        "question": "Do you take insurance?",
+        "answer": "I am an out-of-network provider. You pay per session and I give you a monthly superbill to send to your insurer — many PPO plans reimburse 50 to 80 percent of the fee. I also hold a few reduced-fee places for people paying entirely out of pocket. Asking about money is a normal part of a first call."
+      },
+      {
+        "question": "How long will therapy take?",
+        "answer": "Honestly: it depends, and you will never be strung along. We review how it is going together every six weeks or so. Some people come for twelve sessions around one clear thing; some stay a year because the work keeps earning its place. You can stop whenever you want, and a good last session is worth having."
+      },
+      {
+        "question": "Is what we talk about confidential?",
+        "answer": "Yes, with the standard legal limits: risk of serious harm to yourself or someone else, abuse of a child or vulnerable adult, or a court order. For teenagers, we agree at the very start what stays private and what I will always share with parents — safety concerns, always; diary-level detail, never."
+      },
+      {
+        "question": "What if the check points me to the wrong service?",
+        "answer": "Then nothing is lost. The check is a signpost, not a verdict — the free intro call is where we confirm fit, and people move between individual, couples, and teen work all the time. Start anywhere; starting is the hard part."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "When you are ready",
+    "title": "The door is easy to knock on",
+    "body": "There is no intake portal and no phone tree — you reach me directly. Get in touch in whichever way feels lighter today, and we will take it from there.",
+    "emailLabel": "Write an email instead",
+    "emailSubject": "Hello from your website"
+  },
+  "servicePage": {
+    "backLabel": "All services",
+    "fitTitle": "This might fit if",
+    "approachTitle": "How we would work",
+    "firstTitle": "Your first session",
+    "asideTitle": "Session details",
+    "emailLabel": "Ask a question by email",
+    "othersLabel": "Not quite it? The other two doors",
+    "detailLabels": {
+      "length": "Length",
+      "fee": "Fee",
+      "frequency": "Rhythm",
+      "format": "Format"
+    }
+  },
+  "checkNav": "Not sure where to start? Take the two-minute check.",
+  "disclaimer": "The self-check on this site is a guide for choosing a service, not a clinical assessment or a diagnosis.",
+  "crisisNote": "If you or your teen need urgent help right now, a website is the wrong tool: call or text 988 (Suicide & Crisis Lifeline in the US) or your local emergency number.",
+  "footerNote": "© 2026 Quiet Practice. All words on this site were written by a person.",
+  "navigation": [
+    { "label": "The check", "href": "/#self-check" },
+    { "label": "Services", "href": "/#services" },
+    { "label": "Questions", "href": "/#faq" },
+    { "label": "Contact", "href": "/#contact" }
+  ]
+}

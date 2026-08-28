@@ -1,0 +1,204 @@
+/* --------------------------------------------------------------------------
+   Masthead — the latest episode, ready to play
+-------------------------------------------------------------------------- */
+.masthead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  padding-top: clamp(40px, 6vw, 84px);
+}
+
+.title {
+  font-size: clamp(2.5rem, 5.6vw, 4.4rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-top: 14px;
+  text-wrap: balance;
+}
+
+.guestLine {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: var(--violet-200);
+}
+
+.lede {
+  margin-top: 14px;
+  margin-bottom: 26px;
+  color: var(--ink-mid);
+  max-width: 58ch;
+}
+
+.transcriptLink {
+  margin-top: 16px;
+}
+
+.transcriptLink a {
+  color: var(--lime);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(200, 246, 54, 0.4);
+  padding-bottom: 2px;
+}
+
+.transcriptLink a:hover {
+  border-bottom-color: var(--lime);
+}
+
+.mastheadArt {
+  position: relative;
+  margin-top: 30px;
+}
+
+.art {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 26px;
+  border: 1px solid var(--stroke);
+  box-shadow: 0 30px 80px rgba(7, 4, 18, 0.6);
+}
+
+.bigNumber {
+  position: absolute;
+  top: -0.28em;
+  left: -0.12em;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(6rem, 11vw, 10.5rem);
+  line-height: 1;
+  color: rgba(154, 123, 247, 0.12);
+  -webkit-text-stroke: 2.5px var(--violet-400);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Episode archive
+-------------------------------------------------------------------------- */
+.episodes {
+  display: grid;
+  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  gap: clamp(28px, 4.5vw, 64px);
+  padding-top: clamp(64px, 9vw, 120px);
+}
+
+.sectionTitle {
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  margin-top: 10px;
+  letter-spacing: -0.01em;
+}
+
+.sectionNote {
+  margin-top: 14px;
+  color: var(--ink-mid);
+  max-width: 34ch;
+}
+
+.episodesIntro {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+.episodeList {
+  display: grid;
+  gap: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   About the show
+-------------------------------------------------------------------------- */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(28px, 4.5vw, 64px);
+  align-items: start;
+  padding-top: clamp(64px, 9vw, 120px);
+}
+
+.aboutText {
+  margin-top: 16px;
+  color: var(--ink-mid);
+  max-width: 56ch;
+  font-size: 1.06rem;
+}
+
+.aboutText:first-of-type {
+  color: var(--ink);
+  font-size: 1.14rem;
+}
+
+.hostCard {
+  border: 1px solid var(--stroke);
+  border-radius: 22px;
+  background: linear-gradient(165deg, rgba(44, 27, 94, 0.4), rgba(20, 16, 33, 0.9));
+  padding: clamp(22px, 3vw, 32px);
+}
+
+.hostName {
+  margin-top: 12px;
+  font-size: 1.6rem;
+}
+
+.hostBio {
+  margin-top: 12px;
+  color: var(--ink-mid);
+}
+
+.hostMail {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--lime);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(200, 246, 54, 0.4);
+  padding-bottom: 2px;
+  overflow-wrap: anywhere;
+}
+
+.hostMail:hover {
+  border-bottom-color: var(--lime);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+-------------------------------------------------------------------------- */
+@media (max-width: 940px) {
+  .masthead {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .mastheadArt {
+    order: -1;
+    margin-top: 8px;
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+  }
+
+  .art {
+    width: 132px;
+    height: 132px;
+    border-radius: 18px;
+    flex-shrink: 0;
+  }
+
+  .bigNumber {
+    position: static;
+    order: 2;
+    font-size: 4.6rem;
+    line-height: 0.9;
+  }
+
+  .episodes,
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .episodesIntro {
+    position: static;
+  }
+}

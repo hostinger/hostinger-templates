@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will It Survive? — honest plant matching</title>
+    <meta
+      name="description"
+      content="Answer three honest questions about your light, your watering habits, and your pets — get the plants that will actually survive your flat."
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="src/styles/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#quiz">Skip to the quiz</a>
+    <header class="site-header" id="site-header"></header>
+    <main id="main">
+      <section class="quiz-section" id="quiz" aria-labelledby="quiz-title"></section>
+      <section class="results-section" id="results" aria-labelledby="results-title"></section>
+      <section class="catalogue-section" id="catalogue" aria-labelledby="catalogue-title"></section>
+      <section class="faq-section" id="faq" aria-labelledby="faq-title"></section>
+      <section class="visit-section" id="visit" aria-labelledby="visit-title"></section>
+    </main>
+    <footer class="site-footer" id="site-footer"></footer>
+    <noscript>
+      <p class="noscript-note">
+        This page needs JavaScript to run the plant-matching quiz and show the catalogue. Please
+        enable it and reload.
+      </p>
+    </noscript>
+    <script type="module" src="src/main.ts"></script>
+  </body>
+</html>

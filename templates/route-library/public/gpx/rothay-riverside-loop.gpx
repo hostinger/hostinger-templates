@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Bracken Fell Harriers Route Library" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Rothay Riverside Loop</name>
+    <desc>6.8 km with 95 m of climb. From the Bracken Fell Harriers route book.</desc>
+  </metadata>
+  <trk>
+    <name>Rothay Riverside Loop</name>
+    <desc>The club's default easy evening: out along the River Rothay, around the Under Loughrigg lane and back over the stone footbridge. Barely a climb worth naming, though the two short rises past Fox How will still say hello. Runnable end to end in road shoes unless the river has been up.</desc>
+    <trkseg>
+      <trkpt lat="54.42700" lon="-2.96800"><ele>62.0</ele></trkpt>
+      <trkpt lat="54.43009" lon="-2.96998"><ele>68.8</ele></trkpt>
+      <trkpt lat="54.43257" lon="-2.97317"><ele>75.5</ele></trkpt>
+      <trkpt lat="54.43521" lon="-2.97572"><ele>75.9</ele></trkpt>
+      <trkpt lat="54.43717" lon="-2.97981"><ele>72.5</ele></trkpt>
+      <trkpt lat="54.43653" lon="-2.98543"><ele>72.2</ele></trkpt>
+      <trkpt lat="54.43427" lon="-2.98966"><ele>80.3</ele></trkpt>
+      <trkpt lat="54.43336" lon="-2.99267"><ele>88.4</ele></trkpt>
+      <trkpt lat="54.43378" lon="-2.99698"><ele>90.3</ele></trkpt>
+      <trkpt lat="54.43305" lon="-3.00152"><ele>87.4</ele></trkpt>
+      <trkpt lat="54.43077" lon="-3.00364"><ele>84.4</ele></trkpt>
+      <trkpt lat="54.42830" lon="-3.00491"><ele>91.1</ele></trkpt>
+      <trkpt lat="54.42548" lon="-3.00768"><ele>99.5</ele></trkpt>
+      <trkpt lat="54.42185" lon="-3.00906"><ele>96.5</ele></trkpt>
+      <trkpt lat="54.41911" lon="-3.00537"><ele>91.0</ele></trkpt>
+      <trkpt lat="54.41866" lon="-2.99887"><ele>91.5</ele></trkpt>
+      <trkpt lat="54.41883" lon="-2.99377"><ele>99.1</ele></trkpt>
+      <trkpt lat="54.41816" lon="-2.98984"><ele>105.0</ele></trkpt>
+      <trkpt lat="54.41816" lon="-2.98567"><ele>93.6</ele></trkpt>
+      <trkpt lat="54.41998" lon="-2.98261"><ele>82.2</ele></trkpt>
+      <trkpt lat="54.42190" lon="-2.98068"><ele>86.8</ele></trkpt>
+      <trkpt lat="54.42270" lon="-2.97675"><ele>97.7</ele></trkpt>
+      <trkpt lat="54.42406" lon="-2.97088"><ele>85.1</ele></trkpt>
+      <trkpt lat="54.42700" lon="-2.96800"><ele>62.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

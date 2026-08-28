@@ -1,0 +1,132 @@
+[
+  {
+    "id": "chin-tuck",
+    "name": "Chin Tuck",
+    "figure": "chin-tuck",
+    "bodyParts": ["neck"],
+    "dosage": "2 sets × 10 reps · 3-second hold",
+    "steps": [
+      "Sit or stand tall and look straight ahead.",
+      "Glide your chin straight back, as if making a gentle double chin.",
+      "Hold for three seconds, then relax and repeat."
+    ],
+    "caution": "Keep the movement small and pain-free — glide back, never force the head down."
+  },
+  {
+    "id": "neck-side-stretch",
+    "name": "Neck Side Stretch",
+    "figure": "neck-side-stretch",
+    "bodyParts": ["neck", "shoulder"],
+    "dosage": "3 holds × 20 seconds each side",
+    "steps": [
+      "Sit tall and let your right ear drop toward your right shoulder.",
+      "For a little more stretch, rest your right hand lightly on your head.",
+      "Hold, return slowly to centre, then change sides."
+    ],
+    "caution": "A gentle pull is enough. Never yank the head, and back off if you feel tingling."
+  },
+  {
+    "id": "wall-slide",
+    "name": "Wall Slide",
+    "figure": "wall-slide",
+    "bodyParts": ["shoulder"],
+    "dosage": "3 sets × 8 slow reps",
+    "steps": [
+      "Stand with your back against a wall, arms in a goalpost position.",
+      "Slide your arms slowly up the wall as far as they go without pinching.",
+      "Lower back to the goalpost with the same control."
+    ],
+    "caution": "Keep your ribs down and lower back relaxed — shrink the range if the shoulder pinches."
+  },
+  {
+    "id": "doorway-chest-stretch",
+    "name": "Doorway Chest Stretch",
+    "figure": "doorway-chest-stretch",
+    "bodyParts": ["shoulder", "back"],
+    "dosage": "3 holds × 30 seconds",
+    "steps": [
+      "Stand in a doorway with your forearms on the frame, elbows at shoulder height.",
+      "Step one foot through until you feel a stretch across the chest.",
+      "Breathe slowly and hold, then step back to release."
+    ],
+    "caution": "Ease off if you feel pins and needles in the hands — that is a nerve, not a muscle."
+  },
+  {
+    "id": "cat-camel",
+    "name": "Cat–Camel",
+    "figure": "cat-camel",
+    "bodyParts": ["back", "neck"],
+    "dosage": "2 sets × 10 slow cycles",
+    "steps": [
+      "Start on hands and knees, hands under shoulders, knees under hips.",
+      "Round your back up toward the ceiling and let your head drop.",
+      "Then let your belly sink and lift your chest, flowing slowly between the two."
+    ],
+    "caution": "Stay in a comfortable range — this should feel like oiling the spine, not stretching hard."
+  },
+  {
+    "id": "bird-dog",
+    "name": "Bird Dog",
+    "figure": "bird-dog",
+    "bodyParts": ["back", "hip"],
+    "dosage": "3 sets × 8 reps each side",
+    "steps": [
+      "From hands and knees, reach one arm forward and the opposite leg back.",
+      "Keep your hips level and hold for one slow breath.",
+      "Return with control and swap sides."
+    ],
+    "caution": "Keep the lower back flat like a table — reach less far if it starts to arch or twist."
+  },
+  {
+    "id": "glute-bridge",
+    "name": "Glute Bridge",
+    "figure": "glute-bridge",
+    "bodyParts": ["hip", "back"],
+    "dosage": "3 sets × 10 reps · 2-second hold",
+    "steps": [
+      "Lie on your back with knees bent and feet hip-width apart.",
+      "Press through your heels and lift your hips into one straight line from shoulders to knees.",
+      "Hold for two seconds, then lower slowly."
+    ],
+    "caution": "Lift only as high as the hips go without arching the lower back."
+  },
+  {
+    "id": "hip-flexor-stretch",
+    "name": "Half-Kneel Hip Flexor Stretch",
+    "figure": "hip-flexor-stretch",
+    "bodyParts": ["hip"],
+    "dosage": "3 holds × 30 seconds each side",
+    "steps": [
+      "Kneel on one knee with the other foot flat in front — pad the knee with a cushion.",
+      "Tuck your tailbone slightly and shift your weight gently forward.",
+      "Feel the stretch across the front of the kneeling hip and hold."
+    ],
+    "caution": "The stretch belongs at the front of the hip — if the lower back pinches, tuck and shorten."
+  },
+  {
+    "id": "sit-to-stand",
+    "name": "Sit to Stand",
+    "figure": "sit-to-stand",
+    "bodyParts": ["knee", "hip"],
+    "dosage": "3 sets × 8 reps",
+    "steps": [
+      "Sit toward the front of a firm chair with your feet under your knees.",
+      "Lean forward and push through the whole foot to stand tall.",
+      "Lower back down slowly, tapping the seat before you rise again."
+    ],
+    "caution": "Keep the knees tracking over the toes, and use the armrests only if you truly need them."
+  },
+  {
+    "id": "heel-raise",
+    "name": "Heel Raise",
+    "figure": "heel-raise",
+    "bodyParts": ["ankle", "knee"],
+    "dosage": "3 sets × 12 reps",
+    "steps": [
+      "Stand tall with your fingertips on a wall or counter for balance.",
+      "Rise up onto the balls of your feet as high as comfortable.",
+      "Lower back down slowly over three seconds."
+    ],
+    "caution": "If both legs feel easy, ask us before progressing to the single-leg version."
+  }
+]

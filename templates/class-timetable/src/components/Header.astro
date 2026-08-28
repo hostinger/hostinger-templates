@@ -1,0 +1,32 @@
+---
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+import { getBookingActions } from '../utils/booking';
+
+const site = rawSite as SiteContent;
+const { primary } = getBookingActions(site);
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label={`${site.name} home`}>
+    <svg class="brand-leaf" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 2.6c3.3 3.1 4.7 6.6 4.7 10 0 4.3-2.3 7.9-4.7 9.8-2.4-1.9-4.7-5.5-4.7-9.8 0-3.4 1.4-6.9 4.7-10z"
+        fill="currentColor"
+      />
+    </svg>
+    <span class="brand-name">{site.name}</span>
+  </a>
+  <nav aria-label="Main navigation">
+    {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+  <a
+    class="button header-book"
+    href={primary.href}
+    target={primary.external ? '_blank' : undefined}
+    rel={primary.external ? 'noopener' : undefined}
+    aria-label={primary.label}
+  >
+    {primary.shortLabel}
+  </a>
+</header>

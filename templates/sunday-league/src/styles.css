@@ -1,0 +1,180 @@
+/* Fonts: Oswald for scoreboard display type, Inter for body copy. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+
+/* Design tokens — the whole board is themed from here. */
+:root {
+  --pitch-950: #081f14;
+  --pitch-900: #0c2a1c;
+  --pitch-800: #123726;
+  --pitch-700: #175339;
+  --pitch-600: #1d5a3a;
+  --chalk: #f4f1e6;
+  --chalk-bright: #fdfbf3;
+  --chalk-dim: #cfd8cb;
+  --line-soft: #ddd6c0;
+  --ink: #17251d;
+  --ink-soft: #55645b;
+  --gold: #c99a2e;
+  --gold-bright: #e6b94d;
+  --gold-deep: #96731f;
+  --win: #1d5a3a;
+  --draw: #8a6d1f;
+  --loss: #a03c2c;
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --radius: 14px;
+  --shadow-card: 0 10px 30px rgb(12 42 28 / 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--chalk);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--pitch-700);
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Layout shell shared by header, board, and footer. */
+.shell {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+
+/* Panels: the pinned cards of the noticeboard. */
+.panel {
+  padding: clamp(18px, 3vw, 28px);
+  background: var(--chalk-bright);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+.panel-head {
+  margin-bottom: 4px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--gold-deep);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.panel-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.panel-meta {
+  margin: 6px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+
+/* Buttons built from the club palette. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 9px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--pitch-950);
+}
+
+.btn-gold:hover {
+  background: var(--gold-bright);
+}
+
+/* Accessibility helpers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  padding: 10px 16px;
+  background: var(--gold);
+  border-radius: 8px;
+  color: var(--pitch-950);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn,
+  .skip-link {
+    transition: none;
+  }
+}

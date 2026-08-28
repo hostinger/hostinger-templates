@@ -1,0 +1,272 @@
+/* Design tokens: edit colors, fonts, and radii here. */
+:root {
+  --cream: #faf3e3;
+  --cream-deep: #eee1c6;
+  --paper: #fffdf7;
+  --ink: #2b3a2e;
+  --ink-soft: #57685a;
+  --leaf-deep: #2c5e3a;
+  --leaf: #4c8f5c;
+  --leaf-soft: #8fc49a;
+  --leaf-tint: #e7f1e4;
+  --moss-bg: #ecf4e9;
+  --terracotta: #c9683f;
+  --terracotta-deep: #a94f2c;
+  --terracotta-dark: #8f3f20;
+  --terracotta-tint: #f7e3d6;
+  --sun: #e9b24c;
+  --sun-tint: #f9ecd2;
+  --sun-ink: #7a5410;
+  --water-tint: #e0eef3;
+  --water-ink: #38677c;
+  --footer-bg: #22332a;
+  --radius-card: 26px;
+  --radius-section: 44px;
+  --content-width: 1200px;
+  --font-display: 'Fredoka', 'Trebuchet MS', sans-serif;
+  --font-body: 'Atkinson Hyperlegible', 'Verdana', sans-serif;
+  --shadow-card: 0 12px 28px rgba(44, 94, 58, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+legend {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.12;
+  margin: 0;
+  color: var(--ink);
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+dl,
+dd,
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset {
+  border: 0;
+  min-width: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--leaf-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--terracotta-deep);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 20;
+  padding: 10px 18px;
+  background: var(--terracotta-deep);
+  color: var(--paper);
+  font-family: var(--font-display);
+  border-radius: 14px;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  top: 16px;
+}
+
+/* Shared layout helpers */
+.section-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.section-head {
+  max-width: 620px;
+  margin-bottom: 32px;
+}
+
+.kicker {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta-deep);
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+}
+
+.lede {
+  margin-top: 14px;
+  font-size: 1.12rem;
+  color: var(--ink-soft);
+  max-width: 54ch;
+}
+
+/* Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.98rem;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 2.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.button svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: var(--terracotta-deep);
+  color: var(--paper);
+}
+
+.button-primary:hover {
+  background: var(--terracotta-dark);
+}
+
+.button-ghost {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.button-ghost:hover {
+  background: var(--leaf-tint);
+}
+
+/* Chips and pills */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  padding: 4px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.chip-light {
+  background: var(--sun-tint);
+  color: var(--sun-ink);
+}
+
+.chip-water {
+  background: var(--water-tint);
+  color: var(--water-ink);
+}
+
+.chip-safe {
+  background: var(--leaf-tint);
+  color: var(--leaf-deep);
+}
+
+.chip-warn {
+  background: var(--terracotta-tint);
+  color: var(--terracotta-deep);
+}
+
+.price-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 4px 13px;
+  border-radius: 999px;
+  background: var(--terracotta-deep);
+  color: var(--paper);
+}
+
+.plant-name {
+  font-size: 1.28rem;
+}
+
+.botanical {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.personality {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.noscript-note {
+  padding: 18px 24px;
+  text-align: center;
+  background: var(--sun-tint);
+  color: var(--sun-ink);
+}

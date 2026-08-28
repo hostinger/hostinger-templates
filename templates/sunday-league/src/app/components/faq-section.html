@@ -1,0 +1,18 @@
+<section class="panel" aria-labelledby="faq-heading">
+  <div class="panel-head">
+    <p class="eyebrow">Before you ask</p>
+    <h2 class="panel-title" id="faq-heading">Club questions</h2>
+    <p class="panel-meta">Asked every season, answered once here.</p>
+  </div>
+  <div class="faq-list">
+    @for (faq of faqs; track faq.question; let first = $first) {
+      <details class="faq-item" [open]="first">
+        <summary class="faq-question">
+          {{ faq.question }}
+          <span class="faq-marker" aria-hidden="true">+</span>
+        </summary>
+        <p class="faq-answer">{{ faq.answer }}</p>
+      </details>
+    }
+  </div>
+</section>

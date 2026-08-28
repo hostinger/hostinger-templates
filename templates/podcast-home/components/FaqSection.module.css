@@ -1,0 +1,111 @@
+.section {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(32px, 5vw, 72px);
+  padding-top: clamp(56px, 8vw, 104px);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+  line-height: 1.05;
+  margin-top: 10px;
+}
+
+.lead {
+  margin-top: 14px;
+  color: var(--ink-mid);
+  max-width: 34ch;
+}
+
+.mail {
+  color: var(--lime);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(200, 246, 54, 0.4);
+  overflow-wrap: anywhere;
+}
+
+.mail:hover {
+  border-bottom-color: var(--lime);
+}
+
+.list {
+  border-top: 1px solid var(--stroke);
+}
+
+.faq {
+  border-bottom: 1px solid var(--stroke);
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 4px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.12rem;
+  color: var(--ink);
+}
+
+.question::-webkit-details-marker {
+  display: none;
+}
+
+.question:hover {
+  color: var(--lime);
+}
+
+.marker {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.marker::before,
+.marker::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: var(--violet-400);
+  border-radius: 2px;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.marker::before {
+  width: 14px;
+  height: 2px;
+}
+
+.marker::after {
+  width: 2px;
+  height: 14px;
+}
+
+.faq[open] .marker::after {
+  transform: scaleY(0);
+}
+
+.faq[open] .marker::before {
+  background: var(--lime);
+}
+
+.answer {
+  padding: 0 4px 22px;
+  color: var(--ink-mid);
+  max-width: 60ch;
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
