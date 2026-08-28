@@ -8,4 +8,7 @@ workflow in its own directory with:
 - `README_TEMPLATE.md` for the fixed project documentation format
 - `TEMPLATE_SCHEMA.md` for catalog metadata
 
-Current workflow: `create-repository/`.
+Current workflows:
+
+- `create-repository/` — build and register a template
+- `deploy-templates/` — publish template demos to Hostinger and record URLs
