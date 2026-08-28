@@ -1,0 +1,36 @@
+{
+  "currency": "USD",
+  "symbol": "$",
+  "basePrice": 84,
+  "bedroomIncrement": 18,
+  "bathroomIncrement": 24,
+  "includedBedrooms": 1,
+  "includedBathrooms": 1,
+  "minimumBedrooms": 1,
+  "maximumBedrooms": 6,
+  "minimumBathrooms": 1,
+  "maximumBathrooms": 5,
+  "frequencies": [
+    {
+      "id": "weekly",
+      "label": "Every week",
+      "shortLabel": "Weekly",
+      "discountPercent": 20,
+      "note": "Best value"
+    },
+    {
+      "id": "biweekly",
+      "label": "Every 2 weeks",
+      "shortLabel": "Biweekly",
+      "discountPercent": 12,
+      "note": "Most popular"
+    },
+    {
+      "id": "once",
+      "label": "One-time clean",
+      "shortLabel": "One time",
+      "discountPercent": 0,
+      "note": "No commitment"
+    }
+  ]
+}

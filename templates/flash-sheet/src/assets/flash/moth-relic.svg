@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-labelledby="title">
+  <title id="title">Moth relic flash</title>
+  <g fill="none" stroke="#17130f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M194 164c-22-47-52-69-88-69-7 53 7 100 62 135-65 5-97 44-105 100 58 18 103-2 133-52"/>
+    <path d="M206 164c22-47 52-69 88-69 7 53-7 100-62 135 65 5 97 44 105 100-58 18-103-2-133-52"/>
+    <path d="M172 178c-36-14-52-39-57-61M228 178c36-14 52-39 57-61M146 252l-53 54M254 252l53 54"/>
+    <ellipse cx="200" cy="235" rx="34" ry="91" fill="#f2e8d7"/>
+    <path d="M183 158c0-22 7-37 17-37s17 15 17 37M185 225h30v59h-30zM191 284v-38h18v38"/>
+    <circle cx="200" cy="205" r="8" fill="#17130f"/>
+    <path d="M188 326c-8 22-4 42 12 57 16-15 20-35 12-57"/>
+  </g>
+</svg>

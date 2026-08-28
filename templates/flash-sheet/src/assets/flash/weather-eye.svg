@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-labelledby="title">
+  <title id="title">Weather eye flash</title>
+  <g fill="none" stroke="#17130f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M78 212c13-48 44-68 88-58 13-47 71-62 105-23 18-13 50-8 59 14 12 28-7 67-47 67H78Z"/>
+    <path d="M107 212c23 50 63 77 93 77s70-27 93-77"/>
+    <path d="M145 222c16 23 35 34 55 34s39-11 55-34"/>
+    <circle cx="200" cy="221" r="14" fill="#17130f"/>
+    <path d="M134 276l-12 32M183 298l-10 31M266 276l12 32M218 326l-18 51-18-51"/>
+    <path d="M144 382h112l-15 55h-82l-15-55ZM162 382l12-26M238 382l-12-26"/>
+    <path d="M87 123l5 12 12 5-12 5-5 12-5-12-12-5 12-5 5-12Z"/>
+  </g>
+</svg>

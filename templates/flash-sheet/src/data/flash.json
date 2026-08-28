@@ -1,0 +1,98 @@
+[
+  {
+    "id": "night-orchard",
+    "name": "Night Orchard",
+    "number": "01",
+    "motif": "botanical",
+    "size": "12–15 cm",
+    "placement": "Forearm · calf · shoulder",
+    "price": "£220",
+    "availability": "Available",
+    "artwork": "night-orchard.svg",
+    "description": "A split pomegranate under a slim crescent, with seeds drifting like tiny planets."
+  },
+  {
+    "id": "moth-relic",
+    "name": "Moth Relic",
+    "number": "02",
+    "motif": "creature",
+    "size": "14–17 cm",
+    "placement": "Upper arm · thigh",
+    "price": "£260",
+    "availability": "Available",
+    "artwork": "moth-relic.svg",
+    "description": "A velvet moth carrying a small doorway between patterned wings."
+  },
+  {
+    "id": "quiet-blade",
+    "name": "Quiet Blade",
+    "number": "03",
+    "motif": "talisman",
+    "size": "16–19 cm",
+    "placement": "Shin · outer forearm",
+    "price": "£280",
+    "availability": "Available",
+    "artwork": "quiet-blade.svg",
+    "description": "A ceremonial dagger softened by ribbon, stars and two watchful leaves."
+  },
+  {
+    "id": "three-hare-moon",
+    "name": "Three Hare Moon",
+    "number": "04",
+    "motif": "creature",
+    "size": "13–16 cm",
+    "placement": "Thigh · upper arm",
+    "price": "£250",
+    "availability": "Available",
+    "artwork": "three-hare-moon.svg",
+    "description": "Three running hares share one set of ears beneath a black sun."
+  },
+  {
+    "id": "thorn-heart",
+    "name": "Thorn Heart",
+    "number": "05",
+    "motif": "botanical",
+    "size": "10–13 cm",
+    "placement": "Chest · bicep · calf",
+    "price": "£210",
+    "availability": "Available",
+    "artwork": "thorn-heart.svg",
+    "description": "A folk heart tangled in briar, with one stubborn bloom left open."
+  },
+  {
+    "id": "weather-eye",
+    "name": "Weather Eye",
+    "number": "06",
+    "motif": "talisman",
+    "size": "9–12 cm",
+    "placement": "Inner arm · ankle",
+    "price": "£190",
+    "availability": "Available",
+    "artwork": "weather-eye.svg",
+    "description": "An all-seeing storm cloud raining into a tiny hand-cut vessel."
+  },
+  {
+    "id": "garden-ghost",
+    "name": "Garden Ghost",
+    "number": "07",
+    "motif": "oddity",
+    "size": "12–15 cm",
+    "placement": "Forearm · calf",
+    "price": "£230",
+    "availability": "Available",
+    "artwork": "garden-ghost.svg",
+    "description": "A sheet ghost quietly growing mushrooms where its feet should be."
+  },
+  {
+    "id": "little-familiar",
+    "name": "Little Familiar",
+    "number": "08",
+    "motif": "oddity",
+    "size": "11–14 cm",
+    "placement": "Upper arm · thigh · calf",
+    "price": "£220",
+    "availability": "Available",
+    "artwork": "little-familiar.svg",
+    "description": "A horned cat curled around a candle, guarding the last warm spark."
+  }
+]

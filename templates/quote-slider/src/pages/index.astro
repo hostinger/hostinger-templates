@@ -1,0 +1,138 @@
+---
+import { Image } from 'astro:assets';
+import QuoteCalculator from '../components/QuoteCalculator.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import heroImage from '../assets/images/cleaner-at-work.jpg';
+import rawSite from '../data/site.json';
+import type { SiteContent } from '../types/content';
+
+const site = rawSite as SiteContent;
+const faqs = [
+  {
+    question: 'Is this the final price?',
+    answer: 'It is a transparent estimate based on bedrooms, bathrooms, and frequency. Before booking, we confirm the scope, access, pets, and any unusually heavy buildup by email—then you approve the final price.',
+  },
+  {
+    question: 'What is included in a standard clean?',
+    answer: 'Kitchen and bathroom surfaces, exterior appliance faces, dusting, vacuuming, mopping, bed making, and bin emptying are included. Inside ovens, fridges, and cabinets are separate deep-clean requests.',
+  },
+  {
+    question: 'Do I need to provide supplies?',
+    answer: 'No. Our insured team brings professional products and tools. Tell us in your email if you prefer fragrance-free products or have a delicate surface.',
+  },
+  {
+    question: 'Can I change or cancel a visit?',
+    answer: 'Yes. Give us at least 24 hours’ notice and there is no cancellation fee. Repeat plans are flexible and never lock you into a contract.',
+  },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={`${site.name} — A clear cleaning quote in seconds`}
+  description="Adjust bedrooms, bathrooms, and cleaning frequency to get a transparent home cleaning estimate."
+  schema={faqSchema}
+>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label={`${site.name} home`}>
+      <span aria-hidden="true">✦</span>{site.name}
+    </a>
+    <nav aria-label="Primary navigation">
+      {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <a class="header-contact" href={site.phoneHref}>{site.phoneDisplay}</a>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">{site.eyebrow}</p>
+        <h1>{site.headline}</h1>
+        <p class="hero-intro">{site.intro}</p>
+        <a class="button button-primary hero-button" href="#quote">Price my clean <span aria-hidden="true">↓</span></a>
+        <div class="service-note">
+          <span class="status-dot" aria-hidden="true"></span>
+          <p><strong>Now booking next week</strong><br />{site.serviceArea}</p>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="image-frame">
+          <Image
+            src={heroImage}
+            alt="Professional cleaner wiping a bright kitchen counter"
+            width={1200}
+            height={1500}
+            loading="eager"
+          />
+        </div>
+        <div class="fresh-card" aria-hidden="true">
+          <span>fresh home</span>
+          <strong>01</strong>
+          <svg viewBox="0 0 140 48"><path d="M2 33C28 4 49 46 72 18s43 18 66-8" /></svg>
+        </div>
+        <p class="vertical-note">Thoughtful people · practical clean</p>
+      </div>
+    </section>
+
+    <QuoteCalculator />
+
+    <section class="included-section" id="included" aria-labelledby="included-title">
+      <div class="included-heading">
+        <p class="kicker">The standard, standard</p>
+        <h2 id="included-title">Everything that makes home feel reset.</h2>
+        <p>No mystery packages. Every regular visit follows the same careful checklist.</p>
+      </div>
+      <ol class="included-list">
+        {site.included.map((item, index) => (
+          <li><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>
+        ))}
+      </ol>
+      <div class="proof-strip">
+        {site.proof.map((item) => (
+          <div><strong>{item.value}</strong><span>{item.label}</span></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="faq-heading">
+        <p class="kicker">Before we let ourselves in</p>
+        <h2 id="faq-title">Straight answers. Spotless corners.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details open={index === 0}>
+            <summary><span>{faq.question}</span><b aria-hidden="true">+</b></summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="contact-band">
+      <div>
+        <p class="kicker">Ready for your reset?</p>
+        <h2>Send the quote. We’ll handle the clean.</h2>
+      </div>
+      <div>
+        <a class="button button-light" href="#quote">Build my quote</a>
+        <p>{site.responseTime}</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="wordmark" href="/"><span aria-hidden="true">✦</span>{site.name}</a>
+    <p>{site.serviceArea}</p>
+    <a href={`mailto:${site.email}`}>{site.email}</a>
+  </footer>
+</BaseLayout>

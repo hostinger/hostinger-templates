@@ -1,0 +1,21 @@
+{
+  "basePrice": 145,
+  "pricePerCubicMetre": 19,
+  "rooms": [
+    { "id": "living", "name": "Living room", "short": "Living", "icon": "sofa", "volume": 8, "description": "Sofa, TV unit, coffee table and boxes" },
+    { "id": "bedroom", "name": "Bedroom", "short": "Bedroom", "icon": "bed", "volume": 7, "description": "Bed, wardrobe, drawers and boxes" },
+    { "id": "kitchen", "name": "Kitchen / dining", "short": "Kitchen", "icon": "chair", "volume": 6, "description": "Table, chairs, small appliances and boxes" },
+    { "id": "office", "name": "Home office", "short": "Office", "icon": "desk", "volume": 4, "description": "Desk, chair, shelving and equipment" },
+    { "id": "garage", "name": "Garage / shed", "short": "Garage", "icon": "box", "volume": 9, "description": "Tools, bikes, storage and garden items" },
+    { "id": "bathroom", "name": "Bathroom", "short": "Bathroom", "icon": "drop", "volume": 2, "description": "Cabinet, laundry and packed toiletries" }
+  ],
+  "vans": [
+    { "id": "small", "name": "Compact van", "maxVolume": 12, "label": "Best for a few rooms", "note": "One mover · up to 12m³" },
+    { "id": "medium", "name": "Luton van", "maxVolume": 28, "label": "Best for a flat", "note": "Two movers · up to 28m³" },
+    { "id": "large", "name": "Large Luton", "maxVolume": 48, "label": "Best for a house", "note": "Two–three movers · up to 48m³" },
+    { "id": "fleet", "name": "Two-van team", "maxVolume": 999, "label": "For bigger moves", "note": "Three–four movers · 49m³+" }
+  ],
+  "minimumEstimate": 220,
+  "estimateRounding": 10,
+  "disclaimer": "Guide for a local ground-floor move. Distance, stairs, access, packing and special items can change the final quote."
+}

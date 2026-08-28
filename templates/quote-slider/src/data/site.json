@@ -1,0 +1,27 @@
+{
+  "name": "Tidy Assembly",
+  "eyebrow": "Home cleaning, priced in the open",
+  "headline": "A cleaner home, without the fuzzy quote.",
+  "intro": "Set the size of your home and how often you want us. Your visit price updates instantly—no phone tag, no surprise line items.",
+  "email": "hello@tidyassembly.example",
+  "phoneDisplay": "(503) 555-0148",
+  "phoneHref": "tel:+15035550148",
+  "serviceArea": "Portland, Oregon · within 12 miles of the city",
+  "responseTime": "We reply within one business day",
+  "navigation": [
+    { "label": "Your quote", "href": "#quote" },
+    { "label": "What’s included", "href": "#included" },
+    { "label": "FAQ", "href": "#faq" }
+  ],
+  "included": [
+    "Kitchen surfaces, sink, hob, and appliance fronts",
+    "Bathrooms scrubbed, disinfected, and reset",
+    "Dusting, vacuuming, and hard-floor mopping",
+    "Beds made and bins emptied with fresh liners"
+  ],
+  "proof": [
+    { "value": "4.9", "label": "average local rating" },
+    { "value": "680+", "label": "homes cared for" },
+    { "value": "100%", "label": "insured team" }
+  ]
+}

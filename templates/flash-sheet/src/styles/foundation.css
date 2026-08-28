@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  color: #17130f;
+  background: #e7dfcf;
+  font-family: 'DM Mono', monospace;
+  font-synthesis: none;
+  --ink: #17130f;
+  --paper: #e7dfcf;
+  --cream: #f2e8d7;
+  --acid: #d5ff3f;
+  --rust: #b74f2d;
+  --line: rgba(23, 19, 15, 0.3);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; overflow-x: hidden; }
+button, a { color: inherit; }
+button { font: inherit; }
+a { text-decoration: none; }
+p, h1, h2, h3 { margin-top: 0; }
+button, a, summary { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--rust); outline-offset: 4px; }
+
+.section-shell { padding-inline: max(28px, calc((100vw - 1380px) / 2)); }
+.kicker {
+  margin: 0 0 18px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.primary-button {
+  display: inline-flex;
+  min-height: 56px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--cream);
+  cursor: pointer;
+  font: 500 12px 'DM Mono', monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.primary-button:hover { background: var(--rust); border-color: var(--rust); }

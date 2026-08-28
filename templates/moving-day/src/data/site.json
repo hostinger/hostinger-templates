@@ -1,0 +1,28 @@
+{
+  "name": "Moving Day",
+  "tagline": "Bristol removals, made lighter.",
+  "phoneDisplay": "0117 496 0824",
+  "phoneHref": "+441174960824",
+  "email": "hello@movingdayremovals.co.uk",
+  "serviceArea": "Bristol, Bath & nearby",
+  "address": "14 Paintworks, Bristol BS4 3EH",
+  "hours": "Mon–Sat, 8am–6pm",
+  "trustItems": ["Fully insured", "Careful local crew", "Clear guide pricing"],
+  "stats": [
+    { "value": "640+", "label": "moves completed" },
+    { "value": "4.9 / 5", "label": "customer rating" },
+    { "value": "7 years", "label": "moving locally" }
+  ],
+  "steps": [
+    { "number": "01", "title": "Tell us what’s moving", "text": "Pick your rooms and quantities for an instant first estimate." },
+    { "number": "02", "title": "We confirm the details", "text": "Share access notes and dates by email. We’ll reply with a fixed quote." },
+    { "number": "03", "title": "Put the kettle on", "text": "Our insured team handles the lift, load and careful delivery." }
+  ],
+  "faqs": [
+    { "question": "Is the online price a final quote?", "answer": "It is a useful ballpark based on room volume and a local move. We confirm access, distance, floors and special items before sending a fixed quote." },
+    { "question": "Do you dismantle furniture?", "answer": "Yes. Standard bed frames, tables and wardrobes can be dismantled and rebuilt when agreed in your quote." },
+    { "question": "Are my belongings insured?", "answer": "Yes. Goods in transit and public liability cover are included. We will share the policy details with your written quote." },
+    { "question": "Can you help with packing?", "answer": "Yes. Add a note to your email enquiry and we can price full packing, fragile-only packing or reusable crate hire." },
+    { "question": "How far do you travel?", "answer": "We collect across Bristol, Bath and nearby towns, and deliver throughout mainland Great Britain." }
+  ]
+}

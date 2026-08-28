@@ -1,0 +1,29 @@
+{
+  "studioName": "Black Thistle",
+  "eyebrow": "Independent tattooing · Bristol",
+  "headline": "Pick your mark.",
+  "intro": "Eight one-off drawings, made for skin. No repeats once claimed.",
+  "email": "hello@blackthistlestudio.example",
+  "instagram": "@blackthistle.tattoo",
+  "address": "18 Wilder Street, Bristol BS2",
+  "hours": "Tue–Sat · 11:00–18:00",
+  "about": "Black Thistle is a quiet, appointment-only studio for bold blackwork, botanical oddities and strange little keepsakes. Every flash piece is drawn here, by hand, and tattooed once.",
+  "faqs": [
+    {
+      "question": "What does “available” mean?",
+      "answer": "The design has not been booked yet. Sending an enquiry does not reserve it; we confirm availability by email."
+    },
+    {
+      "question": "Can I change a flash design?",
+      "answer": "Small adjustments for fit are welcome, but the character and core drawing stay intact. Bigger changes are better handled as custom work."
+    },
+    {
+      "question": "Is the listed price final?",
+      "answer": "It is a clear guide for the listed size and placement. We confirm the final quote before booking if scale or placement changes."
+    },
+    {
+      "question": "How do I book?",
+      "answer": "Choose a design and send the pre-filled enquiry. We reply with availability, suitable dates and studio preparation notes—no payment is taken on this site."
+    }
+  ]
+}

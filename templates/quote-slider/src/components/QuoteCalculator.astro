@@ -1,0 +1,196 @@
+---
+import rawPricing from '../data/pricing.json';
+import rawSite from '../data/site.json';
+import type { Pricing, SiteContent } from '../types/content';
+
+const pricing = rawPricing as Pricing;
+const site = rawSite as SiteContent;
+const initialFrequency = pricing.frequencies[1];
+const initialSubtotal = pricing.basePrice;
+const initialPrice = Math.round(initialSubtotal * (1 - initialFrequency.discountPercent / 100));
+---
+
+<section class="quote-section" id="quote" aria-labelledby="quote-title">
+  <div class="quote-heading">
+    <p class="kicker">Build your clean</p>
+    <h2 id="quote-title">Slide into a tidier week.</h2>
+    <p>Use the controls. See the exact math. Send the quote when it feels right.</p>
+  </div>
+
+  <div class="quote-card" data-quote-calculator>
+    <form class="quote-controls" aria-label="Cleaning quote options">
+      <div class="slider-field">
+        <div class="slider-label">
+          <label for="bedrooms">Bedrooms</label>
+          <output id="bedrooms-output" for="bedrooms">1</output>
+        </div>
+        <input
+          id="bedrooms"
+          name="bedrooms"
+          type="range"
+          min={pricing.minimumBedrooms}
+          max={pricing.maximumBedrooms}
+          value={pricing.includedBedrooms}
+          step="1"
+        />
+        <div class="range-ends" aria-hidden="true"><span>1</span><span>6</span></div>
+      </div>
+
+      <div class="slider-field">
+        <div class="slider-label">
+          <label for="bathrooms">Bathrooms</label>
+          <output id="bathrooms-output" for="bathrooms">1</output>
+        </div>
+        <input
+          id="bathrooms"
+          name="bathrooms"
+          type="range"
+          min={pricing.minimumBathrooms}
+          max={pricing.maximumBathrooms}
+          value={pricing.includedBathrooms}
+          step="1"
+        />
+        <div class="range-ends" aria-hidden="true"><span>1</span><span>5</span></div>
+      </div>
+
+      <fieldset class="frequency-field">
+        <legend>How often?</legend>
+        <div class="frequency-options">
+          {pricing.frequencies.map((frequency) => (
+            <label>
+              <input
+                type="radio"
+                name="frequency"
+                value={frequency.id}
+                checked={frequency.id === initialFrequency.id}
+              />
+              <span class="frequency-copy">
+                <strong>{frequency.label}</strong>
+                <small>{frequency.note}</small>
+              </span>
+              {frequency.discountPercent > 0 && <em>−{frequency.discountPercent}%</em>}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    </form>
+
+    <aside class="quote-result" aria-live="polite" aria-atomic="true">
+      <p class="result-label">Your estimated visit</p>
+      <div class="price-line">
+        <span class="price" data-price>{pricing.symbol}{initialPrice}</span>
+        <span>/ clean</span>
+      </div>
+      <p class="frequency-summary" data-frequency-summary>Every 2 weeks · 12% repeat-visit saving</p>
+
+      <dl class="price-breakdown">
+        <div><dt>1 bed + 1 bath base</dt><dd data-base>{pricing.symbol}{pricing.basePrice}</dd></div>
+        <div><dt data-bed-label>Extra bedrooms</dt><dd data-bed-price>{pricing.symbol}0</dd></div>
+        <div><dt data-bath-label>Extra bathrooms</dt><dd data-bath-price>{pricing.symbol}0</dd></div>
+        <div class="discount-row"><dt data-discount-label>Biweekly saving</dt><dd data-discount>−{pricing.symbol}{initialSubtotal - initialPrice}</dd></div>
+      </dl>
+
+      <div class="quote-actions">
+        <a class="button button-primary" data-email href={`mailto:${site.email}`}>Email this quote</a>
+        <button class="button button-secondary" type="button" data-print>Print one-pager</button>
+      </div>
+      <p class="fine-print">Estimate only. We confirm scope and final price by email before booking.</p>
+    </aside>
+  </div>
+
+  <div class="pricing-rule">
+    <span aria-hidden="true">01</span>
+    <p><strong>{pricing.symbol}{pricing.basePrice} base</strong> includes 1 bedroom + 1 bathroom.</p>
+    <span aria-hidden="true">02</span>
+    <p><strong>+{pricing.symbol}{pricing.bedroomIncrement} per bedroom</strong> and <strong>+{pricing.symbol}{pricing.bathroomIncrement} per bathroom</strong>.</p>
+    <span aria-hidden="true">03</span>
+    <p><strong>Repeat visits save</strong> {pricing.frequencies[0].discountPercent}% weekly or {pricing.frequencies[1].discountPercent}% biweekly.</p>
+  </div>
+</section>
+
+<script is:inline define:vars={{ pricing, email: site.email }}>
+  const root = document.querySelector('[data-quote-calculator]');
+  if (root instanceof HTMLElement) {
+    const bedsInput = root.querySelector('#bedrooms');
+    const bathsInput = root.querySelector('#bathrooms');
+    const bedOutput = root.querySelector('#bedrooms-output');
+    const bathOutput = root.querySelector('#bathrooms-output');
+    const priceOutput = root.querySelector('[data-price]');
+    const frequencySummary = root.querySelector('[data-frequency-summary]');
+    const bedLabel = root.querySelector('[data-bed-label]');
+    const bathLabel = root.querySelector('[data-bath-label]');
+    const bedPrice = root.querySelector('[data-bed-price]');
+    const bathPrice = root.querySelector('[data-bath-price]');
+    const discountLabel = root.querySelector('[data-discount-label]');
+    const discountOutput = root.querySelector('[data-discount]');
+    const emailLink = root.querySelector('[data-email]');
+    const printButton = root.querySelector('[data-print]');
+
+    const number = (value, min, max, fallback) => {
+      const parsed = Number.parseInt(value ?? '', 10);
+      return Number.isNaN(parsed) ? fallback : Math.min(max, Math.max(min, parsed));
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    bedsInput.value = String(number(params.get('beds'), pricing.minimumBedrooms, pricing.maximumBedrooms, pricing.includedBedrooms));
+    bathsInput.value = String(number(params.get('baths'), pricing.minimumBathrooms, pricing.maximumBathrooms, pricing.includedBathrooms));
+    const requestedFrequency = params.get('frequency');
+    const matchedFrequency = pricing.frequencies.find((item) => item.id === requestedFrequency) ?? pricing.frequencies[1];
+    const matchedRadio = root.querySelector(`input[name="frequency"][value="${matchedFrequency.id}"]`);
+    if (matchedRadio) matchedRadio.checked = true;
+
+    const update = () => {
+      const bedrooms = Number(bedsInput.value);
+      const bathrooms = Number(bathsInput.value);
+      const selected = root.querySelector('input[name="frequency"]:checked');
+      const frequency = pricing.frequencies.find((item) => item.id === selected?.value) ?? pricing.frequencies[1];
+      const extraBedrooms = bedrooms - pricing.includedBedrooms;
+      const extraBathrooms = bathrooms - pricing.includedBathrooms;
+      const bedroomCost = extraBedrooms * pricing.bedroomIncrement;
+      const bathroomCost = extraBathrooms * pricing.bathroomIncrement;
+      const subtotal = pricing.basePrice + bedroomCost + bathroomCost;
+      const discount = Math.round(subtotal * frequency.discountPercent / 100);
+      const total = subtotal - discount;
+      const money = (value) => `${pricing.symbol}${value}`;
+
+      bedOutput.value = String(bedrooms);
+      bathOutput.value = String(bathrooms);
+      priceOutput.textContent = money(total);
+      frequencySummary.textContent = frequency.discountPercent
+        ? `${frequency.label} · ${frequency.discountPercent}% repeat-visit saving`
+        : `${frequency.label} · no repeat schedule`;
+      bedLabel.textContent = `${extraBedrooms} extra bedroom${extraBedrooms === 1 ? '' : 's'}`;
+      bathLabel.textContent = `${extraBathrooms} extra bathroom${extraBathrooms === 1 ? '' : 's'}`;
+      bedPrice.textContent = money(bedroomCost);
+      bathPrice.textContent = money(bathroomCost);
+      discountLabel.textContent = frequency.discountPercent ? `${frequency.shortLabel} saving` : 'Frequency saving';
+      discountOutput.textContent = discount ? `−${money(discount)}` : money(0);
+
+      const nextParams = new URLSearchParams({
+        beds: String(bedrooms),
+        baths: String(bathrooms),
+        frequency: frequency.id,
+      });
+      window.history.replaceState(null, '', `${window.location.pathname}?${nextParams}`);
+
+      const subject = `Cleaning quote — ${bedrooms} bed, ${bathrooms} bath`;
+      const body = [
+        'Hello Tidy Assembly,',
+        '',
+        `I’d like to ask about the ${money(total)} per clean estimate.`,
+        `Home: ${bedrooms} bedroom${bedrooms === 1 ? '' : 's'}, ${bathrooms} bathroom${bathrooms === 1 ? '' : 's'}`,
+        `Frequency: ${frequency.label}`,
+        `Estimate link: ${window.location.href}`,
+        '',
+        'My preferred day/time:',
+        '',
+        'Anything you should know about the home:',
+      ].join('\n');
+      emailLink.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+
+    root.addEventListener('input', update);
+    printButton.addEventListener('click', () => window.print());
+    update();
+  }
+</script>

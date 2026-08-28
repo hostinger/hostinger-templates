@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-labelledby="title">
+  <title id="title">Thorn heart flash</title>
+  <g fill="none" stroke="#17130f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M200 421C168 371 79 308 80 200c0-54 32-89 78-89 27 0 41 14 42 44 1-30 15-44 42-44 46 0 78 35 78 89 1 108-88 171-120 221Z"/>
+    <path d="M110 145c-30 67-15 147 42 211M290 145c30 67 15 147-42 211"/>
+    <path d="M108 191l-25-14M116 242l-27 9M135 298l-21 22M292 191l25-14M284 242l27 9M265 298l21 22"/>
+    <path d="M200 154c-35 18-52 49-51 91 28 2 45-12 51-39 6 27 23 41 51 39 1-42-16-73-51-91Z"/>
+    <circle cx="200" cy="185" r="12" fill="#17130f"/>
+  </g>
+</svg>

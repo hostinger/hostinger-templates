@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-labelledby="title">
+  <title id="title">Garden ghost flash</title>
+  <g fill="none" stroke="#17130f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M108 356c18-48 20-101 15-163-6-75 25-125 77-125s83 50 77 125c-5 62-3 115 15 163-28-17-47-15-60 7-21-24-43-24-64 0-13-22-32-24-60-7Z"/>
+    <ellipse cx="167" cy="185" rx="12" ry="19" fill="#17130f"/>
+    <ellipse cx="233" cy="185" rx="12" ry="19" fill="#17130f"/>
+    <path d="M175 248c17 13 33 13 50 0M130 381c-38-8-66 12-68 45h68M111 384v42M270 391c39-7 65 11 68 43h-68M289 394v40"/>
+    <path d="M64 425h69M267 433h72M97 378c0-34 19-54 47-45 2 28-15 46-47 45ZM300 389c0-34-19-54-47-45-2 28 15 46 47 45Z"/>
+  </g>
+</svg>

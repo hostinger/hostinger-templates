@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-labelledby="title">
+  <title id="title">Quiet ceremonial blade flash</title>
+  <g fill="none" stroke="#17130f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M200 54l28 49-28 44-28-44 28-49ZM200 147v237"/>
+    <path d="M200 421l-36-74 36-17 36 17-36 74ZM126 201h148M147 180l-31 21 31 21M253 180l31 21-31 21"/>
+    <path d="M151 250c-46 15-63 49-53 101 40-7 71-29 92-67M249 250c46 15 63 49 53 101-40-7-71-29-92-67"/>
+    <path d="M125 268c20 10 30 26 33 49M275 268c-20 10-30 26-33 49"/>
+    <path d="M84 129l6 14 14 6-14 6-6 14-6-14-14-6 14-6 6-14ZM316 129l6 14 14 6-14 6-6 14-6-14-14-6 14-6 6-14Z"/>
+  </g>
+</svg>

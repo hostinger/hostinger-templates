@@ -168,6 +168,275 @@
         "local service business",
         "astro static site"
       ]
+    },
+    {
+      "id": "quote-slider",
+      "name": "Quote Slider",
+      "summary": "A cleaning-service quote page with live room pricing, frequency discounts, URL sharing, print output, and email handoff.",
+      "description": "Quote Slider is a focused single-page website for a cleaning service that wants to replace opaque enquiry forms with useful upfront pricing. It helps homeowners understand likely visit costs before contacting the business while keeping the estimate clearly non-binding.\n\nVisitors adjust bedroom and bathroom sliders, then select weekly, biweekly, or one-time cleaning. The itemized estimate updates immediately from explicit base, room, and frequency rules. Selections serialize into the URL and hydrate on direct load, while browser printing and a pre-filled email provide practical ways to save or submit the quote.\n\nBusiness details, page content, and pricing rules are centralized in committed JSON files for straightforward personalization. The original cleaning-specific visual direction includes responsive layouts, accessible controls, locally optimized photography, dedicated print styles, static Astro output, TypeScript content models, and FAQPage structured data without CRM or invoicing dependencies.",
+      "bucket": "Non-technical",
+      "category": "Trades and local services",
+      "whoItsFor": "A cleaning service",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "local-business",
+          "home-services",
+          "cleaning-services"
+        ],
+        "useCases": [
+          "instant-service-estimates",
+          "cleaning-lead-generation",
+          "transparent-service-pricing"
+        ],
+        "frameworks": [
+          "astro"
+        ]
+      },
+      "features": [
+        {
+          "id": "live-quote-builder",
+          "name": "Live quote builder",
+          "description": "Bedroom, bathroom, and frequency controls update an itemized per-visit cleaning estimate immediately."
+        },
+        {
+          "id": "transparent-pricing-rules",
+          "name": "Transparent pricing rules",
+          "description": "Base pricing, room increments, and weekly or biweekly discounts remain visible beside the calculated quote."
+        },
+        {
+          "id": "url-backed-state",
+          "name": "URL-backed quote state",
+          "description": "Every selection is serialized into the URL and restored on reload or direct entry."
+        },
+        {
+          "id": "print-and-email-handoff",
+          "name": "Print and email handoff",
+          "description": "Visitors can print a concise one-page estimate or open a pre-filled email containing the quote details and shareable URL."
+        },
+        {
+          "id": "structured-faq",
+          "name": "Structured FAQ",
+          "description": "Four practical service questions are paired with matching FAQPage JSON-LD."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/quote-slider/preview/quote-slider-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quote-slider/preview/quote-slider-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/quote-slider/preview/quote-slider-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quote-slider/preview/quote-slider-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 4498
+        }
+      },
+      "searchTerms": [
+        "house cleaner website",
+        "cleaning price calculator",
+        "residential cleaning quote",
+        "service estimate page",
+        "frequency pricing",
+        "astro static site"
+      ]
+    },
+    {
+      "id": "flash-sheet",
+      "name": "Flash Sheet",
+      "summary": "A tattoo studio flash wall with original artwork, motif filters, detailed design pages, and pre-filled enquiries.",
+      "description": "Flash Sheet is a distinctive multi-page website for a tattoo studio that wants to present ready-made work with the clarity of a physical studio wall. It helps prospective clients browse one-off designs while seeing practical booking information before making contact.\n\nVisitors can filter eight original flash pieces by motif, open each design on its own direct-load route, and review its size, suggested placement, guide price, availability, and artwork. Every claim action opens an honest enquiry flow with the selected design already filled in, without presenting a deposit checkout or artist calendar.\n\nStudio details, FAQs, contact information, and flash inventory are centralized in committed JSON files for straightforward personalization. Eight original local SVG artworks, shared rendering components, responsive plain CSS, accessible controls, FAQPage structured data, React Router, TypeScript, and a static Vite build provide a polished base for a real tattoo studio site.",
+      "bucket": "Non-technical",
+      "category": "Trades and local services",
+      "whoItsFor": "A tattoo studio",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "local-business",
+          "creative-services",
+          "tattoo-studio"
+        ],
+        "useCases": [
+          "flash-design-browsing",
+          "tattoo-enquiries",
+          "artist-portfolio"
+        ],
+        "frameworks": [
+          "react",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "filterable-flash-wall",
+          "name": "Filterable flash wall",
+          "description": "Eight one-off designs can be filtered by botanical, creature, talisman, and oddity motifs."
+        },
+        {
+          "id": "design-detail-routes",
+          "name": "Design detail routes",
+          "description": "Every piece has a direct-load route showing original artwork, size, placement, guide price, and availability."
+        },
+        {
+          "id": "filled-enquiry-handoff",
+          "name": "Filled enquiry handoff",
+          "description": "Claim actions clearly open a pre-filled email enquiry without implying payment or reservation."
+        },
+        {
+          "id": "original-flash-artwork",
+          "name": "Original flash artwork",
+          "description": "Eight locally stored SVG illustrations provide a cohesive, tattoo-specific visual collection."
+        },
+        {
+          "id": "structured-faq",
+          "name": "Structured FAQ",
+          "description": "Four practical booking answers are paired with FAQPage JSON-LD."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/flash-sheet/preview/flash-sheet-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/flash-sheet/preview/flash-sheet-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/flash-sheet/preview/flash-sheet-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/flash-sheet/preview/flash-sheet-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 4161
+        }
+      },
+      "searchTerms": [
+        "tattoo artist website",
+        "tattoo flash gallery",
+        "blackwork portfolio",
+        "ready-made tattoo designs",
+        "tattoo enquiry",
+        "creative studio website",
+        "react static site"
+      ]
+    },
+    {
+      "id": "moving-day",
+      "name": "Moving Day",
+      "summary": "A removals company homepage with a room-by-room estimator, van recommendation, guide price, and direct quote handoff.",
+      "description": "Moving Day is a polished single-page website for a small removals firm that wants to give customers useful pricing guidance before they call. It is designed for local movers serving households that need a reassuring, straightforward way to understand what their move may involve.\n\nVisitors select room types and quantities to receive a live volume estimate, recommended van size, and ballpark price. Estimator state is stored in the URL for reloads and sharing, while pre-filled email enquiries, click-to-call actions, service steps, trust signals, customer proof, and practical FAQs carry the journey through to a fixed-quote request.\n\nCompany content and contact details live in src/data/site.json, while room volumes, pricing assumptions, and van rules live in src/data/pricing.json. The template combines an original removals-specific visual direction, local photography, accessible controls, responsive Vue architecture, static Vite output, and FAQPage structured data.",
+      "bucket": "Non-technical",
+      "category": "Trades and local services",
+      "whoItsFor": "A small removals firm",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "local-business",
+          "removals",
+          "home-services"
+        ],
+        "useCases": [
+          "lead-generation",
+          "moving-cost-estimation",
+          "quote-enquiries"
+        ],
+        "frameworks": [
+          "vue",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "room-estimator",
+          "name": "Room-by-room estimator",
+          "description": "Visitors select six room types and quantities using accessible counters."
+        },
+        {
+          "id": "van-recommendation",
+          "name": "Van recommendation",
+          "description": "Selected inventory produces a live volume calculation and suitable vehicle recommendation."
+        },
+        {
+          "id": "guide-pricing",
+          "name": "Guide pricing",
+          "description": "Committed pricing rules produce a transparent ballpark price with clear limitations."
+        },
+        {
+          "id": "url-state",
+          "name": "Shareable estimate state",
+          "description": "Room selections serialize into the URL and hydrate correctly after direct loads or reloads."
+        },
+        {
+          "id": "quote-handoff",
+          "name": "Quote handoff",
+          "description": "Pre-filled email enquiries include selected rooms, volume, recommended van, and guide price."
+        },
+        {
+          "id": "structured-faq",
+          "name": "Structured FAQ",
+          "description": "Five removals questions are paired with FAQPage JSON-LD."
+        }
+      ],
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/moving-day/preview/moving-day-thumbnail.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/moving-day/preview/moving-day-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10"
+        },
+        "preview": {
+          "path": "templates/moving-day/preview/moving-day-homepage.png",
+          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/moving-day/preview/moving-day-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 4926
+        }
+      },
+      "searchTerms": [
+        "removal company website",
+        "moving cost calculator",
+        "house move estimate",
+        "van size recommendation",
+        "local movers",
+        "vue service business template"
+      ]
     }
   ]
 }

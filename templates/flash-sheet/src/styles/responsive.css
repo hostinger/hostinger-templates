@@ -1,0 +1,63 @@
+@media (max-width: 1050px) {
+  .hero { grid-template-columns: 100px 1fr 130px; min-height: 620px; }
+  .hero-title { padding-inline: 4vw; }
+  .hero h1 { font-size: 13vw; }
+  .flash-grid { grid-template-columns: repeat(2, 1fr); }
+  .detail-layout { grid-template-columns: 1fr 1fr; }
+  .detail-copy { padding: 45px 32px; }
+  .footer { grid-template-columns: 1.5fr 1fr; }
+  .footer-mark { display: none; }
+}
+
+@media (max-width: 700px) {
+  .section-shell { padding-inline: 18px; }
+  .site-header { min-height: 78px; padding-inline: 18px; }
+  .site-header nav { gap: 15px; }
+  .site-header nav a:nth-child(2) { display: none; }
+  .hero { min-height: 650px; grid-template-columns: 1fr 72px; }
+  .hero-aside { display: none; }
+  .hero-title { display: flex; padding: 48px 18px 35px 0; flex-direction: column; justify-content: space-between; }
+  .hero h1 { margin: 70px 0; font-size: clamp(84px, 28vw, 120px); }
+  .hero-bottom { align-items: start; flex-direction: column; gap: 32px; }
+  .hero-bottom p { font-size: 22px; }
+  .hero-sigil { min-width: 72px; }
+  .hero-sigil strong { margin: 40px 0; font-size: 40px; }
+  .hero-sigil span { font-size: 28px; }
+  .hero-sigil small { font-size: 7px; }
+  .flash-wall { padding-top: 75px; padding-bottom: 90px; }
+  .wall-heading { align-items: start; flex-direction: column; margin-bottom: 42px; }
+  .filters { justify-content: start; }
+  .filters button { min-height: 44px; }
+  .flash-grid { grid-template-columns: 1fr; gap: 50px; }
+  .card-copy { min-height: 130px; }
+  .view-note { opacity: 1; }
+  .studio-note { padding-top: 80px; padding-bottom: 80px; }
+  .large-copy { font-size: 38px; }
+  .studio-rules { grid-template-columns: 1fr; gap: 14px; margin-top: 50px; }
+  .faq { grid-template-columns: 1fr; gap: 55px; padding-top: 80px; padding-bottom: 90px; }
+  .faq-list summary { min-height: 70px; font-size: 20px; }
+  .faq-list p { margin-left: 39px; }
+  .footer { grid-template-columns: 1fr; gap: 60px; min-height: 520px; padding: 70px 18px; }
+  .footer h2 { font-size: 56px; }
+  .claim-dialog > div { padding: 52px 24px 30px; }
+  .claim-dialog h2 { font-size: 42px; }
+  .detail-page { padding-top: 25px; }
+  .detail-layout { grid-template-columns: 1fr; }
+  .detail-art { min-height: 480px; border-bottom: 1px solid var(--ink); }
+  .detail-art .artwork { height: 420px; }
+  .detail-copy { padding: 48px 24px; border-left: 0; }
+  .detail-copy h1 { font-size: 72px; }
+}
+
+@media (max-width: 340px) {
+  .site-header nav { gap: 10px; }
+  .site-header nav a { font-size: 9px; }
+  .wordmark strong { font-size: 21px; }
+  .hero h1 { font-size: 82px; }
+  .filters { gap: 6px; }
+  .filters button { padding-inline: 11px; }
+  .flash-wall { padding-inline: 14px; }
+  .card-copy h3 { font-size: 25px; }
+  .detail-copy h1 { font-size: 62px; }
+  .spec-list div { grid-template-columns: 1fr 1.4fr; }
+}
