@@ -264,6 +264,9 @@ Write specific, useful metadata:
   `\n\n`: audience and problem, core journey and features, then personalization
   and technical strengths
 - describe meaningful features and interactions
+- list 6–12 user-visible features verified in the implementation
+- record the actual language, frameworks, styling, data strategy, and deployment
+  model under `technology`
 - include accurate categories, use cases, frameworks, runtime, and search terms
 - record both image paths and actual dimensions
 - add GitHub raw-view URLs for both images and verify each URL returns an image

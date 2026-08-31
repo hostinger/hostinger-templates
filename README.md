@@ -23,7 +23,8 @@ Each entry can contain these fields:
 - `bucket`, `category`, and `whoItsFor`
 - `demoUrl`
 - `classification`: categories, use cases, and frameworks
-- `features`: feature IDs, names, and descriptions
+- `features`: 6–12 verified feature IDs, names, and descriptions
+- `technology`: languages, frameworks, styling, data strategy, and deployment
 - `compatibility`: runtimes and supported versions
 - `media`: thumbnail and preview metadata
 - `searchTerms`

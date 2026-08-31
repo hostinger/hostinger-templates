@@ -34,6 +34,23 @@ finished project contributes one entry.
       "description": "Concrete user-visible behavior."
     }
   ],
+  "technology": {
+    "languages": [
+      "TypeScript"
+    ],
+    "frameworks": [
+      "Requested framework"
+    ],
+    "styling": [
+      "Actual styling approach"
+    ],
+    "data": [
+      "Actual persistence or content strategy"
+    ],
+    "deployment": [
+      "Actual build and hosting model"
+    ]
+  },
   "compatibility": {
     "runtimes": [
       {
@@ -83,8 +100,12 @@ finished project contributes one entry.
 - `categories` support browsing; use stable lowercase kebab-case terms.
 - `useCases` describe outcomes, not implementation details.
 - `frameworks` lists only frameworks and build tools actually used.
-- `features` contains at least three meaningful user-facing capabilities.
+- `features` contains 6–12 meaningful user-facing capabilities verified against
+  the implementation.
 - Feature IDs are unique within the entry.
+- `technology` reflects `package.json`, source structure, and build config. Do
+  not list libraries, persistence, services, or deployment behavior that are
+  not present.
 - Runtime versions match `package.json` and README requirements.
 - Media paths are relative to the collection root and point to existing files.
 - Media URLs use the GitHub `blob/main/...?...raw=true` form and must return the

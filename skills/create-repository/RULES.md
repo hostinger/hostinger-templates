@@ -107,6 +107,8 @@
 - Follow `TEMPLATE_SCHEMA.md` and write rich, specific metadata.
 - Make every catalog `description` at least three substantial paragraphs,
   separated by `\n\n`; do not reuse the short `summary`.
+- Add 6–12 implementation-backed `features` and `technology` metadata sourced
+  from the package, README, and build configuration.
 - Keep media paths relative to the collection root.
 - Keep facts accurate. Use `null` for unknown optional scalar values and empty
   arrays for unknown list values.
