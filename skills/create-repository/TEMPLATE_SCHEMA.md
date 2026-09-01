@@ -64,7 +64,7 @@ finished project contributes one entry.
   "media": {
     "thumbnail": {
       "path": "templates/<id>/preview/<id>-thumbnail.png",
-      "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/<id>/preview/<id>-thumbnail.png?raw=true",
+      "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/<id>/preview/<id>-thumbnail.png?raw=true",
       "source": "viewport",
       "width": 1440,
       "height": 900,
@@ -72,7 +72,7 @@ finished project contributes one entry.
     },
     "preview": {
       "path": "templates/<id>/preview/<id>-homepage.png",
-      "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/<id>/preview/<id>-homepage.png?raw=true",
+      "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/<id>/preview/<id>-homepage.png?raw=true",
       "source": "fullPage",
       "width": 1440,
       "height": 2800

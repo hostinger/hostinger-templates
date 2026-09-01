@@ -4,7 +4,7 @@ Collection of runnable Node.js projects. Every project lives under
 `templates/`:
 
 ```text
-nodejs-repos/
+hostinger-templates/
 ├── templates/
 │   └── <repository-id>/
 ├── skills/

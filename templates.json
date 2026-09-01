@@ -98,7 +98,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/callout/preview/callout-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/callout/preview/callout-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/callout/preview/callout-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -106,7 +106,7 @@
         },
         "preview": {
           "path": "templates/callout/preview/callout-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/callout/preview/callout-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/callout/preview/callout-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3355
@@ -217,7 +217,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/groom-room/preview/groom-room-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/groom-room/preview/groom-room-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/groom-room/preview/groom-room-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -225,7 +225,7 @@
         },
         "preview": {
           "path": "templates/groom-room/preview/groom-room-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/groom-room/preview/groom-room-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/groom-room/preview/groom-room-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4502
@@ -337,7 +337,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/quote-slider/preview/quote-slider-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quote-slider/preview/quote-slider-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/quote-slider/preview/quote-slider-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -345,7 +345,7 @@
         },
         "preview": {
           "path": "templates/quote-slider/preview/quote-slider-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quote-slider/preview/quote-slider-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/quote-slider/preview/quote-slider-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4498
@@ -449,7 +449,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/flash-sheet/preview/flash-sheet-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/flash-sheet/preview/flash-sheet-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/flash-sheet/preview/flash-sheet-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -457,7 +457,7 @@
         },
         "preview": {
           "path": "templates/flash-sheet/preview/flash-sheet-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/flash-sheet/preview/flash-sheet-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/flash-sheet/preview/flash-sheet-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4161
@@ -562,7 +562,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/moving-day/preview/moving-day-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/moving-day/preview/moving-day-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/moving-day/preview/moving-day-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -570,7 +570,7 @@
         },
         "preview": {
           "path": "templates/moving-day/preview/moving-day-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/moving-day/preview/moving-day-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/moving-day/preview/moving-day-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4926
@@ -698,7 +698,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/todays-menu/preview/todays-menu-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/todays-menu/preview/todays-menu-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/todays-menu/preview/todays-menu-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -706,7 +706,7 @@
         },
         "preview": {
           "path": "templates/todays-menu/preview/todays-menu-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/todays-menu/preview/todays-menu-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/todays-menu/preview/todays-menu-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 5183
@@ -831,7 +831,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/bakery-preorder/preview/bakery-preorder-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/bakery-preorder/preview/bakery-preorder-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/bakery-preorder/preview/bakery-preorder-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -839,7 +839,7 @@
         },
         "preview": {
           "path": "templates/bakery-preorder/preview/bakery-preorder-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/bakery-preorder/preview/bakery-preorder-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/bakery-preorder/preview/bakery-preorder-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 6835
@@ -959,7 +959,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/tap-list/preview/tap-list-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/tap-list/preview/tap-list-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/tap-list/preview/tap-list-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -967,7 +967,7 @@
         },
         "preview": {
           "path": "templates/tap-list/preview/tap-list-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/tap-list/preview/tap-list-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/tap-list/preview/tap-list-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3819
@@ -1084,7 +1084,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/supper-club/preview/supper-club-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/supper-club/preview/supper-club-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/supper-club/preview/supper-club-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -1092,7 +1092,7 @@
         },
         "preview": {
           "path": "templates/supper-club/preview/supper-club-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/supper-club/preview/supper-club-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/supper-club/preview/supper-club-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 6942
@@ -1207,7 +1207,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/class-timetable/preview/class-timetable-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/class-timetable/preview/class-timetable-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/class-timetable/preview/class-timetable-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -1215,7 +1215,7 @@
         },
         "preview": {
           "path": "templates/class-timetable/preview/class-timetable-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/class-timetable/preview/class-timetable-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/class-timetable/preview/class-timetable-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3251
@@ -1332,7 +1332,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/quiet-practice/preview/quiet-practice-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quiet-practice/preview/quiet-practice-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/quiet-practice/preview/quiet-practice-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -1340,7 +1340,7 @@
         },
         "preview": {
           "path": "templates/quiet-practice/preview/quiet-practice-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quiet-practice/preview/quiet-practice-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/quiet-practice/preview/quiet-practice-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4538
@@ -1467,7 +1467,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/couch-to-5k/preview/couch-to-5k-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/couch-to-5k/preview/couch-to-5k-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/couch-to-5k/preview/couch-to-5k-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -1475,7 +1475,7 @@
         },
         "preview": {
           "path": "templates/couch-to-5k/preview/couch-to-5k-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/couch-to-5k/preview/couch-to-5k-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/couch-to-5k/preview/couch-to-5k-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 6418
@@ -1593,7 +1593,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/movement-library/preview/movement-library-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/movement-library/preview/movement-library-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/movement-library/preview/movement-library-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -1601,7 +1601,7 @@
         },
         "preview": {
           "path": "templates/movement-library/preview/movement-library-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/movement-library/preview/movement-library-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/movement-library/preview/movement-library-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4630
@@ -1724,7 +1724,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/client-gallery/preview/client-gallery-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/client-gallery/preview/client-gallery-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/client-gallery/preview/client-gallery-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -1732,7 +1732,7 @@
         },
         "preview": {
           "path": "templates/client-gallery/preview/client-gallery-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/client-gallery/preview/client-gallery-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/client-gallery/preview/client-gallery-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3567
@@ -1843,7 +1843,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/podcast-home/preview/podcast-home-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/podcast-home/preview/podcast-home-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/podcast-home/preview/podcast-home-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -1851,7 +1851,7 @@
         },
         "preview": {
           "path": "templates/podcast-home/preview/podcast-home-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/podcast-home/preview/podcast-home-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/podcast-home/preview/podcast-home-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3391
@@ -1976,7 +1976,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/first-chapter/preview/first-chapter-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/first-chapter/preview/first-chapter-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/first-chapter/preview/first-chapter-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -1984,7 +1984,7 @@
         },
         "preview": {
           "path": "templates/first-chapter/preview/first-chapter-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/first-chapter/preview/first-chapter-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/first-chapter/preview/first-chapter-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3442
@@ -2112,7 +2112,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/drop/preview/drop-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/drop/preview/drop-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/drop/preview/drop-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -2120,7 +2120,7 @@
         },
         "preview": {
           "path": "templates/drop/preview/drop-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/drop/preview/drop-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/drop/preview/drop-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3496
@@ -2245,7 +2245,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/will-it-survive/preview/will-it-survive-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/will-it-survive/preview/will-it-survive-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/will-it-survive/preview/will-it-survive-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -2253,7 +2253,7 @@
         },
         "preview": {
           "path": "templates/will-it-survive/preview/will-it-survive-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/will-it-survive/preview/will-it-survive-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/will-it-survive/preview/will-it-survive-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4029
@@ -2369,7 +2369,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/sunday-league/preview/sunday-league-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/sunday-league/preview/sunday-league-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/sunday-league/preview/sunday-league-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -2377,7 +2377,7 @@
         },
         "preview": {
           "path": "templates/sunday-league/preview/sunday-league-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/sunday-league/preview/sunday-league-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/sunday-league/preview/sunday-league-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 2688
@@ -2508,7 +2508,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/route-library/preview/route-library-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/route-library/preview/route-library-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/route-library/preview/route-library-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -2516,7 +2516,7 @@
         },
         "preview": {
           "path": "templates/route-library/preview/route-library-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/route-library/preview/route-library-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/route-library/preview/route-library-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3156
@@ -2634,7 +2634,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/registry/preview/registry-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/registry/preview/registry-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/registry/preview/registry-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -2642,7 +2642,7 @@
         },
         "preview": {
           "path": "templates/registry/preview/registry-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/registry/preview/registry-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/registry/preview/registry-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3380
@@ -2746,7 +2746,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/seating-plan/preview/seating-plan-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/seating-plan/preview/seating-plan-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/seating-plan/preview/seating-plan-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -2754,7 +2754,7 @@
         },
         "preview": {
           "path": "templates/seating-plan/preview/seating-plan-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/seating-plan/preview/seating-plan-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/seating-plan/preview/seating-plan-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 1371
@@ -2869,7 +2869,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/split-the-rent/preview/split-the-rent-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/split-the-rent/preview/split-the-rent-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/split-the-rent/preview/split-the-rent-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -2877,7 +2877,7 @@
         },
         "preview": {
           "path": "templates/split-the-rent/preview/split-the-rent-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/split-the-rent/preview/split-the-rent-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/split-the-rent/preview/split-the-rent-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 2206
@@ -2987,7 +2987,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/overlap/preview/overlap-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/overlap/preview/overlap-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/overlap/preview/overlap-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -2995,7 +2995,7 @@
         },
         "preview": {
           "path": "templates/overlap/preview/overlap-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/overlap/preview/overlap-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/overlap/preview/overlap-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 1109
@@ -3107,7 +3107,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/launch/preview/launch-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/launch/preview/launch-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/launch/preview/launch-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -3115,7 +3115,7 @@
         },
         "preview": {
           "path": "templates/launch/preview/launch-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/launch/preview/launch-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/launch/preview/launch-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 7115
@@ -3220,7 +3220,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/pricing-calculator/preview/pricing-calculator-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/pricing-calculator/preview/pricing-calculator-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/pricing-calculator/preview/pricing-calculator-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -3228,7 +3228,7 @@
         },
         "preview": {
           "path": "templates/pricing-calculator/preview/pricing-calculator-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/pricing-calculator/preview/pricing-calculator-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/pricing-calculator/preview/pricing-calculator-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 1840
@@ -3334,7 +3334,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/compare/preview/compare-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/compare/preview/compare-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/compare/preview/compare-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -3342,7 +3342,7 @@
         },
         "preview": {
           "path": "templates/compare/preview/compare-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/compare/preview/compare-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/compare/preview/compare-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3636
@@ -3449,7 +3449,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/integrations/preview/integrations-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/integrations/preview/integrations-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/integrations/preview/integrations-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -3457,7 +3457,7 @@
         },
         "preview": {
           "path": "templates/integrations/preview/integrations-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/integrations/preview/integrations-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/integrations/preview/integrations-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4494
@@ -3560,7 +3560,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/terminal/preview/terminal-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/terminal/preview/terminal-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/terminal/preview/terminal-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -3568,7 +3568,7 @@
         },
         "preview": {
           "path": "templates/terminal/preview/terminal-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/terminal/preview/terminal-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/terminal/preview/terminal-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4152
@@ -3674,7 +3674,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/status/preview/status-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/status/preview/status-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/status/preview/status-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -3682,7 +3682,7 @@
         },
         "preview": {
           "path": "templates/status/preview/status-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/status/preview/status-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/status/preview/status-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 5160
@@ -3795,7 +3795,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/changelog/preview/changelog-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/changelog/preview/changelog-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/changelog/preview/changelog-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -3803,7 +3803,7 @@
         },
         "preview": {
           "path": "templates/changelog/preview/changelog-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/changelog/preview/changelog-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/changelog/preview/changelog-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 5314
@@ -3923,7 +3923,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/roadmap/preview/roadmap-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/roadmap/preview/roadmap-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/roadmap/preview/roadmap-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -3931,7 +3931,7 @@
         },
         "preview": {
           "path": "templates/roadmap/preview/roadmap-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/roadmap/preview/roadmap-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/roadmap/preview/roadmap-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 2473
@@ -4055,7 +4055,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/trust-centre/preview/trust-centre-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/trust-centre/preview/trust-centre-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/trust-centre/preview/trust-centre-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -4063,7 +4063,7 @@
         },
         "preview": {
           "path": "templates/trust-centre/preview/trust-centre-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/trust-centre/preview/trust-centre-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/trust-centre/preview/trust-centre-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4826
@@ -4185,7 +4185,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/manual/preview/manual-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/manual/preview/manual-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/manual/preview/manual-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -4193,7 +4193,7 @@
         },
         "preview": {
           "path": "templates/manual/preview/manual-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/manual/preview/manual-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/manual/preview/manual-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 2451
@@ -4326,7 +4326,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/api-reference/preview/api-reference-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/api-reference/preview/api-reference-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/api-reference/preview/api-reference-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -4334,7 +4334,7 @@
         },
         "preview": {
           "path": "templates/api-reference/preview/api-reference-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/api-reference/preview/api-reference-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/api-reference/preview/api-reference-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3142
@@ -4458,7 +4458,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/quickstart/preview/quickstart-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quickstart/preview/quickstart-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/quickstart/preview/quickstart-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -4466,7 +4466,7 @@
         },
         "preview": {
           "path": "templates/quickstart/preview/quickstart-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/quickstart/preview/quickstart-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/quickstart/preview/quickstart-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3835
@@ -4586,7 +4586,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/design-system/preview/design-system-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/design-system/preview/design-system-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/design-system/preview/design-system-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -4594,7 +4594,7 @@
         },
         "preview": {
           "path": "templates/design-system/preview/design-system-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/design-system/preview/design-system-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/design-system/preview/design-system-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 2899
@@ -4708,7 +4708,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/console/preview/console-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/console/preview/console-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/console/preview/console-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -4716,7 +4716,7 @@
         },
         "preview": {
           "path": "templates/console/preview/console-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/console/preview/console-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/console/preview/console-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 1344
@@ -4842,7 +4842,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/engineering-blog/preview/engineering-blog-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/engineering-blog/preview/engineering-blog-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/engineering-blog/preview/engineering-blog-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -4850,7 +4850,7 @@
         },
         "preview": {
           "path": "templates/engineering-blog/preview/engineering-blog-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/engineering-blog/preview/engineering-blog-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/engineering-blog/preview/engineering-blog-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 2703
@@ -4973,7 +4973,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/careers/preview/careers-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/careers/preview/careers-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/careers/preview/careers-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -4981,7 +4981,7 @@
         },
         "preview": {
           "path": "templates/careers/preview/careers-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/careers/preview/careers-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/careers/preview/careers-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3222
@@ -5110,7 +5110,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/devfolio/preview/devfolio-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/devfolio/preview/devfolio-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/devfolio/preview/devfolio-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -5118,7 +5118,7 @@
         },
         "preview": {
           "path": "templates/devfolio/preview/devfolio-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/devfolio/preview/devfolio-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/devfolio/preview/devfolio-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4816
@@ -5233,7 +5233,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/showcase/preview/showcase-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/showcase/preview/showcase-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/showcase/preview/showcase-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -5241,7 +5241,7 @@
         },
         "preview": {
           "path": "templates/showcase/preview/showcase-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/showcase/preview/showcase-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/showcase/preview/showcase-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 6798
@@ -5345,7 +5345,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/consultancy/preview/consultancy-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/consultancy/preview/consultancy-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/consultancy/preview/consultancy-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -5353,7 +5353,7 @@
         },
         "preview": {
           "path": "templates/consultancy/preview/consultancy-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/consultancy/preview/consultancy-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/consultancy/preview/consultancy-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3913
@@ -5460,7 +5460,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/practice/preview/practice-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/practice/preview/practice-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/practice/preview/practice-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -5468,7 +5468,7 @@
         },
         "preview": {
           "path": "templates/practice/preview/practice-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/practice/preview/practice-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/practice/preview/practice-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 5609
@@ -5583,7 +5583,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/the-big-day/preview/the-big-day-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/the-big-day/preview/the-big-day-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/the-big-day/preview/the-big-day-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -5591,7 +5591,7 @@
         },
         "preview": {
           "path": "templates/the-big-day/preview/the-big-day-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/the-big-day/preview/the-big-day-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/the-big-day/preview/the-big-day-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 4873
@@ -5698,7 +5698,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/storefront/preview/storefront-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/storefront/preview/storefront-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/storefront/preview/storefront-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -5706,7 +5706,7 @@
         },
         "preview": {
           "path": "templates/storefront/preview/storefront-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/storefront/preview/storefront-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/storefront/preview/storefront-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 6687
@@ -5812,7 +5812,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/journal/preview/journal-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/journal/preview/journal-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/journal/preview/journal-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -5820,7 +5820,7 @@
         },
         "preview": {
           "path": "templates/journal/preview/journal-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/journal/preview/journal-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/journal/preview/journal-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3090
@@ -5929,7 +5929,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/on-sale/preview/on-sale-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/on-sale/preview/on-sale-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/on-sale/preview/on-sale-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -5937,7 +5937,7 @@
         },
         "preview": {
           "path": "templates/on-sale/preview/on-sale-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/on-sale/preview/on-sale-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/on-sale/preview/on-sale-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3872
@@ -6045,7 +6045,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/the-rooms/preview/the-rooms-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/the-rooms/preview/the-rooms-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/the-rooms/preview/the-rooms-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -6053,7 +6053,7 @@
         },
         "preview": {
           "path": "templates/the-rooms/preview/the-rooms-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/the-rooms/preview/the-rooms-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/the-rooms/preview/the-rooms-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 7357
@@ -6161,7 +6161,7 @@
       "media": {
         "thumbnail": {
           "path": "templates/model/preview/model-thumbnail.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/model/preview/model-thumbnail.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/model/preview/model-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -6169,7 +6169,7 @@
         },
         "preview": {
           "path": "templates/model/preview/model-homepage.png",
-          "url": "https://github.com/aurimas-arlauskas/nodejs-repos/blob/main/templates/model/preview/model-homepage.png?raw=true",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/model/preview/model-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 3213
