@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   push-translations:
-    runs-on: ubuntu-latest
+    runs-on: fireactions-c2-m4
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v6
