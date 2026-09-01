@@ -1,0 +1,41 @@
+name: Push template translations
+
+on:
+  push:
+    branches: [main]
+    paths: [templates.json]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: push-translations
+  cancel-in-progress: false
+
+jobs:
+  push-translations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+
+      - name: Fetch previous catalog revision for orphan reporting
+        env:
+          BASE_SHA: ${{ github.event.before }}
+        run: |
+          if [ -n "$BASE_SHA" ] && [ "$BASE_SHA" != "0000000000000000000000000000000000000000" ]; then
+            git fetch --quiet --depth=1 origin "$BASE_SHA" || true
+          fi
+
+      - name: Push catalog texts to translate.hostinger.io
+        env:
+          TRANSLATIONS_API_KEY_V2: ${{ secrets.TRANSLATIONS_API_KEY_V2 }}
+          BASE_SHA: ${{ github.event.before }}
+        run: node scripts/push-translations.mjs
