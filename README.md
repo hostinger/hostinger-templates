@@ -40,8 +40,6 @@ follow.
 
 ## Translations
 
-`templates.json` is the English source of truth for the template summaries, descriptions and category labels shown in hPanel. On every push to `main` that changes `templates.json`, the **Push template translations** workflow syncs the full catalog to translate.hostinger.io under the `v2.onboarding.node.template.catalog.*` namespace (brand `hostinger-hpanel-frontend-v2`). The sync is idempotent — unchanged texts are no-ops, while new or edited texts are AI-translated into all hPanel languages. hPanel treats this namespace as externally managed and renders the catalog English as a fallback until translations arrive.
+`templates.json` is the English source of truth for the template summaries, descriptions and category labels shown in hPanel. A scheduled workflow in the hPanel repository (`sync-node-template-translations`) fetches this public catalog daily, pushes the texts to translate.hostinger.io under the `v2.onboarding.node.template.catalog.*` namespace, and the platform AI-translates them into all hPanel languages. Until translations arrive, hPanel renders the catalog English as a fallback.
 
-- Requires the `TRANSLATIONS_API_KEY_V2` repository secret.
-- Removing a template leaves its keys orphaned on the platform; the workflow logs them for manual cleanup.
-- The workflow can also be run manually (workflow_dispatch) to re-sync at any time.
+This repository intentionally has no CI, secrets or runners — it is public because hPanel and the deploy flow clone templates anonymously. After merging a new template, translations land after the next daily sync (or ask an hPanel developer to trigger the workflow manually for a same-day sync).
