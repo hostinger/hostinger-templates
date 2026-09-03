@@ -12,7 +12,7 @@ finished project contributes one entry.
   "summary": "One concise catalog-card sentence.",
   "description": "Paragraph one explains the product, audience, and problem it solves.\n\nParagraph two describes the core journey, features, and interactions in concrete terms.\n\nParagraph three explains personalization, design quality, and technical strengths.",
   "bucket": "Supplied bucket",
-  "category": "Supplied category",
+  "categories": ["Display category", "Optional second display category"],
   "whoItsFor": "Specific intended user",
   "demoUrl": null,
   "classification": {
@@ -95,7 +95,7 @@ finished project contributes one entry.
 - Write at least three paragraphs separated by `\n\n`.
 - Cover the audience and problem, customer journey and features, then
   personalization and technical strengths.
-- `bucket`, `category`, and `whoItsFor` preserve the supplied brief.
+- `bucket` and `whoItsFor` preserve the supplied brief; `categories` lists the hPanel gallery display categories (SaaS, Business, Documentation, Event, Portfolio, Marketing, Fitness, E-commerce, Hospitality, Blog, Calculator, Dashboard) — a template may appear in several.
 - `demoUrl` stays `null` until a real public deployment exists.
 - `categories` support browsing; use stable lowercase kebab-case terms.
 - `useCases` describe outcomes, not implementation details.
