@@ -260,11 +260,12 @@ Add one object to the root `templates.json`. Follow
 Write specific, useful metadata:
 
 - explain what users can build, not generic marketing claims
-- write `description` as at least three substantial paragraphs separated by
-  `\n\n`: audience and problem, core journey and features, then personalization
-  and technical strengths
+- write `description` as at most two normal-length sentences: who the template
+  is for and what it does
+- keep every `classification.useCases` entry a single lowercase word
+  (for example `booking`, not `booking-enquiries`)
 - describe meaningful features and interactions
-- list 6–12 user-visible features verified in the implementation
+- list at most 4 user-visible features verified in the implementation
 - record the actual language, frameworks, styling, data strategy, and deployment
   model under `technology`
 - include accurate categories, use cases, frameworks, runtime, and search terms

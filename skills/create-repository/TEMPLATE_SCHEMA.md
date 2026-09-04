@@ -10,7 +10,7 @@ finished project contributes one entry.
   "id": "lowercase-kebab-case",
   "name": "Human-readable name",
   "summary": "One concise catalog-card sentence.",
-  "description": "Paragraph one explains the product, audience, and problem it solves.\n\nParagraph two describes the core journey, features, and interactions in concrete terms.\n\nParagraph three explains personalization, design quality, and technical strengths.",
+  "description": "One sentence explaining the product, audience, and problem it solves. One more sentence covering the core journey or standout capability.",
   "bucket": "Supplied bucket",
   "categories": ["Display category", "Optional second display category"],
   "whoItsFor": "Specific intended user",
@@ -91,16 +91,15 @@ finished project contributes one entry.
 
 - `id` matches the `templates/<id>/` project directory exactly.
 - `summary` is short enough for a card and does not repeat the name.
-- `description` is a rich multi-paragraph overview, not short card copy.
-- Write at least three paragraphs separated by `\n\n`.
-- Cover the audience and problem, customer journey and features, then
-  personalization and technical strengths.
+- `description` is at most two normal-length sentences: who the template is
+  for and what it does.
 - `bucket` and `whoItsFor` preserve the supplied brief; `categories` lists the hPanel gallery display categories (SaaS, Business, Documentation, Event, Portfolio, Marketing, Fitness, E-commerce, Hospitality, Blog, Calculator, Dashboard) — a template may appear in several.
 - `demoUrl` stays `null` until a real public deployment exists.
 - `categories` support browsing; use stable lowercase kebab-case terms.
-- `useCases` describe outcomes, not implementation details.
+- `useCases` describe outcomes, not implementation details. Every entry is a
+  single lowercase word (for example `booking`, `pricing`, `rsvp`).
 - `frameworks` lists only frameworks and build tools actually used.
-- `features` contains 6–12 meaningful user-facing capabilities verified against
+- `features` contains at most 4 meaningful user-facing capabilities verified against
   the implementation.
 - Feature IDs are unique within the entry.
 - `technology` reflects `package.json`, source structure, and build config. Do
