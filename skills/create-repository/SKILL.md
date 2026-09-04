@@ -267,7 +267,8 @@ Write specific, useful metadata:
 - describe meaningful features and interactions
 - list at most 4 user-visible features verified in the implementation
 - record the actual language, frameworks, styling, data strategy, and deployment
-  model under `technology`
+  model under `technology`; keep `technology.frameworks` entries bare framework
+  names only (for example `Astro`, `React`) — no versions, qualifiers, or prose
 - include accurate categories, use cases, frameworks, runtime, and search terms
 - record both image paths and actual dimensions
 - add GitHub raw-view URLs for both images and verify each URL returns an image

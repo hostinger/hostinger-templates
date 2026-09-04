@@ -362,7 +362,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "React with React Router",
+          "React",
           "Vite"
         ],
         "styling": [
@@ -467,7 +467,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Vue 3",
+          "Vue",
           "Vite"
         ],
         "styling": [
@@ -889,7 +889,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Astro (static output)"
+          "Astro"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -1102,7 +1102,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Nuxt 4 (Vue 3), fully static via nuxt generate"
+          "Nuxt"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -1212,7 +1212,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "SvelteKit (Svelte 5) with @sveltejs/adapter-static — fully prerendered"
+          "SvelteKit"
         ],
         "styling": [
           "Hand-written CSS — design tokens in a global stylesheet plus scoped component styles"
@@ -1429,7 +1429,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Gatsby 5 (React 18)"
+          "Gatsby"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -1535,7 +1535,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Next.js (App Router, React, static export)"
+          "Next.js"
         ],
         "styling": [
           "Plain CSS — design tokens in one global stylesheet plus CSS Modules per component"
@@ -1645,7 +1645,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Svelte 5 (plain single-page app, no SvelteKit)",
+          "Svelte",
           "Vite"
         ],
         "styling": [
@@ -1756,7 +1756,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "React 19 with React Router 8 (framework mode, ssr: false + prerendered routes)"
+          "React"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -1863,7 +1863,6 @@
           "TypeScript (vanilla, no UI framework)"
         ],
         "frameworks": [
-          "None — small typed modules and template rendering",
           "Parcel",
           "TypeScript"
         ],
@@ -1973,7 +1972,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Angular 22 (standalone components, signals, zoneless change detection)"
+          "Angular"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -2078,7 +2077,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Express 5 with server-rendered EJS views"
+          "Express"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -2185,7 +2184,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Vue 3 (<script setup> single-file components)",
+          "Vue",
           "Vite"
         ],
         "styling": [
@@ -2290,7 +2289,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Svelte 5",
+          "Svelte",
           "Vite"
         ],
         "styling": [
@@ -2394,7 +2393,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "React 19",
+          "React",
           "Vite"
         ],
         "styling": [
@@ -2500,7 +2499,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Nuxt 3 and Vue 3",
+          "Nuxt",
           "Vite"
         ],
         "styling": [
@@ -2605,7 +2604,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Next.js App Router with React"
+          "Next.js"
         ],
         "styling": [
           "Plain CSS split into foundation, section, and responsive layers"
@@ -2709,7 +2708,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "SvelteKit with adapter-static",
+          "SvelteKit",
           "Vite"
         ],
         "styling": [
@@ -2813,7 +2812,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Astro 6"
+          "Astro"
         ],
         "styling": [
           "Custom responsive CSS with design tokens"
@@ -3018,7 +3017,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "React 19",
+          "React",
           "Vite"
         ],
         "styling": [
@@ -3121,7 +3120,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Astro 7"
+          "Astro"
         ],
         "styling": [
           "Plain CSS with design tokens and responsive stylesheets"
@@ -3223,7 +3222,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Astro (static output, content collections)"
+          "Astro"
         ],
         "styling": [
           "Plain hand-written CSS with design tokens in one stylesheet"
@@ -3332,7 +3331,6 @@
           "TypeScript (vanilla, no UI framework)"
         ],
         "frameworks": [
-          "None — static build-time rendering plus a small typed hydration module",
           "Parcel",
           "TypeScript"
         ],
@@ -3446,7 +3444,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Fastify 5 with @fastify/view (EJS), @fastify/static and @fastify/formbody"
+          "Fastify"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -3557,7 +3555,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Astro with the Starlight documentation theme"
+          "Astro"
         ],
         "styling": [
           "Starlight CSS custom properties plus one custom stylesheet"
@@ -3664,7 +3662,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "NestJS 12 (Express platform) with server-rendered Handlebars (hbs) views"
+          "NestJS"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -3773,7 +3771,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Hono 4 on @hono/node-server, server-rendering HTML with hono/jsx"
+          "Hono"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -3880,7 +3878,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Vue 3 (<script setup>, vue-router)",
+          "Vue",
           "Vite"
         ],
         "styling": [
@@ -3992,7 +3990,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Next.js (App Router, React, static export)"
+          "Next.js"
         ],
         "styling": [
           "Plain CSS — design tokens in app/globals.css plus CSS Modules per component"
@@ -4102,7 +4100,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Gatsby 5 (React 18)"
+          "Gatsby"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -4210,7 +4208,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "React 19 with React Router 8 (framework mode, ssr: false + prerendered routes)"
+          "React"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -4318,7 +4316,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "SvelteKit (Svelte 5) with @sveltejs/adapter-static — fully prerendered"
+          "SvelteKit"
         ],
         "styling": [
           "Hand-written CSS — design tokens in a global stylesheet plus scoped component styles"
@@ -4422,7 +4420,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Astro 7"
+          "Astro"
         ],
         "styling": [
           "Custom CSS with responsive design tokens"
@@ -4525,7 +4523,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Nuxt 4 with Vue 3"
+          "Nuxt"
         ],
         "styling": [
           "Custom responsive CSS with centralized design tokens"
@@ -4628,7 +4626,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Astro 7"
+          "Astro"
         ],
         "styling": [
           "Custom responsive CSS"
@@ -4732,7 +4730,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "SvelteKit 2 with Svelte 5",
+          "SvelteKit",
           "Vite"
         ],
         "styling": [
@@ -4836,7 +4834,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Next.js 16 App Router with React 19"
+          "Next.js"
         ],
         "styling": [
           "Global CSS with custom properties and responsive media queries"
@@ -5040,7 +5038,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "SvelteKit with adapter-static",
+          "SvelteKit",
           "Vite"
         ],
         "styling": [
@@ -5143,7 +5141,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Nuxt 3 and Vue 3"
+          "Nuxt"
         ],
         "styling": [
           "Shared CSS with custom properties and scoped component structure"
@@ -5246,7 +5244,7 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Next.js 16 App Router",
+          "Next.js",
           "React"
         ],
         "styling": [

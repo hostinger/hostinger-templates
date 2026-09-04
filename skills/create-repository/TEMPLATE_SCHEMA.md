@@ -99,6 +99,8 @@ finished project contributes one entry.
 - `useCases` describe outcomes, not implementation details. Every entry is a
   single lowercase word (for example `booking`, `pricing`, `rsvp`).
 - `frameworks` lists only frameworks and build tools actually used.
+- `technology.frameworks` entries are bare framework names only (for example
+  `Astro`, `React`, `Nuxt`) — no versions, qualifiers, or prose.
 - `features` contains at most 4 meaningful user-facing capabilities verified against
   the implementation.
 - Feature IDs are unique within the entry.
