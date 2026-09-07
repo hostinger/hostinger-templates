@@ -24,6 +24,7 @@ Visitors can check the early-bird countdown, compare committed ticket counts and
 - **Framework:** SvelteKit with adapter-static
 - **Build tool:** Vite
 - **Styling:** Handwritten global CSS with design tokens and responsive media queries
+- **Overrides:** `cookie@^0.7.0` — `@sveltejs/kit` still pins `cookie@^0.6.0`. Remove the override when Kit raises that range.
 
 ## Getting started
 

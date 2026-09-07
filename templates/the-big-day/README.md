@@ -26,6 +26,7 @@ All names, dates, copy, links, schedule entries, hotels, FAQs, and RSVP settings
 - **Build tool:** Vite
 - **Adapter:** `@sveltejs/adapter-static`
 - **Styling:** Hand-authored responsive CSS with custom properties
+- **Overrides:** `cookie@^0.7.0` — `@sveltejs/kit` still pins `cookie@^0.6.0`. Remove the override when Kit raises that range.
 
 ## Getting started
 

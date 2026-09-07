@@ -30,6 +30,7 @@ Recruiters who don't play along still get a skimmable, printable CV; the ones wh
 - **Build tool:** Vite
 - **Styling:** Hand-written CSS — design tokens in a global stylesheet plus scoped component styles
 - **Linting:** ESLint (`eslint-plugin-svelte`, `typescript-eslint`)
+- **Overrides:** `cookie@^0.7.0` — `@sveltejs/kit` still pins `cookie@^0.6.0`. Remove the override when Kit raises that range.
 
 ## Getting started
 
