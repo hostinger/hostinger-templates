@@ -1,4 +1,4 @@
-import { Link } from 'gatsby';
+import { Link } from 'react-router-dom';
 
 import { ThreadNode } from '../icons/ThreadNode';
 import { seriesPartLabel, type SeriesNavigation } from '../utils/series';
