@@ -1398,8 +1398,8 @@
           "export"
         ],
         "frameworks": [
-          "gatsby",
-          "react"
+          "react",
+          "vite"
         ]
       },
       "features": [
@@ -1429,7 +1429,8 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Gatsby"
+          "React",
+          "Vite"
         ],
         "styling": [
           "Plain hand-written CSS with centralized design tokens"
@@ -1440,7 +1441,7 @@
           "Typed TypeScript content and configuration"
         ],
         "deployment": [
-          "Static production output in public/"
+          "Static production output in dist/"
         ]
       },
       "compatibility": {
@@ -1477,7 +1478,7 @@
         "photographer client portal",
         "export favourites csv",
         "photo album delivery",
-        "gatsby template"
+        "vite template"
       ]
     },
     {
