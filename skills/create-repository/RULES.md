@@ -22,11 +22,14 @@
 - Default to React, TypeScript, and Vite.
 - Treat an explicitly requested language, framework, or build tool as
   authoritative.
+- Do not use Gatsby. Prefer Vite, Astro, Next.js, Nuxt, or SvelteKit.
 - Use npm and commit `package-lock.json`.
 - Use explicit dependency ranges and declare the supported Node.js version in
   `engines`.
 - Include an explicit license for template reuse.
 - `npm install`, `npm run lint`, and `npm run build` must succeed.
+- `npm audit --audit-level=high` must pass. Use `overrides` only for a
+  parent pin you document in the project README.
 - Use ESLint. Do not install or configure Oxlint.
 
 ## Configuration hygiene
@@ -113,7 +116,7 @@
 - Keep facts accurate. Use `null` for unknown optional scalar values and empty
   arrays for unknown list values.
 - Keep `templates.json` strict JSON: no comments or trailing commas.
-- Add an entry only after install, lint, build, browser checks, and image
-  inspection pass.
+- Add an entry only after install, lint, build, `npm audit --audit-level=high`,
+  browser checks, and image inspection pass.
 - For multi-page templates, directly load every built preview route. Add static
   host fallback handling or prerender routes when client routing needs it.

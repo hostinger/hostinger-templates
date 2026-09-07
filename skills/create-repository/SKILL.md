@@ -199,6 +199,7 @@ Run:
 npm install
 npm run lint
 npm run build
+npm audit --audit-level=high
 ```
 
 Then verify primary journeys in a browser on desktop and mobile. Check every
@@ -300,6 +301,7 @@ Finish only after:
 - install passes
 - lint passes
 - build passes
+- `npm audit --audit-level=high` passes
 - desktop and mobile checks pass
 - screenshots exist and were inspected
 - README follows the fixed structure

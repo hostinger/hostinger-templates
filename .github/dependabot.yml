@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directories:
+      - "/templates/*"
+    schedule:
+      interval: weekly
+    # Version updates off. Security update PRs still open per package
+    # per template directory.
+    open-pull-requests-limit: 0
