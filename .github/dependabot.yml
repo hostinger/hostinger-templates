@@ -4,7 +4,7 @@ updates:
     directories:
       - "/templates/*"
     schedule:
-      interval: weekly
+      interval: daily
     # Version updates off. Security update PRs still open per package
     # per template directory.
     open-pull-requests-limit: 0
