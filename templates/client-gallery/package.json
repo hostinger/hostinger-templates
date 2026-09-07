@@ -1,36 +1,43 @@
 {
   "name": "client-gallery",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Private wedding photo delivery gallery where clients star favourites and export the list for their photographer.",
   "scripts": {
-    "dev": "gatsby develop",
-    "build": "tsc --noEmit && gatsby build",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
-    "preview": "gatsby serve"
+    "preview": "vite preview"
   },
   "engines": {
     "node": ">=22"
   },
   "keywords": [
-    "gatsby",
     "react",
     "typescript",
+    "vite",
     "photography",
     "client-gallery",
     "wedding"
   ],
   "license": "MIT",
   "dependencies": {
-    "gatsby": "^5.16.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.5",
-    "eslint": "^9.39.5",
-    "eslint-plugin-react": "^7.37.5",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.68.0"
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^10.9.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.5",
+    "globals": "^17.11.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.68.0",
+    "vite": "^8.2.2"
   }
 }

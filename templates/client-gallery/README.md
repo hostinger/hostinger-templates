@@ -25,8 +25,8 @@ When the list feels right, one press of "Export list" downloads a small CSV nami
 ## Tech stack
 
 - **Language:** TypeScript
-- **Framework:** Gatsby 5 (React 18)
-- **Build tool:** Gatsby
+- **Framework:** React 19
+- **Build tool:** Vite
 - **Styling:** Plain hand-written CSS with centralized design tokens
 - **Linting:** ESLint
 
@@ -49,7 +49,7 @@ npm install
 npm run dev
 ```
 
-Open the local URL printed by Gatsby.
+Open the local URL printed by the development server.
 
 ## Available scripts
 
@@ -62,24 +62,25 @@ Open the local URL printed by Gatsby.
 
 ```text
 src/
+├── App.tsx
+├── main.tsx
 ├── components/
 ├── data/
 ├── icons/
-├── pages/
 ├── styles/
 ├── types/
 └── utils/
-static/
+public/
 └── images/
 ```
 
-`src/pages/index.tsx` composes the page from focused components in `src/components/` and owns the favourites state. Editable content lives in `src/data/album.json`, typed by `src/types/content.ts`. Favourites persistence and the CSV export are typed utilities in `src/utils/`.
+`src/App.tsx` composes the page from focused components in `src/components/` and owns the favourites state. Editable content lives in `src/data/album.json`, typed by `src/types/content.ts`. Favourites persistence and the CSV export are typed utilities in `src/utils/`.
 
 ## Personalizing
 
 ### Content and business data
 
-Edit `src/data/album.json` for everything written on the page: the album `id` (it keys the favourites saved on each device and names the exported CSV — changing it resets saved selections), `eyebrow`, couple `title`, `eventDate`, `venue`, `photographerCredit`, `studio`, `deliveredLabel`, the `intro` and `howTo` paragraphs, and the `usageNote` shown in the footer. Each entry in `photos` holds `filename` (a file inside `static/images/`, and the identifier exported to the photographer), `alt`, an optional `caption`, and the image's pixel `width` and `height` (used to reserve layout space). FAQ questions and answers live in the `faqs` array and also feed the `FAQPage` JSON-LD emitted from `src/pages/index.tsx`.
+Edit `src/data/album.json` for everything written on the page: the album `id` (it keys the favourites saved on each device and names the exported CSV — changing it resets saved selections), `eyebrow`, couple `title`, `eventDate`, `venue`, `photographerCredit`, `studio`, `deliveredLabel`, the `intro` and `howTo` paragraphs, and the `usageNote` shown in the footer. Each entry in `photos` holds `filename` (a file inside `public/images/`, and the identifier exported to the photographer), `alt`, an optional `caption`, and the image's pixel `width` and `height` (used to reserve layout space). FAQ questions and answers live in the `faqs` array and also feed the `FAQPage` JSON-LD emitted from `src/App.tsx`.
 
 ### Branding and styles
 
@@ -87,11 +88,11 @@ Edit `src/styles/global.css`. The Google Fonts import (Libre Caslon Text and Kar
 
 ### Images
 
-Photographs live in `static/images/` and are served from `/images/<filename>`; each is referenced only through its `filename` in `src/data/album.json`. Use JPEGs around 1600px on the long edge and mix portrait and landscape frames — the masonry grid uses the `width` and `height` you record per photo, so update those values when you swap an image. The favicon is `static/favicon.svg`. The sample photographs were sourced from Pexels contributors Ayşenur, Git Stephen Gitau, Alexander Mass, Valeria Boltneva, Agung Pandit Wiguna, Masood Aslami, Мария, cottonbro studio, ELIZAVETA CHAYKO, Asad Photo Maldives, and Edward Eyer.
+Photographs live in `public/images/` and are served from `/images/<filename>`; each is referenced only through its `filename` in `src/data/album.json`. Use JPEGs around 1600px on the long edge and mix portrait and landscape frames — the masonry grid uses the `width` and `height` you record per photo, so update those values when you swap an image. The favicon is `public/favicon.svg`. The sample photographs were sourced from Pexels contributors Ayşenur, Git Stephen Gitau, Alexander Mass, Valeria Boltneva, Agung Pandit Wiguna, Masood Aslami, Мария, cottonbro studio, ELIZAVETA CHAYKO, Asad Photo Maldives, and Edward Eyer.
 
 ### Routes and features
 
-This is a single static route, `src/pages/index.tsx`, which composes `AlbumHeader`, `GalleryGrid`, `FaqSection`, `PageFooter`, and the sticky `SelectionTray` from `src/components/`. Favourite persistence (the `localStorage` key prefix and load/save/toggle rules) lives in `src/utils/favourites.ts`; the CSV format and Blob download live in `src/utils/exportFavourites.ts`. Shared SVG icons are in `src/icons/`. A minimal not-found page is `src/pages/404.tsx`.
+This is a single static route, `src/App.tsx`, which composes `AlbumHeader`, `GalleryGrid`, `FaqSection`, `PageFooter`, and the sticky `SelectionTray` from `src/components/`. Favourite persistence (the `localStorage` key prefix and load/save/toggle rules) lives in `src/utils/favourites.ts`; the CSV format and Blob download live in `src/utils/exportFavourites.ts`. Shared SVG icons are in `src/icons/`.
 
 ### Environment variables
 
@@ -104,7 +105,7 @@ npm run build
 npm run preview
 ```
 
-Production files are written to `public/`.
+Production files are written to `dist/`.
 
 ## License
 
