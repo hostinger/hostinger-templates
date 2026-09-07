@@ -1,4 +1,4 @@
-import { Link } from 'gatsby';
+import { Link } from 'react-router-dom';
 
 import siteData from '../data/site.json';
 import { Wordmark } from '../icons/Wordmark';

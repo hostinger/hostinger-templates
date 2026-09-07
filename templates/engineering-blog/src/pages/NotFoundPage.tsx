@@ -1,13 +1,11 @@
-import { Link } from 'gatsby';
-import type { HeadFC } from 'gatsby';
+import { Link } from 'react-router-dom';
 
 import siteData from '../data/site.json';
 import type { SiteContent } from '../types/content';
-import '../styles/global.css';
 
 const site = siteData as SiteContent;
 
-export default function NotFoundPage() {
+export function NotFoundPage() {
   return (
     <main className="not-found">
       <p className="not-found__eyebrow">{site.name}</p>
@@ -22,12 +20,3 @@ export default function NotFoundPage() {
     </main>
   );
 }
-
-export const Head: HeadFC = () => (
-  <>
-    <html lang="en" />
-    <title>{`Page not found — ${site.name}`}</title>
-    <meta name="robots" content="noindex" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  </>
-);

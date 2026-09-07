@@ -25,9 +25,9 @@ Reading is the product. Prose is set in a serif at a comfortable ~68ch measure, 
 ## Tech stack
 
 - **Language:** TypeScript
-- **Framework:** Gatsby 5 (React 18)
-- **Build tool:** Gatsby
-- **Content:** Markdown via `gatsby-source-filesystem` + `gatsby-transformer-remark`, highlighted at build time with `gatsby-remark-prismjs`
+- **Framework:** React 19
+- **Build tool:** Vite
+- **Content:** Markdown files parsed in `src/lib/`, highlighted with Prism
 - **Styling:** Plain hand-written CSS with centralized design tokens
 - **Linting:** ESLint
 
@@ -50,7 +50,7 @@ npm install
 npm run dev
 ```
 
-Open the local URL printed by Gatsby.
+Open the local URL printed by the development server.
 
 ## Available scripts
 
@@ -65,18 +65,20 @@ Open the local URL printed by Gatsby.
 content/
 └── posts/          # One markdown file per post
 src/
+├── App.tsx
+├── main.tsx
 ├── components/     # Header, footer, masthead, post list, article body, series nav, FAQ
 ├── data/           # site.json — every word of site chrome and FAQ copy
 ├── icons/          # Original SVG wordmark and series-thread marks
-├── pages/          # index.tsx and 404.tsx
+├── lib/            # Markdown load + Prism highlight
+├── pages/          # Home, post, and not-found routes
 ├── styles/         # global.css — design tokens and all styling
-├── templates/      # post.tsx — the page every markdown post renders through
-├── types/          # Shared content and GraphQL result types
+├── types/          # Shared content types
 └── utils/          # Reading time, series navigation, dates, paths
-static/
+public/
 └── favicon.svg
-gatsby-config.ts    # Site metadata and the markdown plugin pipeline
-gatsby-node.ts      # Slugs, reading-time fields, and post page creation
+scripts/
+└── prerender.mjs   # Copies index.html to each /writing/<slug>/ path
 ```
 
 ## Personalizing
@@ -93,14 +95,15 @@ gatsby-node.ts      # Slugs, reading-time fields, and post page creation
 
 ### Images
 
-There is no photography — the only artwork is original SVG. The pennant wordmark is `src/icons/Wordmark.tsx`, the series-thread marks are `src/icons/ThreadNode.tsx` and `src/icons/ThreadRule.tsx`, and the favicon is `static/favicon.svg`. Edit the SVGs in place; they inherit the accent color from the CSS tokens.
+There is no photography — the only artwork is original SVG. The pennant wordmark is `src/icons/Wordmark.tsx`, the series-thread marks are `src/icons/ThreadNode.tsx` and `src/icons/ThreadRule.tsx`, and the favicon is `public/favicon.svg`. Edit the SVGs in place; they inherit the accent color from the CSS tokens.
 
 ### Routes and features
 
-- `/` is `src/pages/index.tsx`; post pages are created by `gatsby-node.ts` from every markdown file, rendered through `src/templates/post.tsx`. The `/writing/` URL prefix lives in `src/utils/paths.ts`.
+- `/` is `src/pages/HomePage.tsx`; post pages are `src/pages/PostPage.tsx`, loaded from every markdown file in `src/lib/posts.ts`. The `/writing/` URL prefix lives in `src/utils/paths.ts`.
 - Series previous/next resolution is `src/utils/series.ts`; reading time is `src/utils/readingTime.ts`; date formatting is centralized in `src/utils/formatDate.ts`.
 - The copy-button enhancement for code blocks lives in `src/components/ArticleBody.tsx`.
-- A minimal not-found page is `src/pages/404.tsx`.
+- A minimal not-found page is `src/pages/NotFoundPage.tsx`.
+- `scripts/prerender.mjs` copies `index.html` to each `/writing/<slug>/` path so those URLs load on a static host.
 
 ### Environment variables
 
@@ -113,7 +116,7 @@ npm run build
 npm run preview
 ```
 
-Production files are written to `public/`.
+Production files are written to `dist/`.
 
 ## License
 

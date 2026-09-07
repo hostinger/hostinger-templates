@@ -1,5 +1,4 @@
-import { graphql, Link } from 'gatsby';
-import type { HeadProps, PageProps } from 'gatsby';
+import { Link, useParams } from 'react-router-dom';
 
 import { ArticleBody } from '../components/ArticleBody';
 import { SeriesNav } from '../components/SeriesNav';
@@ -7,26 +6,44 @@ import { SiteFooter } from '../components/SiteFooter';
 import { SiteHeader } from '../components/SiteHeader';
 import siteData from '../data/site.json';
 import { ThreadNode } from '../icons/ThreadNode';
-import type { PostPageContext, PostQueryData, SiteContent } from '../types/content';
+import { getPost, seriesNavFor } from '../lib/posts';
+import { NotFoundPage } from './NotFoundPage';
+import type { SiteContent } from '../types/content';
 import { formatDate, machineDate } from '../utils/formatDate';
 import { readingTimeLabel } from '../utils/readingTime';
 import { seriesPartLabel } from '../utils/series';
-import '../styles/global.css';
 
 const site = siteData as SiteContent;
 
-export default function PostPage({
-  data,
-  pageContext,
-}: PageProps<PostQueryData, PostPageContext>) {
-  const post = data.markdownRemark;
-  const { seriesNav } = pageContext;
+export function PostPage() {
+  const { slug = '' } = useParams();
+  const post = getPost(slug);
+
+  if (!post) {
+    return <NotFoundPage />;
+  }
+
+  const seriesNav = seriesNavFor(slug);
   const author = site.authors.find(
     (candidate) => candidate.name === post.frontmatter.author,
   );
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.frontmatter.title,
+    datePublished: machineDate(post.frontmatter.date),
+    author: { '@type': 'Person', name: post.frontmatter.author },
+    wordCount: post.fields.words,
+    keywords: post.frontmatter.tags.join(', '),
+  };
+
   return (
     <div className="page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <a className="skip-link" href="#main-content">
         Skip to the article
       </a>
@@ -49,9 +66,7 @@ export default function PostPage({
             <h1 className="article__title">{post.frontmatter.title}</h1>
             <p className="article__meta">
               <span className="article__author">{post.frontmatter.author}</span>
-              {author && (
-                <span className="article__role">{author.role}</span>
-              )}
+              {author && <span className="article__role">{author.role}</span>}
               <span className="article__dot" aria-hidden="true">
                 ·
               </span>
@@ -79,49 +94,3 @@ export default function PostPage({
     </div>
   );
 }
-
-export const query = graphql`
-  query PostById($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      excerpt(pruneLength: 160)
-      fields {
-        slug
-        readingMinutes
-        words
-      }
-      frontmatter {
-        title
-        date
-        author
-        tags
-        series
-        part
-      }
-    }
-  }
-`;
-
-export const Head = ({ data }: HeadProps<PostQueryData>) => {
-  const post = data.markdownRemark;
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.frontmatter.title,
-    datePublished: machineDate(post.frontmatter.date),
-    author: { '@type': 'Person', name: post.frontmatter.author },
-    wordCount: post.fields.words,
-    keywords: post.frontmatter.tags.join(', '),
-  };
-
-  return (
-    <>
-      <html lang="en" />
-      <title>{`${post.frontmatter.title} — ${site.name}`}</title>
-      <meta name="description" content={post.excerpt} />
-      <meta name="theme-color" content="#ffffff" />
-      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-      <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
-    </>
-  );
-};

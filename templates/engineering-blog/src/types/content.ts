@@ -56,19 +56,8 @@ export type PostListEntry = {
   frontmatter: PostFrontmatter;
 };
 
-export type IndexQueryData = {
-  allMarkdownRemark: {
-    nodes: PostListEntry[];
-  };
-};
-
-export type PostQueryData = {
-  markdownRemark: {
-    html: string;
-    excerpt: string;
-    fields: PostFields;
-    frontmatter: PostFrontmatter;
-  };
+export type LoadedPost = PostListEntry & {
+  html: string;
 };
 
 export type PostPageContext = {
