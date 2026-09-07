@@ -28,5 +28,8 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.68.0",
     "vite": "^8.2.2"
+  },
+  "overrides": {
+    "cookie": "^0.7.0"
   }
 }

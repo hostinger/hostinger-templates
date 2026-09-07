@@ -21,7 +21,7 @@ Visitors can scan the decision brief, inspect the semantic comparison table, rev
 ## Tech stack
 
 - **Language:** TypeScript
-- **Framework:** Astro 6
+- **Framework:** Astro 7
 - **Build tool:** Astro
 - **Styling:** Custom responsive CSS with design tokens
 - **Linting:** ESLint flat config with eslint-plugin-astro

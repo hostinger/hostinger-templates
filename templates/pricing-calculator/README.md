@@ -24,6 +24,7 @@ The estimate applies included allowances, per-seat pricing, and progressive API 
 - **Build tool:** Vite
 - **Styling:** Hand-authored responsive CSS
 - **Content:** Committed JSON pricing table
+- **Overrides:** `cookie@^0.7.0` — `@sveltejs/kit` still pins `cookie@^0.6.0`. Remove the override when Kit raises that range.
 
 ## Getting started
 
