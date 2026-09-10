@@ -25,5 +25,8 @@
     "eslint": "^9.39.5",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.3.11"
+  },
+  "overrides": {
+    "@vitejs/devtools": "^0.5.0"
   }
 }

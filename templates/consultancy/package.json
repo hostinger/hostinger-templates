@@ -13,10 +13,10 @@
     "postinstall": "nuxt prepare"
   },
   "engines": {
-    "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
+    "node": ">=22"
   },
   "dependencies": {
-    "nuxt": "^4.5.2",
+    "nuxt": "4.4.8",
     "vue": "^3.5.41",
     "vue-router": "^5.2.0"
   },
@@ -26,5 +26,8 @@
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.11"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "@vitejs/devtools": "^0.5.0"
+  }
 }
