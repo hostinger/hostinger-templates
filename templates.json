@@ -1743,6 +1743,7 @@
         "react"
       ],
       "deploy": {
+        "appType": "vite",
         "buildCommand": "build",
         "outputDirectory": "out",
         "entryFile": ""
@@ -2926,6 +2927,7 @@
         "next.js marketing site"
       ],
       "deploy": {
+        "appType": "vite",
         "buildCommand": "build",
         "outputDirectory": "out",
         "entryFile": ""
@@ -4467,6 +4469,7 @@
         "typescript"
       ],
       "deploy": {
+        "appType": "vite",
         "buildCommand": "build",
         "outputDirectory": "out",
         "entryFile": ""
@@ -5405,6 +5408,7 @@
         "nextjs storefront"
       ],
       "deploy": {
+        "appType": "vite",
         "buildCommand": "build",
         "outputDirectory": "out",
         "entryFile": ""
@@ -5866,6 +5870,7 @@
         "nextjs SaaS website"
       ],
       "deploy": {
+        "appType": "vite",
         "buildCommand": "build",
         "outputDirectory": "out",
         "entryFile": ""

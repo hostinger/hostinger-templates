@@ -120,7 +120,11 @@ finished project contributes one entry.
 - `deploy` is REQUIRED whenever the framework's build output differs from the
   hosting platform defaults (static frameworks default to `dist` with no entry
   file; the pipeline runs `node <entryFile>` when one is set, otherwise serves
-  `outputDirectory` statically). Static Next.js uses `out`, SvelteKit `build`,
+  `outputDirectory` statically). `deploy.appType` may name a different hosting
+  framework preset when the detected one mishandles the template's output —
+  static Next.js exports MUST set `"appType": "vite"` (the next pipeline cannot
+  serve `output: 'export'` builds: "No output directory found after build").
+  Static Next.js uses `out`, SvelteKit `build`,
   static React Router `build/client`, Angular `dist/<project>/browser`; server
   templates set `entryFile` to the compiled server and must listen on
   `process.env.PORT`. `entryFile` is resolved RELATIVE to `outputDirectory`
