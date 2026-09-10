@@ -15,13 +15,13 @@ The page moves from a clear positioning statement through three outcome-led serv
 - Four accessible native FAQ accordions
 - `FAQPage` structured data generated from the same FAQ content
 - Responsive editorial layout for desktop, tablet, 390px and 320px screens
-- Static generation to `.output/public`
+- Server-rendered Nuxt production build under `.output`
 
 ## Tech stack
 
 - **Language:** TypeScript
 - **Framework:** Nuxt 4 with Vue 3
-- **Build tool:** Nuxt static generation and Nitro
+- **Build tool:** Nuxt / Nitro (SSR)
 - **Styling:** Custom responsive CSS with centralized design tokens
 - **Linting:** ESLint flat config with `@nuxt/eslint`
 
@@ -106,7 +106,7 @@ npm run build
 npm run preview
 ```
 
-Production files are written to `.output/public`.
+`npm run build` writes a Nuxt SSR app to `.output`. `npm run preview` runs the Nitro server at `.output/server/index.mjs`. This is a server-rendered app, not a static export.
 
 ## Screenshots
 

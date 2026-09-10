@@ -1,6 +1,6 @@
 # Overlap
 
-A static timezone overlap planner for finding and sharing hours that work across cities.
+A timezone overlap planner for finding and sharing hours that work across cities.
 
 ## Overview
 
@@ -22,7 +22,7 @@ Choose common working hours and the board highlights every hour when all selecte
 
 - **Language:** TypeScript
 - **Framework:** Nuxt 3 and Vue 3
-- **Build tool:** Nuxt static generation with Vite
+- **Build tool:** Nuxt / Vite (SSR)
 - **Styling:** Scoped Vue CSS and shared CSS custom properties
 - **Timezone data:** Native `Intl.DateTimeFormat`
 - **Font:** Local `@fontsource-variable/outfit` package
@@ -115,7 +115,7 @@ npm run build
 npm run preview
 ```
 
-Production files are written to `.output/public`.
+`npm run build` writes a Nuxt SSR app to `.output`. `npm run preview` runs the Nitro server at `.output/server/index.mjs`. This is a server-rendered app, not a static export.
 
 ## Screenshots
 

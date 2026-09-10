@@ -4,7 +4,7 @@ A calm website for a therapist or counsellor, with a gentle four-question "is th
 
 ## Overview
 
-Quiet Practice is a fully static, multi-page site for a solo therapy or counselling practice. It answers the question every prospective client actually has — "which of these services is for me?" — with a two-minute self-check: four soft questions, one at a time, that end by landing the visitor on the service page that fits what they described. The result is a real, shareable URL, not a generic contact form.
+Quiet Practice is a multi-page site for a solo therapy or counselling practice. It answers the question every prospective client actually has — "which of these services is for me?" — with a two-minute self-check: four soft questions, one at a time, that end by landing the visitor on the service page that fits what they described. The result is a real, shareable URL, not a generic contact form.
 
 The site ships with three services — individual therapy, couples counselling, and teen counselling — each with its own statically generated page covering who it is for, how sessions work, fees, and what the first session is like. Every service page is reachable through normal links (homepage index, header, footer), loads directly on its own URL, and cross-links to the other two services.
 
@@ -24,7 +24,7 @@ The self-check is honestly framed as a signpost, not a clinical assessment: a di
 ## Tech stack
 
 - **Language:** TypeScript
-- **Framework:** Nuxt 4 (Vue 3), fully static via `nuxt generate`
+- **Framework:** Nuxt 4 (Vue 3), server-rendered
 - **Build tool:** Nuxt / Vite
 - **Styling:** Plain hand-written CSS with centralized design tokens
 - **Linting:** ESLint (`@nuxt/eslint` flat config)
@@ -136,7 +136,7 @@ npm run build
 npm run preview
 ```
 
-Production files are written to `.output/public` — a fully static site you can host anywhere (no Node.js server needed).
+`npm run build` writes a Nuxt SSR app to `.output`. `npm run preview` runs the Nitro server at `.output/server/index.mjs`. This is a server-rendered app, not a static export.
 
 ## License
 
