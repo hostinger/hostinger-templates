@@ -31,22 +31,22 @@
         {
           "id": "responsive-service-business-landing-page",
           "name": "Responsive service-business landing page",
-          "description": "The template includes responsive service-business landing page."
+          "description": "A complete landing page for a local trades business, with services, hours, coverage, and a clear way to call."
         },
         {
           "id": "availability-and-hours",
           "name": "Availability and hours",
-          "description": "The template includes live emergency availability treatment."
+          "description": "Live emergency availability treatment."
         },
         {
           "id": "coverage-checker",
           "name": "Coverage checker",
-          "description": "The template includes interactive street and postcode coverage form."
+          "description": "Interactive street and postcode coverage form."
         },
         {
           "id": "click-to-call",
           "name": "Click to call",
-          "description": "The template includes click-to-call actions throughout."
+          "description": "Click-to-call actions throughout."
         }
       ],
       "technology": {
@@ -116,7 +116,7 @@
       "id": "groom-room",
       "name": "Groom Room",
       "summary": "A breed-led dog grooming site with instant guide prices, appointment times, cut photography, and booking handoff.",
-      "description": "Groom Room is a polished multi-page website for an independent dog groomer who wants to replace vague \u201cprices from\u201d messaging with a useful first estimate. It is designed for salon owners serving local dog owners who need confidence about cost, timing, and coat outcomes before making contact.",
+      "description": "Groom Room is a polished multi-page website for an independent dog groomer who wants to replace vague “prices from” messaging with a useful first estimate. It is designed for salon owners serving local dog owners who need confidence about cost, timing, and coat outcomes before making contact.",
       "bucket": "Non-technical",
       "categories": [
         "Business"
@@ -142,22 +142,22 @@
         {
           "id": "breed-price-picker",
           "name": "Breed price picker",
-          "description": "The template includes interactive six-breed price and duration picker."
+          "description": "Interactive six-breed price and duration picker."
         },
         {
           "id": "breed-specific-cut-guidance-and-locally-stored-photography",
           "name": "Breed-specific cut guidance and locally stored photography",
-          "description": "The template includes breed-specific cut guidance and locally stored photography."
+          "description": "Each breed shows its own cut notes and studio photography, so the quote matches the dog on the page."
         },
         {
           "id": "four-optional-grooming-add-ons",
           "name": "Four optional grooming add-ons",
-          "description": "The template includes four optional grooming add-ons."
+          "description": "Optional extras sit beside the cut and update the quote when they are selected."
         },
         {
           "id": "service-menu",
           "name": "Service menu",
-          "description": "The template includes full service menu and transparent quote guidance."
+          "description": "Full service menu and transparent quote guidance."
         }
       ],
       "technology": {
@@ -255,22 +255,22 @@
         {
           "id": "live-quote-builder",
           "name": "Live quote builder",
-          "description": "The template includes live bedroom, bathroom, and frequency quote controls."
+          "description": "Live bedroom, bathroom, and frequency quote controls."
         },
         {
           "id": "transparent-pricing-rules",
           "name": "Transparent pricing rules",
-          "description": "The template includes explicit base, per-room, and repeat-visit pricing rules."
+          "description": "Explicit base, per-room, and repeat-visit pricing rules."
         },
         {
           "id": "url-backed-state",
           "name": "URL-backed quote state",
-          "description": "The template includes URL-serialized state with direct-load hydration."
+          "description": "URL-serialized state with direct-load hydration."
         },
         {
           "id": "itemized-quote",
           "name": "Itemized quote",
-          "description": "The template includes itemized quote with transparent discount calculation."
+          "description": "Itemized quote with transparent discount calculation."
         }
       ],
       "technology": {
@@ -369,22 +369,22 @@
         {
           "id": "responsive-flash-wall",
           "name": "Responsive flash wall",
-          "description": "The template includes responsive flash wall with motif filters and eight original local SVG artworks."
+          "description": "Responsive flash wall with motif filters and eight original local SVG artworks."
         },
         {
           "id": "design-detail-routes",
           "name": "Design detail routes",
-          "description": "The template includes eight direct-load detail routes at /flash/:id."
+          "description": "Eight direct-load detail routes at /flash/:id."
         },
         {
           "id": "filled-enquiry-handoff",
           "name": "Filled enquiry handoff",
-          "description": "The template includes accessible enquiry dialog with design details and a pre-filled email handoff."
+          "description": "Accessible enquiry dialog with design details and a pre-filled email handoff."
         },
         {
           "id": "structured-faq",
           "name": "Structured FAQ",
-          "description": "The template includes studio information, four expandable FAQs, and FAQPage JSON-LD."
+          "description": "Studio information, four expandable FAQs, and FAQPage JSON-LD."
         }
       ],
       "technology": {
@@ -484,22 +484,22 @@
         {
           "id": "interactive-six-room-inventory",
           "name": "Interactive six-room inventory",
-          "description": "The template includes interactive six-room inventory with quantity controls."
+          "description": "Interactive six-room inventory with quantity controls."
         },
         {
           "id": "van-recommendation",
           "name": "Van recommendation",
-          "description": "The template includes live van-size, volume, and guide-price recommendation."
+          "description": "Live van-size, volume, and guide-price recommendation."
         },
         {
           "id": "url-serialized-estimator-state",
           "name": "URL-serialized estimator state",
-          "description": "The template includes URL-serialized estimator state with reload hydration."
+          "description": "URL-serialized estimator state with reload hydration."
         },
         {
           "id": "quote-handoff",
           "name": "Quote handoff",
-          "description": "The template includes pre-filled email quote handoff and click-to-call links."
+          "description": "Pre-filled email quote handoff and click-to-call links."
         }
       ],
       "technology": {
@@ -570,8 +570,8 @@
     {
       "id": "todays-menu",
       "name": "Today's Menu",
-      "summary": "A caf\u00e9 and deli board that follows the clock \u2014 dayparts reorder by local time and sold-out dishes are greyed out.",
-      "description": "Today's Menu is a one-page website for a caf\u00e9 or deli whose offer changes through the day and who wants the website to behave like the board behind the counter. It is designed for owners who are tired of static PDF menus that say nothing about what is actually available right now, and who want visitors to see the current service \u2014 and what has already sold out \u2014 before they walk over or call.",
+      "summary": "A café and deli board that follows the clock — dayparts reorder by local time and sold-out dishes are greyed out.",
+      "description": "Today's Menu is a one-page website for a café or deli whose offer changes through the day and who wants the website to behave like the board behind the counter. It is designed for owners who are tired of static PDF menus that say nothing about what is actually available right now, and who want visitors to see the current service — and what has already sold out — before they walk over or call.",
       "bucket": "Non-technical",
       "categories": [
         "Hospitality"
@@ -598,22 +598,22 @@
         {
           "id": "clock-driven-dayparts",
           "name": "Clock-driven dayparts",
-          "description": "The template includes daypart sections (Breakfast, Lunch, Evening) reorder by the visitor's local time, with the current service first."
+          "description": "Daypart sections (Breakfast, Lunch, Evening) reorder by the visitor's local time, with the current service first."
         },
         {
           "id": "serving-now-indicators",
           "name": "Serving-now indicators",
-          "description": "The template includes \"Serving now \u00b7 until \u2026\" badge on the active daypart, plus \"From \u2026\" and \"Back tomorrow \u2026\" states on the others."
+          "description": "\"Serving now · until …\" badge on the active daypart, plus \"From …\" and \"Back tomorrow …\" states on the others."
         },
         {
           "id": "live-clock-card",
           "name": "Live clock card",
-          "description": "The template includes live clock card with the date, current time, and a serving status line that updates every 30 seconds."
+          "description": "Live clock card with the date, current time, and a serving status line that updates every 30 seconds."
         },
         {
           "id": "day-strip-timeline",
           "name": "Day-strip timeline",
-          "description": "The template includes day-strip timeline with a sun marker positioned at the current time and a background band that shifts by daypart."
+          "description": "Day-strip timeline with a sun marker positioned at the current time and a background band that shifts by daypart."
         }
       ],
       "technology": {
@@ -686,7 +686,7 @@
       "id": "bakery-preorder",
       "name": "Bakery Preorder",
       "summary": "A weekend baker's page with a live order cut-off countdown, collection slots that fill up, and email reservations for loaves and cakes.",
-      "description": "Bakery Preorder is a single-page site for a weekend microbakery that sells small batches from a home kitchen and needs orders locked in before baking starts. It solves the two questions that decide whether a preorder lands: how long is left to order, and which collection slots still have space \u2014 answered by a live oven-timer countdown and a board of visibly filling slot tags.",
+      "description": "Bakery Preorder is a single-page site for a weekend microbakery that sells small batches from a home kitchen and needs orders locked in before baking starts. It solves the two questions that decide whether a preorder lands: how long is left to order, and which collection slots still have space — answered by a live oven-timer countdown and a board of visibly filling slot tags.",
       "bucket": "Non-technical",
       "categories": [
         "E-commerce",
@@ -714,22 +714,22 @@
         {
           "id": "rolling-cutoff-countdown",
           "name": "Rolling cut-off countdown",
-          "description": "The template includes oven-timer countdown to the next configured cut-off (weekday + time in src/data/site.json), rolling to next week automatically with an \"orders reopen\" message."
+          "description": "Oven-timer countdown to the next configured cut-off (weekday + time in src/data/site.json), rolling to next week automatically with an \"orders reopen\" message."
         },
         {
           "id": "filling-collection-slots",
           "name": "Filling collection slots",
-          "description": "The template includes collection slot tags with capacity meters, remaining counts, nearly-full and fully-booked states driven by seed data."
+          "description": "Collection slot tags with capacity meters, remaining counts, nearly-full and fully-booked states driven by seed data."
         },
         {
           "id": "six-bake-menu",
           "name": "Six-bake weekend menu",
-          "description": "The template includes six-bake list with local photography, per-item pricing, and units."
+          "description": "Six-bake list with local photography, per-item pricing, and units."
         },
         {
           "id": "live-order-ticket",
           "name": "Live order ticket",
-          "description": "The template includes quantity steppers plus a live order ticket showing line items, running total, chosen slot, and the computed collection date."
+          "description": "Quantity steppers plus a live order ticket showing line items, running total, chosen slot, and the computed collection date."
         }
       ],
       "technology": {
@@ -802,8 +802,8 @@
     {
       "id": "tap-list",
       "name": "Tap List",
-      "summary": "A live taproom keg board showing what's pouring, ABV, and how full every keg is \u2014 so regulars see what's about to blow before they visit.",
-      "description": "Tap List is a single-page website for a taproom, brewery bar, or beer caf\u00e9 whose real product changes nightly: the keg board. Printed menus and stale PDFs go out of date the moment a keg kicks, and regulars hate driving over for a beer that blew an hour ago.",
+      "summary": "A live taproom keg board showing what's pouring, ABV, and how full every keg is — so regulars see what's about to blow before they visit.",
+      "description": "Tap List is a single-page website for a taproom, brewery bar, or beer café whose real product changes nightly: the keg board. Printed menus and stale PDFs go out of date the moment a keg kicks, and regulars hate driving over for a beer that blew an hour ago.",
       "bucket": "Non-technical",
       "categories": [
         "Hospitality"
@@ -829,22 +829,22 @@
         {
           "id": "keg-fill-gauges",
           "name": "Keg fill gauges",
-          "description": "The template includes eight-tap keg board with vertical fill gauges, tick marks, and foam caps, each with an accessible \"about 63% remaining\" text equivalent."
+          "description": "Eight-tap keg board with vertical fill gauges, tick marks, and foam caps, each with an accessible \"about 63% remaining\" text equivalent."
         },
         {
           "id": "blow-state-flags",
           "name": "About-to-blow and blown states",
-          "description": "The template includes distinct visual states: fresh keg chip, pulsing \"About to blow\" warning under 20%, and a stamped, greyed-out \"Blown\" empty state."
+          "description": "Distinct visual states: fresh keg chip, pulsing \"About to blow\" warning under 20%, and a stamped, greyed-out \"Blown\" empty state."
         },
         {
           "id": "style-filter-chips",
           "name": "Style filter chips",
-          "description": "The template includes style filter chips (all, hoppy, crisp & lagered, dark & roasty, sour & farmhouse) with a live \"Showing X of 8 taps\" count announced via aria-live."
+          "description": "Style filter chips (all, hoppy, crisp & lagered, dark & roasty, sour & farmhouse) with a live \"Showing X of 8 taps\" count announced via aria-live."
         },
         {
           "id": "board-status-panel",
           "name": "Board status panel",
-          "description": "The template includes masthead status panel computed from the tap data: pouring / about to blow / blown counts plus a \"last updated\" line."
+          "description": "Masthead status panel computed from the tap data: pouring / about to blow / blown counts plus a \"last updated\" line."
         }
       ],
       "technology": {
@@ -918,7 +918,7 @@
       "id": "supper-club",
       "name": "Supper Club",
       "summary": "A one-night pop-up dinner invitation with a live seats-remaining place card, countdown to doors, a menu revealed course by course, and RSVP by plain email.",
-      "description": "Supper Club is a single-page invitation site for anyone hosting a one-night dinner: a pop-up, a private dining room, a chef's table in an apartment. These nights do not need a restaurant website or a ticketing platform \u2014 they need one elegant page that answers the four questions every guest has: when is it, how many seats are left, what will we eat, and how do I get a chair.",
+      "description": "Supper Club is a single-page invitation site for anyone hosting a one-night dinner: a pop-up, a private dining room, a chef's table in an apartment. These nights do not need a restaurant website or a ticketing platform — they need one elegant page that answers the four questions every guest has: when is it, how many seats are left, what will we eat, and how do I get a chair.",
       "bucket": "Non-technical",
       "categories": [
         "Event",
@@ -946,22 +946,22 @@
         {
           "id": "doors-countdown",
           "name": "Live countdown to doors",
-          "description": "The template includes live countdown to doors, computed from the committed event date, ticking every second."
+          "description": "Live countdown to doors, computed from the committed event date, ticking every second."
         },
         {
           "id": "seats-place-card",
           "name": "Seats-remaining place card",
-          "description": "The template includes place-card seat counter \u2014 seats remaining of the seat cap, a pulsing low-seats urgency state, and an automatic waitlist mode when seats hit zero."
+          "description": "Place-card seat counter — seats remaining of the seat cap, a pulsing low-seats urgency state, and an automatic waitlist mode when seats hit zero."
         },
         {
           "id": "course-by-course-reveal",
           "name": "Course-by-course menu reveal",
-          "description": "The template includes four-course menu revealed one course at a time, in strict order, with an \"uncover the whole menu\" shortcut; keyboard accessible and fully readable without JavaScript."
+          "description": "Four-course menu revealed one course at a time, in strict order, with an \"uncover the whole menu\" shortcut; keyboard accessible and fully readable without JavaScript."
         },
         {
           "id": "honest-email-rsvp",
           "name": "Honest email RSVP and waitlist",
-          "description": "The template includes honest RSVP/waitlist form (name, email, seats, dietary notes) with inline validation that composes a prefilled mailto: to the host and confirms locally that nothing is sent until the guest presses send."
+          "description": "Honest RSVP/waitlist form (name, email, seats, dietary notes) with inline validation that composes a prefilled mailto: to the host and confirms locally that nothing is sent until the guest presses send."
         }
       ],
       "technology": {
@@ -1035,7 +1035,7 @@
       "id": "class-timetable",
       "name": "Class Timetable",
       "summary": "Weekly yoga and pilates timetable that highlights the next class with a live countdown and hands booking to your scheduling link.",
-      "description": "Class Timetable is a single-page website for a yoga or pilates studio whose schedule repeats every week. Most studios run the same gentle rhythm \u2014 sunrise flows, lunch-hour sessions, candlelit evenings \u2014 yet publish it as a stale PDF or a screenshot on Instagram.",
+      "description": "Class Timetable is a single-page website for a yoga or pilates studio whose schedule repeats every week. Most studios run the same gentle rhythm — sunrise flows, lunch-hour sessions, candlelit evenings — yet publish it as a stale PDF or a screenshot on Instagram.",
       "bucket": "Non-technical",
       "categories": [
         "Event",
@@ -1062,22 +1062,22 @@
         {
           "id": "live-next-class-countdown",
           "name": "Live next-class countdown",
-          "description": "The template includes live \"Next class starts in\" countdown (days, hours, minutes, seconds) computed client-side from recurring weekday + time rows \u2014 no hardcoded dates."
+          "description": "Live \"Next class starts in\" countdown (days, hours, minutes, seconds) computed client-side from recurring weekday + time rows — no hardcoded dates."
         },
         {
           "id": "glowing-next-class-highlight",
           "name": "Glowing next-class highlight",
-          "description": "The template includes next-class highlight in the grid: a gently glowing card with a floating \"next \u00b7 3h 12m\" pill that rolls to the following class the moment one starts."
+          "description": "Next-class highlight in the grid: a gently glowing card with a floating \"next · 3h 12m\" pill that rolls to the following class the moment one starts."
         },
         {
           "id": "in-session-state",
           "name": "\"In session\" state",
-          "description": "The template includes \"In session\" state: a running class gets a pulsing chip and the banner notes when it ends; the today column is flagged automatically."
+          "description": "\"In session\" state: a running class gets a pulsing chip and the banner notes when it ends; the today column is flagged automatically."
         },
         {
           "id": "weekly-grid",
           "name": "Weekly grid, one page",
-          "description": "The template includes weekly grid of 12 classes across 7 days with start time, duration, level chip (Gentle / All levels / Strong), optional instructor, and a one-line focus."
+          "description": "Weekly grid of 12 classes across 7 days with start time, duration, level chip (Gentle / All levels / Strong), optional instructor, and a one-line focus."
         }
       ],
       "technology": {
@@ -1149,8 +1149,8 @@
     {
       "id": "quiet-practice",
       "name": "Quiet Practice",
-      "summary": "A calm counselling site whose gentle four-question self-check routes visitors to the matching service page \u2014 individual, couples, or teen counselling \u2014 every page static and shareable.",
-      "description": "Quiet Practice is a multi-page website for a solo therapist or counsellor whose real problem is not looking pretty online \u2014 it is that prospective clients arrive anxious, skim a wall of text, and leave without knowing which service was meant for them. \" check: four small questions, one at a time in large serif type, that end by landing the visitor on the service page that fits what they described.",
+      "summary": "A calm counselling site whose gentle four-question self-check routes visitors to the matching service page — individual, couples, or teen counselling — every page static and shareable.",
+      "description": "Quiet Practice is a multi-page website for a solo therapist or counsellor whose real problem is not looking pretty online — it is that prospective clients arrive anxious, skim a wall of text, and leave without knowing which service was meant for them. \" check: four small questions, one at a time in large serif type, that end by landing the visitor on the service page that fits what they described.",
       "bucket": "Non-technical",
       "categories": [
         "Business",
@@ -1179,22 +1179,22 @@
         {
           "id": "self-check-router",
           "name": "Four-question self-check that routes to a service",
-          "description": "The template includes four-question self-check, one large-type question at a time with progress dots, a back button, and answer routing that lands on the matching service page at a real URL (/services/couples-counselling, for example)."
+          "description": "Four-question self-check, one large-type question at a time with progress dots, a back button, and answer routing that lands on the matching service page at a real URL (/services/couples-counselling, for example)."
         },
         {
           "id": "weighted-scoring-logic",
           "name": "Transparent weighted routing logic",
-          "description": "The template includes weighted routing logic in a typed utility (app/utils/selfCheck.ts): each answer adds points to one or more services, the highest total wins, and ties resolve to whichever service led earliest."
+          "description": "Weighted routing logic in a typed utility (app/utils/selfCheck.ts): each answer adds points to one or more services, the highest total wins, and ties resolve to whichever service led earliest."
         },
         {
           "id": "static-service-pages",
           "name": "Statically generated service pages",
-          "description": "The template includes three statically generated service pages with \"this might fit if\" signals, approach, first-session notes, a sticky session-details card, and cross-links to the other two services."
+          "description": "Three statically generated service pages with \"this might fit if\" signals, approach, first-session notes, a sticky session-details card, and cross-links to the other two services."
         },
         {
           "id": "honest-booking-handoff",
           "name": "Honest booking handoff",
-          "description": "The template includes honest booking handoff: primary call-to-action switches between a configured bookingUrl and click-to-call, with tel: and mailto: links always built from the same contact data shown on screen."
+          "description": "Honest booking handoff: primary call-to-action switches between a configured bookingUrl and click-to-call, with tel: and mailto: links always built from the same contact data shown on screen."
         }
       ],
       "technology": {
@@ -1275,7 +1275,7 @@
       "id": "couch-to-5k",
       "name": "Couch to 5K",
       "summary": "A nine-week running plan visitors tick off session by session, with progress saved on their own phone.",
-      "description": "Couch to 5K is a single-page training-plan site for a running coach whose beginner clients keep losing the printed handout. The classic nine-week walk-run progression \u2014 twenty-seven sessions of roughly half an hour \u2014 lives on one fast page the runner keeps open on their phone.",
+      "description": "Couch to 5K is a single-page training-plan site for a running coach whose beginner clients keep losing the printed handout. The classic nine-week walk-run progression — twenty-seven sessions of roughly half an hour — lives on one fast page the runner keeps open on their phone.",
       "bucket": "Non-technical",
       "categories": [
         "Fitness"
@@ -1304,22 +1304,22 @@
         {
           "id": "tickable-nine-week-plan",
           "name": "Tickable nine-week plan",
-          "description": "The template includes full nine-week plan as anchored sections (#week-1 \u2026 #week-9) with 27 tickable session cards \u2014 title, interval instructions, and an approximate duration chip."
+          "description": "Full nine-week plan as anchored sections (#week-1 … #week-9) with 27 tickable session cards — title, interval instructions, and an approximate duration chip."
         },
         {
           "id": "on-device-progress",
           "name": "On-device progress",
-          "description": "The template includes on-device progress: ticks persist in localStorage across reloads; the storage key holds plain session ids and invalid stored data is ignored safely."
+          "description": "On-device progress: ticks persist in localStorage across reloads; the storage key holds plain session ids and invalid stored data is ignored safely."
         },
         {
           "id": "live-progress-indicators",
           "name": "Live progress indicators",
-          "description": "The template includes live progress everywhere: per-week \"2 of 3 done\" counters with segment bars, an aria-live overall counter, a sticky header progress strip, and week chips that fill as weeks complete."
+          "description": "Live progress everywhere: per-week \"2 of 3 done\" counters with segment bars, an aria-live overall counter, a sticky header progress strip, and week chips that fill as weeks complete."
         },
         {
           "id": "svg-trail-map",
           "name": "SVG trail map",
-          "description": "The template includes original SVG trail map from START to a 5K finish flag: milestones deep-link to their weeks, completed weeks fill coral, the current week pulses, and the trail line advances as weeks are finished in order."
+          "description": "Original SVG trail map from START to a 5K finish flag: milestones deep-link to their weeks, completed weeks fill coral, the current week pulses, and the trail line advances as weeks are finished in order."
         }
       ],
       "technology": {
@@ -1330,7 +1330,7 @@
           "SvelteKit"
         ],
         "styling": [
-          "Hand-written CSS \u2014 design tokens in a global stylesheet plus scoped component styles"
+          "Hand-written CSS — design tokens in a global stylesheet plus scoped component styles"
         ],
         "data": [
           "Device-local localStorage state",
@@ -1400,7 +1400,7 @@
       "id": "movement-library",
       "name": "Movement Library",
       "summary": "A physio exercise library where patients filter movements by body part, build a small home plan, and print it as a clean take-home card.",
-      "description": "Movement Library is a single-page website for a physiotherapy or physical-therapy practice that wants every patient to leave with a clear, repeatable home plan. Between appointments patients forget doses, lose handout sheets, and give up hunting through video links; this template puts the clinic's ten most-prescribed movements on one page, each written exactly the way it is coached in the treatment room \u2014 body-part tags, sets and reps or hold times, two-to-three numbered steps, and an honest caution note.",
+      "description": "Movement Library is a single-page website for a physiotherapy or physical-therapy practice that wants every patient to leave with a clear, repeatable home plan. Between appointments patients forget doses, lose handout sheets, and give up hunting through video links; this template puts the clinic's ten most-prescribed movements on one page, each written exactly the way it is coached in the treatment room — body-part tags, sets and reps or hold times, two-to-three numbered steps, and an honest caution note.",
       "bucket": "Non-technical",
       "categories": [
         "Fitness"
@@ -1427,22 +1427,22 @@
         {
           "id": "body-part-filter",
           "name": "Body-part filter chips",
-          "description": "The template includes body-part filter chips (Neck, Shoulder, Back, Hip, Knee, Ankle) with live exercise counts and a \"Showing X of 10 movements\" status line."
+          "description": "Body-part filter chips (Neck, Shoulder, Back, Hip, Knee, Ankle) with live exercise counts and a \"Showing X of 10 movements\" status line."
         },
         {
           "id": "printable-patient-card",
           "name": "Printable patient card",
-          "description": "The template includes ten seeded movements, each on a chart-style card with an original SVG line-figure illustration, a kinesiology-tape dosage strip, numbered steps, and a \"Take care\" caution."
+          "description": "Ten seeded movements, each on a chart-style card with an original SVG line-figure illustration, a kinesiology-tape dosage strip, numbered steps, and a \"Take care\" caution."
         },
         {
           "id": "persistent-plan-tray",
           "name": "Persistent plan tray",
-          "description": "The template includes add-to-plan and remove controls with aria-pressed states; the plan persists in localStorage across reloads and return visits."
+          "description": "Add-to-plan and remove controls with aria-pressed states; the plan persists in localStorage across reloads and return visits."
         },
         {
           "id": "plan-tray",
           "name": "plan tray",
-          "description": "The template includes a plan tray that docks to the bottom of the viewport once it has movements, with per-item remove, clear, and print actions."
+          "description": "A plan tray that docks to the bottom of the viewport once it has movements, with per-item remove, clear, and print actions."
         }
       ],
       "technology": {
@@ -1546,22 +1546,22 @@
         {
           "id": "print-room-grid",
           "name": "Print-room masonry album",
-          "description": "The template includes masonry delivery gallery with proof-sheet presentation: numbered frames, captions, and the exact filename on every photograph."
+          "description": "Masonry delivery gallery with proof-sheet presentation: numbered frames, captions, and the exact filename on every photograph."
         },
         {
           "id": "per-device-favourites",
           "name": "Per-device favourites",
-          "description": "The template includes star toggle on each photo \u2014 real buttons with aria-pressed, keyboard reachable, with visible gold focus states."
+          "description": "Star toggle on each photo — real buttons with aria-pressed, keyboard reachable, with visible gold focus states."
         },
         {
           "id": "favourites-persist-per-device-in-localstorage",
           "name": "Favourites persist per device in localStorage",
-          "description": "The template includes favourites persist per device in localStorage, keyed by the album id, and survive reloads; stale entries are dropped if the album changes."
+          "description": "Favourites persist per device in localStorage, keyed by the album id, and survive reloads; stale entries are dropped if the album changes."
         },
         {
           "id": "selection-tray",
           "name": "Sticky selection tray",
-          "description": "The template includes sticky selection tray with a live favourite count announced via role=\"status\", a clear action, and the export action."
+          "description": "Sticky selection tray with a live favourite count announced via role=\"status\", a clear action, and the export action."
         }
       ],
       "technology": {
@@ -1634,7 +1634,7 @@
     {
       "id": "podcast-home",
       "name": "Podcast Home",
-      "summary": "A show site with a real player \u2014 chapter markers on a waveform timeline and searchable transcripts \u2014 plus a directly loadable static page for every episode.",
+      "summary": "A show site with a real player — chapter markers on a waveform timeline and searchable transcripts — plus a directly loadable static page for every episode.",
       "description": "Podcast Home is a complete website for an independent podcast whose episodes deserve more than a bare embed. Podcast apps bury the back catalog and can't link to a moment, so when a listener is told \"skip to the bit about tape ninety,\" they scrub blindly.",
       "bucket": "Non-technical",
       "categories": [
@@ -1663,22 +1663,22 @@
         {
           "id": "chaptered-audio-player",
           "name": "Chaptered audio player",
-          "description": "The template includes audio player with play/pause, a scrubbable waveform timeline, a moving playhead, and current/total time \u2014 keyboard-seekable via a real range control."
+          "description": "Audio player with play/pause, a scrubbable waveform timeline, a moving playhead, and current/total time — keyboard-seekable via a real range control."
         },
         {
           "id": "chapter-markers-as-pips-on-the-timeline-plus-a",
           "name": "Chapter markers as pips on the timeline plus a",
-          "description": "The template includes chapter markers as pips on the timeline plus a numbered chapter list; clicking either jumps the audio to that timestamp and starts playback, and the current chapter stays highlighted while the episode plays."
+          "description": "Chapter markers as pips on the timeline plus a numbered chapter list; clicking either jumps the audio to that timestamp and starts playback, and the current chapter stays highlighted while the episode plays."
         },
         {
           "id": "searchable-transcripts",
           "name": "Searchable transcripts",
-          "description": "The template includes searchable transcript on every episode page: highlights each match, announces the match count via a live region, and scrolls the first hit into view."
+          "description": "Searchable transcript on every episode page: highlights each match, announces the match count via a live region, and scrolls the first hit into view."
         },
         {
           "id": "episode-pages-from-markdown",
           "name": "Episode pages from markdown",
-          "description": "The template includes one statically generated page per episode (/episodes/<slug>/), each directly loadable on any static host, with newer/older episode navigation."
+          "description": "One statically generated page per episode (/episodes/<slug>/), each directly loadable on any static host, with newer/older episode navigation."
         }
       ],
       "technology": {
@@ -1689,7 +1689,7 @@
           "Next.js"
         ],
         "styling": [
-          "Plain CSS \u2014 design tokens in one global stylesheet plus CSS Modules per component"
+          "Plain CSS — design tokens in one global stylesheet plus CSS Modules per component"
         ],
         "data": [
           "Committed Markdown content",
@@ -1756,7 +1756,7 @@
     {
       "id": "first-chapter",
       "name": "First Chapter",
-      "summary": "Author site with a built-in reader for the whole first chapter and an honest buy-link handoff \u2014 no store to configure.",
+      "summary": "Author site with a built-in reader for the whole first chapter and an honest buy-link handoff — no store to configure.",
       "description": "First Chapter is for a self-published author who needs one thing on launch day: a place where a stranger can fall into the book. Instead of a brochure page that points at retailers, the site carries the complete first chapter and lets visitors read it in the browser, in a real reader, before deciding to buy.",
       "bucket": "Non-technical",
       "categories": [
@@ -1788,22 +1788,22 @@
         {
           "id": "in-browser-chapter-reader",
           "name": "In-browser chapter reader",
-          "description": "The template includes full chapter-one reader at #read: a 64ch serif reading column (Crimson Pro) with drop cap, epigraph styling, and * * * scene-break ornaments rendered from plain Markdown."
+          "description": "Full chapter-one reader at #read: a 64ch serif reading column (Crimson Pro) with drop cap, epigraph styling, and * * * scene-break ornaments rendered from plain Markdown."
         },
         {
           "id": "reading-progress-chrome",
           "name": "Reading progress chrome",
-          "description": "The template includes sticky reader chrome with a brass progress rule, live percent read, and \"about N min left\" computed from the actual word count."
+          "description": "Sticky reader chrome with a brass progress rule, live percent read, and \"about N min left\" computed from the actual word count."
         },
         {
           "id": "adjustable-text-size",
-          "name": "A\u2212 / A+ text size",
-          "description": "The template includes a\u2212 / A+ text size control with four steps; changing size keeps the current paragraph anchored in view."
+          "name": "A− / A+ text size",
+          "description": "A− / A+ text size control with four steps; changing size keeps the current paragraph anchored in view."
         },
         {
           "id": "saved-reading-position",
           "name": "Reading position that survives reload",
-          "description": "The template includes reading position and text size persist in localStorage and survive reload; the landing hero switches to \"Continue chapter one\" with a percent-read chip."
+          "description": "Reading position and text size persist in localStorage and survive reload; the landing hero switches to \"Continue chapter one\" with a percent-read chip."
         }
       ],
       "technology": {
@@ -1881,7 +1881,7 @@
       "id": "drop",
       "name": "Drop",
       "summary": "A countdown drop page for vintage one-of-one pieces that flip to a stamped SOLD state and are claimed by email.",
-      "description": "Drop is a single-page shop for sellers whose stock is one of one \u2014 vintage jackets, worn-in boots, serviced watches, deadstock frames. Cart-based shop templates assume restocks and live inventory, which is exactly wrong for this kind of selling: each piece exists once, releases happen at an announced time, and the fastest email wins.",
+      "description": "Drop is a single-page shop for sellers whose stock is one of one — vintage jackets, worn-in boots, serviced watches, deadstock frames. Cart-based shop templates assume restocks and live inventory, which is exactly wrong for this kind of selling: each piece exists once, releases happen at an announced time, and the fastest email wins.",
       "bucket": "Non-technical",
       "categories": [
         "E-commerce"
@@ -1909,22 +1909,22 @@
         {
           "id": "live-drop-countdown",
           "name": "Live drop countdown",
-          "description": "The template includes live countdown masthead (days : hours : minutes : seconds) computed each second from the drop datetime in src/data/drops.json."
+          "description": "Live countdown masthead (days : hours : minutes : seconds) computed each second from the drop datetime in src/data/drops.json."
         },
         {
           "id": "upcoming-to-live-flip",
           "name": "Automatic upcoming-to-live flip",
-          "description": "The template includes automatic upcoming \u2192 live flip in the browser once the configured datetime passes: LIVE NOW masthead, AVAILABLE chips, claim-mode buttons, and a state-aware ticker \u2014 no redeploy needed."
+          "description": "Automatic upcoming → live flip in the browser once the configured datetime passes: LIVE NOW masthead, AVAILABLE chips, claim-mode buttons, and a state-aware ticker — no redeploy needed."
         },
         {
           "id": "stamped-sold-states",
           "name": "Hand-stamped SOLD states",
-          "description": "The template includes sold pieces are visibly dead: greyscale photo, rotated SOLD stamp, struck price with a GONE flag, and no enquiry action."
+          "description": "Sold pieces are visibly dead: greyscale photo, rotated SOLD stamp, struck price with a GONE flag, and no enquiry action."
         },
         {
           "id": "prefilled-email-claims",
           "name": "Pre-filled email claims",
-          "description": "The template includes per-item mailto enquiry pre-filled with the piece name, spec line, and price; the subject switches from \"Question\" to \"CLAIM\" when the drop is live."
+          "description": "Per-item mailto enquiry pre-filled with the piece name, spec line, and price; the subject switches from \"Question\" to \"CLAIM\" when the drop is live."
         }
       ],
       "technology": {
@@ -2002,7 +2002,7 @@
     {
       "id": "will-it-survive",
       "name": "Will It Survive?",
-      "summary": "Three honest questions about light, watering habits, and pets return the plants that will actually cope \u2014 with shareable link results and a tagged eight-plant bench.",
+      "summary": "Three honest questions about light, watering habits, and pets return the plants that will actually cope — with shareable link results and a tagged eight-plant bench.",
       "description": "Will It Survive? is a single-page site for a small plant shop that would rather sell one plant that lives than three that die.",
       "bucket": "Non-technical",
       "categories": [
@@ -2031,22 +2031,22 @@
         {
           "id": "three-question-habit-quiz",
           "name": "Three-question habit quiz",
-          "description": "The template includes three-question quiz built from real fieldsets and radio inputs with big friendly icon cards, fully keyboard operable with visible focus states."
+          "description": "Three-question quiz built from real fieldsets and radio inputs with big friendly icon cards, fully keyboard operable with visible focus states."
         },
         {
           "id": "shareable-url-results",
           "name": "Shareable URL results",
-          "description": "The template includes shareable URL state: answers encode into ?light=low&care=forgetful&pets=yes, valid parameters restore selections and results on load, and the URL stays synchronized as answers change (plus a copy-link button)."
+          "description": "Answers live in the page URL, so a result link restores the same selections and can be copied and shared."
         },
         {
           "id": "honest-matching-with-fallback",
           "name": "Honest matching that never dead-ends",
-          "description": "The template includes honest matching: 2\u20134 survivors with tag-derived reasoning lines; zero-match combinations fall back to nearest matches flagged \"Close call\" with per-plant caveats and a straight-talk note."
+          "description": "Honest matching: 2–4 survivors with tag-derived reasoning lines; zero-match combinations fall back to nearest matches flagged \"Close call\" with per-plant caveats and a straight-talk note."
         },
         {
           "id": "tagged-eight-plant-bench",
           "name": "Tagged eight-plant bench",
-          "description": "The template includes pet-safety guarantee: with pets in the house, non-pet-safe plants are excluded from results entirely, including fallbacks."
+          "description": "Pet-safety guarantee: with pets in the house, non-pet-safe plants are excluded from results entirely, including fallbacks."
         }
       ],
       "technology": {
@@ -2122,7 +2122,7 @@
       "id": "sunday-league",
       "name": "Sunday League",
       "summary": "An amateur football club noticeboard with the league table, fixtures, and the next match pinned and counting down to kick-off.",
-      "description": "Sunday League is a club noticeboard for amateur football teams whose web presence is maintained by a volunteer secretary, not a developer. Grassroots clubs need one page that answers the questions people actually ask \u2014 where do we stand in the table, who do we play next, what time is kick-off, how do I join \u2014 without a CMS, logins, or a stats platform.",
+      "description": "Sunday League is a club noticeboard for amateur football teams whose web presence is maintained by a volunteer secretary, not a developer. Grassroots clubs need one page that answers the questions people actually ask — where do we stand in the table, who do we play next, what time is kick-off, how do I join — without a CMS, logins, or a stats platform.",
       "bucket": "Non-technical",
       "categories": [
         "Event",
@@ -2150,22 +2150,22 @@
         {
           "id": "pinned-next-match-countdown",
           "name": "Pinned next match with live countdown",
-          "description": "The template includes pinned next-match poster computed from fixture kick-off times \u2014 never hardcoded \u2014 with a live days/hours/minutes/seconds countdown in scoreboard digits."
+          "description": "Pinned next-match poster computed from fixture kick-off times — never hardcoded — with a live days/hours/minutes/seconds countdown in scoreboard digits."
         },
         {
           "id": "season-complete-fallback",
           "name": "Graceful season-complete state",
-          "description": "The template includes graceful degradation: when every fixture has kicked off, the poster becomes a \"Season complete \u2014 next season's fixtures soon\" card with a contact action."
+          "description": "Graceful degradation: when every fixture has kicked off, the poster becomes a \"Season complete — next season's fixtures soon\" card with a contact action."
         },
         {
           "id": "league-table",
           "name": "Semantic league table",
-          "description": "The template includes semantic league table (<table> with caption, column and row headers) showing played/won/drawn/lost/goals/points, zebra rows, a highlighted club row, and computed goal difference."
+          "description": "Semantic league table (<table> with caption, column and row headers) showing played/won/drawn/lost/goals/points, zebra rows, a highlighted club row, and computed goal difference."
         },
         {
           "id": "results-and-fixtures",
           "name": "Results and fixtures from one file",
-          "description": "The template includes results list with won/drew/lost chips and scores, \"Result to follow\" for played-but-unrecorded fixtures, and an upcoming list with kick-off times, venues, and home/away tags."
+          "description": "Results list with won/drew/lost chips and scores, \"Result to follow\" for played-but-unrecorded fixtures, and an upcoming list with kick-off times, venues, and home/away tags."
         }
       ],
       "technology": {
@@ -2269,22 +2269,22 @@
         {
           "id": "distance-climb-filters",
           "name": "Distance and climb filters",
-          "description": "The template includes distance and climb filter chips backed by shareable query-parameter URLs (/?distance=short), with progressive client-side instant filtering and history.pushState URL sync."
+          "description": "Distance and climb filter chips backed by shareable query-parameter URLs (/?distance=short), with progressive client-side instant filtering and history.pushState URL sync."
         },
         {
           "id": "route-detail-pages",
           "name": "Server-rendered route pages",
-          "description": "The template includes five seeded routes, each with a server-rendered detail page at /routes/<slug> that loads directly."
+          "description": "Five seeded routes, each with a server-rendered detail page at /routes/<slug> that loads directly."
         },
         {
           "id": "elevation-profile-charts",
           "name": "SVG elevation profiles",
-          "description": "The template includes inline SVG elevation profile on every route page, built from the committed data points: area wash, gridlines, distance/elevation axes, a labelled high-point marker and a hover crosshair with tooltip."
+          "description": "Inline SVG elevation profile on every route page, built from the committed data points: area wash, gridlines, distance/elevation axes, a labelled high-point marker and a hover crosshair with tooltip."
         },
         {
           "id": "mini-profile-sparkline-on-every-route-card-drawn-from-the-same-d",
           "name": "Mini profile sparkline on every route card, drawn from the same data",
-          "description": "The template includes mini profile sparkline on every route card, drawn from the same data."
+          "description": "Every route card carries a small elevation sparkline drawn from the same profile as the detail page."
         }
       ],
       "technology": {
@@ -2391,22 +2391,22 @@
         {
           "id": "twelve-gifts-across-kitchen",
           "name": "Twelve gifts across kitchen",
-          "description": "The template includes twelve gifts across kitchen, home, garden, and experience categories, defined in one committed JSON file."
+          "description": "Twelve gifts across kitchen, home, garden, and experience categories, defined in one committed JSON file."
         },
         {
           "id": "claim-this-gift-button-per-item-claims-persist-in",
           "name": "\"Claim this gift\" button per item; claims persist in",
-          "description": "The template includes \"Claim this gift\" button per item; claims persist in localStorage and survive page reloads."
+          "description": "\"Claim this gift\" button per item; claims persist in localStorage and survive page reloads."
         },
         {
           "id": "gifts-claimed-on-the-current-device-show-a-release",
           "name": "Gifts claimed on the current device show a \"release",
-          "description": "The template includes gifts claimed on the current device show a \"release it\" undo link; seed-claimed gifts always display as claimed."
+          "description": "Gifts claimed on the current device show a \"release it\" undo link; seed-claimed gifts always display as claimed."
         },
         {
           "id": "live-availability",
           "name": "Live availability summary",
-          "description": "The template includes live summary count (\"9 of 12 gifts still available\") announced via aria-live."
+          "description": "Live summary count (\"9 of 12 gifts still available\") announced via aria-live."
         }
       ],
       "technology": {
@@ -2506,22 +2506,22 @@
         {
           "id": "accessible-seat-assignment",
           "name": "Accessible seat assignment",
-          "description": "The template includes assign guests by drag and drop or by selecting a guest and activating a seat."
+          "description": "Assign guests by drag and drop or by selecting a guest and activating a seat."
         },
         {
           "id": "move-seated-guests-return-them-to-the-manifest-or-clear-the-full",
           "name": "Move seated guests, return them to the manifest, or clear the full plan",
-          "description": "The template includes move seated guests, return them to the manifest, or clear the full plan."
+          "description": "Seat a guest, send them back to the manifest, or clear the whole plan in one action."
         },
         {
           "id": "live-capacity-counts",
           "name": "Live capacity counts",
-          "description": "The template includes see empty seats and live free-seat counts for both table shapes."
+          "description": "See empty seats and live free-seat counts for both table shapes."
         },
         {
           "id": "shareable-url-state",
           "name": "Shareable URL state",
-          "description": "The template includes restore assignments from compact URL state and copy a shareable link."
+          "description": "Restore assignments from compact URL state and copy a shareable link."
         }
       ],
       "technology": {
@@ -2619,23 +2619,23 @@
       "features": [
         {
           "id": "total-rent-input-plus-2-6-editable-room-cards",
-          "name": "Total rent input plus 2\u20136 editable room cards",
-          "description": "The template includes total rent input plus 2\u20136 editable room cards (name, size in m\u00b2, window quality picker, en-suite toggle) with add/remove controls."
+          "name": "Total rent input plus 2–6 editable room cards",
+          "description": "Total rent input plus 2–6 editable room cards (name, size in m², window quality picker, en-suite toggle) with add/remove controls."
         },
         {
           "id": "weighted-fair-split-algorithm",
           "name": "Weighted fair-split algorithm",
-          "description": "The template includes weighted fair-split algorithm: size \u00d7 window multiplier \u00d7 en-suite multiplier, with all weights tunable in one constants file."
+          "description": "Weighted fair-split algorithm: size × window multiplier × en-suite multiplier, with all weights tunable in one constants file."
         },
         {
           "id": "fairness-receipt",
           "name": "Fairness receipt",
-          "description": "The template includes step-by-step \"fairness receipt\" per room: base share from size %, window adjustment, en-suite adjustment, weighted share, rounding delta, and final amount."
+          "description": "Step-by-step \"fairness receipt\" per room: base share from size %, window adjustment, en-suite adjustment, weighted share, rounding delta, and final amount."
         },
         {
           "id": "exact-rounding",
           "name": "Exact largest-remainder rounding",
-          "description": "The template includes largest-remainder rounding so per-room amounts always sum exactly to the rent, with the guarantee explained on the receipt."
+          "description": "Largest-remainder rounding so per-room amounts always sum exactly to the rent, with the guarantee explained on the receipt."
         }
       ],
       "technology": {
@@ -2736,22 +2736,22 @@
         {
           "id": "city-search",
           "name": "Accessible city search",
-          "description": "The template includes search an accessible, keyboard-friendly catalog of 22 cities and remove cities from the board."
+          "description": "Search an accessible, keyboard-friendly catalog of 22 cities and remove cities from the board."
         },
         {
           "id": "city-time-strips",
           "name": "Aligned city time strips",
-          "description": "The template includes compare aligned 24-hour strips with local-hour labels, UTC offsets, daypart colors, and a current-time marker."
+          "description": "Compare aligned 24-hour strips with local-hour labels, UTC offsets, daypart colors, and a current-time marker."
         },
         {
           "id": "overlap-detection",
           "name": "Working-hours overlap detection",
-          "description": "The template includes adjust one shared working-hours window and see exact overlap ranges or the closest available hour."
+          "description": "Adjust one shared working-hours window and see exact overlap ranges or the closest available hour."
         },
         {
           "id": "shareable-timezone-state",
           "name": "Shareable timezone state",
-          "description": "The template includes restore and update cities and working hours through URL query parameters."
+          "description": "Restore and update cities and working hours through URL query parameters."
         }
       ],
       "technology": {
@@ -2856,22 +2856,22 @@
         {
           "id": "editorial-product-story",
           "name": "Editorial product story",
-          "description": "The template includes responsive editorial hero with a CSS and SVG product-room illustration."
+          "description": "Responsive editorial hero with a CSS and SVG product-room illustration."
         },
         {
           "id": "product-story-quantified-proof-testimonial-and-three-step-workfl",
           "name": "Product story, quantified proof, testimonial, and three-step workflow sections",
-          "description": "The template includes product story, quantified proof, testimonial, and three-step workflow sections."
+          "description": "The page walks through the product story, a few hard numbers, a customer quote, and a three-step workflow."
         },
         {
           "id": "billing-toggle",
           "name": "Interactive billing toggle",
-          "description": "The template includes three pricing plans with a live monthly/annual billing toggle and explicit yearly savings."
+          "description": "Three pricing plans with a live monthly/annual billing toggle and explicit yearly savings."
         },
         {
           "id": "feature-comparison",
           "name": "Feature comparison",
-          "description": "The template includes recommended middle tier and an eight-row feature comparison."
+          "description": "Recommended middle tier and an eight-row feature comparison."
         }
       ],
       "technology": {
@@ -2975,22 +2975,22 @@
         {
           "id": "live-metric-controls",
           "name": "Live metric controls",
-          "description": "The template includes live seat and monthly API usage controls with accessible range and number inputs."
+          "description": "Live seat and monthly API usage controls with accessible range and number inputs."
         },
         {
           "id": "progressive-tier-calculation",
           "name": "Progressive tier calculation",
-          "description": "The template includes progressive usage-tier calculation with itemized platform, seat, and traffic charges."
+          "description": "Progressive usage-tier calculation with itemized platform, seat, and traffic charges."
         },
         {
           "id": "shareable-url-state",
           "name": "Shareable URL state",
-          "description": "The template includes shareable URL state with validation and safe fallback for missing or invalid parameters."
+          "description": "Shareable URL state with validation and safe fallback for missing or invalid parameters."
         },
         {
           "id": "receipt-style-estimate-designed-to-remain-useful-when-printed-or",
           "name": "Receipt-style estimate designed to remain useful when printed or captured",
-          "description": "The template includes receipt-style estimate designed to remain useful when printed or captured."
+          "description": "The estimate reads like a receipt and still makes sense when printed or saved as a screenshot."
         }
       ],
       "technology": {
@@ -3094,22 +3094,22 @@
         {
           "id": "semantic-comparison-table",
           "name": "Semantic comparison table",
-          "description": "The template includes semantic comparison table covering four products and ten committed criteria."
+          "description": "Semantic comparison table covering four products and ten committed criteria."
         },
         {
           "id": "honest-trade-offs",
           "name": "Honest trade-offs",
-          "description": "The template includes clearly marked competitor win and honest \u201cWhere we lose\u201d row."
+          "description": "Clearly marked competitor win and honest “Where we lose” row."
         },
         {
           "id": "sticky-legend-best-offer-markers-methodology-note-and-review-dat",
           "name": "Sticky legend, best-offer markers, methodology note, and review date",
-          "description": "The template includes sticky legend, best-offer markers, methodology note, and review date."
+          "description": "A sticky legend, best-offer marks, a methodology note, and the last-reviewed date stay in view while you scan the table."
         },
         {
           "id": "responsive-product-verdict-cards-and-controlled-mobile-table-scr",
           "name": "Responsive product verdict cards and controlled mobile table scrolling",
-          "description": "The template includes responsive product verdict cards and controlled mobile table scrolling."
+          "description": "Verdict cards stack on small screens, and the comparison table scrolls sideways without losing the product names."
         }
       ],
       "technology": {
@@ -3205,22 +3205,22 @@
         {
           "id": "search-integrations-by-partner-name-category-or-workflow-summary",
           "name": "Search integrations by partner name, category, or workflow summary",
-          "description": "The template includes search integrations by partner name, category, or workflow summary."
+          "description": "Filter the partner list by name, category, or a short workflow summary."
         },
         {
           "id": "searchable-directory",
           "name": "Searchable integration directory",
-          "description": "The template includes filter the directory with accessible category controls and live result counts."
+          "description": "Filter the directory with accessible category controls and live result counts."
         },
         {
           "id": "prerendered-partner-pages",
           "name": "Prerendered partner pages",
-          "description": "The template includes browse eight static detail routes with direct-load support."
+          "description": "Browse eight static detail routes with direct-load support."
         },
         {
           "id": "review-trigger-action-specs",
           "name": "Review trigger/action specs",
-          "description": "The template includes review trigger/action specs, use cases, setup steps, and integration-specific FAQs."
+          "description": "Review trigger/action specs, use cases, setup steps, and integration-specific FAQs."
         }
       ],
       "technology": {
@@ -3319,22 +3319,22 @@
         {
           "id": "terminal-hero",
           "name": "Terminal command hero",
-          "description": "The template includes typewriter-style hero command with instant rendering when reduced motion is preferred."
+          "description": "Typewriter-style hero command with instant rendering when reduced motion is preferred."
         },
         {
           "id": "install-tabs",
           "name": "Install method tabs",
-          "description": "The template includes keyboard-accessible npm, Homebrew, and curl installation tabs."
+          "description": "Keyboard-accessible npm, Homebrew, and curl installation tabs."
         },
         {
           "id": "clipboard-feedback",
           "name": "Clipboard feedback",
-          "description": "The template includes clipboard controls with visible success and failure states."
+          "description": "Clipboard controls with visible success and failure states."
         },
         {
           "id": "workflow-examples",
           "name": "Workflow and output examples",
-          "description": "The template includes workflow, feature, and structured output examples."
+          "description": "Workflow, feature, and structured output examples."
         }
       ],
       "technology": {
@@ -3432,22 +3432,22 @@
         {
           "id": "service-health-summary",
           "name": "Service health summary",
-          "description": "The template includes overall service condition and publication timestamp at the top of the page."
+          "description": "Overall service condition and publication timestamp at the top of the page."
         },
         {
           "id": "ninety-day-history",
           "name": "90-day uptime history",
-          "description": "The template includes three service tapes with 90 committed daily readings each."
+          "description": "Three service tapes with 90 committed daily readings each."
         },
         {
           "id": "calculated-90-day-uptime-summaries",
           "name": "Calculated 90-day uptime summaries",
-          "description": "The template includes calculated 90-day uptime summaries, visual marks, tooltips, a legend, and expandable text equivalents."
+          "description": "Calculated 90-day uptime summaries, visual marks, tooltips, a legend, and expandable text equivalents."
         },
         {
           "id": "incident-stories",
           "name": "Narrative incident stories",
-          "description": "The template includes two dated incident stories with narrative timeline updates."
+          "description": "Two dated incident stories with narrative timeline updates."
         }
       ],
       "technology": {
@@ -3517,7 +3517,7 @@
       "id": "changelog",
       "name": "Changelog",
       "summary": "A product release-notes site with instant feature/fix filters and a marker for everything that shipped since a visitor's last look.",
-      "description": "Changelog is a static release-notes site for a shipping product \u2014 a SaaS, a developer tool, an app \u2014 whose team wants its progress to be visible and easy to trust. Release notes scattered across Slack messages, emails, and tweets convince nobody; a changelog that reads like part of the product does.",
+      "description": "Changelog is a static release-notes site for a shipping product — a SaaS, a developer tool, an app — whose team wants its progress to be visible and easy to trust. Release notes scattered across Slack messages, emails, and tweets convince nobody; a changelog that reads like part of the product does.",
       "bucket": "Technical and SaaS",
       "categories": [
         "SaaS",
@@ -3544,22 +3544,22 @@
         {
           "id": "release-timeline",
           "name": "Vertical release timeline",
-          "description": "The template includes vertical release timeline with a date rail, version chips, and per-entry tag chips (emerald Feature, amber Fix, indigo Improvement)."
+          "description": "Vertical release timeline with a date rail, version chips, and per-entry tag chips (emerald Feature, amber Fix, indigo Improvement)."
         },
         {
           "id": "instant-tag-filter",
           "name": "Instant feature/fix filter",
-          "description": "The template includes instant tag filter \u2014 All / Features / Fixes chips with counts, a live results line, and no reload."
+          "description": "Instant tag filter — All / Features / Fixes chips with counts, a live results line, and no reload."
         },
         {
           "id": "last-visit-marker",
           "name": "New-since-your-last-visit marker",
-          "description": "The template includes \"New since your last visit\" marker: releases newer than the localStorage timestamp get a New badge, a highlighted timeline node, and a labeled divider showing the last-visit date; a banner in the hero counts them."
+          "description": "\"New since your last visit\" marker: releases newer than the localStorage timestamp get a New badge, a highlighted timeline node, and a labeled divider showing the last-visit date; a banner in the hero counts them."
         },
         {
           "id": "markdown-entries",
           "name": "Markdown entries with permalink pages",
-          "description": "The template includes one permalink page per entry at /releases/<slug>/, statically prerendered, with newer/older release navigation cards."
+          "description": "One permalink page per entry at /releases/<slug>/, statically prerendered, with newer/older release navigation cards."
         }
       ],
       "technology": {
@@ -3633,7 +3633,7 @@
     {
       "id": "roadmap",
       "name": "Roadmap",
-      "summary": "A public now / next / later board where visitors vote on what ships next \u2014 votes stay on their device, no accounts or backend.",
+      "summary": "A public now / next / later board where visitors vote on what ships next — votes stay on their device, no accounts or backend.",
       "description": "Roadmap is a public product board for a team that wants to build in the open and gather interest without standing up a feedback platform, user accounts, or any backend at all. It ships styled as Ledgerline, a believable fictional invoicing app for one-person studios, and it solves the honest version of a common problem: showing customers what's coming, letting them lean on the queue, and never pretending the page is something it isn't.",
       "bucket": "Technical and SaaS",
       "categories": [
@@ -3663,22 +3663,22 @@
         {
           "id": "now-next-later-board",
           "name": "Now / Next / Later board",
-          "description": "The template includes now / Next / Later board seeded with eight roadmap items, each with a one-paragraph description, tags, a baseline vote count, and a distinct glowing column identity (emerald, sky, violet)."
+          "description": "Now / Next / Later board seeded with eight roadmap items, each with a one-paragraph description, tags, a baseline vote count, and a distinct glowing column identity (emerald, sky, violet)."
         },
         {
           "id": "device-local-voting",
           "name": "Device-local voting",
-          "description": "The template includes one-tap voting with real <button> elements: aria-pressed state, keyboard operation via Enter/Space, visible focus rings, and a \"Voted\" flag styled in the column's accent."
+          "description": "One-tap voting with real <button> elements: aria-pressed state, keyboard operation via Enter/Space, visible focus rings, and a \"Voted\" flag styled in the column's accent."
         },
         {
           "id": "vote-persistence",
           "name": "Votes persist across visits",
-          "description": "The template includes votes persist in localStorage across visits and toggle off when tapped again; displayed counts are always baseline + this device's vote."
+          "description": "Votes persist in localStorage across visits and toggle off when tapped again; displayed counts are always baseline + this device's vote."
         },
         {
           "id": "honest-count-copy",
           "name": "Honest indicative counts",
-          "description": "The template includes honest device-only voting copy in the hero note, three-step explainer, FAQ, and footer small print \u2014 the page never implies a live synced tally."
+          "description": "Honest device-only voting copy in the hero note, three-step explainer, FAQ, and footer small print — the page never implies a live synced tally."
         }
       ],
       "technology": {
@@ -3786,22 +3786,22 @@
         {
           "id": "compliance-posture-statements",
           "name": "Compliance posture in plain words",
-          "description": "The template includes compliance posture rendered as three text statements with bordered status chips \u2014 \"report available under NDA\", \"DPA available\", \"certification in progress\" \u2014 no logos, no false claims."
+          "description": "Compliance posture rendered as three text statements with bordered status chips — \"report available under NDA\", \"DPA available\", \"certification in progress\" — no logos, no false claims."
         },
         {
           "id": "subprocessor-table",
           "name": "Subprocessor table",
-          "description": "The template includes subprocessor table (name, purpose, region) with a \"last updated\" stamp, collapsing into labelled stacked cards on small screens."
+          "description": "Subprocessor table (name, purpose, region) with a \"last updated\" stamp, collapsing into labelled stacked cards on small screens."
         },
         {
           "id": "data-handling-summary",
           "name": "Data-handling summary",
-          "description": "The template includes data-handling summary cards for encryption, retention/deletion and production access, with original stroke icons."
+          "description": "Data-handling summary cards for encryption, retention/deletion and production access, with original stroke icons."
         },
         {
           "id": "validated-disclosure-form",
           "name": "Dual-validated disclosure form",
-          "description": "The template includes private disclosure form validated client-side (inline messages, focus management, aria-invalid) and server-side (authoritative checks, 422 re-render with an error summary and preserved values)."
+          "description": "Private disclosure form validated client-side (inline messages, focus management, aria-invalid) and server-side (authoritative checks, 422 re-render with an error summary and preserved values)."
         }
       ],
       "technology": {
@@ -3885,7 +3885,7 @@
       "id": "manual",
       "name": "Manual",
       "summary": "A small docs site with sidebar navigation, instant local search, and a copy-page-as-Markdown button so humans and AI assistants both get clean context.",
-      "description": "Manual is a product documentation starter for any team that needs real docs fast \u2014 a dev tool, an API, a SaaS feature set. It ships as a complete working site for a fictional webhook-debugging CLI called Tapeline, so instead of lorem ipsum you get five genuinely written documentation pages full of titled code frames, option tables, callout asides, and cross-links that show exactly how finished docs should read.",
+      "description": "Manual is a product documentation starter for any team that needs real docs fast — a dev tool, an API, a SaaS feature set. It ships as a complete working site for a fictional webhook-debugging CLI called Tapeline, so instead of lorem ipsum you get five genuinely written documentation pages full of titled code frames, option tables, callout asides, and cross-links that show exactly how finished docs should read.",
       "bucket": "Technical and SaaS",
       "categories": [
         "Documentation"
@@ -3912,22 +3912,22 @@
         {
           "id": "faq-json-ld",
           "name": "FAQ with FAQPage JSON-LD",
-          "description": "The template includes splash landing page with gradient hero, original SVG terminal illustration, quick-link cards, and a four-question FAQ accordion that injects matching FAQPage JSON-LD from a single data file."
+          "description": "Splash landing page with gradient hero, original SVG terminal illustration, quick-link cards, and a four-question FAQ accordion that injects matching FAQPage JSON-LD from a single data file."
         },
         {
           "id": "five-real-documentation-pages",
           "name": "Five real documentation pages",
-          "description": "The template includes five real documentation pages (getting started, configuration, two guides, CLI reference) with tables, titled code frames, and note/tip/caution asides."
+          "description": "Five real documentation pages (getting started, configuration, two guides, CLI reference) with tables, titled code frames, and note/tip/caution asides."
         },
         {
           "id": "autogenerated-sidebar",
           "name": "Sidebar from the file tree",
-          "description": "The template includes sidebar with three groups autogenerated from the src/content/docs/ file tree, ordered by frontmatter, with mobile drawer navigation."
+          "description": "Sidebar with three groups autogenerated from the src/content/docs/ file tree, ordered by frontmatter, with mobile drawer navigation."
         },
         {
           "id": "pagefind-search",
           "name": "Instant local search",
-          "description": "The template includes built-in Pagefind full-text search on the built site, returning per-heading sub-results with anchor links."
+          "description": "Built-in Pagefind full-text search on the built site, returning per-heading sub-results with anchor links."
         }
       ],
       "technology": {
@@ -4001,7 +4001,7 @@
     {
       "id": "api-reference",
       "name": "API Reference",
-      "summary": "An endpoint-by-endpoint reference whose try-it panel assembles the exact curl command from your inputs \u2014 copy it, share it as a link, run it in your own terminal.",
+      "summary": "An endpoint-by-endpoint reference whose try-it panel assembles the exact curl command from your inputs — copy it, share it as a link, run it in your own terminal.",
       "description": "API Reference is documentation for an API product that treats the copy-paste moment as the whole point. Most small API docs either dump static snippets that drift out of date or bolt on a \"console\" that proxies real requests and asks developers for keys.",
       "bucket": "Technical and SaaS",
       "categories": [
@@ -4029,22 +4029,22 @@
         {
           "id": "method-coded-endpoint-index",
           "name": "Method-coded endpoint index",
-          "description": "The template includes endpoint index grouped by resource, with method badges color-coded per verb (GET emerald, POST sky, PUT amber, DELETE red)."
+          "description": "Endpoint index grouped by resource, with method badges color-coded per verb (GET emerald, POST sky, PUT amber, DELETE red)."
         },
         {
           "id": "one-server-rendered-page-per-endpoint-at-endpoints-slug",
           "name": "One server-rendered page per endpoint at /endpoints/<slug>",
-          "description": "The template includes one server-rendered page per endpoint at /endpoints/<slug>, each loading directly; unknown slugs and paths get a terminal-styled 404 listing the real endpoints."
+          "description": "One server-rendered page per endpoint at /endpoints/<slug>, each loading directly; unknown slugs and paths get a terminal-styled 404 listing the real endpoints."
         },
         {
           "id": "curl-request-builder",
           "name": "Curl request builder",
-          "description": "The template includes request builder on every endpoint page: labelled inputs per parameter (text, numeric, and selects for enums/booleans) live-update a syntax-highlighted curl block."
+          "description": "Request builder on every endpoint page: labelled inputs per parameter (text, numeric, and selects for enums/booleans) live-update a syntax-highlighted curl block."
         },
         {
           "id": "correct-by-construction-commands",
           "name": "Correct-by-construction commands",
-          "description": "The template includes correct-by-construction commands: path params URI-encoded, query params as readable -G --data-urlencode lines (percent-encoded into the URL when the endpoint also sends a body), JSON body typed per parameter (strings, integers, booleans, comma-separated arrays), all shell escaping handled."
+          "description": "Correct-by-construction commands: path params URI-encoded, query params as readable -G --data-urlencode lines (percent-encoded into the URL when the endpoint also sends a body), JSON body typed per parameter (strings, integers, booleans, comma-separated arrays), all shell escaping handled."
         }
       ],
       "technology": {
@@ -4153,22 +4153,22 @@
         {
           "id": "install-tabs",
           "name": "Per-package-manager install tabs",
-          "description": "The template includes install tabs for npm, Homebrew and curl: proper role=\"tablist\" semantics with arrow-key, Home and End navigation and roving tabindex \u2014 and without JavaScript they degrade to stacked, labelled command blocks that read fine on their own."
+          "description": "Install tabs for npm, Homebrew and curl: proper role=\"tablist\" semantics with arrow-key, Home and End navigation and roving tabindex — and without JavaScript they degrade to stacked, labelled command blocks that read fine on their own."
         },
         {
           "id": "copy-exact-commands",
           "name": "Copy-exact command blocks",
-          "description": "The template includes a copy button on every command that copies the code element's exact text content; the CSS-drawn $ prompt is excluded by construction, and a polite live region announces the copy."
+          "description": "A copy button on every command that copies the code element's exact text content; the CSS-drawn $ prompt is excluded by construction, and a polite live region announces the copy."
         },
         {
           "id": "five-minute-result-panel",
           "name": "Five-minute result panel up front",
-          "description": "The template includes the \"In five minutes you'll have\" result panel rendered up front in the hero, with a terminal-output illustration built from typographic line data in site.json."
+          "description": "The \"In five minutes you'll have\" result panel rendered up front in the hero, with a terminal-output illustration built from typographic line data in site.json."
         },
         {
           "id": "five-step-quickstart",
           "name": "Five-step quickstart",
-          "description": "The template includes a five-step quickstart, each step one command with a token-colored terminal block and a one-sentence explanation."
+          "description": "A five-step quickstart, each step one command with a token-colored terminal block and a one-sentence explanation."
         }
       ],
       "technology": {
@@ -4246,7 +4246,7 @@
     {
       "id": "design-system",
       "name": "Design System",
-      "summary": "A tiny component playground: flip props with real controls, watch the live preview change, and copy the exact snippet that reproduces it \u2014 three components, honestly documented.",
+      "summary": "A tiny component playground: flip props with real controls, watch the live preview change, and copy the exact snippet that reproduces it — three components, honestly documented.",
       "description": "Design System is a documentation site for a team publishing components, shipped as the fictional \"Vitrine\" kit. It solves the problem every young design system has: docs that drift from the code.",
       "bucket": "Technical and SaaS",
       "categories": [
@@ -4275,22 +4275,22 @@
         {
           "id": "real-kit-components",
           "name": "Three real, reusable kit components",
-          "description": "The template includes three real, reusable kit components (VButton, VInput, VCard) built as plain Vue SFCs with typed props, hover/focus/disabled states, and honest accessibility (aria-invalid, labelled fields, keyboard operability)."
+          "description": "Three real, reusable kit components (VButton, VInput, VCard) built as plain Vue SFCs with typed props, hover/focus/disabled states, and honest accessibility (aria-invalid, labelled fields, keyboard operability)."
         },
         {
           "id": "live-prop-playground",
           "name": "Live playground per component",
-          "description": "The template includes a live playground per component: labelled selects, switches, and text controls generated from typed prop metadata, updating the preview instantly."
+          "description": "A live playground per component: labelled selects, switches, and text controls generated from typed prop metadata, updating the preview instantly."
         },
         {
           "id": "exact-snippet-generation",
           "name": "Snippet that always matches the preview",
-          "description": "The template includes deterministic snippet generation \u2014 the code block under the preview always matches the current configuration exactly, omitting props at their defaults."
+          "description": "Deterministic snippet generation — the code block under the preview always matches the current configuration exactly, omitting props at their defaults."
         },
         {
           "id": "one-click-copy",
           "name": "One-click copy",
-          "description": "The template includes one-click copy with a \"Copied\" confirmation and a polite screen-reader announcement."
+          "description": "One-click copy with a \"Copied\" confirmation and a polite screen-reader announcement."
         }
       ],
       "technology": {
@@ -4366,8 +4366,8 @@
     {
       "id": "console",
       "name": "Console",
-      "summary": "An admin and analytics dashboard shell that demos fully populated from committed mock data \u2014 charts, a sortable table, and honest read-only settings, no backend required.",
-      "description": "Console is for anyone who needs an admin or analytics UI standing before the backend exists \u2014 founders demoing a product idea, teams prototyping an internal tool, or developers who want a serious-looking ops dashboard to grow into. It plays the part of \"Windrose\", a fictional webhook delivery platform, seen from the workspace of the equally fictional customer Atlas Labs, and every number on screen traces to committed JSON in mocks/, so the demo is realistic without pretending anything is live.",
+      "summary": "An admin and analytics dashboard shell that demos fully populated from committed mock data — charts, a sortable table, and honest read-only settings, no backend required.",
+      "description": "Console is for anyone who needs an admin or analytics UI standing before the backend exists — founders demoing a product idea, teams prototyping an internal tool, or developers who want a serious-looking ops dashboard to grow into. It plays the part of \"Windrose\", a fictional webhook delivery platform, seen from the workspace of the equally fictional customer Atlas Labs, and every number on screen traces to committed JSON in mocks/, so the demo is realistic without pretending anything is live.",
       "bucket": "Technical and SaaS",
       "categories": [
         "SaaS",
@@ -4397,22 +4397,22 @@
         {
           "id": "derived-stat-cards",
           "name": "Build-time derived stat cards",
-          "description": "The template includes overview dashboard with four derived stat cards (value, signed delta vs the previous 14 days, and a 14-point sparkline), all computed from mocks/timeseries.json and mocks/metrics.json."
+          "description": "Overview dashboard with four derived stat cards (value, signed delta vs the previous 14 days, and a 14-point sparkline), all computed from mocks/timeseries.json and mocks/metrics.json."
         },
         {
           "id": "interactive-svg-charts",
           "name": "Interactive inline-SVG charts",
-          "description": "The template includes two interactive inline-SVG charts \u2014 an area chart of daily deliveries and a bar chart of daily failures \u2014 with a snapping crosshair or bar highlight, tooltips, arrow-key inspection, a live region for screen readers, and a \"View as table\" fallback under each chart."
+          "description": "Two interactive inline-SVG charts — an area chart of daily deliveries and a bar chart of daily failures — with a snapping crosshair or bar highlight, tooltips, arrow-key inspection, a live region for screen readers, and a \"View as table\" fallback under each chart."
         },
         {
           "id": "sortable-deliveries-table",
           "name": "Sortable deliveries table",
-          "description": "The template includes sortable deliveries table (/events/) with aria-sort column headers as real buttons, status chips (delivered / retrying / failed), latency and attempt counts, and a mobile card layout with its own sort controls."
+          "description": "Sortable deliveries table (/events/) with aria-sort column headers as real buttons, status chips (delivered / retrying / failed), latency and attempt counts, and a mobile card layout with its own sort controls."
         },
         {
           "id": "honest-settings-stub",
           "name": "Honest read-only settings",
-          "description": "The template includes read-only settings page (/settings/) rendering workspace, profile, and API placeholder fields from mocks/org.json, with an honest \"no backend\" notice."
+          "description": "Read-only settings page (/settings/) rendering workspace, profile, and API placeholder fields from mocks/org.json, with an honest \"no backend\" notice."
         }
       ],
       "technology": {
@@ -4423,7 +4423,7 @@
           "Next.js"
         ],
         "styling": [
-          "Plain CSS \u2014 design tokens in app/globals.css plus CSS Modules per component"
+          "Plain CSS — design tokens in app/globals.css plus CSS Modules per component"
         ],
         "data": [
           "Committed JSON in mocks/ and config/site.json, loaded through typed modules in lib/",
@@ -4494,7 +4494,7 @@
       "id": "engineering-blog",
       "name": "Engineering Blog",
       "summary": "Team engineering blog with syntax-highlighted code blocks, copy buttons, reading time, and threaded multi-part series.",
-      "description": "Engineering Blog is a publishing home for a technical team that writes publicly \u2014 postmortems, design writeups, and running-in-production notes. Most blog templates treat code as an afterthought; this one treats it as the main event.",
+      "description": "Engineering Blog is a publishing home for a technical team that writes publicly — postmortems, design writeups, and running-in-production notes. Most blog templates treat code as an afterthought; this one treats it as the main event.",
       "bucket": "Technical and SaaS",
       "categories": [
         "Blog"
@@ -4522,22 +4522,22 @@
         {
           "id": "markdown-posts",
           "name": "Markdown-driven posts",
-          "description": "The template includes markdown-driven posts: one file in content/posts/ per post, each with its own directly loadable page under /writing/."
+          "description": "Markdown-driven posts: one file in content/posts/ per post, each with its own directly loadable page under /writing/."
         },
         {
           "id": "code-copy-buttons",
           "name": "Copy buttons on highlighted code",
-          "description": "The template includes build-time syntax highlighting for fenced code blocks (TypeScript, SQL, YAML, diff, and every other Prism language) on a dark surface with a language label."
+          "description": "Build-time syntax highlighting for fenced code blocks (TypeScript, SQL, YAML, diff, and every other Prism language) on a dark surface with a language label."
         },
         {
           "id": "copy-button-on-every-code-block",
           "name": "Copy button on every code block",
-          "description": "The template includes copy button on every code block that copies the code exactly, with a \"Copied\" confirmation \u2014 added after hydration, absent without JavaScript."
+          "description": "Copy button on every code block that copies the code exactly, with a \"Copied\" confirmation — added after hydration, absent without JavaScript."
         },
         {
           "id": "reading-time",
           "name": "Computed reading time",
-          "description": "The template includes reading time computed in a typed utility from prose word count plus code-line count, shown in the index list and on every post."
+          "description": "Reading time computed in a typed utility from prose word count plus code-line count, shown in the index list and on every post."
         }
       ],
       "technology": {
@@ -4614,7 +4614,7 @@
       "id": "careers",
       "name": "Careers",
       "summary": "A hiring board with combinable team, location, and remote filters and plain-language role pages that say what you'd actually do, applied to by prefilled email.",
-      "description": "Careers is a hiring page for a small team that wants candidates to know what the job really is before they apply. Most careers pages are either a legal spec dump pasted into an applicant-tracking widget or a vague \"join our rocketship\" wall \u2014 this template takes the opposite position.",
+      "description": "Careers is a hiring page for a small team that wants candidates to know what the job really is before they apply. Most careers pages are either a legal spec dump pasted into an applicant-tracking widget or a vague \"join our rocketship\" wall — this template takes the opposite position.",
       "bucket": "Technical and SaaS",
       "categories": [
         "Business"
@@ -4641,22 +4641,22 @@
         {
           "id": "combinable-role-filters",
           "name": "Combinable role filters",
-          "description": "The template includes filterable board: team, location, and work-setup checkboxes that combine (OR within a group, AND across groups) with instant client-side results."
+          "description": "Filterable board: team, location, and work-setup checkboxes that combine (OR within a group, AND across groups) with instant client-side results."
         },
         {
           "id": "live-faceted-counts",
           "name": "Live faceted counts",
-          "description": "The template includes live counts everywhere \u2014 the results line (\"Showing 2 of 4 open roles\") and a faceted count on every filter chip update as other filters change."
+          "description": "Live counts everywhere — the results line (\"Showing 2 of 4 open roles\") and a faceted count on every filter chip update as other filters change."
         },
         {
           "id": "honest-empty-state",
           "name": "Honest empty state",
-          "description": "The template includes honest empty state when no roles match, with one-click \"Clear all filters\" and an \"Email us anyway\" mailto."
+          "description": "Honest empty state when no roles match, with one-click \"Clear all filters\" and an \"Email us anyway\" mailto."
         },
         {
           "id": "plain-language-role-pages",
           "name": "Plain-language role pages",
-          "description": "The template includes one prerendered page per role at /roles/<slug> that leads with plain-language \"What you'd actually do\" bullets, then \"What you won't be doing\" and per-role hiring steps."
+          "description": "One prerendered page per role at /roles/<slug> that leads with plain-language \"What you'd actually do\" bullets, then \"What you won't be doing\" and per-role hiring steps."
         }
       ],
       "technology": {
@@ -4735,8 +4735,8 @@
     {
       "id": "devfolio",
       "name": "Devfolio",
-      "summary": "A developer r\u00e9sum\u00e9 explored through an interactive terminal, with the same content readable as plain HTML for everyone else.",
-      "description": "Devfolio is a single-page portfolio site for a developer on the job hunt who wants their r\u00e9sum\u00e9 to be remembered. The page opens on a working terminal styled after a phosphor-green CRT: recruiters and fellow engineers type projects, experience, or skills and the matching r\u00e9sum\u00e9 block prints into the scrollback \u2014 while everyone else simply scrolls, because the complete CV also sits on the page as clean, man-page-styled semantic HTML.",
+      "summary": "A developer résumé explored through an interactive terminal, with the same content readable as plain HTML for everyone else.",
+      "description": "Devfolio is a single-page portfolio site for a developer on the job hunt who wants their résumé to be remembered. The page opens on a working terminal styled after a phosphor-green CRT: recruiters and fellow engineers type projects, experience, or skills and the matching résumé block prints into the scrollback — while everyone else simply scrolls, because the complete CV also sits on the page as clean, man-page-styled semantic HTML.",
       "bucket": "Technical and SaaS",
       "categories": [
         "Portfolio"
@@ -4763,23 +4763,23 @@
       "features": [
         {
           "id": "interactive-terminal-resume",
-          "name": "Interactive terminal r\u00e9sum\u00e9",
-          "description": "The template includes interactive terminal with nine commands (help, about, whoami, experience/work, projects, skills, education, contact, clear) \u2014 each prints the matching block rendered from resume.json."
+          "name": "Interactive terminal résumé",
+          "description": "Interactive terminal with nine commands (help, about, whoami, experience/work, projects, skills, education, contact, clear) — each prints the matching block rendered from resume.json."
         },
         {
           "id": "history-and-tab-completion",
           "name": "History and tab completion",
-          "description": "The template includes arrow-key command history with draft restore, plus bash-style tab completion that completes unique prefixes and lists candidates for ambiguous ones."
+          "description": "Arrow-key command history with draft restore, plus bash-style tab completion that completes unique prefixes and lists candidates for ambiguous ones."
         },
         {
           "id": "did-you-mean-suggestions",
           "name": "\"Did you mean\" suggestions",
-          "description": "The template includes helpful unknown-command response with an edit-distance \"did you mean\" suggestion and a pointer to help."
+          "description": "Helpful unknown-command response with an edit-distance \"did you mean\" suggestion and a pointer to help."
         },
         {
           "id": "keyboard-accessible-prompt",
           "name": "Keyboard-accessible prompt",
-          "description": "The template includes keyboard-accessible prompt with a visible focus state, an aria-live output log, click-to-focus that respects text selection, and quick-command chips for touch screens."
+          "description": "Keyboard-accessible prompt with a visible focus state, an aria-live output log, click-to-focus that respects text selection, and quick-command chips for touch screens."
         }
       ],
       "technology": {
@@ -4790,7 +4790,7 @@
           "SvelteKit"
         ],
         "styling": [
-          "Hand-written CSS \u2014 design tokens in a global stylesheet plus scoped component styles"
+          "Hand-written CSS — design tokens in a global stylesheet plus scoped component styles"
         ],
         "data": [
           "Committed JSON data and configuration",
@@ -4883,22 +4883,22 @@
         {
           "id": "six-projects-managed-as-typed-markdown-content-entries",
           "name": "Six projects managed as typed Markdown content entries",
-          "description": "The template includes six projects managed as typed Markdown content entries."
+          "description": "Six case-study projects, each written as a Markdown entry and listed on the homepage."
         },
         {
           "id": "static-homepage-and-direct-load-project-routes",
           "name": "Static homepage and direct-load project routes",
-          "description": "The template includes static homepage and direct-load project routes."
+          "description": "The homepage and every project page load as static files, so each case study has its own URL."
         },
         {
           "id": "before-after-comparison",
           "name": "Before-and-after comparison",
-          "description": "The template includes accessible before-and-after range slider with keyboard support."
+          "description": "Accessible before-and-after range slider with keyboard support."
         },
         {
           "id": "accessible-lightbox",
           "name": "Accessible image lightbox",
-          "description": "The template includes full-screen image lightbox with Escape, arrow-key navigation, and focus return."
+          "description": "Full-screen image lightbox with Escape, arrow-key navigation, and focus return."
         }
       ],
       "technology": {
@@ -4996,22 +4996,22 @@
         {
           "id": "outcome-led-services",
           "name": "Outcome-led services",
-          "description": "The template includes three outcome-led service statements presented as annotated working notes."
+          "description": "Three outcome-led service statements presented as annotated working notes."
         },
         {
           "id": "configurable-booking-link",
           "name": "Configurable booking link",
-          "description": "The template includes configurable booking link with a no-backend mailto: fallback."
+          "description": "Configurable booking link with a no-backend mailto: fallback."
         },
         {
           "id": "four-accessible-native-faq-accordions",
           "name": "Four accessible native FAQ accordions",
-          "description": "The template includes four accessible native FAQ accordions."
+          "description": "Four FAQ answers open in native disclosure widgets, usable with a keyboard and a screen reader."
         },
         {
           "id": "faqpage-structured-data-generated-from-the-same-faq-content",
           "name": "FAQPage structured data generated from the same FAQ content",
-          "description": "The template includes FAQPage structured data generated from the same FAQ content."
+          "description": "The same FAQ copy is published as FAQPage structured data for search engines."
         }
       ],
       "technology": {
@@ -5037,8 +5037,8 @@
           {
             "name": "Node.js",
             "versions": [
-              "22.19\u201322.x",
-              "24.11\u201324.x",
+              "22.19–22.x",
+              "24.11–24.x",
               "26+"
             ]
           }
@@ -5114,22 +5114,22 @@
         {
           "id": "service-detail-routes",
           "name": "Service detail routes",
-          "description": "The template includes homepage plus direct-load routes for family dentistry, restorative care, and urgent visits."
+          "description": "Homepage plus direct-load routes for family dentistry, restorative care, and urgent visits."
         },
         {
           "id": "first-visit-guide",
           "name": "First-visit guide",
-          "description": "The template includes four-step first-visit walkthrough designed to reduce uncertainty and dental anxiety."
+          "description": "Four-step first-visit walkthrough designed to reduce uncertainty and dental anxiety."
         },
         {
           "id": "centralized-practice-name-address-phone-email-hours-and-booking",
           "name": "Centralized practice name, address, phone, email, hours, and booking URL",
-          "description": "The template includes centralized practice name, address, phone, email, hours, and booking URL."
+          "description": "Practice name, address, phone, email, hours, and booking link stay in sync across the header, footer, and appointment path."
         },
         {
           "id": "markdown-content-collection-for-service-copy",
           "name": "Markdown content collection for service copy",
-          "description": "The template includes markdown content collection for service copy, metadata, and service-specific FAQs."
+          "description": "Markdown content collection for service copy, metadata, and service-specific FAQs."
         }
       ],
       "technology": {
@@ -5228,22 +5228,22 @@
         {
           "id": "editorial-invitation-layout",
           "name": "Editorial invitation layout",
-          "description": "The template includes editorial invitation layout with locally stored wedding photography and botanical details."
+          "description": "Editorial invitation layout with locally stored wedding photography and botanical details."
         },
         {
           "id": "day-schedule",
           "name": "Day schedule",
-          "description": "The template includes one-day event schedule presented on a torn-paper ribbon."
+          "description": "One-day event schedule presented on a torn-paper ribbon."
         },
         {
           "id": "travel-guidance",
           "name": "Travel guidance",
-          "description": "The template includes travel notes, map link, and two hotel recommendations."
+          "description": "Travel notes, map link, and two hotel recommendations."
         },
         {
           "id": "validated-rsvp",
           "name": "Validated RSVP",
-          "description": "The template includes accessible RSVP with required name and attendance, conditional plus-one name, dietary needs, and message fields."
+          "description": "Accessible RSVP with required name and attendance, conditional plus-one name, dietary needs, and message fields."
         }
       ],
       "technology": {
@@ -5347,22 +5347,22 @@
         {
           "id": "product-catalogue",
           "name": "Typed product catalogue",
-          "description": "The template includes eight editable products sourced from one typed JSON catalogue."
+          "description": "Eight editable products sourced from one typed JSON catalogue."
         },
         {
           "id": "static-homepage-cart-and-pre-rendered-product-detail-routes",
           "name": "Static homepage, cart, and pre-rendered product detail routes",
-          "description": "The template includes static homepage, cart, and pre-rendered product detail routes."
+          "description": "The catalogue homepage, cart, and each product page are pre-rendered and open on their own URLs."
         },
         {
           "id": "persistent-cart",
           "name": "Persistent local cart",
-          "description": "The template includes hydration-safe local cart with quantity controls, removal, totals, and persistence."
+          "description": "Hydration-safe local cart with quantity controls, removal, totals, and persistence."
         },
         {
           "id": "accessible-live-cart-announcements",
           "name": "Accessible live cart announcements",
-          "description": "The template includes accessible live cart announcements, keyboard focus styles, and labelled controls."
+          "description": "Accessible live cart announcements, keyboard focus styles, and labelled controls."
         }
       ],
       "technology": {
@@ -5463,22 +5463,22 @@
         {
           "id": "calculated-reading-time",
           "name": "Calculated reading time",
-          "description": "The template includes homepage index with publication dates, descriptions, series labels, and reading times calculated from each Markdown body."
+          "description": "Homepage index with publication dates, descriptions, series labels, and reading times calculated from each Markdown body."
         },
         {
           "id": "three-statically-generated-post-routes",
           "name": "Three statically generated post routes",
-          "description": "The template includes three statically generated post routes with semantic articles, drop caps, 66-character reading measure, generous line height, and visible word counts."
+          "description": "Three statically generated post routes with semantic articles, drop caps, 66-character reading measure, generous line height, and visible word counts."
         },
         {
           "id": "series-navigation",
           "name": "Series navigation",
-          "description": "The template includes previous and next navigation between the two entries in the \u201cNotes from the river\u201d series."
+          "description": "Previous and next navigation between the two entries in the “Notes from the river” series."
         },
         {
           "id": "four-question-accessible-faq",
           "name": "Four-question accessible FAQ",
-          "description": "The template includes four-question accessible FAQ with matching FAQPage JSON-LD."
+          "description": "Four-question accessible FAQ with matching FAQPage JSON-LD."
         }
       ],
       "technology": {
@@ -5576,22 +5576,22 @@
         {
           "id": "early-bird-countdown",
           "name": "Early-bird countdown",
-          "description": "The template includes live hydration-safe early-bird countdown with an accessible text update."
+          "description": "Live hydration-safe early-bird countdown with an accessible text update."
         },
         {
           "id": "ticket-tiers",
           "name": "Ticket tier comparison",
-          "description": "The template includes three perforated ticket tiers with prices, inclusions, and visible remaining counts."
+          "description": "Three perforated ticket tiers with prices, inclusions, and visible remaining counts."
         },
         {
           "id": "booking-fallbacks",
           "name": "Flexible booking handoffs",
-          "description": "The template includes per-tier external checkout URLs with prefilled mailto: booking fallbacks."
+          "description": "Per-tier external checkout URLs with prefilled mailto: booking fallbacks."
         },
         {
           "id": "honest-static-availability-disclaimer",
           "name": "Honest static availability disclaimer",
-          "description": "The template includes honest static availability disclaimer with no backend or inventory API claims."
+          "description": "Honest static availability disclaimer with no backend or inventory API claims."
         }
       ],
       "technology": {
@@ -5694,22 +5694,22 @@
         {
           "id": "room-guides",
           "name": "Room guides",
-          "description": "The template includes browse three data-driven rooms and open a static detail route for each one."
+          "description": "Browse three data-driven rooms and open a static detail route for each one."
         },
         {
           "id": "rate-comparison",
           "name": "Seasonal rate comparison",
-          "description": "The template includes compare room characteristics and seasonal nightly prices in an accessible table."
+          "description": "Compare room characteristics and seasonal nightly prices in an accessible table."
         },
         {
           "id": "validate-arrival-and-departure-dates",
           "name": "Validate arrival and departure dates",
-          "description": "The template includes validate arrival and departure dates, restore them from the URL, and keep URL state in sync."
+          "description": "Validate arrival and departure dates, restore them from the URL, and keep URL state in sync."
         },
         {
           "id": "booking-enquiry",
           "name": "Honest booking enquiry",
-          "description": "The template includes pass selected dates and room name to a configured booking URL or use an honest mailto: fallback."
+          "description": "Pass selected dates and room name to a configured booking URL or use an honest mailto: fallback."
         }
       ],
       "technology": {
@@ -5812,22 +5812,22 @@
         {
           "id": "browser-only-ticket-classification",
           "name": "Browser-only ticket classification",
-          "description": "The template includes browser-only ticket classification with four categories and three urgency levels."
+          "description": "Browser-only ticket classification with four categories and three urgency levels."
         },
         {
           "id": "three-clickable-ticket-examples-plus-custom-textarea-input",
           "name": "Three clickable ticket examples plus custom textarea input",
-          "description": "The template includes three clickable ticket examples plus custom textarea input."
+          "description": "Three example tickets fill the form in one tap, or visitors can describe their own issue in a free-text field."
         },
         {
           "id": "immediate-results",
           "name": "Immediate results",
-          "description": "The template includes immediate results with detected signals, next action, and draft reply."
+          "description": "Immediate results with detected signals, next action, and draft reply."
         },
         {
           "id": "calibration-plot",
           "name": "Confidence calibration plot",
-          "description": "The template includes responsive SVG confidence calibration plot."
+          "description": "Responsive SVG confidence calibration plot."
         }
       ],
       "technology": {
