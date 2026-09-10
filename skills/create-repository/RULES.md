@@ -32,6 +32,19 @@
   parent pin you document in the project README.
 - Use ESLint. Do not install or configure Oxlint.
 
+## Security and issue gate
+
+Do not mark a template complete, register it in `templates.json`, or offer to
+commit until the template's own code is free of issues and vulnerabilities.
+
+- Re-run install, lint, build, and `npm audit --audit-level=high` after the
+  last code change. A passing run from earlier in the session is not enough.
+- Review the template source, not only dependency audit output. Look for
+  secrets, credentials, committed `.env` files, `eval` / `new Function`,
+  unsanitized HTML, unsafe URL or query handling, and other exploitable sinks.
+- Fix every finding before screenshots or catalog registration. If a finding
+  cannot be fixed, stop and report it instead of finishing.
+
 ## Configuration hygiene
 
 - Keep one intentional configuration file per tool.
@@ -117,6 +130,6 @@
   arrays for unknown list values.
 - Keep `templates.json` strict JSON: no comments or trailing commas.
 - Add an entry only after install, lint, build, `npm audit --audit-level=high`,
-  browser checks, and image inspection pass.
+  source security review, browser checks, and image inspection pass.
 - For multi-page templates, directly load every built preview route. Add static
   host fallback handling or prerender routes when client routing needs it.
