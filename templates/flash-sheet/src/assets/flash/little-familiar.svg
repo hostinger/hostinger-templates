@@ -1,12 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-labelledby="title">
   <title id="title">Little horned cat familiar flash</title>
   <g fill="none" stroke="#17130f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M133 182l-12-74 61 43c12-4 24-4 36 0l61-43-12 74c22 24 26 59 11 88-16 31-45 47-78 47s-62-16-78-47c-15-29-11-64 11-88Z"/>
-    <path d="M152 150c-17-43-6-67 28-72M248 150c17-43 6-67-28-72"/>
-    <circle cx="164" cy="215" r="8" fill="#17130f"/>
-    <circle cx="236" cy="215" r="8" fill="#17130f"/>
-    <path d="M188 245h24l-12 13-12-13ZM200 258v23M174 272c14 15 38 15 52 0"/>
-    <path d="M132 296c-52 23-76 67-58 112 20 49 93 44 126 10 33 34 106 39 126-10 18-45-6-89-58-112"/>
-    <path d="M200 419v-76M175 365h50v67h-50zM184 365c-6-27 1-48 16-62 15 14 22 35 16 62"/>
+    <circle cx="200" cy="278" r="112"/>
+    <path d="M108 200L130 78l38 100Z"/>
+    <path d="M292 200L270 78l-38 100Z"/>
+    <circle cx="158" cy="262" r="11" fill="#17130f"/>
+    <circle cx="242" cy="262" r="11" fill="#17130f"/>
+    <path d="M188 304h24l-12 16-12-16Z"/>
+    <path d="M200 320q-24 24-44 8M200 320q24 24 44 8"/>
+    <path d="M78 268h48M72 292h50M80 316h46M274 268h48M278 292h50M274 316h46"/>
+    <path d="M200 148l6 14 14 6-14 6-6 14-6-14-14-6 14-6 6-14Z"/>
   </g>
 </svg>

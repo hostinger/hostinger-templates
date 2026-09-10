@@ -35,32 +35,32 @@
     },
     "items": [
       {
-        "name": "Amazon Web Services",
+        "name": "Northspire",
         "purpose": "Application hosting, storage and managed databases",
         "region": "EU (Ireland), backups in EU (Frankfurt)"
       },
       {
-        "name": "Cloudflare",
+        "name": "Galeveil",
         "purpose": "Content delivery, DNS and DDoS protection",
         "region": "Global edge network"
       },
       {
-        "name": "Postmark",
+        "name": "Letterwell",
         "purpose": "Transactional email delivery",
         "region": "United States"
       },
       {
-        "name": "Stripe",
+        "name": "Quaypay",
         "purpose": "Payment processing — cardholder data never touches our systems",
         "region": "United States / EU"
       },
       {
-        "name": "Datadog",
+        "name": "Signalbuoy",
         "purpose": "Infrastructure monitoring, logging and alerting",
         "region": "EU (Germany)"
       },
       {
-        "name": "Plain",
+        "name": "Hearthdesk",
         "purpose": "Customer support conversations",
         "region": "EU (Ireland)"
       }
@@ -164,7 +164,7 @@
       },
       {
         "question": "Where is our data hosted?",
-        "answer": "Production runs on AWS in the EU (Ireland) region, with encrypted backups in EU (Frankfurt). Customer content stays in those regions; a small number of subprocessors listed above process limited data elsewhere, for example transactional email delivery in the United States."
+        "answer": "Production runs on Northspire in the EU (Ireland) region, with encrypted backups in EU (Frankfurt). Customer content stays in those regions; a small number of subprocessors listed above process limited data elsewhere, for example transactional email delivery in the United States."
       },
       {
         "question": "How do you handle vulnerability reports?",
