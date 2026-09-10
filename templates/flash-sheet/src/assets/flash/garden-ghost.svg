@@ -1,15 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-labelledby="title">
   <title id="title">Garden ghost flash</title>
   <g fill="none" stroke="#17130f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M92 218C92 108 308 108 308 218L322 348q-42 42-82 0-40-40-80 0-40 42-82 0L92 218Z"/>
-    <path d="M92 248C48 262 34 304 58 328M308 248C352 262 366 304 342 328"/>
-    <ellipse cx="162" cy="200" rx="13" ry="20" fill="#17130f"/>
-    <ellipse cx="238" cy="200" rx="13" ry="20" fill="#17130f"/>
-    <path d="M176 258c16 14 32 14 48 0"/>
-    <path d="M200 108c-2-30 14-48 32-54"/>
-    <path d="M92 392v40M92 392c-32-4-50 16-48 44h48"/>
-    <path d="M200 408v36M200 408c-28 0-42 16-40 36h40M200 408c28 0 42 16 40 36h-40"/>
-    <path d="M308 396v40M308 396c32-4 50 14 48 42h-48"/>
-    <path d="M58 432h52M160 444h80M290 436h56"/>
+    <path d="M92 248C92 138 308 138 308 248L322 378q-42 42-82 0-40-40-80 0-40 42-82 0L92 248Z"/>
+    <path d="M92 278C48 292 34 334 58 358M308 278C352 292 366 334 342 358"/>
+    <ellipse cx="162" cy="230" rx="13" ry="20" fill="#17130f"/>
+    <ellipse cx="238" cy="230" rx="13" ry="20" fill="#17130f"/>
+    <path d="M176 288c16 14 32 14 48 0"/>
+    <path d="M200 138c-2-30 14-48 32-54"/>
   </g>
 </svg>
