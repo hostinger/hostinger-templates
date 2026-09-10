@@ -61,6 +61,11 @@ finished project contributes one entry.
       }
     ]
   },
+  "deploy": {
+    "buildCommand": "build",
+    "outputDirectory": ".output/public",
+    "entryFile": ""
+  },
   "media": {
     "thumbnail": {
       "path": "templates/<id>/preview/<id>-thumbnail.png",
@@ -112,6 +117,13 @@ finished project contributes one entry.
   not list libraries, persistence, services, or deployment behavior that are
   not present.
 - Runtime versions match `package.json` and README requirements.
+- `deploy` is REQUIRED whenever the framework's build output differs from the
+  hosting platform defaults (static frameworks default to `dist` with no entry
+  file; the pipeline runs `node <entryFile>` when one is set, otherwise serves
+  `outputDirectory` statically). Static Nuxt uses `.output/public`, static
+  Next.js `out`, SvelteKit `build`, static React Router `build/client`, Angular
+  `dist/<project>/browser`; server templates set `entryFile` to the compiled
+  server (e.g. `dist/server.js`) and must listen on `process.env.PORT`.
 - Media paths are relative to the collection root and point to existing files.
 - `thumbnail.variants` lists the pre-resized WebP renditions (480 and 960 wide,
   generated with `cwebp -q 82 -m 6 -af -resize <width> 0`); hPanel serves them

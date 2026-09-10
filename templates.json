@@ -1264,7 +1264,12 @@
         "nuxt",
         "vue",
         "static site"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": ".output/public",
+        "entryFile": ""
+      }
     },
     {
       "id": "couch-to-5k",
@@ -1384,7 +1389,12 @@
         "walk run intervals",
         "5k training",
         "sveltekit static site"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "build",
+        "entryFile": ""
+      }
     },
     {
       "id": "movement-library",
@@ -1736,7 +1746,12 @@
         "independent creator",
         "next.js static export",
         "react"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "out",
+        "entryFile": ""
+      }
     },
     {
       "id": "first-chapter",
@@ -1977,7 +1992,12 @@
         "email claims",
         "secondhand seller",
         "react router"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "build/client",
+        "entryFile": ""
+      }
     },
     {
       "id": "will-it-survive",
@@ -2212,7 +2232,12 @@
         "grassroots sport",
         "club secretary noticeboard",
         "angular"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "dist/sunday-league/browser",
+        "entryFile": ""
+      }
     },
     {
       "id": "route-library",
@@ -2327,7 +2352,12 @@
         "trail run directory",
         "fell running",
         "express ejs server template"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "",
+        "entryFile": "dist/server.js"
+      }
     },
     {
       "id": "registry",
@@ -2787,7 +2817,12 @@
         "city time comparison",
         "international friends",
         "working hours overlap"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": ".output/public",
+        "entryFile": ""
+      }
     },
     {
       "id": "launch",
@@ -2900,7 +2935,12 @@
         "software pricing table",
         "early access landing page",
         "next.js marketing site"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "out",
+        "entryFile": ""
+      }
     },
     {
       "id": "pricing-calculator",
@@ -3016,7 +3056,12 @@
         "per seat pricing",
         "progressive usage tiers",
         "sveltekit calculator"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "build",
+        "entryFile": ""
+      }
     },
     {
       "id": "compare",
@@ -3829,7 +3874,12 @@
         "ejs",
         "typescript",
         "server rendered"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "",
+        "entryFile": "dist/server.js"
+      }
     },
     {
       "id": "manual",
@@ -4064,7 +4114,12 @@
         "docs site",
         "handlebars",
         "server rendered"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "dist",
+        "entryFile": "dist/main.js"
+      }
     },
     {
       "id": "quickstart",
@@ -4181,7 +4236,12 @@
         "copy to clipboard commands",
         "hono server template",
         "developer tool marketing"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "",
+        "entryFile": "dist/server.js"
+      }
     },
     {
       "id": "design-system",
@@ -4423,7 +4483,12 @@
         "static export",
         "nextjs",
         "typescript"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "out",
+        "entryFile": ""
+      }
     },
     {
       "id": "engineering-blog",
@@ -4660,7 +4725,12 @@
         "startup jobs",
         "team page",
         "react router"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "build/client",
+        "entryFile": ""
+      }
     },
     {
       "id": "devfolio",
@@ -4776,7 +4846,12 @@
         "command line",
         "svelte 5",
         "prerendered static site"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "build",
+        "entryFile": ""
+      }
     },
     {
       "id": "showcase",
@@ -5002,7 +5077,12 @@
         "strategy advisor services",
         "consultation booking",
         "nuxt professional website"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": ".output/public",
+        "entryFile": ""
+      }
     },
     {
       "id": "practice",
@@ -5229,7 +5309,12 @@
         "wedding RSVP form",
         "guest travel details",
         "sveltekit wedding"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "build",
+        "entryFile": ""
+      }
     },
     {
       "id": "storefront",
@@ -5341,7 +5426,12 @@
         "persistent shopping cart",
         "product detail pages",
         "nextjs storefront"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "out",
+        "entryFile": ""
+      }
     },
     {
       "id": "journal",
@@ -5566,7 +5656,12 @@
         "class booking landing page",
         "ticket tier comparison",
         "sveltekit event"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "build",
+        "entryFile": ""
+      }
     },
     {
       "id": "the-rooms",
@@ -5679,7 +5774,12 @@
         "room rate comparison",
         "hotel enquiry form",
         "nuxt hospitality"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": ".output/public",
+        "entryFile": ""
+      }
     },
     {
       "id": "model",
@@ -5792,7 +5892,12 @@
         "interactive model demo",
         "transparent AI marketing",
         "nextjs SaaS website"
-      ]
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "out",
+        "entryFile": ""
+      }
     }
   ]
 }
