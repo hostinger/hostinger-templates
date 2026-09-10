@@ -1150,7 +1150,7 @@
       "id": "quiet-practice",
       "name": "Quiet Practice",
       "summary": "A calm counselling site whose gentle four-question self-check routes visitors to the matching service page \u2014 individual, couples, or teen counselling \u2014 every page static and shareable.",
-      "description": "Quiet Practice is a multi-page website for a solo therapist or counsellor whose real problem is not looking pretty online \u2014 it is that prospective clients arrive anxious, skim a wall of text, and leave without knowing which service was meant for them. \" check: four small questions, one at a time in large serif type, that end by landing the visitor on the service page that fits what they described.",
+      "description": "Quiet Practice is a multi-page website for a solo therapist or counsellor whose real problem is not looking pretty online \u2014 it is that prospective clients arrive anxious, skim a wall of text, and leave without knowing which service was meant for them. Its four-question \"is this right for me?\" check asks four small questions, one at a time in large serif type, and lands the visitor on the service page that fits what they described.",
       "bucket": "Non-technical",
       "categories": [
         "Business",
@@ -1212,7 +1212,7 @@
           "Typed TypeScript content and configuration"
         ],
         "deployment": [
-          "Static production output in .output/public"
+          "Nuxt SSR production output in .output"
         ]
       },
       "compatibility": {
@@ -1513,7 +1513,7 @@
       "id": "client-gallery",
       "name": "Client Gallery",
       "summary": "Private wedding photo delivery gallery where clients star favourites and export the list for their photographer.",
-      "description": "Client Gallery is the delivery page a wedding or event photographer sends when the final selection is ready. \".",
+      "description": "Client Gallery is the delivery page a wedding or event photographer sends when the final selection is ready. Clients star their favourite frames on the device, then export a CSV the photographer can take into editing, album design, or print.",
       "bucket": "Non-technical",
       "categories": [
         "Portfolio"
@@ -1661,8 +1661,8 @@
           "description": "Audio player with play/pause, a scrubbable waveform timeline, a moving playhead, and current/total time \u2014 keyboard-seekable via a real range control."
         },
         {
-          "id": "chapter-markers-as-pips-on-the-timeline-plus-a",
-          "name": "Chapter markers as pips on the timeline plus a",
+          "id": "chapter-markers-and-list",
+          "name": "Chapter markers and numbered chapter list",
           "description": "Chapter markers as pips on the timeline plus a numbered chapter list; clicking either jumps the audio to that timestamp and starts playback, and the current chapter stays highlighted while the episode plays."
         },
         {
@@ -2242,6 +2242,7 @@
         "Fitness"
       ],
       "whoItsFor": "A running or cycling club",
+      "demoUrl": null,
       "classification": {
         "categories": [
           "clubs-and-community",
@@ -2275,7 +2276,7 @@
           "description": "Inline SVG elevation profile on every route page, built from the committed data points: area wash, gridlines, distance/elevation axes, a labelled high-point marker and a hover crosshair with tooltip."
         },
         {
-          "id": "mini-profile-sparkline-on-every-route-card-drawn-from-the-same-d",
+          "id": "route-card-sparklines",
           "name": "Mini profile sparkline on every route card, drawn from the same data",
           "description": "Every route card carries a small elevation sparkline drawn from the same profile as the detail page."
         }
@@ -2382,18 +2383,18 @@
       },
       "features": [
         {
-          "id": "twelve-gifts-across-kitchen",
-          "name": "Twelve gifts across kitchen",
+          "id": "twelve-categorized-gifts",
+          "name": "Twelve gifts across kitchen, home, garden, and experience",
           "description": "Twelve gifts across kitchen, home, garden, and experience categories, defined in one committed JSON file."
         },
         {
-          "id": "claim-this-gift-button-per-item-claims-persist-in",
-          "name": "\"Claim this gift\" button per item; claims persist in",
+          "id": "device-local-claims",
+          "name": "\"Claim this gift\" button; claims persist on the device",
           "description": "\"Claim this gift\" button per item; claims persist in localStorage and survive page reloads."
         },
         {
-          "id": "gifts-claimed-on-the-current-device-show-a-release",
-          "name": "Gifts claimed on the current device show a \"release",
+          "id": "device-claim-release",
+          "name": "Release link for gifts claimed on this device",
           "description": "Gifts claimed on the current device show a \"release it\" undo link; seed-claimed gifts always display as claimed."
         },
         {
@@ -2764,7 +2765,7 @@
           "Typed TypeScript content and configuration"
         ],
         "deployment": [
-          "Static production output in .output/public"
+          "Nuxt SSR production output in .output"
         ]
       },
       "compatibility": {
@@ -2847,7 +2848,7 @@
           "description": "Responsive editorial hero with a CSS and SVG product-room illustration."
         },
         {
-          "id": "product-story-quantified-proof-testimonial-and-three-step-workfl",
+          "id": "story-proof-and-workflow",
           "name": "Product story, quantified proof, testimonial, and three-step workflow sections",
           "description": "The page walks through the product story, a few hard numbers, a customer quote, and a three-step workflow."
         },
@@ -2976,7 +2977,7 @@
           "description": "Shareable URL state with validation and safe fallback for missing or invalid parameters."
         },
         {
-          "id": "receipt-style-estimate-designed-to-remain-useful-when-printed-or",
+          "id": "receipt-style-estimate",
           "name": "Receipt-style estimate designed to remain useful when printed or captured",
           "description": "The estimate reads like a receipt and still makes sense when printed or saved as a screenshot."
         }
@@ -3090,12 +3091,12 @@
           "description": "Clearly marked competitor win and honest \u201cWhere we lose\u201d row."
         },
         {
-          "id": "sticky-legend-best-offer-markers-methodology-note-and-review-dat",
+          "id": "sticky-legend-and-methodology",
           "name": "Sticky legend, best-offer markers, methodology note, and review date",
           "description": "A sticky legend, best-offer marks, a methodology note, and the last-reviewed date stay in view while you scan the table."
         },
         {
-          "id": "responsive-product-verdict-cards-and-controlled-mobile-table-scr",
+          "id": "verdict-cards-and-mobile-scroll",
           "name": "Responsive product verdict cards and controlled mobile table scrolling",
           "description": "Verdict cards stack on small screens, and the comparison table scrolls sideways without losing the product names."
         }
@@ -4111,7 +4112,7 @@
       "id": "quickstart",
       "name": "Quickstart",
       "summary": "A one-page quickstart for an open-source tool: install tabs per package manager, copy-exact command blocks, and the five-minute result shown up front.",
-      "description": "\" to a working install in five minutes. Instead of burying the payoff at the bottom of the docs, it leads with a boxed \"In five minutes you'll have\" panel beside the headline: a typographic terminal illustration of the tool running, plus a checklist of the concrete things you end up with.",
+      "description": "Quickstart is a server-rendered landing page for an open-source CLI or library \u2014 the page a project links from its README so a first-time user gets from \"what is this?\" to a working install in five minutes. Instead of burying the payoff at the bottom of the docs, it leads with a boxed \"In five minutes you'll have\" panel beside the headline: a typographic terminal illustration of the tool running, plus a checklist of the concrete things you end up with.",
       "bucket": "Technical and SaaS",
       "categories": [
         "Documentation"
@@ -5015,7 +5016,7 @@
           "Typed TypeScript content and configuration"
         ],
         "deployment": [
-          "Static production output in .output/public"
+          "Nuxt SSR production output in .output"
         ]
       },
       "compatibility": {
@@ -5709,7 +5710,7 @@
           "Typed TypeScript content and configuration"
         ],
         "deployment": [
-          "Static production output in .output/public"
+          "Nuxt SSR production output in .output"
         ]
       },
       "compatibility": {

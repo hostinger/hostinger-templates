@@ -1,6 +1,6 @@
 # The Rooms
 
-A static coastal guesthouse website with three room guides, seasonal rate comparison, and honest date-led enquiries.
+A coastal guesthouse website with three room guides, seasonal rate comparison, and honest date-led enquiries.
 
 ## Overview
 
@@ -22,7 +22,7 @@ Guests can browse all three rooms, open direct room-detail routes, compare seaso
 
 - **Language:** TypeScript
 - **Framework:** Nuxt 3 and Vue 3
-- **Build tool:** Nuxt static generation with Vite
+- **Build tool:** Nuxt / Vite (SSR)
 - **Styling:** Shared CSS with custom properties and scoped component structure
 - **Content:** Committed JSON and typed TypeScript configuration
 - **Fonts:** Local `@fontsource-variable` packages
@@ -129,7 +129,7 @@ npm run build
 npm run preview
 ```
 
-Production files are written to `.output/public`.
+`npm run build` writes a Nuxt SSR app to `.output`. `npm run preview` runs the Nitro server at `.output/server/index.mjs`. This is a server-rendered app, not a static export.
 
 ## Screenshots
 
