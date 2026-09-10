@@ -40,6 +40,4 @@ follow.
 
 ## Translations
 
-`templates.json` is the English source of truth for the template summaries, descriptions and category labels shown in hPanel. A scheduled workflow in the hPanel repository (`sync-node-template-translations`) fetches this public catalog daily, pushes the texts to translate.hostinger.io under the `v2.onboarding.node.template.catalog.*` namespace, and the platform AI-translates them into all hPanel languages. Until translations arrive, hPanel renders the catalog English as a fallback.
-
-This repository intentionally has no CI, secrets or runners — it is public because hPanel and the deploy flow clone templates anonymously. After merging a new template, translations land after the next daily sync (or ask an hPanel developer to trigger the workflow manually for a same-day sync).
+Template summaries, descriptions and category labels are shown in hPanel in English, straight from `templates.json` — there is no translation pipeline for the v1 release.
