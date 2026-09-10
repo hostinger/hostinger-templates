@@ -2,9 +2,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-08-01',
   ssr: true,
   modules: ['@nuxt/eslint'],
-  nitro: {
-    preset: 'static',
-  },
   css: [
     '@fontsource-variable/outfit/index.css',
     '~/assets/styles/main.css',

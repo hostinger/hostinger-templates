@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "generate": "nuxt typecheck && nuxt generate && rm -rf dist && cp -R .output/public dist",
-    "build": "npm run generate",
+    "generate": "nuxt typecheck && nuxt generate",
+    "build": "nuxt typecheck && nuxt build",
     "lint": "eslint .",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"

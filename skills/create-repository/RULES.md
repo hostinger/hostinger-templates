@@ -60,10 +60,10 @@ commit until the template's own code is free of issues and vulnerabilities.
   a machine-specific `dist` link once reached the repo and broke deploys).
   Before publishing, verify `git ls-files -s | awk '$1 == "120000"'` prints
   nothing.
-- The production build must leave the deployable site in a REAL `dist`
-  directory. Frameworks that emit elsewhere or symlink `dist` (Nuxt writes
-  `.output/public`) must copy in the build script:
-  `... && rm -rf dist && cp -R .output/public dist`.
+- Static builds must leave the deployable site in a REAL directory (no
+  symlinks) that the template's `deploy.outputDirectory` (or the framework
+  default `dist`) points at. Nuxt is the exception: it must build as SSR
+  (`nuxt build`) because the hosting API requires an entry file for nuxt.
 
 ## Code quality
 

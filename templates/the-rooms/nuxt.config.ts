@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   ssr: true,
   modules: ['@nuxt/eslint'],
   nitro: {
-    preset: 'static',
     prerender: {
       routes: [
         '/',
