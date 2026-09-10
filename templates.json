@@ -4101,12 +4101,7 @@
         "docs site",
         "handlebars",
         "server rendered"
-      ],
-      "deploy": {
-        "buildCommand": "build",
-        "outputDirectory": "dist",
-        "entryFile": "dist/main.js"
-      }
+      ]
     },
     {
       "id": "quickstart",

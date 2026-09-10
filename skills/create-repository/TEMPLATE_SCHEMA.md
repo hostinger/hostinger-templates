@@ -122,8 +122,12 @@ finished project contributes one entry.
   file; the pipeline runs `node <entryFile>` when one is set, otherwise serves
   `outputDirectory` statically). Static Next.js uses `out`, SvelteKit `build`,
   static React Router `build/client`, Angular `dist/<project>/browser`; server
-  templates set `entryFile` to the compiled server (e.g. `dist/server.js`) and
-  must listen on `process.env.PORT`. Nuxt templates MUST build as SSR
+  templates set `entryFile` to the compiled server and must listen on
+  `process.env.PORT`. `entryFile` is resolved RELATIVE to `outputDirectory`
+  (NestJS: `dist` + `main.js`, matching the platform default — omit the deploy
+  block; Express/Fastify/Hono keep `outputDirectory` empty so `dist/server.js`
+  resolves from the repo root). Never repeat the output directory inside the
+  entry path. Nuxt templates MUST build as SSR
   (`nuxt build`, no static nitro preset, no deploy block): the hosting API
   requires an entry file for the nuxt app type, and the detected defaults
   (`.output` + `.output/server/index.mjs`) then work as-is.
