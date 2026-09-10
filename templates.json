@@ -116,7 +116,7 @@
       "id": "groom-room",
       "name": "Groom Room",
       "summary": "A breed-led dog grooming site with instant guide prices, appointment times, cut photography, and booking handoff.",
-      "description": "Groom Room is a polished multi-page website for an independent dog groomer who wants to replace vague “prices from” messaging with a useful first estimate. It is designed for salon owners serving local dog owners who need confidence about cost, timing, and coat outcomes before making contact.",
+      "description": "Groom Room is a polished multi-page website for an independent dog groomer who wants to replace vague \u201cprices from\u201d messaging with a useful first estimate. It is designed for salon owners serving local dog owners who need confidence about cost, timing, and coat outcomes before making contact.",
       "bucket": "Non-technical",
       "categories": [
         "Business"
@@ -570,8 +570,8 @@
     {
       "id": "todays-menu",
       "name": "Today's Menu",
-      "summary": "A café and deli board that follows the clock — dayparts reorder by local time and sold-out dishes are greyed out.",
-      "description": "Today's Menu is a one-page website for a café or deli whose offer changes through the day and who wants the website to behave like the board behind the counter. It is designed for owners who are tired of static PDF menus that say nothing about what is actually available right now, and who want visitors to see the current service — and what has already sold out — before they walk over or call.",
+      "summary": "A caf\u00e9 and deli board that follows the clock \u2014 dayparts reorder by local time and sold-out dishes are greyed out.",
+      "description": "Today's Menu is a one-page website for a caf\u00e9 or deli whose offer changes through the day and who wants the website to behave like the board behind the counter. It is designed for owners who are tired of static PDF menus that say nothing about what is actually available right now, and who want visitors to see the current service \u2014 and what has already sold out \u2014 before they walk over or call.",
       "bucket": "Non-technical",
       "categories": [
         "Hospitality"
@@ -603,7 +603,7 @@
         {
           "id": "serving-now-indicators",
           "name": "Serving-now indicators",
-          "description": "The template includes \"Serving now · until …\" badge on the active daypart, plus \"From …\" and \"Back tomorrow …\" states on the others."
+          "description": "The template includes \"Serving now \u00b7 until \u2026\" badge on the active daypart, plus \"From \u2026\" and \"Back tomorrow \u2026\" states on the others."
         },
         {
           "id": "live-clock-card",
@@ -686,7 +686,7 @@
       "id": "bakery-preorder",
       "name": "Bakery Preorder",
       "summary": "A weekend baker's page with a live order cut-off countdown, collection slots that fill up, and email reservations for loaves and cakes.",
-      "description": "Bakery Preorder is a single-page site for a weekend microbakery that sells small batches from a home kitchen and needs orders locked in before baking starts. It solves the two questions that decide whether a preorder lands: how long is left to order, and which collection slots still have space — answered by a live oven-timer countdown and a board of visibly filling slot tags.",
+      "description": "Bakery Preorder is a single-page site for a weekend microbakery that sells small batches from a home kitchen and needs orders locked in before baking starts. It solves the two questions that decide whether a preorder lands: how long is left to order, and which collection slots still have space \u2014 answered by a live oven-timer countdown and a board of visibly filling slot tags.",
       "bucket": "Non-technical",
       "categories": [
         "E-commerce",
@@ -802,8 +802,8 @@
     {
       "id": "tap-list",
       "name": "Tap List",
-      "summary": "A live taproom keg board showing what's pouring, ABV, and how full every keg is — so regulars see what's about to blow before they visit.",
-      "description": "Tap List is a single-page website for a taproom, brewery bar, or beer café whose real product changes nightly: the keg board. Printed menus and stale PDFs go out of date the moment a keg kicks, and regulars hate driving over for a beer that blew an hour ago.",
+      "summary": "A live taproom keg board showing what's pouring, ABV, and how full every keg is \u2014 so regulars see what's about to blow before they visit.",
+      "description": "Tap List is a single-page website for a taproom, brewery bar, or beer caf\u00e9 whose real product changes nightly: the keg board. Printed menus and stale PDFs go out of date the moment a keg kicks, and regulars hate driving over for a beer that blew an hour ago.",
       "bucket": "Non-technical",
       "categories": [
         "Hospitality"
@@ -918,7 +918,7 @@
       "id": "supper-club",
       "name": "Supper Club",
       "summary": "A one-night pop-up dinner invitation with a live seats-remaining place card, countdown to doors, a menu revealed course by course, and RSVP by plain email.",
-      "description": "Supper Club is a single-page invitation site for anyone hosting a one-night dinner: a pop-up, a private dining room, a chef's table in an apartment. These nights do not need a restaurant website or a ticketing platform — they need one elegant page that answers the four questions every guest has: when is it, how many seats are left, what will we eat, and how do I get a chair.",
+      "description": "Supper Club is a single-page invitation site for anyone hosting a one-night dinner: a pop-up, a private dining room, a chef's table in an apartment. These nights do not need a restaurant website or a ticketing platform \u2014 they need one elegant page that answers the four questions every guest has: when is it, how many seats are left, what will we eat, and how do I get a chair.",
       "bucket": "Non-technical",
       "categories": [
         "Event",
@@ -951,7 +951,7 @@
         {
           "id": "seats-place-card",
           "name": "Seats-remaining place card",
-          "description": "The template includes place-card seat counter — seats remaining of the seat cap, a pulsing low-seats urgency state, and an automatic waitlist mode when seats hit zero."
+          "description": "The template includes place-card seat counter \u2014 seats remaining of the seat cap, a pulsing low-seats urgency state, and an automatic waitlist mode when seats hit zero."
         },
         {
           "id": "course-by-course-reveal",
@@ -1035,7 +1035,7 @@
       "id": "class-timetable",
       "name": "Class Timetable",
       "summary": "Weekly yoga and pilates timetable that highlights the next class with a live countdown and hands booking to your scheduling link.",
-      "description": "Class Timetable is a single-page website for a yoga or pilates studio whose schedule repeats every week. Most studios run the same gentle rhythm — sunrise flows, lunch-hour sessions, candlelit evenings — yet publish it as a stale PDF or a screenshot on Instagram.",
+      "description": "Class Timetable is a single-page website for a yoga or pilates studio whose schedule repeats every week. Most studios run the same gentle rhythm \u2014 sunrise flows, lunch-hour sessions, candlelit evenings \u2014 yet publish it as a stale PDF or a screenshot on Instagram.",
       "bucket": "Non-technical",
       "categories": [
         "Event",
@@ -1062,12 +1062,12 @@
         {
           "id": "live-next-class-countdown",
           "name": "Live next-class countdown",
-          "description": "The template includes live \"Next class starts in\" countdown (days, hours, minutes, seconds) computed client-side from recurring weekday + time rows — no hardcoded dates."
+          "description": "The template includes live \"Next class starts in\" countdown (days, hours, minutes, seconds) computed client-side from recurring weekday + time rows \u2014 no hardcoded dates."
         },
         {
           "id": "glowing-next-class-highlight",
           "name": "Glowing next-class highlight",
-          "description": "The template includes next-class highlight in the grid: a gently glowing card with a floating \"next · 3h 12m\" pill that rolls to the following class the moment one starts."
+          "description": "The template includes next-class highlight in the grid: a gently glowing card with a floating \"next \u00b7 3h 12m\" pill that rolls to the following class the moment one starts."
         },
         {
           "id": "in-session-state",
@@ -1149,8 +1149,8 @@
     {
       "id": "quiet-practice",
       "name": "Quiet Practice",
-      "summary": "A calm counselling site whose gentle four-question self-check routes visitors to the matching service page — individual, couples, or teen counselling — every page static and shareable.",
-      "description": "Quiet Practice is a multi-page website for a solo therapist or counsellor whose real problem is not looking pretty online — it is that prospective clients arrive anxious, skim a wall of text, and leave without knowing which service was meant for them. \" check: four small questions, one at a time in large serif type, that end by landing the visitor on the service page that fits what they described.",
+      "summary": "A calm counselling site whose gentle four-question self-check routes visitors to the matching service page \u2014 individual, couples, or teen counselling \u2014 every page static and shareable.",
+      "description": "Quiet Practice is a multi-page website for a solo therapist or counsellor whose real problem is not looking pretty online \u2014 it is that prospective clients arrive anxious, skim a wall of text, and leave without knowing which service was meant for them. \" check: four small questions, one at a time in large serif type, that end by landing the visitor on the service page that fits what they described.",
       "bucket": "Non-technical",
       "categories": [
         "Business",
@@ -1270,7 +1270,7 @@
       "id": "couch-to-5k",
       "name": "Couch to 5K",
       "summary": "A nine-week running plan visitors tick off session by session, with progress saved on their own phone.",
-      "description": "Couch to 5K is a single-page training-plan site for a running coach whose beginner clients keep losing the printed handout. The classic nine-week walk-run progression — twenty-seven sessions of roughly half an hour — lives on one fast page the runner keeps open on their phone.",
+      "description": "Couch to 5K is a single-page training-plan site for a running coach whose beginner clients keep losing the printed handout. The classic nine-week walk-run progression \u2014 twenty-seven sessions of roughly half an hour \u2014 lives on one fast page the runner keeps open on their phone.",
       "bucket": "Non-technical",
       "categories": [
         "Fitness"
@@ -1299,7 +1299,7 @@
         {
           "id": "tickable-nine-week-plan",
           "name": "Tickable nine-week plan",
-          "description": "The template includes full nine-week plan as anchored sections (#week-1 … #week-9) with 27 tickable session cards — title, interval instructions, and an approximate duration chip."
+          "description": "The template includes full nine-week plan as anchored sections (#week-1 \u2026 #week-9) with 27 tickable session cards \u2014 title, interval instructions, and an approximate duration chip."
         },
         {
           "id": "on-device-progress",
@@ -1325,7 +1325,7 @@
           "SvelteKit"
         ],
         "styling": [
-          "Hand-written CSS — design tokens in a global stylesheet plus scoped component styles"
+          "Hand-written CSS \u2014 design tokens in a global stylesheet plus scoped component styles"
         ],
         "data": [
           "Device-local localStorage state",
@@ -1390,7 +1390,7 @@
       "id": "movement-library",
       "name": "Movement Library",
       "summary": "A physio exercise library where patients filter movements by body part, build a small home plan, and print it as a clean take-home card.",
-      "description": "Movement Library is a single-page website for a physiotherapy or physical-therapy practice that wants every patient to leave with a clear, repeatable home plan. Between appointments patients forget doses, lose handout sheets, and give up hunting through video links; this template puts the clinic's ten most-prescribed movements on one page, each written exactly the way it is coached in the treatment room — body-part tags, sets and reps or hold times, two-to-three numbered steps, and an honest caution note.",
+      "description": "Movement Library is a single-page website for a physiotherapy or physical-therapy practice that wants every patient to leave with a clear, repeatable home plan. Between appointments patients forget doses, lose handout sheets, and give up hunting through video links; this template puts the clinic's ten most-prescribed movements on one page, each written exactly the way it is coached in the treatment room \u2014 body-part tags, sets and reps or hold times, two-to-three numbered steps, and an honest caution note.",
       "bucket": "Non-technical",
       "categories": [
         "Fitness"
@@ -1541,7 +1541,7 @@
         {
           "id": "per-device-favourites",
           "name": "Per-device favourites",
-          "description": "The template includes star toggle on each photo — real buttons with aria-pressed, keyboard reachable, with visible gold focus states."
+          "description": "The template includes star toggle on each photo \u2014 real buttons with aria-pressed, keyboard reachable, with visible gold focus states."
         },
         {
           "id": "favourites-persist-per-device-in-localstorage",
@@ -1624,7 +1624,7 @@
     {
       "id": "podcast-home",
       "name": "Podcast Home",
-      "summary": "A show site with a real player — chapter markers on a waveform timeline and searchable transcripts — plus a directly loadable static page for every episode.",
+      "summary": "A show site with a real player \u2014 chapter markers on a waveform timeline and searchable transcripts \u2014 plus a directly loadable static page for every episode.",
       "description": "Podcast Home is a complete website for an independent podcast whose episodes deserve more than a bare embed. Podcast apps bury the back catalog and can't link to a moment, so when a listener is told \"skip to the bit about tape ninety,\" they scrub blindly.",
       "bucket": "Non-technical",
       "categories": [
@@ -1653,7 +1653,7 @@
         {
           "id": "chaptered-audio-player",
           "name": "Chaptered audio player",
-          "description": "The template includes audio player with play/pause, a scrubbable waveform timeline, a moving playhead, and current/total time — keyboard-seekable via a real range control."
+          "description": "The template includes audio player with play/pause, a scrubbable waveform timeline, a moving playhead, and current/total time \u2014 keyboard-seekable via a real range control."
         },
         {
           "id": "chapter-markers-as-pips-on-the-timeline-plus-a",
@@ -1679,7 +1679,7 @@
           "Next.js"
         ],
         "styling": [
-          "Plain CSS — design tokens in one global stylesheet plus CSS Modules per component"
+          "Plain CSS \u2014 design tokens in one global stylesheet plus CSS Modules per component"
         ],
         "data": [
           "Committed Markdown content",
@@ -1741,7 +1741,7 @@
     {
       "id": "first-chapter",
       "name": "First Chapter",
-      "summary": "Author site with a built-in reader for the whole first chapter and an honest buy-link handoff — no store to configure.",
+      "summary": "Author site with a built-in reader for the whole first chapter and an honest buy-link handoff \u2014 no store to configure.",
       "description": "First Chapter is for a self-published author who needs one thing on launch day: a place where a stranger can fall into the book. Instead of a brochure page that points at retailers, the site carries the complete first chapter and lets visitors read it in the browser, in a real reader, before deciding to buy.",
       "bucket": "Non-technical",
       "categories": [
@@ -1782,8 +1782,8 @@
         },
         {
           "id": "adjustable-text-size",
-          "name": "A− / A+ text size",
-          "description": "The template includes a− / A+ text size control with four steps; changing size keeps the current paragraph anchored in view."
+          "name": "A\u2212 / A+ text size",
+          "description": "The template includes a\u2212 / A+ text size control with four steps; changing size keeps the current paragraph anchored in view."
         },
         {
           "id": "saved-reading-position",
@@ -1866,7 +1866,7 @@
       "id": "drop",
       "name": "Drop",
       "summary": "A countdown drop page for vintage one-of-one pieces that flip to a stamped SOLD state and are claimed by email.",
-      "description": "Drop is a single-page shop for sellers whose stock is one of one — vintage jackets, worn-in boots, serviced watches, deadstock frames. Cart-based shop templates assume restocks and live inventory, which is exactly wrong for this kind of selling: each piece exists once, releases happen at an announced time, and the fastest email wins.",
+      "description": "Drop is a single-page shop for sellers whose stock is one of one \u2014 vintage jackets, worn-in boots, serviced watches, deadstock frames. Cart-based shop templates assume restocks and live inventory, which is exactly wrong for this kind of selling: each piece exists once, releases happen at an announced time, and the fastest email wins.",
       "bucket": "Non-technical",
       "categories": [
         "E-commerce"
@@ -1899,7 +1899,7 @@
         {
           "id": "upcoming-to-live-flip",
           "name": "Automatic upcoming-to-live flip",
-          "description": "The template includes automatic upcoming → live flip in the browser once the configured datetime passes: LIVE NOW masthead, AVAILABLE chips, claim-mode buttons, and a state-aware ticker — no redeploy needed."
+          "description": "The template includes automatic upcoming \u2192 live flip in the browser once the configured datetime passes: LIVE NOW masthead, AVAILABLE chips, claim-mode buttons, and a state-aware ticker \u2014 no redeploy needed."
         },
         {
           "id": "stamped-sold-states",
@@ -1982,7 +1982,7 @@
     {
       "id": "will-it-survive",
       "name": "Will It Survive?",
-      "summary": "Three honest questions about light, watering habits, and pets return the plants that will actually cope — with shareable link results and a tagged eight-plant bench.",
+      "summary": "Three honest questions about light, watering habits, and pets return the plants that will actually cope \u2014 with shareable link results and a tagged eight-plant bench.",
       "description": "Will It Survive? is a single-page site for a small plant shop that would rather sell one plant that lives than three that die.",
       "bucket": "Non-technical",
       "categories": [
@@ -2021,7 +2021,7 @@
         {
           "id": "honest-matching-with-fallback",
           "name": "Honest matching that never dead-ends",
-          "description": "The template includes honest matching: 2–4 survivors with tag-derived reasoning lines; zero-match combinations fall back to nearest matches flagged \"Close call\" with per-plant caveats and a straight-talk note."
+          "description": "The template includes honest matching: 2\u20134 survivors with tag-derived reasoning lines; zero-match combinations fall back to nearest matches flagged \"Close call\" with per-plant caveats and a straight-talk note."
         },
         {
           "id": "tagged-eight-plant-bench",
@@ -2102,7 +2102,7 @@
       "id": "sunday-league",
       "name": "Sunday League",
       "summary": "An amateur football club noticeboard with the league table, fixtures, and the next match pinned and counting down to kick-off.",
-      "description": "Sunday League is a club noticeboard for amateur football teams whose web presence is maintained by a volunteer secretary, not a developer. Grassroots clubs need one page that answers the questions people actually ask — where do we stand in the table, who do we play next, what time is kick-off, how do I join — without a CMS, logins, or a stats platform.",
+      "description": "Sunday League is a club noticeboard for amateur football teams whose web presence is maintained by a volunteer secretary, not a developer. Grassroots clubs need one page that answers the questions people actually ask \u2014 where do we stand in the table, who do we play next, what time is kick-off, how do I join \u2014 without a CMS, logins, or a stats platform.",
       "bucket": "Non-technical",
       "categories": [
         "Event",
@@ -2130,12 +2130,12 @@
         {
           "id": "pinned-next-match-countdown",
           "name": "Pinned next match with live countdown",
-          "description": "The template includes pinned next-match poster computed from fixture kick-off times — never hardcoded — with a live days/hours/minutes/seconds countdown in scoreboard digits."
+          "description": "The template includes pinned next-match poster computed from fixture kick-off times \u2014 never hardcoded \u2014 with a live days/hours/minutes/seconds countdown in scoreboard digits."
         },
         {
           "id": "season-complete-fallback",
           "name": "Graceful season-complete state",
-          "description": "The template includes graceful degradation: when every fixture has kicked off, the poster becomes a \"Season complete — next season's fixtures soon\" card with a contact action."
+          "description": "The template includes graceful degradation: when every fixture has kicked off, the poster becomes a \"Season complete \u2014 next season's fixtures soon\" card with a contact action."
         },
         {
           "id": "league-table",
@@ -2224,7 +2224,6 @@
         "Fitness"
       ],
       "whoItsFor": "A running or cycling club",
-      "demoUrl": "https://route-library.hostingertemplates.com",
       "classification": {
         "categories": [
           "clubs-and-community",
@@ -2590,13 +2589,13 @@
       "features": [
         {
           "id": "total-rent-input-plus-2-6-editable-room-cards",
-          "name": "Total rent input plus 2–6 editable room cards",
-          "description": "The template includes total rent input plus 2–6 editable room cards (name, size in m², window quality picker, en-suite toggle) with add/remove controls."
+          "name": "Total rent input plus 2\u20136 editable room cards",
+          "description": "The template includes total rent input plus 2\u20136 editable room cards (name, size in m\u00b2, window quality picker, en-suite toggle) with add/remove controls."
         },
         {
           "id": "weighted-fair-split-algorithm",
           "name": "Weighted fair-split algorithm",
-          "description": "The template includes weighted fair-split algorithm: size × window multiplier × en-suite multiplier, with all weights tunable in one constants file."
+          "description": "The template includes weighted fair-split algorithm: size \u00d7 window multiplier \u00d7 en-suite multiplier, with all weights tunable in one constants file."
         },
         {
           "id": "fairness-receipt",
@@ -3055,7 +3054,7 @@
         {
           "id": "honest-trade-offs",
           "name": "Honest trade-offs",
-          "description": "The template includes clearly marked competitor win and honest “Where we lose” row."
+          "description": "The template includes clearly marked competitor win and honest \u201cWhere we lose\u201d row."
         },
         {
           "id": "sticky-legend-best-offer-markers-methodology-note-and-review-dat",
@@ -3473,7 +3472,7 @@
       "id": "changelog",
       "name": "Changelog",
       "summary": "A product release-notes site with instant feature/fix filters and a marker for everything that shipped since a visitor's last look.",
-      "description": "Changelog is a static release-notes site for a shipping product — a SaaS, a developer tool, an app — whose team wants its progress to be visible and easy to trust. Release notes scattered across Slack messages, emails, and tweets convince nobody; a changelog that reads like part of the product does.",
+      "description": "Changelog is a static release-notes site for a shipping product \u2014 a SaaS, a developer tool, an app \u2014 whose team wants its progress to be visible and easy to trust. Release notes scattered across Slack messages, emails, and tweets convince nobody; a changelog that reads like part of the product does.",
       "bucket": "Technical and SaaS",
       "categories": [
         "SaaS",
@@ -3505,7 +3504,7 @@
         {
           "id": "instant-tag-filter",
           "name": "Instant feature/fix filter",
-          "description": "The template includes instant tag filter — All / Features / Fixes chips with counts, a live results line, and no reload."
+          "description": "The template includes instant tag filter \u2014 All / Features / Fixes chips with counts, a live results line, and no reload."
         },
         {
           "id": "last-visit-marker",
@@ -3589,7 +3588,7 @@
     {
       "id": "roadmap",
       "name": "Roadmap",
-      "summary": "A public now / next / later board where visitors vote on what ships next — votes stay on their device, no accounts or backend.",
+      "summary": "A public now / next / later board where visitors vote on what ships next \u2014 votes stay on their device, no accounts or backend.",
       "description": "Roadmap is a public product board for a team that wants to build in the open and gather interest without standing up a feedback platform, user accounts, or any backend at all. It ships styled as Ledgerline, a believable fictional invoicing app for one-person studios, and it solves the honest version of a common problem: showing customers what's coming, letting them lean on the queue, and never pretending the page is something it isn't.",
       "bucket": "Technical and SaaS",
       "categories": [
@@ -3634,7 +3633,7 @@
         {
           "id": "honest-count-copy",
           "name": "Honest indicative counts",
-          "description": "The template includes honest device-only voting copy in the hero note, three-step explainer, FAQ, and footer small print — the page never implies a live synced tally."
+          "description": "The template includes honest device-only voting copy in the hero note, three-step explainer, FAQ, and footer small print \u2014 the page never implies a live synced tally."
         }
       ],
       "technology": {
@@ -3742,7 +3741,7 @@
         {
           "id": "compliance-posture-statements",
           "name": "Compliance posture in plain words",
-          "description": "The template includes compliance posture rendered as three text statements with bordered status chips — \"report available under NDA\", \"DPA available\", \"certification in progress\" — no logos, no false claims."
+          "description": "The template includes compliance posture rendered as three text statements with bordered status chips \u2014 \"report available under NDA\", \"DPA available\", \"certification in progress\" \u2014 no logos, no false claims."
         },
         {
           "id": "subprocessor-table",
@@ -3836,7 +3835,7 @@
       "id": "manual",
       "name": "Manual",
       "summary": "A small docs site with sidebar navigation, instant local search, and a copy-page-as-Markdown button so humans and AI assistants both get clean context.",
-      "description": "Manual is a product documentation starter for any team that needs real docs fast — a dev tool, an API, a SaaS feature set. It ships as a complete working site for a fictional webhook-debugging CLI called Tapeline, so instead of lorem ipsum you get five genuinely written documentation pages full of titled code frames, option tables, callout asides, and cross-links that show exactly how finished docs should read.",
+      "description": "Manual is a product documentation starter for any team that needs real docs fast \u2014 a dev tool, an API, a SaaS feature set. It ships as a complete working site for a fictional webhook-debugging CLI called Tapeline, so instead of lorem ipsum you get five genuinely written documentation pages full of titled code frames, option tables, callout asides, and cross-links that show exactly how finished docs should read.",
       "bucket": "Technical and SaaS",
       "categories": [
         "Documentation"
@@ -3952,7 +3951,7 @@
     {
       "id": "api-reference",
       "name": "API Reference",
-      "summary": "An endpoint-by-endpoint reference whose try-it panel assembles the exact curl command from your inputs — copy it, share it as a link, run it in your own terminal.",
+      "summary": "An endpoint-by-endpoint reference whose try-it panel assembles the exact curl command from your inputs \u2014 copy it, share it as a link, run it in your own terminal.",
       "description": "API Reference is documentation for an API product that treats the copy-paste moment as the whole point. Most small API docs either dump static snippets that drift out of date or bolt on a \"console\" that proxies real requests and asks developers for keys.",
       "bucket": "Technical and SaaS",
       "categories": [
@@ -4099,7 +4098,7 @@
         {
           "id": "install-tabs",
           "name": "Per-package-manager install tabs",
-          "description": "The template includes install tabs for npm, Homebrew and curl: proper role=\"tablist\" semantics with arrow-key, Home and End navigation and roving tabindex — and without JavaScript they degrade to stacked, labelled command blocks that read fine on their own."
+          "description": "The template includes install tabs for npm, Homebrew and curl: proper role=\"tablist\" semantics with arrow-key, Home and End navigation and roving tabindex \u2014 and without JavaScript they degrade to stacked, labelled command blocks that read fine on their own."
         },
         {
           "id": "copy-exact-commands",
@@ -4187,7 +4186,7 @@
     {
       "id": "design-system",
       "name": "Design System",
-      "summary": "A tiny component playground: flip props with real controls, watch the live preview change, and copy the exact snippet that reproduces it — three components, honestly documented.",
+      "summary": "A tiny component playground: flip props with real controls, watch the live preview change, and copy the exact snippet that reproduces it \u2014 three components, honestly documented.",
       "description": "Design System is a documentation site for a team publishing components, shipped as the fictional \"Vitrine\" kit. It solves the problem every young design system has: docs that drift from the code.",
       "bucket": "Technical and SaaS",
       "categories": [
@@ -4226,7 +4225,7 @@
         {
           "id": "exact-snippet-generation",
           "name": "Snippet that always matches the preview",
-          "description": "The template includes deterministic snippet generation — the code block under the preview always matches the current configuration exactly, omitting props at their defaults."
+          "description": "The template includes deterministic snippet generation \u2014 the code block under the preview always matches the current configuration exactly, omitting props at their defaults."
         },
         {
           "id": "one-click-copy",
@@ -4307,8 +4306,8 @@
     {
       "id": "console",
       "name": "Console",
-      "summary": "An admin and analytics dashboard shell that demos fully populated from committed mock data — charts, a sortable table, and honest read-only settings, no backend required.",
-      "description": "Console is for anyone who needs an admin or analytics UI standing before the backend exists — founders demoing a product idea, teams prototyping an internal tool, or developers who want a serious-looking ops dashboard to grow into. It plays the part of \"Windrose\", a fictional webhook delivery platform, seen from the workspace of the equally fictional customer Atlas Labs, and every number on screen traces to committed JSON in mocks/, so the demo is realistic without pretending anything is live.",
+      "summary": "An admin and analytics dashboard shell that demos fully populated from committed mock data \u2014 charts, a sortable table, and honest read-only settings, no backend required.",
+      "description": "Console is for anyone who needs an admin or analytics UI standing before the backend exists \u2014 founders demoing a product idea, teams prototyping an internal tool, or developers who want a serious-looking ops dashboard to grow into. It plays the part of \"Windrose\", a fictional webhook delivery platform, seen from the workspace of the equally fictional customer Atlas Labs, and every number on screen traces to committed JSON in mocks/, so the demo is realistic without pretending anything is live.",
       "bucket": "Technical and SaaS",
       "categories": [
         "SaaS",
@@ -4343,7 +4342,7 @@
         {
           "id": "interactive-svg-charts",
           "name": "Interactive inline-SVG charts",
-          "description": "The template includes two interactive inline-SVG charts — an area chart of daily deliveries and a bar chart of daily failures — with a snapping crosshair or bar highlight, tooltips, arrow-key inspection, a live region for screen readers, and a \"View as table\" fallback under each chart."
+          "description": "The template includes two interactive inline-SVG charts \u2014 an area chart of daily deliveries and a bar chart of daily failures \u2014 with a snapping crosshair or bar highlight, tooltips, arrow-key inspection, a live region for screen readers, and a \"View as table\" fallback under each chart."
         },
         {
           "id": "sortable-deliveries-table",
@@ -4364,7 +4363,7 @@
           "Next.js"
         ],
         "styling": [
-          "Plain CSS — design tokens in app/globals.css plus CSS Modules per component"
+          "Plain CSS \u2014 design tokens in app/globals.css plus CSS Modules per component"
         ],
         "data": [
           "Committed JSON in mocks/ and config/site.json, loaded through typed modules in lib/",
@@ -4430,7 +4429,7 @@
       "id": "engineering-blog",
       "name": "Engineering Blog",
       "summary": "Team engineering blog with syntax-highlighted code blocks, copy buttons, reading time, and threaded multi-part series.",
-      "description": "Engineering Blog is a publishing home for a technical team that writes publicly — postmortems, design writeups, and running-in-production notes. Most blog templates treat code as an afterthought; this one treats it as the main event.",
+      "description": "Engineering Blog is a publishing home for a technical team that writes publicly \u2014 postmortems, design writeups, and running-in-production notes. Most blog templates treat code as an afterthought; this one treats it as the main event.",
       "bucket": "Technical and SaaS",
       "categories": [
         "Blog"
@@ -4468,7 +4467,7 @@
         {
           "id": "copy-button-on-every-code-block",
           "name": "Copy button on every code block",
-          "description": "The template includes copy button on every code block that copies the code exactly, with a \"Copied\" confirmation — added after hydration, absent without JavaScript."
+          "description": "The template includes copy button on every code block that copies the code exactly, with a \"Copied\" confirmation \u2014 added after hydration, absent without JavaScript."
         },
         {
           "id": "reading-time",
@@ -4550,7 +4549,7 @@
       "id": "careers",
       "name": "Careers",
       "summary": "A hiring board with combinable team, location, and remote filters and plain-language role pages that say what you'd actually do, applied to by prefilled email.",
-      "description": "Careers is a hiring page for a small team that wants candidates to know what the job really is before they apply. Most careers pages are either a legal spec dump pasted into an applicant-tracking widget or a vague \"join our rocketship\" wall — this template takes the opposite position.",
+      "description": "Careers is a hiring page for a small team that wants candidates to know what the job really is before they apply. Most careers pages are either a legal spec dump pasted into an applicant-tracking widget or a vague \"join our rocketship\" wall \u2014 this template takes the opposite position.",
       "bucket": "Technical and SaaS",
       "categories": [
         "Business"
@@ -4582,7 +4581,7 @@
         {
           "id": "live-faceted-counts",
           "name": "Live faceted counts",
-          "description": "The template includes live counts everywhere — the results line (\"Showing 2 of 4 open roles\") and a faceted count on every filter chip update as other filters change."
+          "description": "The template includes live counts everywhere \u2014 the results line (\"Showing 2 of 4 open roles\") and a faceted count on every filter chip update as other filters change."
         },
         {
           "id": "honest-empty-state",
@@ -4666,8 +4665,8 @@
     {
       "id": "devfolio",
       "name": "Devfolio",
-      "summary": "A developer résumé explored through an interactive terminal, with the same content readable as plain HTML for everyone else.",
-      "description": "Devfolio is a single-page portfolio site for a developer on the job hunt who wants their résumé to be remembered. The page opens on a working terminal styled after a phosphor-green CRT: recruiters and fellow engineers type projects, experience, or skills and the matching résumé block prints into the scrollback — while everyone else simply scrolls, because the complete CV also sits on the page as clean, man-page-styled semantic HTML.",
+      "summary": "A developer r\u00e9sum\u00e9 explored through an interactive terminal, with the same content readable as plain HTML for everyone else.",
+      "description": "Devfolio is a single-page portfolio site for a developer on the job hunt who wants their r\u00e9sum\u00e9 to be remembered. The page opens on a working terminal styled after a phosphor-green CRT: recruiters and fellow engineers type projects, experience, or skills and the matching r\u00e9sum\u00e9 block prints into the scrollback \u2014 while everyone else simply scrolls, because the complete CV also sits on the page as clean, man-page-styled semantic HTML.",
       "bucket": "Technical and SaaS",
       "categories": [
         "Portfolio"
@@ -4694,8 +4693,8 @@
       "features": [
         {
           "id": "interactive-terminal-resume",
-          "name": "Interactive terminal résumé",
-          "description": "The template includes interactive terminal with nine commands (help, about, whoami, experience/work, projects, skills, education, contact, clear) — each prints the matching block rendered from resume.json."
+          "name": "Interactive terminal r\u00e9sum\u00e9",
+          "description": "The template includes interactive terminal with nine commands (help, about, whoami, experience/work, projects, skills, education, contact, clear) \u2014 each prints the matching block rendered from resume.json."
         },
         {
           "id": "history-and-tab-completion",
@@ -4721,7 +4720,7 @@
           "SvelteKit"
         ],
         "styling": [
-          "Hand-written CSS — design tokens in a global stylesheet plus scoped component styles"
+          "Hand-written CSS \u2014 design tokens in a global stylesheet plus scoped component styles"
         ],
         "data": [
           "Committed JSON data and configuration",
@@ -4963,8 +4962,8 @@
           {
             "name": "Node.js",
             "versions": [
-              "22.19–22.x",
-              "24.11–24.x",
+              "22.19\u201322.x",
+              "24.11\u201324.x",
               "26+"
             ]
           }
@@ -5384,7 +5383,7 @@
         {
           "id": "series-navigation",
           "name": "Series navigation",
-          "description": "The template includes previous and next navigation between the two entries in the “Notes from the river” series."
+          "description": "The template includes previous and next navigation between the two entries in the \u201cNotes from the river\u201d series."
         },
         {
           "id": "four-question-accessible-faq",
