@@ -1,14 +1,14 @@
 ---
 name: deploy-nodejs-templates
-description: Deploys static and server-backed Node.js templates from this repository to separate Hostinger websites, attaches public template-ID subdomains, verifies each live deployment, and updates templates.json demoUrl values. Use when publishing, deploying, or refreshing template demos on Hostinger.
+description: Deploys static and server-backed Node.js templates from this repository as subdomains of hostingertemplates.com, verifies each live deployment, and updates templates.json demoUrl values. Use when publishing, deploying, or refreshing template demos on Hostinger.
 ---
 
 # Deploy template demos to Hostinger
 
-Deploy each template as a separate website. Never place multiple templates under
-paths of one domain. Public demos in this repository use
-`https://<template-id>.kieciausias-domenas.xyz`; Hostinger temporary domains
-remain the hosting origins.
+Public demos in this repository use
+`https://<template-id>.hostingertemplates.com`. Each template is a subdomain of
+the `hostingertemplates.com` website. Do not generate `*.hostingersite.com`
+temporary domains.
 
 ## 1. Inventory the work
 
@@ -80,41 +80,29 @@ detection would otherwise choose the wrong file:
 }
 ```
 
-## 4. Create one temporary website per template
+## 4. Create one public subdomain per template
 
-1. Generate one unique Hostinger free subdomain per template.
-2. Create the first website with the selected order ID.
-3. If the plan is unused, query available datacenters and pass the first
-   recommended `datacenter_code` when creating that first website.
-4. Wait until the website appears as enabled in the website list.
-5. Create remaining websites on the same order without a datacenter code.
-6. Wait until every generated domain appears as enabled before uploading.
+Reuse the existing `hostingertemplates.com` website on the selected plan. If it
+is missing, create that addon website first and wait until it is enabled.
+
+For each template:
+
+1. Create a subdomain of `hostingertemplates.com` whose prefix and directory are
+   the template ID.
+2. Wait until `<template-id>.hostingertemplates.com` appears as an enabled
+   subdomain before uploading.
+
+Create or delete websites and subdomains one at a time. Concurrent Hostinger
+mutations can fail with unfinished-action rate limits.
 
 Keep a clear template-to-domain mapping throughout.
-
-## 4a. Attach the public demo subdomain
-
-For each created Hostinger website:
-
-1. Add a CNAME record to the `kieciausias-domenas.xyz` DNS zone:
-   - name: the exact template ID
-   - target: the generated `*.hostingersite.com` origin, with a trailing dot
-   - TTL: 300
-2. Add `<template-id>.kieciausias-domenas.xyz` as a parked or alias domain on
-   that template's Hostinger website.
-3. Preserve the generated temporary domain as the website origin. Do not delete
-   it or replace the website.
-4. Confirm the parked-domain listing maps the public subdomain to the correct
-   origin before live verification.
-
-Use `overwrite = true` only for the exact template-ID CNAME records being
-managed. Do not overwrite apex, mail, verification, or unrelated DNS records.
 
 ## 5. Deploy output
 
 For static output, use the static website deployment tool with:
 
-- the generated domain
+- domain `https://<template-id>.hostingertemplates.com` (the subdomain, not the
+  parent site)
 - the template archive path
 - archive removal enabled
 
@@ -136,9 +124,9 @@ the catalog URL.
 
 ## 6. Verify live websites
 
-Wait for accepted deployments to finish, then verify both the temporary origin
-and `https://<template-id>.kieciausias-domenas.xyz` return the expected template
-content. The public subdomain must return HTTP 200 over HTTPS.
+Wait for accepted deployments to finish, then verify
+`https://<template-id>.hostingertemplates.com` returns the expected template
+content over HTTPS with HTTP 200.
 
 For multi-page templates, also request at least one non-home direct URL. Do not
 mark deployment complete when only the homepage works.
@@ -152,7 +140,7 @@ Report a persistent failure without writing its `demoUrl`.
 Set each successfully verified catalog entry to its public custom subdomain:
 
 ```json
-"demoUrl": "https://<template-id>.kieciausias-domenas.xyz"
+"demoUrl": "https://<template-id>.hostingertemplates.com"
 ```
 
 Then verify:
@@ -174,7 +162,7 @@ lockfiles, previews, and deployed websites.
 Report:
 
 - hosting plan used
-- template names, clickable public URLs, and their temporary origins
+- template names and clickable public URLs
 - build and live verification results
 - catalog update status
 

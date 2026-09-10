@@ -1,6 +1,6 @@
 ---
 name: create-nodejs-repository
-description: Creates polished, production-ready Node.js template apps in the requested language and framework, registers them in templates.json, and captures consistent preview images. Defaults to React and TypeScript. Use whenever adding or rebuilding a template in this repository.
+description: Creates polished, production-ready Node.js template apps in the requested language and framework, registers them in templates.json, and captures consistent preview images. Defaults to React and TypeScript. Use whenever adding or rebuilding a template in this repository. Finish only after lint, build, audit, and a source security review find no issues or vulnerabilities.
 ---
 
 # Create a Node.js template repository
@@ -193,7 +193,7 @@ The `Personalizing` section is mandatory and must identify exact files for:
 
 ## 9. Verify before screenshots
 
-Run:
+Run these from `templates/<template-id>/` after the last code change:
 
 ```bash
 npm install
@@ -201,6 +201,19 @@ npm run lint
 npm run build
 npm audit --audit-level=high
 ```
+
+Then review the template source for issues and vulnerabilities. Do not rely
+on a green audit alone. Check for:
+
+- secrets, API keys, tokens, passwords, or committed `.env` files
+- `eval`, `new Function`, or other dynamic code execution
+- unsanitized HTML (`dangerouslySetInnerHTML`, unescaped template output)
+- unsafe handling of URL, query, or form input
+- leftover debug endpoints, dummy auth, or credentials in client code
+
+Fix every lint, type, build, audit, and source finding before continuing. If a
+vulnerability cannot be fixed, stop and report it; do not capture screenshots or
+register the catalog entry.
 
 Then verify primary journeys in a browser on desktop and mobile. Check every
 multi-page route by loading its built preview URL directly, not only through
@@ -302,6 +315,7 @@ Finish only after:
 - lint passes
 - build passes
 - `npm audit --audit-level=high` passes
+- source review found no issues or vulnerabilities
 - desktop and mobile checks pass
 - screenshots exist and were inspected
 - README follows the fixed structure
@@ -311,5 +325,6 @@ Finish only after:
 ## 13. Hand off and offer publishing
 
 After all checks pass, tell the user the template is complete and summarize the
-verification results. Ask whether they want the changes committed and pushed.
+verification results, including lint, build, audit, and the source security
+review. Ask whether they want the changes committed and pushed.
 Do not commit or push until the user explicitly confirms.
