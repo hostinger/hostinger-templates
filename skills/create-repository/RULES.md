@@ -55,6 +55,15 @@ commit until the template's own code is free of issues and vulnerabilities.
   files, or build output.
 - Ignore `node_modules`, framework build/cache directories, local environment
   files, and generated language artifacts.
+- Never commit symlinks: gitignore output directories WITHOUT a trailing slash
+  (`dist`, not `dist/` — the slash form does not match a symlink, which is how
+  a machine-specific `dist` link once reached the repo and broke deploys).
+  Before publishing, verify `git ls-files -s | awk '$1 == "120000"'` prints
+  nothing.
+- The production build must leave the deployable site in a REAL `dist`
+  directory. Frameworks that emit elsewhere or symlink `dist` (Nuxt writes
+  `.output/public`) must copy in the build script:
+  `... && rm -rf dist && cp -R .output/public dist`.
 
 ## Code quality
 

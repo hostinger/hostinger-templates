@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "nuxt dev",
-    "build": "nuxt typecheck && nuxt generate",
+    "build": "nuxt typecheck && nuxt generate && rm -rf dist && cp -R .output/public dist",
     "lint": "eslint .",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
