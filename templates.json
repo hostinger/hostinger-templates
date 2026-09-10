@@ -84,7 +84,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/callout/preview/callout-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/callout/preview/callout-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/callout/preview/callout-homepage.png",
@@ -185,7 +195,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/groom-room/preview/groom-room-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/groom-room/preview/groom-room-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/groom-room/preview/groom-room-homepage.png",
@@ -288,7 +308,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/quote-slider/preview/quote-slider-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/quote-slider/preview/quote-slider-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/quote-slider/preview/quote-slider-homepage.png",
@@ -393,7 +423,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/flash-sheet/preview/flash-sheet-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/flash-sheet/preview/flash-sheet-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/flash-sheet/preview/flash-sheet-homepage.png",
@@ -498,7 +538,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/moving-day/preview/moving-day-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/moving-day/preview/moving-day-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/moving-day/preview/moving-day-homepage.png",
@@ -601,7 +651,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/todays-menu/preview/todays-menu-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/todays-menu/preview/todays-menu-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/todays-menu/preview/todays-menu-homepage.png",
@@ -707,7 +767,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/bakery-preorder/preview/bakery-preorder-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/bakery-preorder/preview/bakery-preorder-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/bakery-preorder/preview/bakery-preorder-homepage.png",
@@ -812,7 +882,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/tap-list/preview/tap-list-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/tap-list/preview/tap-list-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/tap-list/preview/tap-list-homepage.png",
@@ -919,7 +999,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/supper-club/preview/supper-club-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/supper-club/preview/supper-club-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/supper-club/preview/supper-club-homepage.png",
@@ -1025,7 +1115,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/class-timetable/preview/class-timetable-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/class-timetable/preview/class-timetable-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/class-timetable/preview/class-timetable-homepage.png",
@@ -1132,7 +1232,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/quiet-practice/preview/quiet-practice-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/quiet-practice/preview/quiet-practice-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/quiet-practice/preview/quiet-practice-homepage.png",
@@ -1244,7 +1354,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/couch-to-5k/preview/couch-to-5k-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/couch-to-5k/preview/couch-to-5k-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/couch-to-5k/preview/couch-to-5k-homepage.png",
@@ -1352,7 +1472,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/movement-library/preview/movement-library-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/movement-library/preview/movement-library-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/movement-library/preview/movement-library-homepage.png",
@@ -1461,7 +1591,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/client-gallery/preview/client-gallery-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/client-gallery/preview/client-gallery-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/client-gallery/preview/client-gallery-homepage.png",
@@ -1567,7 +1707,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/podcast-home/preview/podcast-home-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/podcast-home/preview/podcast-home-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/podcast-home/preview/podcast-home-homepage.png",
@@ -1679,7 +1829,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/first-chapter/preview/first-chapter-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/first-chapter/preview/first-chapter-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/first-chapter/preview/first-chapter-homepage.png",
@@ -1787,7 +1947,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/drop/preview/drop-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/drop/preview/drop-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/drop/preview/drop-homepage.png",
@@ -1896,7 +2066,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/will-it-survive/preview/will-it-survive-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/will-it-survive/preview/will-it-survive-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/will-it-survive/preview/will-it-survive-homepage.png",
@@ -2003,7 +2183,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/sunday-league/preview/sunday-league-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/sunday-league/preview/sunday-league-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/sunday-league/preview/sunday-league-homepage.png",
@@ -2109,7 +2299,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/route-library/preview/route-library-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/route-library/preview/route-library-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/route-library/preview/route-library-homepage.png",
@@ -2218,7 +2418,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/registry/preview/registry-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/registry/preview/registry-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/registry/preview/registry-homepage.png",
@@ -2322,7 +2532,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/seating-plan/preview/seating-plan-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/seating-plan/preview/seating-plan-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/seating-plan/preview/seating-plan-homepage.png",
@@ -2427,7 +2647,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/split-the-rent/preview/split-the-rent-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/split-the-rent/preview/split-the-rent-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/split-the-rent/preview/split-the-rent-homepage.png",
@@ -2532,7 +2762,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/overlap/preview/overlap-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/overlap/preview/overlap-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/overlap/preview/overlap-homepage.png",
@@ -2635,7 +2875,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/launch/preview/launch-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/launch/preview/launch-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/launch/preview/launch-homepage.png",
@@ -2741,7 +2991,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/pricing-calculator/preview/pricing-calculator-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/pricing-calculator/preview/pricing-calculator-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/pricing-calculator/preview/pricing-calculator-homepage.png",
@@ -2843,7 +3103,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/compare/preview/compare-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/compare/preview/compare-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/compare/preview/compare-homepage.png",
@@ -2945,7 +3215,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/integrations/preview/integrations-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/integrations/preview/integrations-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/integrations/preview/integrations-homepage.png",
@@ -3049,7 +3329,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/terminal/preview/terminal-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/terminal/preview/terminal-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/terminal/preview/terminal-homepage.png",
@@ -3151,7 +3441,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/status/preview/status-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/status/preview/status-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/status/preview/status-homepage.png",
@@ -3255,7 +3555,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/changelog/preview/changelog-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/changelog/preview/changelog-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/changelog/preview/changelog-homepage.png",
@@ -3365,7 +3675,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/roadmap/preview/roadmap-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/roadmap/preview/roadmap-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/roadmap/preview/roadmap-homepage.png",
@@ -3475,7 +3795,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/trust-centre/preview/trust-centre-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/trust-centre/preview/trust-centre-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/trust-centre/preview/trust-centre-homepage.png",
@@ -3586,7 +3916,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/manual/preview/manual-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/manual/preview/manual-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/manual/preview/manual-homepage.png",
@@ -3694,7 +4034,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/api-reference/preview/api-reference-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/api-reference/preview/api-reference-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/api-reference/preview/api-reference-homepage.png",
@@ -3802,7 +4152,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/quickstart/preview/quickstart-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/quickstart/preview/quickstart-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/quickstart/preview/quickstart-homepage.png",
@@ -3911,7 +4271,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/design-system/preview/design-system-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/design-system/preview/design-system-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/design-system/preview/design-system-homepage.png",
@@ -4021,7 +4391,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/console/preview/console-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/console/preview/console-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/console/preview/console-homepage.png",
@@ -4133,7 +4513,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/engineering-blog/preview/engineering-blog-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/engineering-blog/preview/engineering-blog-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/engineering-blog/preview/engineering-blog-homepage.png",
@@ -4240,7 +4630,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/careers/preview/careers-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/careers/preview/careers-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/careers/preview/careers-homepage.png",
@@ -4348,7 +4748,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/devfolio/preview/devfolio-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/devfolio/preview/devfolio-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/devfolio/preview/devfolio-homepage.png",
@@ -4453,7 +4863,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/showcase/preview/showcase-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/showcase/preview/showcase-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/showcase/preview/showcase-homepage.png",
@@ -4557,7 +4977,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/consultancy/preview/consultancy-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/consultancy/preview/consultancy-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/consultancy/preview/consultancy-homepage.png",
@@ -4659,7 +5089,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/practice/preview/practice-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/practice/preview/practice-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/practice/preview/practice-homepage.png",
@@ -4764,7 +5204,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/the-big-day/preview/the-big-day-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/the-big-day/preview/the-big-day-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/the-big-day/preview/the-big-day-homepage.png",
@@ -4866,7 +5316,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/storefront/preview/storefront-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/storefront/preview/storefront-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/storefront/preview/storefront-homepage.png",
@@ -4967,7 +5427,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/journal/preview/journal-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/journal/preview/journal-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/journal/preview/journal-homepage.png",
@@ -5071,7 +5541,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/on-sale/preview/on-sale-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/on-sale/preview/on-sale-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/on-sale/preview/on-sale-homepage.png",
@@ -5174,7 +5654,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/the-rooms/preview/the-rooms-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/the-rooms/preview/the-rooms-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/the-rooms/preview/the-rooms-homepage.png",
@@ -5277,7 +5767,17 @@
           "source": "viewport",
           "width": 1440,
           "height": 900,
-          "aspectRatio": "16:10"
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/model/preview/model-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/model/preview/model-thumbnail-960.webp"
+            }
+          ]
         },
         "preview": {
           "path": "templates/model/preview/model-homepage.png",

@@ -68,7 +68,11 @@ finished project contributes one entry.
       "source": "viewport",
       "width": 1440,
       "height": 900,
-      "aspectRatio": "16:10"
+      "aspectRatio": "16:10",
+      "variants": [
+        { "width": 480, "path": "templates/<id>/preview/<id>-thumbnail-480.webp" },
+        { "width": 960, "path": "templates/<id>/preview/<id>-thumbnail-960.webp" }
+      ]
     },
     "preview": {
       "path": "templates/<id>/preview/<id>-homepage.png",
@@ -109,6 +113,9 @@ finished project contributes one entry.
   not present.
 - Runtime versions match `package.json` and README requirements.
 - Media paths are relative to the collection root and point to existing files.
+- `thumbnail.variants` lists the pre-resized WebP renditions (480 and 960 wide,
+  generated with `cwebp -q 82 -m 6 -af -resize <width> 0`); hPanel serves them
+  via `srcset`, so both files are required.
 - Media URLs use the GitHub `blob/main/...?...raw=true` form and must return the
   image successfully after publishing.
 - Preview height records the actual full-page image height; do not copy the

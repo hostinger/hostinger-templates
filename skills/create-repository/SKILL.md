@@ -285,6 +285,9 @@ Write specific, useful metadata:
   names only (for example `Astro`, `React`) — no versions, qualifiers, or prose
 - include accurate categories, use cases, frameworks, runtime, and search terms
 - record both image paths and actual dimensions
+- generate `<name>-thumbnail-480.webp` and `<name>-thumbnail-960.webp` next to
+  the thumbnail PNG (`cwebp -q 82 -m 6 -af -resize <width> 0`) and register
+  them under `media.thumbnail.variants`
 - add GitHub raw-view URLs for both images and verify each URL returns an image
   after the commit is pushed
 - keep strict JSON with no comments or trailing commas
