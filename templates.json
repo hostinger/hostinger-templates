@@ -2238,12 +2238,12 @@
       "name": "Route Library",
       "summary": "A club route book with distance and climb filters, SVG elevation profiles, and a GPX download for every route.",
       "description": "Route Library is a route book for a running or cycling club whose best routes usually live in long-standing members' heads, a dusty forum thread, or a drawer of printed maps. It turns that knowledge into a public, filterable library: every route has a measured distance, an honest climb figure, a surface and grade, a named start point, a written description and a downloadable GPX file, all presented under the club's own name and contact details.",
+      "demoUrl": null,
       "bucket": "Non-technical",
       "categories": [
         "Fitness"
       ],
       "whoItsFor": "A running or cycling club",
-      "demoUrl": null,
       "classification": {
         "categories": [
           "clubs-and-community",
