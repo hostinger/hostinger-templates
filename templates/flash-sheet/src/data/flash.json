@@ -57,7 +57,7 @@
     "price": "£210",
     "availability": "Available",
     "artwork": "thorn-heart.svg",
-    "description": "A folk heart tangled in briar, with one stubborn bloom left open."
+    "description": "A heart drawn as a crown of thorns, briars pointing out on every side."
   },
   {
     "id": "weather-eye",
@@ -81,7 +81,7 @@
     "price": "£230",
     "availability": "Available",
     "artwork": "garden-ghost.svg",
-    "description": "A sheet ghost quietly growing mushrooms where its feet should be."
+    "description": "A sheet ghost with a little garden sprout, hovering just above the ground."
   },
   {
     "id": "little-familiar",
@@ -93,6 +93,6 @@
     "price": "£220",
     "availability": "Available",
     "artwork": "little-familiar.svg",
-    "description": "A horned cat curled around a candle, guarding the last warm spark."
+    "description": "A horned cat’s face, whiskers out, with a small spark between the ears."
   }
 ]

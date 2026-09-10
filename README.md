@@ -14,16 +14,17 @@ hostinger-templates/
 ## Repository catalog
 
 `templates.json` is the source of truth for projects in this collection. Its
-`templates` array starts empty. Add one entry when a project is created.
+`templates` array lists every finished project. Add one entry when a project
+is created.
 
 Each entry can contain these fields:
 
 - `id` and `name`
 - `summary` and `description`
-- `bucket`, `category`, and `whoItsFor`
+- `bucket`, `categories`, and `whoItsFor`
 - `demoUrl`
 - `classification`: categories, use cases, and frameworks
-- `features`: 6–12 verified feature IDs, names, and descriptions
+- `features`: at most 4 verified feature IDs, names, and descriptions
 - `technology`: languages, frameworks, styling, data strategy, and deployment
 - `compatibility`: runtimes and supported versions
 - `media`: thumbnail and preview metadata

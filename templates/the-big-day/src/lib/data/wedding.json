@@ -48,16 +48,16 @@
 		"intro": "Fernhill is a ten-minute taxi from Bruton station. Trains run from London Paddington via Westbury. Please book your return taxi ahead of time.",
 		"hotels": [
 			{
-				"name": "At the Chapel",
+				"name": "The Lantern Rooms",
 				"distance": "10 minutes by taxi",
-				"detail": "Light-filled rooms in central Bruton, with breakfast from the bakery downstairs.",
-				"url": "https://www.atthechapel.co.uk/"
+				"detail": "Light-filled rooms above a bookshop on Bruton's high street, with breakfast in the garden yard.",
+				"url": "https://example.com/the-lantern-rooms"
 			},
 			{
-				"name": "The Three Horseshoes",
+				"name": "The Hare & Holt",
 				"distance": "15 minutes by taxi",
 				"detail": "A relaxed country inn with six rooms and a very good Sunday breakfast.",
-				"url": "https://threehorseshoesbatcombe.co.uk/"
+				"url": "https://example.com/the-hare-and-holt"
 			}
 		]
 	},
