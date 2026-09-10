@@ -2018,8 +2018,7 @@
           "reservations"
         ],
         "frameworks": [
-          "parcel",
-          "typescript"
+          "parcel"
         ]
       },
       "features": [
@@ -2046,11 +2045,10 @@
       ],
       "technology": {
         "languages": [
-          "TypeScript (vanilla, no UI framework)"
+          "TypeScript"
         ],
         "frameworks": [
-          "Parcel",
-          "TypeScript"
+          "Parcel"
         ],
         "styling": [
           "Hand-written CSS with centralized design tokens"
@@ -3645,8 +3643,7 @@
           "ideas"
         ],
         "frameworks": [
-          "parcel",
-          "typescript"
+          "parcel"
         ]
       },
       "features": [
@@ -3673,11 +3670,10 @@
       ],
       "technology": {
         "languages": [
-          "TypeScript (vanilla, no UI framework)"
+          "TypeScript"
         ],
         "frameworks": [
-          "Parcel",
-          "TypeScript"
+          "Parcel"
         ],
         "styling": [
           "Hand-written CSS with centralized design tokens"
