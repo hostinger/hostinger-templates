@@ -30,6 +30,11 @@
 - `npm install`, `npm run lint`, and `npm run build` must succeed.
 - `npm audit --audit-level=high` must pass. Use `overrides` only for a
   parent pin you document in the project README.
+- Nuxt 4 templates must use `nuxt@>=4.5.1` and declare `engines.node` as
+  `^22.19.0 || ^24.11.0 || >=26.0.0`. Do not pin Nuxt 4 below the current
+  patched release to keep an older Node.
+- When audit or Dependabot flags a transitive pin (for example Nest →
+  multer), bump the parent package. Do not leave the CVE open.
 - Use ESLint. Do not install or configure Oxlint.
 
 ## Security and issue gate

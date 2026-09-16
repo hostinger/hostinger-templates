@@ -13,7 +13,7 @@
     "postinstall": "nuxt prepare"
   },
   "engines": {
-    "node": ">=22"
+    "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
   },
   "dependencies": {
     "nuxt": "4.5.1",

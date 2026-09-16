@@ -33,7 +33,7 @@ The self-check is honestly framed as a signpost, not a clinical assessment: a di
 
 ### Prerequisites
 
-- Node.js 22 or newer
+- Node.js 22.19–22.x, 24.11–24.x, or 26 or newer
 - npm
 
 ### Installation
