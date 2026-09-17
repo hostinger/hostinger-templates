@@ -75,7 +75,8 @@ Required baseline:
 - React, TypeScript, and Vite when the user does not specify alternatives
 - the explicitly requested language and framework when provided
 - npm with committed `package-lock.json`
-- explicit dependency ranges and a matching Node.js `engines` requirement
+- framework and shared tooling versions from `versions/catalog.json`
+- caret ranges and a matching Node.js `engines` requirement
 - an explicit reuse license
 - ESLint flat configuration
 - one intentional configuration file per tool
@@ -95,7 +96,8 @@ Required scripts:
 }
 ```
 
-Install current packages through npm. Do not invent dependency versions.
+Install current packages through npm. Read versions from
+`versions/catalog.json`. Do not invent a lower pin.
 
 ## 5. Use clean architecture
 

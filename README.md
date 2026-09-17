@@ -8,6 +8,7 @@ hostinger-templates/
 ├── templates/
 │   └── <repository-id>/
 ├── skills/
+├── versions/catalog.json
 └── templates.json
 ```
 
@@ -38,6 +39,22 @@ catalog `id`.
 Follow `skills/create-repository/SKILL.md`. It defines the creation workflow;
 `skills/create-repository/RULES.md` defines constraints every project must
 follow.
+
+## Bumping dependencies
+
+Templates stay standalone (own `package.json` and lockfile). Shared pins live
+in `versions/catalog.json`. To move a package across every template on the
+same major:
+
+```bash
+npm run bump -- nuxt 4.5.1
+```
+
+Different majors are skipped unless you pass `--major`. Use `--dry-run` to
+preview. Update `templates.json` compatibility and README prerequisites by
+hand when `engines` change. Dependabot still opens grouped security PRs;
+this command is for catalog-led bumps Dependabot will not fan out (same
+advisory, other directories).
 
 ## Translations
 
