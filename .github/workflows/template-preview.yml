@@ -1,0 +1,278 @@
+name: Template preview
+
+on:
+  pull_request:
+    paths:
+      - "templates/**"
+      - ".github/workflows/template-preview.yml"
+      - ".github/scripts/**"
+
+concurrency:
+  group: template-preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      templates: ${{ steps.list.outputs.templates }}
+      empty: ${{ steps.list.outputs.empty }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: list
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          templates="$(node .github/scripts/changed-templates.mjs "$BASE_SHA" "$HEAD_SHA")"
+          echo "templates=$templates" >> "$GITHUB_OUTPUT"
+          if [ "$templates" = "[]" ]; then
+            echo "empty=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "empty=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Affected templates: $templates"
+
+  preview:
+    needs: detect
+    if: needs.detect.outputs.empty == 'false'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        template: ${{ fromJson(needs.detect.outputs.templates) }}
+    defaults:
+      run:
+        working-directory: templates/${{ matrix.template }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            templates/${{ matrix.template }}/package-lock.json
+            .github/scripts/package-lock.json
+      - name: Install template
+        id: install
+        run: npm ci
+      - name: Install preview scripts
+        working-directory: .github/scripts
+        run: npm ci
+      - name: Install Chromium
+        working-directory: .github/scripts
+        run: npx --yes playwright@latest install --with-deps chromium
+      - name: Lint
+        id: lint
+        run: npm run lint
+      - name: Build
+        id: build
+        run: npm run build
+      - name: Audit
+        id: audit
+        run: npm audit --audit-level=high
+      - name: Health-check and screenshot compare
+        id: health
+        env:
+          PORT: 4173
+          TEMPLATE_ID: ${{ matrix.template }}
+          PREVIEW_OUT: ${{ github.workspace }}/.preview-visual/${{ matrix.template }}
+        run: node ../../.github/scripts/healthcheck.mjs "$PWD"
+      - name: Write job result
+        if: always()
+        working-directory: .
+        env:
+          TEMPLATE: ${{ matrix.template }}
+          INSTALL: ${{ steps.install.outcome }}
+          LINT: ${{ steps.lint.outcome }}
+          BUILD: ${{ steps.build.outcome }}
+          AUDIT: ${{ steps.audit.outcome }}
+          HEALTH: ${{ steps.health.outcome }}
+          VISUAL_JSON: ${{ github.workspace }}/.preview-visual/${{ matrix.template }}/result.json
+        run: |
+          mkdir -p .preview-results
+          node -e '
+            const fs = require("fs");
+            const id = process.env.TEMPLATE;
+            let visual = null;
+            try {
+              visual = JSON.parse(fs.readFileSync(process.env.VISUAL_JSON, "utf8")).visual;
+            } catch {}
+            fs.writeFileSync(`.preview-results/${id}.json`, JSON.stringify({
+              id,
+              install: process.env.INSTALL,
+              lint: process.env.LINT,
+              build: process.env.BUILD,
+              audit: process.env.AUDIT,
+              health: process.env.HEALTH,
+              visual,
+            }));
+          '
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: results-${{ matrix.template }}
+          path: .preview-results/${{ matrix.template }}.json
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-${{ matrix.template }}
+          path: .preview-visual/${{ matrix.template }}
+          if-no-files-found: warn
+          retention-days: 14
+
+  comment:
+    needs: [detect, preview]
+    if: always() && github.event.pull_request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        if: needs.detect.outputs.empty == 'false'
+        with:
+          pattern: results-*
+          merge-multiple: true
+          path: results
+      - uses: actions/download-artifact@v4
+        if: needs.detect.outputs.empty == 'false'
+        continue-on-error: true
+        with:
+          pattern: visual-*
+          path: visual
+      - name: Publish screenshot diffs
+        id: publish
+        if: needs.detect.outputs.empty == 'false'
+        continue-on-error: true
+        env:
+          BRANCH: preview/pr-${{ github.event.pull_request.number }}
+        run: |
+          if [ ! -d visual ]; then
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git checkout --orphan "$BRANCH"
+          git rm -rf --ignore-unmatch .
+          mkdir -p shots
+          for dir in visual/visual-*; do
+            [ -d "$dir" ] || continue
+            id="${dir##*/visual-}"
+            mkdir -p "shots/$id"
+            cp -R "$dir"/. "shots/$id/"
+          done
+          git add shots
+          git -c user.name="github-actions[bot]" -c user.email="github-actions[bot]@users.noreply.github.com" \
+            commit -m "preview shots for PR ${{ github.event.pull_request.number }}" || true
+          git push --force origin "HEAD:refs/heads/$BRANCH"
+          echo "published=true" >> "$GITHUB_OUTPUT"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+      - uses: actions/github-script@v7
+        env:
+          EMPTY: ${{ needs.detect.outputs.empty }}
+          DETECTED: ${{ needs.detect.outputs.templates }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PUBLISHED: ${{ steps.publish.outputs.published }}
+          PREVIEW_BRANCH: preview/pr-${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.sha }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const marker = '<!-- template-preview -->';
+            const runUrl = process.env.RUN_URL;
+            const empty = process.env.EMPTY === 'true';
+            const published = process.env.PUBLISHED === 'true';
+            const branch = process.env.PREVIEW_BRANCH;
+            const repo = context.repo.repo;
+            const owner = context.repo.owner;
+            const bust = context.runId;
+            const detected = JSON.parse(process.env.DETECTED || '[]');
+            const mark = (value) => value === 'success' ? '✅' : value === 'skipped' ? '➖' : '❌';
+            const pct = (ratio) => ratio == null ? '—' : `${(ratio * 100).toFixed(1)}%`;
+            const raw = (template, file) =>
+              `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/shots/${template}/${file}?v=${bust}`;
+            const rows = [];
+
+            if (!empty && fs.existsSync('results')) {
+              for (const file of fs.readdirSync('results').filter((name) => name.endsWith('.json'))) {
+                rows.push(JSON.parse(fs.readFileSync(path.join('results', file), 'utf8')));
+              }
+            }
+
+            const seen = new Set(rows.map((row) => row.id));
+            for (const id of detected) {
+              if (!seen.has(id)) {
+                rows.push({
+                  id,
+                  install: 'failure',
+                  lint: 'skipped',
+                  build: 'skipped',
+                  audit: 'skipped',
+                  health: 'skipped',
+                  visual: null,
+                });
+              }
+            }
+
+            rows.sort((a, b) => a.id.localeCompare(b.id));
+
+            let body = `${marker}\n## Template preview\n\n`;
+            if (empty || rows.length === 0) {
+              body += 'No `templates/*` package changed in this PR.\n';
+            } else {
+              body += 'Built each changed template, opened `npm run preview`, requested `/`, then compared Playwright screenshots to the committed catalog images (`preview/<id>-thumbnail.png` at 1440×900 and `preview/<id>-homepage.png` full page).\n\n';
+              body += '| Template | Install | Lint | Build | Audit | Health | Thumbnail diff | Homepage diff |\n';
+              body += '| --- | --- | --- | --- | --- | --- | --- | --- |\n';
+              for (const row of rows) {
+                const thumb = row.visual?.thumbnail;
+                const home = row.visual?.homepage;
+                body += `| \`${row.id}\` | ${mark(row.install)} | ${mark(row.lint)} | ${mark(row.build)} | ${mark(row.audit)} | ${mark(row.health)} | ${pct(thumb?.mismatchRatio)} ${thumb?.ok === false ? '❌' : thumb?.ok ? '✅' : ''} | ${pct(home?.mismatchRatio)} ${home?.ok === false ? '❌' : home?.ok ? '✅' : ''} |\n`;
+              }
+
+              if (published) {
+                body += '\n';
+                for (const row of rows) {
+                  if (!row.visual) continue;
+                  body += `### \`${row.id}\`\n\n`;
+                  body += `| Expected thumbnail | Actual | Diff |\n| --- | --- | --- |\n`;
+                  body += `| ![expected](${raw(row.id, 'expected-thumbnail.png')}) | ![actual](${raw(row.id, 'actual-thumbnail.png')}) | ![diff](${raw(row.id, 'diff-thumbnail.png')}) |\n\n`;
+                }
+              }
+
+              body += `[Download screenshots and diffs](${runUrl}) from this run’s \`visual-<template>\` artifacts.\n`;
+              body += '\nThis check fails if install, lint, build, high-severity audit, `/` health, or screenshot diff over the limit fails. Limits default to 25% (thumbnail) and 30% (homepage) to absorb Mac-vs-Linux font rasterization.\n';
+            }
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner,
+              repo,
+              issue_number: context.issue.number,
+              per_page: 100,
+            });
+            const existing = comments.find((comment) => comment.body.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
