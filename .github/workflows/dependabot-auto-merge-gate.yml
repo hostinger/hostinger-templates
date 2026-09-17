@@ -1,0 +1,16 @@
+name: Dependabot auto-merge gate
+
+# No secrets. Dependabot `pull_request` jobs cannot see organization Actions
+# secrets. This job only signals that a Dependabot PR exists so the real
+# auto-merge workflow can run via `workflow_run` (Actions secret context).
+on: pull_request
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Dependabot PR; auto-merge continues via workflow_run."
