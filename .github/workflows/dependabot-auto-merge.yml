@@ -1,0 +1,78 @@
+name: Dependabot auto-merge
+
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get GitHub token
+        uses: actions/create-github-app-token@v3
+        id: get_token
+        with:
+          app-id: ${{ secrets.HOSTINGERBOT_APP_ID }}
+          private-key: ${{ secrets.HOSTINGERBOT_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name }}
+
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ steps.get_token.outputs.token }}
+
+      # This repo only opens Dependabot security PRs (open-pull-requests-limit: 0).
+      # Merge those after every other check is green. Do not watch this job itself
+      # or `gh pr checks --watch` waits forever.
+      - name: Wait for other checks
+        if: steps.metadata.outputs.alert-number != ''
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+          THIS_WORKFLOW: Dependabot auto-merge
+        run: |
+          set -euo pipefail
+          deadline=$((SECONDS + 3600))
+          while (( SECONDS < deadline )); do
+            json=$(gh pr checks "$PR_URL" --json name,state,bucket,workflow)
+            echo "$json" | jq -c '.[] | {name,state,bucket,workflow}'
+            failed=$(echo "$json" | jq --arg w "$THIS_WORKFLOW" '
+              [.[] | select(.workflow != $w)
+                | select(.bucket == "fail" or .state == "FAILURE" or .state == "CANCELLED" or .state == "TIMED_OUT")]
+              | length')
+            pending=$(echo "$json" | jq --arg w "$THIS_WORKFLOW" '
+              [.[] | select(.workflow != $w)
+                | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .bucket == "pending")]
+              | length')
+            if [[ "$failed" != "0" ]]; then
+              echo "A required check failed; not merging."
+              exit 1
+            fi
+            if [[ "$pending" == "0" ]]; then
+              echo "All other checks passed."
+              exit 0
+            fi
+            echo "Waiting on $pending check(s)..."
+            sleep 60
+          done
+          echo "Timed out waiting for checks."
+          exit 1
+
+      - name: Approve PR
+        if: steps.metadata.outputs.alert-number != ''
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: gh pr review --approve "$PR_URL"
+
+      - name: Merge PR
+        if: steps.metadata.outputs.alert-number != ''
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: gh pr merge --auto --squash "$PR_URL"
