@@ -1,14 +1,21 @@
 name: Dependabot auto-merge
 
-on: pull_request
+# Runs on the default branch after the gate workflow, so GitHub injects
+# organization Actions secrets (HOSTINGERBOT_APP_ID / HOSTINGERBOT_PRIVATE_KEY).
+# A Dependabot `pull_request` job cannot see those — only Dependabot secrets.
+on:
+  workflow_run:
+    workflows: [Dependabot auto-merge gate]
+    types: [completed]
 
 permissions:
-  contents: write
-  pull-requests: write
+  actions: read
+  contents: read
+  pull-requests: read
 
 jobs:
   auto-merge:
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.actor.login == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Get GitHub token
@@ -20,33 +27,55 @@ jobs:
           owner: ${{ github.repository_owner }}
           repositories: ${{ github.event.repository.name }}
 
+      - name: Resolve pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+          REPO: ${{ github.repository }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          set -euo pipefail
+          json=$(gh pr list --repo "$REPO" --head "$HEAD_BRANCH" --state open --json number,url,author)
+          pr=$(echo "$json" | jq -c '[.[] | select(.author.login == "dependabot[bot]")] | .[0]')
+          if [[ -z "$pr" || "$pr" == "null" ]]; then
+            echo "No open Dependabot PR for $HEAD_BRANCH"
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "found=true" >> "$GITHUB_OUTPUT"
+          echo "number=$(echo "$pr" | jq -r '.number')" >> "$GITHUB_OUTPUT"
+          echo "url=$(echo "$pr" | jq -r '.url')" >> "$GITHUB_OUTPUT"
+
       - name: Fetch Dependabot metadata
+        if: steps.pr.outputs.found == 'true'
         id: metadata
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: ${{ steps.get_token.outputs.token }}
+          pr-number: ${{ steps.pr.outputs.number }}
 
       # This repo only opens Dependabot security PRs (open-pull-requests-limit: 0).
       # Merge those after every other check is green. Do not watch this job itself
       # or `gh pr checks --watch` waits forever.
       - name: Wait for other checks
-        if: steps.metadata.outputs.alert-number != ''
+        if: steps.pr.outputs.found == 'true' && steps.metadata.outputs.alert-number != ''
         env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_URL: ${{ steps.pr.outputs.url }}
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
           THIS_WORKFLOW: Dependabot auto-merge
+          GATE_WORKFLOW: Dependabot auto-merge gate
         run: |
           set -euo pipefail
           deadline=$((SECONDS + 3600))
           while (( SECONDS < deadline )); do
             json=$(gh pr checks "$PR_URL" --json name,state,bucket,workflow)
             echo "$json" | jq -c '.[] | {name,state,bucket,workflow}'
-            failed=$(echo "$json" | jq --arg w "$THIS_WORKFLOW" '
-              [.[] | select(.workflow != $w)
+            failed=$(echo "$json" | jq --arg w "$THIS_WORKFLOW" --arg g "$GATE_WORKFLOW" '
+              [.[] | select(.workflow != $w and .workflow != $g)
                 | select(.bucket == "fail" or .state == "FAILURE" or .state == "CANCELLED" or .state == "TIMED_OUT")]
               | length')
-            pending=$(echo "$json" | jq --arg w "$THIS_WORKFLOW" '
-              [.[] | select(.workflow != $w)
+            pending=$(echo "$json" | jq --arg w "$THIS_WORKFLOW" --arg g "$GATE_WORKFLOW" '
+              [.[] | select(.workflow != $w and .workflow != $g)
                 | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .bucket == "pending")]
               | length')
             if [[ "$failed" != "0" ]]; then
@@ -64,15 +93,15 @@ jobs:
           exit 1
 
       - name: Approve PR
-        if: steps.metadata.outputs.alert-number != ''
+        if: steps.pr.outputs.found == 'true' && steps.metadata.outputs.alert-number != ''
         env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_URL: ${{ steps.pr.outputs.url }}
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
         run: gh pr review --approve "$PR_URL"
 
       - name: Merge PR
-        if: steps.metadata.outputs.alert-number != ''
+        if: steps.pr.outputs.found == 'true' && steps.metadata.outputs.alert-number != ''
         env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_URL: ${{ steps.pr.outputs.url }}
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
         run: gh pr merge --auto --squash "$PR_URL"
