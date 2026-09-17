@@ -38,7 +38,8 @@ jobs:
         run: |
           set -euo pipefail
           json=$(gh pr list --repo "$REPO" --head "$HEAD_BRANCH" --state open --json number,url,author)
-          pr=$(echo "$json" | jq -c '[.[] | select(.author.login == "dependabot[bot]")] | .[0]')
+          # gh reports Dependabot as app/dependabot; the pull_request event uses dependabot[bot].
+          pr=$(echo "$json" | jq -c '[.[] | select(.author.login == "dependabot[bot]" or .author.login == "app/dependabot")] | .[0]')
           if [[ -z "$pr" || "$pr" == "null" ]]; then
             echo "No open Dependabot PR for $HEAD_BRANCH"
             echo "found=false" >> "$GITHUB_OUTPUT"
