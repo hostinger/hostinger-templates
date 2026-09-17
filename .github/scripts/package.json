@@ -1,0 +1,9 @@
+{
+  "name": "template-preview-scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "pixelmatch": "^5.3.0",
+    "pngjs": "^7.0.0"
+  }
+}
