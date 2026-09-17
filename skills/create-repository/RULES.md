@@ -24,12 +24,18 @@
   authoritative.
 - Do not use Gatsby. Prefer Vite, Astro, Next.js, Nuxt, or SvelteKit.
 - Use npm and commit `package-lock.json`.
-- Use explicit dependency ranges and declare the supported Node.js version in
-  `engines`.
+- Pin framework and shared tooling versions from `versions/catalog.json`.
+  Do not invent a lower pin. Use caret ranges (`^x.y.z`), not exact
+  framework versions.
+- Declare the supported Node.js version in `engines`. Use the package's
+  `engines` field from the catalog when it has one (Nuxt 4), otherwise
+  the catalog `node.engines` default.
 - Include an explicit license for template reuse.
 - `npm install`, `npm run lint`, and `npm run build` must succeed.
 - `npm audit --audit-level=high` must pass. Use `overrides` only for a
   parent pin you document in the project README.
+- When audit or Dependabot flags a transitive pin (for example Nest →
+  multer), bump the parent package. Do not leave the CVE open.
 - Use ESLint. Do not install or configure Oxlint.
 
 ## Security and issue gate

@@ -1,0 +1,8 @@
+{
+  "name": "hostinger-templates",
+  "private": true,
+  "description": "Collection tooling. Templates under templates/ stay standalone.",
+  "scripts": {
+    "bump": "node scripts/bump.mjs"
+  }
+}
