@@ -15,7 +15,9 @@ permissions:
 
 jobs:
   auto-merge:
-    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.actor.login == 'dependabot[bot]'
+    # Gate on the PR author, not who last pushed. A human rebase of a
+    # Dependabot PR must still auto-merge.
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Get GitHub token
