@@ -49,19 +49,13 @@ jobs:
           echo "number=$(echo "$pr" | jq -r '.number')" >> "$GITHUB_OUTPUT"
           echo "url=$(echo "$pr" | jq -r '.url')" >> "$GITHUB_OUTPUT"
 
-      - name: Fetch Dependabot metadata
-        if: steps.pr.outputs.found == 'true'
-        id: metadata
-        uses: dependabot/fetch-metadata@v2
-        with:
-          github-token: ${{ steps.get_token.outputs.token }}
-          pr-number: ${{ steps.pr.outputs.number }}
-
-      # This repo only opens Dependabot security PRs (open-pull-requests-limit: 0).
-      # Merge those after every other check is green. Do not watch this job itself
-      # or `gh pr checks --watch` waits forever.
+      # Do not use dependabot/fetch-metadata here. It requires a pull_request
+      # event payload; workflow_run does not have one. This repo only opens
+      # Dependabot security PRs (open-pull-requests-limit: 0), so author is
+      # enough. Merge after every other check is green. Do not watch this job
+      # itself or `gh pr checks --watch` waits forever.
       - name: Wait for other checks
-        if: steps.pr.outputs.found == 'true' && steps.metadata.outputs.alert-number != ''
+        if: steps.pr.outputs.found == 'true'
         env:
           PR_URL: ${{ steps.pr.outputs.url }}
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
@@ -96,14 +90,14 @@ jobs:
           exit 1
 
       - name: Approve PR
-        if: steps.pr.outputs.found == 'true' && steps.metadata.outputs.alert-number != ''
+        if: steps.pr.outputs.found == 'true'
         env:
           PR_URL: ${{ steps.pr.outputs.url }}
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
         run: gh pr review --approve "$PR_URL"
 
       - name: Merge PR
-        if: steps.pr.outputs.found == 'true' && steps.metadata.outputs.alert-number != ''
+        if: steps.pr.outputs.found == 'true'
         env:
           PR_URL: ${{ steps.pr.outputs.url }}
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
