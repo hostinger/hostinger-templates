@@ -123,12 +123,14 @@ commit until the template's own code is free of issues and vulnerabilities.
 - Capture images only after final code and styles are ready.
 - Use the same `1440 × 900` landscape viewport for every template.
 - Save `<id>-thumbnail.png` from that viewport.
-- Save `<id>-homepage.png` using `fullPage: true` to include the whole page.
+- Save `<id>-thumbnail-480.webp` and `<id>-thumbnail-960.webp` resized from the
+  thumbnail.
+- Keep only those three landscape images in `preview/`. Do not add full-page,
+  portrait, mobile, or extra route screenshots.
 - Set thumbnail `source` to `"viewport"` and dimensions to `1440 × 900`.
-- Set preview `source` to `"fullPage"`, width to `1440`, and height to the
-  actual saved image height.
-- Add a GitHub `blob/main/...?...raw=true` URL for each catalog image.
-- Push the image before verification, then confirm each URL returns an image
+- Register only `media.thumbnail`; do not add `media.preview`.
+- Add a GitHub `blob/main/...?...raw=true` URL for the thumbnail.
+- Push the image before verification, then confirm the URL returns an image
   response rather than a GitHub error page.
 - Inspect saved images before catalog registration.
 

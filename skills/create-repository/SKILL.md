@@ -227,7 +227,13 @@ overflow, clipping, missing-image, and interaction failures before continuing.
 
 Create `templates/<template-id>/preview/` only after final verification.
 
-Use the same `1440 × 900` landscape viewport for every template:
+The `preview/` directory holds exactly three landscape images and nothing else:
+
+- `<template-id>-thumbnail.png` — `1440 × 900` viewport capture
+- `<template-id>-thumbnail-480.webp` — `480 × 300` resize of the thumbnail
+- `<template-id>-thumbnail-960.webp` — `960 × 600` resize of the thumbnail
+
+Do not add full-page, portrait, mobile, or extra route screenshots.
 
 1. Start the verified local dev or preview server.
 2. From `templates/<template-id>/`, capture the viewport thumbnail:
@@ -240,33 +246,30 @@ Use the same `1440 × 900` landscape viewport for every template:
      "preview/<template-id>-thumbnail.png"
    ```
 
-3. Capture the whole homepage:
-
-   ```bash
-   npx --yes playwright@latest screenshot \
-     --browser chromium \
-     --viewport-size "1440,900" \
-     --full-page \
-     "http://127.0.0.1:<port>/" \
-     "preview/<template-id>-homepage.png"
-   ```
-
-4. If Chromium is missing, run
+3. If Chromium is missing, run
    `npx --yes playwright@latest install chromium`, then retry.
-5. Confirm the thumbnail is exactly `1440 × 900` and record the full-page
-   image's actual dimensions. On macOS:
+4. Generate the WebP variants from the thumbnail:
 
    ```bash
-   sips -g pixelWidth -g pixelHeight \
+   cwebp -q 82 -m 6 -af -resize 480 0 \
      "preview/<template-id>-thumbnail.png" \
-     "preview/<template-id>-homepage.png"
+     -o "preview/<template-id>-thumbnail-480.webp"
+   cwebp -q 82 -m 6 -af -resize 960 0 \
+     "preview/<template-id>-thumbnail.png" \
+     -o "preview/<template-id>-thumbnail-960.webp"
    ```
 
-6. For multi-page apps, use the strongest representative route for the catalog
-   images. Extra route screenshots are allowed but not required.
-7. Inspect both saved files visually for stale UI, missing fonts, clipping,
-   broken images, excess blank
-   space, and failed images.
+5. Confirm the thumbnail is exactly `1440 × 900` and the variants are
+   `480 × 300` and `960 × 600`. On macOS:
+
+   ```bash
+   sips -g pixelWidth -g pixelHeight "preview/<template-id>-thumbnail"*
+   ```
+
+6. For multi-page apps, capture the homepage (`/`); CI compares the committed
+   thumbnail against a fresh capture of `/`.
+7. Inspect the saved thumbnail visually for stale UI, missing fonts, clipping,
+   broken images, excess blank space, and failed images.
 
 ## 11. Register rich catalog metadata
 
@@ -286,11 +289,9 @@ Write specific, useful metadata:
   model under `technology`; keep `technology.frameworks` entries bare framework
   names only (for example `Astro`, `React`) — no versions, qualifiers, or prose
 - include accurate categories, use cases, frameworks, runtime, and search terms
-- record both image paths and actual dimensions
-- generate `<name>-thumbnail-480.webp` and `<name>-thumbnail-960.webp` next to
-  the thumbnail PNG (`cwebp -q 82 -m 6 -af -resize <width> 0`) and register
-  them under `media.thumbnail.variants`
-- add GitHub raw-view URLs for both images and verify each URL returns an image
+- register only `media.thumbnail` (path, URL, `1440 × 900`) with the 480 and
+  960 WebP files under `media.thumbnail.variants`; do not add `media.preview`
+- add the GitHub raw-view URL for the thumbnail and verify it returns an image
   after the commit is pushed
 - keep strict JSON with no comments or trailing commas
 
@@ -322,7 +323,8 @@ Finish only after:
 - `npm audit --audit-level=high` passes
 - source review found no issues or vulnerabilities
 - desktop and mobile checks pass
-- screenshots exist and were inspected
+- the thumbnail and its two WebP variants exist, are the only files in
+  `preview/`, and were inspected
 - README follows the fixed structure
 - `templates.json` is valid and rich
 - project tree contains only intentional files

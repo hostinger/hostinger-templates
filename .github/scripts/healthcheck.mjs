@@ -104,7 +104,7 @@ try {
 }
 
 function visualFailure(visual) {
-  const parts = [visual.thumbnail, visual.homepage]
+  const parts = [visual.thumbnail]
     .filter((item) => item && !item.ok)
     .map((item) => {
       if (item.error) {

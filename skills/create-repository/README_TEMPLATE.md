@@ -96,4 +96,5 @@ Production files are written to `{{BUILD_OUTPUT_DIRECTORY}}`.
 ## Screenshots
 
 - Thumbnail: `preview/{{PROJECT_ID}}-thumbnail.png`
-- Full page: `preview/{{PROJECT_ID}}-homepage.png`
+- WebP variants: `preview/{{PROJECT_ID}}-thumbnail-480.webp`,
+  `preview/{{PROJECT_ID}}-thumbnail-960.webp`

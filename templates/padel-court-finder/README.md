@@ -171,4 +171,5 @@ projects.
 ## Screenshots
 
 - Thumbnail: `preview/padel-court-finder-thumbnail.png`
-- Full page: `preview/padel-court-finder-homepage.png`
+- WebP variants: `preview/padel-court-finder-thumbnail-480.webp`,
+  `preview/padel-court-finder-thumbnail-960.webp`
