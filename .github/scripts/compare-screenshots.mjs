@@ -7,7 +7,6 @@ import { PNG } from 'pngjs';
 
 const scriptsDir = dirname(fileURLToPath(import.meta.url));
 const THUMBNAIL_FAIL_RATIO = Number(process.env.VISUAL_FAIL_RATIO ?? '0.25');
-const HOMEPAGE_FAIL_RATIO = Number(process.env.VISUAL_HOMEPAGE_FAIL_RATIO ?? '0.3');
 const PIXEL_THRESHOLD = Number(process.env.VISUAL_PIXEL_THRESHOLD ?? '0.15');
 
 export function comparePreviewScreenshots({
@@ -19,12 +18,9 @@ export function comparePreviewScreenshots({
   mkdirSync(outDir, { recursive: true });
 
   const expectedThumbnail = join(templateDir, 'preview', `${templateId}-thumbnail.png`);
-  const expectedHomepage = join(templateDir, 'preview', `${templateId}-homepage.png`);
   const actualThumbnail = join(outDir, 'actual-thumbnail.png');
-  const actualHomepage = join(outDir, 'actual-homepage.png');
 
-  capture(port, actualThumbnail, false);
-  capture(port, actualHomepage, true);
+  capture(port, actualThumbnail);
 
   const thumbnail = comparePair({
     name: 'thumbnail',
@@ -33,25 +29,17 @@ export function comparePreviewScreenshots({
     diffPath: join(outDir, 'diff-thumbnail.png'),
     failRatio: THUMBNAIL_FAIL_RATIO,
   });
-  const homepage = comparePair({
-    name: 'homepage',
-    expectedPath: expectedHomepage,
-    actualPath: actualHomepage,
-    diffPath: join(outDir, 'diff-homepage.png'),
-    failRatio: HOMEPAGE_FAIL_RATIO,
-  });
 
   const result = {
-    ok: thumbnail.ok && homepage.ok,
+    ok: thumbnail.ok,
     thumbnail,
-    homepage,
   };
 
   writeFileSync(join(outDir, 'visual.json'), JSON.stringify(result, null, 2));
   return result;
 }
 
-function capture(port, dest, fullPage) {
+function capture(port, dest) {
   const args = [
     '--yes',
     'playwright@latest',
@@ -60,13 +48,9 @@ function capture(port, dest, fullPage) {
     'chromium',
     '--viewport-size',
     '1440,900',
+    `http://127.0.0.1:${port}/`,
+    dest,
   ];
-
-  if (fullPage) {
-    args.push('--full-page');
-  }
-
-  args.push(`http://127.0.0.1:${port}/`, dest);
 
   execFileSync('npx', args, {
     stdio: 'pipe',

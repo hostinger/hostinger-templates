@@ -1,0 +1,10 @@
+[
+  { "id": "sant-pere", "name": "Sant Pere Hills", "x": 22, "y": 17 },
+  { "id": "marina-norte", "name": "Marina Norte", "x": 76, "y": 12 },
+  { "id": "alameda", "name": "Alameda", "x": 48, "y": 27 },
+  { "id": "old-harbour", "name": "Old Harbour", "x": 74, "y": 37 },
+  { "id": "riverside", "name": "Riverside", "x": 34, "y": 45 },
+  { "id": "can-roca", "name": "Can Roca", "x": 12, "y": 55 },
+  { "id": "university", "name": "University Quarter", "x": 55, "y": 57 },
+  { "id": "playa-llarga", "name": "Playa Llarga", "x": 84, "y": 60 }
+]

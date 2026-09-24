@@ -5877,6 +5877,116 @@
         "outputDirectory": "out",
         "entryFile": ""
       }
+    },
+    {
+      "id": "padel-court-finder",
+      "name": "Padel Court Finder",
+      "summary": "A city padel directory with court filters, a live-synced map, club pages, and direct booking contacts.",
+      "description": "Padel Court Finder is a multi-page directory for a local padel guide or club group that helps players compare every court in one city. Visitors filter clubs by setting, price, facilities, and opening hours, then open a club page to call or email the venue to book.",
+      "bucket": "Non-technical",
+      "categories": [
+        "Business",
+        "Fitness"
+      ],
+      "whoItsFor": "A local padel directory or club group",
+      "demoUrl": null,
+      "classification": {
+        "categories": [
+          "sports-and-recreation",
+          "local-directory",
+          "padel-clubs"
+        ],
+        "useCases": [
+          "discovery",
+          "filtering",
+          "comparison",
+          "booking"
+        ],
+        "frameworks": [
+          "react",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "court-finder-filters",
+          "name": "Court finder filters",
+          "description": "Search plus indoor, covered, and outdoor, price, facility, and open-now filters with distance sorting and shareable URL state."
+        },
+        {
+          "id": "synced-city-map",
+          "name": "Synced city map",
+          "description": "Schematic SVG city map whose numbered pins stay in sync with the filtered club list."
+        },
+        {
+          "id": "club-detail-routes",
+          "name": "Club detail routes",
+          "description": "Nine direct-load club routes at /clubs/:id with hours, per-player pricing, courts, facilities, and call or email booking links."
+        },
+        {
+          "id": "guide-and-listing-form",
+          "name": "Guide and listing form",
+          "description": "A Padel 101 beginner guide and a validated list-your-club form that hands off to a pre-filled email."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "React",
+          "Vite"
+        ],
+        "styling": [
+          "Responsive plain CSS"
+        ],
+        "data": [
+          "Committed JSON data and configuration",
+          "Typed TypeScript content and configuration"
+        ],
+        "deployment": [
+          "Static production output in dist"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/padel-court-finder/preview/padel-court-finder-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/padel-court-finder/preview/padel-court-finder-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/padel-court-finder/preview/padel-court-finder-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/padel-court-finder/preview/padel-court-finder-thumbnail-960.webp"
+            }
+          ]
+        }
+      },
+      "searchTerms": [
+        "padel club directory",
+        "find padel courts",
+        "court booking finder",
+        "sports venue directory",
+        "tennis and padel clubs",
+        "local sports guide",
+        "react static site"
+      ]
     }
   ]
 }

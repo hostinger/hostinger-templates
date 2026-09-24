@@ -230,13 +230,12 @@ jobs:
             if (empty || rows.length === 0) {
               body += 'No `templates/*` package changed in this PR.\n';
             } else {
-              body += 'Built each changed template, opened `npm run preview`, requested `/`, then compared Playwright screenshots to the committed catalog images (`preview/<id>-thumbnail.png` at 1440×900 and `preview/<id>-homepage.png` full page).\n\n';
-              body += '| Template | Install | Lint | Build | Audit | Health | Thumbnail diff | Homepage diff |\n';
-              body += '| --- | --- | --- | --- | --- | --- | --- | --- |\n';
+              body += 'Built each changed template, opened `npm run preview`, requested `/`, then compared a 1440×900 Playwright screenshot to the committed catalog thumbnail (`preview/<id>-thumbnail.png`).\n\n';
+              body += '| Template | Install | Lint | Build | Audit | Health | Thumbnail diff |\n';
+              body += '| --- | --- | --- | --- | --- | --- | --- |\n';
               for (const row of rows) {
                 const thumb = row.visual?.thumbnail;
-                const home = row.visual?.homepage;
-                body += `| \`${row.id}\` | ${mark(row.install)} | ${mark(row.lint)} | ${mark(row.build)} | ${mark(row.audit)} | ${mark(row.health)} | ${pct(thumb?.mismatchRatio)} ${thumb?.ok === false ? '❌' : thumb?.ok ? '✅' : ''} | ${pct(home?.mismatchRatio)} ${home?.ok === false ? '❌' : home?.ok ? '✅' : ''} |\n`;
+                body += `| \`${row.id}\` | ${mark(row.install)} | ${mark(row.lint)} | ${mark(row.build)} | ${mark(row.audit)} | ${mark(row.health)} | ${pct(thumb?.mismatchRatio)} ${thumb?.ok === false ? '❌' : thumb?.ok ? '✅' : ''} |\n`;
               }
 
               if (published) {
@@ -250,7 +249,7 @@ jobs:
               }
 
               body += `[Download screenshots and diffs](${runUrl}) from this run’s \`visual-<template>\` artifacts.\n`;
-              body += '\nThis check fails if install, lint, build, high-severity audit, `/` health, or screenshot diff over the limit fails. Limits default to 25% (thumbnail) and 30% (homepage) to absorb Mac-vs-Linux font rasterization.\n';
+              body += '\nThis check fails if install, lint, build, high-severity audit, `/` health, or screenshot diff over the limit fails. The thumbnail limit defaults to 25% to absorb Mac-vs-Linux font rasterization.\n';
             }
 
             const { data: comments } = await github.rest.issues.listComments({

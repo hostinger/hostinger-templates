@@ -1,0 +1,101 @@
+{
+  "brand": "Bandeja",
+  "city": "Portmar",
+  "locale": "en-GB",
+  "currency": "EUR",
+  "contact": {
+    "email": "hello@bandeja.example",
+    "phone": "+34 900 555 100"
+  },
+  "nav": [
+    { "label": "Find a court", "to": "/" },
+    { "label": "Padel 101", "to": "/guide" },
+    { "label": "List your club", "to": "/list-your-club" }
+  ],
+  "hero": {
+    "eyebrow": "Portmar padel directory",
+    "headline": "Find a padel court, then get on it.",
+    "intro": "Every club in Portmar in one place. Compare indoor and outdoor courts, prices per player, opening hours, and coaching, then contact the club directly to book.",
+    "searchLabel": "Club or area",
+    "searchPlaceholder": "Club, area or street",
+    "nearLabel": "Starting from",
+    "submitLabel": "Show courts"
+  },
+  "finder": {
+    "title": "Courts in Portmar",
+    "intro": "Filter by what matters for tonight's game. Filters are saved in the page address, so you can share your shortlist.",
+    "filtersTitle": "Filters",
+    "emptyTitle": "No clubs match those filters",
+    "emptyBody": "Try a higher price limit, a different setting, or fewer facilities.",
+    "distanceNote": "Distances are straight-line estimates from the centre of your starting area.",
+    "hoursNote": "“Open now” uses each club's listed hours and your device clock."
+  },
+  "pricing": {
+    "sessionLength": "90 min",
+    "playersPerCourt": 4,
+    "peakDefinition": "Peak is weekdays from 18:00 and all weekend."
+  },
+  "booking": {
+    "title": "Book a court",
+    "note": "Bandeja does not check live availability or take payments. Call or email the club to confirm your slot.",
+    "emailSubject": "Court booking enquiry",
+    "emailBody": "Hello {club},\n\nI found you on Bandeja and would like to book a court.\n\nPreferred date:\nPreferred time:\nNumber of players:\n\nThanks!"
+  },
+  "guide": {
+    "eyebrow": "Padel 101",
+    "title": "New to padel? Start here.",
+    "intro": "Padel is doubles tennis on a smaller court, surrounded by glass walls you can play off. Most people rally within ten minutes of their first game. Here's what you need to know before booking.",
+    "courtTitle": "The court",
+    "courtIntro": "A padel court is 20 × 10 metres, enclosed by glass back walls and mesh side fencing. The ball stays in play after bouncing off a wall, as long as it bounced on the ground first.",
+    "rulesTitle": "Five rules for your first game",
+    "rules": [
+      { "title": "Always doubles", "body": "Courts are built for four players. Split the court price four ways and you have the per-player cost shown on every club card." },
+      { "title": "Serve underarm", "body": "Bounce the ball behind the service line and hit it below waist height, diagonally into the opposite service box." },
+      { "title": "Ground first, then walls", "body": "The ball must bounce once on your side before it touches a wall. After that, you can let it rebound off the glass and play it." },
+      { "title": "Tennis scoring", "body": "Points go 15, 30, 40, game. Six games win a set, and most friendly matches are best of three sets or whatever fits your booking." },
+      { "title": "Mind the side fences", "body": "Balls that hit the mesh fencing bounce unpredictably. Beginners should aim through the middle of the court." }
+    ],
+    "kitTitle": "What to bring",
+    "kit": [
+      "Court or clay-court trainers with a herringbone sole",
+      "A racket. Most clubs hire them for a few euros",
+      "A tube of padel balls, which are slightly softer than tennis balls",
+      "Water and a towel, especially for outdoor summer slots"
+    ],
+    "levelsTitle": "Find your level",
+    "levels": [
+      { "name": "Starter", "rating": "0–1.5", "description": "First few games. You're learning the serve and getting used to the walls." },
+      { "name": "Improver", "rating": "2–3", "description": "You can rally, and you're starting to use the back glass on purpose." },
+      { "name": "Intermediate", "rating": "3.5–4.5", "description": "Consistent volleys, lobs, and the bandeja. You'll enjoy league nights." },
+      { "name": "Advanced", "rating": "5+", "description": "Competitive play, smashes off the wall, and tournament entries." }
+    ],
+    "faqTitle": "Common questions",
+    "faqs": [
+      { "question": "How long should I book?", "answer": "Ninety minutes is the standard slot at every club listed here. It's long enough to warm up and play two sets." },
+      { "question": "Do I need a partner to book?", "answer": "You book the whole court, so it's easiest with three friends. Many clubs run social mix-ins or can pair you with other players. Ask when you call." },
+      { "question": "Indoor, covered, or outdoor?", "answer": "Indoor halls are playable in any weather. Covered courts keep the rain off but stay open to the breeze. Outdoor courts are cheapest and best on mild evenings." },
+      { "question": "What is a bandeja?", "answer": "It's padel's signature overhead: a controlled, sliced shot that keeps you at the net. It's also where this directory gets its name." }
+    ],
+    "ctaTitle": "Ready to play?",
+    "ctaBody": "Pick a club near you and give them a call. Off-peak weekday mornings are the easiest slots to get.",
+    "ctaLabel": "Find a court"
+  },
+  "listing": {
+    "eyebrow": "For clubs",
+    "title": "List your club on Bandeja",
+    "intro": "Run padel courts in Portmar? Listings are free. Send us your details and we'll add your club once we've checked them with you.",
+    "steps": [
+      "Fill in the form with your club's basic details.",
+      "Your email app opens with everything filled in, ready to send.",
+      "We reply within two working days to confirm prices, hours, and photos."
+    ],
+    "emailSubject": "New club listing",
+    "note": "Nothing is sent from this page. Submitting opens a pre-filled email to {email}, and you choose whether to send it.",
+    "successTitle": "Your email is ready to send",
+    "successBody": "If your email app didn't open, use the button below or email us directly. We'll reply within two working days."
+  },
+  "footer": {
+    "blurb": "An independent guide to padel courts in Portmar. Clubs set their own prices and hours, so always confirm with the club before you travel.",
+    "legal": "Club details are listed for information only."
+  }
+}

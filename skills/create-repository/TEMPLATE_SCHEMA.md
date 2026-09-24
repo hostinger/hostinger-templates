@@ -78,13 +78,6 @@ finished project contributes one entry.
         { "width": 480, "path": "templates/<id>/preview/<id>-thumbnail-480.webp" },
         { "width": 960, "path": "templates/<id>/preview/<id>-thumbnail-960.webp" }
       ]
-    },
-    "preview": {
-      "path": "templates/<id>/preview/<id>-homepage.png",
-      "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/<id>/preview/<id>-homepage.png?raw=true",
-      "source": "fullPage",
-      "width": 1440,
-      "height": 2800
     }
   },
   "searchTerms": [
@@ -139,10 +132,10 @@ finished project contributes one entry.
 - `thumbnail.variants` lists the pre-resized WebP renditions (480 and 960 wide,
   generated with `cwebp -q 82 -m 6 -af -resize <width> 0`); hPanel serves them
   via `srcset`, so both files are required.
-- Media URLs use the GitHub `blob/main/...?...raw=true` form and must return the
-  image successfully after publishing.
-- Preview height records the actual full-page image height; do not copy the
-  example value blindly.
+- `media` contains only `thumbnail`; do not add `media.preview` or full-page
+  images.
+- The thumbnail URL uses the GitHub `blob/main/...?...raw=true` form and must
+  return the image successfully after publishing.
 - `searchTerms` contains useful synonyms not already obvious from the name.
 - Use `null` for an unknown optional scalar and `[]` only when a list genuinely
   has no values.
