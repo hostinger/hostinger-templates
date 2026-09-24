@@ -1,0 +1,23 @@
+{
+  "settings": [
+    { "id": "indoor", "label": "Indoor", "description": "Fully enclosed hall, playable in any weather." },
+    { "id": "covered", "label": "Covered", "description": "Roofed courts with open sides." },
+    { "id": "outdoor", "label": "Outdoor", "description": "Open-air courts." }
+  ],
+  "amenities": [
+    { "id": "coaching", "label": "Coaching", "description": "Lessons and group clinics run by club coaches." },
+    { "id": "rental", "label": "Racket hire", "description": "Rackets and balls available to hire at reception." },
+    { "id": "floodlights", "label": "Floodlights", "description": "Lit courts for evening play." },
+    { "id": "changing", "label": "Changing rooms", "description": "Changing rooms with showers." },
+    { "id": "parking", "label": "Parking", "description": "On-site or dedicated parking." },
+    { "id": "cafe", "label": "Café or bar", "description": "Food and drinks on site." },
+    { "id": "accessible", "label": "Step-free access", "description": "Step-free route from entrance to courts." }
+  ],
+  "sorts": [
+    { "id": "distance", "label": "Nearest first", "description": "Straight-line distance from your starting area." },
+    { "id": "price", "label": "Lowest price", "description": "Cheapest off-peak court price first." },
+    { "id": "courts", "label": "Most courts", "description": "Largest clubs first." },
+    { "id": "name", "label": "A–Z", "description": "Alphabetical by club name." }
+  ],
+  "priceSteps": [12, 16, 20, 24, 28, 32]
+}

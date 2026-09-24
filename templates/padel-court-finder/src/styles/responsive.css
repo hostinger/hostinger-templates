@@ -1,0 +1,216 @@
+@media (max-width: 1180px) {
+  .finder__layout {
+    grid-template-columns: 250px minmax(0, 1fr);
+    grid-template-areas:
+      'filters map'
+      'filters results';
+  }
+
+  .finder__map {
+    position: static;
+  }
+
+  .club-page__body {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  }
+}
+
+@media (max-width: 960px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'copy'
+      'visual'
+      'score';
+  }
+
+  .hero__court {
+    width: min(100%, 460px);
+  }
+
+  .scoreboard {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .scoreboard__cell:nth-child(3) {
+    border-left: 0;
+  }
+
+  .scoreboard__cell:nth-child(n + 3) {
+    border-top: 1px solid var(--line-dark);
+  }
+
+  .club-page__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .club-page__aside {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .club-list--three {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .guide__court,
+  .guide__split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-footer__inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 820px) {
+  .finder__layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'map'
+      'filters'
+      'results';
+  }
+
+  .filters {
+    position: static;
+    padding: 1rem 1.1rem;
+  }
+
+  .filters__toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .filters__body {
+    display: none;
+  }
+
+  .filters--open .filters__body {
+    display: flex;
+  }
+
+  .chips--stacked {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .chips--stacked .chip span {
+    width: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .menu-toggle {
+    display: grid;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem var(--gutter) 1.25rem;
+    border-bottom: 1px solid var(--line-dark);
+    background: var(--ink);
+    box-shadow: 0 20px 30px rgb(0 0 0 / 0.25);
+  }
+
+  .site-nav--open {
+    display: flex;
+  }
+
+  .site-nav__link {
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+  }
+
+  .hero-search {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-search__submit {
+    width: 100%;
+  }
+
+  .detail-columns,
+  .facility-list,
+  .listing-form__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .club-page__aside {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .city-map__area {
+    display: none;
+  }
+
+  .page-hero::after,
+  .club-hero::after {
+    top: auto;
+    bottom: -40px;
+    right: -30%;
+    width: 90vw;
+    opacity: 0.6;
+    transform: rotate(-8deg);
+  }
+}
+
+@media (max-width: 520px) {
+  .brand__city {
+    display: none;
+  }
+
+  .scoreboard__cell {
+    padding: 0.9rem 1rem;
+  }
+
+  .club-card {
+    padding: 1.1rem 1rem 1rem 1.3rem;
+  }
+
+  .club-card__footer {
+    flex-wrap: wrap;
+  }
+
+  .club-card__amenities {
+    order: 3;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .city-map__pin {
+    width: 26px;
+    height: 26px;
+    font-size: 0.7rem;
+  }
+
+  .finder__toolbar,
+  .select-field {
+    width: 100%;
+  }
+
+  .select-field select {
+    flex: 1;
+  }
+
+  .site-footer__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.65rem 0.35rem;
+  }
+}

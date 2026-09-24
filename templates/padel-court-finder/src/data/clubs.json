@@ -1,0 +1,200 @@
+[
+  {
+    "id": "the-glasshouse",
+    "name": "The Glasshouse",
+    "neighbourhood": "alameda",
+    "address": "Carrer de la Seda 14, Alameda",
+    "location": { "x": 50, "y": 24 },
+    "setting": "indoor",
+    "courts": 8,
+    "courtType": "Panoramic glass",
+    "prices": { "offPeak": 28, "peak": 36 },
+    "hours": {
+      "weekdays": ["07:00", "23:00"],
+      "saturday": ["08:00", "22:00"],
+      "sunday": ["08:00", "21:00"]
+    },
+    "amenities": ["coaching", "rental", "floodlights", "changing", "cafe", "accessible"],
+    "phone": "+34 900 555 101",
+    "email": "courts@glasshouse.example",
+    "summary": "Eight panoramic courts under one roof, a five-minute walk from Alameda station.",
+    "description": "A converted textile hall with eight panoramic glass courts, sprung spectator seating, and a café overlooking the show court. Weekday mornings are quiet enough for drills; evenings book up with league matches, so plan ahead for anything after 19:00.",
+    "goodFor": ["League players", "Rainy days", "After-work games"]
+  },
+  {
+    "id": "harbour-wall",
+    "name": "Harbour Wall Padel",
+    "neighbourhood": "old-harbour",
+    "address": "Moll de Llevant 3, Old Harbour",
+    "location": { "x": 71, "y": 40 },
+    "setting": "outdoor",
+    "courts": 4,
+    "courtType": "Standard glass",
+    "prices": { "offPeak": 16, "peak": 22 },
+    "hours": {
+      "weekdays": ["08:00", "22:00"],
+      "saturday": ["08:00", "22:00"],
+      "sunday": ["09:00", "20:00"]
+    },
+    "amenities": ["rental", "floodlights", "cafe"],
+    "phone": "+34 900 555 102",
+    "email": "hola@harbourwall.example",
+    "summary": "Four open-air courts on the old breakwater, with sea air and sunset slots.",
+    "description": "Four courts laid along the old harbour breakwater, sheltered from the worst of the wind by the stone wall that gives the club its name. The kiosk rents rackets and sells cold drinks, and the floodlit evening slots are the best-value sunset in town.",
+    "goodFor": ["Sunset games", "Casual doubles", "Visitors"]
+  },
+  {
+    "id": "pico-padel-club",
+    "name": "Pico Padel Club",
+    "neighbourhood": "sant-pere",
+    "address": "Camí del Pic 88, Sant Pere Hills",
+    "location": { "x": 19, "y": 14 },
+    "setting": "covered",
+    "courts": 6,
+    "courtType": "Panoramic glass",
+    "prices": { "offPeak": 20, "peak": 30 },
+    "hours": {
+      "weekdays": ["07:30", "22:30"],
+      "saturday": ["08:00", "21:00"],
+      "sunday": ["08:00", "14:00"]
+    },
+    "amenities": ["coaching", "rental", "floodlights", "changing", "parking"],
+    "phone": "+34 900 555 103",
+    "email": "club@picopadel.example",
+    "summary": "A members-first hill club that opens its covered courts to guests every day.",
+    "description": "Six covered courts on a pine-lined terrace above the city. Members get first pick of evening slots, but guest bookings are welcome and the coaching team runs beginner clinics on Tuesday and Thursday mornings. Free parking at the gate.",
+    "goodFor": ["Beginner clinics", "Drivers", "Morning games"]
+  },
+  {
+    "id": "marina-norte-courts",
+    "name": "Marina Norte Courts",
+    "neighbourhood": "marina-norte",
+    "address": "Passeig de la Marina 210, Marina Norte",
+    "location": { "x": 79, "y": 10 },
+    "setting": "outdoor",
+    "courts": 3,
+    "courtType": "Standard glass",
+    "prices": { "offPeak": 14, "peak": 18 },
+    "hours": {
+      "weekdays": ["09:00", "21:00"],
+      "saturday": ["09:00", "21:00"],
+      "sunday": null
+    },
+    "amenities": ["floodlights", "parking"],
+    "phone": "+34 900 555 104",
+    "email": "reserves@marinanorte.example",
+    "summary": "Three no-frills courts beside the marina car park, with the cheapest evening rate on the coast.",
+    "description": "Three well-kept outdoor courts next to the marina car park. There is no café or changing room, but the price is hard to beat and the courts are rarely fully booked before the weekend. Closed on Sundays.",
+    "goodFor": ["Budget games", "Quick hits", "Drivers"]
+  },
+  {
+    "id": "riverside-sports-hall",
+    "name": "Riverside Sports Hall",
+    "neighbourhood": "riverside",
+    "address": "Avinguda del Riu 45, Riverside",
+    "location": { "x": 36, "y": 48 },
+    "setting": "indoor",
+    "courts": 4,
+    "courtType": "Standard glass",
+    "prices": { "offPeak": 12, "peak": 16 },
+    "hours": {
+      "weekdays": ["08:00", "22:00"],
+      "saturday": ["09:00", "20:00"],
+      "sunday": ["09:00", "14:00"]
+    },
+    "amenities": ["coaching", "changing", "parking", "accessible"],
+    "phone": "+34 900 555 105",
+    "email": "esports@riverside.example",
+    "summary": "The council-run hall with four indoor courts and subsidised off-peak rates.",
+    "description": "Part of the municipal sports centre on the river path. Four indoor courts sit alongside the pool and gym, with accessible changing rooms and a lift to every level. Council coaches run adult beginner courses in six-week blocks.",
+    "goodFor": ["Beginners", "Families", "Budget games"]
+  },
+  {
+    "id": "llarga-beach-padel",
+    "name": "Llarga Beach Padel",
+    "neighbourhood": "playa-llarga",
+    "address": "Platja Llarga, Chiringuito 7",
+    "location": { "x": 86, "y": 57 },
+    "setting": "outdoor",
+    "courts": 5,
+    "courtType": "Panoramic glass",
+    "prices": { "offPeak": 18, "peak": 26 },
+    "hours": {
+      "weekdays": ["08:00", "23:00"],
+      "saturday": ["08:00", "23:00"],
+      "sunday": ["08:00", "22:00"]
+    },
+    "amenities": ["rental", "floodlights", "changing", "cafe"],
+    "phone": "+34 900 555 106",
+    "email": "play@llargabeach.example",
+    "summary": "Five panoramic courts a few steps from the sand, with showers and a beach bar.",
+    "description": "Five panoramic courts behind the dunes at the quiet end of Playa Llarga. Book an early slot to beat the heat in summer, rinse off in the beach showers, and stay for lunch at the club's chiringuito.",
+    "goodFor": ["Summer mornings", "Visitors", "Social doubles"]
+  },
+  {
+    "id": "the-warehouse",
+    "name": "The Warehouse",
+    "neighbourhood": "can-roca",
+    "address": "Carrer de la Indústria 9, Can Roca",
+    "location": { "x": 14, "y": 58 },
+    "setting": "indoor",
+    "courts": 10,
+    "courtType": "Panoramic glass",
+    "prices": { "offPeak": 22, "peak": 32 },
+    "hours": {
+      "weekdays": ["06:30", "00:00"],
+      "saturday": ["07:00", "00:00"],
+      "sunday": ["07:00", "22:00"]
+    },
+    "amenities": ["coaching", "rental", "floodlights", "changing", "parking", "cafe", "accessible"],
+    "phone": "+34 900 555 107",
+    "email": "desk@warehousepadel.example",
+    "summary": "The city's biggest indoor club: ten courts, late opening, and a full-time academy.",
+    "description": "Ten indoor panoramic courts in a former print works, open until midnight on weekdays. The academy runs junior and adult programmes, the pro shop strings rackets same day, and the mezzanine bar streams the pro tour on weekends.",
+    "goodFor": ["Late games", "Academy coaching", "Tournaments"]
+  },
+  {
+    "id": "campus-padel",
+    "name": "Campus Padel",
+    "neighbourhood": "university",
+    "address": "Campus Sud, Edifici Esports",
+    "location": { "x": 57, "y": 60 },
+    "setting": "covered",
+    "courts": 4,
+    "courtType": "Standard glass",
+    "prices": { "offPeak": 10, "peak": 15 },
+    "hours": {
+      "weekdays": ["08:00", "22:00"],
+      "saturday": ["09:00", "19:00"],
+      "sunday": null
+    },
+    "amenities": ["coaching", "rental", "floodlights", "changing", "accessible"],
+    "phone": "+34 900 555 108",
+    "email": "padel@campus.example",
+    "summary": "Four covered university courts, open to the public outside term-time peak hours.",
+    "description": "Four covered courts run by the university sports service. Anyone can book, and off-peak prices are the lowest in the city. Students get priority during term-time evenings, so non-students are best off booking daytime or weekend slots.",
+    "goodFor": ["Students", "Budget games", "Daytime play"]
+  },
+  {
+    "id": "rooftop-21",
+    "name": "Rooftop 21",
+    "neighbourhood": "alameda",
+    "address": "Plaça Nova 21 (roof level), Alameda",
+    "location": { "x": 44, "y": 31 },
+    "setting": "outdoor",
+    "courts": 2,
+    "courtType": "Panoramic glass",
+    "prices": { "offPeak": 24, "peak": 30 },
+    "hours": {
+      "weekdays": ["10:00", "22:00"],
+      "saturday": ["10:00", "22:00"],
+      "sunday": ["10:00", "20:00"]
+    },
+    "amenities": ["rental", "floodlights", "cafe", "accessible"],
+    "phone": "+34 900 555 109",
+    "email": "book@rooftop21.example",
+    "summary": "Two panoramic courts on a city-centre rooftop, with a terrace bar between them.",
+    "description": "Two panoramic courts on top of a department store, with views over the old town and a terrace bar between them. Small and popular, so weekend evenings go fast. The lift runs from the store entrance until closing time.",
+    "goodFor": ["Special occasions", "Visitors", "Evening games"]
+  }
+]
