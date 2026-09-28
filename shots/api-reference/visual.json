@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "thumbnail": {
+    "name": "thumbnail",
+    "ok": true,
+    "mismatchRatio": 0.022526234567901236,
+    "diffPixels": 29194,
+    "failRatio": 0.25,
+    "expected": {
+      "width": 1440,
+      "height": 900
+    },
+    "actual": {
+      "width": 1440,
+      "height": 900
+    },
+    "compared": {
+      "width": 1440,
+      "height": 900
+    },
+    "heightDelta": 0
+  },
+  "homepage": {
+    "name": "homepage",
+    "ok": true,
+    "mismatchRatio": 0.01619876759318198,
+    "diffPixels": 73291,
+    "failRatio": 0.3,
+    "expected": {
+      "width": 1440,
+      "height": 3142
+    },
+    "actual": {
+      "width": 1440,
+      "height": 3142
+    },
+    "compared": {
+      "width": 1440,
+      "height": 3142
+    },
+    "heightDelta": 0
+  }
+}
