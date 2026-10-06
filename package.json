@@ -3,7 +3,6 @@
   "private": true,
   "description": "Collection tooling. Templates under templates/ stay standalone.",
   "scripts": {
-    "bump": "node scripts/bump.mjs",
-    "dependabot-config": "node scripts/dependabot-config.mjs"
+    "bump": "node scripts/bump.mjs"
   }
 }
