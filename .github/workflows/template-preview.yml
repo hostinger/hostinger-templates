@@ -76,9 +76,13 @@ jobs:
       - name: Build
         id: build
         run: npm run build
+      # Production dependencies only. Templates ship static output or a
+      # server built from `dependencies`; lint/preview tooling under
+      # devDependencies never reaches users, and advisories there were
+      # blocking unrelated security merges (see #26, #27).
       - name: Audit
         id: audit
-        run: npm audit --audit-level=high
+        run: npm audit --audit-level=high --omit=dev
       - name: Health-check and screenshot compare
         id: health
         env:
@@ -250,7 +254,7 @@ jobs:
               }
 
               body += `[Download screenshots and diffs](${runUrl}) from this run’s \`visual-<template>\` artifacts.\n`;
-              body += '\nThis check fails if install, lint, build, high-severity audit, `/` health, or screenshot diff over the limit fails. Limits default to 25% (thumbnail) and 30% (homepage) to absorb Mac-vs-Linux font rasterization.\n';
+              body += '\nThis check fails if install, lint, build, high-severity audit of production dependencies (`npm audit --omit=dev`), `/` health, or screenshot diff over the limit fails. Limits default to 25% (thumbnail) and 30% (homepage) to absorb Mac-vs-Linux font rasterization.\n';
             }
 
             const { data: comments } = await github.rest.issues.listComments({
