@@ -54,6 +54,11 @@ jobs:
         working-directory: templates/${{ matrix.template }}
     steps:
       - uses: actions/checkout@v4
+      # audit-regression.mjs reads the base commit's lockfile with git show.
+      - name: Fetch base commit
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: git fetch --no-tags --depth=1 origin "$BASE_SHA"
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -76,13 +81,16 @@ jobs:
       - name: Build
         id: build
         run: npm run build
-      # Production dependencies only. Templates ship static output or a
-      # server built from `dependencies`; lint/preview tooling under
-      # devDependencies never reaches users, and advisories there were
-      # blocking unrelated security merges (see #26, #27).
+      # Fails only if this PR introduces a high/critical advisory in production
+      # dependencies that the base commit did not already have. Pre-existing
+      # findings are reported in the PR comment, not blocking: they are
+      # dependency-update work, and letting them fail every unrelated PR froze
+      # Dependabot's security group behind advisories with no fix yet (#26).
       - name: Audit
         id: audit
-        run: npm audit --audit-level=high --omit=dev
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: node ../../.github/scripts/audit-regression.mjs "$PWD" "$BASE_SHA"
       - name: Health-check and screenshot compare
         id: health
         env:
@@ -101,6 +109,7 @@ jobs:
           AUDIT: ${{ steps.audit.outcome }}
           HEALTH: ${{ steps.health.outcome }}
           VISUAL_JSON: ${{ github.workspace }}/.preview-visual/${{ matrix.template }}/result.json
+          AUDIT_JSON: templates/${{ matrix.template }}/.audit-regression.json
         run: |
           mkdir -p .preview-results
           node -e '
@@ -110,12 +119,18 @@ jobs:
             try {
               visual = JSON.parse(fs.readFileSync(process.env.VISUAL_JSON, "utf8")).visual;
             } catch {}
+            let auditDetail = null;
+            try {
+              const { introduced, preexisting, resolved } = JSON.parse(fs.readFileSync(process.env.AUDIT_JSON, "utf8"));
+              auditDetail = { introduced: introduced.length, preexisting: preexisting.length, resolved: resolved.length };
+            } catch {}
             fs.writeFileSync(`.preview-results/${id}.json`, JSON.stringify({
               id,
               install: process.env.INSTALL,
               lint: process.env.LINT,
               build: process.env.BUILD,
               audit: process.env.AUDIT,
+              auditDetail,
               health: process.env.HEALTH,
               visual,
             }));
@@ -203,6 +218,15 @@ jobs:
             const detected = JSON.parse(process.env.DETECTED || '[]');
             const mark = (value) => value === 'success' ? '✅' : value === 'skipped' ? '➖' : '❌';
             const pct = (ratio) => ratio == null ? '—' : `${(ratio * 100).toFixed(1)}%`;
+            const auditCell = (row) => {
+              const d = row.auditDetail;
+              if (!d) return mark(row.audit);
+              const notes = [];
+              if (d.introduced) notes.push(`${d.introduced} new`);
+              if (d.preexisting) notes.push(`${d.preexisting} pre-existing`);
+              if (d.resolved) notes.push(`${d.resolved} resolved`);
+              return `${mark(row.audit)}${notes.length ? ` ${notes.join(', ')}` : ''}`;
+            };
             const raw = (template, file) =>
               `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/shots/${template}/${file}?v=${bust}`;
             const rows = [];
@@ -240,7 +264,7 @@ jobs:
               for (const row of rows) {
                 const thumb = row.visual?.thumbnail;
                 const home = row.visual?.homepage;
-                body += `| \`${row.id}\` | ${mark(row.install)} | ${mark(row.lint)} | ${mark(row.build)} | ${mark(row.audit)} | ${mark(row.health)} | ${pct(thumb?.mismatchRatio)} ${thumb?.ok === false ? '❌' : thumb?.ok ? '✅' : ''} | ${pct(home?.mismatchRatio)} ${home?.ok === false ? '❌' : home?.ok ? '✅' : ''} |\n`;
+                body += `| \`${row.id}\` | ${mark(row.install)} | ${mark(row.lint)} | ${mark(row.build)} | ${auditCell(row)} | ${mark(row.health)} | ${pct(thumb?.mismatchRatio)} ${thumb?.ok === false ? '❌' : thumb?.ok ? '✅' : ''} | ${pct(home?.mismatchRatio)} ${home?.ok === false ? '❌' : home?.ok ? '✅' : ''} |\n`;
               }
 
               if (published) {
@@ -254,7 +278,7 @@ jobs:
               }
 
               body += `[Download screenshots and diffs](${runUrl}) from this run’s \`visual-<template>\` artifacts.\n`;
-              body += '\nThis check fails if install, lint, build, high-severity audit of production dependencies (`npm audit --omit=dev`), `/` health, or screenshot diff over the limit fails. Limits default to 25% (thumbnail) and 30% (homepage) to absorb Mac-vs-Linux font rasterization.\n';
+              body += '\nThis check fails if install, lint, build, `/` health, or screenshot diff over the limit fails, or if the PR introduces a high/critical advisory in production dependencies that the base commit did not have (`npm audit --omit=dev`, head vs base). Pre-existing advisories are listed for information and belong to dependency-update PRs. Limits default to 25% (thumbnail) and 30% (homepage) to absorb Mac-vs-Linux font rasterization.\n';
             }
 
             const { data: comments } = await github.rest.issues.listComments({
