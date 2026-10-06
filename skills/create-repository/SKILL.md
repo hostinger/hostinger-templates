@@ -293,8 +293,6 @@ Write specific, useful metadata:
 - add GitHub raw-view URLs for both images and verify each URL returns an image
   after the commit is pushed
 - keep strict JSON with no comments or trailing commas
-- run `npm run dependabot-config` from the repository root and commit the
-  regenerated `.github/dependabot.yml`; CI fails if it is stale
 
 Do not add dropped fields: `repository`, `kind`, `databases`, `license`,
 `audienceLevel`, or `status`.
