@@ -56,6 +56,21 @@ hand when `engines` change. Dependabot still opens grouped security PRs;
 this command is for catalog-led bumps Dependabot will not fan out (same
 advisory, other directories).
 
+## Dependabot
+
+`.github/dependabot.yml` is generated from `templates.json` by
+`scripts/dependabot-config.mjs`. Security updates are grouped per framework
+family (`next`, `nuxt`, `astro`, `svelte`, `vue`, `react`, `node-servers`,
+`other`) so a PR that cannot merge only blocks its own family. After adding or
+removing a template, run:
+
+```bash
+npm run dependabot-config
+```
+
+CI fails if the committed file is stale or a template directory is missing
+from `templates.json`.
+
 ## Translations
 
 Template summaries, descriptions and category labels are shown in hPanel in English, straight from `templates.json` — there is no translation pipeline for the v1 release.
