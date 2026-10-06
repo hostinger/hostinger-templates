@@ -7,7 +7,7 @@
   --muted: #706d64;
   --line: 2px solid var(--ink);
   --pad: clamp(1.25rem, 4vw, 4.5rem);
-  --display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --display: var(--font-display), Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   --body: Arial, Helvetica, sans-serif;
 }
 
@@ -17,6 +17,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* The display face ships one weight; do not let the browser fake a bold
+     on headings. No effect on Arial/Georgia, which have real bold faces. */
+  font-synthesis: none;
 }
 
 body {
