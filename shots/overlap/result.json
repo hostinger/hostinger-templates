@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "status": 200,
+  "contentType": "text/html;charset=utf-8",
+  "bytes": 26015,
+  "port": 4173,
+  "visual": {
+    "ok": true,
+    "thumbnail": {
+      "name": "thumbnail",
+      "ok": true,
+      "mismatchRatio": 0.061989197530864196,
+      "diffPixels": 80338,
+      "failRatio": 0.25,
+      "expected": {
+        "width": 1440,
+        "height": 900
+      },
+      "actual": {
+        "width": 1440,
+        "height": 900
+      },
+      "compared": {
+        "width": 1440,
+        "height": 900
+      },
+      "heightDelta": 0
+    },
+    "homepage": {
+      "name": "homepage",
+      "ok": true,
+      "mismatchRatio": 0.0572149584209999,
+      "diffPixels": 91370,
+      "failRatio": 0.3,
+      "expected": {
+        "width": 1440,
+        "height": 1109
+      },
+      "actual": {
+        "width": 1440,
+        "height": 1109
+      },
+      "compared": {
+        "width": 1440,
+        "height": 1109
+      },
+      "heightDelta": 0
+    }
+  }
+}
