@@ -16,7 +16,7 @@
       ]
     },
     "next": {
-      "version": "^16.3.3"
+      "version": "^16.3.8"
     },
     "vite": {
       "version": "^8.2.2"
