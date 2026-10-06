@@ -50,6 +50,7 @@ page into an AI assistant gives it the actual Markdown instead of scraped HTML.
 - **Styling:** Starlight CSS custom properties plus one custom stylesheet
 - **Search:** Pagefind (bundled with Starlight, indexed at build time)
 - **Linting:** ESLint
+- **Overrides:** `postcss-selector-parser@^7.1.6` — `@expressive-code/core` pins `postcss-nested@^6`, which pins `postcss-selector-parser@^6` (GHSA advisory fixed only in 7.1.6). Remove when `@expressive-code/core` moves to `postcss-nested@^8`.
 
 ## Getting started
 

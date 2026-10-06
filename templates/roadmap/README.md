@@ -28,6 +28,7 @@ The whole page is rendered from JSON at build time, so the board is fully readab
 - **Build tool:** Parcel 2 (with posthtml-expressions for build-time templating)
 - **Styling:** Hand-written CSS with centralized design tokens
 - **Linting:** ESLint
+- **Overrides:** `compression@^1.8.2` — `serve@14.2.6` pins `compression@1.8.1` exactly (GHSA-vc2v-76pw-4v95); `serve` only runs `npm run preview`. Remove when `serve` releases with a newer pin.
 
 ## Getting started
 

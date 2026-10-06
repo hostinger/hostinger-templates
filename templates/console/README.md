@@ -28,6 +28,7 @@ There is no database, no auth, and no API layer — and the copy never pretends 
 - **Styling:** Plain CSS — design tokens in `app/globals.css` plus CSS Modules per component
 - **Data:** Committed JSON in `mocks/` and `config/site.json`, loaded through typed modules in `lib/`
 - **Linting:** ESLint
+- **Overrides:** `compression@^1.8.2` — `serve@14.2.6` pins `compression@1.8.1` exactly (GHSA-vc2v-76pw-4v95); `serve` only runs `npm run preview`. Remove when `serve` releases with a newer pin.
 
 ## Getting started
 

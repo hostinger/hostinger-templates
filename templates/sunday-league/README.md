@@ -28,6 +28,7 @@ Below the poster sit a real HTML league table with the club's row highlighted, t
 - **Build tool:** Angular CLI (`@angular/build` esbuild application builder)
 - **Styling:** Plain hand-written CSS with centralized design tokens
 - **Linting:** ESLint with angular-eslint (flat config)
+- **Overrides:** `compression@^1.8.2` — `serve@14.2.6` pins `compression@1.8.1` exactly (GHSA-vc2v-76pw-4v95); `serve` only runs `npm run preview`. Remove when `serve` releases with a newer pin.
 
 ## Getting started
 

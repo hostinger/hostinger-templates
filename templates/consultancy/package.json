@@ -28,6 +28,7 @@
   },
   "license": "MIT",
   "overrides": {
-    "@vitejs/devtools": "^0.5.0"
+    "@vitejs/devtools": "^0.5.0",
+    "simple-git": "^4.0.2"
   }
 }

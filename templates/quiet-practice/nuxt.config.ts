@@ -3,7 +3,8 @@ import services from './app/data/services.json'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint'],
-  devtools: { enabled: true },
+  // Off so the simple-git override in package.json never loads; see README.
+  devtools: { enabled: false },
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
