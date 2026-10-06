@@ -39,5 +39,8 @@
     "serve": "^14.2.6",
     "typescript": "~5.9.0",
     "typescript-eslint": "8.62.1"
+  },
+  "overrides": {
+    "compression": "^1.8.2"
   }
 }

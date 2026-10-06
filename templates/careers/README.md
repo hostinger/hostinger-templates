@@ -29,6 +29,7 @@ The whole site ships as static HTML: React Router runs in framework mode with `s
 - **Build tool:** Vite (via `@react-router/dev`)
 - **Styling:** Plain hand-written CSS with centralized design tokens
 - **Linting:** ESLint
+- **Overrides:** `compression@^1.8.2` — `serve@14.2.6` pins `compression@1.8.1` exactly (GHSA-vc2v-76pw-4v95); `serve` only runs `npm run preview`. Remove when `serve` releases with a newer pin.
 
 ## Getting started
 

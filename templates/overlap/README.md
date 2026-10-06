@@ -26,6 +26,7 @@ Choose common working hours and the board highlights every hour when all selecte
 - **Styling:** Scoped Vue CSS and shared CSS custom properties
 - **Timezone data:** Native `Intl.DateTimeFormat`
 - **Font:** Local `@fontsource-variable/outfit` package
+- **Overrides:** `simple-git@^4.0.2` — `@nuxt/devtools@3` pins `simple-git@^3.36.0`, which carries unpatched advisories; `simple-git` is only imported by `@nuxt/devtools`, and `simple-git@4` dropped the default export devtools 3 uses, so `devtools.enabled` is `false` in `nuxt.config.ts`. Set it back to `true` and drop the override once Nuxt depends on `@nuxt/devtools@4`. `@vitejs/devtools@^0.5.0` (pre-existing)
 
 ## Getting started
 

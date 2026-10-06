@@ -28,6 +28,7 @@ The self-check is honestly framed as a signpost, not a clinical assessment: a di
 - **Build tool:** Nuxt / Vite
 - **Styling:** Plain hand-written CSS with centralized design tokens
 - **Linting:** ESLint (`@nuxt/eslint` flat config)
+- **Overrides:** `simple-git@^4.0.2` — `@nuxt/devtools@3` pins `simple-git@^3.36.0`, which carries unpatched advisories; `simple-git` is only imported by `@nuxt/devtools`, and `simple-git@4` dropped the default export devtools 3 uses, so `devtools.enabled` is `false` in `nuxt.config.ts`. Set it back to `true` and drop the override once Nuxt depends on `@nuxt/devtools@4`. `@vitejs/devtools@^0.5.0` (pre-existing)
 
 ## Getting started
 

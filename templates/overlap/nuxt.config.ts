@@ -2,6 +2,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-08-01',
   ssr: true,
   modules: ['@nuxt/eslint'],
+  // Off so the simple-git override in package.json never loads; see README.
+  devtools: { enabled: false },
   css: [
     '@fontsource-variable/outfit/index.css',
     '~/assets/styles/main.css',

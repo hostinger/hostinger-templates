@@ -31,6 +31,7 @@ payment service; the template never collects account or card details itself.
 - **Build tool:** Next.js static export
 - **Styling:** Global CSS with custom properties and responsive media queries
 - **Storage:** Browser `localStorage`
+- **Overrides:** `compression@^1.8.2` — `serve@14.2.6` pins `compression@1.8.1` exactly (GHSA-vc2v-76pw-4v95); `serve` only runs `npm run preview`. Remove when `serve` releases with a newer pin.
 
 ## Getting started
 

@@ -26,6 +26,7 @@ The primary journey ends with an honest email-backed early-access form. The stat
 - **Build tool:** Next.js static export
 - **Styling:** Plain CSS split into foundation, section, and responsive layers
 - **Linting:** ESLint flat configuration
+- **Overrides:** `compression@^1.8.2` — `serve@14.2.6` pins `compression@1.8.1` exactly (GHSA-vc2v-76pw-4v95); `serve` only runs `npm run preview`. Remove when `serve` releases with a newer pin.
 
 ## Getting started
 

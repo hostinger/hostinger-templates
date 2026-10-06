@@ -28,6 +28,7 @@ The bundled audio files are short spoken demo clips generated with macOS text-to
 - **Styling:** Plain CSS — design tokens in one global stylesheet plus CSS Modules per component
 - **Content:** Markdown episode files parsed with gray-matter, JSON site config
 - **Linting:** ESLint
+- **Overrides:** `compression@^1.8.2` — `serve@14.2.6` pins `compression@1.8.1` exactly (GHSA-vc2v-76pw-4v95); `serve` only runs `npm run preview`. Remove when `serve` releases with a newer pin. `argparse@^2.0.1` — `gray-matter` → `js-yaml@3` pulls `argparse@1`, whose only dependency `sprintf-js` has an advisory with no fixed release. `js-yaml@3` uses `argparse` only in its CLI, which this template never runs. Remove when `gray-matter` moves to `js-yaml@4`.
 
 ## Getting started
 

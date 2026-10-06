@@ -29,6 +29,7 @@ Below the quiz sits the whole bench — eight plants with original illustrations
 - **Build tool:** Parcel 2
 - **Styling:** Hand-written CSS with centralized design tokens
 - **Linting:** ESLint
+- **Overrides:** `compression@^1.8.2` — `serve@14.2.6` pins `compression@1.8.1` exactly (GHSA-vc2v-76pw-4v95); `serve` only runs `npm run preview`. Remove when `serve` releases with a newer pin.
 
 ## Getting started
 
