@@ -135,3 +135,4 @@ npm run preview
 
 - Thumbnail: `preview/the-rooms-thumbnail.png`
 - Full page: `preview/the-rooms-homepage.png`
+
