@@ -10,6 +10,13 @@ Public demos in this repository use
 the `hostingertemplates.com` website. Do not generate `*.hostingersite.com`
 temporary domains.
 
+New templates do not need this skill: merging the PR that adds
+`templates/<id>/` runs `.github/workflows/deploy-template-demos.yml`, which
+builds, creates the subdomain, deploys, and verifies the live URL. To redeploy
+existing demos, run that workflow from the Actions tab with their IDs. Use
+the steps below only for bulk work, a new hosting plan, or when the workflow
+cannot be used.
+
 ## 1. Inventory the work
 
 1. Read `templates.json`.

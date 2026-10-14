@@ -1,0 +1,119 @@
+name: Deploy template demos
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "templates/**"
+  workflow_dispatch:
+    inputs:
+      templates:
+        description: Template IDs to (re)deploy, separated by spaces or commas
+        required: true
+        type: string
+
+concurrency:
+  group: deploy-template-demos
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      templates: ${{ steps.list.outputs.templates }}
+      empty: ${{ steps.list.outputs.empty }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: list
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          REQUESTED: ${{ inputs.templates }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            ids=()
+            for id in $(echo "$REQUESTED" | tr ',' ' '); do
+              if [[ ! "$id" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || [ ! -f "templates/$id/package.json" ]; then
+                echo "::error::Unknown template: $id"
+                exit 1
+              fi
+              ids+=("$id")
+            done
+            templates="[]"
+            if [ "${#ids[@]}" -gt 0 ]; then
+              templates="$(printf '%s\n' "${ids[@]}" | sort -u | jq -R . | jq -cs .)"
+            fi
+          else
+            templates="$(node .github/scripts/changed-templates.mjs --added "$BEFORE" "$AFTER")"
+          fi
+          echo "templates=$templates" >> "$GITHUB_OUTPUT"
+          if [ "$templates" = "[]" ]; then
+            echo "empty=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "empty=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Templates to deploy: $templates"
+
+  build:
+    needs: detect
+    if: needs.detect.outputs.empty == 'false'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        template: ${{ fromJson(needs.detect.outputs.templates) }}
+    defaults:
+      run:
+        working-directory: templates/${{ matrix.template }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: templates/${{ matrix.template }}/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      - name: Package
+        working-directory: .
+        env:
+          TEMPLATE: ${{ matrix.template }}
+        run: node .github/scripts/package-demo.mjs "templates/$TEMPLATE" "$RUNNER_TEMP/demo"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: demo-${{ matrix.template }}
+          path: ${{ runner.temp }}/demo
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: [detect, build]
+    if: ${{ !cancelled() && needs.detect.outputs.empty == 'false' }}
+    runs-on: ubuntu-latest
+    environment: template-demos
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: demo-*
+          merge-multiple: true
+          path: demos
+      - name: Deploy to Hostinger
+        env:
+          HOSTINGER_API_TOKEN: ${{ secrets.HOSTINGER_API_TOKEN }}
+          DEMO_PARENT_DOMAIN: hostingertemplates.com
+          TEMPLATES: ${{ needs.detect.outputs.templates }}
+        run: node .github/scripts/deploy-demos.mjs demos

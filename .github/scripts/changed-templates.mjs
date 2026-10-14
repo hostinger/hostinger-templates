@@ -1,15 +1,21 @@
 import { existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 
-const base = process.argv[2];
-const head = process.argv[3];
+const addedOnly = process.argv.includes('--added');
+const [base, head] = process.argv.slice(2).filter((arg) => !arg.startsWith('--'));
 
 if (!base || !head) {
-  console.error('Usage: changed-templates.mjs <base-sha> <head-sha>');
+  console.error('Usage: changed-templates.mjs [--added] <base-sha> <head-sha>');
   process.exit(1);
 }
 
-const files = execFileSync('git', ['diff', '--name-only', `${base}...${head}`], {
+const diffArgs = ['diff', '--name-only'];
+if (addedOnly) {
+  diffArgs.push('--diff-filter=A');
+}
+diffArgs.push(`${base}...${head}`);
+
+const files = execFileSync('git', diffArgs, {
   encoding: 'utf8',
 })
   .split('\n')
@@ -18,7 +24,9 @@ const files = execFileSync('git', ['diff', '--name-only', `${base}...${head}`], 
 const ids = new Set();
 
 for (const file of files) {
-  const match = file.match(/^templates\/([^/]+)\//);
+  const match = addedOnly
+    ? file.match(/^templates\/([^/]+)\/package\.json$/)
+    : file.match(/^templates\/([^/]+)\//);
   if (match) {
     ids.add(match[1]);
   }

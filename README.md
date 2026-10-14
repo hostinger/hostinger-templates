@@ -40,6 +40,20 @@ Follow `skills/create-repository/SKILL.md`. It defines the creation workflow;
 `skills/create-repository/RULES.md` defines constraints every project must
 follow.
 
+## Demo deployments
+
+Merging a PR that adds a template (a new `templates/<id>/package.json`)
+publishes it to `https://<id>.hostingertemplates.com` through the
+`Deploy template demos` workflow. PRs that only change existing templates,
+such as Dependabot security groups and dependency bumps, do not deploy.
+To redeploy existing demos, run the workflow from the Actions tab with their
+template IDs.
+
+The workflow needs a Hostinger API token for the account that owns
+`hostingertemplates.com`, stored as the `HOSTINGER_API_TOKEN` secret of the
+`template-demos` environment (deployment branches: `main` only).
+`skills/deploy-templates/SKILL.md` covers manual and bulk deployments.
+
 ## Bumping dependencies
 
 Templates stay standalone (own `package.json` and lockfile). Shared pins live

@@ -12,3 +12,4 @@ Current workflows:
 
 - `create-repository/` — build and register a template
 - `deploy-templates/` — publish template demos to Hostinger and record URLs
+  by hand (new templates deploy automatically on merge)
