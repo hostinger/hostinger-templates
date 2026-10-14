@@ -52,7 +52,8 @@ template IDs.
 The workflow needs a Hostinger API token for the account that owns
 `hostingertemplates.com`, stored as the `HOSTINGER_API_TOKEN` secret of the
 `template-demos` environment (deployment branches: `main` only).
-`skills/deploy-templates/SKILL.md` covers manual and bulk deployments.
+`skills/deploy-templates/SKILL.md` covers redeploys, failed runs, and the
+manual fallback.
 
 ## Bumping dependencies
 
