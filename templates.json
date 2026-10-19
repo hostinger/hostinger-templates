@@ -5877,6 +5877,129 @@
         "outputDirectory": "out",
         "entryFile": ""
       }
+    },
+    {
+      "id": "route-library-halloween",
+      "name": "Route Library Halloween",
+      "summary": "A night running club's route book in a dark Halloween palette, with distance and climb filters, SVG elevation profiles, and a GPX download for every route.",
+      "description": "Route Library Halloween is the autumn-night edition of Route Library, dressed for the season in near-black with deep orange and purple accents, a harvest-moon masthead and spooky but practical copy. It gives a club that runs by headtorch a public, filterable route book where every route has a measured distance, an honest climb figure, a surface and grade, a named start point, a written description and a downloadable GPX file, all presented under the club's own name and contact details.",
+      "demoUrl": "https://route-library-halloween.hostingertemplates.com",
+      "bucket": "Non-technical",
+      "categories": [
+        "Fitness",
+        "Event"
+      ],
+      "whoItsFor": "A running club with a Halloween or night-running theme",
+      "classification": {
+        "categories": [
+          "clubs-and-community",
+          "sports-and-recreation",
+          "content-directory",
+          "seasonal-events"
+        ],
+        "useCases": [
+          "routes",
+          "gpx",
+          "filtering",
+          "halloween"
+        ],
+        "frameworks": [
+          "express"
+        ]
+      },
+      "features": [
+        {
+          "id": "distance-climb-filters",
+          "name": "Distance and climb filters",
+          "description": "Distance and climb filter chips backed by shareable query-parameter URLs (/?distance=short), with progressive client-side instant filtering and history.pushState URL sync."
+        },
+        {
+          "id": "route-detail-pages",
+          "name": "Server-rendered route pages",
+          "description": "Five seeded night routes, each with a server-rendered detail page at /routes/<slug> that loads directly."
+        },
+        {
+          "id": "elevation-profile-charts",
+          "name": "SVG elevation profiles",
+          "description": "Inline SVG elevation profile on every route page, built from the committed data points: area wash, gridlines, distance/elevation axes, a labelled high-point marker and a hover crosshair with tooltip."
+        },
+        {
+          "id": "halloween-theme",
+          "name": "Halloween night theme",
+          "description": "Near-black palette with deep orange and purple accents, a pure-CSS harvest moon in the masthead and a night-tinted club photo, all driven by tokens in one stylesheet."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Express"
+        ],
+        "styling": [
+          "Plain hand-written CSS with centralized design tokens"
+        ],
+        "data": [
+          "Shareable URL and query-parameter state",
+          "Committed JSON data and configuration",
+          "Typed TypeScript content and configuration"
+        ],
+        "deployment": [
+          "Node.js server application built from source"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/route-library-halloween/preview/route-library-halloween-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/route-library-halloween/preview/route-library-halloween-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/route-library-halloween/preview/route-library-halloween-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/route-library-halloween/preview/route-library-halloween-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "templates/route-library-halloween/preview/route-library-halloween-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/route-library-halloween/preview/route-library-halloween-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3198
+        }
+      },
+      "searchTerms": [
+        "halloween website template",
+        "night running club",
+        "running club website",
+        "route book",
+        "gpx download",
+        "elevation profile chart",
+        "dark orange purple theme",
+        "express ejs server template"
+      ],
+      "deploy": {
+        "buildCommand": "build",
+        "outputDirectory": "",
+        "entryFile": "dist/server.js"
+      }
     }
   ]
 }

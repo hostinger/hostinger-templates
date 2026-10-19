@@ -1,0 +1,72 @@
+{
+  "clubName": "Hollowfell Night Harriers",
+  "area": "Ambleside, Lake District",
+  "tagline": "A night running club's route book — lantern-tested, argued over by candlelight.",
+  "heading": "Routes for the long, dark nights",
+  "intro": "From the night the clocks go back until the light evenings of spring, we run the fells by headtorch. Every route in this book has been run after dark on club nights. Filter by how far and how much climb you dare, study the profile before the shadows do, and take the GPX with you.",
+  "about": "We are forty-odd runners who think the fells are at their best by moonlight. The club has kept a route book since 1978, written up by lantern after every All Hallows' Run; this is the same book, typed up, measured properly and shared. Visitors are welcome to borrow a route or join a night run — bring a headtorch, and a spare.",
+  "founded": "1978",
+  "meetPoint": {
+    "name": "Market Cross, Ambleside",
+    "detail": "We gather ten minutes before each run for a headtorch check. No light, no run."
+  },
+  "clubNights": [
+    {
+      "day": "Tuesday",
+      "time": "18:30",
+      "detail": "Lantern hill reps — short, steep and lit by forty headtorches."
+    },
+    {
+      "day": "Friday",
+      "time": "19:00",
+      "detail": "The moonlit long run — nobody gets left in the dark."
+    },
+    {
+      "day": "31 October",
+      "time": "19:00",
+      "detail": "The All Hallows' Run — fancy dress optional, headtorch mandatory."
+    }
+  ],
+  "librarian": {
+    "name": "Morwenna Ashdown",
+    "role": "Keeper of the route book",
+    "email": "routes@hollowfellnight.example"
+  },
+  "disclaimer": "Routes are documented by club members from their own night runs. Paths that are obvious by day vanish after dark, becks flood and fell weather turns by the hour — check conditions before you set off, carry a headtorch with a spare battery, map and compass, and run at your own judgment.",
+  "navigation": [
+    {
+      "label": "Routes",
+      "href": "/"
+    },
+    {
+      "label": "Night runs",
+      "href": "/#club"
+    },
+    {
+      "label": "FAQ",
+      "href": "/#faq"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do I need to be a member to run these routes?",
+      "answer": "No. The whole book is public and every route follows public rights of way or open access land. If you enjoy them, come along to a club night — your first three runs with us are free, and we will lend you a headtorch for the first one."
+    },
+    {
+      "question": "How bright does my headtorch need to be?",
+      "answer": "For the riverside and valley routes, 200 lumens is plenty. Anything graded Moderate or Hard wants 400 lumens or more and a spare battery or second torch — the fells are far darker than town, and mist swallows light."
+    },
+    {
+      "question": "What should I carry on the fell routes at night?",
+      "answer": "Waterproof top and bottoms, hat, gloves, map, compass, whistle, food and a fully charged headtorch plus a spare. On the Headless Horseshoe we also ask you to run in pairs — nobody crosses Fairfield's plateau alone after dark."
+    },
+    {
+      "question": "Is the All Hallows' Run in fancy dress?",
+      "answer": "Optional, but encouraged. Capes and masks are out on safety grounds, so expect glow-in-the-dark skeleton tops and pumpkin hats instead. We run the gentle Will-o'-the-Wisp Loop, so nobody needs to be quick — just home before the witching hour."
+    },
+    {
+      "question": "When and where does the club meet?",
+      "answer": "Tuesdays at 18:30 for lantern hill reps and Fridays at 19:00 for the moonlit long run, both from the Market Cross in Ambleside. No need to book — just turn up ten minutes early with your torch charged."
+    }
+  ]
+}
