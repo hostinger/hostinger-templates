@@ -1,0 +1,18 @@
+<dl class="stat-row">
+  <div class="stat">
+    <dt>Distance</dt>
+    <dd class="stat-value"><%= distanceLabel %></dd>
+  </div>
+  <div class="stat">
+    <dt>Climb</dt>
+    <dd class="stat-value"><%= climbLabel %> <span class="stat-arrow" aria-hidden="true">↑</span></dd>
+  </div>
+  <div class="stat">
+    <dt>Surface</dt>
+    <dd class="stat-text"><%= surface %></dd>
+  </div>
+  <div class="stat">
+    <dt>Grade</dt>
+    <dd><span class="difficulty difficulty-<%= difficulty.toLowerCase() %>"><%= difficulty %></span></dd>
+  </div>
+</dl>
