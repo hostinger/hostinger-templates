@@ -31,6 +31,7 @@ The seeded content documents Hooklane, a fictional webhook delivery API with fou
 - **Build tool:** Nest CLI (`nest build`, tsc under the hood)
 - **Styling:** Plain hand-written CSS with centralized design tokens
 - **Linting:** ESLint (flat config with typescript-eslint)
+- **Overrides:** `handlebars@^4.7.10` — `hbs@4.3.1` (latest) pins `handlebars@4.7.9` exactly (GHSA-8r5x-fm3f-whwj, GHSA-p8wg-vrv2-v86f, GHSA-xw65-4hp5-5hc7). Remove when `hbs` releases with a newer pin.
 
 ## Getting started
 
