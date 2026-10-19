@@ -110,11 +110,6 @@ npm run preview
 
 Production files are written to `out/`.
 
-## License
-
-MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
-projects.
-
 ## Screenshots
 
 - Thumbnail: `preview/podcast-home-thumbnail.png`

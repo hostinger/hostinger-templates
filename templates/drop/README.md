@@ -109,11 +109,6 @@ npm run preview
 
 Production files are written to `build/`; the deployable static site is `build/client/`.
 
-## License
-
-MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
-projects.
-
 ## Screenshots
 
 - Thumbnail: `preview/drop-thumbnail.png`

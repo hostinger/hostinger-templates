@@ -30,7 +30,8 @@
 - Declare the supported Node.js version in `engines`. Use the package's
   `engines` field from the catalog when it has one (Nuxt 4), otherwise
   the catalog `node.engines` default.
-- Include an explicit license for template reuse.
+- Include an explicit license for template reuse: a `LICENSE` file and the
+  `package.json` `license` field. Do not repeat it in the README.
 - `npm install`, `npm run lint`, and `npm run build` must succeed.
 - `npm audit --audit-level=high` must pass. Use `overrides` only for a
   parent pin you document in the project README.
@@ -114,7 +115,8 @@ commit until the template's own code is free of issues and vulnerabilities.
 ## Documentation
 
 - Include a project `README.md`.
-- Follow `README_TEMPLATE.md` exactly, including heading order.
+- Follow `README_TEMPLATE.md` exactly, including heading order. Do not add
+  sections it does not have, such as `License`.
 - Include the mandatory `Personalizing` section with exact file paths.
 
 ## Images

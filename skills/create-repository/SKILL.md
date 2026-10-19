@@ -183,7 +183,8 @@ Mobile is a first-class layout:
 Create the project README using [README_TEMPLATE.md](README_TEMPLATE.md).
 Preserve its top-level headings, heading order, and section purpose exactly.
 Replace placeholders and remove instructional comments, but do not invent a
-different structure.
+different structure. Do not add a `License` section; the `LICENSE` file and
+`package.json` already state the terms.
 
 The `Personalizing` section is mandatory and must identify exact files for:
 

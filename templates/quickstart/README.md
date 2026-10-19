@@ -109,11 +109,6 @@ npm run preview
 
 Production files are written to `dist/`. `npm run preview` runs the compiled Node server (`node dist/server.js`) on port 4376 unless `PORT` is set — this is a server app and must stay running behind your host's Node process manager.
 
-## License
-
-MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
-projects.
-
 ## Screenshots
 
 - Thumbnail: `preview/quickstart-thumbnail.png`

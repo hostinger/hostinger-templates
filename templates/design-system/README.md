@@ -158,11 +158,6 @@ hosts like GitHub Pages use `404.html` automatically, while others need a
 rewrite of unknown paths to `index.html`. To test the built site with such a
 fallback locally, run `npx serve dist --single`.
 
-## License
-
-MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
-projects.
-
 ## Screenshots
 
 - Thumbnail: `preview/design-system-thumbnail.png`

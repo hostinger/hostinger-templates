@@ -139,11 +139,6 @@ npm run preview
 
 `npm run build` writes a Nuxt SSR app to `.output`. `npm run preview` runs the Nitro server at `.output/server/index.mjs`. This is a server-rendered app, not a static export.
 
-## License
-
-MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
-projects.
-
 ## Screenshots
 
 - Thumbnail: `preview/quiet-practice-thumbnail.png`

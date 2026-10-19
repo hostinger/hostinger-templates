@@ -107,11 +107,6 @@ npm run preview
 
 Production files are written to `dist/`.
 
-## License
-
-MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
-projects.
-
 ## Screenshots
 
 - Thumbnail: `preview/class-timetable-thumbnail.png`

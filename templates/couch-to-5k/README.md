@@ -112,11 +112,6 @@ npm run preview
 
 Production files are written to `build/`.
 
-## License
-
-MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
-projects.
-
 ## Screenshots
 
 - Thumbnail: `preview/couch-to-5k-thumbnail.png`

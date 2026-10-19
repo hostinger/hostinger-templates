@@ -117,11 +117,6 @@ npm run preview
 
 Production files are written to `dist/sunday-league/browser/`.
 
-## License
-
-MIT. See `LICENSE`; reuse and adapt this template in personal or commercial
-projects.
-
 ## Screenshots
 
 - Thumbnail: `preview/sunday-league-thumbnail.png`
