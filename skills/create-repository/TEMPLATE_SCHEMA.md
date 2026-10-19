@@ -14,7 +14,7 @@ finished project contributes one entry.
   "bucket": "Supplied bucket",
   "categories": ["Display category", "Optional second display category"],
   "whoItsFor": "Specific intended user",
-  "demoUrl": null,
+  "demoUrl": "https://lowercase-kebab-case.hostingertemplates.com",
   "classification": {
     "categories": [
       "specific-category"
@@ -103,7 +103,9 @@ finished project contributes one entry.
 - `description` is at most two normal-length sentences: who the template is
   for and what it does.
 - `bucket` and `whoItsFor` preserve the supplied brief; `categories` lists the hPanel gallery display categories (SaaS, Business, Documentation, Event, Portfolio, Marketing, Fitness, E-commerce, Hospitality, Blog, Calculator, Dashboard) — a template may appear in several.
-- `demoUrl` stays `null` until a real public deployment exists.
+- `demoUrl` is `https://<id>.hostingertemplates.com`. The `Deploy template
+  demos` workflow publishes it when the PR adding the template is merged; if
+  that run fails, fix and rerun it rather than leaving the URL dead.
 - `categories` support browsing; use stable lowercase kebab-case terms.
 - `useCases` describe outcomes, not implementation details. Every entry is a
   single lowercase word (for example `booking`, `pricing`, `rsvp`).

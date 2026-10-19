@@ -1,169 +1,84 @@
 ---
 name: deploy-nodejs-templates
-description: Deploys static and server-backed Node.js templates from this repository as subdomains of hostingertemplates.com, verifies each live deployment, and updates templates.json demoUrl values. Use when publishing, deploying, or refreshing template demos on Hostinger.
+description: Redeploys or troubleshoots template demos on <id>.hostingertemplates.com through the Deploy template demos GitHub workflow. New templates deploy automatically when their PR is merged, so never deploy them by hand. Use when a demo is broken or stale, a deploy run failed, or demos need refreshing.
 ---
 
-# Deploy template demos to Hostinger
+# Template demos on Hostinger
 
-Public demos in this repository use
-`https://<template-id>.hostingertemplates.com`. Each template is a subdomain of
-the `hostingertemplates.com` website. Do not generate `*.hostingersite.com`
-temporary domains.
+Every template has a public demo at `https://<id>.hostingertemplates.com`, a
+subdomain of the `hostingertemplates.com` website. The catalog `demoUrl` is
+set to that URL in the PR that adds the template.
 
-## 1. Inventory the work
+`.github/workflows/deploy-template-demos.yml` publishes demos:
 
-1. Read `templates.json`.
-2. List directories under `templates/` that contain `package.json`.
-3. Match each directory to exactly one catalog entry by `id`.
-4. Determine whether the request covers all templates, only missing
-   `demoUrl` values, or named templates.
-5. Preserve existing catalog metadata. Deployment changes only `demoUrl`
-   unless the user separately requests metadata edits.
+- On merge to `main`, it deploys every template whose
+  `templates/<id>/package.json` the push added. Changes to existing templates
+  (Dependabot security groups, dependency bumps, fixes) do not deploy.
+- From the Actions tab ("Run workflow"), it redeploys the template IDs given.
 
-Stop if IDs are missing or duplicated.
+Do not deploy demos with the Hostinger connector or MCP tools while the
+workflow can do it.
 
-## 2. Select the hosting plan
-
-Use Hostinger Hosting connector tools.
-
-For a new demo collection:
-
-1. List active hosting orders.
-2. Keep Cloud plans.
-3. Query websites separately for every candidate order using `order_id` and
-   inspect the response `meta.total`. A broad website listing can be paginated
-   and is not proof that a plan is empty.
-4. Choose an empty Cloud plan. If several are empty, prefer the newest unless
-   the user gives another preference.
-
-For additional or refreshed demos, reuse the plan that contains the existing
-catalog demo domains. Resolve it by filtering the website list by a known
-domain; do not assume a stale order ID.
-
-## 3. Build and archive
-
-For every selected template, run from its directory:
+## Redeploy demos
 
 ```bash
-npm ci
-npm run lint
-npm run build
+gh workflow run deploy-template-demos.yml --ref main -f templates="callout quickstart"
+sleep 5
+gh run watch "$(gh run list --workflow deploy-template-demos.yml --limit 1 --json databaseId --jq '.[0].databaseId')"
 ```
 
-Do not deploy a failed build.
+The run summary lists every template with its URL and result. A template is
+done only when it shows `✅ live`.
 
-Determine the deployment type from the production build:
+## Fix a failed deploy
 
-- **Static:** the configured output directory contains `index.html` and can run
-  without a Node.js process.
-- **Server-backed Node.js:** production starts from a Node.js entry file, such
-  as an Express server compiled to `dist/server.js`.
+1. Open the failed run and find the template's step output:
+   - `build` job failed: the template does not install or build on CI.
+     Reproduce locally with `npm ci && npm run build`.
+   - `deploy` job, `Node.js build … failed`: the step prints the tail of the
+     Hostinger build log. Hostinger runs `npm ci` and the build on Node 22, so
+     reproduce with Node 22 before changing anything. Do not trust hPanel's
+     AI failure analysis without reproducing it.
+   - `deploy` job, `Timed out … waiting for https://…`: the deploy went
+     through but the site did not serve the template. New subdomains can need
+     a few minutes for DNS and TLS; rerun once before investigating.
+   - `401` from the API: the `HOSTINGER_API_TOKEN` secret in the
+     `template-demos` environment expired or was revoked. A repository admin
+     creates a new token on the account that owns `hostingertemplates.com`
+     and replaces the secret.
+2. Fix the template in a PR. Merging the fix does not redeploy it, so run the
+   workflow for that template after the merge.
+3. Confirm `https://<id>.hostingertemplates.com` and one non-home page load.
 
-For static templates, archive the contents of the build output, not the
-containing directory. For the usual `dist/` output:
+How the workflow decides between a static and a Node.js deploy:
 
-```bash
-archive="<template-id>_$(date +%Y%m%d_%H%M%S).zip"
-(cd dist && zip -qr "../$archive" .)
-```
+- Static: no `deploy.entryFile` in the catalog, and the build output
+  (`deploy.outputDirectory`, else `dist`, `build`, or `out`) contains
+  `index.html`. The output is uploaded and served as files.
+- Node.js: everything else. The committed template source is uploaded and
+  Hostinger builds and runs it with the catalog `deploy` settings applied.
 
-The archive root must contain `index.html`.
+A template deploys as the wrong type when its catalog `deploy` block or build
+output is wrong. Fix the template, not the workflow.
 
-For server-backed Node.js templates, archive application source instead. Exclude
-`node_modules`, previews, local archives, and generated build output. Ensure
-`package.json` identifies the built production entry with `main` when automatic
-detection would otherwise choose the wrong file:
+## Manual fallback
 
-```json
-{
-  "main": "dist/server.js"
-}
-```
+Only when GitHub Actions cannot be used, or demos move to another hosting
+plan, use the Hostinger connector tools on the account that owns
+`hostingertemplates.com`:
 
-## 4. Create one public subdomain per template
-
-Reuse the existing `hostingertemplates.com` website on the selected plan. If it
-is missing, create that addon website first and wait until it is enabled.
-
-For each template:
-
-1. Create a subdomain of `hostingertemplates.com` whose prefix and directory are
-   the template ID.
-2. Wait until `<template-id>.hostingertemplates.com` appears as an enabled
-   subdomain before uploading.
-
-Create or delete websites and subdomains one at a time. Concurrent Hostinger
-mutations can fail with unfinished-action rate limits.
-
-Keep a clear template-to-domain mapping throughout.
-
-## 5. Deploy output
-
-For static output, use the static website deployment tool with:
-
-- domain `https://<template-id>.hostingertemplates.com` (the subdomain, not the
-  parent site)
-- the template archive path
-- archive removal enabled
-
-Upload deployments sequentially. Concurrent credential requests can fail with:
-
-```text
-Failed to fetch upload credentials: Request failed with status code 500
-```
-
-Treat this as transient after recent website creation. Wait briefly, confirm the
-website exists, then retry that deployment once sequentially.
-
-For server-backed Node.js templates, use the JavaScript application deployment
-tool with the source archive and archive removal enabled. Confirm its resolved
-settings use the intended build script, Node version, application type, and
-entry file. Poll the deployment until it reaches `completed`; if it fails, read
-the deployment logs, fix the exact cause, rebuild, and redeploy before attaching
-the catalog URL.
-
-## 6. Verify live websites
-
-Wait for accepted deployments to finish, then verify
-`https://<template-id>.hostingertemplates.com` returns the expected template
-content over HTTPS with HTTP 200.
-
-For multi-page templates, also request at least one non-home direct URL. Do not
-mark deployment complete when only the homepage works.
-
-New aliases may briefly show Hostinger's browser-check page while DNS, CDN, and
-TLS provisioning settle. Confirm the alias exists, wait briefly, and retry once.
-Report a persistent failure without writing its `demoUrl`.
-
-## 7. Update the catalog
-
-Set each successfully verified catalog entry to its public custom subdomain:
-
-```json
-"demoUrl": "https://<template-id>.hostingertemplates.com"
-```
-
-Then verify:
-
-- `templates.json` parses as JSON
-- every template directory has one catalog entry
-- every deployed entry has a non-null `demoUrl`
-- IDs remain unique
-- `git diff --check` passes
-
-Do not rewrite descriptions, features, ordering, or other metadata while adding
-deployment URLs.
-
-## 8. Clean up and hand off
-
-Remove generated build directories and any local archives. Keep source files,
-lockfiles, previews, and deployed websites.
-
-Report:
-
-- hosting plan used
-- template names and clickable public URLs
-- build and live verification results
-- catalog update status
-
-Do not commit or push unless the user explicitly asks.
+1. Moving plans: pick an empty Cloud plan (check each order's websites with
+   `order_id`; a broad listing is paginated), create the
+   `hostingertemplates.com` website there, and wait until it is ready.
+2. For each template, one at a time (concurrent changes on one account fail
+   with unfinished-action limits and transient `500`s):
+   1. Build it with `npm ci && npm run build`.
+   2. Create subdomain `<id>` of `hostingertemplates.com` with directory
+      `<id>`, and wait until it is listed.
+   3. Static: zip the contents of the build output (`index.html` at the
+      archive root) and deploy it with the static website tool to
+      `<id>.hostingertemplates.com`.
+      Node.js: zip the source without `node_modules`, build output, or
+      `preview/`, deploy it with the JavaScript application tool, and poll
+      until the deployment is `completed`.
+   4. Verify the live URL as in "Fix a failed deploy".
