@@ -1,0 +1,306 @@
+/* Design tokens + base element styles. Change the look of the whole site here. */
+
+:root {
+  /* Palette — park bench and muddy boots */
+  --color-moss: #2f5d3a;
+  --color-moss-deep: #1f4128;
+  --color-moss-soft: #dfe9dc;
+  --color-cream: #fbf4e6;
+  --color-cream-deep: #f3e7cf;
+  --color-terracotta: #e0673a;
+  --color-terracotta-deep: #b94a22;
+  --color-terracotta-soft: #f9dccd;
+  --color-ink: #1f2a24;
+  --color-ink-muted: #4f5b53;
+  --color-white: #fffdf8;
+  --color-line: rgba(31, 42, 36, 0.14);
+
+  /* Illustration colours */
+  --color-sun: #f2b84b;
+  --color-hill-back: #9cbf8a;
+  --color-hill-front: #6c9a5c;
+  --color-dog: #c9874d;
+  --color-dog-dark: #8a5530;
+  --color-collar: #e0673a;
+
+  /* Walk area terrains, used by badges, pins, and the map */
+  --terrain-park: #7cae5a;
+  --terrain-woodland: #3f7a4a;
+  --terrain-riverside: #4a8fb0;
+  --terrain-heath: #b5813e;
+  --terrain-canal: #5a7ca8;
+  --terrain-meadow: #c3a43a;
+
+  /* Map */
+  --map-land: #efe6d0;
+  --map-road: #fffaf0;
+  --map-house: #e2d5b8;
+
+  /* Type */
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans Variable', 'Segoe UI', system-ui, sans-serif;
+
+  /* Shape */
+  --radius-card: 22px;
+  --radius-control: 14px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 0 var(--color-line), 0 14px 30px -18px rgba(31, 42, 36, 0.35);
+  --shadow-raised: 0 18px 40px -20px rgba(31, 42, 36, 0.45);
+
+  /* Rhythm */
+  --space-page: clamp(1rem, 4vw, 3rem);
+  --space-section: clamp(3.5rem, 8vw, 6.5rem);
+  --content-max: 74rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+input,
+button,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-terracotta);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(100% - 2 * var(--space-page), var(--content-max));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-terracotta-deep);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.6rem;
+  border-top: 2px dashed currentColor;
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 40rem;
+  margin-bottom: 2.25rem;
+}
+
+.section-heading__title {
+  font-size: clamp(2rem, 4.2vw, 3rem);
+}
+
+.section-heading__body {
+  color: var(--color-ink-muted);
+  font-size: 1.08rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.4rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button--primary {
+  background: var(--color-terracotta);
+  color: var(--color-white);
+}
+
+.button--primary:hover {
+  background: var(--color-terracotta-deep);
+}
+
+.button--ghost {
+  border-color: var(--color-moss);
+  color: var(--color-moss);
+}
+
+.button--ghost:hover {
+  background: var(--color-moss);
+  color: var(--color-cream);
+}
+
+.button--light {
+  background: var(--color-cream);
+  color: var(--color-moss-deep);
+}
+
+.button--light:hover {
+  background: var(--color-white);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-moss);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.terrain-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--badge-color) 16%, var(--color-white));
+  color: color-mix(in srgb, var(--badge-color) 70%, var(--color-ink));
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.terrain-badge::before {
+  content: '';
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--badge-color);
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  font-weight: 600;
+}
+
+.chip:hover {
+  border-color: var(--color-moss);
+}
+
+.chip[aria-pressed='true'] {
+  border-color: var(--color-moss);
+  background: var(--color-moss);
+  color: var(--color-cream);
+}

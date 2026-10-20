@@ -1,0 +1,148 @@
+/* Breakpoints: tablet (≤ 960px), phone (≤ 640px), narrow phone (≤ 380px). */
+
+@media (max-width: 960px) {
+  .site-header__cta {
+    display: none;
+  }
+
+  .hero__layout,
+  .faq__layout,
+  .areas-page__layout,
+  .booking-page__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero__visual {
+    max-width: 34rem;
+  }
+
+  .area-grid,
+  .testimonials__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .areas-page__map,
+  .booking-summary {
+    position: static;
+  }
+
+  .site-footer__inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    padding-block: 0.6rem;
+  }
+
+  .site-nav {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .site-nav__list {
+    justify-content: space-between;
+  }
+
+  .site-nav__link {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.92rem;
+  }
+
+  .hero__ticket {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin-top: 1rem;
+  }
+
+  .hero__actions .button {
+    flex: 1 1 12rem;
+  }
+
+  .stats,
+  .steps__list,
+  .area-grid,
+  .testimonials__grid,
+  .area-options,
+  .details-grid,
+  .site-footer__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .steps__item:not(:last-child)::after {
+    display: none;
+  }
+
+  .date-options {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+
+  .date-option__weekday,
+  .date-option__month {
+    font-size: 0.68rem;
+    letter-spacing: 0;
+  }
+
+  .date-option__day {
+    font-size: 1.2rem;
+  }
+
+  .booking-step {
+    padding: 1.15rem;
+  }
+
+  .booking-form__submit {
+    justify-self: stretch;
+    min-width: 0;
+  }
+
+  .area-map__pin {
+    padding-right: 0.25rem;
+  }
+
+  .area-map__pin-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .area-map__pin--selected .area-map__pin-label {
+    position: static;
+    width: auto;
+    height: auto;
+    clip-path: none;
+    padding-right: 0.45rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand__name {
+    font-size: 1.3rem;
+  }
+
+  .site-nav__link {
+    padding-inline: 0.45rem;
+    font-size: 0.85rem;
+  }
+
+  .date-options {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .slot-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .area-card,
+  .testimonial {
+    padding: 1.2rem;
+  }
+}
