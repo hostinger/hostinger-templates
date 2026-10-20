@@ -6000,6 +6000,121 @@
         "outputDirectory": "",
         "entryFile": "dist/server.js"
       }
+    },
+    {
+      "id": "walkies",
+      "name": "Walkies",
+      "summary": "A dog walking service site with a walk-area map and a slot-based booking flow.",
+      "description": "Walkies is a website for an independent dog walker or small walking team. It presents the service on a warm landing page, lists every walk area beside an illustrated map with lead-policy filters, and lets owners book by picking an area, a day, and an available time slot before confirming with their dog's details. Availability is deterministic sample data, so the demo works without a backend.",
+      "bucket": "Non-technical",
+      "categories": [
+        "Business"
+      ],
+      "whoItsFor": "A dog walker",
+      "demoUrl": "https://walkies.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "local-business",
+          "pet-services",
+          "dog-walking"
+        ],
+        "useCases": [
+          "booking",
+          "slots",
+          "areas"
+        ],
+        "frameworks": [
+          "react",
+          "react-router",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "walk-area-map",
+          "name": "Walk area map",
+          "description": "Illustrated map with numbered pins linked to area cards, plus an all, off-lead, and on-lead filter."
+        },
+        {
+          "id": "slot-based-booking",
+          "name": "Slot-based booking flow",
+          "description": "Pick a walk area, a date in the next 10 days, and a time slot showing spaces left, full, or booked by you."
+        },
+        {
+          "id": "validated-booking-details",
+          "name": "Validated booking details",
+          "description": "Owner and dog details form with inline, accessible validation, a live booking summary, and a confirmation reference."
+        },
+        {
+          "id": "service-landing-page",
+          "name": "Service landing page",
+          "description": "Hero, stats, how-it-works steps, featured walk areas, owner testimonials, FAQ, and a call-to-action band."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "React",
+          "Vite"
+        ],
+        "styling": [
+          "Hand-written CSS (design tokens, section styles, responsive rules)"
+        ],
+        "data": [
+          "Shareable URL and query-parameter state",
+          "Typed TypeScript content and configuration",
+          "No database or application backend required"
+        ],
+        "deployment": [
+          "Static production output in dist/"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22+"
+            ]
+          }
+        ]
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/walkies/preview/walkies-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/walkies/preview/walkies-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/walkies/preview/walkies-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/walkies/preview/walkies-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "templates/walkies/preview/walkies-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/walkies/preview/walkies-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 3870
+        }
+      },
+      "searchTerms": [
+        "dog walker website",
+        "dog walking booking",
+        "pet services template",
+        "walk slot booking",
+        "dog walk areas map"
+      ]
     }
   ]
 }
