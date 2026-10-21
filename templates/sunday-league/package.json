@@ -31,10 +31,10 @@
   },
   "devDependencies": {
     "@angular/build": "^21.2.25",
-    "@angular/cli": "^21.2.27",
+    "@angular/cli": "^22.2.3",
     "@angular/compiler-cli": "^21.2.0",
     "@eslint/js": "^10.0.1",
-    "angular-eslint": "21.4.0",
+    "angular-eslint": "22.6.0",
     "eslint": "^10.6.0",
     "serve": "^14.2.6",
     "typescript": "~5.9.0",
