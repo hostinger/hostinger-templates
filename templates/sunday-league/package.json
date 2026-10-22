@@ -41,6 +41,7 @@
     "typescript-eslint": "8.62.1"
   },
   "overrides": {
-    "compression": "^1.8.2"
+    "compression": "^1.8.2",
+    "vite": "7.3.7"
   }
 }
