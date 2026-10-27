@@ -67,12 +67,12 @@ jobs:
           set -euo pipefail
           deadline=$((SECONDS + 3600))
           while (( SECONDS < deadline )); do
-            json=$(gh pr checks "$PR_URL" --json name,state,bucket,workflow)
+            json=$(gh pr checks "$PR_URL" --json name,state,bucket,workflow 2>/dev/null) || json='[]'
             echo "$json" | jq -c '.[] | {name,state,bucket,workflow}'
             others=$(echo "$json" | jq -c --arg w "$THIS_WORKFLOW" --arg g "$GATE_WORKFLOW" \
               '[.[] | select(.workflow != $w and .workflow != $g)]')
             pending=$(echo "$others" | jq \
-              '[.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .bucket == "pending")] | length')
+              'if length == 0 then 1 else [.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .bucket == "pending")] | length end')
             if [[ "$pending" == "0" ]]; then
               failed=$(echo "$others" | jq -c \
                 '[.[] | select(.bucket == "fail" or .state == "FAILURE" or .state == "CANCELLED" or .state == "TIMED_OUT")]')
@@ -166,4 +166,4 @@ jobs:
         env:
           PR_URL: ${{ steps.pr.outputs.url }}
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
-        run: gh pr merge --auto --squash "$PR_URL"
+        run: gh pr merge --squash "$PR_URL" || gh pr merge --auto --squash "$PR_URL"
