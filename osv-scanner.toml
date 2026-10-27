@@ -10,9 +10,3 @@ ecosystem = "npm"
 group = "dev"
 vulnerability.ignore = true
 reason = "Dev dependencies are not shipped. Matches the production-only PR audit (npm audit --omit=dev)."
-
-[[PackageOverrides]]
-name = "@sveltejs/kit"
-ecosystem = "npm"
-vulnerability.ignore = false
-reason = "SvelteKit is a devDependency but its runtime is bundled into the built site, so its vulnerabilities ship. Remove after the SvelteKit 3 migration."
