@@ -1,0 +1,12 @@
+[[IgnoredVulns]]
+id = "GHSA-86w9-cpqp-85rv"
+ignoreUntil = 2027-01-31
+reason = "node-forge has no patched release. Dev-server only dependency of Nuxt templates; matches the Dependabot dismissal from 2026-10-06."
+
+[[PackageOverrides]]
+name = "zod"
+ecosystem = "npm"
+group = "dev"
+vulnerability.ignore = true
+effectiveUntil = 2027-01-31
+reason = "zod is a dev-only dependency in these templates. Dependabot auto-dismissed the same alerts as low-impact development dependencies."
