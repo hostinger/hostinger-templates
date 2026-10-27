@@ -1,3 +1,14 @@
+[[IgnoredVulns]]
+id = "GHSA-vjh5-4x84-xrqp"
+ignoreUntil = 2027-01-31
+reason = "False positive on nuxt and @nuxt/nitro-server 4.6.2, the fixed version. GitHub limits the 3.x range with database_specific.last_known_affected_version_range < 4.0.0, which OSV-Scanner ignores, so the range is read as open-ended. All Nuxt templates are on 4.6.2."
+
+[[PackageOverrides]]
+name = "@sveltejs/kit"
+ecosystem = "npm"
+vulnerability.ignore = false
+reason = "SvelteKit is a devDependency but its runtime is bundled into the built site, so its vulnerabilities ship. Remove after the SvelteKit 3 migration."
+
 [[PackageOverrides]]
 name = ".*"
 nameIsRegex = true
