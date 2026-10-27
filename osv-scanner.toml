@@ -1,0 +1,7 @@
+[[PackageOverrides]]
+name = ".*"
+nameIsRegex = true
+ecosystem = "npm"
+group = "dev"
+vulnerability.ignore = true
+reason = "Dev dependencies are not shipped. Matches the production-only PR audit (npm audit --omit=dev)."

@@ -8,6 +8,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/dependency-scan.yml"
+      - "osv-scanner.toml"
   workflow_dispatch:
 
 concurrency:
@@ -26,14 +27,15 @@ jobs:
       security-events: write
     with:
       scan-args: |-
+        --config=./osv-scanner.toml
         --recursive
         ./
-      fail-on-vuln: ${{ github.event_name != 'pull_request' }}
+      fail-on-vuln: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
       upload-sarif: ${{ github.event_name != 'pull_request' }}
 
   notify:
     needs: scan
-    if: ${{ !cancelled() && github.event_name != 'pull_request' }}
+    if: ${{ !cancelled() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
