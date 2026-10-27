@@ -55,49 +55,114 @@ jobs:
       # enough. Merge after every other check is green. Do not watch this job
       # itself or `gh pr checks --watch` waits forever.
       - name: Wait for other checks
+        id: checks
         if: steps.pr.outputs.found == 'true'
         env:
           PR_URL: ${{ steps.pr.outputs.url }}
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
           THIS_WORKFLOW: Dependabot auto-merge
           GATE_WORKFLOW: Dependabot auto-merge gate
+          PREVIEW_WORKFLOW: Template preview
         run: |
           set -euo pipefail
           deadline=$((SECONDS + 3600))
           while (( SECONDS < deadline )); do
             json=$(gh pr checks "$PR_URL" --json name,state,bucket,workflow)
             echo "$json" | jq -c '.[] | {name,state,bucket,workflow}'
-            failed=$(echo "$json" | jq --arg w "$THIS_WORKFLOW" --arg g "$GATE_WORKFLOW" '
-              [.[] | select(.workflow != $w and .workflow != $g)
-                | select(.bucket == "fail" or .state == "FAILURE" or .state == "CANCELLED" or .state == "TIMED_OUT")]
-              | length')
-            pending=$(echo "$json" | jq --arg w "$THIS_WORKFLOW" --arg g "$GATE_WORKFLOW" '
-              [.[] | select(.workflow != $w and .workflow != $g)
-                | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .bucket == "pending")]
-              | length')
-            if [[ "$failed" != "0" ]]; then
-              echo "A required check failed; not merging."
-              exit 1
-            fi
+            others=$(echo "$json" | jq -c --arg w "$THIS_WORKFLOW" --arg g "$GATE_WORKFLOW" \
+              '[.[] | select(.workflow != $w and .workflow != $g)]')
+            pending=$(echo "$others" | jq \
+              '[.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .bucket == "pending")] | length')
             if [[ "$pending" == "0" ]]; then
-              echo "All other checks passed."
+              failed=$(echo "$others" | jq -c \
+                '[.[] | select(.bucket == "fail" or .state == "FAILURE" or .state == "CANCELLED" or .state == "TIMED_OUT")]')
+              if [[ "$failed" == "[]" ]]; then
+                echo "All other checks passed."
+                echo "result=passed" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              previews=$(echo "$others" | jq --arg p "$PREVIEW_WORKFLOW" \
+                '[.[] | select(.workflow == $p and (.name | test("^preview \\(.+\\)$")))] | length')
+              trimmable=$(echo "$failed" | jq -r --arg p "$PREVIEW_WORKFLOW" \
+                'if all(.[]; .workflow == $p and (.name | test("^preview \\(.+\\)$")))
+                 then [.[].name | capture("^preview \\((?<t>.+)\\)$").t] | join(" ") else "" end')
+              failed_count=$(echo "$failed" | jq 'length')
+              echo "failed_checks=$(echo "$failed" | jq -r '[.[].name] | join(", ")')" >> "$GITHUB_OUTPUT"
+              if [[ -n "$trimmable" && "$failed_count" -lt "$previews" ]]; then
+                echo "Only template previews failed: $trimmable"
+                echo "result=trim" >> "$GITHUB_OUTPUT"
+                echo "templates=$trimmable" >> "$GITHUB_OUTPUT"
+              else
+                echo "A required check failed; not merging."
+                echo "result=failed" >> "$GITHUB_OUTPUT"
+              fi
               exit 0
             fi
             echo "Waiting on $pending check(s)..."
             sleep 60
           done
           echo "Timed out waiting for checks."
+          echo "result=timeout" >> "$GITHUB_OUTPUT"
+
+      - name: Check out pull request branch
+        if: steps.checks.outputs.result == 'trim'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+          token: ${{ steps.get_token.outputs.token }}
+
+      - name: Drop failing templates
+        if: steps.checks.outputs.result == 'trim'
+        env:
+          PR_URL: ${{ steps.pr.outputs.url }}
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+          TEMPLATES: ${{ steps.checks.outputs.templates }}
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin "$BASE_BRANCH"
+          for template in $TEMPLATES; do
+            if [[ ! "$template" =~ ^[a-z0-9-]+$ ]]; then
+              echo "::error::Unexpected template name: $template"
+              exit 1
+            fi
+            git checkout FETCH_HEAD -- "templates/$template"
+          done
+          git -c user.name="hostingerbot[bot]" -c user.email="hostingerbot[bot]@users.noreply.github.com" \
+            commit -m "chore(deps): drop templates that fail preview from security group" \
+            -m "Restores $(echo "$TEMPLATES" | sed 's/ /, /g') to $BASE_BRANCH. Their updates need a manual fix."
+          git push origin HEAD
+          list=$(for template in $TEMPLATES; do printf -- '- `%s`\n' "$template"; done)
+          gh pr comment "$PR_URL" --body "$(printf 'Dropped these templates from this PR because their `Template preview` check failed:\n\n%s\n\nThe rest of the PR merges once checks pass again. The dropped updates need a manual fix, usually a framework major upgrade. Their alerts stay open. Run: %s' "$list" "$RUN_URL")"
+
+      - name: Report blocked PR
+        if: steps.checks.outputs.result == 'failed' || steps.checks.outputs.result == 'timeout'
+        env:
+          PR_URL: ${{ steps.pr.outputs.url }}
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+          RESULT: ${{ steps.checks.outputs.result }}
+          FAILED_CHECKS: ${{ steps.checks.outputs.failed_checks }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          if [[ "$RESULT" == "timeout" ]]; then
+            reason="Checks did not finish within an hour."
+          else
+            reason="Failed checks: $FAILED_CHECKS. They are not only template previews, or every template failed, so nothing was dropped automatically."
+          fi
+          gh pr comment "$PR_URL" --body "$(printf 'Auto-merge is blocked. %s\n\nFix the failures or close this PR. Run: %s' "$reason" "$RUN_URL")"
           exit 1
 
       - name: Approve PR
-        if: steps.pr.outputs.found == 'true'
+        if: steps.checks.outputs.result == 'passed'
         env:
           PR_URL: ${{ steps.pr.outputs.url }}
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
         run: gh pr review --approve "$PR_URL"
 
       - name: Merge PR
-        if: steps.pr.outputs.found == 'true'
+        if: steps.checks.outputs.result == 'passed'
         env:
           PR_URL: ${{ steps.pr.outputs.url }}
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
