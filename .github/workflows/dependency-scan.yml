@@ -37,11 +37,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+      pull-requests: read
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
       SCAN_RESULT: ${{ needs.scan.result }}
       ISSUE_TITLE: "Dependency scan: vulnerable dependencies on main"
+      STUCK_AFTER_HOURS: "24"
       RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
       ALERTS_URL: ${{ github.server_url }}/${{ github.repository }}/security/code-scanning?query=is%3Aopen+branch%3Amain+tool%3Aosv-scanner
     steps:
@@ -51,14 +53,25 @@ jobs:
           existing=$(gh issue list --state open --search "in:title \"$ISSUE_TITLE\"" --json number,title \
             --jq "map(select(.title == \"$ISSUE_TITLE\")) | .[0].number // empty")
 
-          if [ "$SCAN_RESULT" = "success" ]; then
+          cutoff=$(date -u -d "-$STUCK_AFTER_HOURS hours" +%Y-%m-%dT%H:%M:%SZ)
+          stuck=$(gh pr list --state open --author "app/dependabot" --limit 100 --json number,title,url,createdAt \
+            --jq "map(select(.createdAt < \"$cutoff\")) | .[] | \"- #\(.number) \(.title) (opened \(.createdAt[:10]))\"")
+
+          if [ "$SCAN_RESULT" = "success" ] && [ -z "$stuck" ]; then
             if [ -n "$existing" ]; then
-              gh issue close "$existing" --comment "Scan $RUN_URL found no vulnerable dependencies. Closing."
+              gh issue close "$existing" --comment "Scan $RUN_URL found no vulnerable dependencies and no Dependabot PR is stuck. Closing."
             fi
             exit 0
           fi
 
-          body=$(printf 'OSV-Scanner run %s did not pass (result: `%s`).\n\nOpen findings: %s\n\nFix the advisories in the affected templates, or record accepted risks in `osv-scanner.toml`. This issue closes on the next passing scan.' "$RUN_URL" "$SCAN_RESULT" "$ALERTS_URL")
+          body=""
+          if [ "$SCAN_RESULT" != "success" ]; then
+            body=$(printf 'OSV-Scanner run %s did not pass (result: `%s`).\n\nOpen findings: %s\n\nFix the advisories in the affected templates, or record accepted risks in `osv-scanner.toml`.' "$RUN_URL" "$SCAN_RESULT" "$ALERTS_URL")
+          fi
+          if [ -n "$stuck" ]; then
+            body=$(printf '%s\n\nDependabot PRs open for more than %s hours:\n\n%s\n\nCheck their failing checks or the auto-merge run comments.' "$body" "$STUCK_AFTER_HOURS" "$stuck")
+          fi
+          body=$(printf '%s\n\nThis issue closes on the next run with a passing scan and no stuck Dependabot PRs.' "$body")
 
           if [ -n "$existing" ]; then
             gh issue comment "$existing" --body "$body"
