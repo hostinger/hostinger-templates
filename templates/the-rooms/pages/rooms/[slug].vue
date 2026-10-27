@@ -96,7 +96,7 @@ useSeoMeta({
       <DatePlanner :room-name="room.name" compact />
     </section>
 
-    <NuxtLink class="next-room" :to="`/rooms/${nextRoom.slug}`">
+    <NuxtLink v-if="nextRoom" class="next-room" :to="`/rooms/${nextRoom.slug}`">
       <span>Next key</span>
       <strong>{{ nextRoom.name }}</strong>
       <i aria-hidden="true">→</i>
