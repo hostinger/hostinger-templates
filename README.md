@@ -73,8 +73,8 @@ advisory, other directories).
 
 Dependabot alerts were raised only when a push to `main` changed the
 dependency graph, so advisories published between pushes went unnoticed.
-`.github/workflows/dependency-graph-refresh.yml` submits an npm dependency
-snapshot for `templates/` every day at 04:47 UTC, before the 05:17 dependency
+`.github/workflows/dependency-graph-refresh.yml` submits the npm lockfile
+dependencies for `templates/` every day at 04:47 UTC, before the 05:17 dependency
 scan, so new advisories turn into alerts and security PRs without a push.
 
 ## Translations

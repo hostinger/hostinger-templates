@@ -24,6 +24,6 @@ jobs:
         uses: advanced-security/component-detection-dependency-submission-action@a02aeda7a175ad4dd38a13c4d3ff2df9da8f2cf0 # v0.2.0
         with:
           filePath: templates
-          detectorsCategories: Npm
+          detectorsFilter: NpmLockfile3
           correlator: daily-npm-graph-refresh
           fail-on-empty: "true"
