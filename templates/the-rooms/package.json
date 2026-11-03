@@ -18,7 +18,7 @@
   "dependencies": {
     "@fontsource-variable/newsreader": "^5.2.8",
     "@fontsource-variable/work-sans": "^5.2.8",
-    "nuxt": "^4.6.2",
+    "nuxt": "^4.6.4",
     "vue": "^3.5.42"
   },
   "devDependencies": {
@@ -29,6 +29,9 @@
   },
   "overrides": {
     "@vitejs/devtools": "^0.5.0",
-    "simple-git": "^4.0.2"
+    "simple-git": "^4.0.2",
+    "@vercel/nft": {
+      "glob": "^14.0.2"
+    }
   }
 }

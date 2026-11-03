@@ -16,7 +16,7 @@
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
   },
   "dependencies": {
-    "nuxt": "^4.6.2",
+    "nuxt": "^4.6.4",
     "vue": "^3.5.41",
     "vue-router": "^5.2.0"
   },
@@ -29,6 +29,9 @@
   "license": "MIT",
   "overrides": {
     "@vitejs/devtools": "^0.5.0",
-    "simple-git": "^4.0.2"
+    "simple-git": "^4.0.2",
+    "@vercel/nft": {
+      "glob": "^14.0.2"
+    }
   }
 }
