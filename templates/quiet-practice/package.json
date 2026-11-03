@@ -23,7 +23,7 @@
     "self-check"
   ],
   "dependencies": {
-    "nuxt": "^4.6.2",
+    "nuxt": "^4.6.4",
     "vue": "^3.5.41",
     "vue-router": "^5.2.0"
   },
