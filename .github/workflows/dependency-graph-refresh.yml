@@ -3,6 +3,10 @@ name: Dependency graph refresh
 on:
   schedule:
     - cron: "47 4 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "templates/**/package-lock.json"
   pull_request:
     paths:
       - ".github/workflows/dependency-graph-refresh.yml"
