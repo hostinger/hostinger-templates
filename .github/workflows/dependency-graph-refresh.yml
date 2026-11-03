@@ -1,0 +1,29 @@
+name: Dependency graph refresh
+
+on:
+  schedule:
+    - cron: "47 4 * * *"
+  pull_request:
+    paths:
+      - ".github/workflows/dependency-graph-refresh.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: dependency-graph-refresh-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Submit npm dependency snapshot
+        uses: advanced-security/component-detection-dependency-submission-action@a02aeda7a175ad4dd38a13c4d3ff2df9da8f2cf0 # v0.2.0
+        with:
+          filePath: templates
+          detectorsCategories: Npm
+          correlator: daily-npm-graph-refresh
+          fail-on-empty: "true"
