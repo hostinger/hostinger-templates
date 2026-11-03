@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { PlanSession } from '$lib/types';
-	import { progress } from '$lib/progress.svelte';
-	import { formatMinutes } from '$lib/format';
+	import type { PlanSession } from '#lib/types.js';
+	import { progress } from '#lib/progress.svelte.js';
+	import { formatMinutes } from '#lib/format.js';
 
 	let { session, id, number }: { session: PlanSession; id: string; number: number } = $props();
 </script>

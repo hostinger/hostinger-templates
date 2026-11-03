@@ -7,7 +7,7 @@
  * suggestions pick it up automatically.
  */
 
-import { mailtoHref, resume } from '$lib/resume';
+import { mailtoHref, resume } from '#lib/resume.js';
 import { blank, heading, links, pair, text, type TerminalLine } from './output';
 
 export type CommandOutcome = { kind: 'lines'; lines: TerminalLine[] } | { kind: 'clear' };

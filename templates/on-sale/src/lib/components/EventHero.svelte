@@ -1,6 +1,6 @@
 <script lang="ts">
   import { resolve } from '$app/paths'
-  import type { EventDetails } from '$lib/types/event'
+  import type { EventDetails } from '#lib/types/event.js'
 
   let { event }: { event: EventDetails } = $props()
 

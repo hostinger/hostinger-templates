@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { faqs, prompt } from '$lib/resume';
+	import { faqs, prompt } from '#lib/resume.js';
 
 	const faqJsonLd = JSON.stringify({
 		'@context': 'https://schema.org',

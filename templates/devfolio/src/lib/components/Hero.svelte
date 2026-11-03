@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { mailtoHref, resume } from '$lib/resume';
+	import { mailtoHref, resume } from '#lib/resume.js';
 	import TerminalPanel from './TerminalPanel.svelte';
 
 	const github = resume.socials.find((social) => social.label === 'GitHub');

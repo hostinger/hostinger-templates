@@ -30,7 +30,7 @@ Visitors can check the early-bird countdown, compare committed ticket counts and
 
 ### Prerequisites
 
-- Node.js 22.12 or newer
+- Node.js 22.17 or newer
 - npm
 
 ### Installation

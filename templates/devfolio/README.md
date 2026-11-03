@@ -36,7 +36,7 @@ Recruiters who don't play along still get a skimmable, printable CV; the ones wh
 
 ### Prerequisites
 
-- Node.js 22 or newer
+- Node.js 22.17 or newer
 - npm
 
 ### Installation

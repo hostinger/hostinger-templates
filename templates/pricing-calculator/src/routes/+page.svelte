@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { browser } from '$app/environment'
-  import { resolve } from '$app/paths'
-  import { onMount } from 'svelte'
-  import EstimateReceipt from '$lib/components/EstimateReceipt.svelte'
-  import HowTo from '$lib/components/HowTo.svelte'
-  import MetricControl from '$lib/components/MetricControl.svelte'
-  import UsageCurve from '$lib/components/UsageCurve.svelte'
-  import { calculateEstimate, formatCompact } from '$lib/calculation'
-  import rawContent from '$lib/content/pricing.json'
-  import { readEstimate, writeEstimate } from '$lib/url-state'
-  import type { EstimateInput, PricingContent } from '$lib/types/pricing'
-  import '../styles/global.css'
+  import { browser } from '$app/env';
+  import { resolve } from '$app/paths';
+  import { onMount } from 'svelte';
+  import EstimateReceipt from '#lib/components/EstimateReceipt.svelte';
+  import HowTo from '#lib/components/HowTo.svelte';
+  import MetricControl from '#lib/components/MetricControl.svelte';
+  import UsageCurve from '#lib/components/UsageCurve.svelte';
+  import { calculateEstimate, formatCompact } from '#lib/calculation.js';
+  import rawContent from '#lib/content/pricing.json';
+  import { readEstimate, writeEstimate } from '#lib/url-state.js';
+  import type { EstimateInput, PricingContent } from '#lib/types/pricing.js';
+  import '../styles/global.css';
 
   const content = rawContent as PricingContent
   let input = $state<EstimateInput>({ ...content.defaults })
@@ -24,10 +24,12 @@
   })
 
   $effect(() => {
-    if (!browser || !hydrated) return
-    const next = writeEstimate(new URL(window.location.href), input)
-    window.history.replaceState({}, '', next)
-  })
+    if (!browser || !hydrated) return;
+
+    const next = writeEstimate(new URL(window.location.href), input);
+
+    window.history.replaceState({}, '', next);
+  });
 
   function setMetric(metric: keyof EstimateInput, value: number) {
     input = { ...input, [metric]: value }
@@ -35,10 +37,10 @@
   }
 
   async function copyShareLink() {
-    const shareUrl = writeEstimate(new URL(window.location.href), input).toString()
-    await navigator.clipboard.writeText(shareUrl)
-    copied = true
-    window.setTimeout(() => (copied = false), 2200)
+    const shareUrl = writeEstimate(new URL(window.location.href), input).toString();
+    await navigator.clipboard.writeText(shareUrl);
+    copied = true;
+    window.setTimeout(() => copied = false, 2200);
   }
 </script>
 
@@ -101,7 +103,11 @@
       </div>
     </div>
 
-    <EstimateReceipt {estimate} {copied} onCopy={copyShareLink} />
+    <EstimateReceipt
+      estimate={estimate}
+      copied={copied}
+      onCopy={copyShareLink}
+    />
   </section>
 
   <HowTo items={content.howTo} />

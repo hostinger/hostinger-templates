@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { wedding } from '$lib/data/wedding';
-	import venueImage from '$lib/assets/images/garden-table.jpg';
+	import { wedding } from '#lib/data/wedding.js';
+	import venueImage from '#lib/assets/images/garden-table.jpg';
 </script>
 
 <section class="story section" id="story">

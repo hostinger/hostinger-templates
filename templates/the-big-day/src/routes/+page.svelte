@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { faqJsonLd, wedding } from '$lib/data/wedding';
-	import SiteHeader from '$lib/components/SiteHeader.svelte';
-	import Hero from '$lib/components/Hero.svelte';
-	import StorySection from '$lib/components/StorySection.svelte';
-	import ScheduleSection from '$lib/components/ScheduleSection.svelte';
-	import TravelSection from '$lib/components/TravelSection.svelte';
-	import FaqSection from '$lib/components/FaqSection.svelte';
-	import RsvpForm from '$lib/components/RsvpForm.svelte';
-	import SiteFooter from '$lib/components/SiteFooter.svelte';
+	import { faqJsonLd, wedding } from '#lib/data/wedding.js';
+	import SiteHeader from '#lib/components/SiteHeader.svelte';
+	import Hero from '#lib/components/Hero.svelte';
+	import StorySection from '#lib/components/StorySection.svelte';
+	import ScheduleSection from '#lib/components/ScheduleSection.svelte';
+	import TravelSection from '#lib/components/TravelSection.svelte';
+	import FaqSection from '#lib/components/FaqSection.svelte';
+	import RsvpForm from '#lib/components/RsvpForm.svelte';
+	import SiteFooter from '#lib/components/SiteFooter.svelte';
 
 	const title = `${wedding.couple.first} & ${wedding.couple.second} — ${wedding.date.display}`;
 	const faqStructuredData = JSON.stringify(faqJsonLd).replace(/</g, '\\u003c');

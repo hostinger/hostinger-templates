@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { mailtoHref, prompt, resume } from '$lib/resume';
+	import { mailtoHref, prompt, resume } from '#lib/resume.js';
 </script>
 
 <section id="contact" class="man-section container" aria-labelledby="contact-title">

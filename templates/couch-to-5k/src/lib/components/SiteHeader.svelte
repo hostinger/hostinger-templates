@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { site, mailtoHref } from '$lib/site';
-	import { weeks, weekSessionIds, totalSessions } from '$lib/plan';
-	import { progress } from '$lib/progress.svelte';
-	import { formatSessionsDone, formatWeekProgress, percentDone } from '$lib/format';
+	import { site, mailtoHref } from '#lib/site.js';
+	import { weeks, weekSessionIds, totalSessions } from '#lib/plan.js';
+	import { progress } from '#lib/progress.svelte.js';
+	import { formatSessionsDone, formatWeekProgress, percentDone } from '#lib/format.js';
 
 	const overallPct = $derived(percentDone(progress.totalDone, totalSessions));
 </script>

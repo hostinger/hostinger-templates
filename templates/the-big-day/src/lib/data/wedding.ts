@@ -1,5 +1,5 @@
 import content from './wedding.json';
-import type { WeddingContent } from '$lib/types/wedding';
+import type { WeddingContent } from '#lib/types/wedding.js';
 
 export const wedding = content satisfies WeddingContent;
 

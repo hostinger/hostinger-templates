@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { formatCurrency } from '$lib/calculation'
-  import type { Estimate } from '$lib/types/pricing'
+  import { formatCurrency } from '#lib/calculation.js'
+  import type { Estimate } from '#lib/types/pricing.js'
 
   let {
     estimate,

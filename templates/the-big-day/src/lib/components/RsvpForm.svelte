@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tick } from 'svelte';
-	import { wedding } from '$lib/data/wedding';
-	import type { RsvpValues } from '$lib/types/wedding';
+	import { wedding } from '#lib/data/wedding.js';
+	import type { RsvpValues } from '#lib/types/wedding.js';
 
 	let values = $state<RsvpValues>({
 		name: '',

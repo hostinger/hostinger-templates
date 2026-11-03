@@ -1,4 +1,4 @@
-import type { ChargeLine, Estimate, EstimateInput, PricingRules } from '$lib/types/pricing'
+import type { ChargeLine, Estimate, EstimateInput, PricingRules } from '#lib/types/pricing.js'
 
 const roundCurrency = (value: number) => Math.round(value * 100) / 100
 

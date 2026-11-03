@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { progress } from '$lib/progress.svelte';
-	import { totalSessions } from '$lib/plan';
+	import { progress } from '#lib/progress.svelte.js';
+	import { totalSessions } from '#lib/plan.js';
 
 	let confirming = $state(false);
 	let cleared = $state(false);

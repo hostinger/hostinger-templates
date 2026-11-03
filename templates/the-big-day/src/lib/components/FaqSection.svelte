@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { wedding } from '$lib/data/wedding';
+	import { wedding } from '#lib/data/wedding.js';
 </script>
 
 <section class="faq section" id="faq">

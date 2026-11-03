@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { site } from '$lib/site';
-	import SiteHeader from '$lib/components/SiteHeader.svelte';
-	import Hero from '$lib/components/Hero.svelte';
-	import PlanSection from '$lib/components/PlanSection.svelte';
-	import CoachSection from '$lib/components/CoachSection.svelte';
-	import FaqSection from '$lib/components/FaqSection.svelte';
-	import SiteFooter from '$lib/components/SiteFooter.svelte';
+	import { site } from '#lib/site.js';
+	import SiteHeader from '#lib/components/SiteHeader.svelte';
+	import Hero from '#lib/components/Hero.svelte';
+	import PlanSection from '#lib/components/PlanSection.svelte';
+	import CoachSection from '#lib/components/CoachSection.svelte';
+	import FaqSection from '#lib/components/FaqSection.svelte';
+	import SiteFooter from '#lib/components/SiteFooter.svelte';
 
 	const pageTitle = `${site.planName} — ${site.clubName}`;
 </script>

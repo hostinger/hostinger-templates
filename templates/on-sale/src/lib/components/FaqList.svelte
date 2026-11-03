@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FaqItem } from '$lib/types/event'
+  import type { FaqItem } from '#lib/types/event.js'
 
   let { items }: { items: FaqItem[] } = $props()
 </script>

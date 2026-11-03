@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { site, mailtoHref } from '$lib/site';
+	import { site, mailtoHref } from '#lib/site.js';
 </script>
 
 <section id="coach" class="coach" aria-labelledby="coach-title">
