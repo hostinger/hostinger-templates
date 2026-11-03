@@ -71,6 +71,12 @@ hand when `engines` change. Dependabot still opens grouped security PRs;
 this command is for catalog-led bumps Dependabot will not fan out (same
 advisory, other directories).
 
+Dependabot alerts were raised only when a push to `main` changed the
+dependency graph, so advisories published between pushes went unnoticed.
+`.github/workflows/dependency-graph-refresh.yml` submits the npm lockfile
+dependencies for `templates/` every day at 04:47 UTC, before the 05:17 dependency
+scan, so new advisories turn into alerts and security PRs without a push.
+
 ## Translations
 
 Template summaries, descriptions and category labels are shown in hPanel in English, straight from `templates.json` — there is no translation pipeline for the v1 release.
