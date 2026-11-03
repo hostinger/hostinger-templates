@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { prompt, resume } from '$lib/resume';
+	import { prompt, resume } from '#lib/resume.js';
 
 	const year = new Date().getFullYear();
 </script>

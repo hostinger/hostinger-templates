@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { prompt, resume } from '$lib/resume';
+	import { prompt, resume } from '#lib/resume.js';
 </script>
 
 <section id="projects" class="man-section container" aria-labelledby="projects-title">

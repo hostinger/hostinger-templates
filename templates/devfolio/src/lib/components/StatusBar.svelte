@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resume } from '$lib/resume';
+	import { resume } from '#lib/resume.js';
 
 	const identity = `${resume.meta.username}@${resume.meta.hostname}`;
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import TicketTier from '$lib/components/TicketTier.svelte'
-  import type { EventDetails } from '$lib/types/event'
+  import TicketTier from '#lib/components/TicketTier.svelte'
+  import type { EventDetails } from '#lib/types/event.js'
 
   let { event }: { event: EventDetails } = $props()
 </script>

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { site } from '$lib/site';
-	import { totalSessions, totalWeeks, weeks } from '$lib/plan';
+	import { site } from '#lib/site.js';
+	import { totalSessions, totalWeeks, weeks } from '#lib/plan.js';
 	import RouteMap from './RouteMap.svelte';
 
 	const runsPerWeek = weeks[0].sessions.length;

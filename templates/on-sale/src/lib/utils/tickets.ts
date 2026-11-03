@@ -1,4 +1,4 @@
-import type { EventDetails, TicketTier } from '$lib/types/event'
+import type { EventDetails, TicketTier } from '#lib/types/event.js'
 
 export const getTicketHref = (tier: TicketTier, event: EventDetails): string => {
   if (tier.ticketUrl) return tier.ticketUrl

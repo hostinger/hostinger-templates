@@ -30,7 +30,7 @@ The estimate applies included allowances, per-seat pricing, and progressive API 
 
 ### Prerequisites
 
-- Node.js 22 or newer
+- Node.js 22.17 or newer
 - npm
 
 ### Installation

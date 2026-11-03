@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Countdown from '$lib/components/Countdown.svelte'
-  import EventHero from '$lib/components/EventHero.svelte'
-  import FaqList from '$lib/components/FaqList.svelte'
-  import TicketList from '$lib/components/TicketList.svelte'
-  import eventData from '$lib/content/event.json'
-  import type { EventDetails } from '$lib/types/event'
+  import Countdown from '#lib/components/Countdown.svelte'
+  import EventHero from '#lib/components/EventHero.svelte'
+  import FaqList from '#lib/components/FaqList.svelte'
+  import TicketList from '#lib/components/TicketList.svelte'
+  import eventData from '#lib/content/event.json'
+  import type { EventDetails } from '#lib/types/event.js'
 
   const event = eventData as EventDetails
   const eventJsonLd = {

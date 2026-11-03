@@ -1,6 +1,6 @@
-import resumeData from '$lib/data/resume.json';
-import faqData from '$lib/data/faq.json';
-import type { Faq, ResumeContent } from '$lib/types';
+import resumeData from '#lib/data/resume.json';
+import faqData from '#lib/data/faq.json';
+import type { Faq, ResumeContent } from '#lib/types.js';
 
 /** The single source of truth for every word on the page and in the terminal. */
 export const resume: ResumeContent = resumeData;

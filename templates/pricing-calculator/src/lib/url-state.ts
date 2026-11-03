@@ -1,4 +1,4 @@
-import type { EstimateInput, NumericLimit } from '$lib/types/pricing'
+import type { EstimateInput, NumericLimit } from '#lib/types/pricing.js'
 
 const PARAMS = { seats: 'seats', usage: 'calls' } as const
 

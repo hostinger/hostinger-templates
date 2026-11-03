@@ -32,7 +32,7 @@ All names, dates, copy, links, schedule entries, hotels, FAQs, and RSVP settings
 
 ### Prerequisites
 
-- Node.js 22.12 or newer
+- Node.js 22.17 or newer
 - npm
 
 ### Installation

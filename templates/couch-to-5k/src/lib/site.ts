@@ -1,5 +1,5 @@
-import siteData from '$lib/data/site.json';
-import type { SiteContent } from '$lib/types';
+import siteData from '#lib/data/site.json';
+import type { SiteContent } from '#lib/types.js';
 
 /** Coach and business details, typed. Edit content in `src/lib/data/site.json`. */
 export const site: SiteContent = siteData;

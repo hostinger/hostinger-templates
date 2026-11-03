@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { getCountdown, type CountdownParts } from '$lib/utils/countdown'
+  import { getCountdown, type CountdownParts } from '#lib/utils/countdown.js'
 
   let { targetDate }: { targetDate: string } = $props()
   let countdown = $state<CountdownParts | null>(null)

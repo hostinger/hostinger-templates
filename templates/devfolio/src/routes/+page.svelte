@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { manualRef, resume } from '$lib/resume';
-	import StatusBar from '$lib/components/StatusBar.svelte';
-	import Hero from '$lib/components/Hero.svelte';
-	import AboutSection from '$lib/components/AboutSection.svelte';
-	import ExperienceSection from '$lib/components/ExperienceSection.svelte';
-	import ProjectsSection from '$lib/components/ProjectsSection.svelte';
-	import SkillsSection from '$lib/components/SkillsSection.svelte';
-	import EducationSection from '$lib/components/EducationSection.svelte';
-	import ContactSection from '$lib/components/ContactSection.svelte';
-	import FaqSection from '$lib/components/FaqSection.svelte';
-	import SiteFooter from '$lib/components/SiteFooter.svelte';
+	import { manualRef, resume } from '#lib/resume.js';
+	import StatusBar from '#lib/components/StatusBar.svelte';
+	import Hero from '#lib/components/Hero.svelte';
+	import AboutSection from '#lib/components/AboutSection.svelte';
+	import ExperienceSection from '#lib/components/ExperienceSection.svelte';
+	import ProjectsSection from '#lib/components/ProjectsSection.svelte';
+	import SkillsSection from '#lib/components/SkillsSection.svelte';
+	import EducationSection from '#lib/components/EducationSection.svelte';
+	import ContactSection from '#lib/components/ContactSection.svelte';
+	import FaqSection from '#lib/components/FaqSection.svelte';
+	import SiteFooter from '#lib/components/SiteFooter.svelte';
 
 	const pageTitle = `${resume.name} — ${resume.role}`;
 </script>

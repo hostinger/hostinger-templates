@@ -1,5 +1,5 @@
-import planData from '$lib/data/plan.json';
-import type { Plan, PlanWeek } from '$lib/types';
+import planData from '#lib/data/plan.json';
+import type { Plan, PlanWeek } from '#lib/types.js';
 
 /** The full nine-week plan, typed. Edit content in `src/lib/data/plan.json`. */
 export const plan: Plan = planData;

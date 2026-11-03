@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { EventDetails, TicketTier as TicketTierType } from '$lib/types/event'
-  import { formatPrice, getTicketHref } from '$lib/utils/tickets'
+  import type { EventDetails, TicketTier as TicketTierType } from '#lib/types/event.js'
+  import { formatPrice, getTicketHref } from '#lib/utils/tickets.js'
 
   let {
     tier,

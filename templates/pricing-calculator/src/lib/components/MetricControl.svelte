@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { formatNumber } from '$lib/calculation'
-  import type { NumericLimit } from '$lib/types/pricing'
+  import { formatNumber } from '#lib/calculation.js'
+  import type { NumericLimit } from '#lib/types/pricing.js'
 
   let {
     id,

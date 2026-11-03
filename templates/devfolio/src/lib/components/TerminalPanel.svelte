@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount, tick } from 'svelte';
-	import { prompt, resume } from '$lib/resume';
-	import { ASCII_BANNER } from '$lib/terminal/banner';
-	import { completeCommand, executeCommand } from '$lib/terminal/commands';
-	import { text, type TerminalLine } from '$lib/terminal/output';
+	import { prompt, resume } from '#lib/resume.js';
+	import { ASCII_BANNER } from '#lib/terminal/banner.js';
+	import { completeCommand, executeCommand } from '#lib/terminal/commands.js';
+	import { text, type TerminalLine } from '#lib/terminal/output.js';
 
 	interface Entry {
 		id: number;

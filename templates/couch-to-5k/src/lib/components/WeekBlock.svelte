@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { PlanWeek } from '$lib/types';
-	import { sessionId, weekSessionIds } from '$lib/plan';
-	import { progress } from '$lib/progress.svelte';
-	import { site } from '$lib/site';
-	import { formatWeekProgress } from '$lib/format';
+	import type { PlanWeek } from '#lib/types.js';
+	import { sessionId, weekSessionIds } from '#lib/plan.js';
+	import { progress } from '#lib/progress.svelte.js';
+	import { site } from '#lib/site.js';
+	import { formatWeekProgress } from '#lib/format.js';
 	import SessionCard from './SessionCard.svelte';
 
 	let { week }: { week: PlanWeek } = $props();

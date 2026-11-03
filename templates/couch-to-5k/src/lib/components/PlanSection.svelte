@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { plan, weeks, totalSessions } from '$lib/plan';
-	import { progress } from '$lib/progress.svelte';
-	import { formatSessionsDone } from '$lib/format';
-	import { site } from '$lib/site';
+	import { plan, weeks, totalSessions } from '#lib/plan.js';
+	import { progress } from '#lib/progress.svelte.js';
+	import { formatSessionsDone } from '#lib/format.js';
+	import { site } from '#lib/site.js';
 	import WeekBlock from './WeekBlock.svelte';
 	import ResetProgress from './ResetProgress.svelte';
 </script>

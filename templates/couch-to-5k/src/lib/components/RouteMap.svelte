@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { weeks, weekSessionIds, totalWeeks } from '$lib/plan';
-	import { progress } from '$lib/progress.svelte';
-	import { formatWeekProgress } from '$lib/format';
+	import { weeks, weekSessionIds, totalWeeks } from '#lib/plan.js';
+	import { progress } from '#lib/progress.svelte.js';
+	import { formatWeekProgress } from '#lib/format.js';
 
 	interface RoutePoint {
 		x: number;

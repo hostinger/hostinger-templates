@@ -1,6 +1,6 @@
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import { SvelteSet } from 'svelte/reactivity';
-import { allSessionIds } from '$lib/plan';
+import { allSessionIds } from '#lib/plan.js';
 
 /**
  * Session progress lives in `localStorage` on the visitor's own device.
