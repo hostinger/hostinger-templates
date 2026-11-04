@@ -1,0 +1,154 @@
+name: Template PR deploy
+
+# Deploys the templates a PR changes to the PR preview hosting account and
+# posts the hostinger-build commit status. It runs from main after Template
+# gate, so PR code never sees the preview token: the PR's own job only
+# uploads build artifacts, which pr-stage-artifact.mjs inspects (without
+# extracting or running anything) before they are uploaded to Hostinger.
+#
+# Off until the repository variable PREVIEW_DEPLOYS_ENABLED is "true" and the
+# template-pr-check environment has PREVIEW_HOSTINGER_API_TOKEN (and
+# optionally PREVIEW_BASIC_AUTH) secrets and a PREVIEW_PARENT_DOMAIN
+# variable. Never use the account that serves hostingertemplates.com.
+on:
+  workflow_run:
+    workflows: [Template gate]
+    types: [completed]
+
+permissions:
+  contents: read
+  actions: read
+  statuses: write
+  pull-requests: write
+
+concurrency:
+  group: hostinger-build-check-${{ github.event.workflow_run.head_repository.full_name }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+
+env:
+  HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+  RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+jobs:
+  plan:
+    if: >-
+      vars.PREVIEW_DEPLOYS_ENABLED == 'true' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion != 'cancelled'
+    runs-on: ubuntu-latest
+    outputs:
+      decision: ${{ steps.plan.outputs.decision }}
+      pr: ${{ steps.plan.outputs.pr }}
+      ids: ${{ steps.plan.outputs.ids }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: plan
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          HEAD_REPOSITORY: ${{ github.event.workflow_run.head_repository.full_name }}
+        run: node .github/scripts/pr-deploy-plan.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-deploy-plan
+          path: plan.json
+          retention-days: 3
+      - name: Post hostinger-build
+        if: steps.plan.outputs.decision != 'skip'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DECISION: ${{ steps.plan.outputs.decision }}
+          MESSAGE: ${{ steps.plan.outputs.message }}
+        run: |
+          set -euo pipefail
+          case "$DECISION" in
+            deploy) state=pending ;;
+            not-applicable) state=success ;;
+            *) state=failure ;;
+          esac
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" \
+            -f state="$state" \
+            -f context=hostinger-build \
+            -f description="${MESSAGE:0:139}" \
+            -f target_url="$RUN_URL"
+
+  deploy:
+    needs: plan
+    if: needs.plan.outputs.decision == 'deploy'
+    runs-on: ubuntu-latest
+    environment: template-pr-check
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        template: ${{ fromJson(needs.plan.outputs.ids) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr-deploy-plan
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr-demo-${{ matrix.template }}
+          path: ${{ runner.temp }}/incoming
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+      - name: Inspect and stage the artifact
+        env:
+          TEMPLATE: ${{ matrix.template }}
+        run: node .github/scripts/pr-stage-artifact.mjs "$RUNNER_TEMP/incoming" plan.json "$TEMPLATE" "$RUNNER_TEMP/staged"
+      - name: Deploy and smoke-check on Hostinger
+        env:
+          TEMPLATE: ${{ matrix.template }}
+          PR_NUMBER: ${{ needs.plan.outputs.pr }}
+          HOSTINGER_API_TOKEN: ${{ secrets.PREVIEW_HOSTINGER_API_TOKEN }}
+          SMOKE_BASIC_AUTH: ${{ secrets.PREVIEW_BASIC_AUTH }}
+          DEMO_PARENT_DOMAIN: ${{ vars.PREVIEW_PARENT_DOMAIN }}
+          BUILD_TIMEOUT_MINUTES: "15"
+          RESULTS_FILE: ${{ runner.temp }}/result-${{ matrix.template }}.json
+        run: |
+          set -euo pipefail
+          export DEMO_SUBDOMAIN_PREFIX="pr-${PR_NUMBER}-"
+          export TEMPLATES="$(jq -cn --arg id "$TEMPLATE" '[$id]')"
+          node .github/scripts/deploy-demos.mjs "$RUNNER_TEMP/staged"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr-result-${{ matrix.template }}
+          path: ${{ runner.temp }}/result-${{ matrix.template }}.json
+          if-no-files-found: ignore
+          retention-days: 3
+
+  report:
+    needs: [plan, deploy]
+    if: always() && needs.plan.outputs.decision == 'deploy'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr-deploy-plan
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pr-result-*
+          merge-multiple: true
+          path: results
+      - name: Post hostinger-build and the PR comment
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node .github/scripts/pr-deploy-report.mjs results plan.json

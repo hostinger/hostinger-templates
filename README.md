@@ -68,6 +68,53 @@ node .github/scripts/validate-catalog.mjs
 node .github/scripts/lint-landing-copy.mjs --base origin/main
 ```
 
+## Hostinger builds for PRs
+
+GitHub's runners build templates with Node.js 24, but Hostinger builds and
+runs them with Node.js 22 under its own runtime, firewall and file
+permissions. `template-pr-deploy.yml` therefore deploys every PR's changed
+templates to a separate preview hosting account, at
+`https://pr-<PR>-<id>.<preview domain>`. It runs the same smoke check as the
+demos and posts the `hostinger-build` commit status, along with a sticky PR
+comment that has the build time, each route's status, the preview link, and
+on failure the build log and Hostinger's analysis.
+
+PR code is untrusted, so the deploy runs from `main` after `Template gate`
+and never gives the PR the token:
+
+- The PR's `preview` job only packages each template it built and uploads it
+  as an artifact.
+- The trusted job recomputes the PR and its changed templates from the head
+  SHA through the API. It refuses fork PRs and PRs that also change
+  `.github/`, and waits for the `AI Security Scanner` status, which skips
+  drafts until they are ready for review.
+- It inspects each archive's file list without extracting it (no `..`, no
+  absolute paths, no symlinks) and takes the build settings from the head's
+  `templates.json`, not from the artifact.
+- PRs with no template change get `hostinger-build` = success at once.
+
+Previews are deleted when their PR closes, and a daily sweep deletes the rest
+(`template-pr-cleanup.yml`). `hostinger-build-override.yml` lets an org admin
+mark the check as passed with a reason when the deploy can't run.
+
+Setup (repository admin):
+
+1. A hosting account used only for previews, on a plan that runs Node.js
+   apps, with its own domain. Never use the account that serves
+   `hostingertemplates.com`.
+2. Protect the preview domain: in its `public_html/.htaccess`, send
+   `X-Robots-Tag: noindex` and require HTTP basic auth. Static previews live
+   in subdirectories of it and inherit the rules.
+3. An environment `template-pr-check` (deployment branches: `main`) with the
+   secrets `PREVIEW_HOSTINGER_API_TOKEN` and `PREVIEW_BASIC_AUTH`
+   (`user:password`, used by the smoke check) and the variable
+   `PREVIEW_PARENT_DOMAIN`. If Dependabot PRs can't read the token, add it as
+   a Dependabot secret too.
+4. An environment `template-pr-check-override` that requires an org admin's
+   approval.
+5. The repository variable `PREVIEW_DEPLOYS_ENABLED` = `true`.
+6. Once it has proven stable, make `hostinger-build` a required check.
+
 ## Demo deployments
 
 Merging a PR that adds a template (a new `templates/<id>/package.json`)
