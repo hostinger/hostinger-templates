@@ -1,0 +1,96 @@
+# Unattended mode
+
+Use this mode when a template request comes from a Jira issue and no person
+answers questions during the run, for example a Dex Code job started for an
+HSTG issue labelled `node-template-request`. Everything in
+[SKILL.md](SKILL.md) and [RULES.md](RULES.md) still applies, except where this
+file replaces a step.
+
+## Inputs (replaces SKILL.md step 1 and the RULES.md intake gate)
+
+Read the request from the Jira issue description, written in the
+[REQUEST_TEMPLATE.md](REQUEST_TEMPLATE.md) format. Jira custom fields don't
+reach Dex Code jobs, so every input is in the description.
+
+| Request field | Use |
+| --- | --- |
+| Name | Template name. Required. |
+| Template id | Optional. Otherwise the kebab-case name. |
+| Description | Purpose, users and required behaviour. Required. |
+| Who it's for | `whoItsFor`. |
+| Category | One or two of the catalog display categories. |
+| Pages | Single-page or multi-page. Decide from the description when empty. |
+| Tech stack | Libraries, storage and other constraints. |
+| Language | Default TypeScript. |
+| Framework | Default React and Vite. |
+| Source repository | Must be empty. Partner snapshots aren't supported yet. |
+
+Don't ask the intake questions. Stop without opening a PR, and comment on the
+issue with the reason, when:
+
+- Name or Description is missing or too vague to design from.
+- Source repository is set.
+- The brief needs something a template can't honestly do with sample data:
+  real payments, real user accounts, third-party APIs that need secrets,
+  scraping, or adult, gambling or illegal content.
+
+## Before building
+
+Pick an id that isn't taken. It must not be:
+
+- an `id` in `templates.json` `templates` or `retired`,
+- a template directory in an open PR
+  (`gh pr list --repo hostinger/hostinger-templates --state open --json files`),
+- a VPS application on hostinger.com, i.e. `href="/applications/<id>"` must
+  not appear in `curl -s https://www.hostinger.com/applications`,
+- a gallery category slug (`saas`, `business`, `e-commerce`, …).
+
+Say in the PR description if you had to change the requested id.
+
+Write scope: `templates/<id>/**`, the new entry appended to `templates.json`,
+and the new row and count in `TEMPLATES.md`. Never change `landing-pages/**`,
+`.github/**`, `schema/**`, `skills/**` or other templates.
+
+## Building and verifying
+
+Follow SKILL.md steps 2–12, with these portable replacements:
+
+- Hostinger installs with npm 10 on Node.js 22, and lockfiles written by newer
+  npm majors can fail its `npm ci`. Generate the lock with
+  `npx -y npm@10 install`.
+- Check the thumbnail size without `sips`:
+  `node -e "const b=require('fs').readFileSync(process.argv[1]);console.log(b.readUInt32BE(16),b.readUInt32BE(20))" preview/<id>-thumbnail.png`
+  must print `1440 900`. Run it on the homepage image to record its height.
+- Generate the WebP variants with `cwebp` (`apt-get install -y webp` when it's
+  missing).
+- Run the repository checks before opening the PR:
+
+  ```bash
+  cd .github/scripts && npm ci && cd ../..
+  node .github/scripts/validate-catalog.mjs
+  node .github/scripts/lint-landing-copy.mjs
+  ```
+
+## Opening the PR (replaces SKILL.md step 13)
+
+Don't wait for confirmation:
+
+1. Commit on a branch named `template/<id>` and open a PR against `main`.
+2. Title it `Add <Name> template: <what it is> (<framework>)`.
+3. Add the `dex-babysit` label.
+4. In the body, link the Jira issue and follow the structure of earlier
+   template PRs: summary, what was added, how to run it, and verification
+   (lint, build, audit, source review, browser and mobile checks). State
+   that nothing was deployed from the PR.
+5. Keep the PR open until `Template gate` passes, and `hostinger-build` too
+   once it's required. Fix failures on the same branch. Merging needs one
+   human approval.
+
+## After the template merges
+
+Merging deploys the demo to `https://<id>.hostingertemplates.com`. Once it
+answers, a follow-up job opens a second PR with a draft
+`landing-pages/<id>.json` (`"enabled": false`), following
+[../write-landing-page/SKILL.md](../write-landing-page/SKILL.md). That PR
+changes only `landing-pages/**` and needs the marketing/SEO code owner's
+approval. The code owner publishes the page by setting `"enabled": true`.

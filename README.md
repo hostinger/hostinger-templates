@@ -30,6 +30,12 @@ Each entry can contain these fields:
 - `compatibility`: runtimes and supported versions
 - `media`: thumbnail and preview metadata
 - `searchTerms`
+- `deploy` (when the build output differs from the hosting defaults) and
+  `routes` (paths the smoke check requests, default `/`)
+
+The root object also has a `retired` array: ids whose hostinger.com landing
+page was removed. `schema/templates.schema.json` validates the whole file on
+every PR.
 
 Project paths use `templates/<id>/`, where the directory name matches the
 catalog `id`.
@@ -39,6 +45,28 @@ catalog `id`.
 Follow `skills/create-repository/SKILL.md`. It defines the creation workflow;
 `skills/create-repository/RULES.md` defines constraints every project must
 follow.
+
+## Pull request checks
+
+`Template gate` (`.github/workflows/template-gate.yml`) runs on every PR. Its
+final `template-gate` job is the one to require in the ruleset; it passes when
+every other job passed or didn't apply:
+
+- `validate`: `templates.json` and `landing-pages/*.json` against
+  `schema/*.schema.json`, then the copy lint
+  (`.github/scripts/lint-landing-copy.mjs`): the landing-page copy rules, the
+  index, `retired`, unpublishing without retiring, and id collisions with
+  VPS applications on hostinger.com.
+- `preview (<id>)`: install, lint, build, audit, health check and screenshot
+  comparison for each changed template.
+
+Run the same checks locally:
+
+```bash
+cd .github/scripts && npm ci && cd ../..
+node .github/scripts/validate-catalog.mjs
+node .github/scripts/lint-landing-copy.mjs --base origin/main
+```
 
 ## Demo deployments
 
@@ -54,6 +82,30 @@ The workflow needs a Hostinger API token for the account that owns
 `template-demos` environment (deployment branches: `main` only).
 `skills/deploy-templates/SKILL.md` covers redeploys, failed runs, and the
 manual fallback.
+
+## Landing pages on hostinger.com
+
+A template can have a sales page at
+`https://www.hostinger.com/applications/<id>` with a description, features,
+a pricing table and checkout. Its copy lives in `landing-pages/<id>.json`,
+listed in `landing-pages/index.json`.
+[`skills/write-landing-page/`](skills/write-landing-page/SKILL.md) covers the
+format and the workflow.
+
+- Code PRs never change `landing-pages/**`, and copy PRs change nothing else
+  (except a `retired` entry when unpublishing). Code needs one approval.
+  Copy needs the marketing/SEO code owner in `.github/CODEOWNERS`.
+- A page is published when its file has `"enabled": true` and the template
+  has a working demo. On merge, `catalog-published.yml` checks the demos and
+  sends a `node-templates-updated` event to `hostinger/hwebsites-frontend`,
+  which rebuilds `/applications` from the catalog.
+- To unpublish, set `"enabled": false` and add the id to `retired` in the
+  same PR. The id then redirects to `/applications`.
+
+`catalog-published.yml` mints a HostingerBot token (`HOSTINGERBOT_APP_ID`,
+`HOSTINGERBOT_PRIVATE_KEY`) scoped to `hwebsites-frontend`. Set the optional
+`TEMPLATES_SLACK_WEBHOOK_URL` secret to get enabled pages with a broken demo
+in Slack; without it they're reported as workflow warnings.
 
 ## Bumping dependencies
 
