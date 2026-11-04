@@ -6,12 +6,12 @@ import { appendFileSync, writeFileSync } from 'node:fs';
 // Writes plan.json and the outputs decision, pr, ids and message.
 
 const SCANNER_CONTEXT = 'AI Security Scanner';
-const SCANNER_WAIT_MS = 15 * 60 * 1000;
+const SCANNER_WAIT_MS = Number(process.env.SCANNER_WAIT_SECONDS ?? 900) * 1000;
 const SCANNER_POLL_MS = 30 * 1000;
 const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 const { GITHUB_TOKEN, GITHUB_REPOSITORY, HEAD_SHA, HEAD_REPOSITORY } = process.env;
-const API = `https://api.github.com/repos/${GITHUB_REPOSITORY}`;
+const API = `${process.env.GITHUB_API_URL ?? 'https://api.github.com'}/repos/${GITHUB_REPOSITORY}`;
 
 const plan = await decide();
 writeFileSync('plan.json', JSON.stringify(plan, null, 2));
@@ -91,6 +91,11 @@ async function waitForScanner() {
   while (Date.now() < deadline) {
     const { statuses } = await github(`/commits/${HEAD_SHA}/status`);
     const scanner = statuses.find((status) => status.context === SCANNER_CONTEXT);
+    if (scanner?.state === 'success' && /public repo skipped/i.test(scanner.description ?? '')) {
+      return process.env.ALLOW_UNSCANNED_SAME_REPO === 'true'
+        ? 'success'
+        : 'The AI Security Scanner does not scan public repositories, so previews stay off (see PREVIEW_ALLOW_UNSCANNED).';
+    }
     if (scanner?.state === 'success' && /not scanned/i.test(scanner.description ?? '')) {
       return 'The AI Security Scanner skips drafts. Mark the PR ready for review to deploy it.';
     }

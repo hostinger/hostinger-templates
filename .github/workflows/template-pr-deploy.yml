@@ -51,6 +51,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           HEAD_REPOSITORY: ${{ github.event.workflow_run.head_repository.full_name }}
+          ALLOW_UNSCANNED_SAME_REPO: ${{ vars.PREVIEW_ALLOW_UNSCANNED }}
         run: node .github/scripts/pr-deploy-plan.mjs
       - uses: actions/upload-artifact@v4
         with:

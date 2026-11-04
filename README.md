@@ -113,6 +113,12 @@ Setup (repository admin):
 4. An environment `template-pr-check-override` that requires an org admin's
    approval.
 5. The repository variable `PREVIEW_DEPLOYS_ENABLED` = `true`.
+   The AI Security Scanner currently skips public repositories
+   (`scan_public_repos=False`) and reports this repository as "Not scanned",
+   so previews stay off until the security team scans it. The alternative is
+   for the team to accept same-repo PRs without a scan by setting
+   `PREVIEW_ALLOW_UNSCANNED` = `true`. Only people and bots with write access
+   can open those PRs, and fork PRs are never deployed.
 6. Once it has proven stable, make `hostinger-build` a required check.
 
 ## Demo deployments
