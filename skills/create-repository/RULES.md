@@ -2,6 +2,9 @@
 
 ## Intake gate
 
+Unattended runs read these inputs from the Jira issue instead of asking; see
+[UNATTENDED.md](UNATTENDED.md).
+
 - Before any implementation, ask for name, description, tech stack, language,
   and framework.
 - Prefer TypeScript when the user does not specify a language.

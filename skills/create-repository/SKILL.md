@@ -8,6 +8,10 @@ description: Creates polished, production-ready Node.js template apps in the req
 Build one complete template at a time. Read and enforce [RULES.md](RULES.md)
 before changing files.
 
+When the request comes from a Jira issue and nobody answers questions during
+the run, follow [UNATTENDED.md](UNATTENDED.md): it replaces the intake in step
+1 and the hand-off in step 13.
+
 ## 1. Required intake
 
 Before creating files, editing `templates.json`, installing dependencies, or
@@ -328,6 +332,9 @@ Finish only after:
 - project tree contains only intentional files
 
 ## 13. Hand off and offer publishing
+
+In unattended mode, open the PR as [UNATTENDED.md](UNATTENDED.md) describes
+instead of this step.
 
 After all checks pass, tell the user the template is complete and summarize the
 verification results, including lint, build, audit, and the source security
