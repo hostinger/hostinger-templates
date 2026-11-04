@@ -30,6 +30,12 @@ Each entry can contain these fields:
 - `compatibility`: runtimes and supported versions
 - `media`: thumbnail and preview metadata
 - `searchTerms`
+- `deploy` (when the build output differs from the hosting defaults) and
+  `routes` (paths the smoke check requests, default `/`)
+
+The root object also has a `retired` array: ids whose hostinger.com landing
+page was removed. `schema/templates.schema.json` validates the whole file on
+every PR.
 
 Project paths use `templates/<id>/`, where the directory name matches the
 catalog `id`.
@@ -54,6 +60,25 @@ The workflow needs a Hostinger API token for the account that owns
 `template-demos` environment (deployment branches: `main` only).
 `skills/deploy-templates/SKILL.md` covers redeploys, failed runs, and the
 manual fallback.
+
+## Landing pages on hostinger.com
+
+A template can have a sales page at
+`https://www.hostinger.com/applications/<id>` with a description, features,
+a pricing table and checkout. Its copy lives in `landing-pages/<id>.json`,
+listed in `landing-pages/index.json`.
+[`skills/write-landing-page/`](skills/write-landing-page/SKILL.md) covers the
+format and the workflow.
+
+- Code PRs never change `landing-pages/**`, and copy PRs change nothing else
+  (except a `retired` entry when unpublishing). Code needs one approval.
+  Copy needs the marketing/SEO code owner in `.github/CODEOWNERS`.
+- A page is published when its file has `"enabled": true` and the template
+  has a working demo. On merge, `catalog-published.yml` checks the demos and
+  sends a `node-templates-updated` event to `hostinger/hwebsites-frontend`,
+  which rebuilds `/applications` from the catalog.
+- To unpublish, set `"enabled": false` and add the id to `retired` in the
+  same PR. The id then redirects to `/applications`.
 
 ## Bumping dependencies
 

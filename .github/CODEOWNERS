@@ -1,0 +1,4 @@
+# Landing-page copy is published on hostinger.com/applications/<id>, so a
+# marketing/SEO approval is required. Template code needs no code owner.
+/landing-pages/ @hostinger/seo-team
+/.github/CODEOWNERS @hostinger/seo-team

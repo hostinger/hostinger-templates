@@ -1,7 +1,22 @@
 # Template catalog schema
 
-`templates.json` contains one root object with a `templates` array. Every
-finished project contributes one entry.
+`templates.json` contains one root object with a `templates` array and a
+`retired` array. Every finished project contributes one entry to
+`templates`. `schema/templates.schema.json` is the machine-readable version
+of this file, and every PR is validated against it.
+
+```json
+{
+  "templates": [],
+  "retired": [{ "id": "old-template-id", "retiredAt": "2026-11-04" }]
+}
+```
+
+`retired` lists ids whose hostinger.com landing page was published and then
+removed. hostinger.com redirects `/applications/<id>` to `/applications` for
+them. Keep it sorted by `id`. See
+[LANDING_PAGE_SCHEMA.md](../write-landing-page/LANDING_PAGE_SCHEMA.md) for when
+to add an entry.
 
 ## Required shape
 
@@ -66,6 +81,7 @@ finished project contributes one entry.
     "outputDirectory": ".output/public",
     "entryFile": ""
   },
+  "routes": ["/", "/pricing"],
   "media": {
     "thumbnail": {
       "path": "templates/<id>/preview/<id>-thumbnail.png",
@@ -146,6 +162,10 @@ finished project contributes one entry.
 - Preview height records the actual full-page image height; do not copy the
   example value blindly.
 - `searchTerms` contains useful synonyms not already obvious from the name.
+- `routes` is optional and lists the paths the Hostinger smoke check
+  requests after a deploy. Every path starts with `/`. List each top-level
+  route of a multi-page app; it defaults to `["/"]`.
+- `id` is permanent. Never reuse an id that appears in `retired`.
 - Use `null` for an unknown optional scalar and `[]` only when a list genuinely
   has no values.
 
