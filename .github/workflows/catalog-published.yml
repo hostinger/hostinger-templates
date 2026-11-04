@@ -1,0 +1,114 @@
+name: Catalog published
+
+# Tells hostinger.com (hostinger/hwebsites-frontend) to rebuild
+# /applications when an enabled landing page, its template or the retired
+# list changes on main. The frontend always rebuilds from the full catalog;
+# the ids in the event are for its logs.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "templates.json"
+      - "landing-pages/**"
+  workflow_run:
+    workflows: [Deploy template demos]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: catalog-published
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      ids: ${{ steps.changes.outputs.ids }}
+      failed: ${{ steps.changes.outputs.failed }}
+      dispatch: ${{ steps.changes.outputs.dispatch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      # Most demo deploy runs deploy nothing (Dependabot merges only run
+      # their detect job). Only a run that deployed a demo can make a page
+      # publishable.
+      - id: deployed
+        if: github.event_name == 'workflow_run'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          set -euo pipefail
+          count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs" \
+            -q '[.jobs[] | select(.name == "deploy" and .conclusion == "success")] | length')
+          if [ "$count" -gt 0 ]; then
+            echo "deployed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deployed=false" >> "$GITHUB_OUTPUT"
+          fi
+      - id: changes
+        if: github.event_name != 'workflow_run' || steps.deployed.outputs.deployed == 'true'
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" = "push" ]; then
+            node .github/scripts/catalog-changes.mjs --before "$BEFORE" --after "$AFTER"
+          else
+            node .github/scripts/catalog-changes.mjs --all --after HEAD
+          fi
+
+  report-failed-demos:
+    needs: changes
+    if: needs.changes.outputs.failed != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report enabled pages without a working demo
+        env:
+          FAILED: ${{ needs.changes.outputs.failed }}
+          SLACK_WEBHOOK_URL: ${{ secrets.TEMPLATES_SLACK_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          message="hostinger-templates: landing pages not sent to hostinger.com because their demo doesn't answer: ${FAILED//,/, }. Redeploy the demos (Deploy template demos workflow), then rerun ${RUN_URL}"
+          echo "::warning::$message"
+          if [ -n "$SLACK_WEBHOOK_URL" ]; then
+            jq -n --arg text "$message" '{text: $text}' | curl -fsS -X POST -H 'Content-Type: application/json' --data @- "$SLACK_WEBHOOK_URL"
+          fi
+
+  dispatch:
+    needs: changes
+    if: needs.changes.outputs.dispatch == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get a HostingerBot token for hwebsites-frontend
+        id: token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.HOSTINGERBOT_APP_ID }}
+          private-key: ${{ secrets.HOSTINGERBOT_PRIVATE_KEY }}
+          owner: hostinger
+          repositories: hwebsites-frontend
+      - name: Send node-templates-updated
+        env:
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+          IDS: ${{ needs.changes.outputs.ids }}
+        run: |
+          set -euo pipefail
+          gh api repos/hostinger/hwebsites-frontend/dispatches \
+            -f event_type=node-templates-updated \
+            -f "client_payload[ids]=$IDS" \
+            -f "client_payload[sha]=$GITHUB_SHA"
+          echo "Sent node-templates-updated (ids: ${IDS:-none})"

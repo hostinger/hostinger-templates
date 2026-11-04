@@ -102,6 +102,11 @@ format and the workflow.
 - To unpublish, set `"enabled": false` and add the id to `retired` in the
   same PR. The id then redirects to `/applications`.
 
+`catalog-published.yml` mints a HostingerBot token (`HOSTINGERBOT_APP_ID`,
+`HOSTINGERBOT_PRIVATE_KEY`) scoped to `hwebsites-frontend`. Set the optional
+`TEMPLATES_SLACK_WEBHOOK_URL` secret to get enabled pages with a broken demo
+in Slack; without it they're reported as workflow warnings.
+
 ## Bumping dependencies
 
 Templates stay standalone (own `package.json` and lockfile). Shared pins live
