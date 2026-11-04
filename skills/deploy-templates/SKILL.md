@@ -28,7 +28,13 @@ gh run watch "$(gh run list --workflow deploy-template-demos.yml --limit 1 --jso
 ```
 
 The run summary lists every template with its URL and result. A template is
-done only when it shows `✅ live`.
+done only when it shows `✅ live`. After each deploy,
+`.github/scripts/hostinger-smoke.mjs` requests every catalog `routes` path:
+each must answer 2xx without a redirect, the page title must match the
+build, one script or stylesheet from the page must load, and a Node.js app
+must still answer every route 30 seconds after a burst of 10 requests.
+Run it by hand with
+`node .github/scripts/hostinger-smoke.mjs https://<id>.hostingertemplates.com --routes / /pricing/ [--server]`.
 
 ## Fix a failed deploy
 
