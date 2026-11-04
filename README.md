@@ -46,6 +46,28 @@ Follow `skills/create-repository/SKILL.md`. It defines the creation workflow;
 `skills/create-repository/RULES.md` defines constraints every project must
 follow.
 
+## Pull request checks
+
+`Template gate` (`.github/workflows/template-gate.yml`) runs on every PR. Its
+final `template-gate` job is the one to require in the ruleset; it passes when
+every other job passed or didn't apply:
+
+- `validate`: `templates.json` and `landing-pages/*.json` against
+  `schema/*.schema.json`, then the copy lint
+  (`.github/scripts/lint-landing-copy.mjs`): the landing-page copy rules, the
+  index, `retired`, unpublishing without retiring, and id collisions with
+  VPS applications on hostinger.com.
+- `preview (<id>)`: install, lint, build, audit, health check and screenshot
+  comparison for each changed template.
+
+Run the same checks locally:
+
+```bash
+cd .github/scripts && npm ci && cd ../..
+node .github/scripts/validate-catalog.mjs
+node .github/scripts/lint-landing-copy.mjs --base origin/main
+```
+
 ## Demo deployments
 
 Merging a PR that adds a template (a new `templates/<id>/package.json`)

@@ -1,14 +1,12 @@
-name: Template preview
+name: Template gate
 
+# Runs on every PR so the final `template-gate` job can be a required check.
+# Jobs that don't apply to a PR are skipped, and skipped counts as passed.
 on:
   pull_request:
-    paths:
-      - "templates/**"
-      - ".github/workflows/template-preview.yml"
-      - ".github/scripts/**"
 
 concurrency:
-  group: template-preview-${{ github.event.pull_request.number || github.ref }}
+  group: template-gate-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -39,6 +37,27 @@ jobs:
             echo "empty=false" >> "$GITHUB_OUTPUT"
           fi
           echo "Affected templates: $templates"
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: .github/scripts/package-lock.json
+      - name: Install scripts
+        working-directory: .github/scripts
+        run: npm ci
+      - name: Validate templates.json and landing pages against their schemas
+        run: node .github/scripts/validate-catalog.mjs
+      - name: Lint landing-page copy
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: node .github/scripts/lint-landing-copy.mjs --base "$BASE_SHA"
 
   preview:
     needs: detect
@@ -304,3 +323,19 @@ jobs:
                 body,
               });
             }
+
+  template-gate:
+    needs: [detect, validate, preview]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the gate jobs
+        env:
+          RESULTS: ${{ toJson(needs) }}
+        run: |
+          echo "$RESULTS" | jq -r 'to_entries[] | "\(.key): \(.value.result)"'
+          failed=$(echo "$RESULTS" | jq '[.[] | select(.result != "success" and .result != "skipped")] | length')
+          if [ "$failed" != "0" ]; then
+            echo "::error::A template gate job failed or was cancelled."
+            exit 1
+          fi

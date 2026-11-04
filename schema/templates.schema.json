@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/hostinger/hostinger-templates/main/schema/templates.schema.json",
+  "title": "Template catalog",
+  "description": "templates.json. The prose version is skills/create-repository/TEMPLATE_SCHEMA.md; keep both in sync.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["templates", "retired"],
+  "properties": {
+    "templates": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/template" }
+    },
+    "retired": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "retiredAt"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "retiredAt": { "type": "string", "format": "date" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 64
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "textList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/text" }
+    },
+    "repoPath": {
+      "type": "string",
+      "pattern": "^templates/[a-z0-9-]+/preview/[^/]+\\.(png|webp)$"
+    },
+    "rawUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://github\\.com/hostinger/hostinger-templates/blob/main/templates/[a-z0-9-]+/preview/[^/?]+\\?raw=true$"
+    },
+    "template": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "summary",
+        "description",
+        "bucket",
+        "categories",
+        "whoItsFor",
+        "demoUrl",
+        "classification",
+        "features",
+        "technology",
+        "compatibility",
+        "media",
+        "searchTerms"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "$ref": "#/$defs/text" },
+        "summary": { "$ref": "#/$defs/text" },
+        "description": { "$ref": "#/$defs/text" },
+        "bucket": { "$ref": "#/$defs/text" },
+        "categories": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "SaaS",
+              "Business",
+              "Documentation",
+              "Event",
+              "Portfolio",
+              "Marketing",
+              "Fitness",
+              "E-commerce",
+              "Hospitality",
+              "Blog",
+              "Calculator",
+              "Dashboard"
+            ]
+          }
+        },
+        "whoItsFor": { "$ref": "#/$defs/text" },
+        "demoUrl": {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://[a-z0-9]+(-[a-z0-9]+)*\\.hostingertemplates\\.com$"
+            },
+            { "type": "null" }
+          ]
+        },
+        "classification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["categories", "useCases", "frameworks"],
+          "properties": {
+            "categories": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/slug" }
+            },
+            "useCases": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "pattern": "^[a-z]+$" }
+            },
+            "frameworks": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+([-.][a-z0-9]+)*$"
+              }
+            }
+          }
+        },
+        "features": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "description"],
+            "properties": {
+              "id": { "$ref": "#/$defs/slug" },
+              "name": { "$ref": "#/$defs/text" },
+              "description": { "$ref": "#/$defs/text" }
+            }
+          }
+        },
+        "technology": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["languages", "frameworks", "styling", "data", "deployment"],
+          "properties": {
+            "languages": { "$ref": "#/$defs/textList" },
+            "frameworks": { "$ref": "#/$defs/textList" },
+            "styling": { "$ref": "#/$defs/textList" },
+            "data": { "$ref": "#/$defs/textList" },
+            "deployment": { "$ref": "#/$defs/textList" }
+          }
+        },
+        "compatibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["runtimes"],
+          "properties": {
+            "runtimes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name", "versions"],
+                "properties": {
+                  "name": { "const": "Node.js" },
+                  "versions": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "$ref": "#/$defs/text" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deploy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "appType": { "type": "string" },
+            "buildCommand": { "type": "string" },
+            "outputDirectory": { "type": "string" },
+            "entryFile": { "type": "string" }
+          }
+        },
+        "routes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^/[^\\s?#]*$" }
+        },
+        "media": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["thumbnail", "preview"],
+          "properties": {
+            "thumbnail": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["path", "url", "source", "width", "height", "aspectRatio", "variants"],
+              "properties": {
+                "path": { "$ref": "#/$defs/repoPath" },
+                "url": { "$ref": "#/$defs/rawUrl" },
+                "source": { "const": "viewport" },
+                "width": { "const": 1440 },
+                "height": { "const": 900 },
+                "aspectRatio": { "const": "16:10" },
+                "variants": {
+                  "type": "array",
+                  "minItems": 2,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["width", "path"],
+                    "properties": {
+                      "width": { "enum": [480, 960] },
+                      "path": { "$ref": "#/$defs/repoPath" }
+                    }
+                  }
+                }
+              }
+            },
+            "preview": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["path", "url", "source", "width", "height"],
+              "properties": {
+                "path": { "$ref": "#/$defs/repoPath" },
+                "url": { "$ref": "#/$defs/rawUrl" },
+                "source": { "const": "fullPage" },
+                "width": { "const": 1440 },
+                "height": { "type": "integer", "minimum": 900 }
+              }
+            }
+          }
+        },
+        "searchTerms": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/text" }
+        }
+      }
+    }
+  }
+}

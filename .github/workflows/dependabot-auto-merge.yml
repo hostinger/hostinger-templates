@@ -62,15 +62,19 @@ jobs:
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
           THIS_WORKFLOW: Dependabot auto-merge
           GATE_WORKFLOW: Dependabot auto-merge gate
-          PREVIEW_WORKFLOW: Template preview
+          PREVIEW_WORKFLOW: Template gate
+          AGGREGATE_JOB: template-gate
         run: |
           set -euo pipefail
           deadline=$((SECONDS + 3600))
           while (( SECONDS < deadline )); do
             json=$(gh pr checks "$PR_URL" --json name,state,bucket,workflow 2>/dev/null) || json='[]'
             echo "$json" | jq -c '.[] | {name,state,bucket,workflow}'
-            others=$(echo "$json" | jq -c --arg w "$THIS_WORKFLOW" --arg g "$GATE_WORKFLOW" \
-              '[.[] | select(.workflow != $w and .workflow != $g)]')
+            # `template-gate` only repeats the other gate jobs' results, so it
+            # must not stop a PR whose only failures are template previews
+            # from being trimmed.
+            others=$(echo "$json" | jq -c --arg w "$THIS_WORKFLOW" --arg g "$GATE_WORKFLOW" --arg a "$AGGREGATE_JOB" \
+              '[.[] | select(.workflow != $w and .workflow != $g and .name != $a)]')
             pending=$(echo "$others" | jq \
               'if length == 0 then 1 else [.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .bucket == "pending")] | length end')
             if [[ "$pending" == "0" ]]; then
@@ -134,7 +138,7 @@ jobs:
             -m "Restores $(echo "$TEMPLATES" | sed 's/ /, /g') to $BASE_BRANCH. Their updates need a manual fix."
           git push origin HEAD
           list=$(for template in $TEMPLATES; do printf -- '- `%s`\n' "$template"; done)
-          gh pr comment "$PR_URL" --body "$(printf 'Dropped these templates from this PR because their `Template preview` check failed:\n\n%s\n\nThe rest of the PR merges once checks pass again. The dropped updates need a manual fix, usually a framework major upgrade. Their alerts stay open. Run: %s' "$list" "$RUN_URL")"
+          gh pr comment "$PR_URL" --body "$(printf 'Dropped these templates from this PR because their `Template gate` preview check failed:\n\n%s\n\nThe rest of the PR merges once checks pass again. The dropped updates need a manual fix, usually a framework major upgrade. Their alerts stay open. Run: %s' "$list" "$RUN_URL")"
 
       - name: Report blocked PR
         if: steps.checks.outputs.result == 'failed' || steps.checks.outputs.result == 'timeout'
