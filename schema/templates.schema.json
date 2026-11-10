@@ -408,6 +408,9 @@
         "track": {
           "enum": ["releases", "branch"]
         },
+        "prereleases": {
+          "type": "boolean"
+        },
         "ref": {
           "type": "string",
           "pattern": "^[A-Za-z0-9_./+-]+$",

@@ -58,7 +58,12 @@ jobs:
       - name: Validate templates.json and landing pages against their schemas
         run: node .github/scripts/validate-catalog.mjs
       - name: Test the repository deployability rules
-        run: node --test .github/scripts/repo-evaluation/rules.test.mjs
+        run: node --test .github/scripts/repo-evaluation/rules.test.mjs .github/scripts/repo-evaluation/upstream.test.mjs
+      - name: Check upstream template pins
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node .github/scripts/check-upstream.mjs --base "$BASE_SHA"
       - name: Lint landing-page copy
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}

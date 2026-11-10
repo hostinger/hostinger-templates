@@ -92,7 +92,7 @@ export async function searchRepositories(query, { limit = 20, token = process.en
   return items.map((item) => item.full_name);
 }
 
-function createClient(token) {
+export function createClient(token) {
   const headers = {
     Accept: 'application/vnd.github+json',
     'X-GitHub-Api-Version': '2022-11-28',

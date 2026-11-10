@@ -213,7 +213,9 @@ a `templates` entry plus `source`, and its preview images live in
   folder inside it, for monorepos.
 - `track: "releases"` follows the newest non-prerelease GitHub release, and
   `ref` is its tag. Use it when the project publishes releases. Otherwise use
-  `track: "branch"` with the branch name as `ref`.
+  `track: "branch"` with the branch name as `ref`. Add `"prereleases": true`
+  when the project only publishes prereleases (GitHub then has no latest
+  release); the newest non-draft release is followed instead.
 - `commit` is the full SHA we deploy. Demos, PR previews and purchases all
   deploy this commit, never the moving branch or tag, so an upstream push
   can't change what customers get without review.
