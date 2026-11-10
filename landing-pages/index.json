@@ -1,3 +1,9 @@
 {
-  "landingPages": []
+  "landingPages": [
+    "astrowind",
+    "cactus",
+    "coreui-admin",
+    "fuwari",
+    "screwfast"
+  ]
 }
