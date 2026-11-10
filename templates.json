@@ -6117,5 +6117,653 @@
       ]
     }
   ],
+  "upstream": [
+    {
+      "id": "astrowind",
+      "name": "AstroWind",
+      "summary": "A multi-page Astro and Tailwind CSS starter for startups, SaaS products, agencies and personal brands.",
+      "description": "AstroWind is a popular open-source website starter built with Astro and Tailwind CSS that ships a full library of ready-made home, landing, pricing, about and contact pages for small businesses and SaaS teams. It is a strong fit for developers who want a fast static site with a blog, SEO defaults and dark mode already wired up, then reshape the copy and sections to their own brand.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "whoItsFor": "A developer launching a startup or SaaS marketing site",
+      "demoUrl": "https://astrowind.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "marketing",
+          "saas",
+          "startup"
+        ],
+        "useCases": [
+          "marketing",
+          "blogging",
+          "landing"
+        ],
+        "frameworks": [
+          "astro",
+          "tailwindcss"
+        ]
+      },
+      "features": [
+        {
+          "id": "page-library",
+          "name": "Ready-made page library",
+          "description": "Several home page variants plus landing, pricing, services, about, contact and legal pages to start from."
+        },
+        {
+          "id": "blog-with-categories-and-tags",
+          "name": "Blog with categories and tags",
+          "description": "Markdown and MDX posts with category and tag archives, pagination and an RSS feed."
+        },
+        {
+          "id": "seo-defaults",
+          "name": "SEO defaults",
+          "description": "Per-page meta tags, Open Graph data, a sitemap and robots.txt generated at build time."
+        },
+        {
+          "id": "dark-mode",
+          "name": "Dark mode",
+          "description": "A light and dark theme toggle that remembers the visitor's choice."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Astro"
+        ],
+        "styling": [
+          "Tailwind CSS"
+        ],
+        "data": [
+          "Markdown and MDX content collections"
+        ],
+        "deployment": [
+          "Static production output in dist/"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.22.3+"
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "outputDirectory": "dist",
+        "nodeVersion": 24
+      },
+      "routes": [
+        "/",
+        "/about/",
+        "/blog/"
+      ],
+      "source": {
+        "type": "upstream",
+        "repository": "arthelokyo/astrowind",
+        "track": "releases",
+        "prereleases": true,
+        "ref": "v1.0.0-beta.65",
+        "commit": "8d0090f933b71439c02956f7e8d30d41de804832",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "upstream/astrowind/preview/astrowind-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/astrowind/preview/astrowind-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "upstream/astrowind/preview/astrowind-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "upstream/astrowind/preview/astrowind-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "upstream/astrowind/preview/astrowind-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/astrowind/preview/astrowind-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 8860
+        }
+      },
+      "searchTerms": [
+        "astro starter",
+        "tailwind landing page",
+        "saas website",
+        "startup website",
+        "astro blog"
+      ]
+    },
+    {
+      "id": "cactus",
+      "name": "Astro Cactus",
+      "summary": "A minimal monospace Astro blog with posts, short notes, tags, search and RSS.",
+      "description": "Astro Cactus is a minimal open-source blog theme built with Astro and Tailwind CSS for writers and developers who want a fast personal site with long-form posts and short notes. It covers the essentials of a modern blog, including tag archives, full-text search, RSS feeds and generated social images, without a CMS or database.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Blog",
+        "Portfolio"
+      ],
+      "whoItsFor": "A developer who wants a fast, minimal personal blog",
+      "demoUrl": "https://cactus.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "blog",
+          "personal",
+          "writing"
+        ],
+        "useCases": [
+          "blogging",
+          "notes",
+          "portfolio"
+        ],
+        "frameworks": [
+          "astro",
+          "tailwindcss"
+        ]
+      },
+      "features": [
+        {
+          "id": "posts-and-notes",
+          "name": "Posts and notes",
+          "description": "Separate collections for long-form posts and short notes, each with pagination."
+        },
+        {
+          "id": "full-text-search",
+          "name": "Full-text search",
+          "description": "A Pagefind search index built with the site, searchable without a server."
+        },
+        {
+          "id": "tags-and-rss",
+          "name": "Tags and RSS",
+          "description": "Tag archives for every post plus RSS feeds for posts and notes."
+        },
+        {
+          "id": "social-images",
+          "name": "Generated social images",
+          "description": "An Open Graph image rendered for every post at build time."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Astro"
+        ],
+        "styling": [
+          "Tailwind CSS"
+        ],
+        "data": [
+          "Markdown and MDX content collections"
+        ],
+        "deployment": [
+          "Static production output in dist/ with a Pagefind search index"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.12+"
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "outputDirectory": "dist"
+      },
+      "routes": [
+        "/",
+        "/about/",
+        "/posts/"
+      ],
+      "source": {
+        "type": "upstream",
+        "repository": "chrismwilliams/astro-theme-cactus",
+        "track": "releases",
+        "ref": "v8.3.0",
+        "commit": "82eabb6151a8e47838cb7f6d12ea29451926bd3e",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "upstream/cactus/preview/cactus-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/cactus/preview/cactus-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "upstream/cactus/preview/cactus-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "upstream/cactus/preview/cactus-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "upstream/cactus/preview/cactus-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/cactus/preview/cactus-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 1329
+        }
+      },
+      "searchTerms": [
+        "astro blog",
+        "minimal blog",
+        "developer blog",
+        "personal website",
+        "markdown blog"
+      ]
+    },
+    {
+      "id": "coreui-admin",
+      "name": "CoreUI React Admin",
+      "summary": "A React admin dashboard with charts, a collapsible sidebar, UI component pages and account screens.",
+      "description": "CoreUI React Admin is the open-source admin dashboard template from CoreUI, built with React and Vite, for teams that need an internal tool or back office with a professional layout from day one. It includes a dashboard with charts and widgets, pages for every component and form control, account and error screens, and a light and dark theme.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Dashboard",
+        "SaaS"
+      ],
+      "whoItsFor": "A developer building an internal tool or admin panel",
+      "demoUrl": "https://coreui-admin.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "dashboard",
+          "admin",
+          "saas"
+        ],
+        "useCases": [
+          "admin",
+          "analytics",
+          "internal"
+        ],
+        "frameworks": [
+          "react",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "dashboard-with-charts",
+          "name": "Dashboard with charts",
+          "description": "A starting dashboard with traffic charts, stat widgets and progress summaries."
+        },
+        {
+          "id": "component-pages",
+          "name": "Component and form pages",
+          "description": "Example pages for buttons, forms, tables, icons, notifications and widgets."
+        },
+        {
+          "id": "account-and-error-pages",
+          "name": "Account and error pages",
+          "description": "Login, register and password reset screens plus 404 and 500 error pages."
+        },
+        {
+          "id": "sidebar-and-themes",
+          "name": "Collapsible sidebar and themes",
+          "description": "A collapsible navigation sidebar and a light and dark theme switch."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "JavaScript"
+        ],
+        "frameworks": [
+          "React",
+          "Vite"
+        ],
+        "styling": [
+          "CoreUI (Bootstrap-based) SCSS"
+        ],
+        "data": [
+          "Redux store and static sample data"
+        ],
+        "deployment": [
+          "Static production output in build/"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "20.19+"
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "appType": "vite",
+        "outputDirectory": "build"
+      },
+      "routes": [
+        "/"
+      ],
+      "source": {
+        "type": "upstream",
+        "repository": "coreui/coreui-free-react-admin-template",
+        "track": "branch",
+        "ref": "main",
+        "commit": "2609f5995035973e00c16ec723165a5fff87cceb",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "upstream/coreui-admin/preview/coreui-admin-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/coreui-admin/preview/coreui-admin-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "upstream/coreui-admin/preview/coreui-admin-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "upstream/coreui-admin/preview/coreui-admin-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "upstream/coreui-admin/preview/coreui-admin-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/coreui-admin/preview/coreui-admin-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 2099
+        }
+      },
+      "searchTerms": [
+        "react admin",
+        "admin dashboard",
+        "admin panel",
+        "back office",
+        "coreui"
+      ]
+    },
+    {
+      "id": "fuwari",
+      "name": "Fuwari",
+      "summary": "A colourful Astro blog with search, archives, code highlighting and a theme colour picker.",
+      "description": "Fuwari is a popular open-source static blog template built with Astro and Tailwind CSS for writers who want a polished, illustrated blog with little setup. Posts are written in Markdown with rich code blocks and math, and readers get full-text search, an archive by date, categories and tags, and a light, dark and custom-hue theme.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Blog"
+      ],
+      "whoItsFor": "A writer or developer who wants a polished personal blog",
+      "demoUrl": "https://fuwari.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "blog",
+          "personal",
+          "writing"
+        ],
+        "useCases": [
+          "blogging",
+          "publishing"
+        ],
+        "frameworks": [
+          "astro",
+          "svelte",
+          "tailwindcss"
+        ]
+      },
+      "features": [
+        {
+          "id": "rich-markdown-posts",
+          "name": "Rich Markdown posts",
+          "description": "Markdown posts with highlighted, collapsible code blocks and math formulas."
+        },
+        {
+          "id": "full-text-search",
+          "name": "Full-text search",
+          "description": "A Pagefind search index built with the site, searchable without a server."
+        },
+        {
+          "id": "archive-categories-tags",
+          "name": "Archive, categories and tags",
+          "description": "A dated archive plus category and tag listings for every post."
+        },
+        {
+          "id": "theme-colour-picker",
+          "name": "Theme colour picker",
+          "description": "Light and dark modes and a hue slider that recolours the whole site."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Astro",
+          "Svelte"
+        ],
+        "styling": [
+          "Tailwind CSS"
+        ],
+        "data": [
+          "Markdown content collections"
+        ],
+        "deployment": [
+          "Static production output in dist/ with a Pagefind search index"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "20.3+"
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "outputDirectory": "dist"
+      },
+      "routes": [
+        "/",
+        "/about/",
+        "/archive/"
+      ],
+      "source": {
+        "type": "upstream",
+        "repository": "saicaca/fuwari",
+        "track": "branch",
+        "ref": "main",
+        "commit": "415fb97054e57bb85da86e2ca4ea4a1ae7266219",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "upstream/fuwari/preview/fuwari-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/fuwari/preview/fuwari-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "upstream/fuwari/preview/fuwari-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "upstream/fuwari/preview/fuwari-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "upstream/fuwari/preview/fuwari-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/fuwari/preview/fuwari-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 1411
+        }
+      },
+      "searchTerms": [
+        "astro blog",
+        "anime blog",
+        "personal blog",
+        "markdown blog",
+        "static blog"
+      ]
+    },
+    {
+      "id": "screwfast",
+      "name": "ScrewFast",
+      "summary": "An Astro and Tailwind CSS company website with products, services, pricing, a blog and multilingual docs.",
+      "description": "ScrewFast is an open-source company website template built with Astro, Tailwind CSS and Preline UI, shown as a fictional hardware and construction brand that is easy to rebrand for any product or service business. Beyond the marketing pages it includes a product catalogue, pricing, a blog and a multilingual documentation section built on Starlight.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Business",
+        "Marketing",
+        "Documentation"
+      ],
+      "whoItsFor": "A developer building a company site with products and docs",
+      "demoUrl": "https://screwfast.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "business",
+          "marketing",
+          "documentation"
+        ],
+        "useCases": [
+          "marketing",
+          "products",
+          "docs"
+        ],
+        "frameworks": [
+          "astro",
+          "starlight",
+          "tailwindcss"
+        ]
+      },
+      "features": [
+        {
+          "id": "company-marketing-pages",
+          "name": "Company marketing pages",
+          "description": "Home, services, pricing, FAQ and contact sections ready to rebrand."
+        },
+        {
+          "id": "product-catalogue",
+          "name": "Product catalogue",
+          "description": "Product listing and detail pages generated from content files."
+        },
+        {
+          "id": "blog-and-insights",
+          "name": "Blog and insights",
+          "description": "Blog posts and insight articles written in Markdown."
+        },
+        {
+          "id": "multilingual-docs",
+          "name": "Multilingual documentation",
+          "description": "A Starlight documentation section with search and several languages."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Astro",
+          "Starlight"
+        ],
+        "styling": [
+          "Tailwind CSS",
+          "Preline UI"
+        ],
+        "data": [
+          "Markdown and MDX content collections"
+        ],
+        "deployment": [
+          "Static production output in dist/"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.12+"
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "outputDirectory": "dist"
+      },
+      "routes": [
+        "/",
+        "/products/",
+        "/blog/"
+      ],
+      "source": {
+        "type": "upstream",
+        "repository": "mearashadowfax/ScrewFast",
+        "track": "branch",
+        "ref": "main",
+        "commit": "6e733e7dd674bff226bf1962818d86c3ba58ee3c",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "upstream/screwfast/preview/screwfast-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/screwfast/preview/screwfast-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "upstream/screwfast/preview/screwfast-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "upstream/screwfast/preview/screwfast-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "upstream/screwfast/preview/screwfast-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/screwfast/preview/screwfast-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 5584
+        }
+      },
+      "searchTerms": [
+        "company website",
+        "business website",
+        "product catalogue",
+        "astro docs",
+        "tailwind marketing site"
+      ]
+    }
+  ],
   "retired": []
 }
