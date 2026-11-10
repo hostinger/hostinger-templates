@@ -204,6 +204,7 @@ function summarize(facts, findings, framework) {
     appDir: facts.appDir ?? null,
     stars: facts.repo.stars,
     commit: facts.commit,
+    ref: facts.ref ?? null,
     framework: framework?.key ?? null,
     verdict: failed ? 'not-deployable' : warned ? 'needs-review' : 'deployable',
     findings,

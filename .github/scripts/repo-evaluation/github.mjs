@@ -3,10 +3,10 @@
 
 const API = process.env.GITHUB_API_URL ?? 'https://api.github.com';
 
-export async function collectFacts(fullName, { appDir = null, token = process.env.GITHUB_TOKEN } = {}) {
+export async function collectFacts(fullName, { appDir = null, ref = null, token = process.env.GITHUB_TOKEN } = {}) {
   const github = createClient(token);
   const repoData = await github.json(`/repos/${fullName}`);
-  const commit = (await github.json(`/repos/${fullName}/commits/${encodeURIComponent(repoData.default_branch)}`)).sha;
+  const commit = (await github.json(`/repos/${fullName}/commits/${encodeURIComponent(ref ?? repoData.default_branch)}`)).sha;
   const treeData = await github.json(`/repos/${fullName}/git/trees/${commit}?recursive=1`);
   const tree = treeData.tree.filter((entry) => entry.type === 'blob').map((entry) => entry.path);
   const base = appDir ? `${appDir.replace(/\/$/, '')}/` : '';
@@ -61,6 +61,7 @@ export async function collectFacts(fullName, { appDir = null, token = process.en
       defaultBranch: repoData.default_branch,
     },
     commit,
+    ref: ref ?? repoData.default_branch,
     appDir,
     tree,
     treeTruncated: treeData.truncated,
