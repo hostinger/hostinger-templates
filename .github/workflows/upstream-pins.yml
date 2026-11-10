@@ -1,0 +1,110 @@
+name: Upstream pins
+
+# Weekly: for every upstream template, looks for a newer release (track:
+# releases) or branch commit (track: branch). When the new commit passes the
+# Template gate's pin checks, it opens or refreshes one PR per template on
+# upstream-pins/<id>. That PR's Template gate and Hostinger preview deploy
+# prove it builds; merging it redeploys the demo. Nothing is merged here.
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: upstream-pins
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      updates: ${{ steps.check.outputs.updates }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: check
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node .github/scripts/upstream-pins.mjs check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: upstream-pins
+          path: pins.json
+          retention-days: 7
+
+  open-pr:
+    needs: check
+    if: needs.check.outputs.updates != '[]' && needs.check.outputs.updates != ''
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        template: ${{ fromJson(needs.check.outputs.updates) }}
+    steps:
+      # A HostingerBot token, not GITHUB_TOKEN: PRs and commits made with
+      # GITHUB_TOKEN don't trigger the Template gate or the preview deploy.
+      - name: Get a HostingerBot token
+        id: token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.HOSTINGERBOT_APP_ID }}
+          private-key: ${{ secrets.HOSTINGERBOT_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name }}
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          name: upstream-pins
+      - name: Move the pin
+        env:
+          TEMPLATE: ${{ matrix.template }}
+        run: node .github/scripts/upstream-pins.mjs apply "$TEMPLATE"
+      # The commit goes through the contents API so GitHub signs it.
+      - name: Open or refresh the PR
+        env:
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+          TEMPLATE: ${{ matrix.template }}
+        run: |
+          set -euo pipefail
+          branch="upstream-pins/$TEMPLATE"
+          pin="$(jq -r --arg id "$TEMPLATE" '.[] | select(.id == $id) | "\(.to.ref)@\(.to.commit[0:7])"' pins.json)"
+          want="$(jq -r --arg id "$TEMPLATE" '.upstream[] | select(.id == $id) | .source.commit' templates.json)"
+          open="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$branch" --state open --json number --jq '.[0].number // empty')"
+
+          if [ -n "$open" ]; then
+            current="$(gh api "repos/$GITHUB_REPOSITORY/contents/templates.json?ref=$branch" \
+              -H 'Accept: application/vnd.github.raw+json' \
+              | jq -r --arg id "$TEMPLATE" '.upstream[]? | select(.id == $id) | .source.commit')"
+            if [ "$current" = "$want" ]; then
+              echo "PR #$open already pins $TEMPLATE to $pin."
+              exit 0
+            fi
+          fi
+
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$branch" > /dev/null 2>&1; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/git/refs/heads/$branch" -f sha="$GITHUB_SHA" -F force=true > /dev/null
+          else
+            gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/heads/$branch" -f sha="$GITHUB_SHA" > /dev/null
+          fi
+          gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/templates.json" \
+            -f message="Pin the $TEMPLATE upstream template to $pin" \
+            -f content="$(base64 -w0 templates.json)" \
+            -f sha="$(git rev-parse HEAD:templates.json)" \
+            -f branch="$branch" > /dev/null
+
+          if [ -n "$open" ]; then
+            gh pr edit "$open" --repo "$GITHUB_REPOSITORY" --title "Pin $TEMPLATE to $pin" --body-file pr-body.md
+            echo "Refreshed PR #$open: $TEMPLATE → $pin"
+          else
+            gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$branch" \
+              --title "Pin $TEMPLATE to $pin" --body-file pr-body.md
+          fi
