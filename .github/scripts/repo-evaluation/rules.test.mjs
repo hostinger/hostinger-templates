@@ -44,6 +44,7 @@ describe('evaluateRepository', () => {
     ['a CLI', { packageJson: { bin: { tool: 'cli.js' }, dependencies: { commander: '^12.0.0' } } }, /Command-line tool/],
     ['a library', { packageJson: { main: 'index.js', dependencies: {} } }, /Library/],
     ['an MCP server', { packageJson: { scripts: { start: 'node server.js' }, dependencies: { '@modelcontextprotocol/sdk': '^1.0.0' } } }, /MCP server/],
+    ['a Laravel app that uses Vite', { isPhpApp: true }, /PHP application/],
     ['a Postgres app', { packageJson: { scripts: { build: 'next build', start: 'next start' }, dependencies: { next: '^16.0.0', pg: '^8.0.0' } } }, /PostgreSQL/],
     ['a headless-browser app', { packageJson: { scripts: { start: 'node index.js' }, dependencies: { express: '^5.0.0', puppeteer: '^24.0.0' } } }, /headless browser/],
     ['an unlicensed repo', { repo: { license: null } }, /No OSI license/],

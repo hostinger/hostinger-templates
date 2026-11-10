@@ -23,12 +23,13 @@ export async function collectFacts(fullName, { appDir = null, token = process.en
   const readFirst = (paths) => read(paths.find((path) => tree.includes(path)) ?? '');
   const manifestPath = [`${base}manifest.json`, `${base}public/manifest.json`].find((path) => tree.includes(path));
 
-  const [packageJson, manifestJson, envExample, compose, prismaSchema] = await Promise.all([
+  const [packageJson, manifestJson, envExample, compose, prismaSchema, pnpmWorkspace] = await Promise.all([
     readJson(`${base}package.json`),
     manifestPath ? readJson(manifestPath) : null,
     readFirst([`${base}.env.example`, `${base}.env.sample`, `${base}.env.local.example`]),
     readFirst([`${base}docker-compose.yml`, `${base}docker-compose.yaml`, `${base}compose.yaml`, `${base}compose.yml`]),
     readFirst([`${base}prisma/schema.prisma`, 'prisma/schema.prisma']),
+    read('pnpm-workspace.yaml'),
   ]);
 
   const lockfiles = [
@@ -66,7 +67,8 @@ export async function collectFacts(fullName, { appDir = null, token = process.en
     packageJson,
     manifestJson,
     lockfiles: [...new Set(lockfiles)],
-    hasPnpmWorkspace: tree.includes('pnpm-workspace.yaml'),
+    hasPnpmWorkspace: /^packages\s*:/m.test(pnpmWorkspace ?? ''),
+    isPhpApp: tree.includes(`${base}composer.json`) && (tree.includes(`${base}artisan`) || tree.some((path) => path.startsWith(`${base}public/index.php`))),
     hasTurboOrNx: tree.includes('turbo.json') || tree.includes('nx.json') || tree.includes('lerna.json'),
     hasDeno: tree.includes(`${base}deno.json`) || tree.includes(`${base}deno.jsonc`),
     appCandidates: tree

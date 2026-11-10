@@ -117,6 +117,7 @@ export function evaluateRepository(facts, { now = new Date() } = {}) {
     return summarize(facts, findings, null);
   }
 
+  if (facts.isPhpApp) fail('kind', 'PHP application (composer.json); it deploys as a PHP site, not a Node.js app.');
   const nonWebApp = NOT_A_WEB_APP.find(({ deps: names }) => has(names));
   if (nonWebApp) fail('kind', `${capitalize(nonWebApp.reason)}, not a web app.`);
   if (tree.some((path) => path.startsWith(`${prefix(appDir)}src-tauri/`))) fail('kind', 'Desktop app (Tauri).');
