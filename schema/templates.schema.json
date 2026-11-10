@@ -10,7 +10,37 @@
     "templates": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/template" }
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/template"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": false
+            }
+          }
+        ]
+      }
+    },
+    "upstream": {
+      "description": "Templates deployed straight from a public upstream repository at a pinned commit. Nothing reads this list yet; it has its own media folder (upstream/<id>/preview/) and no code in templates/.",
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/template"
+          },
+          {
+            "type": "object",
+            "required": ["source"],
+            "properties": {
+              "source": true
+            }
+          }
+        ]
+      }
     },
     "retired": {
       "type": "array",
@@ -19,8 +49,13 @@
         "additionalProperties": false,
         "required": ["id", "retiredAt"],
         "properties": {
-          "id": { "$ref": "#/$defs/id" },
-          "retiredAt": { "type": "string", "format": "date" }
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "retiredAt": {
+            "type": "string",
+            "format": "date"
+          }
         }
       }
     }
@@ -41,16 +76,18 @@
     },
     "textList": {
       "type": "array",
-      "items": { "$ref": "#/$defs/text" }
+      "items": {
+        "$ref": "#/$defs/text"
+      }
     },
     "repoPath": {
       "type": "string",
-      "pattern": "^templates/[a-z0-9-]+/preview/[^/]+\\.(png|webp)$"
+      "pattern": "^(templates|upstream)/[a-z0-9-]+/preview/[^/]+\\.(png|webp)$"
     },
     "rawUrl": {
       "type": "string",
       "format": "uri",
-      "pattern": "^https://github\\.com/hostinger/hostinger-templates/blob/main/templates/[a-z0-9-]+/preview/[^/?]+\\?raw=true$"
+      "pattern": "^https://github\\.com/hostinger/hostinger-templates/blob/main/(templates|upstream)/[a-z0-9-]+/preview/[^/?]+\\?raw=true$"
     },
     "template": {
       "type": "object",
@@ -72,11 +109,21 @@
         "searchTerms"
       ],
       "properties": {
-        "id": { "$ref": "#/$defs/id" },
-        "name": { "$ref": "#/$defs/text" },
-        "summary": { "$ref": "#/$defs/text" },
-        "description": { "$ref": "#/$defs/text" },
-        "bucket": { "$ref": "#/$defs/text" },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/text"
+        },
+        "summary": {
+          "$ref": "#/$defs/text"
+        },
+        "description": {
+          "$ref": "#/$defs/text"
+        },
+        "bucket": {
+          "$ref": "#/$defs/text"
+        },
         "categories": {
           "type": "array",
           "minItems": 1,
@@ -98,7 +145,9 @@
             ]
           }
         },
-        "whoItsFor": { "$ref": "#/$defs/text" },
+        "whoItsFor": {
+          "$ref": "#/$defs/text"
+        },
         "demoUrl": {
           "oneOf": [
             {
@@ -106,7 +155,9 @@
               "format": "uri",
               "pattern": "^https://[a-z0-9]+(-[a-z0-9]+)*\\.hostingertemplates\\.com$"
             },
-            { "type": "null" }
+            {
+              "type": "null"
+            }
           ]
         },
         "classification": {
@@ -117,12 +168,17 @@
             "categories": {
               "type": "array",
               "minItems": 1,
-              "items": { "$ref": "#/$defs/slug" }
+              "items": {
+                "$ref": "#/$defs/slug"
+              }
             },
             "useCases": {
               "type": "array",
               "minItems": 1,
-              "items": { "type": "string", "pattern": "^[a-z]+$" }
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z]+$"
+              }
             },
             "frameworks": {
               "type": "array",
@@ -143,22 +199,44 @@
             "additionalProperties": false,
             "required": ["id", "name", "description"],
             "properties": {
-              "id": { "$ref": "#/$defs/slug" },
-              "name": { "$ref": "#/$defs/text" },
-              "description": { "$ref": "#/$defs/text" }
+              "id": {
+                "$ref": "#/$defs/slug"
+              },
+              "name": {
+                "$ref": "#/$defs/text"
+              },
+              "description": {
+                "$ref": "#/$defs/text"
+              }
             }
           }
         },
         "technology": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["languages", "frameworks", "styling", "data", "deployment"],
+          "required": [
+            "languages",
+            "frameworks",
+            "styling",
+            "data",
+            "deployment"
+          ],
           "properties": {
-            "languages": { "$ref": "#/$defs/textList" },
-            "frameworks": { "$ref": "#/$defs/textList" },
-            "styling": { "$ref": "#/$defs/textList" },
-            "data": { "$ref": "#/$defs/textList" },
-            "deployment": { "$ref": "#/$defs/textList" }
+            "languages": {
+              "$ref": "#/$defs/textList"
+            },
+            "frameworks": {
+              "$ref": "#/$defs/textList"
+            },
+            "styling": {
+              "$ref": "#/$defs/textList"
+            },
+            "data": {
+              "$ref": "#/$defs/textList"
+            },
+            "deployment": {
+              "$ref": "#/$defs/textList"
+            }
           }
         },
         "compatibility": {
@@ -174,11 +252,15 @@
                 "additionalProperties": false,
                 "required": ["name", "versions"],
                 "properties": {
-                  "name": { "const": "Node.js" },
+                  "name": {
+                    "const": "Node.js"
+                  },
                   "versions": {
                     "type": "array",
                     "minItems": 1,
-                    "items": { "$ref": "#/$defs/text" }
+                    "items": {
+                      "$ref": "#/$defs/text"
+                    }
                   }
                 }
               }
@@ -189,17 +271,34 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "appType": { "type": "string" },
-            "buildCommand": { "type": "string" },
-            "outputDirectory": { "type": "string" },
-            "entryFile": { "type": "string" }
+            "appType": {
+              "type": "string"
+            },
+            "buildCommand": {
+              "type": "string"
+            },
+            "outputDirectory": {
+              "type": "string"
+            },
+            "entryFile": {
+              "type": "string"
+            },
+            "nodeVersion": {
+              "enum": [18, 20, 22, 24]
+            }
           }
         },
         "routes": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "type": "string", "pattern": "^/[^\\s?#]*$" }
+          "items": {
+            "type": "string",
+            "pattern": "^/[^\\s?#]*$"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/source"
         },
         "media": {
           "type": "object",
@@ -209,14 +308,34 @@
             "thumbnail": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["path", "url", "source", "width", "height", "aspectRatio", "variants"],
+              "required": [
+                "path",
+                "url",
+                "source",
+                "width",
+                "height",
+                "aspectRatio",
+                "variants"
+              ],
               "properties": {
-                "path": { "$ref": "#/$defs/repoPath" },
-                "url": { "$ref": "#/$defs/rawUrl" },
-                "source": { "const": "viewport" },
-                "width": { "const": 1440 },
-                "height": { "const": 900 },
-                "aspectRatio": { "const": "16:10" },
+                "path": {
+                  "$ref": "#/$defs/repoPath"
+                },
+                "url": {
+                  "$ref": "#/$defs/rawUrl"
+                },
+                "source": {
+                  "const": "viewport"
+                },
+                "width": {
+                  "const": 1440
+                },
+                "height": {
+                  "const": 900
+                },
+                "aspectRatio": {
+                  "const": "16:10"
+                },
                 "variants": {
                   "type": "array",
                   "minItems": 2,
@@ -225,8 +344,12 @@
                     "additionalProperties": false,
                     "required": ["width", "path"],
                     "properties": {
-                      "width": { "enum": [480, 960] },
-                      "path": { "$ref": "#/$defs/repoPath" }
+                      "width": {
+                        "enum": [480, 960]
+                      },
+                      "path": {
+                        "$ref": "#/$defs/repoPath"
+                      }
                     }
                   }
                 }
@@ -237,11 +360,22 @@
               "additionalProperties": false,
               "required": ["path", "url", "source", "width", "height"],
               "properties": {
-                "path": { "$ref": "#/$defs/repoPath" },
-                "url": { "$ref": "#/$defs/rawUrl" },
-                "source": { "const": "fullPage" },
-                "width": { "const": 1440 },
-                "height": { "type": "integer", "minimum": 900 }
+                "path": {
+                  "$ref": "#/$defs/repoPath"
+                },
+                "url": {
+                  "$ref": "#/$defs/rawUrl"
+                },
+                "source": {
+                  "const": "fullPage"
+                },
+                "width": {
+                  "const": 1440
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 900
+                }
               }
             }
           }
@@ -249,7 +383,60 @@
         "searchTerms": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/$defs/text" }
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      }
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "repository", "track", "ref", "commit", "license"],
+      "properties": {
+        "type": {
+          "const": "upstream"
+        },
+        "repository": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "track": {
+          "enum": ["releases", "branch"]
+        },
+        "ref": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_./+-]+$",
+          "not": {
+            "type": "string",
+            "pattern": "\\.\\."
+          }
+        },
+        "commit": {
+          "$ref": "#/$defs/commit"
+        },
+        "directory": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+(/[A-Za-z0-9_.-]+)*$",
+          "not": {
+            "type": "string",
+            "pattern": "(^|/)\\.\\.?(/|$)"
+          }
+        },
+        "license": {
+          "enum": [
+            "MIT",
+            "ISC",
+            "Apache-2.0",
+            "BSD-2-Clause",
+            "BSD-3-Clause",
+            "0BSD",
+            "Unlicense"
+          ]
         }
       }
     }

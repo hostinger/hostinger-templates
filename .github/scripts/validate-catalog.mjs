@@ -13,6 +13,7 @@ const validateLandingPage = ajv.compile(readJson(join(root, 'schema/landing-page
 const errors = [];
 
 check('templates.json', validateCatalog);
+checkLayout();
 
 const landingDir = join(root, 'landing-pages');
 if (existsSync(landingDir)) {
@@ -53,6 +54,56 @@ function check(file, validate) {
       ? `${error.message} (${error.params.additionalProperty})`
       : error.message;
     errors.push({ file, message: `${where} ${detail}` });
+  }
+}
+
+// The schema can't see the file tree: a templates[] entry ships its code in
+// templates/<id>/, an upstream[] entry ships only its preview images in
+// upstream/<id>/preview/ and deploys from its source repository.
+function checkLayout() {
+  let catalog;
+  try {
+    catalog = readJson(join(root, 'templates.json'));
+  } catch {
+    return;
+  }
+  const lists = [
+    ['templates', catalog.templates ?? []],
+    ['upstream', catalog.upstream ?? []],
+  ];
+  const seen = new Set((catalog.retired ?? []).map((entry) => entry.id));
+  for (const [list, entries] of lists) {
+    for (const entry of entries) {
+      const file = 'templates.json';
+      if (seen.has(entry.id)) {
+        errors.push({ file, message: `${list}: id "${entry.id}" is already used in templates, upstream or retired` });
+      }
+      seen.add(entry.id);
+
+      const hasCode = existsSync(join(root, 'templates', entry.id, 'package.json'));
+      if (list === 'templates' && !hasCode) {
+        errors.push({ file, message: `templates: "${entry.id}" has no templates/${entry.id}/package.json` });
+      }
+      if (list === 'upstream' && existsSync(join(root, 'templates', entry.id))) {
+        errors.push({ file, message: `upstream: "${entry.id}" deploys from ${entry.source?.repository}; remove templates/${entry.id}/` });
+      }
+
+      const prefix = `${list}/${entry.id}/preview/`;
+      const { thumbnail = {}, preview = {} } = entry.media ?? {};
+      const paths = [thumbnail.path, preview.path, ...(thumbnail.variants ?? []).map((variant) => variant.path)];
+      for (const path of paths.filter(Boolean)) {
+        if (!path.startsWith(prefix)) {
+          errors.push({ file, message: `${list}: "${entry.id}" media ${path} must be under ${prefix}` });
+        } else if (!existsSync(join(root, path))) {
+          errors.push({ file, message: `${list}: "${entry.id}" media ${path} does not exist` });
+        }
+      }
+      for (const image of [thumbnail, preview]) {
+        if (image.path && image.url && !image.url.includes(`/blob/main/${image.path}?`)) {
+          errors.push({ file, message: `${list}: "${entry.id}" media url ${image.url} does not point at ${image.path}` });
+        }
+      }
+    }
   }
 }
 

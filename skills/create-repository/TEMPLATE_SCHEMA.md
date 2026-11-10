@@ -1,13 +1,14 @@
 # Template catalog schema
 
-`templates.json` contains one root object with a `templates` array and a
-`retired` array. Every finished project contributes one entry to
-`templates`. `schema/templates.schema.json` is the machine-readable version
+`templates.json` contains one root object with a `templates` array, a
+`retired` array and an optional `upstream` array. Every finished project
+contributes one entry to `templates`. `schema/templates.schema.json` is the machine-readable version
 of this file, and every PR is validated against it.
 
 ```json
 {
   "templates": [],
+  "upstream": [],
   "retired": [{ "id": "old-template-id", "retiredAt": "2026-11-04" }]
 }
 ```
@@ -170,6 +171,9 @@ to add an entry.
   redirects `/areas` to `/areas/` and the smoke check treats redirects as
   failures.
 - `id` is permanent. Never reuse an id that appears in `retired`.
+- `deploy.nodeVersion` (18, 20, 22 or 24) overrides the Node.js version the
+  hosting API detects from the archive. Set it only when the project requires
+  a newer version than the detected one (for example `engines.node: ">=24"`).
 - Use `null` for an unknown optional scalar and `[]` only when a list genuinely
   has no values.
 
@@ -183,3 +187,46 @@ Do not add:
 - `license`
 - `audienceLevel`
 - `status`
+
+`repository` and `license` are forbidden at the top level only. Upstream
+entries record them inside `source` (see below).
+
+## Upstream templates
+
+An `upstream` entry is a popular public repository we deploy as it is, from
+the original project, instead of a copy in `templates/`. It has every field of
+a `templates` entry plus `source`, and its preview images live in
+`upstream/<id>/preview/` (`templates/<id>/` must not exist):
+
+```json
+"source": {
+  "type": "upstream",
+  "repository": "arthelokyo/astrowind",
+  "track": "releases",
+  "ref": "v1.0.0-beta.65",
+  "commit": "8d0090f933b71439c02956f7e8d30d41de804832",
+  "license": "MIT"
+}
+```
+
+- `repository` is the GitHub `owner/repo`. `directory` (optional) is the app's
+  folder inside it, for monorepos.
+- `track: "releases"` follows the newest non-prerelease GitHub release, and
+  `ref` is its tag. Use it when the project publishes releases. Otherwise use
+  `track: "branch"` with the branch name as `ref`.
+- `commit` is the full SHA we deploy. Demos, PR previews and purchases all
+  deploy this commit, never the moving branch or tag, so an upstream push
+  can't change what customers get without review.
+- `license` is the SPDX id GitHub reports for the repository. Only permissive
+  licenses are allowed (MIT, ISC, Apache-2.0, BSD-2-Clause, BSD-3-Clause,
+  0BSD, Unlicense); the deployed code keeps its own LICENSE file.
+- The Template gate re-runs the deployability rules
+  (`skills/evaluate-repository`) at `commit` and checks that `ref` resolves to
+  it (for releases) or contains it (for branches). The
+  weekly `upstream-pins` workflow opens a PR when a newer release or branch
+  commit passes the same rules; the PR's Hostinger preview proves it builds.
+- Media and copy describe the upstream project at `commit`. Write them from
+  the repository, not from its marketing site, and capture the screenshots
+  from a build of that commit.
+- Nothing reads `upstream` yet: hPanel and hostinger.com list only
+  `templates`, so an upstream landing page must stay a draft until they do.

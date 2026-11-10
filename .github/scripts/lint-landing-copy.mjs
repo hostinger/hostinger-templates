@@ -41,7 +41,9 @@ const warnings = [];
 const catalog = readJson('templates.json');
 const templates = catalog.templates ?? [];
 const templateIds = templates.map((template) => template.id);
-const templatesById = new Map(templates.map((template) => [template.id, template]));
+const upstreamTemplates = catalog.upstream ?? [];
+const upstreamIds = new Set(upstreamTemplates.map((template) => template.id));
+const templatesById = new Map([...templates, ...upstreamTemplates].map((template) => [template.id, template]));
 const retired = catalog.retired ?? [];
 const retiredIds = new Set(retired.map((entry) => entry.id));
 
@@ -198,6 +200,12 @@ function checkPage({ id, file, data }) {
 
   if (retiredIds.has(id)) {
     errors.push({ file, message: `"${id}" is in retired; remove it from retired to publish the page again` });
+  }
+  if (upstreamIds.has(id)) {
+    errors.push({
+      file,
+      message: `"${id}" is an upstream template; hostinger.com does not read the upstream list yet, so keep the page a draft`,
+    });
   }
   if (template && !template.demoUrl) {
     errors.push({ file, message: `Template "${id}" has no demoUrl; a page needs a live demo` });
