@@ -201,6 +201,7 @@ function catalogBuildSettings(deploy = {}) {
     buildCommand: 'build_script',
     outputDirectory: 'output_directory',
     entryFile: 'entry_file',
+    nodeVersion: 'node_version',
   };
   return Object.fromEntries(
     Object.entries(mapping)
