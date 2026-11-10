@@ -1,12 +1,16 @@
 # Node.js repositories
 
-Collection of runnable Node.js projects. Every project lives under
-`templates/`:
+Collection of runnable Node.js projects. Every project we maintain lives
+under `templates/`. Upstream templates are popular public repositories we
+deploy from the original project at a pinned commit; only their preview
+images live here, under `upstream/`:
 
 ```text
 hostinger-templates/
 ├── templates/
 │   └── <repository-id>/
+├── upstream/
+│   └── <repository-id>/preview/
 ├── skills/
 ├── versions/catalog.json
 └── templates.json
@@ -33,8 +37,9 @@ Each entry can contain these fields:
 - `deploy` (when the build output differs from the hosting defaults) and
   `routes` (paths the smoke check requests, default `/`)
 
-The root object also has a `retired` array: ids whose hostinger.com landing
-page was removed. `schema/templates.schema.json` validates the whole file on
+The root object also has an `upstream` array (see
+[Upstream templates](#upstream-templates)) and a `retired` array: ids whose
+hostinger.com landing page was removed. `schema/templates.schema.json` validates the whole file on
 every PR.
 
 Project paths use `templates/<id>/`, where the directory name matches the
@@ -59,6 +64,9 @@ every other job passed or didn't apply:
   VPS applications on hostinger.com.
 - `preview (<id>)`: install, lint, build, audit, health check and screenshot
   comparison for each changed template.
+- `validate` also checks every upstream template the PR adds or re-pins
+  (`.github/scripts/check-upstream.mjs`): the ref points at the commit, the
+  license matches GitHub's, and the deployability rules pass at the commit.
 
 Run the same checks locally:
 
@@ -131,12 +139,41 @@ doesn't offer. Optionally it deploys the ones that pass to the preview
 account. The weekly run keeps the **Node.js template candidates** issue up
 to date. See [`skills/evaluate-repository/`](skills/evaluate-repository/SKILL.md).
 
+## Upstream templates
+
+`templates.json`'s `upstream` list holds popular public repositories we offer
+as they are, instead of copying them into `templates/`. Each entry has the
+usual catalog fields plus a `source` pin (repository, `track: releases` or
+`branch`, `ref`, full `commit`, SPDX `license`). Their code is never copied
+here, so upstream fixes reach us without merging forks, and the original
+LICENSE ships with the code.
+
+Every deploy uses the pinned commit, never the moving branch or tag:
+
+- PR previews and demos zip that commit with `git archive`
+  (`.github/scripts/upstream-archive.mjs`, nothing from it runs on our
+  runners) and Hostinger builds it, the same way a purchase will.
+- `Upstream pins` (`.github/workflows/upstream-pins.yml`) runs every Monday.
+  When a template has a newer release or branch commit that passes the pin
+  checks, it opens or refreshes the PR `upstream-pins/<id>`. Its Hostinger
+  preview proves the new commit builds; merging it redeploys the demo. A
+  commit that fails the preview stays unmerged and the old pin keeps working.
+- To add one, evaluate the repository at the commit you want
+  (`node .github/scripts/evaluate-repos.mjs owner/repo@<ref>`), build it
+  locally to capture the screenshots from that commit, and add the entry and
+  `upstream/<id>/preview/` images. The rules are in
+  [TEMPLATE_SCHEMA.md](skills/create-repository/TEMPLATE_SCHEMA.md#upstream-templates).
+
+hPanel and hostinger.com read only `templates` today, so upstream entries
+aren't offered anywhere yet and their landing pages must stay drafts.
+
 ## Demo deployments
 
 Merging a PR that adds a template (a new `templates/<id>/package.json`)
 publishes it to `https://<id>.hostingertemplates.com` through the
 `Deploy template demos` workflow. PRs that only change existing templates,
 such as Dependabot security groups and dependency bumps, do not deploy.
+Upstream templates deploy whenever their pin changes.
 To redeploy existing demos, run the workflow from the Actions tab with their
 template IDs.
 

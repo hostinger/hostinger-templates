@@ -56,8 +56,22 @@ own.
 
 ## 3. Turning a candidate into a template
 
-A repository that deploys still needs a human decision: its license kept,
-attribution in the README, and a content and security review. It is then
-snapshotted at the evaluated commit into `templates/<id>/` and goes through
-the normal template PR gates. Partner snapshots and their `source` catalog
-block are planned in HSTG-23740 and aren't part of the catalog schema yet.
+A repository that deploys still needs a human decision. Upstream templates
+aren't copied into this repository: they get an `upstream` entry in
+`templates.json` that pins a commit of the original repository (see
+[Upstream templates](../create-repository/TEMPLATE_SCHEMA.md#upstream-templates)).
+Before adding one:
+
+- Evaluate it at the exact ref: `node .github/scripts/evaluate-repos.mjs owner/repo@<tag-or-commit>`.
+  Prefer `track: releases` when the project publishes releases.
+- Build that commit locally. The static rules can't see a broken build: in
+  November 2026 fuwari's `main` passed every rule and failed `astro build`
+  after a Tailwind patch bump, so it is pinned one commit earlier.
+- Audit production dependencies (`npm audit --omit=dev` or
+  `pnpm audit --prod`). A server-rendered template with high or critical
+  advisories in its runtime is not offered. For static output only the build
+  runs them; note them in the PR.
+- Check the content: a template, not someone's personal site, with nothing
+  a buyer would have to remove first (real names, photos, employers).
+- Capture the catalog screenshots from that local build, with reduced motion
+  and the page scrolled once so reveal-on-scroll sections render.
