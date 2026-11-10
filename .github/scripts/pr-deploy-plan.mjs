@@ -1,9 +1,13 @@
 import { appendFileSync, writeFileSync } from 'node:fs';
+import { checkPin } from './repo-evaluation/upstream.mjs';
 
 // Decides what the trusted PR deploy does for one Template gate run. It
 // recomputes the PR and the changed templates from the head SHA through the
 // GitHub API and never reads anything the PR's own jobs produced.
-// Writes plan.json and the outputs decision, pr, ids and message.
+// Writes plan.json and the outputs decision, pr, ids, upstream and message.
+// Upstream templates the PR adds or re-pins are deployed from their pinned
+// commit, which the deploy job fetches itself, once the pin passes the same
+// checks as the Template gate.
 
 const SCANNER_CONTEXT = 'AI Security Scanner';
 const SCANNER_WAIT_MS = Number(process.env.SCANNER_WAIT_SECONDS ?? 900) * 1000;
@@ -18,11 +22,12 @@ writeFileSync('plan.json', JSON.stringify(plan, null, 2));
 output('decision', plan.decision);
 output('pr', String(plan.pr ?? ''));
 output('ids', JSON.stringify(plan.ids));
+output('upstream', JSON.stringify(plan.upstream));
 output('message', plan.message);
 console.log(JSON.stringify(plan, null, 2));
 
 async function decide() {
-  const base = { sha: HEAD_SHA, pr: null, ids: [], templates: {} };
+  const base = { sha: HEAD_SHA, pr: null, ids: [], upstream: [], templates: {} };
 
   if (HEAD_REPOSITORY !== GITHUB_REPOSITORY) {
     return { ...base, decision: 'refuse', message: 'Fork PRs are not deployed. Ask a maintainer to review and override.' };
@@ -40,17 +45,22 @@ async function decide() {
     ...new Set(files.map((file) => file.match(/^templates\/([^/]+)\//)?.[1]).filter(Boolean)),
   ].sort();
 
-  const ids = [];
+  const localIds = [];
   for (const id of candidateIds) {
     if (ID_PATTERN.test(id) && (await exists(`templates/${id}/package.json`))) {
-      ids.push(id);
+      localIds.push(id);
     }
   }
 
-  const withPr = { ...base, pr: pr.number };
+  const catalog = JSON.parse(await raw('templates.json'));
+  const upstream = files.includes('templates.json') ? await changedUpstream(catalog, pr.base.sha) : [];
+  const upstreamIds = upstream.map((entry) => entry.id);
+  const ids = [...new Set([...localIds, ...upstreamIds])].sort();
+
+  const withPr = { ...base, pr: pr.number, upstream: upstreamIds };
 
   if (!ids.length) {
-    return { ...withPr, decision: 'not-applicable', message: 'No template code changed.' };
+    return { ...withPr, decision: 'not-applicable', message: 'No template code or upstream pin changed.' };
   }
 
   if (touchesWorkflows) {
@@ -67,14 +77,20 @@ async function decide() {
     return { ...withPr, ids, decision: 'refuse', message: scanner };
   }
 
-  const catalog = JSON.parse(await raw('templates.json'));
   const templates = {};
-  for (const id of ids) {
+  for (const id of localIds) {
     const entry = catalog.templates.find((template) => template.id === id);
     if (!entry) {
       return { ...withPr, ids, decision: 'refuse', message: `templates.json has no entry for ${id}.` };
     }
     templates[id] = { deploy: entry.deploy ?? {}, routes: entry.routes ?? ['/'] };
+  }
+  for (const entry of upstream) {
+    const { problems } = await checkPin(entry.source).catch((error) => ({ problems: [error.message] }));
+    if (problems.length) {
+      return { ...withPr, ids, decision: 'refuse', message: `Upstream ${entry.id}: ${problems[0]}` };
+    }
+    templates[entry.id] = { deploy: entry.deploy ?? {}, routes: entry.routes ?? ['/'], source: entry.source };
   }
 
   return {
@@ -84,6 +100,15 @@ async function decide() {
     decision: 'deploy',
     message: `Deploying ${ids.length} template(s) to the preview account.`,
   };
+}
+
+async function changedUpstream(catalog, baseSha) {
+  const before = JSON.parse((await raw('templates.json', baseSha).catch(() => null)) ?? '{}');
+  const shape = (entry) => (entry ? JSON.stringify([entry.source, entry.deploy ?? {}, entry.routes ?? ['/']]) : null);
+  const previous = new Map((before.upstream ?? []).map((entry) => [entry.id, entry]));
+  return (catalog.upstream ?? []).filter(
+    (entry) => ID_PATTERN.test(entry.id) && shape(previous.get(entry.id)) !== shape(entry),
+  );
 }
 
 async function waitForScanner() {
@@ -127,12 +152,12 @@ async function exists(path) {
   return response.ok;
 }
 
-async function raw(path) {
-  const response = await fetch(`${API}/contents/${path}?ref=${HEAD_SHA}`, {
+async function raw(path, ref = HEAD_SHA) {
+  const response = await fetch(`${API}/contents/${path}?ref=${ref}`, {
     headers: { ...headers(), Accept: 'application/vnd.github.raw+json' },
   });
   if (!response.ok) {
-    throw new Error(`GET ${path} at ${HEAD_SHA} returned ${response.status}`);
+    throw new Error(`GET ${path} at ${ref} returned ${response.status}`);
   }
   return response.text();
 }
