@@ -13,5 +13,7 @@ Current workflows:
 - `create-repository/` — build and register a template
 - `deploy-templates/` — redeploy and troubleshoot template demos (new
   templates deploy automatically on merge)
+- `evaluate-repository/` — check whether a public GitHub repository can run
+  as a Node.js app on Hostinger before it becomes a template
 - `write-landing-page/` — write, publish or retire a template's
   hostinger.com/applications sales-page copy

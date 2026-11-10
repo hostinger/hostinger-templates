@@ -121,6 +121,16 @@ Setup (repository admin):
    can open those PRs, and fork PRs are never deployed.
 6. Once it has proven stable, make `hostinger-build` a required check.
 
+## Popular repositories as templates
+
+`Repository deployability` (`.github/workflows/repo-deployability.yml`)
+checks whether public GitHub repositories can run as Node.js apps on Hostinger
+web hosting. It rejects agent skills, agents, desktop apps, extensions, CLIs
+and libraries, and anything that needs services or runtimes the platform
+doesn't offer. Optionally it deploys the ones that pass to the preview
+account. The weekly run keeps the **Node.js template candidates** issue up
+to date. See [`skills/evaluate-repository/`](skills/evaluate-repository/SKILL.md).
+
 ## Demo deployments
 
 Merging a PR that adds a template (a new `templates/<id>/package.json`)
