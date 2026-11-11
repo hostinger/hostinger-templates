@@ -147,7 +147,8 @@ format and the workflow.
 
 - Code PRs never change `landing-pages/**`, and copy PRs change nothing else
   (except a `retired` entry when unpublishing). Code needs one approval.
-  Copy needs the marketing/SEO code owner in `.github/CODEOWNERS`.
+  Copy needs the Web Hosting code owner (`@hostinger/wh-devs`) in
+  `.github/CODEOWNERS`.
 - A page is published when its file has `"enabled": true` and the template
   has a working demo. On merge, `catalog-published.yml` checks the demos and
   sends a `node-templates-updated` event to `hostinger/hwebsites-frontend`,

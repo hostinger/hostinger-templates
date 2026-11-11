@@ -92,5 +92,5 @@ Merging deploys the demo to `https://<id>.hostingertemplates.com`. Once it
 answers, a follow-up job opens a second PR with a draft
 `landing-pages/<id>.json` (`"enabled": false`), following
 [../write-landing-page/SKILL.md](../write-landing-page/SKILL.md). That PR
-changes only `landing-pages/**` and needs the marketing/SEO code owner's
-approval. The code owner publishes the page by setting `"enabled": true`.
+changes only `landing-pages/**` and needs approval from the Web Hosting
+code owner (`@hostinger/wh-devs`). The code owner publishes the page by setting `"enabled": true`.

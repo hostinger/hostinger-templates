@@ -1,6 +1,6 @@
 ---
 name: write-template-landing-page
-description: Drafts or updates the hostinger.com/applications/<id> sales-page copy for a template in landing-pages/<id>.json and opens a copy-only PR for the marketing/SEO code owner. Use when a template needs a landing page, its copy needs changes, or a page must be published, unpublished or retired.
+description: Drafts or updates the hostinger.com/applications/<id> sales-page copy for a template in landing-pages/<id>.json and opens a copy-only PR for the Web Hosting code owner. Use when a template needs a landing page, its copy needs changes, or a page must be published, unpublished or retired.
 ---
 
 # Write a template landing page
@@ -50,7 +50,7 @@ before the page can be enabled.
 
 A copy PR changes only `landing-pages/**`. A code PR never changes
 `landing-pages/**`. Code needs one engineering approval; copy needs the
-marketing/SEO code owner's approval, which `.github/CODEOWNERS` requests
+Web Hosting code owner's approval, which `.github/CODEOWNERS` requests
 automatically.
 
 - Title: `Copy: <template name> landing page`.
