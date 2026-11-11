@@ -43,7 +43,7 @@ file. `.github/scripts/lint-landing-copy.mjs` enforces both on every PR.
 
 | Field | Rule when `enabled` is `true` |
 | --- | --- |
-| `enabled` | Publishes the page. Only the marketing/SEO code owner sets it to `true`. |
+| `enabled` | Publishes the page. Only the Web Hosting code owner (`@hostinger/wh-devs`) sets it to `true`. |
 | `popular` | Shows the app among popular apps in the `/applications` listing. |
 | `recommended` | Puts the app first in "other apps" recommendations. |
 | `heroTitle` | 10–70 characters. |
