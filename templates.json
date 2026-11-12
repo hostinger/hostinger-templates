@@ -6115,9 +6115,7 @@
         "walk slot booking",
         "dog walk areas map"
       ]
-    }
-  ],
-  "upstream": [
+    },
     {
       "id": "astrowind",
       "name": "AstroWind",
@@ -6205,7 +6203,6 @@
         "/blog/"
       ],
       "source": {
-        "type": "upstream",
         "repository": "arthelokyo/astrowind",
         "track": "releases",
         "prereleases": true,
@@ -6215,8 +6212,8 @@
       },
       "media": {
         "thumbnail": {
-          "path": "upstream/astrowind/preview/astrowind-thumbnail.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/astrowind/preview/astrowind-thumbnail.png?raw=true",
+          "path": "templates/astrowind/preview/astrowind-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/astrowind/preview/astrowind-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -6224,17 +6221,17 @@
           "variants": [
             {
               "width": 480,
-              "path": "upstream/astrowind/preview/astrowind-thumbnail-480.webp"
+              "path": "templates/astrowind/preview/astrowind-thumbnail-480.webp"
             },
             {
               "width": 960,
-              "path": "upstream/astrowind/preview/astrowind-thumbnail-960.webp"
+              "path": "templates/astrowind/preview/astrowind-thumbnail-960.webp"
             }
           ]
         },
         "preview": {
-          "path": "upstream/astrowind/preview/astrowind-homepage.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/astrowind/preview/astrowind-homepage.png?raw=true",
+          "path": "templates/astrowind/preview/astrowind-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/astrowind/preview/astrowind-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 8860
@@ -6334,7 +6331,6 @@
         "/"
       ],
       "source": {
-        "type": "upstream",
         "repository": "coreui/coreui-free-react-admin-template",
         "track": "branch",
         "ref": "main",
@@ -6343,8 +6339,8 @@
       },
       "media": {
         "thumbnail": {
-          "path": "upstream/coreui-admin/preview/coreui-admin-thumbnail.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/coreui-admin/preview/coreui-admin-thumbnail.png?raw=true",
+          "path": "templates/coreui-admin/preview/coreui-admin-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/coreui-admin/preview/coreui-admin-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -6352,17 +6348,17 @@
           "variants": [
             {
               "width": 480,
-              "path": "upstream/coreui-admin/preview/coreui-admin-thumbnail-480.webp"
+              "path": "templates/coreui-admin/preview/coreui-admin-thumbnail-480.webp"
             },
             {
               "width": 960,
-              "path": "upstream/coreui-admin/preview/coreui-admin-thumbnail-960.webp"
+              "path": "templates/coreui-admin/preview/coreui-admin-thumbnail-960.webp"
             }
           ]
         },
         "preview": {
-          "path": "upstream/coreui-admin/preview/coreui-admin-homepage.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/coreui-admin/preview/coreui-admin-homepage.png?raw=true",
+          "path": "templates/coreui-admin/preview/coreui-admin-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/coreui-admin/preview/coreui-admin-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 2099
@@ -6461,7 +6457,6 @@
         "/"
       ],
       "source": {
-        "type": "upstream",
         "repository": "launch-ui/launch-ui",
         "track": "releases",
         "ref": "v2.10.2",
@@ -6470,8 +6465,8 @@
       },
       "media": {
         "thumbnail": {
-          "path": "upstream/launch-ui/preview/launch-ui-thumbnail.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/launch-ui/preview/launch-ui-thumbnail.png?raw=true",
+          "path": "templates/launch-ui/preview/launch-ui-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/launch-ui/preview/launch-ui-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -6479,17 +6474,17 @@
           "variants": [
             {
               "width": 480,
-              "path": "upstream/launch-ui/preview/launch-ui-thumbnail-480.webp"
+              "path": "templates/launch-ui/preview/launch-ui-thumbnail-480.webp"
             },
             {
               "width": 960,
-              "path": "upstream/launch-ui/preview/launch-ui-thumbnail-960.webp"
+              "path": "templates/launch-ui/preview/launch-ui-thumbnail-960.webp"
             }
           ]
         },
         "preview": {
-          "path": "upstream/launch-ui/preview/launch-ui-homepage.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/launch-ui/preview/launch-ui-homepage.png?raw=true",
+          "path": "templates/launch-ui/preview/launch-ui-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/launch-ui/preview/launch-ui-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 5462
@@ -6593,7 +6588,6 @@
         "/blog/"
       ],
       "source": {
-        "type": "upstream",
         "repository": "mearashadowfax/ScrewFast",
         "track": "branch",
         "ref": "main",
@@ -6602,8 +6596,8 @@
       },
       "media": {
         "thumbnail": {
-          "path": "upstream/screwfast/preview/screwfast-thumbnail.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/screwfast/preview/screwfast-thumbnail.png?raw=true",
+          "path": "templates/screwfast/preview/screwfast-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/screwfast/preview/screwfast-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -6611,17 +6605,17 @@
           "variants": [
             {
               "width": 480,
-              "path": "upstream/screwfast/preview/screwfast-thumbnail-480.webp"
+              "path": "templates/screwfast/preview/screwfast-thumbnail-480.webp"
             },
             {
               "width": 960,
-              "path": "upstream/screwfast/preview/screwfast-thumbnail-960.webp"
+              "path": "templates/screwfast/preview/screwfast-thumbnail-960.webp"
             }
           ]
         },
         "preview": {
-          "path": "upstream/screwfast/preview/screwfast-homepage.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/screwfast/preview/screwfast-homepage.png?raw=true",
+          "path": "templates/screwfast/preview/screwfast-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/screwfast/preview/screwfast-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 5584
@@ -6721,7 +6715,6 @@
         "/dashboard/default"
       ],
       "source": {
-        "type": "upstream",
         "repository": "arhamkhnz/next-shadcn-admin-dashboard",
         "track": "branch",
         "ref": "main",
@@ -6730,8 +6723,8 @@
       },
       "media": {
         "thumbnail": {
-          "path": "upstream/shadcn-admin/preview/shadcn-admin-thumbnail.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/shadcn-admin/preview/shadcn-admin-thumbnail.png?raw=true",
+          "path": "templates/shadcn-admin/preview/shadcn-admin-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/shadcn-admin/preview/shadcn-admin-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -6739,17 +6732,17 @@
           "variants": [
             {
               "width": 480,
-              "path": "upstream/shadcn-admin/preview/shadcn-admin-thumbnail-480.webp"
+              "path": "templates/shadcn-admin/preview/shadcn-admin-thumbnail-480.webp"
             },
             {
               "width": 960,
-              "path": "upstream/shadcn-admin/preview/shadcn-admin-thumbnail-960.webp"
+              "path": "templates/shadcn-admin/preview/shadcn-admin-thumbnail-960.webp"
             }
           ]
         },
         "preview": {
-          "path": "upstream/shadcn-admin/preview/shadcn-admin-homepage.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/shadcn-admin/preview/shadcn-admin-homepage.png?raw=true",
+          "path": "templates/shadcn-admin/preview/shadcn-admin-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/shadcn-admin/preview/shadcn-admin-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
           "height": 1562

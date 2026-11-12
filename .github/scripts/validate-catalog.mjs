@@ -57,9 +57,8 @@ function check(file, validate) {
   }
 }
 
-// The schema can't see the file tree: a templates[] entry ships its code in
-// templates/<id>/, an upstream[] entry ships only its preview images in
-// upstream/<id>/preview/ and deploys from its source repository.
+// The schema can't see the file tree: every entry ships its code in
+// templates/<id>/ and its catalog images in templates/<id>/preview/.
 function checkLayout() {
   let catalog;
   try {
@@ -67,41 +66,31 @@ function checkLayout() {
   } catch {
     return;
   }
-  const lists = [
-    ['templates', catalog.templates ?? []],
-    ['upstream', catalog.upstream ?? []],
-  ];
+  const file = 'templates.json';
   const seen = new Set((catalog.retired ?? []).map((entry) => entry.id));
-  for (const [list, entries] of lists) {
-    for (const entry of entries) {
-      const file = 'templates.json';
-      if (seen.has(entry.id)) {
-        errors.push({ file, message: `${list}: id "${entry.id}" is already used in templates, upstream or retired` });
-      }
-      seen.add(entry.id);
+  for (const entry of catalog.templates ?? []) {
+    if (seen.has(entry.id)) {
+      errors.push({ file, message: `templates: id "${entry.id}" is already used in templates or retired` });
+    }
+    seen.add(entry.id);
 
-      const hasCode = existsSync(join(root, 'templates', entry.id, 'package.json'));
-      if (list === 'templates' && !hasCode) {
-        errors.push({ file, message: `templates: "${entry.id}" has no templates/${entry.id}/package.json` });
-      }
-      if (list === 'upstream' && existsSync(join(root, 'templates', entry.id))) {
-        errors.push({ file, message: `upstream: "${entry.id}" deploys from ${entry.source?.repository}; remove templates/${entry.id}/` });
-      }
+    if (!existsSync(join(root, 'templates', entry.id, 'package.json'))) {
+      errors.push({ file, message: `templates: "${entry.id}" has no templates/${entry.id}/package.json` });
+    }
 
-      const prefix = `${list}/${entry.id}/preview/`;
-      const { thumbnail = {}, preview = {} } = entry.media ?? {};
-      const paths = [thumbnail.path, preview.path, ...(thumbnail.variants ?? []).map((variant) => variant.path)];
-      for (const path of paths.filter(Boolean)) {
-        if (!path.startsWith(prefix)) {
-          errors.push({ file, message: `${list}: "${entry.id}" media ${path} must be under ${prefix}` });
-        } else if (!existsSync(join(root, path))) {
-          errors.push({ file, message: `${list}: "${entry.id}" media ${path} does not exist` });
-        }
+    const prefix = `templates/${entry.id}/preview/`;
+    const { thumbnail = {}, preview = {} } = entry.media ?? {};
+    const paths = [thumbnail.path, preview.path, ...(thumbnail.variants ?? []).map((variant) => variant.path)];
+    for (const path of paths.filter(Boolean)) {
+      if (!path.startsWith(prefix)) {
+        errors.push({ file, message: `templates: "${entry.id}" media ${path} must be under ${prefix}` });
+      } else if (!existsSync(join(root, path))) {
+        errors.push({ file, message: `templates: "${entry.id}" media ${path} does not exist` });
       }
-      for (const image of [thumbnail, preview]) {
-        if (image.path && image.url && !image.url.includes(`/blob/main/${image.path}?`)) {
-          errors.push({ file, message: `${list}: "${entry.id}" media url ${image.url} does not point at ${image.path}` });
-        }
+    }
+    for (const image of [thumbnail, preview]) {
+      if (image.path && image.url && !image.url.includes(`/blob/main/${image.path}?`)) {
+        errors.push({ file, message: `templates: "${entry.id}" media url ${image.url} does not point at ${image.path}` });
       }
     }
   }
