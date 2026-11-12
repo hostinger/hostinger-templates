@@ -40,6 +40,15 @@ test('a release pin whose tag moved fails', async () => {
   assert.match(problems.join(), /points at bbbbbbb/);
 });
 
+test('a release pin whose tag cannot be resolved fails', async () => {
+  const client = fakeClient({
+    '/repos/o/r': repo,
+    '/repos/o/r/releases/tags/v2.0.0': { draft: false, prerelease: false },
+  });
+  const { problems } = await checkPin(releaseSource, client, { evaluateAt: deployable });
+  assert.deepEqual(problems, ['could not resolve v2.0.0 in o/r']);
+});
+
 test('a prerelease needs prereleases: true', async () => {
   const routes = {
     '/repos/o/r': repo,

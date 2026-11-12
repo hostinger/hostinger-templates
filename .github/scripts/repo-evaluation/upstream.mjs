@@ -47,7 +47,9 @@ export async function checkPin(source, client = createUpstreamClient(), { evalua
       problems.push(`${ref} is a prerelease; set "prereleases": true to follow prereleases`);
     }
     const tagged = await client.json(`/repos/${repository}/commits/${encodeURIComponent(ref)}`).catch(() => null);
-    if (tagged && tagged.sha !== commit) {
+    if (!tagged) {
+      problems.push(`could not resolve ${ref} in ${repository}`);
+    } else if (tagged.sha !== commit) {
       problems.push(`${ref} points at ${tagged.sha.slice(0, 7)}, not the pinned ${commit.slice(0, 7)}`);
     }
   } else {
