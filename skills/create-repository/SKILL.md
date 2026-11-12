@@ -301,6 +301,10 @@ Write specific, useful metadata:
 Do not add dropped fields: `repository`, `kind`, `databases`, `license`,
 `audienceLevel`, or `status`.
 
+`.github/dependabot.yml` lists every template folder. Regenerate it with
+`node .github/scripts/dependabot-config.mjs --write` and commit it with the
+template; `validate-catalog` fails when it is out of date.
+
 ## 12. Final cleanup
 
 Remove:
@@ -329,6 +333,7 @@ Finish only after:
 - screenshots exist and were inspected
 - README follows the fixed structure
 - `templates.json` is valid and rich
+- `.github/dependabot.yml` was regenerated and lists the new template
 - project tree contains only intentional files
 
 ## 13. Hand off and offer publishing

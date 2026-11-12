@@ -48,7 +48,9 @@ catalog `id`.
 
 Follow `skills/create-repository/SKILL.md`. It defines the creation workflow;
 `skills/create-repository/RULES.md` defines constraints every project must
-follow.
+follow. `.github/dependabot.yml` lists every template folder, so regenerate it
+with `node .github/scripts/dependabot-config.mjs --write` and commit it with
+the new template.
 
 ## Pull request checks
 
