@@ -7,8 +7,8 @@ import { execFileSync } from 'node:child_process';
 // catalog screenshots. Shared by check-vendored.mjs (the Template gate) and
 // the weekly upstream sync.
 
-export const DEFAULT_EXCLUDE = ['.github/'];
-export const OWNED_DIRECTORY = 'preview/';
+const DEFAULT_EXCLUDE = ['.github/'];
+const OWNED_DIRECTORY = 'preview/';
 
 const GITLINK = '160000';
 const SYMLINK = '120000';
@@ -41,7 +41,7 @@ export function parseLsTree(output) {
     });
 }
 
-export function listTree(gitDir, treeish) {
+function listTree(gitDir, treeish) {
   const output = execFileSync('git', ['ls-tree', '-r', '-l', '-z', treeish], {
     cwd: gitDir,
     encoding: 'utf8',
@@ -116,7 +116,7 @@ export function readBlob(gitDir, sha) {
   return execFileSync('git', ['cat-file', 'blob', sha], { cwd: gitDir, maxBuffer: MAX_BUFFER });
 }
 
-export function hasCommit(gitDir, commit) {
+function hasCommit(gitDir, commit) {
   try {
     execFileSync('git', ['cat-file', '-e', `${commit}^{commit}`], { cwd: gitDir, stdio: 'ignore' });
     return true;
