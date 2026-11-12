@@ -1,9 +1,9 @@
 import { execFileSync } from 'node:child_process';
 import { appendFileSync, existsSync, readFileSync } from 'node:fs';
+import { DEPENDABOT_FILE, vendoredExclusionProblem } from './dependabot-config.mjs';
 import { checkPin, createUpstreamClient } from './repo-evaluation/upstream.mjs';
 import {
   actualEntries,
-  dependabotDirectoriesCovering,
   diffEntries,
   dropFetchedCommit,
   expectedEntries,
@@ -21,8 +21,9 @@ import {
 //   copy        templates/<id>/ at --ref is the upstream tree at the commit,
 //               byte for byte, minus .github/ and source.exclude, plus preview/,
 //               and keeps the upstream LICENSE
-//   dependabot  no npm entry in .github/dependabot.yml scans templates/<id>/,
-//               because updates come from upstream syncs
+//   dependabot  .github/dependabot.yml lists templates/<id>/ only in an npm
+//               entry that ignores every dependency, because updates come
+//               from upstream syncs
 //
 //   check-vendored.mjs [--base <sha>] [--all] [--ref <tree-ish>]
 //
@@ -30,7 +31,6 @@ import {
 // the commit whose templates/ is checked (default HEAD).
 
 const MAX_LISTED_PATHS = 20;
-const DEPENDABOT_FILE = '.github/dependabot.yml';
 
 const args = process.argv.slice(2);
 const base = optionValue('--base');
@@ -55,10 +55,7 @@ for (const entry of selected) {
     .then(({ problems }) => problems)
     .catch((error) => [error.message]);
   const { problems: copy, notes } = checkCopy(entry);
-  const covering = dependabotDirectoriesCovering(dependabot, entry.id);
-  const dependabotProblems = covering.length
-    ? [`${DEPENDABOT_FILE} scans /${templateRoot(entry.id)} through ${covering.map((pattern) => `"${pattern}"`).join(', ')}; leave it out of the npm directories`]
-    : [];
+  const dependabotProblems = [vendoredExclusionProblem(dependabot, entry.id)].filter(Boolean);
   rows.push({ entry, pin, copy, notes, dependabot: dependabotProblems });
 
   for (const [check, problems] of [['pin', pin], ['copy', copy], ['dependabot', dependabotProblems]]) {

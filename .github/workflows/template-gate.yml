@@ -57,8 +57,8 @@ jobs:
         run: npm ci
       - name: Validate templates.json and landing pages against their schemas
         run: node .github/scripts/validate-catalog.mjs
-      - name: Test the repository deployability rules and vendored-copy checks
-        run: node --test .github/scripts/repo-evaluation/rules.test.mjs .github/scripts/repo-evaluation/upstream.test.mjs .github/scripts/upstream-copy.test.mjs
+      - name: Test the deployability rules, vendored-copy and Dependabot checks
+        run: node --test .github/scripts/repo-evaluation/rules.test.mjs .github/scripts/repo-evaluation/upstream.test.mjs .github/scripts/upstream-copy.test.mjs .github/scripts/dependabot-config.test.mjs
       - name: Check vendored templates against their upstream commit
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}

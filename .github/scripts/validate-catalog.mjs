@@ -2,6 +2,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
+import { DEPENDABOT_FILE, renderDependabotConfig, templateDirectories } from './dependabot-config.mjs';
 
 const root = process.argv[2] ?? '.';
 const ajv = new Ajv2020({ allErrors: true, strict: true });
@@ -14,6 +15,7 @@ const errors = [];
 
 check('templates.json', validateCatalog);
 checkLayout();
+checkDependabot();
 
 const landingDir = join(root, 'landing-pages');
 if (existsSync(landingDir)) {
@@ -93,6 +95,25 @@ function checkLayout() {
         errors.push({ file, message: `templates: "${entry.id}" media url ${image.url} does not point at ${image.path}` });
       }
     }
+  }
+}
+
+// Every template folder must be in dependabot.yml: maintained ones get grouped
+// security PRs, vendored ones none (see dependabot-config.mjs).
+function checkDependabot() {
+  let expected;
+  try {
+    expected = renderDependabotConfig(templateDirectories(root));
+  } catch {
+    return;
+  }
+  const path = join(root, DEPENDABOT_FILE);
+  const actual = existsSync(path) ? readFileSync(path, 'utf8') : '';
+  if (actual !== expected) {
+    errors.push({
+      file: DEPENDABOT_FILE,
+      message: 'does not match templates.json and templates/. Run: node .github/scripts/dependabot-config.mjs --write',
+    });
   }
 }
 

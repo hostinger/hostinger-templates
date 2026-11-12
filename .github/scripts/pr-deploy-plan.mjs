@@ -40,7 +40,9 @@ async function decide() {
   }
 
   const files = await listFiles(pr.number);
-  const touchesWorkflows = files.some((file) => file.startsWith('.github/'));
+  // dependabot.yml lists every template, so a PR adding one changes it. It
+  // configures Dependabot on main only and runs nothing in our workflows.
+  const touchesWorkflows = files.some((file) => file.startsWith('.github/') && file !== '.github/dependabot.yml');
   const candidateIds = [
     ...new Set(files.map((file) => file.match(/^templates\/([^/]+)\//)?.[1]).filter(Boolean)),
   ].sort();

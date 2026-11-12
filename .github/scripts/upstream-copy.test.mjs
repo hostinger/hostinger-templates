@@ -6,11 +6,8 @@ import { dirname, join } from 'node:path';
 import { after, before, test } from 'node:test';
 import {
   actualEntries,
-  dependabotDirectoriesCovering,
-  dependabotNpmDirectories,
   diffEntries,
   expectedEntries,
-  globMatches,
   hasLicense,
   inspectEntries,
   isExcluded,
@@ -140,31 +137,3 @@ test('license detection looks only at the copy root', () => {
   assert.ok(!hasLicense([{ path: 'README.md' }]));
 });
 
-const DEPENDABOT = `version: 2
-updates:
-  - package-ecosystem: npm
-    directories:
-      - "/templates/*"
-      - /tools # comment
-    schedule:
-      interval: daily
-  - package-ecosystem: github-actions
-    directory: "/templates/app"
-`;
-
-test('dependabot npm directories are read from directory and directories', () => {
-  assert.deepEqual(dependabotNpmDirectories(DEPENDABOT), ['/templates/*', '/tools']);
-});
-
-test('a vendored directory matched by an npm glob is reported', () => {
-  assert.deepEqual(dependabotDirectoriesCovering(DEPENDABOT, 'app'), ['/templates/*']);
-  const explicit = DEPENDABOT.replace('"/templates/*"', '"/templates/callout"');
-  assert.deepEqual(dependabotDirectoriesCovering(explicit, 'app'), []);
-});
-
-test('dependabot globs keep * inside one segment', () => {
-  assert.ok(globMatches('/templates/*', '/templates/app'));
-  assert.ok(!globMatches('/templates/*', '/templates/app/sub'));
-  assert.ok(globMatches('/templates/**', '/templates/app/sub'));
-  assert.ok(globMatches('templates/app/', '/templates/app'));
-});
