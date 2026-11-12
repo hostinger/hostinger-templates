@@ -9,6 +9,9 @@ import { execFileSync } from 'node:child_process';
 
 const DEFAULT_EXCLUDE = ['.github/'];
 const OWNED_DIRECTORY = 'preview/';
+// All preview/ may hold: catalog screenshots, plain files directly inside it.
+const PREVIEW_IMAGE = /^preview\/[^/]+\.(png|webp)$/;
+const PLAIN_FILE = '100644';
 
 const GITLINK = '160000';
 const SYMLINK = '120000';
@@ -63,6 +66,15 @@ export function expectedEntries(gitDir, commit, directory = null, exclude = []) 
 // What templates/<id>/ holds at ref, without our preview/ folder.
 export function actualEntries(gitDir, ref, id) {
   return listTree(gitDir, `${ref}:${templateRoot(id)}`).filter((entry) => !matchesPrefix(entry.path, OWNED_DIRECTORY));
+}
+
+// Anything in our preview/ folder at ref other than plain .png or .webp files
+// directly inside it: no code, subfolders, symlinks, submodules or executables.
+export function previewProblems(gitDir, ref, id) {
+  return listTree(gitDir, `${ref}:${templateRoot(id)}`)
+    .filter((entry) => matchesPrefix(entry.path, OWNED_DIRECTORY))
+    .filter((entry) => entry.type !== 'blob' || entry.mode !== PLAIN_FILE || !PREVIEW_IMAGE.test(entry.path))
+    .map((entry) => `${entry.path} (${entry.mode}) is not a plain .png or .webp screenshot directly in ${OWNED_DIRECTORY}`);
 }
 
 // What turns actual into expected: paths to add, paths whose blob or mode

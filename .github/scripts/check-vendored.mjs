@@ -11,6 +11,7 @@ import {
   hasLicense,
   inspectEntries,
   isIdentical,
+  previewProblems,
   templateRoot,
 } from './upstream-copy.mjs';
 
@@ -19,8 +20,9 @@ import {
 //   pin         the ref points at the commit, the license and archive state
 //               GitHub reports, and the deployability rules at the commit
 //   copy        templates/<id>/ at --ref is the upstream tree at the commit,
-//               byte for byte, minus .github/ and source.exclude, plus preview/,
-//               and keeps the upstream LICENSE
+//               byte for byte, minus .github/ and source.exclude, plus preview/
+//               holding only .png and .webp screenshots, and keeps the
+//               upstream LICENSE
 //   dependabot  .github/dependabot.yml lists templates/<id>/ only in an npm
 //               entry that ignores every dependency, because updates come
 //               from upstream syncs
@@ -108,6 +110,7 @@ function checkCopy(entry) {
     if (!hasLicense(actual)) {
       problems.push(`${templateRoot(entry.id)}/ has no LICENSE file at its root`);
     }
+    problems.push(...previewProblems(gitDir, ref, entry.id));
     return { problems, notes };
   } catch (error) {
     return { problems: [firstLine(error)], notes: [] };

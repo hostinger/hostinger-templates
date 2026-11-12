@@ -14,6 +14,7 @@ import {
   isIdentical,
   matchesPrefix,
   parseLsTree,
+  previewProblems,
 } from './upstream-copy.mjs';
 
 let dir;
@@ -84,6 +85,31 @@ test('a copy that edits, adds, drops or re-modes a file differs', () => {
   assert.deepEqual(diff.changed.map((entry) => entry.path).sort(), ['bin/run.sh', 'src/index.js']);
   assert.deepEqual(diff.removed.map((entry) => entry.path), ['src/extra.js']);
   git('reset', '-q', '--hard', 'HEAD~1');
+});
+
+test('preview/ may hold only plain .png and .webp files directly inside it', () => {
+  assert.deepEqual(previewProblems(dir, 'HEAD', 'app'), []);
+  const blob = execFileSync('git', ['hash-object', '-w', '--stdin'], { cwd: dir, input: 'x', encoding: 'utf8' }).trim();
+  const head = git('rev-parse', 'HEAD');
+  for (const [mode, path] of [
+    ['100644', 'preview/shot.webp'],
+    ['100755', 'preview/run.png'],
+    ['100644', 'preview/evil.js'],
+    ['100644', 'preview/nested/shot.png'],
+    ['120000', 'preview/link.png'],
+    ['160000', 'preview/lib'],
+  ]) {
+    git('update-index', '--add', '--cacheinfo', `${mode},${mode === '160000' ? head : blob},templates/app/${path}`);
+  }
+  const tree = git('write-tree');
+  git('read-tree', 'HEAD');
+
+  const problems = previewProblems(dir, tree, 'app');
+  assert.deepEqual(
+    problems.map((problem) => problem.split(' ')[0]),
+    ['preview/evil.js', 'preview/lib', 'preview/link.png', 'preview/nested/shot.png', 'preview/run.png'],
+  );
+  assert.ok(isIdentical(diffEntries(expectedEntries(dir, upstream, null, ['docs']), actualEntries(dir, tree, 'app'))));
 });
 
 test('an excluded path left in the copy counts as not in upstream', () => {

@@ -154,7 +154,8 @@ push can't change what they deploy without review.
 
 - The copy is byte-identical to the upstream tree at `commit` (same paths,
   blob SHAs and modes), minus `.github/` and the paths in `source.exclude`,
-  plus our `preview/` folder with the catalog screenshots. We don't edit
+  plus our `preview/` folder with the catalog screenshots (plain `.png` and
+  `.webp` files directly inside it, nothing else). We don't edit
   upstream code; fixes come from upstream. The upstream LICENSE stays at the
   copy's root.
 - `check-vendored.mjs` (Template gate `validate`) fetches the upstream
