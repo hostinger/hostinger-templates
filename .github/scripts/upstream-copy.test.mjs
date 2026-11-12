@@ -44,6 +44,7 @@ before(() => {
   git('init', '-q', '-b', 'main');
   write('LICENSE', 'MIT\n');
   write('package.json', '{}\n');
+  write('package-lock.json', '{}\n');
   write('src/index.js', 'export {};\n');
   write('.github/workflows/ci.yml', 'on: push\n');
   write('docs/guide.md', '# Guide\n');
@@ -138,6 +139,16 @@ test('submodules, LFS pointers and an upstream preview/ are problems; symlinks a
   assert.match(problems.join('\n'), /model\.bin is a Git LFS pointer/);
   assert.match(problems.join('\n'), /preview\/shot\.png clashes/);
   assert.deepEqual(notes, ['link.js is a symlink']);
+});
+
+test('a copy without an npm or pnpm lockfile at its root is a problem', () => {
+  const file = (path) => ({ path, mode: '100644', type: 'blob', size: 4096 });
+  for (const lockfile of ['package-lock.json', 'pnpm-lock.yaml']) {
+    assert.deepEqual(inspectEntries(dir, [file('package.json'), file(lockfile)]).problems, []);
+  }
+  for (const entries of [[file('package.json'), file('yarn.lock')], [file('package.json')], [file('package.json'), file('web/package-lock.json')]]) {
+    assert.match(inspectEntries(dir, entries).problems.join(), /no package-lock\.json or pnpm-lock\.yaml at the copy root/);
+  }
 });
 
 test('prefix matching and exclusions', () => {

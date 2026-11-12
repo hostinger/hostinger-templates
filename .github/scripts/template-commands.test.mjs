@@ -41,15 +41,14 @@ test('our templates always use npm; vendored ones follow their lockfile', () => 
   const pnpm = template('pnpm', { 'pnpm-lock.yaml': '' });
   assert.equal(packageManager(pnpm, OURS), 'npm');
   assert.equal(packageManager(pnpm, VENDORED), 'pnpm');
-  assert.equal(packageManager(template('yarn', { 'yarn.lock': '' }), VENDORED), 'yarn');
+  assert.throws(() => packageManager(template('yarn', { 'yarn.lock': '' }), VENDORED), /no package-lock.json/);
   assert.equal(packageManager(template('npm', { 'package-lock.json': '{}', 'yarn.lock': '' }), VENDORED), 'npm');
   assert.throws(() => packageManager(template('none'), VENDORED), /no package-lock.json/);
 });
 
-test('pnpm and yarn run through corepack with a frozen lockfile', () => {
+test('pnpm runs through corepack with a frozen lockfile', () => {
   assert.deepEqual(packageManagerCommand('npm', installArgs('npm')), ['npm', ['ci']]);
   assert.deepEqual(packageManagerCommand('pnpm', installArgs('pnpm')), ['corepack', ['pnpm', 'install', '--frozen-lockfile']]);
-  assert.deepEqual(packageManagerCommand('yarn', installArgs('yarn')), ['corepack', ['yarn', 'install', '--frozen-lockfile']]);
 });
 
 test('static output is the configured directory or a fallback with index.html', () => {

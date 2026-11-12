@@ -75,7 +75,7 @@ jobs:
         working-directory: templates/${{ matrix.template }}
     steps:
       - uses: actions/checkout@v4
-      # Vendored templates may install with pnpm or yarn and have no
+      # Vendored templates may install with pnpm and have no
       # package-lock.json; the scripts' lockfile keeps the cache step valid.
       - uses: actions/setup-node@v4
         with:

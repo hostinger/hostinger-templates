@@ -100,11 +100,19 @@ export function isIdentical({ added, changed, removed }) {
   return !added.length && !changed.length && !removed.length;
 }
 
-// Upstream content a copy can't hold faithfully. problems fail the check;
-// notes are worth a look but are not errors.
+// Lockfiles the Template gate can install and audit from (see
+// template-commands.mjs and audit-regression.mjs).
+const SUPPORTED_LOCKFILES = ['package-lock.json', 'pnpm-lock.yaml'];
+
+// Upstream content a copy can't hold faithfully, or that the Template gate
+// can't install and audit. problems fail the check; notes are worth a look
+// but are not errors.
 export function inspectEntries(gitDir, expected) {
   const problems = [];
   const notes = [];
+  if (!expected.some((entry) => SUPPORTED_LOCKFILES.includes(entry.path))) {
+    problems.push(`no ${SUPPORTED_LOCKFILES.join(' or ')} at the copy root; the Template gate installs and audits only npm and pnpm projects`);
+  }
   for (const entry of expected) {
     if (entry.mode === GITLINK) {
       problems.push(`${entry.path} is a git submodule; a copy can't include it`);

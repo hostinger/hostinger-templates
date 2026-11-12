@@ -126,6 +126,7 @@ test('push --dry-run plans the sync from a local upstream commit without calling
 
   git('init', '-q', '-b', 'main');
   write('LICENSE', 'MIT\n');
+  write('package-lock.json', '{}\n');
   write('src/a.js', 'a\n');
   write('src/gone.js', 'gone\n');
   const v1 = commit('upstream v1');

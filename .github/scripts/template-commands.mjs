@@ -7,8 +7,10 @@ import { fileURLToPath } from 'node:url';
 // follow a fixed contract: package-lock.json, and lint, build and preview
 // scripts. Vendored templates (templates.json entries with a source) are
 // upstream code we don't edit, so they get these exceptions and no others:
-//   install  by whichever lockfile upstream ships (npm, pnpm or yarn, the
-//            last two through corepack, which honours packageManager)
+//   install  by whichever lockfile upstream ships (npm, or pnpm through
+//            corepack, which honours packageManager); check-vendored.mjs
+//            refuses a copy with neither, since audit-regression.mjs can
+//            audit only these two
 //   lint     skipped with a notice when there is no lint script
 //   preview  without a preview script: static output is served as files,
 //            a Next.js app runs its start script
@@ -21,7 +23,6 @@ const STATIC_OUTPUT_FALLBACKS = ['dist', 'build', 'out'];
 const LOCKFILES = [
   ['package-lock.json', 'npm'],
   ['pnpm-lock.yaml', 'pnpm'],
-  ['yarn.lock', 'yarn'],
 ];
 
 export function catalogEntry(templateDir, catalogFile = join(scriptsDir, '..', '..', 'templates.json')) {
@@ -46,7 +47,7 @@ export function packageManager(templateDir, entry) {
   }
   const found = LOCKFILES.find(([file]) => existsSync(join(templateDir, file)));
   if (!found) {
-    throw new Error(`${basename(templateDir)} has no package-lock.json, pnpm-lock.yaml or yarn.lock`);
+    throw new Error(`${basename(templateDir)} has no package-lock.json or pnpm-lock.yaml`);
   }
   return found[1];
 }

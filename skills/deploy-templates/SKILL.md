@@ -44,7 +44,7 @@ Run it by hand with
    - `build` job failed: the template does not install or build on CI.
      Reproduce locally with the template's own package manager:
      `node .github/scripts/template-commands.mjs install templates/<id>`, then
-     `build` the same way (vendored templates may ship pnpm or yarn lockfiles).
+     `build` the same way (vendored templates may ship a pnpm lockfile).
    - `deploy` job, `Node.js build … failed`: the step prints the tail of the
      Hostinger build log. Hostinger installs and builds on Node 22, so
      reproduce with Node 22 before changing anything. Do not trust hPanel's

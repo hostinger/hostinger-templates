@@ -165,8 +165,8 @@ push can't change what they deploy without review.
   [Pull request checks](#pull-request-checks)).
 - Vendored templates build, deploy and get PR previews and demos through
   `templates/<id>/` like any other template. The `preview` job gives them
-  narrow exceptions: install by the lockfile upstream ships (npm, or
-  pnpm/yarn through corepack), skip lint when upstream has no lint script,
+  narrow exceptions: install by the lockfile upstream ships (npm, or pnpm
+  through corepack; `check-vendored.mjs` refuses a copy with neither), skip lint when upstream has no lint script,
   and serve static output or run the Next.js start script when there is no
   preview script.
 - Audit policy: vendored templates are audited with their own package

@@ -89,7 +89,7 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: git fetch --no-tags --depth=1 origin "$BASE_SHA"
       # The scripts' lockfile always resolves, so a vendored template that
-      # installs with pnpm or yarn (no package-lock.json) still gets the npm
+      # installs with pnpm (no package-lock.json) still gets the npm
       # cache; its own store is not cached.
       - uses: actions/setup-node@v4
         with:
