@@ -27,6 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
@@ -60,11 +61,14 @@ jobs:
           app-id: ${{ secrets.HOSTINGERBOT_APP_ID }}
           private-key: ${{ secrets.HOSTINGERBOT_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
-          repositories: ${{ github.event.repository.name }}
-      # The sync commit's parent is this checkout of main. The upstream
+          # Not github.event.repository: the schedule event has no payload.
+          repositories: hostinger-templates
+      # The sync commit's parent is this checkout of main, whatever branch
+      # the run was dispatched from, since the PR targets main. The upstream
       # commit is fetched next to it; none of its code runs here.
       - uses: actions/checkout@v4
         with:
+          ref: main
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
