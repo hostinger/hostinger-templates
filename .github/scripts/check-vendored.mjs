@@ -27,6 +27,9 @@ import {
 //               entry that ignores every dependency, because updates come
 //               from upstream syncs
 //
+// With --base it also warns about entries that had a source at base and no
+// longer do.
+//
 //   check-vendored.mjs [--base <sha>] [--all] [--ref <tree-ish>]
 //
 // Without --base, or with --all, every vendored template is checked. --ref is
@@ -41,10 +44,14 @@ const all = args.includes('--all') || !base;
 
 const gitDir = process.cwd();
 let baseSourceCache;
-const vendored = JSON.parse(gitShow(ref, 'templates.json')).templates.filter((entry) => entry.source);
+const catalog = JSON.parse(gitShow(ref, 'templates.json')).templates;
+const vendored = catalog.filter((entry) => entry.source);
 const selected = all ? vendored : vendored.filter((entry) => changedSince(base, entry));
+// Entries whose source was removed: their code is now ours to maintain, which
+// must be a visible decision rather than a quiet way around the copy check.
+const devendored = base ? catalog.filter((entry) => !entry.source && baseSources(base).get(entry.id)) : [];
 
-if (!selected.length) {
+if (!selected.length && !devendored.length) {
   console.log('No vendored template was added, re-pinned or changed.');
   process.exit(0);
 }
@@ -70,11 +77,20 @@ for (const entry of selected) {
   }
 }
 
+const devendoredNotes = devendored.map((entry) => {
+  const { repository } = baseSources(base).get(entry.id);
+  return `\`${entry.id}\` is no longer vendored: its \`source\` was removed, so \`${templateRoot(entry.id)}/\` is now maintained here and no longer checked against ${repository}.`;
+});
+for (const note of devendoredNotes) {
+  console.log(`::warning file=templates.json::${note.replace(/`/g, '')}`);
+}
+
 const summary = [
   '## Vendored templates',
   '',
-  '| Template | Source | Pin | Copy | Dependabot |',
-  '| --- | --- | --- | --- | --- |',
+  ...devendoredNotes.map((note) => `- ⚠️ ${note}`),
+  ...(devendoredNotes.length ? [''] : []),
+  ...(rows.length ? ['| Template | Source | Pin | Copy | Dependabot |', '| --- | --- | --- | --- | --- |'] : []),
   ...rows.map(({ entry, pin, copy, notes, dependabot: dependabotProblems }) => {
     const { repository, ref: sourceRef, commit, directory } = entry.source;
     const path = directory ? `/${directory}` : '';
