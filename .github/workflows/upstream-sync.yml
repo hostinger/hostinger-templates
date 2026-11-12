@@ -1,0 +1,97 @@
+name: Upstream sync
+
+# Weekly: for every vendored template (a templates.json entry with a source),
+# looks for a newer release (track: releases) or branch commit (track:
+# branch). When the new commit passes the Template gate's pin checks, it
+# builds one signed commit that updates templates/<id>/ and the pin, points
+# upstream-sync/<id> at it and opens or refreshes that PR. The PR's Template
+# gate and Hostinger preview deploy prove it; a person merges it, which
+# redeploys the demo. Nothing is merged here.
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: upstream-sync
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      updates: ${{ steps.check.outputs.updates }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: check
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node .github/scripts/upstream-sync.mjs check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: upstream-sync
+          path: upstream-sync.json
+          retention-days: 7
+
+  open-pr:
+    needs: check
+    if: needs.check.outputs.updates != '[]' && needs.check.outputs.updates != ''
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        template: ${{ fromJson(needs.check.outputs.updates) }}
+    steps:
+      # A HostingerBot token, not GITHUB_TOKEN: PRs and commits made with
+      # GITHUB_TOKEN don't trigger the Template gate or the preview deploy.
+      - name: Get a HostingerBot token
+        id: token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.HOSTINGERBOT_APP_ID }}
+          private-key: ${{ secrets.HOSTINGERBOT_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name }}
+      # The sync commit's parent is this checkout of main. The upstream
+      # commit is fetched next to it; none of its code runs here.
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          name: upstream-sync
+      # Blobs, tree, commit and branch go through the Git Data API with no
+      # author, so GitHub signs the commit.
+      - name: Push the sync commit
+        id: push
+        env:
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+          TEMPLATE: ${{ matrix.template }}
+        run: node .github/scripts/upstream-sync.mjs push "$TEMPLATE"
+      - name: Open or refresh the PR
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+          BRANCH: ${{ steps.push.outputs.branch }}
+          TITLE: ${{ steps.push.outputs.title }}
+        run: |
+          set -euo pipefail
+          open="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$BRANCH" --state open --json number --jq '.[0].number // empty')"
+          if [ -n "$open" ]; then
+            gh pr edit "$open" --repo "$GITHUB_REPOSITORY" --title "$TITLE" --body-file pr-body.md
+            echo "Refreshed PR #$open: $TITLE"
+          else
+            gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$BRANCH" --title "$TITLE" --body-file pr-body.md
+          fi

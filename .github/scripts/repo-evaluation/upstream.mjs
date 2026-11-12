@@ -1,8 +1,8 @@
 import { collectFacts, createClient } from './github.mjs';
 import { evaluateRepository } from './rules.mjs';
 
-// Shared by the Template gate (check-vendored.mjs) and the weekly pin bump
-// (upstream-pins.mjs): where an upstream template's source should point, and
+// Shared by the Template gate (check-vendored.mjs) and the weekly upstream sync
+// (upstream-sync.mjs): where a vendored template's source should point, and
 // whether a pin is consistent and still passes the deployability rules.
 
 export function createUpstreamClient(token = process.env.GITHUB_TOKEN) {
