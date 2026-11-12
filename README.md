@@ -205,10 +205,11 @@ To add one, or to import a sync too large for the bot:
    git rm -r -q templates/<id> ':!templates/<id>/preview'
    # <commit>:<directory> when source.directory is set
    git read-tree --prefix=templates/<id>/ -u <commit>
-   git rm -r -q templates/<id>/.github
+   git rm -r -q --ignore-unmatch templates/<id>/.github
    ```
 
-   Remove `source.exclude` paths the same way, then add `preview/`.
+   Remove `source.exclude` paths the same way
+   (`git rm -r -q --ignore-unmatch templates/<id>/<path>`), then add `preview/`.
 3. Add or update the entry with its `source`, regenerate `dependabot.yml`,
    and run `node .github/scripts/check-vendored.mjs --all`. The rules are in
    [TEMPLATE_SCHEMA.md](skills/create-repository/TEMPLATE_SCHEMA.md#upstream-templates).

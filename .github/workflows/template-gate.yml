@@ -122,7 +122,8 @@ jobs:
       # they are dependency-update work, and letting them fail every unrelated
       # PR froze Dependabot's security group behind advisories with no fix yet
       # (#26). Vendored templates: warnings when deployed as static files, any
-      # finding fails when they run as a server (see audit-regression.mjs).
+      # high/critical production advisory fails when they run as a server
+      # (see audit-regression.mjs).
       - name: Audit
         id: audit
         env:
