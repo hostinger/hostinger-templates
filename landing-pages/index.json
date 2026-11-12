@@ -1,9 +1,9 @@
 {
   "landingPages": [
     "astrowind",
-    "cactus",
     "coreui-admin",
-    "fuwari",
-    "screwfast"
+    "launch-ui",
+    "screwfast",
+    "shadcn-admin"
   ]
 }

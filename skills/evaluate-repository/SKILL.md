@@ -73,9 +73,10 @@ Before adding one:
 
 - Evaluate it at the exact ref: `node .github/scripts/evaluate-repos.mjs owner/repo@<tag-or-commit>`.
   Prefer `track: releases` when the project publishes releases.
-- Build that commit locally. The static rules can't see a broken build: in
-  November 2026 fuwari's `main` passed every rule and failed `astro build`
-  after a Tailwind patch bump, so it is pinned one commit earlier.
+- Build that commit locally with the repository's own package manager
+  version (`corepack`). The static rules can't see every broken build: in
+  the November 2026 scan, 5 of 32 repositories that passed them failed to
+  build, and the rules only learned to catch three of those causes.
 - Audit production dependencies (`npm audit --omit=dev` or
   `pnpm audit --prod`). A server-rendered template with high or critical
   advisories in its runtime is not offered. For static output only the build

@@ -6249,134 +6249,6 @@
       ]
     },
     {
-      "id": "cactus",
-      "name": "Astro Cactus",
-      "summary": "A minimal monospace Astro blog with posts, short notes, tags, search and RSS.",
-      "description": "Astro Cactus is a minimal open-source blog theme built with Astro and Tailwind CSS for writers and developers who want a fast personal site with long-form posts and short notes. It covers the essentials of a modern blog, including tag archives, full-text search, RSS feeds and generated social images, without a CMS or database.",
-      "bucket": "Technical and SaaS",
-      "categories": [
-        "Blog",
-        "Portfolio"
-      ],
-      "whoItsFor": "A developer who wants a fast, minimal personal blog",
-      "demoUrl": "https://cactus.hostingertemplates.com",
-      "classification": {
-        "categories": [
-          "blog",
-          "personal",
-          "writing"
-        ],
-        "useCases": [
-          "blogging",
-          "notes",
-          "portfolio"
-        ],
-        "frameworks": [
-          "astro",
-          "tailwindcss"
-        ]
-      },
-      "features": [
-        {
-          "id": "posts-and-notes",
-          "name": "Posts and notes",
-          "description": "Separate collections for long-form posts and short notes, each with pagination."
-        },
-        {
-          "id": "full-text-search",
-          "name": "Full-text search",
-          "description": "A Pagefind search index built with the site, searchable without a server."
-        },
-        {
-          "id": "tags-and-rss",
-          "name": "Tags and RSS",
-          "description": "Tag archives for every post plus RSS feeds for posts and notes."
-        },
-        {
-          "id": "social-images",
-          "name": "Generated social images",
-          "description": "An Open Graph image rendered for every post at build time."
-        }
-      ],
-      "technology": {
-        "languages": [
-          "TypeScript"
-        ],
-        "frameworks": [
-          "Astro"
-        ],
-        "styling": [
-          "Tailwind CSS"
-        ],
-        "data": [
-          "Markdown and MDX content collections"
-        ],
-        "deployment": [
-          "Static production output in dist/ with a Pagefind search index"
-        ]
-      },
-      "compatibility": {
-        "runtimes": [
-          {
-            "name": "Node.js",
-            "versions": [
-              "22.12+"
-            ]
-          }
-        ]
-      },
-      "deploy": {
-        "outputDirectory": "dist"
-      },
-      "routes": [
-        "/",
-        "/about/",
-        "/posts/"
-      ],
-      "source": {
-        "type": "upstream",
-        "repository": "chrismwilliams/astro-theme-cactus",
-        "track": "releases",
-        "ref": "v8.3.0",
-        "commit": "82eabb6151a8e47838cb7f6d12ea29451926bd3e",
-        "license": "MIT"
-      },
-      "media": {
-        "thumbnail": {
-          "path": "upstream/cactus/preview/cactus-thumbnail.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/cactus/preview/cactus-thumbnail.png?raw=true",
-          "source": "viewport",
-          "width": 1440,
-          "height": 900,
-          "aspectRatio": "16:10",
-          "variants": [
-            {
-              "width": 480,
-              "path": "upstream/cactus/preview/cactus-thumbnail-480.webp"
-            },
-            {
-              "width": 960,
-              "path": "upstream/cactus/preview/cactus-thumbnail-960.webp"
-            }
-          ]
-        },
-        "preview": {
-          "path": "upstream/cactus/preview/cactus-homepage.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/cactus/preview/cactus-homepage.png?raw=true",
-          "source": "fullPage",
-          "width": 1440,
-          "height": 1329
-        }
-      },
-      "searchTerms": [
-        "astro blog",
-        "minimal blog",
-        "developer blog",
-        "personal website",
-        "markdown blog"
-      ]
-    },
-    {
       "id": "coreui-admin",
       "name": "CoreUI React Admin",
       "summary": "A React admin dashboard with charts, a collapsible sidebar, UI component pages and account screens.",
@@ -6505,52 +6377,54 @@
       ]
     },
     {
-      "id": "fuwari",
-      "name": "Fuwari",
-      "summary": "A colourful Astro blog with search, archives, code highlighting and a theme colour picker.",
-      "description": "Fuwari is a popular open-source static blog template built with Astro and Tailwind CSS for writers who want a polished, illustrated blog with little setup. Posts are written in Markdown with rich code blocks and math, and readers get full-text search, an archive by date, categories and tags, and a light, dark and custom-hue theme.",
+      "id": "launch-ui",
+      "name": "Launch UI",
+      "summary": "A dark product landing page with a hero mockup, feature grid, pricing table and FAQ, built with Next.js and shadcn/ui.",
+      "description": "Launch UI is an open-source landing page template for software products, built with Next.js, Tailwind CSS and shadcn/ui. It opens with a large hero and a product mockup, then walks visitors through a feature grid, social proof stats, a three-tier pricing table, an FAQ and a closing call to action, with light and dark themes. Every section is a React component you can rewrite, reorder or remove.",
       "bucket": "Technical and SaaS",
       "categories": [
-        "Blog"
+        "Marketing",
+        "SaaS"
       ],
-      "whoItsFor": "A writer or developer who wants a polished personal blog",
-      "demoUrl": "https://fuwari.hostingertemplates.com",
+      "whoItsFor": "A founder or developer launching a software product",
+      "demoUrl": "https://launch-ui.hostingertemplates.com",
       "classification": {
         "categories": [
-          "blog",
-          "personal",
-          "writing"
+          "landing",
+          "saas",
+          "marketing"
         ],
         "useCases": [
-          "blogging",
-          "publishing"
+          "launch",
+          "marketing",
+          "pricing"
         ],
         "frameworks": [
-          "astro",
-          "svelte",
-          "tailwindcss"
+          "nextjs",
+          "react",
+          "tailwind"
         ]
       },
       "features": [
         {
-          "id": "rich-markdown-posts",
-          "name": "Rich Markdown posts",
-          "description": "Markdown posts with highlighted, collapsible code blocks and math formulas."
+          "id": "hero-with-mockup",
+          "name": "Hero with product mockup",
+          "description": "A large headline, two calls to action and a product screenshot frame."
         },
         {
-          "id": "full-text-search",
-          "name": "Full-text search",
-          "description": "A Pagefind search index built with the site, searchable without a server."
+          "id": "feature-grid",
+          "name": "Feature grid and stats",
+          "description": "Eight feature cards and a strip of headline numbers for social proof."
         },
         {
-          "id": "archive-categories-tags",
-          "name": "Archive, categories and tags",
-          "description": "A dated archive plus category and tag listings for every post."
+          "id": "pricing-table",
+          "name": "Pricing table",
+          "description": "Three plans side by side with features and a call to action each."
         },
         {
-          "id": "theme-colour-picker",
-          "name": "Theme colour picker",
-          "description": "Light and dark modes and a hue slider that recolours the whole site."
+          "id": "faq-and-cta",
+          "name": "FAQ and closing call to action",
+          "description": "An accordion of common questions and a final sign-up section."
         }
       ],
       "technology": {
@@ -6558,17 +6432,18 @@
           "TypeScript"
         ],
         "frameworks": [
-          "Astro",
-          "Svelte"
+          "Next.js",
+          "React"
         ],
         "styling": [
-          "Tailwind CSS"
+          "Tailwind CSS",
+          "shadcn/ui"
         ],
         "data": [
-          "Markdown content collections"
+          "Static content in components"
         ],
         "deployment": [
-          "Static production output in dist/ with a Pagefind search index"
+          "Next.js server (next start)"
         ]
       },
       "compatibility": {
@@ -6576,31 +6451,27 @@
           {
             "name": "Node.js",
             "versions": [
-              "20.3+"
+              "20.9+"
             ]
           }
         ]
       },
-      "deploy": {
-        "outputDirectory": "dist"
-      },
+      "deploy": {},
       "routes": [
-        "/",
-        "/about/",
-        "/archive/"
+        "/"
       ],
       "source": {
         "type": "upstream",
-        "repository": "saicaca/fuwari",
-        "track": "branch",
-        "ref": "main",
-        "commit": "415fb97054e57bb85da86e2ca4ea4a1ae7266219",
+        "repository": "launch-ui/launch-ui",
+        "track": "releases",
+        "ref": "v2.10.2",
+        "commit": "9387bec9436335ef9a109a2efe7fbe7631976158",
         "license": "MIT"
       },
       "media": {
         "thumbnail": {
-          "path": "upstream/fuwari/preview/fuwari-thumbnail.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/fuwari/preview/fuwari-thumbnail.png?raw=true",
+          "path": "upstream/launch-ui/preview/launch-ui-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/launch-ui/preview/launch-ui-thumbnail.png?raw=true",
           "source": "viewport",
           "width": 1440,
           "height": 900,
@@ -6608,28 +6479,28 @@
           "variants": [
             {
               "width": 480,
-              "path": "upstream/fuwari/preview/fuwari-thumbnail-480.webp"
+              "path": "upstream/launch-ui/preview/launch-ui-thumbnail-480.webp"
             },
             {
               "width": 960,
-              "path": "upstream/fuwari/preview/fuwari-thumbnail-960.webp"
+              "path": "upstream/launch-ui/preview/launch-ui-thumbnail-960.webp"
             }
           ]
         },
         "preview": {
-          "path": "upstream/fuwari/preview/fuwari-homepage.png",
-          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/fuwari/preview/fuwari-homepage.png?raw=true",
+          "path": "upstream/launch-ui/preview/launch-ui-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/launch-ui/preview/launch-ui-homepage.png?raw=true",
           "source": "fullPage",
           "width": 1440,
-          "height": 1411
+          "height": 5462
         }
       },
       "searchTerms": [
-        "astro blog",
-        "anime blog",
-        "personal blog",
-        "markdown blog",
-        "static blog"
+        "saas landing page",
+        "product landing page",
+        "startup landing page",
+        "nextjs landing page",
+        "shadcn landing page"
       ]
     },
     {
@@ -6762,6 +6633,134 @@
         "product catalogue",
         "astro docs",
         "tailwind marketing site"
+      ]
+    },
+    {
+      "id": "shadcn-admin",
+      "name": "Studio Admin",
+      "summary": "A Next.js admin dashboard with a dozen dashboards, mail, chat, calendar, kanban and data tables, built with shadcn/ui.",
+      "description": "Studio Admin is the open-source Next.js admin dashboard by Arham Khan, built with shadcn/ui and Tailwind CSS. It ships about a dozen ready dashboards, from CRM and finance to analytics, e-commerce and logistics, plus mail, chat, calendar, kanban and invoice screens and searchable user, role and product tables. Theme presets, light and dark mode and layout settings let you match it to your brand before you connect your own data.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Dashboard",
+        "SaaS"
+      ],
+      "whoItsFor": "A developer building an admin panel or SaaS back office",
+      "demoUrl": "https://shadcn-admin.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "dashboard",
+          "admin",
+          "saas"
+        ],
+        "useCases": [
+          "admin",
+          "analytics",
+          "internal"
+        ],
+        "frameworks": [
+          "nextjs",
+          "react",
+          "tailwind"
+        ]
+      },
+      "features": [
+        {
+          "id": "many-dashboards",
+          "name": "A dozen dashboards",
+          "description": "Default, CRM, finance, analytics, e-commerce, logistics and more, with charts and KPIs."
+        },
+        {
+          "id": "app-screens",
+          "name": "Mail, chat, calendar and kanban",
+          "description": "Working app screens including a drag-and-drop kanban board and an invoice page."
+        },
+        {
+          "id": "data-tables",
+          "name": "Data tables",
+          "description": "User, role and product tables with search, filters, sorting and pagination."
+        },
+        {
+          "id": "themes-and-layout",
+          "name": "Themes and layout settings",
+          "description": "Theme presets, light and dark mode and sidebar layout options."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Next.js",
+          "React"
+        ],
+        "styling": [
+          "Tailwind CSS",
+          "shadcn/ui"
+        ],
+        "data": [
+          "Mock data, Zustand state"
+        ],
+        "deployment": [
+          "Next.js server (next start)"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "20.9+"
+            ]
+          }
+        ]
+      },
+      "deploy": {},
+      "routes": [
+        "/",
+        "/dashboard/default"
+      ],
+      "source": {
+        "type": "upstream",
+        "repository": "arhamkhnz/next-shadcn-admin-dashboard",
+        "track": "branch",
+        "ref": "main",
+        "commit": "3d1d6f4abf4231b258c81da25da1ccbc38d9b954",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "upstream/shadcn-admin/preview/shadcn-admin-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/shadcn-admin/preview/shadcn-admin-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "upstream/shadcn-admin/preview/shadcn-admin-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "upstream/shadcn-admin/preview/shadcn-admin-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "upstream/shadcn-admin/preview/shadcn-admin-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/upstream/shadcn-admin/preview/shadcn-admin-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 1562
+        }
+      },
+      "searchTerms": [
+        "nextjs admin dashboard",
+        "shadcn dashboard",
+        "admin panel",
+        "crm dashboard",
+        "saas dashboard"
       ]
     }
   ],
