@@ -1,16 +1,14 @@
 # Node.js repositories
 
-Collection of runnable Node.js projects. Every project we maintain lives
-under `templates/`. Upstream templates are popular public repositories we
-deploy from the original project at a pinned commit; only their preview
-images live here, under `upstream/`:
+Collection of runnable Node.js projects. Every project lives under
+`templates/`: the ones we build and maintain, and vendored templates, which
+are copies of popular public repositories at a pinned commit (see
+[Upstream templates](#upstream-templates)):
 
 ```text
 hostinger-templates/
 ├── templates/
 │   └── <repository-id>/
-├── upstream/
-│   └── <repository-id>/preview/
 ├── skills/
 ├── versions/catalog.json
 └── templates.json
@@ -36,9 +34,10 @@ Each entry can contain these fields:
 - `searchTerms`
 - `deploy` (when the build output differs from the hosting defaults) and
   `routes` (paths the smoke check requests, default `/`)
+- `source`, only on vendored templates: where the code was copied from (see
+  [Upstream templates](#upstream-templates))
 
-The root object also has an `upstream` array (see
-[Upstream templates](#upstream-templates)) and a `retired` array: ids whose
+The root object also has a `retired` array: ids whose
 hostinger.com landing page was removed. `schema/templates.schema.json` validates the whole file on
 every PR.
 
@@ -67,7 +66,8 @@ every other job passed or didn't apply:
 - `validate` also checks every vendored template the PR adds, re-pins or
   edits (`.github/scripts/check-vendored.mjs`): the ref points at the commit,
   the license matches GitHub's, the deployability rules pass at the commit,
-  and `templates/<id>/` is the upstream tree at the commit.
+  `templates/<id>/` is the upstream tree at the commit with its LICENSE, and
+  `dependabot.yml` keeps Dependabot off the folder.
 
 Run the same checks locally:
 
@@ -142,31 +142,71 @@ to date. See [`skills/evaluate-repository/`](skills/evaluate-repository/SKILL.md
 
 ## Upstream templates
 
-`templates.json`'s `upstream` list holds popular public repositories we offer
-as they are, instead of copying them into `templates/`. Each entry has the
-usual catalog fields plus a `source` pin (repository, `track: releases` or
-`branch`, `ref`, full `commit`, SPDX `license`). Their code is never copied
-here, so upstream fixes reach us without merging forks, and the original
-LICENSE ships with the code.
+Some templates are popular public repositories we offer as they are. They
+are vendored: `templates/<id>/` holds a copy of the upstream repository at a
+pinned commit, and the catalog entry has a `source` block recording where it
+came from (repository, `track: releases` or `branch`, `ref`, full `commit`,
+SPDX `license`, optional `directory` and `exclude`). Customers get the copy
+in this repository, never the upstream repository directly, so an upstream
+push can't change what they deploy without review.
 
-Every deploy uses the pinned commit, never the moving branch or tag:
-
-- PR previews and demos zip that commit with `git archive`
-  (`.github/scripts/upstream-archive.mjs`, nothing from it runs on our
-  runners) and Hostinger builds it, the same way a purchase will.
-- `Upstream pins` (`.github/workflows/upstream-pins.yml`) runs every Monday.
+- The copy is byte-identical to the upstream tree at `commit` (same paths,
+  blob SHAs and modes), minus `.github/` and the paths in `source.exclude`,
+  plus our `preview/` folder with the catalog screenshots. We don't edit
+  upstream code; fixes come from upstream. The upstream LICENSE stays at the
+  copy's root.
+- `check-vendored.mjs` (Template gate `validate`) fetches the upstream
+  commit and fails when the copy differs, lists the paths that differ, and
+  also checks the pin, license, LICENSE file and rules (see
+  [Pull request checks](#pull-request-checks)).
+- Vendored templates build, deploy and get PR previews and demos through
+  `templates/<id>/` like any other template. The `preview` job gives them
+  narrow exceptions: install by the lockfile upstream ships (npm, or
+  pnpm/yarn through corepack), skip lint when upstream has no lint script,
+  and serve static output or run the Next.js start script when there is no
+  preview script.
+- Audit policy: vendored templates are audited with their own package
+  manager. When the deploy output is static files, high and critical
+  production advisories are warnings, because they only run at build time.
+  A server-rendered one fails on any high or critical production advisory.
+- Dependabot doesn't open PRs for vendored folders: `dependabot.yml` lists
+  them in an npm entry that ignores every dependency, so their updates come
+  only from upstream syncs. The file is generated from `templates.json`
+  (`node .github/scripts/dependabot-config.mjs --write`). `validate-catalog`
+  fails when it is out of date, and `check-vendored` when a vendored folder
+  isn't excluded.
+- `Upstream sync` (`.github/workflows/upstream-sync.yml`) runs every Monday.
   When a template has a newer release or branch commit that passes the pin
-  checks, it opens or refreshes the PR `upstream-pins/<id>`. Its Hostinger
-  preview proves the new commit builds; merging it redeploys the demo. A
-  commit that fails the preview stays unmerged and the old pin keeps working.
-- To add one, evaluate the repository at the commit you want
-  (`node .github/scripts/evaluate-repos.mjs owner/repo@<ref>`), build it
-  locally to capture the screenshots from that commit, and add the entry and
-  `upstream/<id>/preview/` images. The rules are in
-  [TEMPLATE_SCHEMA.md](skills/create-repository/TEMPLATE_SCHEMA.md#upstream-templates).
+  checks, `.github/scripts/upstream-sync.mjs` builds one commit that updates
+  `templates/<id>/` and the pin, signed by GitHub, and opens or refreshes the
+  PR `upstream-sync/<id>`. Its Template gate and Hostinger preview prove the
+  new commit; merging it redeploys the demo. A commit that fails stays
+  unmerged and the old copy keeps working. The bot never merges, and stops
+  when a sync would upload more than 400 files: import those by hand.
+  `node .github/scripts/upstream-sync.mjs check` and
+  `push <id> --dry-run` show what it would do without writing to GitHub.
 
-hPanel and hostinger.com read only `templates` today, so upstream entries
-aren't offered anywhere yet and their landing pages must stay drafts.
+To add one, or to import a sync too large for the bot:
+
+1. Evaluate the repository at the commit you want
+   (`node .github/scripts/evaluate-repos.mjs owner/repo@<ref>`) and build it
+   locally to capture the screenshots from that commit.
+2. Copy the tree with git, not by copying files, so `.gitignore` and
+   upstream `.gitattributes` can't change content:
+
+   ```bash
+   git fetch --no-tags --depth=1 https://github.com/<owner>/<repo>.git <commit>
+   # re-import only: drop the old copy but keep preview/
+   git rm -r -q templates/<id> ':!templates/<id>/preview'
+   # <commit>:<directory> when source.directory is set
+   git read-tree --prefix=templates/<id>/ -u <commit>
+   git rm -r -q templates/<id>/.github
+   ```
+
+   Remove `source.exclude` paths the same way, then add `preview/`.
+3. Add or update the entry with its `source`, regenerate `dependabot.yml`,
+   and run `node .github/scripts/check-vendored.mjs --all`. The rules are in
+   [TEMPLATE_SCHEMA.md](skills/create-repository/TEMPLATE_SCHEMA.md#upstream-templates).
 
 ## Demo deployments
 
@@ -174,7 +214,8 @@ Merging a PR that adds a template (a new `templates/<id>/package.json`)
 publishes it to `https://<id>.hostingertemplates.com` through the
 `Deploy template demos` workflow. PRs that only change existing templates,
 such as Dependabot security groups and dependency bumps, do not deploy.
-Upstream templates deploy whenever their pin changes.
+Vendored templates redeploy on any change, since an upstream sync is the
+only way their code changes.
 To redeploy existing demos, run the workflow from the Actions tab with their
 template IDs.
 

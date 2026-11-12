@@ -65,10 +65,14 @@ own.
 
 ## 3. Turning a candidate into a template
 
-A repository that deploys still needs a human decision. Upstream templates
-aren't copied into this repository: they get an `upstream` entry in
-`templates.json` that pins a commit of the original repository (see
-[Upstream templates](../create-repository/TEMPLATE_SCHEMA.md#upstream-templates)).
+A repository that deploys still needs a human decision. Chosen ones become
+vendored templates: `templates/<id>/` holds a byte-identical copy of the
+repository at a pinned commit (minus `.github/`, plus our `preview/`
+screenshots), and the `templates.json` entry records it in `source`. The
+Template gate (`check-vendored.mjs`) verifies the copy against the upstream
+commit, the weekly `upstream-sync` workflow opens PRs that move it to newer
+upstream commits, and it deploys from this repository like any template
+(see [Upstream templates](../create-repository/TEMPLATE_SCHEMA.md#upstream-templates)).
 Before adding one:
 
 - Evaluate it at the exact ref: `node .github/scripts/evaluate-repos.mjs owner/repo@<tag-or-commit>`.
@@ -79,8 +83,9 @@ Before adding one:
   build, and the rules only learned to catch three of those causes.
 - Audit production dependencies (`npm audit --omit=dev` or
   `pnpm audit --prod`). A server-rendered template with high or critical
-  advisories in its runtime is not offered. For static output only the build
-  runs them; note them in the PR.
+  advisories in its runtime is not offered, and the Template gate fails it.
+  For static output only the build runs them: the gate reports them as
+  warnings; note them in the PR.
 - Check the content: a template, not someone's personal site, with nothing
   a buyer would have to remove first (real names, photos, employers).
 - Capture the catalog screenshots from that local build, with reduced motion
