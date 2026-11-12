@@ -57,8 +57,8 @@ jobs:
         run: npm ci
       - name: Validate templates.json and landing pages against their schemas
         run: node .github/scripts/validate-catalog.mjs
-      - name: Test the deployability rules, vendored-copy and Dependabot checks
-        run: node --test .github/scripts/repo-evaluation/rules.test.mjs .github/scripts/repo-evaluation/upstream.test.mjs .github/scripts/upstream-copy.test.mjs .github/scripts/dependabot-config.test.mjs
+      - name: Test the deployability rules, vendored-template checks and template commands
+        run: node --test .github/scripts/repo-evaluation/rules.test.mjs .github/scripts/repo-evaluation/upstream.test.mjs .github/scripts/upstream-copy.test.mjs .github/scripts/dependabot-config.test.mjs .github/scripts/template-commands.test.mjs
       - name: Check vendored templates against their upstream commit
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
@@ -88,6 +88,9 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: git fetch --no-tags --depth=1 origin "$BASE_SHA"
+      # The scripts' lockfile always resolves, so a vendored template that
+      # installs with pnpm or yarn (no package-lock.json) still gets the npm
+      # cache; its own store is not cached.
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -95,9 +98,12 @@ jobs:
           cache-dependency-path: |
             templates/${{ matrix.template }}/package-lock.json
             .github/scripts/package-lock.json
+      # template-commands.mjs runs npm ci, npm run lint and npm run build for
+      # our templates. Vendored ones (a source in templates.json) install by
+      # their lockfile and skip lint when upstream has no lint script.
       - name: Install template
         id: install
-        run: npm ci
+        run: node ../../.github/scripts/template-commands.mjs install "$PWD"
       - name: Install preview scripts
         working-directory: .github/scripts
         run: npm ci
@@ -106,15 +112,17 @@ jobs:
         run: npx --yes playwright@latest install --with-deps chromium
       - name: Lint
         id: lint
-        run: npm run lint
+        run: node ../../.github/scripts/template-commands.mjs lint "$PWD"
       - name: Build
         id: build
-        run: npm run build
-      # Fails only if this PR introduces a high/critical advisory in production
-      # dependencies that the base commit did not already have. Pre-existing
-      # findings are reported in the PR comment, not blocking: they are
-      # dependency-update work, and letting them fail every unrelated PR froze
-      # Dependabot's security group behind advisories with no fix yet (#26).
+        run: node ../../.github/scripts/template-commands.mjs build "$PWD"
+      # Our templates fail only if this PR introduces a high/critical advisory
+      # in production dependencies that the base commit did not already have.
+      # Pre-existing findings are reported in the PR comment, not blocking:
+      # they are dependency-update work, and letting them fail every unrelated
+      # PR froze Dependabot's security group behind advisories with no fix yet
+      # (#26). Vendored templates: warnings when deployed as static files, any
+      # finding fails when they run as a server (see audit-regression.mjs).
       - name: Audit
         id: audit
         env:
@@ -146,7 +154,7 @@ jobs:
         env:
           TEMPLATE: ${{ matrix.template }}
           INSTALL: ${{ steps.install.outcome }}
-          LINT: ${{ steps.lint.outcome }}
+          LINT: ${{ steps.lint.outputs.skipped == 'true' && 'skipped' || steps.lint.outcome }}
           BUILD: ${{ steps.build.outcome }}
           AUDIT: ${{ steps.audit.outcome }}
           HEALTH: ${{ steps.health.outcome }}
@@ -163,8 +171,8 @@ jobs:
             } catch {}
             let auditDetail = null;
             try {
-              const { introduced, preexisting, resolved } = JSON.parse(fs.readFileSync(process.env.AUDIT_JSON, "utf8"));
-              auditDetail = { introduced: introduced.length, preexisting: preexisting.length, resolved: resolved.length };
+              const { introduced, preexisting, resolved, policy } = JSON.parse(fs.readFileSync(process.env.AUDIT_JSON, "utf8"));
+              auditDetail = { introduced: introduced.length, preexisting: preexisting.length, resolved: resolved.length, policy };
             } catch {}
             fs.writeFileSync(`.preview-results/${id}.json`, JSON.stringify({
               id,
@@ -267,7 +275,9 @@ jobs:
               if (d.introduced) notes.push(`${d.introduced} new`);
               if (d.preexisting) notes.push(`${d.preexisting} pre-existing`);
               if (d.resolved) notes.push(`${d.resolved} resolved`);
-              return `${mark(row.audit)}${notes.length ? ` ${notes.join(', ')}` : ''}`;
+              const warned = d.policy === 'static-warn' && (d.introduced || d.preexisting);
+              if (warned) notes.push('build-time only');
+              return `${warned ? '⚠️' : mark(row.audit)}${notes.length ? ` ${notes.join(', ')}` : ''}`;
             };
             const raw = (template, file) =>
               `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/shots/${template}/${file}?v=${bust}`;
@@ -300,7 +310,7 @@ jobs:
             if (empty || rows.length === 0) {
               body += 'No `templates/*` package changed in this PR.\n';
             } else {
-              body += 'Built each changed template, opened `npm run preview`, requested `/`, then compared Playwright screenshots to the committed catalog images (`preview/<id>-thumbnail.png` at 1440×900 and `preview/<id>-homepage.png` full page).\n\n';
+              body += 'Built each changed template, opened its preview, requested `/`, then compared Playwright screenshots to the committed catalog images (`preview/<id>-thumbnail.png` at 1440×900 and `preview/<id>-homepage.png` full page).\n\n';
               body += '| Template | Install | Lint | Build | Audit | Health | Thumbnail diff | Homepage diff |\n';
               body += '| --- | --- | --- | --- | --- | --- | --- | --- |\n';
               for (const row of rows) {
@@ -320,7 +330,7 @@ jobs:
               }
 
               body += `[Download screenshots and diffs](${runUrl}) from this run’s \`visual-<template>\` artifacts.\n`;
-              body += '\nThis check fails if install, lint, build, `/` health, or screenshot diff over the limit fails, or if the PR introduces a high/critical advisory in production dependencies that the base commit did not have (`npm audit --omit=dev`, head vs base). Pre-existing advisories are listed for information and belong to dependency-update PRs. Limits default to 25% (thumbnail) and 30% (homepage) to absorb Mac-vs-Linux font rasterization.\n';
+              body += '\nThis check fails if install, lint, build, `/` health, or screenshot diff over the limit fails, or if the PR introduces a high/critical advisory in production dependencies that the base commit did not have (`npm audit --omit=dev`, head vs base). Pre-existing advisories are listed for information and belong to dependency-update PRs. Vendored templates (copied from upstream) follow their own rules: lint is skipped when upstream has none, advisories are warnings when the template deploys as static files, and any high/critical production advisory fails one that runs as a server. Limits default to 25% (thumbnail) and 30% (homepage) to absorb Mac-vs-Linux font rasterization.\n';
             }
 
             const { data: comments } = await github.rest.issues.listComments({

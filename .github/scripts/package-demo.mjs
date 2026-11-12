@@ -1,9 +1,9 @@
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { basename, join, relative, resolve } from 'node:path';
+import { staticOutputDir } from './template-commands.mjs';
 
 const MAX_NODE_ARCHIVE_BYTES = 50 * 1024 * 1024;
-const STATIC_OUTPUT_FALLBACKS = ['dist', 'build', 'out'];
 
 const templateDir = resolve(process.argv[2] ?? '');
 const outRoot = resolve(process.argv[3] ?? '');
@@ -29,12 +29,7 @@ mkdirSync(outDir, { recursive: true });
 const stamp = new Date().toISOString().replace(/\D/g, '').slice(0, 14);
 const archive = join(outDir, `${id}_${stamp}.zip`);
 
-const staticDir = deploy.entryFile
-  ? null
-  : [deploy.outputDirectory, ...STATIC_OUTPUT_FALLBACKS]
-      .filter(Boolean)
-      .map((dir) => join(templateDir, dir))
-      .find((dir) => existsSync(join(dir, 'index.html')));
+const staticDir = staticOutputDir(templateDir, deploy);
 
 let kind;
 let title = null;
