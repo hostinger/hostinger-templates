@@ -159,6 +159,10 @@ test('ls-tree output parses paths with spaces and tree sizes', () => {
 test('license detection looks only at the copy root', () => {
   assert.ok(hasLicense([{ path: 'LICENSE.md' }]));
   assert.ok(hasLicense([{ path: 'license' }]));
+  assert.ok(hasLicense([{ path: 'UNLICENSE' }]));
+  assert.ok(hasLicense([{ path: 'LICENSE-MIT' }]));
+  assert.ok(hasLicense([{ path: 'LICENSE_MIT' }]));
+  assert.ok(!hasLicense([{ path: 'LICENSEE' }]));
   assert.ok(!hasLicense([{ path: 'docs/LICENSE' }]));
   assert.ok(!hasLicense([{ path: 'README.md' }]));
 });

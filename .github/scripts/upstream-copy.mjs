@@ -119,9 +119,11 @@ export function inspectEntries(gitDir, expected) {
   return { problems, notes };
 }
 
-// MIT and friends need their notice shipped with the code.
+// MIT and friends need their notice shipped with the code, so the copy root
+// (the source.directory subtree when set) must hold it: LICENSE, LICENSE.md,
+// LICENSE-MIT, COPYING, UNLICENSE and the like.
 export function hasLicense(entries) {
-  return entries.some((entry) => !entry.path.includes('/') && /^(LICEN[CS]E|COPYING)(\.|$)/i.test(entry.path));
+  return entries.some((entry) => !entry.path.includes('/') && /^((UN)?LICEN[CS]E|COPYING)([._-]|$)/i.test(entry.path));
 }
 
 export function readBlob(gitDir, sha) {

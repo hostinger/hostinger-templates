@@ -391,6 +391,7 @@
           "$ref": "#/$defs/commit"
         },
         "directory": {
+          "description": "Subdirectory of the repository to copy. It must hold its own LICENSE file: the repository-root LICENSE is outside the copy, and check-vendored.mjs fails without one.",
           "type": "string",
           "pattern": "^[A-Za-z0-9_.-]+(/[A-Za-z0-9_.-]+)*$",
           "not": {

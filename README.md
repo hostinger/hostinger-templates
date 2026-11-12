@@ -157,7 +157,8 @@ push can't change what they deploy without review.
   plus our `preview/` folder with the catalog screenshots (plain `.png` and
   `.webp` files directly inside it, nothing else). We don't edit
   upstream code; fixes come from upstream. The upstream LICENSE stays at the
-  copy's root.
+  copy's root, so a `directory` source works only when that subdirectory has
+  its own LICENSE file.
 - `check-vendored.mjs` (Template gate `validate`) fetches the upstream
   commit and fails when the copy differs, lists the paths that differ, and
   also checks the pin, license, LICENSE file and rules (see
