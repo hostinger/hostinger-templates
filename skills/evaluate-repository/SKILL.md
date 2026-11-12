@@ -23,16 +23,25 @@ clones or runs code. `.github/scripts/repo-evaluation/rules.mjs` decides:
 
 - **Not a web app** (rejected): agent skills collections, MCP servers, AI
   agents and computer-use tools, CLIs, libraries, Electron/Tauri desktop
-  apps, mobile apps, browser and editor extensions, link lists.
+  apps, mobile apps, browser and editor extensions, link lists. A web app
+  that also ships a few `SKILL.md` files for its contributors is fine.
 - **Doesn't fit the platform** (rejected): no `package.json`, Bun or Deno
   only, `engines.node` outside 18–24, PostgreSQL, MongoDB, Redis or brokers
   (dependencies, Prisma provider or docker-compose services), headless
   browsers and native system access, monorepos without an app directory.
-- **Can't be vendored** (rejected): archived, no push for a year, or no OSI
+- **Won't build from the source archive** (rejected): git submodules (the
+  archive leaves them out), an install or build script that runs Playwright,
+  Puppeteer, Cypress, Karma or `ng test`, or source files over 50 MB at the
+  evaluated commit.
+- **Can't be used** (rejected): archived, no push for a year, or no OSI
   license. Copyleft licenses need legal review.
-- **Needs review**: secrets in `.env.example`, SQLite, workspaces, no
-  lockfile, an unknown framework that starts with `npm start`, or a
-  repository over 50 MB.
+- **Needs review**: secrets in `.env.example`, content read from a hosted CMS
+  at build time (Contentful, Notion, Sanity, Prismic, Storyblok, DatoCMS),
+  SQLite, workspaces, no lockfile, or an unknown framework that starts with
+  `npm start`.
+
+The static rules still can't tell whether the build passes, so build every
+candidate before offering it.
 
 Frameworks recognised are the ones hPanel's Node.js deploy settings offer
 (`DEPLOY_FRAMEWORK_KEYS`): Next.js, Nuxt, SvelteKit, Astro, React Router,
