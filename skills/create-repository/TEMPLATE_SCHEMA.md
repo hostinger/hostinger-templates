@@ -229,7 +229,7 @@ The copy is byte-identical to the upstream tree at `commit`: same paths, blob
 SHAs and modes, minus `.github/` and `exclude`, plus our own `preview/` folder
 with the catalog screenshots (`media` points there). Never edit upstream code
 in `templates/<id>/`; fixes come from upstream. When upstream has its own
-`preview/`, the check reports a clash: exclude it or rename ours. Import the
+`preview/`, the check reports a clash: add `"preview/"` to `exclude`. Import the
 copy with `git read-tree`, not by copying files (see the README's
 [Upstream templates](../../README.md#upstream-templates) for the commands).
 

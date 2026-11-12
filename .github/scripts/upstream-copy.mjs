@@ -97,7 +97,7 @@ export function inspectEntries(gitDir, expected) {
     if (entry.mode === GITLINK) {
       problems.push(`${entry.path} is a git submodule; a copy can't include it`);
     } else if (matchesPrefix(entry.path, OWNED_DIRECTORY)) {
-      problems.push(`${entry.path} clashes with our ${OWNED_DIRECTORY} folder; add "${OWNED_DIRECTORY}" to source.exclude or rename ours`);
+      problems.push(`${entry.path} clashes with our ${OWNED_DIRECTORY} folder; add "${OWNED_DIRECTORY}" to source.exclude`);
     } else if (entry.mode === SYMLINK) {
       notes.push(`${entry.path} is a symlink`);
     } else if (entry.type === 'blob' && entry.size < 1024 && readBlob(gitDir, entry.sha).toString('utf8').startsWith(LFS_POINTER)) {
