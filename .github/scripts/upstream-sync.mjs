@@ -26,8 +26,9 @@ import {
 //       builds one commit on top of --base (default HEAD) that turns
 //       templates/<id>/ into the upstream tree at the checked commit and
 //       moves source.ref/commit in templates.json, then points
-//       upstream-sync/<id> at it and writes pr-body.md. --dry-run prints the
-//       plan and writes nothing to GitHub.
+//       upstream-sync/<id> at it and writes pr-body.md. It skips a branch
+//       with commits it didn't make and a pin whose PR was closed unmerged.
+//       --dry-run prints the plan and writes nothing to GitHub.
 //
 // push goes through the Git Data API with no author or committer, so GitHub
 // signs the commit, and uploads only the blobs that changed. The workflow
@@ -35,7 +36,7 @@ import {
 // prove the new code, and a person merges it.
 
 export const MAX_BLOBS = 400;
-export const BRANCH_PREFIX = 'upstream-sync/';
+const BRANCH_PREFIX = 'upstream-sync/';
 const SYNC_FILE = 'upstream-sync.json';
 const CATALOG = 'templates.json';
 const UPLOAD_DELAY_MS = 100;
@@ -182,8 +183,9 @@ async function push(id, { base, dryRun }) {
     }
 
     const api = createApi(process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN, process.env.GITHUB_REPOSITORY);
-    if (await alreadyOpen(api, branch, row.to.commit, id)) {
-      console.log(`An open PR from ${branch} already syncs ${id} to ${label(row.to)}.`);
+    const skip = await skipReason(api, { id, branch, title, commit: row.to.commit, baseCommit });
+    if (skip) {
+      console.log(skip);
       output('pushed', 'false');
       return;
     }
@@ -214,17 +216,46 @@ async function push(id, { base, dryRun }) {
   }
 }
 
-// An open PR whose branch already pins this commit needs no new push, which
-// would only restart its checks and preview deploy.
-async function alreadyOpen(api, branch, commit, id) {
+// Why push must leave the branch alone, or null when it may move it.
+async function skipReason(api, { id, branch, title, commit, baseCommit }) {
   const [owner] = process.env.GITHUB_REPOSITORY.split('/');
-  const pulls = await api('GET', `/pulls?state=open&head=${encodeURIComponent(`${owner}:${branch}`)}`);
-  if (!pulls.length) {
-    return false;
+  const pulls = await api('GET', `/pulls?state=all&per_page=100&head=${encodeURIComponent(`${owner}:${branch}`)}`);
+  const declined = declinedPull(pulls, title);
+  if (declined) {
+    return `::notice::#${declined.number} (${title}) was closed without merging, so it isn't reopened. Reopen it to retry; a newer upstream pin opens a new PR.`;
   }
+  if (pulls.some((pull) => pull.state === 'open') && (await branchPins(api, branch, id)) === commit) {
+    // A new push would only restart its checks and preview deploy.
+    return `An open PR from ${branch} already syncs ${id} to this commit.`;
+  }
+  const compare = await api('GET', `/compare/${baseCommit}...${encodeURIComponent(branch)}`, null, { allow404: true });
+  const foreign = foreignCommits(compare?.commits ?? [], id);
+  if (foreign.length) {
+    return (
+      `::warning::${branch} has commits the bot didn't make (${foreign.map((sha) => sha.slice(0, 7)).join(', ')}), ` +
+      'such as re-captured screenshots. It is left for a person to update.'
+    );
+  }
+  return null;
+}
+
+// A closed, unmerged PR with this exact title declined this pin.
+export function declinedPull(pulls, title) {
+  return pulls.find((pull) => pull.state === 'closed' && !pull.merged_at && pull.title === title) ?? null;
+}
+
+// Commits on the branch beyond the base that aren't a single-parent sync
+// commit for id. A person's commit or a merge of main would be lost by the
+// force update.
+export function foreignCommits(commits, id) {
+  return commits
+    .filter((entry) => entry.parents.length !== 1 || !entry.commit.message.startsWith(`Sync ${id} with `))
+    .map((entry) => entry.sha);
+}
+
+async function branchPins(api, branch, id) {
   const file = await api('GET', `/contents/${CATALOG}?ref=${encodeURIComponent(branch)}`, null, { raw: true, allow404: true });
-  const entry = file && JSON.parse(file).templates?.find((candidate) => candidate.id === id);
-  return entry?.source?.commit === commit;
+  return file && JSON.parse(file).templates?.find((candidate) => candidate.id === id)?.source?.commit;
 }
 
 async function uploadBlob(api, content, expectedSha) {

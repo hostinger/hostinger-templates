@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
-import { MAX_BLOBS, planSync, renderBody, updateCatalog } from './upstream-sync.mjs';
+import { MAX_BLOBS, declinedPull, foreignCommits, planSync, renderBody, updateCatalog } from './upstream-sync.mjs';
 
 const sha = (char) => char.repeat(40);
 
@@ -79,6 +79,34 @@ test('the PR body links the upstream compare and counts the files', () => {
   assert.match(body, new RegExp(`https://github.com/o/r/compare/${sha('1')}\\.\\.\\.${sha('2')}`));
   assert.match(body, /1 added, 2 changed, 3 removed/);
   assert.match(body, /published 2026-11-01/);
+});
+
+test('a closed, unmerged PR for the same pin declines it; merged ones and other pins do not', () => {
+  const title = 'Sync app with o/r v2@2222222';
+  const pulls = [
+    { number: 1, state: 'closed', merged_at: '2026-11-01T00:00:00Z', title },
+    { number: 2, state: 'closed', merged_at: null, title: 'Sync app with o/r v1@1111111' },
+  ];
+  assert.equal(declinedPull(pulls, title), null);
+  assert.equal(declinedPull([...pulls, { number: 3, state: 'closed', merged_at: null, title }], title).number, 3);
+  assert.equal(declinedPull([{ number: 4, state: 'open', merged_at: null, title }], title), null);
+});
+
+test('only single-parent sync commits for the template belong to the bot', () => {
+  const commit = (char, message, parents = 1) => ({ sha: sha(char), commit: { message }, parents: Array(parents).fill({}) });
+  assert.deepEqual(foreignCommits([commit('1', 'Sync app with o/r v2@2222222')], 'app'), []);
+  assert.deepEqual(
+    foreignCommits(
+      [
+        commit('1', 'Sync app with o/r v2@2222222'),
+        commit('2', 'Re-capture app screenshots'),
+        commit('3', "Merge branch 'main' into upstream-sync/app", 2),
+        commit('4', 'Sync other with o/r v2@2222222'),
+      ],
+      'app',
+    ),
+    [sha('2'), sha('3'), sha('4')],
+  );
 });
 
 test('push --dry-run plans the sync from a local upstream commit without calling GitHub', (t) => {

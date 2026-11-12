@@ -182,7 +182,10 @@ push can't change what they deploy without review.
   PR `upstream-sync/<id>`. Its Template gate and Hostinger preview prove the
   new commit; merging it redeploys the demo. A commit that fails stays
   unmerged and the old copy keeps working. The bot never merges, and stops
-  when a sync would upload more than 400 files: import those by hand.
+  when a sync would upload more than 400 files: import those by hand. It
+  doesn't move a branch that has commits from people (such as re-captured
+  screenshots), and doesn't reopen a sync someone closed unmerged until
+  upstream ships a newer pin.
   `node .github/scripts/upstream-sync.mjs check` and
   `push <id> --dry-run` show what it would do without writing to GitHub.
 
