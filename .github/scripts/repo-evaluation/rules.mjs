@@ -63,6 +63,22 @@ const HEADLESS_OR_NATIVE = [
   { deps: ['canvas', 'node-pty', 'robotjs', '@nut-tree/nut-js'], reason: 'native system access' },
 ];
 
+// Lifecycle scripts Hostinger runs while installing and building.
+const BUILD_SCRIPTS = ['preinstall', 'install', 'postinstall', 'prepare', 'prebuild', 'build', 'postbuild'];
+const BROWSER_IN_BUILD = /\b(playwright|puppeteer|cypress|karma|ng test)\b/;
+
+// Content sources that the build reads, so it fails without the owner's
+// account credentials or page ids.
+const BUILD_TIME_CONTENT = [
+  { deps: ['contentful', 'gatsby-source-contentful'], reason: 'Contentful' },
+  { deps: ['@notionhq/client', 'notion-client', 'react-notion-x'], reason: 'Notion' },
+  { deps: ['@sanity/client', 'next-sanity', 'gatsby-source-sanity'], reason: 'Sanity' },
+  { deps: ['@prismicio/client', 'gatsby-source-prismic'], reason: 'Prismic' },
+  { deps: ['storyblok-js-client', '@storyblok/js', '@storyblok/react'], reason: 'Storyblok' },
+  { deps: ['@datocms/cma-client', 'datocms-structured-text-utils', 'gatsby-source-datocms'], reason: 'DatoCMS' },
+  { deps: ['contentlayer-source-remote-files', 'tinacms'], reason: 'a hosted CMS' },
+];
+
 const EXCLUDED_TOPICS = new Map([
   ['agent-skills', 'agent skills'],
   ['claude-skills', 'agent skills'],
@@ -108,11 +124,14 @@ export function evaluateRepository(facts, { now = new Date() } = {}) {
   if (topicReason) fail('kind', `Tagged as ${topicReason}, not a web app.`);
 
   const skillFiles = tree.filter((path) => /(^|\/)SKILL\.md$/.test(path)).length;
-  if (skillFiles >= 2 || tree.some((path) => path.startsWith('.claude-plugin/'))) {
-    fail('kind', `Agent skills collection (${skillFiles} SKILL.md files).`);
+  const isSkillsCollection = skillFiles >= 2 || tree.some((path) => path.startsWith('.claude-plugin/'));
+
+  if (tree.includes('.gitmodules')) {
+    fail('layout', "Git submodules (.gitmodules): GitHub's source archive leaves them out, so the build can't find their files.");
   }
 
   if (!packageJson) {
+    if (isSkillsCollection) fail('kind', `Agent skills collection (${skillFiles} SKILL.md files).`);
     fail('node', appDir ? `No package.json in ${appDir}.` : 'No package.json at the root: not a Node.js project.');
     return summarize(facts, findings, null);
   }
@@ -128,6 +147,9 @@ export function evaluateRepository(facts, { now = new Date() } = {}) {
 
   const framework = detectFramework(deps);
   const scripts = packageJson.scripts ?? {};
+  if (isSkillsCollection && !(framework && (scripts.build || scripts.start))) {
+    fail('kind', `Agent skills collection (${skillFiles} SKILL.md files).`);
+  }
   const isKnownNonWebApp = findings.some((finding) => finding.level === 'fail' && finding.check === 'kind');
 
   const workspaces = packageJson.workspaces || facts.hasPnpmWorkspace || facts.hasTurboOrNx;
@@ -186,8 +208,21 @@ export function evaluateRepository(facts, { now = new Date() } = {}) {
   const native = HEADLESS_OR_NATIVE.find(({ deps: names }) => has(names, runtimeDeps));
   if (native) fail('runtime', `Needs ${native.reason}, which shared hosting can't run.`);
 
-  const sizeMb = Math.round(repo.sizeKb / 1024);
-  if (sizeMb > MAX_ARCHIVE_MB) warn('size', `Repository is ${sizeMb} MB with history; the source archive must stay under ${MAX_ARCHIVE_MB} MB.`);
+  const browserStep = BUILD_SCRIPTS.find((name) => BROWSER_IN_BUILD.test(scripts[name] ?? ''));
+  if (browserStep) {
+    fail('runtime', `The "${browserStep}" script runs \`${scripts[browserStep]}\`, which needs a headless browser the build server doesn't have.`);
+  }
+
+  const content = BUILD_TIME_CONTENT.find(({ deps: names }) => has(names));
+  if (content) warn('config', `Reads its content from ${content.reason}; the build needs the owner's ${content.reason} credentials.`);
+
+  if (facts.sourceSizeKb != null) {
+    const sizeMb = Math.round(facts.sourceSizeKb / 1024);
+    if (sizeMb > MAX_ARCHIVE_MB) fail('size', `The source is ${sizeMb} MB; the archive must stay under ${MAX_ARCHIVE_MB} MB.`);
+  } else {
+    const sizeMb = Math.round(repo.sizeKb / 1024);
+    if (sizeMb > MAX_ARCHIVE_MB) warn('size', `Repository is ${sizeMb} MB with history; the source archive must stay under ${MAX_ARCHIVE_MB} MB.`);
+  }
 
   const secrets = (facts.envExampleKeys ?? []).filter((key) => /KEY|SECRET|TOKEN|PASSWORD|CLIENT_ID|DSN/.test(key));
   if (secrets.length > 5) warn('config', `${secrets.length} secrets to set before it starts (${secrets.slice(0, 5).join(', ')}…).`);

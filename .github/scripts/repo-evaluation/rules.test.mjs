@@ -51,6 +51,9 @@ describe('evaluateRepository', () => {
     ['an archived repo', { repo: { archived: true } }, /archived/],
     ['a Node 26-only app', { packageJson: { engines: { node: '>=26' }, scripts: { build: 'vite build' }, devDependencies: { vite: '^7.0.0' } } }, /excludes every supported/],
     ['a Bun-only app', { lockfiles: ['bun'], packageJson: { scripts: { build: 'vite build' }, devDependencies: { vite: '^7.0.0' } } }, /Bun only/],
+    ['a repo with git submodules', { tree: ['package.json', 'package-lock.json', '.gitmodules', 'src/main.tsx'] }, /submodules/],
+    ['a build that runs browser tests', { packageJson: { scripts: { prebuild: 'ng test --watch=false', build: 'ng build' }, dependencies: { '@angular/core': '^20.0.0' } } }, /"prebuild" script.*headless browser/],
+    ['a source tree over the archive limit', { sourceSizeKb: 60 * 1024 }, /source is 60 MB/],
     ['a monorepo without an app directory', { hasPnpmWorkspace: true, packageJson: { scripts: { build: 'turbo build' } }, appCandidates: ['apps/web'] }, /Monorepo.*apps\/web/],
   ]) {
     it(`rejects ${name}`, () => {
@@ -64,6 +67,34 @@ describe('evaluateRepository', () => {
     const result = evaluateRepository(facts({ repo: { license: 'AGPL-3.0' }, envExampleKeys: ['OPENAI_API_KEY', 'PORT'] }), { now: NOW });
     assert.equal(result.verdict, 'needs-review');
     assert.match(messages(result), /copyleft.*OPENAI_API_KEY/s);
+  });
+
+  it('accepts a web app that also ships agent skill files', () => {
+    const result = evaluateRepository(facts({ tree: ['package.json', 'package-lock.json', '.claude/skills/a/SKILL.md', '.claude/skills/b/SKILL.md'] }), { now: NOW });
+    assert.equal(result.verdict, 'deployable');
+  });
+
+  it('rejects a skills collection that has a package.json but no app', () => {
+    const result = evaluateRepository(
+      facts({ tree: ['package.json', 'skills/a/SKILL.md', 'skills/b/SKILL.md'], packageJson: { scripts: { test: 'node --test' } } }),
+      { now: NOW },
+    );
+    assert.equal(result.verdict, 'not-deployable');
+    assert.match(messages(result), /Agent skills/);
+  });
+
+  it('measures the source, not the history, when the file sizes are known', () => {
+    const result = evaluateRepository(facts({ repo: { sizeKb: 99 * 1024 }, sourceSizeKb: 4 * 1024 }), { now: NOW });
+    assert.equal(result.verdict, 'deployable');
+  });
+
+  it('flags content pulled from a CMS at build time for review', () => {
+    const result = evaluateRepository(
+      facts({ packageJson: { scripts: { build: 'gatsby build' }, dependencies: { gatsby: '^5.0.0', 'gatsby-source-contentful': '^8.0.0' } } }),
+      { now: NOW },
+    );
+    assert.equal(result.verdict, 'needs-review');
+    assert.match(messages(result), /Contentful credentials/);
   });
 
   it('accepts an Express server using MySQL', () => {

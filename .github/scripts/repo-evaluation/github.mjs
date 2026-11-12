@@ -8,8 +8,10 @@ export async function collectFacts(fullName, { appDir = null, ref = null, token 
   const repoData = await github.json(`/repos/${fullName}`);
   const commit = (await github.json(`/repos/${fullName}/commits/${encodeURIComponent(ref ?? repoData.default_branch)}`)).sha;
   const treeData = await github.json(`/repos/${fullName}/git/trees/${commit}?recursive=1`);
-  const tree = treeData.tree.filter((entry) => entry.type === 'blob').map((entry) => entry.path);
+  const blobs = treeData.tree.filter((entry) => entry.type === 'blob');
+  const tree = blobs.map((entry) => entry.path);
   const base = appDir ? `${appDir.replace(/\/$/, '')}/` : '';
+  const sourceSizeKb = Math.round(blobs.filter((entry) => entry.path.startsWith(base)).reduce((sum, entry) => sum + (entry.size ?? 0), 0) / 1024);
   const read = (path) => (tree.includes(path) ? github.raw(fullName, commit, path) : Promise.resolve(null));
   const readJson = async (path) => {
     try {
@@ -65,6 +67,7 @@ export async function collectFacts(fullName, { appDir = null, ref = null, token 
     appDir,
     tree,
     treeTruncated: treeData.truncated,
+    sourceSizeKb: treeData.truncated ? null : sourceSizeKb,
     packageJson,
     manifestJson,
     lockfiles: [...new Set(lockfiles)],
