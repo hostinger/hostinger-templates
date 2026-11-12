@@ -64,9 +64,10 @@ every other job passed or didn't apply:
   VPS applications on hostinger.com.
 - `preview (<id>)`: install, lint, build, audit, health check and screenshot
   comparison for each changed template.
-- `validate` also checks every upstream template the PR adds or re-pins
-  (`.github/scripts/check-upstream.mjs`): the ref points at the commit, the
-  license matches GitHub's, and the deployability rules pass at the commit.
+- `validate` also checks every vendored template the PR adds, re-pins or
+  edits (`.github/scripts/check-vendored.mjs`): the ref points at the commit,
+  the license matches GitHub's, the deployability rules pass at the commit,
+  and `templates/<id>/` is the upstream tree at the commit.
 
 Run the same checks locally:
 
