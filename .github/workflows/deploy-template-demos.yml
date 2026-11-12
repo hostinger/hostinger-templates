@@ -5,7 +5,6 @@ on:
     branches: [main]
     paths:
       - "templates/**"
-      - "templates.json"
   workflow_dispatch:
     inputs:
       templates:
@@ -25,8 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       templates: ${{ steps.list.outputs.templates }}
-      upstream: ${{ steps.list.outputs.upstream }}
-      all: ${{ steps.list.outputs.all }}
       empty: ${{ steps.list.outputs.empty }}
     steps:
       - uses: actions/checkout@v4
@@ -42,52 +39,31 @@ jobs:
           set -euo pipefail
           if [ "$EVENT" = "workflow_dispatch" ]; then
             ids=()
-            upstream_ids=()
             for id in $(echo "$REQUESTED" | tr ',' ' '); do
-              if [[ ! "$id" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+              if [[ ! "$id" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || [ ! -f "templates/$id/package.json" ]; then
                 echo "::error::Unknown template: $id"
                 exit 1
               fi
-              if [ -f "templates/$id/package.json" ]; then
-                ids+=("$id")
-              elif jq -e --arg id "$id" '(.upstream // []) | any(.id == $id)' templates.json > /dev/null; then
-                upstream_ids+=("$id")
-              else
-                echo "::error::Unknown template: $id"
-                exit 1
-              fi
+              ids+=("$id")
             done
             templates="[]"
-            upstream="[]"
             if [ "${#ids[@]}" -gt 0 ]; then
               templates="$(printf '%s\n' "${ids[@]}" | sort -u | jq -R . | jq -cs .)"
             fi
-            if [ "${#upstream_ids[@]}" -gt 0 ]; then
-              upstream="$(printf '%s\n' "${upstream_ids[@]}" | sort -u | jq -R . | jq -cs .)"
-            fi
           else
             templates="$(node .github/scripts/changed-templates.mjs --added "$BEFORE" "$AFTER")"
-            # Upstream templates redeploy whenever their pin changes, not only
-            # when they are added: a pin bump is the only way their code changes.
-            upstream="$(node .github/scripts/changed-upstream.mjs "$BEFORE" "$AFTER")"
           fi
-          all="$(jq -cn --argjson a "$templates" --argjson b "$upstream" '$a + $b | unique')"
-          empty=false
-          if [ "$all" = "[]" ]; then
-            empty=true
+          echo "templates=$templates" >> "$GITHUB_OUTPUT"
+          if [ "$templates" = "[]" ]; then
+            echo "empty=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "empty=false" >> "$GITHUB_OUTPUT"
           fi
-          {
-            echo "templates=$templates"
-            echo "upstream=$upstream"
-            echo "all=$all"
-            echo "empty=$empty"
-          } >> "$GITHUB_OUTPUT"
           echo "Templates to deploy: $templates"
-          echo "Upstream templates to deploy: $upstream"
 
   build:
     needs: detect
-    if: needs.detect.outputs.templates != '[]' && needs.detect.outputs.templates != ''
+    if: needs.detect.outputs.empty == 'false'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -99,13 +75,19 @@ jobs:
         working-directory: templates/${{ matrix.template }}
     steps:
       - uses: actions/checkout@v4
+      # Vendored templates may install with pnpm or yarn and have no
+      # package-lock.json; the scripts' lockfile keeps the cache step valid.
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: templates/${{ matrix.template }}/package-lock.json
-      - run: npm ci
-      - run: npm run build
+          cache-dependency-path: |
+            templates/${{ matrix.template }}/package-lock.json
+            .github/scripts/package-lock.json
+      - name: Install
+        run: node ../../.github/scripts/template-commands.mjs install "$PWD"
+      - name: Build
+        run: node ../../.github/scripts/template-commands.mjs build "$PWD"
       - name: Package
         working-directory: .
         env:
@@ -118,35 +100,8 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-  # Upstream templates are not built here. The pinned commit is zipped as it
-  # is and Hostinger builds it, the same way a purchase will.
-  archive-upstream:
-    needs: detect
-    if: needs.detect.outputs.upstream != '[]' && needs.detect.outputs.upstream != ''
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      max-parallel: 6
-      matrix:
-        template: ${{ fromJson(needs.detect.outputs.upstream) }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-      - name: Archive the pinned commit
-        env:
-          TEMPLATE: ${{ matrix.template }}
-        run: node .github/scripts/upstream-archive.mjs "$TEMPLATE" "$RUNNER_TEMP/demo"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: demo-${{ matrix.template }}
-          path: ${{ runner.temp }}/demo
-          if-no-files-found: error
-          retention-days: 7
-
   deploy:
-    needs: [detect, build, archive-upstream]
+    needs: [detect, build]
     if: ${{ !cancelled() && needs.detect.outputs.empty == 'false' }}
     runs-on: ubuntu-latest
     environment: template-demos
@@ -166,5 +121,5 @@ jobs:
         env:
           HOSTINGER_API_TOKEN: ${{ secrets.HOSTINGER_API_TOKEN }}
           DEMO_PARENT_DOMAIN: hostingertemplates.com
-          TEMPLATES: ${{ needs.detect.outputs.all }}
+          TEMPLATES: ${{ needs.detect.outputs.templates }}
         run: node .github/scripts/deploy-demos.mjs demos

@@ -5,8 +5,6 @@ name: Template PR deploy
 # gate, so PR code never sees the preview token: the PR's own job only
 # uploads build artifacts, which pr-stage-artifact.mjs inspects (without
 # extracting or running anything) before they are uploaded to Hostinger.
-# Upstream templates have no PR artifact: the deploy job zips their pinned
-# commit itself, after the plan has re-checked the pin.
 #
 # Off until the repository variable PREVIEW_DEPLOYS_ENABLED is "true" and the
 # template-pr-check environment has PREVIEW_HOSTINGER_API_TOKEN (and
@@ -42,7 +40,6 @@ jobs:
       decision: ${{ steps.plan.outputs.decision }}
       pr: ${{ steps.plan.outputs.pr }}
       ids: ${{ steps.plan.outputs.ids }}
-      upstream: ${{ steps.plan.outputs.upstream }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -102,22 +99,15 @@ jobs:
         with:
           name: pr-deploy-plan
       - uses: actions/download-artifact@v4
-        if: ${{ !contains(fromJson(needs.plan.outputs.upstream), matrix.template) }}
         with:
           name: pr-demo-${{ matrix.template }}
           path: ${{ runner.temp }}/incoming
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
       - name: Inspect and stage the artifact
-        if: ${{ !contains(fromJson(needs.plan.outputs.upstream), matrix.template) }}
         env:
           TEMPLATE: ${{ matrix.template }}
         run: node .github/scripts/pr-stage-artifact.mjs "$RUNNER_TEMP/incoming" plan.json "$TEMPLATE" "$RUNNER_TEMP/staged"
-      - name: Archive the pinned upstream commit
-        if: ${{ contains(fromJson(needs.plan.outputs.upstream), matrix.template) }}
-        env:
-          TEMPLATE: ${{ matrix.template }}
-        run: node .github/scripts/upstream-archive.mjs "$TEMPLATE" "$RUNNER_TEMP/staged" --plan plan.json
       - name: Deploy and smoke-check on Hostinger
         env:
           TEMPLATE: ${{ matrix.template }}

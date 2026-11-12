@@ -1,9 +1,9 @@
-import { spawnSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { appendFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHostingerApi } from './hostinger-api.mjs';
-import { archiveUpstream } from './upstream-archive.mjs';
+import { inspectArchive } from './inspect-archive.mjs';
 
 // Proves that repositories evaluate-repos.mjs passed really build and run on
 // Hostinger: each one is archived at the evaluated commit (nothing from it
@@ -81,12 +81,22 @@ console.log(report);
 if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${report}\n`);
 
 function stage(candidate, id) {
+  const checkout = join(workDir, 'repos', id);
+  mkdirSync(checkout, { recursive: true });
+  const git = (...args) => execFileSync('git', args, { cwd: checkout, stdio: ['ignore', 'pipe', 'pipe'], encoding: 'utf8' });
+  git('init', '--quiet');
+  git('fetch', '--quiet', '--depth=1', `https://github.com/${candidate.repository}.git`, candidate.commit);
+
   const demoDir = join(workDir, 'demos', id);
-  const { archive } = archiveUpstream(
-    { repository: candidate.repository, commit: candidate.commit, directory: candidate.appDir?.replace(/\/$/, '') ?? null },
-    demoDir,
-    id,
-  );
+  mkdirSync(demoDir, { recursive: true });
+  const archive = `${id}_${new Date().toISOString().replace(/\D/g, '').slice(0, 14)}.zip`;
+  const tree = candidate.appDir ? `${candidate.commit}:${candidate.appDir.replace(/\/$/, '')}` : candidate.commit;
+  git('archive', '--format=zip', `--output=${join(demoDir, archive)}`, tree);
+
+  const inspection = inspectArchive(join(demoDir, archive), { kind: 'node' });
+  if (!inspection.ok) {
+    throw new Error(`archive rejected (${inspection.problems.slice(0, 3).join('; ')})`);
+  }
   writeFileSync(join(demoDir, 'meta.json'), JSON.stringify({ id, kind: 'node', archive, title: null, deploy: {}, routes: ['/'] }));
 }
 
