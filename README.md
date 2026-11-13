@@ -45,7 +45,7 @@ follow.
 Merging a PR that adds a template (a new `templates/<id>/package.json`)
 publishes it to `https://<id>.hostingertemplates.com` through the
 `Deploy template demos` workflow. PRs that only change existing templates,
-such as Dependabot security groups and dependency bumps, do not deploy.
+such as Dependabot security updates and dependency bumps, do not deploy.
 To redeploy existing demos, run the workflow from the Actions tab with their
 template IDs.
 
