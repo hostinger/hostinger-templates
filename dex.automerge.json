@@ -1,5 +1,5 @@
 {
-  "mode": "dry-run",
+  "mode": "merge",
   "mergeMethod": "squash",
   "window": {
     "days": ["mon", "tue", "wed", "thu", "fri"],
