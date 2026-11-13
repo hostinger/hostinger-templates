@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   cleanup:
-    if: vars.PREVIEW_DEPLOYS_ENABLED == 'true'
+    if: vars.PREVIEW_DEPLOYS_ENABLED == 'true' && (github.event_name != 'pull_request_target' || github.event.pull_request.base.ref == 'main')
     runs-on: ubuntu-latest
     environment: template-pr-check
     steps:
