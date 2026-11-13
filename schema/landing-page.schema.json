@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/hostinger/hostinger-templates/main/schema/landing-page.schema.json",
+  "title": "Template landing-page copy",
+  "description": "landing-pages/<id>.json. The prose version, with the copy rules for enabled pages, is skills/write-landing-page/LANDING_PAGE_SCHEMA.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["landingPage"],
+  "properties": {
+    "landingPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "popular",
+        "recommended",
+        "heroTitle",
+        "heroDescription",
+        "about",
+        "features",
+        "metaTitle",
+        "metaDescription",
+        "short",
+        "long",
+        "kbUrl"
+      ],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "popular": { "type": "boolean" },
+        "recommended": { "type": "boolean" },
+        "heroTitle": { "type": "string", "maxLength": 70 },
+        "heroDescription": { "type": "string", "maxLength": 220 },
+        "about": { "type": "string", "maxLength": 1200 },
+        "features": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["title", "description"],
+            "properties": {
+              "title": { "type": "string", "maxLength": 60 },
+              "description": { "type": "string", "maxLength": 220 }
+            }
+          }
+        },
+        "metaTitle": { "type": "string", "maxLength": 59 },
+        "metaDescription": { "type": "string", "maxLength": 160 },
+        "short": { "type": "string", "maxLength": 120 },
+        "long": { "type": "string", "maxLength": 400 },
+        "kbUrl": {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://www\\.hostinger\\.com/support/[^\\s]+$"
+            },
+            { "type": "null" }
+          ]
+        }
+      }
+    }
+  }
+}
