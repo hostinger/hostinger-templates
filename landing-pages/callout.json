@@ -4,16 +4,16 @@
     "popular": true,
     "recommended": false,
     "heroTitle": "Plumber and electrician website template",
-    "heroDescription": "A one-page site for local trades that shows your services and hours, checks coverage by street or postcode, and keeps a call button within reach.",
-    "about": "Callout is a one-page website for an independent plumber, electrician or other local tradesperson. It is built to win trust quickly and turn nearby visitors into phone calls. Visitors see your services and working hours, check whether you cover their street or postcode, and call you from buttons that stay easy to reach on a phone. Emergency availability is highlighted, so urgent jobs find you first. The copy, services, hours, coverage areas and contact details live in one content file, so making the site yours means editing text, not code. It is a React and TypeScript project that deploys from GitHub to Hostinger Node.js hosting in a few clicks.",
+    "heroDescription": "A one-page site for local trades that shows your services and hours, checks coverage by street or postcode, and puts a call button in the header and hero.",
+    "about": "Callout is a one-page website for an independent plumber, electrician or other local tradesperson. It is built to win trust quickly and turn nearby visitors into phone calls. Visitors see your services and working hours, check whether you cover their street or postcode, and call you in one tap from the header, hero, services or footer. Emergency availability is highlighted, so urgent jobs find you first. Services, hours, coverage areas and contact details live in one content file, so most updates are quick text edits. It is a React and TypeScript project that deploys from GitHub to Hostinger Node.js hosting in a few clicks.",
     "features": [
       {
         "title": "Coverage checker",
         "description": "Visitors type a street or postcode to see whether you cover their area before they call."
       },
       {
-        "title": "Click-to-call everywhere",
-        "description": "Call buttons sit in the header, the hero and every section, sized for phones."
+        "title": "Click-to-call",
+        "description": "Call buttons in the header, the hero, every service and the footer, sized for phones."
       },
       {
         "title": "Emergency availability",
@@ -29,7 +29,7 @@
       },
       {
         "title": "Ready for any screen",
-        "description": "Layouts are tuned for phones, tablets and desktops, with accessible navigation and forms."
+        "description": "Layouts are tuned for phones, tablets and desktops, with an accessible coverage form."
       }
     ],
     "metaTitle": "Plumber and Electrician Website Template",

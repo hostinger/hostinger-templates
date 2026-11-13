@@ -17,7 +17,7 @@
       },
       {
         "title": "Next and in-session states",
-        "description": "The next class glows, and a running class gets an in-session badge with its end time."
+        "description": "The next class glows, a running class gets an in-session badge and the banner shows when it ends."
       },
       {
         "title": "Booking handoff",

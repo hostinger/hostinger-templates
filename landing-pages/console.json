@@ -9,7 +9,7 @@
     "features": [
       {
         "title": "Stat cards with trends",
-        "description": "Four overview cards show a value, the change against the previous two weeks and a 14-day sparkline."
+        "description": "Four overview cards show a value and the change against the previous two weeks, three with a 14-day sparkline."
       },
       {
         "title": "Interactive charts",
