@@ -50,7 +50,7 @@ before the page can be enabled.
 
 A copy PR changes only `landing-pages/**`. A code PR never changes
 `landing-pages/**`. Code needs one engineering approval; copy needs the
-Web Hosting code owner's approval, which `.github/CODEOWNERS` requests
+Web Hosting code owner's approval, which `CODEOWNERS` requests
 automatically.
 
 - Title: `Copy: <template name> landing page`.
