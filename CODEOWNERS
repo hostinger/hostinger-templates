@@ -1,5 +1,7 @@
 * @hostinger/wh-frontend @hostinger/wh-devs
 
+/landing-pages/ @hostinger/wh-devs
+
 /templates/*/package.json @hostinger/wh-frontend @hostinger/wh-devs @hostinger/dex-review
 /templates/*/package-lock.json @hostinger/wh-frontend @hostinger/wh-devs @hostinger/dex-review
 
