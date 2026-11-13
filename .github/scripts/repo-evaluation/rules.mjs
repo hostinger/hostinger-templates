@@ -161,6 +161,13 @@ export function evaluateRepository(facts, { now = new Date() } = {}) {
     }.`);
   }
 
+  const isWorkspaceApp = appDir && (packageJson.workspaces || facts.hasRootWorkspaces || facts.hasPnpmWorkspace || facts.hasTurboOrNx);
+  if (isWorkspaceApp && Object.values(deps).some((version) => String(version).startsWith('workspace:'))) {
+    fail('layout', `${appDir} depends on other workspace packages (workspace:), which a deploy of ${appDir} leaves out.`);
+  } else if (isWorkspaceApp) {
+    warn('layout', `${appDir} is in a workspace: a deploy holds only ${appDir}, without the root lockfile or the other workspace packages.`);
+  }
+
   if (isKnownNonWebApp) {
     return summarize(facts, findings, framework);
   } else if (framework) {
@@ -256,8 +263,21 @@ export function satisfiesMajor(range, major) {
   const candidates = [`${major}.0.0`, `${major}.10.0`, `${major}.99.0`].map(parseVersion);
   return range
     .split('||')
-    .map((part) => part.trim())
+    .map((part) => normalizeRange(part.trim()))
     .some((part) => candidates.some((version) => part.split(/\s+/).filter(Boolean).every((comparator) => matches(comparator, version))));
+}
+
+function normalizeRange(part) {
+  const hyphen = part.match(/^(\S+)\s+-\s+(\S+)$/);
+  const range = hyphen ? `>=${hyphen[1]} ${upperBound(hyphen[2])}` : part;
+  return range.replace(/(>=|<=|>|<|=|\^|~)\s+/g, '$1');
+}
+
+function upperBound(version) {
+  const parts = version.replace(/^v/, '').split('.').filter((part) => /^\d+$/.test(part));
+  if (parts.length >= 3) return `<=${parts.join('.')}`;
+  parts[parts.length - 1] = String(Number(parts[parts.length - 1]) + 1);
+  return `<${parts.join('.')}`;
 }
 
 function matches(comparator, version) {

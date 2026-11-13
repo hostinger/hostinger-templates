@@ -54,6 +54,7 @@ describe('evaluateRepository', () => {
     ['a repo with git submodules', { tree: ['package.json', 'package-lock.json', '.gitmodules', 'src/main.tsx'] }, /submodules/],
     ['a build that runs browser tests', { packageJson: { scripts: { prebuild: 'ng test --watch=false', build: 'ng build' }, dependencies: { '@angular/core': '^20.0.0' } } }, /"prebuild" script.*headless browser/],
     ['a source tree over the archive limit', { sourceSizeKb: 60 * 1024 }, /source is 60 MB/],
+    ['a workspace app that needs other workspace packages', { appDir: 'apps/web', hasRootWorkspaces: true, packageJson: { scripts: { build: 'vite build' }, dependencies: { react: '^19.0.0', '@acme/ui': 'workspace:*' }, devDependencies: { vite: '^7.0.0' } } }, /apps\/web depends on other workspace packages/],
     ['a monorepo without an app directory', { hasPnpmWorkspace: true, packageJson: { scripts: { build: 'turbo build' } }, appCandidates: ['apps/web'] }, /Monorepo.*apps\/web/],
   ]) {
     it(`rejects ${name}`, () => {
@@ -97,6 +98,12 @@ describe('evaluateRepository', () => {
     assert.match(messages(result), /Contentful credentials/);
   });
 
+  it('flags a workspace app without workspace dependencies for review', () => {
+    const result = evaluateRepository(facts({ appDir: 'apps/web', hasPnpmWorkspace: true }), { now: NOW });
+    assert.equal(result.verdict, 'needs-review');
+    assert.match(messages(result), /apps\/web is in a workspace/);
+  });
+
   it('accepts an Express server using MySQL', () => {
     const result = evaluateRepository(
       facts({ packageJson: { scripts: { start: 'node server.js' }, dependencies: { express: '^5.0.0', mysql2: '^3.0.0' } } }),
@@ -116,6 +123,11 @@ describe('satisfiesMajor', () => {
     ['22.x', 22, true],
     ['~20.10', 20, true],
     ['>= 26.2.0', 24, false],
+    ['>= 16', 22, true],
+    ['> 14 < 20', 22, false],
+    ['16 - 22', 22, true],
+    ['16 - 20', 22, false],
+    ['18.0.0 - 21.9.0', 22, false],
   ]) {
     it(`${range} ${expected ? 'allows' : 'excludes'} Node.js ${major}`, () => {
       assert.equal(satisfiesMajor(range, major), expected);
