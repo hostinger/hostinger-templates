@@ -35,7 +35,7 @@ jobs:
             exit 0
           fi
 
-          body=$(printf 'Dependabot PRs open for more than %s hours:\n\n%s\n\nCheck their failing checks or the auto-merge run comments.\n\nThis issue closes on the next run with no stuck Dependabot PRs.' "$STUCK_AFTER_HOURS" "$stuck")
+          body=$(printf 'Dependabot PRs open for more than %s hours:\n\n%s\n\nCheck their failing checks and the DEX Auto-merge status.\n\nThis issue closes on the next run with no stuck Dependabot PRs.' "$STUCK_AFTER_HOURS" "$stuck")
 
           if [ -n "$existing" ]; then
             gh issue comment "$existing" --body "$body"
