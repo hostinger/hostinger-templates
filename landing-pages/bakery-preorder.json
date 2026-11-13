@@ -1,0 +1,41 @@
+{
+  "landingPage": {
+    "enabled": false,
+    "popular": false,
+    "recommended": false,
+    "heroTitle": "Bakery preorder website template",
+    "heroDescription": "A single-page site for a weekend baker with a countdown to the order cut-off, collection slots showing the space left, and orders reserved by email.",
+    "about": "Bakery Preorder is a single-page website for a home or weekend microbakery that bakes small batches to order. It answers the two questions that decide every preorder: how long is left to order, and which collection slots still have space. An oven-timer countdown runs to your weekly cut-off and rolls to next week once it passes. Collection slots show how much room is left, and you update the counts as orders come in. Customers choose bakes and quantities, see a running total, and send the order to you by email, so there is no payment system to set up. Your menu, prices, slots and cut-off live in two simple data files. It is built with Astro and TypeScript and deploys from GitHub to Hostinger.",
+    "features": [
+      {
+        "title": "Order cut-off countdown",
+        "description": "An oven-timer countdown runs to your weekly cut-off and rolls to next week once it passes."
+      },
+      {
+        "title": "Slot availability at a glance",
+        "description": "Slot tags show the space left from your counts, flag nearly full slots and close fully booked ones."
+      },
+      {
+        "title": "Weekend menu",
+        "description": "List your bakes with photos, prices and units, ready to change every week."
+      },
+      {
+        "title": "Live order ticket",
+        "description": "Customers pick quantities and a slot and see their items, total and collection date update."
+      },
+      {
+        "title": "Email reservations",
+        "description": "Orders open as a prefilled email to you, with a copy-text fallback, so no payment setup is needed."
+      },
+      {
+        "title": "Edit two simple files",
+        "description": "Menu, prices and slots live in one data file and the cut-off in another, so updates take minutes."
+      }
+    ],
+    "metaTitle": "Bakery Preorder Website Template",
+    "metaDescription": "Take weekend preorders with a cut-off countdown, slots showing the space left and email reservations. A one-page bakery template you can deploy on Hostinger.",
+    "short": "Weekend bakery preorder page with a cut-off countdown and collection slots.",
+    "long": "A one-page site for a weekend baker: a countdown to the order cut-off, collection slots showing the space left, a live order ticket, and reservations sent to you by email.",
+    "kbUrl": null
+  }
+}

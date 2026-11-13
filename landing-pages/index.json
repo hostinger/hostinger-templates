@@ -1,3 +1,9 @@
 {
-  "landingPages": []
+  "landingPages": [
+    "bakery-preorder",
+    "callout",
+    "class-timetable",
+    "console",
+    "quote-slider"
+  ]
 }

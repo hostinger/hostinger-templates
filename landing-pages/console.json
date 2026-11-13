@@ -1,0 +1,41 @@
+{
+  "landingPage": {
+    "enabled": false,
+    "popular": true,
+    "recommended": false,
+    "heroTitle": "Admin and analytics dashboard template",
+    "heroDescription": "A Next.js dashboard with stat cards, interactive charts, a sortable table and a settings page, filled with realistic sample data and no backend to set up.",
+    "about": "Console is an admin and analytics dashboard you can show before your backend exists. Founders can demo a product idea, teams can prototype an internal tool, and developers get a serious-looking operations dashboard to grow into. The overview opens with four stat cards and two interactive charts with tooltips, keyboard inspection and a table view for screen readers. An events page has a sortable table with status chips, and the settings page is clearly read-only. Every number comes from sample JSON files in the project, so swapping in your own data or API is straightforward. It is a TypeScript Next.js app that deploys from GitHub to Hostinger Node.js hosting.",
+    "features": [
+      {
+        "title": "Stat cards with trends",
+        "description": "Four overview cards show a value and the change against the previous two weeks, three with a 14-day sparkline."
+      },
+      {
+        "title": "Interactive charts",
+        "description": "Area and bar charts with tooltips, arrow-key inspection and a table view under each chart."
+      },
+      {
+        "title": "Sortable events table",
+        "description": "Sort recent deliveries by six columns, with status chips and a card layout on phones."
+      },
+      {
+        "title": "Honest settings page",
+        "description": "A read-only settings page shows workspace and profile fields and says plainly that there is no backend."
+      },
+      {
+        "title": "Sample data you can swap",
+        "description": "Every value comes from JSON files in the project, ready to replace with your own data or API."
+      },
+      {
+        "title": "Accessible app shell",
+        "description": "Sidebar navigation, a sticky top bar and a keyboard-friendly mobile drawer on every page."
+      }
+    ],
+    "metaTitle": "Admin Dashboard Template with Charts",
+    "metaDescription": "Start an admin or analytics dashboard with stat cards, interactive charts and a sortable table on realistic sample data. Deploy it from GitHub on Hostinger.",
+    "short": "Admin and analytics dashboard with charts and a sortable table on sample data.",
+    "long": "An admin and analytics dashboard with stat cards, interactive charts, a sortable events table and a read-only settings page, all filled from sample data so you can demo before the backend exists.",
+    "kbUrl": null
+  }
+}
