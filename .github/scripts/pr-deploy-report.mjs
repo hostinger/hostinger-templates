@@ -86,8 +86,12 @@ function renderComment(entries) {
 }
 
 async function upsertComment(body) {
-  const comments = await request('GET', `/issues/${plan.pr}/comments?per_page=100`);
-  const existing = comments.find((comment) => comment.body?.includes(MARKER));
+  let existing;
+  for (let page = 1; !existing; page += 1) {
+    const comments = await request('GET', `/issues/${plan.pr}/comments?per_page=100&page=${page}`);
+    existing = comments.find((comment) => comment.body?.includes(MARKER));
+    if (comments.length < 100) break;
+  }
   if (existing) {
     await request('PATCH', `/issues/comments/${existing.id}`, { body });
   } else {

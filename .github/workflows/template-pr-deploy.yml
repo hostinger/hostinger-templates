@@ -120,7 +120,8 @@ jobs:
         run: |
           set -euo pipefail
           export DEMO_SUBDOMAIN_PREFIX="pr-${PR_NUMBER}-"
-          export TEMPLATES="$(jq -cn --arg id "$TEMPLATE" '[$id]')"
+          TEMPLATES="$(jq -cn --arg id "$TEMPLATE" '[$id]')"
+          export TEMPLATES
           node .github/scripts/deploy-demos.mjs "$RUNNER_TEMP/staged"
       - uses: actions/upload-artifact@v4
         if: always()
@@ -132,7 +133,7 @@ jobs:
 
   report:
     needs: [plan, deploy]
-    if: always() && needs.plan.outputs.decision == 'deploy'
+    if: ${{ !cancelled() && needs.plan.outputs.decision == 'deploy' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
