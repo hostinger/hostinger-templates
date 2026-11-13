@@ -1,0 +1,135 @@
+name: Repository deployability
+
+# Finds popular public GitHub repositories that could become Node.js
+# templates and checks they can run on Hostinger web hosting. The evaluate
+# job only reads repositories through the GitHub API. The optional deploy job
+# builds the ones that pass on the preview account (the same account and
+# smoke check as template PRs) and deletes them afterwards.
+on:
+  schedule:
+    - cron: "30 5 * * 1"
+  workflow_dispatch:
+    inputs:
+      repositories:
+        description: owner/repo[:app/dir] entries separated by spaces. Empty discovers popular repositories.
+        required: false
+        type: string
+      query:
+        description: GitHub search query for discovery (optional)
+        required: false
+        type: string
+      limit:
+        description: Repositories per discovery query
+        required: false
+        type: number
+        default: 15
+      deploy:
+        description: Also deploy the repositories that pass to the preview account
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: repo-deployability
+  cancel-in-progress: false
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Evaluate repositories
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REPOSITORIES: ${{ inputs.repositories }}
+          QUERY: ${{ inputs.query }}
+          LIMIT: ${{ inputs.limit || 15 }}
+        run: |
+          set -euo pipefail
+          if [ -n "$REPOSITORIES" ]; then
+            read -r -a targets <<< "$REPOSITORIES"
+            node .github/scripts/evaluate-repos.mjs "${targets[@]}" --out results.json | tee report.md
+          elif [ -n "$QUERY" ]; then
+            node .github/scripts/evaluate-repos.mjs --discover --query "$QUERY" --limit "$LIMIT" --out results.json | tee report.md
+          else
+            node .github/scripts/evaluate-repos.mjs --discover --limit "$LIMIT" --out results.json | tee report.md
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: repo-deployability
+          path: |
+            results.json
+            report.md
+          retention-days: 30
+
+  deploy:
+    needs: evaluate
+    if: inputs.deploy && vars.PREVIEW_DEPLOYS_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment: template-pr-check
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          name: repo-deployability
+      - name: Deploy, smoke-check and delete
+        env:
+          HOSTINGER_API_TOKEN: ${{ secrets.PREVIEW_HOSTINGER_API_TOKEN }}
+          SMOKE_BASIC_AUTH: ${{ secrets.PREVIEW_BASIC_AUTH }}
+          DEMO_PARENT_DOMAIN: ${{ vars.PREVIEW_PARENT_DOMAIN }}
+        run: node .github/scripts/deploy-candidates.mjs results.json --limit 5 | tee deploy-report.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: repo-deployability-deploys
+          path: deploy-report.md
+          retention-days: 30
+
+  report:
+    needs: [evaluate, deploy]
+    if: always() && needs.evaluate.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: repo-deployability*
+          merge-multiple: true
+      - name: Update the candidates issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          title="Node.js template candidates"
+          {
+            echo "Popular public repositories checked for running as Node.js apps on Hostinger web hosting. Updated by [this run]($RUN_URL)."
+            echo
+            sed -n '/^## Node.js deployability/,$p' report.md
+            if [ -f deploy-report.md ]; then
+              echo
+              sed -n '/^## Deployed on Hostinger/,$p' deploy-report.md
+            fi
+            echo
+            echo "A repository that deploys still needs a license and content review before it is snapshotted as a template (HSTG-23740)."
+          } > body.md
+          number=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title \"$title\"" --json number,title \
+            --jq "map(select(.title == \"$title\")) | .[0].number // empty")
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --repo "$GITHUB_REPOSITORY" --body-file body.md
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file body.md
+          fi
