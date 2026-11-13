@@ -6,11 +6,12 @@ updates:
     schedule:
       interval: daily
     # Version updates off. Security updates stay on and are grouped so
-    # one advisory opens one PR across every matching template.
+    # one vulnerable package opens one PR across every matching template.
     open-pull-requests-limit: 0
     groups:
       security:
         applies-to: security-updates
+        group-by: dependency-name
         patterns:
           - "*"
         update-types:
