@@ -73,6 +73,8 @@ jobs:
     needs: detect
     if: needs.detect.outputs.empty == 'false'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       max-parallel: 6
@@ -83,6 +85,8 @@ jobs:
         working-directory: templates/${{ matrix.template }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       # audit-regression.mjs reads the base commit's lockfile with git show.
       - name: Fetch base commit
         env:
