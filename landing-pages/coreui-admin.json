@@ -1,0 +1,41 @@
+{
+  "landingPage": {
+    "enabled": false,
+    "popular": true,
+    "recommended": false,
+    "heroTitle": "CoreUI React admin dashboard template",
+    "heroDescription": "The open-source CoreUI admin dashboard for React, with charts, a full component library and account pages, deployed on Hostinger at a reviewed version.",
+    "about": "CoreUI React Admin is the free, open-source admin dashboard template from the CoreUI team, built with React and Vite. It gives an internal tool, back office or customer portal a professional layout on day one. The dashboard opens with traffic charts, stat widgets and progress summaries, and a collapsible sidebar leads to example pages for every component: buttons, forms, tables, modals, notifications, icons and more. Login, register and password reset screens and error pages are included, along with a light and dark theme. You connect it to your own backend and keep the pages you need. Hostinger deploys the original project at a version we have checked, with its MIT license.",
+    "features": [
+      {
+        "title": "Dashboard with charts",
+        "description": "Traffic charts, stat widgets and progress summaries to build your own dashboard on."
+      },
+      {
+        "title": "Component library pages",
+        "description": "Working examples of buttons, forms, tables, modals, alerts, toasts and icons."
+      },
+      {
+        "title": "Account screens",
+        "description": "Login, register, password reset and change password screens ready to connect."
+      },
+      {
+        "title": "Error pages",
+        "description": "Styled 404 and 500 pages that match the rest of the dashboard."
+      },
+      {
+        "title": "Collapsible sidebar",
+        "description": "Grouped navigation that collapses to icons to leave more room for data."
+      },
+      {
+        "title": "Light and dark themes",
+        "description": "A theme switch for light and dark mode across every page."
+      }
+    ],
+    "metaTitle": "CoreUI React Admin Dashboard Template",
+    "metaDescription": "Build an internal tool or back office with CoreUI React Admin: charts, components, account screens and a collapsible sidebar. Deploy it on Hostinger.",
+    "short": "React admin dashboard with charts, components and account screens.",
+    "long": "CoreUI React Admin is the open-source React and Vite admin dashboard from CoreUI, with charts, widgets, a full component library, account screens, error pages and light and dark themes.",
+    "kbUrl": null
+  }
+}

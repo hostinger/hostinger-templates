@@ -1,0 +1,41 @@
+{
+  "landingPage": {
+    "enabled": false,
+    "popular": true,
+    "recommended": false,
+    "heroTitle": "AstroWind website template for startups and SaaS",
+    "heroDescription": "A popular open-source Astro and Tailwind CSS starter with ready-made home, landing, pricing and blog pages, deployed on Hostinger at a reviewed version.",
+    "about": "AstroWind is one of the most popular open-source website starters for Astro, built with Tailwind CSS by its original authors. It gives a startup, SaaS product or agency a complete marketing site from the first deploy: several home page styles, landing pages for lead generation and launches, pricing, services, about and contact pages, plus a blog with categories, tags and an RSS feed. SEO metadata, a sitemap and a dark mode are already wired in. The site builds to fast static pages, and you shape it by editing Astro components and Markdown files. Hostinger deploys the original project at a version we have checked, so you start from the real AstroWind code and its MIT license.",
+    "features": [
+      {
+        "title": "Home page variants",
+        "description": "Start from SaaS, startup, mobile app or personal home pages and keep the one that fits."
+      },
+      {
+        "title": "Landing pages",
+        "description": "Lead generation, click-through, pre-launch and product pages ready for campaigns."
+      },
+      {
+        "title": "Blog included",
+        "description": "Markdown and MDX posts with categories, tags, pagination and an RSS feed."
+      },
+      {
+        "title": "SEO built in",
+        "description": "Meta tags, Open Graph data, a sitemap and robots rules are generated with every build."
+      },
+      {
+        "title": "Dark mode",
+        "description": "A light and dark theme switch that remembers each visitor's choice."
+      },
+      {
+        "title": "Fast static pages",
+        "description": "The site builds to static HTML and CSS, so pages load quickly on any connection."
+      }
+    ],
+    "metaTitle": "AstroWind Website Template for Startups",
+    "metaDescription": "Launch a startup or SaaS website with AstroWind, the open-source Astro and Tailwind CSS starter with landing pages, pricing and a blog. Deploy it on Hostinger.",
+    "short": "Astro and Tailwind CSS starter with landing, pricing and blog pages.",
+    "long": "AstroWind is a popular open-source Astro and Tailwind CSS starter for startups, SaaS products and agencies, with ready-made home, landing, pricing and blog pages, SEO defaults and dark mode.",
+    "kbUrl": null
+  }
+}

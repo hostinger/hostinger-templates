@@ -1,0 +1,41 @@
+{
+  "landingPage": {
+    "enabled": false,
+    "popular": false,
+    "recommended": false,
+    "heroTitle": "ScrewFast company website template",
+    "heroDescription": "An open-source Astro and Tailwind CSS company site with products, services, pricing, a blog and multilingual docs, deployed on Hostinger at a reviewed version.",
+    "about": "ScrewFast is an open-source company website template built with Astro, Tailwind CSS and Preline UI by its original author. It is presented as a fictional hardware and construction brand, which makes it easy to see a full business site in action and then rebrand it for your own products or services. You get a home page with clear calls to action, services, pricing plans, a frequently asked questions section and contact details, plus a product catalogue with detail pages, a blog and an insights section. A documentation area built on Starlight adds search and several languages. Hostinger deploys the original project at a version we have checked, with its MIT license.",
+    "features": [
+      {
+        "title": "Company home page",
+        "description": "A hero, trust section, service highlights and calls to action ready to rebrand."
+      },
+      {
+        "title": "Product catalogue",
+        "description": "Product listings and detail pages generated from simple content files."
+      },
+      {
+        "title": "Pricing and FAQ",
+        "description": "Pricing plans and an answers section to handle common questions before contact."
+      },
+      {
+        "title": "Blog and insights",
+        "description": "Publish news and longer articles in Markdown with their own listing pages."
+      },
+      {
+        "title": "Multilingual docs",
+        "description": "A documentation area with search and several languages, built on Starlight."
+      },
+      {
+        "title": "Light and dark themes",
+        "description": "Every page supports light and dark mode out of the box."
+      }
+    ],
+    "metaTitle": "ScrewFast Company Website Template",
+    "metaDescription": "Launch a company website with ScrewFast: products, services, pricing, a blog and multilingual docs, built with Astro and Tailwind CSS. Deploy it on Hostinger.",
+    "short": "Astro company site with products, pricing, a blog and multilingual docs.",
+    "long": "ScrewFast is an open-source Astro and Tailwind CSS company website with products, services, pricing, a blog and a multilingual Starlight documentation section, easy to rebrand for any business.",
+    "kbUrl": null
+  }
+}

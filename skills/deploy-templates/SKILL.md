@@ -13,7 +13,9 @@ set to that URL in the PR that adds the template.
 
 - On merge to `main`, it deploys every template whose
   `templates/<id>/package.json` the push added. Changes to existing templates
-  (Dependabot security groups, dependency bumps, fixes) do not deploy.
+  (Dependabot security groups, dependency bumps, fixes) do not deploy, except
+  vendored templates (a `source` in `templates.json`), which redeploy on any
+  change because an upstream sync is the only way their code changes.
 - From the Actions tab ("Run workflow"), it redeploys the template IDs given.
 
 Do not deploy demos with the Hostinger connector or MCP tools while the
@@ -40,9 +42,11 @@ Run it by hand with
 
 1. Open the failed run and find the template's step output:
    - `build` job failed: the template does not install or build on CI.
-     Reproduce locally with `npm ci && npm run build`.
+     Reproduce locally with the template's own package manager:
+     `node .github/scripts/template-commands.mjs install templates/<id>`, then
+     `build` the same way (vendored templates may ship a pnpm lockfile).
    - `deploy` job, `Node.js build … failed`: the step prints the tail of the
-     Hostinger build log. Hostinger runs `npm ci` and the build on Node 22, so
+     Hostinger build log. Hostinger installs and builds on Node 22, so
      reproduce with Node 22 before changing anything. Do not trust hPanel's
      AI failure analysis without reproducing it.
    - `deploy` job, `Timed out … waiting for https://…`: the deploy went
@@ -53,7 +57,8 @@ Run it by hand with
      creates a new token on the account that owns `hostingertemplates.com`
      and replaces the secret.
 2. Fix the template in a PR. Merging the fix does not redeploy it, so run the
-   workflow for that template after the merge.
+   workflow for that template after the merge. Vendored templates take fixes
+   only from upstream (an upstream sync PR), and merging that redeploys them.
 3. Confirm `https://<id>.hostingertemplates.com` and one non-home page load.
 
 How the workflow decides between a static and a Node.js deploy:
@@ -78,7 +83,7 @@ plan, use the Hostinger connector tools on the account that owns
    `hostingertemplates.com` website there, and wait until it is ready.
 2. For each template, one at a time (concurrent changes on one account fail
    with unfinished-action limits and transient `500`s):
-   1. Build it with `npm ci && npm run build`.
+   1. Build it with `node .github/scripts/template-commands.mjs install|build templates/<id>`.
    2. Create subdomain `<id>` of `hostingertemplates.com` with directory
       `<id>`, and wait until it is listed.
    3. Static: zip the contents of the build output (`index.html` at the

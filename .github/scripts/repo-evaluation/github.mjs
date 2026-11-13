@@ -3,10 +3,10 @@
 
 const API = process.env.GITHUB_API_URL ?? 'https://api.github.com';
 
-export async function collectFacts(fullName, { appDir = null, token = process.env.GITHUB_TOKEN } = {}) {
+export async function collectFacts(fullName, { appDir = null, ref = null, token = process.env.GITHUB_TOKEN } = {}) {
   const github = createClient(token);
   const repoData = await github.json(`/repos/${fullName}`);
-  const commit = (await github.json(`/repos/${fullName}/commits/${encodeURIComponent(repoData.default_branch)}`)).sha;
+  const commit = (await github.json(`/repos/${fullName}/commits/${encodeURIComponent(ref ?? repoData.default_branch)}`)).sha;
   const treeData = await github.json(`/repos/${fullName}/git/trees/${commit}?recursive=1`);
   const blobs = treeData.tree.filter((entry) => entry.type === 'blob');
   const tree = blobs.map((entry) => entry.path);
@@ -60,6 +60,7 @@ export async function collectFacts(fullName, { appDir = null, token = process.en
       defaultBranch: repoData.default_branch,
     },
     commit,
+    ref: ref ?? repoData.default_branch,
     appDir,
     tree,
     treeTruncated: treeData.truncated,
@@ -92,7 +93,7 @@ export async function searchRepositories(query, { limit = 20, token = process.en
   return items.map((item) => item.full_name);
 }
 
-function createClient(token) {
+export function createClient(token) {
   const headers = {
     Accept: 'application/vnd.github+json',
     'X-GitHub-Api-Version': '2022-11-28',

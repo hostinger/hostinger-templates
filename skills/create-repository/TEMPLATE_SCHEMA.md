@@ -1,8 +1,8 @@
 # Template catalog schema
 
 `templates.json` contains one root object with a `templates` array and a
-`retired` array. Every finished project contributes one entry to
-`templates`. `schema/templates.schema.json` is the machine-readable version
+`retired` array. Every finished project
+contributes one entry to `templates`. `schema/templates.schema.json` is the machine-readable version
 of this file, and every PR is validated against it.
 
 ```json
@@ -170,6 +170,9 @@ to add an entry.
   redirects `/areas` to `/areas/` and the smoke check treats redirects as
   failures.
 - `id` is permanent. Never reuse an id that appears in `retired`.
+- `deploy.nodeVersion` (18, 20, 22 or 24) overrides the Node.js version the
+  hosting API detects from the archive. Set it only when the project requires
+  a newer version than the detected one (for example `engines.node: ">=24"`).
 - Use `null` for an unknown optional scalar and `[]` only when a list genuinely
   has no values.
 
@@ -183,3 +186,71 @@ Do not add:
 - `license`
 - `audienceLevel`
 - `status`
+
+`repository` and `license` are forbidden at the top level only. Vendored
+templates record them inside `source` (see below).
+
+## Upstream templates
+
+A vendored template is a popular public repository we offer as it is. It is
+a normal `templates` entry whose `templates/<id>/` holds a copy of the
+upstream repository at a pinned commit, plus a `source` block that records
+where the copy came from:
+
+```json
+"source": {
+  "repository": "arthelokyo/astrowind",
+  "track": "releases",
+  "prereleases": true,
+  "ref": "v1.0.0-beta.65",
+  "commit": "8d0090f933b71439c02956f7e8d30d41de804832",
+  "license": "MIT"
+}
+```
+
+- `repository` is the GitHub `owner/repo`. `directory` (optional) is the app's
+  folder inside it, for monorepos; the copy is that subtree.
+- `track: "releases"` follows the newest non-prerelease GitHub release, and
+  `ref` is its tag. Use it when the project publishes releases. Otherwise use
+  `track: "branch"` with the branch name as `ref`. Add `"prereleases": true`
+  when the project only publishes prereleases (GitHub then has no latest
+  release); the newest non-draft release is followed instead.
+- `commit` is the full SHA the copy was taken from. Customers deploy the copy
+  in this repository, never the upstream branch or tag, so an upstream push
+  can't change what they get without review.
+- `exclude` (optional) lists upstream paths left out of the copy, relative to
+  the copy root, without a leading `/` or `..`. A path covers everything
+  under it. `.github/` is always left out.
+- `license` is the SPDX id GitHub reports for the repository. Only permissive
+  licenses are allowed (MIT, ISC, Apache-2.0, BSD-2-Clause, BSD-3-Clause,
+  0BSD, Unlicense). The upstream LICENSE file stays at the root of the copy.
+
+The copy is byte-identical to the upstream tree at `commit`: same paths, blob
+SHAs and modes, minus `.github/` and `exclude`, plus our own `preview/` folder
+with the catalog screenshots (`media` points there). Never edit upstream code
+in `templates/<id>/`; fixes come from upstream. When upstream has its own
+`preview/`, the check reports a clash: add `"preview/"` to `exclude`. Import the
+copy with `git read-tree`, not by copying files (see the README's
+[Upstream templates](../../README.md#upstream-templates) for the commands).
+
+- The Template gate (`check-vendored.mjs`) re-runs the deployability rules
+  (`skills/evaluate-repository`) at `commit`, checks that `ref` resolves to it
+  (for releases) or contains it (for branches) and that the license and
+  archive state still hold, fetches the commit and requires the copy to match
+  it, requires a root LICENSE, and requires `.github/dependabot.yml` to keep
+  Dependabot off the folder (`node .github/scripts/dependabot-config.mjs
+  --write` regenerates it).
+- The weekly `upstream-sync` workflow opens a PR on `upstream-sync/<id>`
+  when a newer release or branch commit passes the same rules. The PR updates
+  the copy and the pin in one commit; its Template gate and Hostinger preview
+  prove it builds. A person reviews and merges it.
+- The Template gate builds, lints, audits and previews the copy like any
+  template, with narrow exceptions because we don't edit upstream code: it
+  installs with the upstream lockfile's package manager, skips lint when
+  there is no lint script, and serves static output or runs the Next.js start
+  script when there is no preview script. Audit advisories are warnings when
+  the deploy output is static files and fail on high or critical production
+  advisories when the template runs as a server.
+- Media and copy describe the upstream project at `commit`. Write them from
+  the repository, not from its marketing site, and capture the screenshots
+  from a build of that commit.

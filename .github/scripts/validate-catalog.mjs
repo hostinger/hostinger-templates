@@ -2,6 +2,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
+import { DEPENDABOT_FILE, renderDependabotConfig, templateDirectories } from './dependabot-config.mjs';
 
 const root = process.argv[2] ?? '.';
 const ajv = new Ajv2020({ allErrors: true, strict: true });
@@ -13,6 +14,8 @@ const validateLandingPage = ajv.compile(readJson(join(root, 'schema/landing-page
 const errors = [];
 
 check('templates.json', validateCatalog);
+checkLayout();
+checkDependabot();
 
 const landingDir = join(root, 'landing-pages');
 if (existsSync(landingDir)) {
@@ -53,6 +56,64 @@ function check(file, validate) {
       ? `${error.message} (${error.params.additionalProperty})`
       : error.message;
     errors.push({ file, message: `${where} ${detail}` });
+  }
+}
+
+// The schema can't see the file tree: every entry ships its code in
+// templates/<id>/ and its catalog images in templates/<id>/preview/.
+function checkLayout() {
+  let catalog;
+  try {
+    catalog = readJson(join(root, 'templates.json'));
+  } catch {
+    return;
+  }
+  const file = 'templates.json';
+  const seen = new Set((catalog.retired ?? []).map((entry) => entry.id));
+  for (const entry of catalog.templates ?? []) {
+    if (seen.has(entry.id)) {
+      errors.push({ file, message: `templates: id "${entry.id}" is already used in templates or retired` });
+    }
+    seen.add(entry.id);
+
+    if (!existsSync(join(root, 'templates', entry.id, 'package.json'))) {
+      errors.push({ file, message: `templates: "${entry.id}" has no templates/${entry.id}/package.json` });
+    }
+
+    const prefix = `templates/${entry.id}/preview/`;
+    const { thumbnail = {}, preview = {} } = entry.media ?? {};
+    const paths = [thumbnail.path, preview.path, ...(thumbnail.variants ?? []).map((variant) => variant.path)];
+    for (const path of paths.filter(Boolean)) {
+      if (!path.startsWith(prefix)) {
+        errors.push({ file, message: `templates: "${entry.id}" media ${path} must be under ${prefix}` });
+      } else if (!existsSync(join(root, path))) {
+        errors.push({ file, message: `templates: "${entry.id}" media ${path} does not exist` });
+      }
+    }
+    for (const image of [thumbnail, preview]) {
+      if (image.path && image.url && !image.url.includes(`/blob/main/${image.path}?`)) {
+        errors.push({ file, message: `templates: "${entry.id}" media url ${image.url} does not point at ${image.path}` });
+      }
+    }
+  }
+}
+
+// Every template folder must be in dependabot.yml: maintained ones get grouped
+// security PRs, vendored ones none (see dependabot-config.mjs).
+function checkDependabot() {
+  let expected;
+  try {
+    expected = renderDependabotConfig(templateDirectories(root));
+  } catch {
+    return;
+  }
+  const path = join(root, DEPENDABOT_FILE);
+  const actual = existsSync(path) ? readFileSync(path, 'utf8') : '';
+  if (actual !== expected) {
+    errors.push({
+      file: DEPENDABOT_FILE,
+      message: 'does not match templates.json and templates/. Run: node .github/scripts/dependabot-config.mjs --write',
+    });
   }
 }
 

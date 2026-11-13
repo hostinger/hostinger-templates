@@ -6115,6 +6115,646 @@
         "walk slot booking",
         "dog walk areas map"
       ]
+    },
+    {
+      "id": "astrowind",
+      "name": "AstroWind",
+      "summary": "A multi-page Astro and Tailwind CSS starter for startups, SaaS products, agencies and personal brands.",
+      "description": "AstroWind is a popular open-source website starter built with Astro and Tailwind CSS that ships a full library of ready-made home, landing, pricing, about and contact pages for small businesses and SaaS teams. It is a strong fit for developers who want a fast static site with a blog, SEO defaults and dark mode already wired up, then reshape the copy and sections to their own brand.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "whoItsFor": "A developer launching a startup or SaaS marketing site",
+      "demoUrl": "https://astrowind.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "marketing",
+          "saas",
+          "startup"
+        ],
+        "useCases": [
+          "marketing",
+          "blogging",
+          "landing"
+        ],
+        "frameworks": [
+          "astro",
+          "tailwindcss"
+        ]
+      },
+      "features": [
+        {
+          "id": "page-library",
+          "name": "Ready-made page library",
+          "description": "Several home page variants plus landing, pricing, services, about, contact and legal pages to start from."
+        },
+        {
+          "id": "blog-with-categories-and-tags",
+          "name": "Blog with categories and tags",
+          "description": "Markdown and MDX posts with category and tag archives, pagination and an RSS feed."
+        },
+        {
+          "id": "seo-defaults",
+          "name": "SEO defaults",
+          "description": "Per-page meta tags, Open Graph data, a sitemap and robots.txt generated at build time."
+        },
+        {
+          "id": "dark-mode",
+          "name": "Dark mode",
+          "description": "A light and dark theme toggle that remembers the visitor's choice."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Astro"
+        ],
+        "styling": [
+          "Tailwind CSS"
+        ],
+        "data": [
+          "Markdown and MDX content collections"
+        ],
+        "deployment": [
+          "Static production output in dist/"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.22.3+"
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "outputDirectory": "dist",
+        "nodeVersion": 24
+      },
+      "routes": [
+        "/",
+        "/about/",
+        "/blog/"
+      ],
+      "source": {
+        "repository": "arthelokyo/astrowind",
+        "track": "releases",
+        "prereleases": true,
+        "ref": "v1.0.0-beta.65",
+        "commit": "8d0090f933b71439c02956f7e8d30d41de804832",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/astrowind/preview/astrowind-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/astrowind/preview/astrowind-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/astrowind/preview/astrowind-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/astrowind/preview/astrowind-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "templates/astrowind/preview/astrowind-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/astrowind/preview/astrowind-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 8860
+        }
+      },
+      "searchTerms": [
+        "astro starter",
+        "tailwind landing page",
+        "saas website",
+        "startup website",
+        "astro blog"
+      ]
+    },
+    {
+      "id": "coreui-admin",
+      "name": "CoreUI React Admin",
+      "summary": "A React admin dashboard with charts, a collapsible sidebar, UI component pages and account screens.",
+      "description": "CoreUI React Admin is the open-source admin dashboard template from CoreUI, built with React and Vite, for teams that need an internal tool or back office with a professional layout from day one. It includes a dashboard with charts and widgets, pages for every component and form control, account and error screens, and a light and dark theme.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Dashboard",
+        "SaaS"
+      ],
+      "whoItsFor": "A developer building an internal tool or admin panel",
+      "demoUrl": "https://coreui-admin.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "dashboard",
+          "admin",
+          "saas"
+        ],
+        "useCases": [
+          "admin",
+          "analytics",
+          "internal"
+        ],
+        "frameworks": [
+          "react",
+          "vite"
+        ]
+      },
+      "features": [
+        {
+          "id": "dashboard-with-charts",
+          "name": "Dashboard with charts",
+          "description": "A starting dashboard with traffic charts, stat widgets and progress summaries."
+        },
+        {
+          "id": "component-pages",
+          "name": "Component and form pages",
+          "description": "Example pages for buttons, forms, tables, icons, notifications and widgets."
+        },
+        {
+          "id": "account-and-error-pages",
+          "name": "Account and error pages",
+          "description": "Login, register and password reset screens plus 404 and 500 error pages."
+        },
+        {
+          "id": "sidebar-and-themes",
+          "name": "Collapsible sidebar and themes",
+          "description": "A collapsible navigation sidebar and a light and dark theme switch."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "JavaScript"
+        ],
+        "frameworks": [
+          "React",
+          "Vite"
+        ],
+        "styling": [
+          "CoreUI (Bootstrap-based) SCSS"
+        ],
+        "data": [
+          "Redux store and static sample data"
+        ],
+        "deployment": [
+          "Static production output in build/"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "20.19+"
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "appType": "vite",
+        "outputDirectory": "build"
+      },
+      "routes": [
+        "/"
+      ],
+      "source": {
+        "repository": "coreui/coreui-free-react-admin-template",
+        "track": "branch",
+        "ref": "main",
+        "commit": "2609f5995035973e00c16ec723165a5fff87cceb",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/coreui-admin/preview/coreui-admin-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/coreui-admin/preview/coreui-admin-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/coreui-admin/preview/coreui-admin-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/coreui-admin/preview/coreui-admin-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "templates/coreui-admin/preview/coreui-admin-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/coreui-admin/preview/coreui-admin-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 2099
+        }
+      },
+      "searchTerms": [
+        "react admin",
+        "admin dashboard",
+        "admin panel",
+        "back office",
+        "coreui"
+      ]
+    },
+    {
+      "id": "launch-ui",
+      "name": "Launch UI",
+      "summary": "A dark product landing page with a hero mockup, feature grid, pricing table and FAQ, built with Next.js and shadcn/ui.",
+      "description": "Launch UI is an open-source landing page template for software products, built with Next.js, Tailwind CSS and shadcn/ui. It opens with a large hero and a product mockup, then walks visitors through a feature grid, social proof stats, a three-tier pricing table, an FAQ and a closing call to action, with light and dark themes. Every section is a React component you can rewrite, reorder or remove.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "whoItsFor": "A founder or developer launching a software product",
+      "demoUrl": "https://launch-ui.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "landing",
+          "saas",
+          "marketing"
+        ],
+        "useCases": [
+          "launch",
+          "marketing",
+          "pricing"
+        ],
+        "frameworks": [
+          "nextjs",
+          "react",
+          "tailwind"
+        ]
+      },
+      "features": [
+        {
+          "id": "hero-with-mockup",
+          "name": "Hero with product mockup",
+          "description": "A large headline, two calls to action and a product screenshot frame."
+        },
+        {
+          "id": "feature-grid",
+          "name": "Feature grid and stats",
+          "description": "Eight feature cards and a strip of headline numbers for social proof."
+        },
+        {
+          "id": "pricing-table",
+          "name": "Pricing table",
+          "description": "Three plans side by side with features and a call to action each."
+        },
+        {
+          "id": "faq-and-cta",
+          "name": "FAQ and closing call to action",
+          "description": "An accordion of common questions and a final sign-up section."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Next.js",
+          "React"
+        ],
+        "styling": [
+          "Tailwind CSS",
+          "shadcn/ui"
+        ],
+        "data": [
+          "Static content in components"
+        ],
+        "deployment": [
+          "Next.js server (next start)"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "20.9+"
+            ]
+          }
+        ]
+      },
+      "deploy": {},
+      "routes": [
+        "/"
+      ],
+      "source": {
+        "repository": "launch-ui/launch-ui",
+        "track": "releases",
+        "ref": "v2.10.2",
+        "commit": "9387bec9436335ef9a109a2efe7fbe7631976158",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/launch-ui/preview/launch-ui-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/launch-ui/preview/launch-ui-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/launch-ui/preview/launch-ui-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/launch-ui/preview/launch-ui-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "templates/launch-ui/preview/launch-ui-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/launch-ui/preview/launch-ui-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 5462
+        }
+      },
+      "searchTerms": [
+        "saas landing page",
+        "product landing page",
+        "startup landing page",
+        "nextjs landing page",
+        "shadcn landing page"
+      ]
+    },
+    {
+      "id": "screwfast",
+      "name": "ScrewFast",
+      "summary": "An Astro and Tailwind CSS company website with products, services, pricing, a blog and multilingual docs.",
+      "description": "ScrewFast is an open-source company website template built with Astro, Tailwind CSS and Preline UI, shown as a fictional hardware and construction brand that is easy to rebrand for any product or service business. Beyond the marketing pages it includes a product catalogue, pricing, a blog and a multilingual documentation section built on Starlight.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Business",
+        "Marketing",
+        "Documentation"
+      ],
+      "whoItsFor": "A developer building a company site with products and docs",
+      "demoUrl": "https://screwfast.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "business",
+          "marketing",
+          "documentation"
+        ],
+        "useCases": [
+          "marketing",
+          "products",
+          "docs"
+        ],
+        "frameworks": [
+          "astro",
+          "starlight",
+          "tailwindcss"
+        ]
+      },
+      "features": [
+        {
+          "id": "company-marketing-pages",
+          "name": "Company marketing pages",
+          "description": "Home, services, pricing, FAQ and contact sections ready to rebrand."
+        },
+        {
+          "id": "product-catalogue",
+          "name": "Product catalogue",
+          "description": "Product listing and detail pages generated from content files."
+        },
+        {
+          "id": "blog-and-insights",
+          "name": "Blog and insights",
+          "description": "Blog posts and insight articles written in Markdown."
+        },
+        {
+          "id": "multilingual-docs",
+          "name": "Multilingual documentation",
+          "description": "A Starlight documentation section with search and several languages."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Astro",
+          "Starlight"
+        ],
+        "styling": [
+          "Tailwind CSS",
+          "Preline UI"
+        ],
+        "data": [
+          "Markdown and MDX content collections"
+        ],
+        "deployment": [
+          "Static production output in dist/"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.12+"
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "outputDirectory": "dist"
+      },
+      "routes": [
+        "/",
+        "/products/",
+        "/blog/"
+      ],
+      "source": {
+        "repository": "mearashadowfax/ScrewFast",
+        "track": "branch",
+        "ref": "main",
+        "commit": "6e733e7dd674bff226bf1962818d86c3ba58ee3c",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/screwfast/preview/screwfast-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/screwfast/preview/screwfast-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/screwfast/preview/screwfast-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/screwfast/preview/screwfast-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "templates/screwfast/preview/screwfast-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/screwfast/preview/screwfast-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 5584
+        }
+      },
+      "searchTerms": [
+        "company website",
+        "business website",
+        "product catalogue",
+        "astro docs",
+        "tailwind marketing site"
+      ]
+    },
+    {
+      "id": "shadcn-admin",
+      "name": "Studio Admin",
+      "summary": "A Next.js admin dashboard with a dozen dashboards, mail, chat, calendar, kanban and data tables, built with shadcn/ui.",
+      "description": "Studio Admin is the open-source Next.js admin dashboard by Arham Khan, built with shadcn/ui and Tailwind CSS. It ships about a dozen ready dashboards, from CRM and finance to analytics, e-commerce and logistics, plus mail, chat, calendar, kanban and invoice screens and searchable user, role and product tables. Theme presets, light and dark mode and layout settings let you match it to your brand before you connect your own data.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "Dashboard",
+        "SaaS"
+      ],
+      "whoItsFor": "A developer building an admin panel or SaaS back office",
+      "demoUrl": "https://shadcn-admin.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "dashboard",
+          "admin",
+          "saas"
+        ],
+        "useCases": [
+          "admin",
+          "analytics",
+          "internal"
+        ],
+        "frameworks": [
+          "nextjs",
+          "react",
+          "tailwind"
+        ]
+      },
+      "features": [
+        {
+          "id": "many-dashboards",
+          "name": "A dozen dashboards",
+          "description": "Default, CRM, finance, analytics, e-commerce, logistics and more, with charts and KPIs."
+        },
+        {
+          "id": "app-screens",
+          "name": "Mail, chat, calendar and kanban",
+          "description": "Working app screens including a drag-and-drop kanban board and an invoice page."
+        },
+        {
+          "id": "data-tables",
+          "name": "Data tables",
+          "description": "User, role and product tables with search, filters, sorting and pagination."
+        },
+        {
+          "id": "themes-and-layout",
+          "name": "Themes and layout settings",
+          "description": "Theme presets, light and dark mode and sidebar layout options."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Next.js",
+          "React"
+        ],
+        "styling": [
+          "Tailwind CSS",
+          "shadcn/ui"
+        ],
+        "data": [
+          "Mock data, Zustand state"
+        ],
+        "deployment": [
+          "Next.js server (next start)"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "20.9+"
+            ]
+          }
+        ]
+      },
+      "deploy": {},
+      "routes": [
+        "/",
+        "/dashboard/default"
+      ],
+      "source": {
+        "repository": "arhamkhnz/next-shadcn-admin-dashboard",
+        "track": "branch",
+        "ref": "main",
+        "commit": "3d1d6f4abf4231b258c81da25da1ccbc38d9b954",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/shadcn-admin/preview/shadcn-admin-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/shadcn-admin/preview/shadcn-admin-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/shadcn-admin/preview/shadcn-admin-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/shadcn-admin/preview/shadcn-admin-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "templates/shadcn-admin/preview/shadcn-admin-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/shadcn-admin/preview/shadcn-admin-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 1562
+        }
+      },
+      "searchTerms": [
+        "nextjs admin dashboard",
+        "shadcn dashboard",
+        "admin panel",
+        "crm dashboard",
+        "saas dashboard"
+      ]
     }
   ],
   "retired": []

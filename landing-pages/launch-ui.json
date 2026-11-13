@@ -1,0 +1,41 @@
+{
+  "landingPage": {
+    "enabled": false,
+    "popular": false,
+    "recommended": false,
+    "heroTitle": "Launch UI landing page template for your product",
+    "heroDescription": "An open-source Next.js and shadcn/ui landing page with a hero mockup, features, pricing and FAQ, deployed on Hostinger at a reviewed version.",
+    "about": "Launch UI is a free, open-source landing page template for software products, built with Next.js, Tailwind CSS and shadcn/ui. It gives a new product a polished first page without starting from a blank canvas. A large headline and product mockup lead into a grid of feature cards, a strip of headline numbers, a three-tier pricing table, an FAQ and a closing call to action. Light and dark themes are built in, and every section is a React component you can rewrite, reorder or remove. Replace the copy and links with your own before you launch. Hostinger deploys the original project at a version we have checked, with its MIT license.",
+    "features": [
+      {
+        "title": "Hero with product mockup",
+        "description": "A bold headline, two calls to action and a frame for your product screenshot."
+      },
+      {
+        "title": "Feature grid",
+        "description": "Eight feature cards with icons to explain what your product does."
+      },
+      {
+        "title": "Stats strip",
+        "description": "Headline numbers that add social proof right below the features."
+      },
+      {
+        "title": "Pricing table",
+        "description": "Three plans side by side, each with its features and a call to action."
+      },
+      {
+        "title": "FAQ accordion",
+        "description": "Answers to common questions in a compact, expandable list."
+      },
+      {
+        "title": "Light and dark themes",
+        "description": "A theme that follows the visitor's system setting, in light or dark."
+      }
+    ],
+    "metaTitle": "Launch UI Next.js Landing Page Template",
+    "metaDescription": "Launch your product with Launch UI: a Next.js and shadcn/ui landing page with a hero, features, pricing table and FAQ. Deploy it on Hostinger.",
+    "short": "Next.js product landing page with features, pricing and FAQ.",
+    "long": "Launch UI is an open-source Next.js landing page built with Tailwind CSS and shadcn/ui, with a hero mockup, feature grid, stats, pricing table, FAQ and light and dark themes.",
+    "kbUrl": null
+  }
+}

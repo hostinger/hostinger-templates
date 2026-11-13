@@ -1,30 +1,37 @@
 import { spawn } from 'node:child_process';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { createConnection } from 'node:net';
 import { basename, join } from 'node:path';
 import { comparePreviewScreenshots } from './compare-screenshots.mjs';
+import { catalogEntry, commandEnv, isVendored, packageManager, previewPlan, readPackage } from './template-commands.mjs';
+
+const VENDORED_SETTLE_MS = 3000;
 
 const templateDir = process.argv[2] ?? process.cwd();
 const templateId = process.env.TEMPLATE_ID ?? basename(templateDir);
 const outDir = process.env.PREVIEW_OUT ?? join(templateDir, '.preview-visual');
 const port = Number.parseInt(process.env.PORT ?? '4173', 10);
-const previewScript = JSON.parse(
-  readFileSync(join(templateDir, 'package.json'), 'utf8'),
-).scripts?.preview;
+const entry = catalogEntry(templateDir);
+const plan = previewPlan({
+  templateDir,
+  pkg: readPackage(templateDir),
+  entry,
+  pm: packageManager(templateDir, entry),
+  port,
+});
 
-if (!previewScript) {
-  console.error('package.json is missing a preview script');
+if (plan.error) {
+  console.error(plan.error);
   process.exit(1);
 }
 
-const extraArgs = previewArgs(previewScript, port);
-const child = spawn('npm', ['run', 'preview', ...extraArgs], {
+console.log(`Starting the preview with ${plan.how}`);
+const child = spawn(plan.command, plan.args, {
   cwd: templateDir,
-  env: {
-    ...process.env,
+  env: commandEnv({
     PORT: String(port),
     HOST: '127.0.0.1',
-  },
+  }),
   stdio: ['ignore', 'pipe', 'pipe'],
   detached: true,
 });
@@ -79,6 +86,9 @@ try {
     templateDir,
     port,
     outDir,
+    // Upstream single-page apps render after the load event, from lazily
+    // loaded routes. Our templates are captured as soon as they load.
+    settleMs: isVendored(entry) ? VENDORED_SETTLE_MS : 0,
   });
 
   const result = {
@@ -115,22 +125,6 @@ function visualFailure(visual) {
     });
 
   return parts.join('; ') || 'Visual comparison failed';
-}
-
-function previewArgs(script, listenPort) {
-  if (/\bserve\b/.test(script)) {
-    return ['--', '-l', `tcp://127.0.0.1:${listenPort}`];
-  }
-
-  if (/\bnuxt preview\b/.test(script)) {
-    return ['--', '--port', String(listenPort)];
-  }
-
-  if (/\bvite preview\b/.test(script) || /\bastro preview\b/.test(script)) {
-    return ['--', '--host', '127.0.0.1', '--port', String(listenPort)];
-  }
-
-  return [];
 }
 
 function waitForPort(listenPort, timeoutMs) {
