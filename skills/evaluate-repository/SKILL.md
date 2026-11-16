@@ -65,8 +65,28 @@ own.
 
 ## 3. Turning a candidate into a template
 
-A repository that deploys still needs a human decision: its license kept,
-attribution in the README, and a content and security review. It is then
-snapshotted at the evaluated commit into `templates/<id>/` and goes through
-the normal template PR gates. Partner snapshots and their `source` catalog
-block are planned in HSTG-23740 and aren't part of the catalog schema yet.
+A repository that deploys still needs a human decision. Chosen ones become
+vendored templates: `templates/<id>/` holds a byte-identical copy of the
+repository at a pinned commit (minus `.github/`, plus our `preview/`
+screenshots), and the `templates.json` entry records it in `source`. The
+Template gate (`check-vendored.mjs`) verifies the copy against the upstream
+commit, the weekly `upstream-sync` workflow opens PRs that move it to newer
+upstream commits, and it deploys from this repository like any template
+(see [Upstream templates](../create-repository/TEMPLATE_SCHEMA.md#upstream-templates)).
+Before adding one:
+
+- Evaluate it at the exact ref: `node .github/scripts/evaluate-repos.mjs owner/repo@<tag-or-commit>`.
+  Prefer `track: releases` when the project publishes releases.
+- Build that commit locally with the repository's own package manager
+  version (`corepack`). The static rules can't see every broken build: in
+  the November 2026 scan, 5 of 32 repositories that passed them failed to
+  build, and the rules only learned to catch three of those causes.
+- Audit production dependencies (`npm audit --omit=dev` or
+  `pnpm audit --prod`). A server-rendered template with high or critical
+  advisories in its runtime is not offered, and the Template gate fails it.
+  For static output only the build runs them: the gate reports them as
+  warnings; note them in the PR.
+- Check the content: a template, not someone's personal site, with nothing
+  a buyer would have to remove first (real names, photos, employers).
+- Capture the catalog screenshots from that local build, with reduced motion
+  and the page scrolled once so reveal-on-scroll sections render.

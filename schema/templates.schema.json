@@ -19,8 +19,13 @@
         "additionalProperties": false,
         "required": ["id", "retiredAt"],
         "properties": {
-          "id": { "$ref": "#/$defs/id" },
-          "retiredAt": { "type": "string", "format": "date" }
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "retiredAt": {
+            "type": "string",
+            "format": "date"
+          }
         }
       }
     }
@@ -41,7 +46,9 @@
     },
     "textList": {
       "type": "array",
-      "items": { "$ref": "#/$defs/text" }
+      "items": {
+        "$ref": "#/$defs/text"
+      }
     },
     "repoPath": {
       "type": "string",
@@ -72,11 +79,21 @@
         "searchTerms"
       ],
       "properties": {
-        "id": { "$ref": "#/$defs/id" },
-        "name": { "$ref": "#/$defs/text" },
-        "summary": { "$ref": "#/$defs/text" },
-        "description": { "$ref": "#/$defs/text" },
-        "bucket": { "$ref": "#/$defs/text" },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/text"
+        },
+        "summary": {
+          "$ref": "#/$defs/text"
+        },
+        "description": {
+          "$ref": "#/$defs/text"
+        },
+        "bucket": {
+          "$ref": "#/$defs/text"
+        },
         "categories": {
           "type": "array",
           "minItems": 1,
@@ -98,7 +115,9 @@
             ]
           }
         },
-        "whoItsFor": { "$ref": "#/$defs/text" },
+        "whoItsFor": {
+          "$ref": "#/$defs/text"
+        },
         "demoUrl": {
           "oneOf": [
             {
@@ -106,7 +125,9 @@
               "format": "uri",
               "pattern": "^https://[a-z0-9]+(-[a-z0-9]+)*\\.hostingertemplates\\.com$"
             },
-            { "type": "null" }
+            {
+              "type": "null"
+            }
           ]
         },
         "classification": {
@@ -117,12 +138,17 @@
             "categories": {
               "type": "array",
               "minItems": 1,
-              "items": { "$ref": "#/$defs/slug" }
+              "items": {
+                "$ref": "#/$defs/slug"
+              }
             },
             "useCases": {
               "type": "array",
               "minItems": 1,
-              "items": { "type": "string", "pattern": "^[a-z]+$" }
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z]+$"
+              }
             },
             "frameworks": {
               "type": "array",
@@ -143,22 +169,44 @@
             "additionalProperties": false,
             "required": ["id", "name", "description"],
             "properties": {
-              "id": { "$ref": "#/$defs/slug" },
-              "name": { "$ref": "#/$defs/text" },
-              "description": { "$ref": "#/$defs/text" }
+              "id": {
+                "$ref": "#/$defs/slug"
+              },
+              "name": {
+                "$ref": "#/$defs/text"
+              },
+              "description": {
+                "$ref": "#/$defs/text"
+              }
             }
           }
         },
         "technology": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["languages", "frameworks", "styling", "data", "deployment"],
+          "required": [
+            "languages",
+            "frameworks",
+            "styling",
+            "data",
+            "deployment"
+          ],
           "properties": {
-            "languages": { "$ref": "#/$defs/textList" },
-            "frameworks": { "$ref": "#/$defs/textList" },
-            "styling": { "$ref": "#/$defs/textList" },
-            "data": { "$ref": "#/$defs/textList" },
-            "deployment": { "$ref": "#/$defs/textList" }
+            "languages": {
+              "$ref": "#/$defs/textList"
+            },
+            "frameworks": {
+              "$ref": "#/$defs/textList"
+            },
+            "styling": {
+              "$ref": "#/$defs/textList"
+            },
+            "data": {
+              "$ref": "#/$defs/textList"
+            },
+            "deployment": {
+              "$ref": "#/$defs/textList"
+            }
           }
         },
         "compatibility": {
@@ -174,11 +222,15 @@
                 "additionalProperties": false,
                 "required": ["name", "versions"],
                 "properties": {
-                  "name": { "const": "Node.js" },
+                  "name": {
+                    "const": "Node.js"
+                  },
                   "versions": {
                     "type": "array",
                     "minItems": 1,
-                    "items": { "$ref": "#/$defs/text" }
+                    "items": {
+                      "$ref": "#/$defs/text"
+                    }
                   }
                 }
               }
@@ -189,17 +241,34 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "appType": { "type": "string" },
-            "buildCommand": { "type": "string" },
-            "outputDirectory": { "type": "string" },
-            "entryFile": { "type": "string" }
+            "appType": {
+              "type": "string"
+            },
+            "buildCommand": {
+              "type": "string"
+            },
+            "outputDirectory": {
+              "type": "string"
+            },
+            "entryFile": {
+              "type": "string"
+            },
+            "nodeVersion": {
+              "enum": [18, 20, 22, 24]
+            }
           }
         },
         "routes": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "type": "string", "pattern": "^/[^\\s?#]*$" }
+          "items": {
+            "type": "string",
+            "pattern": "^/[^\\s?#]*$"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/source"
         },
         "media": {
           "type": "object",
@@ -209,14 +278,34 @@
             "thumbnail": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["path", "url", "source", "width", "height", "aspectRatio", "variants"],
+              "required": [
+                "path",
+                "url",
+                "source",
+                "width",
+                "height",
+                "aspectRatio",
+                "variants"
+              ],
               "properties": {
-                "path": { "$ref": "#/$defs/repoPath" },
-                "url": { "$ref": "#/$defs/rawUrl" },
-                "source": { "const": "viewport" },
-                "width": { "const": 1440 },
-                "height": { "const": 900 },
-                "aspectRatio": { "const": "16:10" },
+                "path": {
+                  "$ref": "#/$defs/repoPath"
+                },
+                "url": {
+                  "$ref": "#/$defs/rawUrl"
+                },
+                "source": {
+                  "const": "viewport"
+                },
+                "width": {
+                  "const": 1440
+                },
+                "height": {
+                  "const": 900
+                },
+                "aspectRatio": {
+                  "const": "16:10"
+                },
                 "variants": {
                   "type": "array",
                   "minItems": 2,
@@ -225,8 +314,12 @@
                     "additionalProperties": false,
                     "required": ["width", "path"],
                     "properties": {
-                      "width": { "enum": [480, 960] },
-                      "path": { "$ref": "#/$defs/repoPath" }
+                      "width": {
+                        "enum": [480, 960]
+                      },
+                      "path": {
+                        "$ref": "#/$defs/repoPath"
+                      }
                     }
                   }
                 }
@@ -237,11 +330,22 @@
               "additionalProperties": false,
               "required": ["path", "url", "source", "width", "height"],
               "properties": {
-                "path": { "$ref": "#/$defs/repoPath" },
-                "url": { "$ref": "#/$defs/rawUrl" },
-                "source": { "const": "fullPage" },
-                "width": { "const": 1440 },
-                "height": { "type": "integer", "minimum": 900 }
+                "path": {
+                  "$ref": "#/$defs/repoPath"
+                },
+                "url": {
+                  "$ref": "#/$defs/rawUrl"
+                },
+                "source": {
+                  "const": "fullPage"
+                },
+                "width": {
+                  "const": 1440
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 900
+                }
               }
             }
           }
@@ -249,7 +353,76 @@
         "searchTerms": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/$defs/text" }
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      }
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "source": {
+      "description": "Provenance of a vendored template: templates/<id>/ is a byte-identical copy of this repository at commit (the directory subtree when set), minus .github/ and exclude, plus preview/. check-vendored.mjs verifies it.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "track", "ref", "commit", "license"],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "track": {
+          "enum": ["releases", "branch"]
+        },
+        "prereleases": {
+          "type": "boolean"
+        },
+        "ref": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_./+-]+$",
+          "not": {
+            "type": "string",
+            "pattern": "\\.\\."
+          }
+        },
+        "commit": {
+          "$ref": "#/$defs/commit"
+        },
+        "directory": {
+          "description": "Subdirectory of the repository to copy. It must hold its own LICENSE file: the repository-root LICENSE is outside the copy, and check-vendored.mjs fails without one.",
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+(/[A-Za-z0-9_.-]+)*$",
+          "not": {
+            "type": "string",
+            "pattern": "(^|/)\\.\\.?(/|$)"
+          }
+        },
+        "exclude": {
+          "description": "Upstream paths left out of the copy, relative to the copy root. A path matches itself and everything under it.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[^/\\s][^\\s]*$",
+            "not": {
+              "type": "string",
+              "pattern": "(^|/)\\.\\.?(/|$)"
+            }
+          }
+        },
+        "license": {
+          "enum": [
+            "MIT",
+            "ISC",
+            "Apache-2.0",
+            "BSD-2-Clause",
+            "BSD-3-Clause",
+            "0BSD",
+            "Unlicense"
+          ]
         }
       }
     }

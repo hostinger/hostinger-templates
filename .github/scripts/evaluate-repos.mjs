@@ -5,7 +5,7 @@ import { evaluateRepository } from './repo-evaluation/rules.mjs';
 // Evaluates whether public GitHub repositories can run as Node.js apps on
 // Hostinger web hosting, without cloning or running them.
 //
-//   node .github/scripts/evaluate-repos.mjs owner/repo[:app/dir] ...
+//   node .github/scripts/evaluate-repos.mjs owner/repo[:app/dir][@ref] ...
 //   node .github/scripts/evaluate-repos.mjs --discover [--limit 20]
 //
 // --out <file> writes the JSON results. GITHUB_TOKEN raises the API rate limit.
@@ -35,10 +35,10 @@ if (args.includes('--discover')) {
   }
 }
 
-const TARGET_PATTERN = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+(:[A-Za-z0-9_.-]+(\/[A-Za-z0-9_.-]+)*)?$/;
+const TARGET_PATTERN = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+(:[A-Za-z0-9_.-]+(\/[A-Za-z0-9_.-]+)*)?(@[A-Za-z0-9_./+-]+)?$/;
 const invalid = targets.filter((target) => !TARGET_PATTERN.test(target) || target.includes('..'));
 if (invalid.length) {
-  console.error(`Not owner/repo[:app/dir]: ${invalid.join(', ')}`);
+  console.error(`Not owner/repo[:app/dir][@ref]: ${invalid.join(', ')}`);
   process.exit(1);
 }
 
@@ -49,9 +49,10 @@ if (!targets.length) {
 
 const results = [];
 for (const target of targets) {
-  const [fullName, appDir = null] = target.split(':');
+  const [location, ref = null] = target.split('@');
+  const [fullName, appDir = null] = location.split(':');
   try {
-    results.push(evaluateRepository(await collectFacts(fullName, { appDir })));
+    results.push(evaluateRepository(await collectFacts(fullName, { appDir, ref })));
   } catch (error) {
     results.push({ repository: fullName, appDir, verdict: 'error', findings: [{ level: 'fail', check: 'api', message: error.message }] });
   }

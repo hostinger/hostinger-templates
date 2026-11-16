@@ -15,6 +15,7 @@ export function comparePreviewScreenshots({
   templateDir,
   port,
   outDir,
+  settleMs = 0,
 }) {
   mkdirSync(outDir, { recursive: true });
 
@@ -23,8 +24,8 @@ export function comparePreviewScreenshots({
   const actualThumbnail = join(outDir, 'actual-thumbnail.png');
   const actualHomepage = join(outDir, 'actual-homepage.png');
 
-  capture(port, actualThumbnail, false);
-  capture(port, actualHomepage, true);
+  capture(port, actualThumbnail, false, settleMs);
+  capture(port, actualHomepage, true, settleMs);
 
   const thumbnail = comparePair({
     name: 'thumbnail',
@@ -51,7 +52,7 @@ export function comparePreviewScreenshots({
   return result;
 }
 
-function capture(port, dest, fullPage) {
+function capture(port, dest, fullPage, settleMs) {
   const args = [
     '--yes',
     'playwright@latest',
@@ -64,6 +65,10 @@ function capture(port, dest, fullPage) {
 
   if (fullPage) {
     args.push('--full-page');
+  }
+
+  if (settleMs) {
+    args.push('--wait-for-timeout', String(settleMs));
   }
 
   args.push(`http://127.0.0.1:${port}/`, dest);

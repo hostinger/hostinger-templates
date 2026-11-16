@@ -1,0 +1,41 @@
+{
+  "landingPage": {
+    "enabled": false,
+    "popular": true,
+    "recommended": false,
+    "heroTitle": "Studio Admin: Next.js admin dashboard template",
+    "heroDescription": "An open-source Next.js and shadcn/ui admin dashboard with a dozen dashboards, app screens and data tables, deployed on Hostinger at a reviewed version.",
+    "about": "Studio Admin is a free, open-source admin dashboard built with Next.js, Tailwind CSS and shadcn/ui. It gives a SaaS back office, internal tool or client portal a modern layout from day one. About a dozen dashboards cover CRM, finance, analytics, e-commerce, logistics and more, each with charts and KPI cards. Mail, chat, calendar, kanban and invoice screens show common app patterns, and user, role and product tables come with search, filters, sorting and pagination. Theme presets, light and dark mode and layout settings let you match your brand. The data is sample data, so you connect your own backend. Hostinger deploys the original project at a version we have checked, with its MIT license.",
+    "features": [
+      {
+        "title": "A dozen dashboards",
+        "description": "CRM, finance, analytics, e-commerce, logistics and more, with charts and KPI cards."
+      },
+      {
+        "title": "App screens",
+        "description": "Mail, chat, calendar and invoice pages that show common app layouts."
+      },
+      {
+        "title": "Kanban board",
+        "description": "A drag-and-drop board for tasks and pipelines."
+      },
+      {
+        "title": "Data tables",
+        "description": "User, role and product tables with search, filters, sorting and pagination."
+      },
+      {
+        "title": "Account screens",
+        "description": "Login and register screens ready to connect to your authentication."
+      },
+      {
+        "title": "Themes and layout",
+        "description": "Theme presets, light and dark mode and sidebar layout options."
+      }
+    ],
+    "metaTitle": "Studio Admin Next.js Admin Dashboard Template",
+    "metaDescription": "Build a SaaS back office with Studio Admin: Next.js and shadcn/ui dashboards, kanban, mail, calendar and data tables. Deploy it on Hostinger.",
+    "short": "Next.js admin dashboard with a dozen dashboards and data tables.",
+    "long": "Studio Admin is an open-source Next.js admin dashboard built with Tailwind CSS and shadcn/ui, with a dozen dashboards, mail, chat, calendar, kanban, data tables and theme presets.",
+    "kbUrl": null
+  }
+}

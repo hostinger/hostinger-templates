@@ -75,13 +75,19 @@ jobs:
         working-directory: templates/${{ matrix.template }}
     steps:
       - uses: actions/checkout@v4
+      # Vendored templates may install with pnpm and have no
+      # package-lock.json; the scripts' lockfile keeps the cache step valid.
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: templates/${{ matrix.template }}/package-lock.json
-      - run: npm ci
-      - run: npm run build
+          cache-dependency-path: |
+            templates/${{ matrix.template }}/package-lock.json
+            .github/scripts/package-lock.json
+      - name: Install
+        run: node ../../.github/scripts/template-commands.mjs install "$PWD"
+      - name: Build
+        run: node ../../.github/scripts/template-commands.mjs build "$PWD"
       - name: Package
         working-directory: .
         env:
