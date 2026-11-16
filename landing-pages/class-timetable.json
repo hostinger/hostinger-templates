@@ -1,0 +1,41 @@
+{
+  "landingPage": {
+    "enabled": false,
+    "popular": false,
+    "recommended": false,
+    "heroTitle": "Yoga and pilates class timetable template",
+    "heroDescription": "A single-page studio site that shows your weekly classes, counts down to the next one and sends visitors to your booking link.",
+    "about": "Class Timetable is a single-page website for a yoga or pilates studio whose schedule repeats every week. Instead of a PDF nobody updates, the page opens with a live countdown to the next class and a weekly grid of every session with its time, length, level and focus. The next class is highlighted and moves on as soon as one starts, and a running class is marked as in session. Booking goes to the scheduling tool you already use, with phone and email as a fallback. Classes, studio details and FAQs live in data files, so a timetable change takes minutes. It is built with Astro and TypeScript and deploys from GitHub to Hostinger.",
+    "features": [
+      {
+        "title": "Next-class countdown",
+        "description": "A live countdown to the next class, worked out from your weekly schedule with no dates to update."
+      },
+      {
+        "title": "Weekly class grid",
+        "description": "Every class across the week with its start time, duration, level and a one-line focus."
+      },
+      {
+        "title": "Next and in-session states",
+        "description": "The next class glows, a running class gets an in-session badge and the banner shows when it ends."
+      },
+      {
+        "title": "Booking handoff",
+        "description": "Each class and button opens your scheduling link, or phone and email when you have none."
+      },
+      {
+        "title": "Timetable in one file",
+        "description": "Classes and studio details live in data files, so changing the schedule takes minutes."
+      },
+      {
+        "title": "Calm on every screen",
+        "description": "Accessible layouts with reduced-motion support that work from phones to desktops."
+      }
+    ],
+    "metaTitle": "Yoga Studio Class Timetable Template",
+    "metaDescription": "Publish your weekly yoga or pilates schedule with a live next-class countdown and booking links. A one-page studio website template you can deploy on Hostinger.",
+    "short": "Yoga and pilates timetable with a live next-class countdown.",
+    "long": "A one-page site for a yoga or pilates studio: a weekly class grid, a countdown to the next class, and booking through the scheduling link you already use.",
+    "kbUrl": null
+  }
+}
