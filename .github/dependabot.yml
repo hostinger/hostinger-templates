@@ -76,9 +76,7 @@ updates:
     directories:
       - "/templates/astrowind"
       - "/templates/coreui-admin"
-      - "/templates/launch-ui"
       - "/templates/screwfast"
-      - "/templates/shadcn-admin"
     schedule:
       interval: daily
     open-pull-requests-limit: 0

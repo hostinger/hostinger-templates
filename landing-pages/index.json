@@ -6,9 +6,7 @@
     "class-timetable",
     "console",
     "coreui-admin",
-    "launch-ui",
     "quote-slider",
-    "screwfast",
-    "shadcn-admin"
+    "screwfast"
   ]
 }
