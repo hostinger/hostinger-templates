@@ -1,0 +1,41 @@
+{
+  "landingPage": {
+    "enabled": false,
+    "popular": false,
+    "recommended": false,
+    "heroTitle": "Cleaning service quote calculator template",
+    "heroDescription": "A single-page site for a cleaning business that shows an upfront, itemized price as visitors choose their rooms and how often they want a clean.",
+    "about": "Quote Slider is a single-page website for a residential cleaning service that wants to show prices upfront instead of hiding them behind a contact form. Visitors move bedroom and bathroom sliders, choose how often they want a clean, and watch the visit price and the itemized maths update instantly, including any repeat-visit discount. The estimate is clearly marked as a guide, not a binding price. Each quote lives in the page address, so visitors can share it or print a one-page summary, and an email button puts them in touch with you. Your base price, per-room rates and discounts sit in one data file. It is built with Astro and TypeScript and deploys from GitHub to Hostinger.",
+    "features": [
+      {
+        "title": "Live quote builder",
+        "description": "Bedroom, bathroom and frequency controls update the visit price as visitors adjust them."
+      },
+      {
+        "title": "Transparent pricing",
+        "description": "Base price, per-room rates and repeat-visit discounts are shown line by line."
+      },
+      {
+        "title": "Shareable quotes",
+        "description": "Every estimate is saved in the page address, so it survives a reload and can be shared."
+      },
+      {
+        "title": "Print and email",
+        "description": "Visitors print a one-page quote or email you straight from the page."
+      },
+      {
+        "title": "Clearly non-binding",
+        "description": "The estimate is labelled as a guide, so customers know a final price follows."
+      },
+      {
+        "title": "Prices in one file",
+        "description": "Your rates and discounts live in one data file you can change without touching the code."
+      }
+    ],
+    "metaTitle": "Cleaning Service Quote Calculator Template",
+    "metaDescription": "Show cleaning prices upfront with a live quote calculator, transparent room pricing and estimates visitors can share or print. A one-page Hostinger template.",
+    "short": "Cleaning service page with a live, itemized quote calculator.",
+    "long": "A one-page site for a cleaning service: visitors choose rooms and frequency, see an itemized, non-binding price, and share or print their quote.",
+    "kbUrl": null
+  }
+}
