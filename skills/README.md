@@ -13,3 +13,5 @@ Current workflows:
 - `create-repository/` — build and register a template
 - `deploy-templates/` — redeploy and troubleshoot template demos (new
   templates deploy automatically on merge)
+- `write-landing-page/` — write, publish or retire a template's
+  hostinger.com/applications sales-page copy
