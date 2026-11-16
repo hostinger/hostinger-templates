@@ -164,7 +164,11 @@ to add an entry.
 - `searchTerms` contains useful synonyms not already obvious from the name.
 - `routes` is optional and lists the paths the Hostinger smoke check
   requests after a deploy. Every path starts with `/`. List each top-level
-  route of a multi-page app; it defaults to `["/"]`.
+  route of a multi-page app; it defaults to `["/"]`. Write each path the way
+  the server answers it without a redirect: static subpages served from
+  `<route>/index.html` need the trailing slash (`/areas/`), because Hostinger
+  redirects `/areas` to `/areas/` and the smoke check treats redirects as
+  failures.
 - `id` is permanent. Never reuse an id that appears in `retired`.
 - Use `null` for an unknown optional scalar and `[]` only when a list genuinely
   has no values.

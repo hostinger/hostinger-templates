@@ -1,0 +1,49 @@
+name: hostinger-build override
+
+# Break glass: marks a PR's hostinger-build status as passed when the preview
+# deploy can't run (fork PRs, PRs that change .github/, a Hostinger outage).
+# The template-pr-check-override environment must require an org admin's
+# approval, so this can't be used without one.
+on:
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: PR number
+        required: true
+        type: number
+      reason:
+        description: Why the Hostinger build check is overridden
+        required: true
+        type: string
+
+permissions:
+  statuses: write
+  pull-requests: read
+
+jobs:
+  override:
+    runs-on: ubuntu-latest
+    environment: template-pr-check-override
+    steps:
+      - name: Post hostinger-build=success
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ inputs.pr }}
+          REASON: ${{ inputs.reason }}
+          ACTOR: ${{ github.actor }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          SLACK_WEBHOOK_URL: ${{ secrets.TEMPLATES_SLACK_WEBHOOK_URL }}
+        run: |
+          set -euo pipefail
+          sha=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR" -q .head.sha)
+          description="Overridden by $ACTOR: $REASON"
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$sha" \
+            -f state=success \
+            -f context=hostinger-build \
+            -f description="${description:0:139}" \
+            -f target_url="$RUN_URL"
+          message="hostinger-templates: $ACTOR overrode hostinger-build on PR #$PR ($sha): $REASON. $RUN_URL"
+          echo "::notice::$message"
+          if [ -n "$SLACK_WEBHOOK_URL" ]; then
+            jq -n --arg text "$message" '{text: $text}' | curl -fsS -X POST -H 'Content-Type: application/json' --data @- "$SLACK_WEBHOOK_URL"
+          fi

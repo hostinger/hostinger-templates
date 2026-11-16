@@ -69,7 +69,7 @@ if (staticDir) {
 
 writeFileSync(
   join(outDir, 'meta.json'),
-  JSON.stringify({ id, kind, archive: basename(archive), title, deploy }, null, 2),
+  JSON.stringify({ id, kind, archive: basename(archive), title, deploy, routes: entry.routes ?? ['/'] }, null, 2),
 );
 
 console.log(`Packaged ${id} as ${kind}: ${basename(archive)}`);

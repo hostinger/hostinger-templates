@@ -4,6 +4,9 @@ name: Template gate
 # Jobs that don't apply to a PR are skipped, and skipped counts as passed.
 on:
   pull_request:
+    # ready_for_review: the AI Security Scanner skips drafts, so the
+    # Hostinger preview deploy (template-pr-deploy.yml) waits for this run.
+    types: [opened, synchronize, reopened, ready_for_review]
 
 concurrency:
   group: template-gate-${{ github.event.pull_request.number || github.ref }}
@@ -117,6 +120,19 @@ jobs:
           TEMPLATE_ID: ${{ matrix.template }}
           PREVIEW_OUT: ${{ github.workspace }}/.preview-visual/${{ matrix.template }}
         run: node ../../.github/scripts/healthcheck.mjs "$PWD"
+      - name: Package for the Hostinger preview
+        if: steps.health.outcome == 'success'
+        working-directory: .
+        env:
+          TEMPLATE: ${{ matrix.template }}
+        run: node .github/scripts/package-demo.mjs "templates/$TEMPLATE" "$RUNNER_TEMP/pr-demo"
+      - uses: actions/upload-artifact@v4
+        if: steps.health.outcome == 'success'
+        with:
+          name: pr-demo-${{ matrix.template }}
+          path: ${{ runner.temp }}/pr-demo/${{ matrix.template }}
+          if-no-files-found: error
+          retention-days: 3
       - name: Write job result
         if: always()
         working-directory: .

@@ -1,0 +1,40 @@
+name: Template PR preview cleanup
+
+# Deletes a PR's preview websites when it closes, and every day the previews
+# of PRs that are closed or idle for 14 days. pull_request_target runs this
+# file from main and never checks out PR code.
+on:
+  pull_request_target:
+    types: [closed]
+  schedule:
+    - cron: "23 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: template-pr-cleanup
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    if: vars.PREVIEW_DEPLOYS_ENABLED == 'true' && (github.event_name != 'pull_request_target' || github.event.pull_request.base.ref == 'main')
+    runs-on: ubuntu-latest
+    environment: template-pr-check
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          sparse-checkout: .github/scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Delete preview websites
+        env:
+          HOSTINGER_API_TOKEN: ${{ secrets.PREVIEW_HOSTINGER_API_TOKEN }}
+          DEMO_PARENT_DOMAIN: ${{ vars.PREVIEW_PARENT_DOMAIN }}
+          GITHUB_TOKEN: ${{ github.token }}
+          CLOSED_PR: ${{ github.event.pull_request.number }}
+        run: node .github/scripts/cleanup-previews.mjs
