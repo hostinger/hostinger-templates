@@ -31,7 +31,9 @@ clones or runs code. `.github/scripts/repo-evaluation/rules.mjs` decides:
   browsers and native system access, monorepos without an app directory.
 - **Won't build from the source archive** (rejected): git submodules (the
   archive leaves them out), an install or build script that runs Playwright,
-  Puppeteer, Cypress, Karma or `ng test`, or source files over 50 MB at the
+  Puppeteer, Cypress, Karma or `ng test`, a Next.js 16+ build that uses
+  Turbopack (Hostinger's build servers can't load its native bindings, so
+  only `next build --webpack` works), or source files over 50 MB at the
   evaluated commit.
 - **Can't be used** (rejected): archived, no push for a year, or no OSI
   license. Copyleft licenses need legal review.

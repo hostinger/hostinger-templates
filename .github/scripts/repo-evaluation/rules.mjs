@@ -66,6 +66,9 @@ const HEADLESS_OR_NATIVE = [
 // Lifecycle scripts Hostinger runs while installing and building.
 const BUILD_SCRIPTS = ['preinstall', 'install', 'postinstall', 'prepare', 'prebuild', 'build', 'postbuild'];
 const BROWSER_IN_BUILD = /\b(playwright|puppeteer|cypress|karma|ng test)\b/;
+const NEXT_TURBOPACK_BUILD_MAJOR = 16;
+const NEXT_BUILD = /\bnext\s+build\b/;
+const NEXT_WEBPACK_BUILD = /\bnext\s+build\b[^&|;]*--webpack\b/;
 
 // Content sources that the build reads, so it fails without the owner's
 // account credentials or page ids.
@@ -220,6 +223,14 @@ export function evaluateRepository(facts, { now = new Date() } = {}) {
     fail('runtime', `The "${browserStep}" script runs \`${scripts[browserStep]}\`, which needs a headless browser the build server doesn't have.`);
   }
 
+  const turbopackStep = turbopackBuildStep(deps.next, scripts);
+  if (turbopackStep) {
+    fail(
+      'runtime',
+      `The "${turbopackStep}" script runs \`${scripts[turbopackStep]}\`: Next.js ${NEXT_TURBOPACK_BUILD_MAJOR}+ builds with Turbopack, which needs native SWC bindings that Hostinger's build servers can't load. It builds there only with \`next build --webpack\`.`,
+    );
+  }
+
   const content = BUILD_TIME_CONTENT.find(({ deps: names }) => has(names));
   if (content) warn('config', `Reads its content from ${content.reason}; the build needs the owner's ${content.reason} credentials.`);
 
@@ -251,6 +262,19 @@ function summarize(facts, findings, framework) {
     verdict: failed ? 'not-deployable' : warned ? 'needs-review' : 'deployable',
     findings,
   };
+}
+
+function nextMajorVersion(range) {
+  if (typeof range !== 'string') return null;
+  const major = range.match(/\d+/);
+  if (major) return Number(major[0]);
+  return /^(latest|canary|rc)$/.test(range.trim()) ? Infinity : null;
+}
+
+function turbopackBuildStep(nextRange, scripts) {
+  const major = nextMajorVersion(nextRange);
+  if (major === null || major < NEXT_TURBOPACK_BUILD_MAJOR) return null;
+  return BUILD_SCRIPTS.find((name) => NEXT_BUILD.test(scripts[name] ?? '') && !NEXT_WEBPACK_BUILD.test(scripts[name])) ?? null;
 }
 
 export function detectFramework(deps) {

@@ -55,6 +55,8 @@ describe('evaluateRepository', () => {
     ['a build that runs browser tests', { packageJson: { scripts: { prebuild: 'ng test --watch=false', build: 'ng build' }, dependencies: { '@angular/core': '^20.0.0' } } }, /"prebuild" script.*headless browser/],
     ['a source tree over the archive limit', { sourceSizeKb: 60 * 1024 }, /source is 60 MB/],
     ['a workspace app that needs other workspace packages', { appDir: 'apps/web', hasRootWorkspaces: true, packageJson: { scripts: { build: 'vite build' }, dependencies: { react: '^19.0.0', '@acme/ui': 'workspace:*' }, devDependencies: { vite: '^7.0.0' } } }, /apps\/web depends on other workspace packages/],
+    ['a Next.js 16 app built with Turbopack', { packageJson: { scripts: { build: 'next build', start: 'next start' }, dependencies: { next: '^16.4.5', react: '^19.0.0' } } }, /"build" script runs `next build`: Next\.js 16\+ builds with Turbopack/],
+    ['a Next.js app on the latest tag', { packageJson: { scripts: { build: 'tsc --noEmit && next build' }, dependencies: { next: 'latest', react: '^19.0.0' } } }, /Turbopack/],
     ['a monorepo without an app directory', { hasPnpmWorkspace: true, packageJson: { scripts: { build: 'turbo build' } }, appCandidates: ['apps/web'] }, /Monorepo.*apps\/web/],
   ]) {
     it(`rejects ${name}`, () => {
@@ -103,6 +105,17 @@ describe('evaluateRepository', () => {
     assert.equal(result.verdict, 'needs-review');
     assert.match(messages(result), /apps\/web is in a workspace/);
   });
+
+  for (const [name, packageJson] of [
+    ['a Next.js 16 app that builds with webpack', { scripts: { build: 'next build --webpack', start: 'next start' }, dependencies: { next: '^16.4.5', react: '^19.0.0' } }],
+    ['a Next.js 15 app', { scripts: { build: 'next build', start: 'next start' }, dependencies: { next: '^15.5.0', react: '^19.0.0' } }],
+  ]) {
+    it(`accepts ${name}`, () => {
+      const result = evaluateRepository(facts({ packageJson }), { now: NOW });
+      assert.equal(result.verdict, 'deployable');
+      assert.equal(result.framework, 'next');
+    });
+  }
 
   it('accepts an Express server using MySQL', () => {
     const result = evaluateRepository(
