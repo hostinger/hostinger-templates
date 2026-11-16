@@ -11,6 +11,10 @@ test('the generated config lists maintained and vendored templates in separate n
   ]);
 });
 
+test('security updates open one PR per vulnerable package', () => {
+  assert.match(GENERATED, /applies-to: security-updates\n\s+group-by: dependency-name\n/);
+});
+
 test('without vendored templates there is no ignore entry', () => {
   const text = renderDependabotConfig({ maintained: ['callout'], vendored: [] });
   assert.equal(parseNpmEntries(text).length, 1);
