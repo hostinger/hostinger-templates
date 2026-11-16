@@ -1,0 +1,41 @@
+{
+  "landingPage": {
+    "enabled": false,
+    "popular": true,
+    "recommended": false,
+    "heroTitle": "Plumber and electrician website template",
+    "heroDescription": "A one-page site for local trades that shows your services and hours, checks coverage by street or postcode, and puts a call button in the header and hero.",
+    "about": "Callout is a one-page website for an independent plumber, electrician or other local tradesperson. It is built to win trust quickly and turn nearby visitors into phone calls. Visitors see your services and working hours, check whether you cover their street or postcode, and call you in one tap from the header, hero, services or footer. Emergency availability is highlighted, so urgent jobs find you first. Services, hours, coverage areas and contact details live in one content file, so most updates are quick text edits. It is a React and TypeScript project that deploys from GitHub to Hostinger Node.js hosting in a few clicks.",
+    "features": [
+      {
+        "title": "Coverage checker",
+        "description": "Visitors type a street or postcode to see whether you cover their area before they call."
+      },
+      {
+        "title": "Click-to-call",
+        "description": "Call buttons in the header, the hero, every service and the footer, sized for phones."
+      },
+      {
+        "title": "Emergency availability",
+        "description": "Your emergency hours stand out, so visitors with urgent jobs know when to call."
+      },
+      {
+        "title": "Services and work gallery",
+        "description": "Show the jobs you take on and photos of past work in clear, easy-to-scan sections."
+      },
+      {
+        "title": "Edit in one place",
+        "description": "Services, hours, coverage areas and contact details live in one content file."
+      },
+      {
+        "title": "Ready for any screen",
+        "description": "Layouts are tuned for phones, tablets and desktops, with an accessible coverage form."
+      }
+    ],
+    "metaTitle": "Plumber and Electrician Website Template",
+    "metaDescription": "Launch a one-page website for your plumbing or electrical business with services, hours, a coverage checker and click-to-call. Deploy it on Hostinger.",
+    "short": "One-page site for local trades with a coverage checker and click-to-call.",
+    "long": "A one-page website for plumbers, electricians and other local trades. Visitors see your services and hours, check coverage by street or postcode, and call you in one tap.",
+    "kbUrl": null
+  }
+}

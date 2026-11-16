@@ -1,9 +1,9 @@
 {
   "landingPages": [
-    "astrowind",
-    "coreui-admin",
-    "launch-ui",
-    "screwfast",
-    "shadcn-admin"
+    "bakery-preorder",
+    "callout",
+    "class-timetable",
+    "console",
+    "quote-slider"
   ]
 }
