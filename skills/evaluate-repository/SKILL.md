@@ -77,8 +77,11 @@ deploy at the same commit will fail again.
 
 ## 3. Turning a candidate into a template
 
-A repository that deploys still needs a human decision. Chosen ones become
-vendored templates: `templates/<id>/` holds a byte-identical copy of the
+The `template-candidates` workflow does this for new deployable repositories
+after each scan and opens a PR per repository, so a person only reviews and
+merges it (see the README, "Popular repositories as templates", and
+[CANDIDATE_COPY.md](CANDIDATE_COPY.md)). The steps below are what it does,
+and how to add one by hand. Accepted repositories become vendored templates: `templates/<id>/` holds a byte-identical copy of the
 repository at a pinned commit (minus `.github/`, plus our `preview/`
 screenshots), and the `templates.json` entry records it in `source`. The
 Template gate (`check-vendored.mjs`) verifies the copy against the upstream
