@@ -63,6 +63,15 @@ The weekly run (Mondays) discovers popular repositories and keeps the open
 **Node.js template candidates** issue up to date. It never deploys on its
 own.
 
+Every run, scheduled or manual, also records its results on the
+`repo-scan-log` branch, which nothing merges into `main`. `scan-log/README.md`
+lists every repository scanned so far with its latest static verdict and
+whether it deployed on Hostinger. `scan-log/repositories/<owner>/<repo>.json`
+holds that repository's findings, its last deploy (with the error and
+Hostinger's build analysis when it failed) and up to 100 earlier scans. Check
+it before scanning a repository again: a repository that already failed to
+deploy at the same commit will fail again.
+
 ## 3. Turning a candidate into a template
 
 A repository that deploys still needs a human decision. Chosen ones become
