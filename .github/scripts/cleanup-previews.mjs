@@ -1,15 +1,14 @@
 import { appendFileSync } from 'node:fs';
 import { createHostingerApi } from './hostinger-api.mjs';
 
-// Deletes PR preview subdomains (pr-<PR>-<id>) from the preview account.
-// With CLOSED_PR it deletes that PR's previews. Without it, it deletes the
-// previews of PRs that are closed or haven't been updated for 14 days. The
+// Deletes PR preview subdomains (pr-<PR>-<id>) from the preview account when
+// their PR is closed or hasn't been updated for 14 days. The
 // subdomain list has no creation date, so the PR's activity stands in for it.
 
 const STALE_AFTER_MS = 14 * 24 * 60 * 60 * 1000;
 const PREVIEW_PATTERN = /^pr-(\d+)-[a-z0-9]+(-[a-z0-9]+)*$/;
 
-const { HOSTINGER_API_TOKEN, DEMO_PARENT_DOMAIN, GITHUB_TOKEN, GITHUB_REPOSITORY, CLOSED_PR } = process.env;
+const { HOSTINGER_API_TOKEN, DEMO_PARENT_DOMAIN, GITHUB_TOKEN, GITHUB_REPOSITORY } = process.env;
 if (!HOSTINGER_API_TOKEN || !DEMO_PARENT_DOMAIN) {
   console.error('HOSTINGER_API_TOKEN and DEMO_PARENT_DOMAIN are required');
   process.exit(1);
@@ -30,10 +29,6 @@ const previews = (await api('GET', path))
 const prs = [...new Set(previews.map((sub) => sub.pr))];
 const deletable = new Map();
 for (const pr of prs) {
-  if (CLOSED_PR) {
-    deletable.set(pr, pr === Number(CLOSED_PR) ? 'PR closed' : null);
-    continue;
-  }
   deletable.set(pr, await staleReason(pr));
 }
 
