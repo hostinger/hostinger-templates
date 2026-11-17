@@ -21,7 +21,7 @@
       },
       {
         "title": "SEO built in",
-        "description": "Meta tags, Open Graph data, a sitemap and robots rules are generated with every build."
+        "description": "Meta tags, Open Graph data and a sitemap are generated with every build, and robots rules come ready to edit."
       },
       {
         "title": "Dark mode",
