@@ -66,6 +66,11 @@ const HEADLESS_OR_NATIVE = [
 // Lifecycle scripts Hostinger runs while installing and building.
 const BUILD_SCRIPTS = ['preinstall', 'install', 'postinstall', 'prepare', 'prebuild', 'build', 'postbuild'];
 const BROWSER_IN_BUILD = /\b(playwright|puppeteer|cypress|karma|ng test)\b/;
+const NEXT_TURBOPACK_BUILD_MAJOR = 16;
+const NEXT_BUILD = /\bnext\s+build\b/;
+const NEXT_WEBPACK_BUILD = /\bnext\s+build\b[^&|;]*--webpack\b/;
+const NEXT_TURBOPACK_OPT_IN = /\bnext\s+build\b[^&|;]*--turbo(pack)?\b/;
+const ANY_VERSION = /^(|\*|x|X|latest|canary|rc)$/;
 
 // Content sources that the build reads, so it fails without the owner's
 // account credentials or page ids.
@@ -220,6 +225,14 @@ export function evaluateRepository(facts, { now = new Date() } = {}) {
     fail('runtime', `The "${browserStep}" script runs \`${scripts[browserStep]}\`, which needs a headless browser the build server doesn't have.`);
   }
 
+  const turbopackStep = turbopackBuildStep(deps.next, scripts);
+  if (turbopackStep) {
+    fail(
+      'runtime',
+      `The "${turbopackStep}" script runs \`${scripts[turbopackStep]}\`, which builds with Turbopack (the default from Next.js ${NEXT_TURBOPACK_BUILD_MAJOR}, or \`--turbopack\`). Turbopack needs native SWC bindings that Hostinger's build servers can't load, so it builds there only with webpack (\`next build --webpack\` on Next.js ${NEXT_TURBOPACK_BUILD_MAJOR}+).`,
+    );
+  }
+
   const content = BUILD_TIME_CONTENT.find(({ deps: names }) => has(names));
   if (content) warn('config', `Reads its content from ${content.reason}; the build needs the owner's ${content.reason} credentials.`);
 
@@ -251,6 +264,40 @@ function summarize(facts, findings, framework) {
     verdict: failed ? 'not-deployable' : warned ? 'needs-review' : 'deployable',
     findings,
   };
+}
+
+function highestMajorInAlternative(alternative) {
+  if (ANY_VERSION.test(alternative)) return Infinity;
+  const upper = alternative.match(/<(=?)\s*v?(\d+)(?:\.(\d+))?(?:\.(\d+))?/);
+  if (upper) {
+    const [, inclusive, major, minor = '0', patch = '0'] = upper;
+    const excludesWholeMajor = !inclusive && Number(minor) === 0 && Number(patch) === 0;
+    return Number(major) - (excludesWholeMajor ? 1 : 0);
+  }
+  if (/(^|\s)>=?\s*v?\d/.test(alternative)) return Infinity;
+  const major = alternative.match(/\d+/);
+  return major ? Number(major[0]) : null;
+}
+
+function highestNextMajor(range) {
+  if (typeof range !== 'string') return null;
+  const majors = range
+    .split('||')
+    .map((alternative) => highestMajorInAlternative(alternative.trim()))
+    .filter((major) => major !== null);
+  return majors.length ? Math.max(...majors) : null;
+}
+
+function buildsWithTurbopack(script, nextRange) {
+  if (!NEXT_BUILD.test(script)) return false;
+  if (NEXT_TURBOPACK_OPT_IN.test(script)) return true;
+  if (NEXT_WEBPACK_BUILD.test(script)) return false;
+  const major = highestNextMajor(nextRange);
+  return major !== null && major >= NEXT_TURBOPACK_BUILD_MAJOR;
+}
+
+function turbopackBuildStep(nextRange, scripts) {
+  return BUILD_SCRIPTS.find((name) => buildsWithTurbopack(scripts[name] ?? '', nextRange)) ?? null;
 }
 
 export function detectFramework(deps) {
