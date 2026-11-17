@@ -4,7 +4,8 @@ name: Repository deployability
 # templates and checks they can run on Hostinger web hosting. The evaluate
 # job only reads repositories through the GitHub API. The optional deploy job
 # builds the ones that pass on the preview account (the same account and
-# smoke check as template PRs) and deletes them afterwards.
+# smoke check as template PRs) and deletes them afterwards. The report job
+# keeps every result in scan-log/ on the repo-scan-log branch.
 on:
   schedule:
     - cron: "30 5 * * 1"
@@ -92,17 +93,26 @@ jobs:
           HOSTINGER_API_TOKEN: ${{ secrets.PREVIEW_HOSTINGER_API_TOKEN }}
           SMOKE_BASIC_AUTH: ${{ secrets.PREVIEW_BASIC_AUTH }}
           DEMO_PARENT_DOMAIN: ${{ vars.PREVIEW_PARENT_DOMAIN }}
-        run: node .github/scripts/deploy-candidates.mjs results.json --limit 5 | tee deploy-report.md
+        run: |
+          node .github/scripts/deploy-candidates.mjs results.json --limit 5 | tee deploy-report.md
+          if [ -f "$RUNNER_TEMP/repo-scan/outcomes.json" ]; then cp "$RUNNER_TEMP/repo-scan/outcomes.json" deploy-outcomes.json; fi
       - uses: actions/upload-artifact@v4
         with:
           name: repo-deployability-deploys
-          path: deploy-report.md
+          path: |
+            deploy-report.md
+            deploy-outcomes.json
           retention-days: 30
 
   report:
     needs: [evaluate, deploy]
     if: always() && needs.evaluate.result == 'success'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    env:
+      SCAN_LOG_BRANCH: repo-scan-log
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -125,6 +135,8 @@ jobs:
             fi
             echo
             echo "A repository that deploys still needs a license and content review before it is snapshotted as a template (HSTG-23740)."
+            echo
+            echo "Every repository scanned so far, with its findings, last Hostinger deploy and history: [scan log]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/tree/$SCAN_LOG_BRANCH/scan-log)."
           } > body.md
           number=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title \"$title\"" --json number,title \
             --jq "map(select(.title == \"$title\")) | .[0].number // empty")
@@ -133,3 +145,33 @@ jobs:
           else
             gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file body.md
           fi
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+          path: tooling
+          persist-credentials: false
+      - name: Create the scan log branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if ! gh api "repos/$GITHUB_REPOSITORY/branches/$SCAN_LOG_BRANCH" --silent; then
+            gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/heads/$SCAN_LOG_BRANCH" -f sha="$GITHUB_SHA" --silent
+          fi
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SCAN_LOG_BRANCH }}
+          sparse-checkout: scan-log
+          path: scan-log-branch
+          persist-credentials: false
+      - name: Record the scan in the scan log
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: >-
+          node tooling/.github/scripts/scan-log.mjs
+          --results results.json
+          --deploys deploy-outcomes.json
+          --checkout scan-log-branch
+          --run-url "$RUN_URL"
+          --commit "$GITHUB_REPOSITORY:$SCAN_LOG_BRANCH"
