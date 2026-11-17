@@ -258,14 +258,14 @@ async function branchPins(api, branch, id) {
   return file && JSON.parse(file).templates?.find((candidate) => candidate.id === id)?.source?.commit;
 }
 
-async function uploadBlob(api, content, expectedSha) {
+export async function uploadBlob(api, content, expectedSha) {
   const { sha } = await api('POST', '/git/blobs', { content: content.toString('base64'), encoding: 'base64' });
   if (sha !== expectedSha) {
     throw new Error(`GitHub stored a blob as ${sha}, expected ${expectedSha}`);
   }
 }
 
-function createApi(token, repository) {
+export function createApi(token, repository) {
   if (!token || !repository) {
     fail('push needs GH_TOKEN (or GITHUB_TOKEN) and GITHUB_REPOSITORY; use --dry-run to only print the plan');
   }
@@ -348,7 +348,7 @@ function optionValue(name) {
 }
 
 // templates.json escapes every non-ASCII character.
-function toAsciiJson(value) {
+export function toAsciiJson(value) {
   return JSON.stringify(value, null, 2).replace(
     /[\u0080-￿]/g,
     (char) => `\\u${char.charCodeAt(0).toString(16).padStart(4, '0')}`,
