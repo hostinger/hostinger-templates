@@ -104,10 +104,11 @@ and never gives the PR the token:
   `templates.json`, not from the artifact.
 - PRs with no template change get `hostinger-build` = success at once.
 
-Previews of PRs into `main` are deleted when the PR closes. A daily sweep
-(`template-pr-cleanup.yml`) deletes the rest, including those of stacked PRs
-into other branches, because the `template-pr-check` environment only allows
-`main`. `hostinger-build-override.yml` lets an org admin
+`template-pr-cleanup.yml` deletes the previews of PRs that are closed or
+idle for 14 days. It runs after every push to `main`, so a merged PR's
+previews go at once, and daily for PRs closed without merging. The org does
+not allow `pull_request_target`, so it can't run when a PR closes.
+`hostinger-build-override.yml` lets an org admin
 mark the check as passed with a reason when the deploy can't run.
 
 Setup (repository admin):

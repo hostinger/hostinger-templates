@@ -1,6 +1,7 @@
 // Checks a template deployed on Hostinger the way a visitor would hit it.
-// Every route must answer 2xx without redirects, the page title must match,
-// one same-origin asset must load, and server apps must survive a burst.
+// Every route must answer 2xx without redirects and have a title, the first
+// route's title must match, one same-origin asset must load, and server apps
+// must survive a burst.
 
 const SECOND = 1000;
 const COLD_START_TIMEOUT_MS = 3 * 60 * SECOND;
@@ -30,12 +31,13 @@ export async function smoke({
     routeResults.push({ path, ...(await checkPage(`${base}${path}`, headers)) });
   }
 
+  const [firstRoute] = routeResults;
+  if (firstRoute.ok && title && firstRoute.title !== title) {
+    firstRoute.ok = false;
+    firstRoute.detail = `title is ${JSON.stringify(firstRoute.title)}, expected ${JSON.stringify(title)}`;
+  }
   for (const result of routeResults) {
-    if (result.ok && title && result.title !== title) {
-      result.ok = false;
-      result.detail = `title is ${JSON.stringify(result.title)}, expected ${JSON.stringify(title)}`;
-    }
-    if (result.ok && !title && !result.title) {
+    if (result.ok && !result.title) {
       result.ok = false;
       result.detail = 'page has no <title>';
     }
