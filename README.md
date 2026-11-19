@@ -162,7 +162,9 @@ push can't change what they deploy without review.
   upstream code; fixes come from upstream. The one exception is Dependabot
   security updates: the root lockfile may differ from upstream, and the root
   `package.json` only in the versions of packages it already lists and in
-  `overrides` (`pnpm.overrides`, `resolutions`), each a plain registry range. The upstream LICENSE stays at the
+  `overrides` (`pnpm.overrides`, `resolutions`), and the root
+  `pnpm-workspace.yaml` only in its top-level `overrides` block (pnpm 11+
+  reads overrides only there). Each changed value is a plain registry range. The upstream LICENSE stays at the
   copy's root, so a `directory` source works only when that subdirectory has
   its own LICENSE file.
 - `check-vendored.mjs` (Template gate `validate`) fetches the upstream

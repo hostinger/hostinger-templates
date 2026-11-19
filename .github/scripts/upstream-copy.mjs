@@ -104,13 +104,16 @@ export function isIdentical({ added, changed, removed }) {
 // Lockfiles the Template gate can install and audit from (see
 // template-commands.mjs and audit-regression.mjs).
 const SUPPORTED_LOCKFILES = ['package-lock.json', 'pnpm-lock.yaml'];
+const PNPM_WORKSPACE = 'pnpm-workspace.yaml';
 const VERSION_FIELDS = ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies'];
 
 // Dependabot keeps vendored templates patched between upstream syncs, and the
 // next sync replaces its changes with upstream's files. So the root lockfile
-// may differ from upstream in any way, and the root package.json only in the
-// versions of packages it already lists and in overrides, each a plain npm
-// registry range. Returns the diff without those changes and their paths.
+// may differ from upstream in any way, the root package.json only in the
+// versions of packages it already lists and in overrides, and the root
+// pnpm-workspace.yaml (where pnpm 11+ reads overrides) only in its top-level
+// overrides block. Every changed value is a plain npm registry range. Returns
+// the diff without those changes and their paths.
 export function splitDependencyUpdates(gitDir, diff) {
   const changed = [];
   const updated = [];
@@ -130,6 +133,9 @@ function isDependencyUpdate(gitDir, entry) {
   }
   if (SUPPORTED_LOCKFILES.includes(entry.path)) {
     return true;
+  }
+  if (entry.path === PNPM_WORKSPACE) {
+    return onlyWorkspaceOverridesDiffer(readBlob(gitDir, entry.sha).toString('utf8'), readBlob(gitDir, entry.from.sha).toString('utf8'));
   }
   if (entry.path !== 'package.json') {
     return false;
@@ -164,6 +170,38 @@ export function onlyDependencyVersionsDiffer(upstream, copy) {
   });
   const overridesOk = [copy.overrides, copy.resolutions, copy.pnpm?.overrides].every((overrides) => overrides === undefined || hasOnlyRegistryRanges(overrides));
   return versionsOk && overridesOk;
+}
+
+export function onlyWorkspaceOverridesDiffer(upstream, copy) {
+  const before = splitOverridesBlock(upstream);
+  const after = splitOverridesBlock(copy);
+  return Boolean(before && after) && before.rest === after.rest && after.overrides.every((line) => isWorkspaceOverride(line));
+}
+
+function splitOverridesBlock(text) {
+  const rest = [];
+  const overrides = [];
+  let inBlock = false;
+  let blocks = 0;
+  for (const line of text.split('\n')) {
+    if (/^overrides:\s*$/.test(line)) {
+      inBlock = true;
+      blocks += 1;
+    } else if (inBlock && (/^\s/.test(line) || line === '')) {
+      if (line.trim() !== '') {
+        overrides.push(line);
+      }
+    } else {
+      inBlock = false;
+      rest.push(line);
+    }
+  }
+  return blocks > 1 ? null : { rest: rest.join('\n').trimEnd(), overrides };
+}
+
+function isWorkspaceOverride(line) {
+  const match = line.match(/^ {2}(['"]?)([^'"\s#][^'"#]*?)\1:\s*(['"]?)([^'"#]+?)\3\s*$/);
+  return Boolean(match) && isRegistryRange(match[4]);
 }
 
 function isRegistryRange(value) {
