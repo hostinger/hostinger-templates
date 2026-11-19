@@ -68,8 +68,8 @@ every other job passed or didn't apply:
 - `validate` also checks every vendored template the PR adds, re-pins or
   edits (`.github/scripts/check-vendored.mjs`): the ref points at the commit,
   the license matches GitHub's, the deployability rules pass at the commit,
-  `templates/<id>/` is the upstream tree at the commit with its LICENSE, and
-  `dependabot.yml` keeps Dependabot off the folder.
+  and `templates/<id>/` is the upstream tree at the commit with its LICENSE,
+  apart from Dependabot's dependency updates.
 
 Run the same checks locally:
 
@@ -159,7 +159,10 @@ push can't change what they deploy without review.
   blob SHAs and modes), minus `.github/` and the paths in `source.exclude`,
   plus our `preview/` folder with the catalog screenshots (plain `.png` and
   `.webp` files directly inside it, nothing else). We don't edit
-  upstream code; fixes come from upstream. The upstream LICENSE stays at the
+  upstream code; fixes come from upstream. The one exception is Dependabot
+  security updates: the root lockfile may differ from upstream, and the root
+  `package.json` only in the versions of packages it already lists and in
+  `overrides` (`pnpm.overrides`, `resolutions`), each a plain registry range. The upstream LICENSE stays at the
   copy's root, so a `directory` source works only when that subdirectory has
   its own LICENSE file.
 - `check-vendored.mjs` (Template gate `validate`) fetches the upstream
@@ -176,12 +179,14 @@ push can't change what they deploy without review.
   manager. When the deploy output is static files, high and critical
   production advisories are warnings, because they only run at build time.
   A server-rendered one fails on any high or critical production advisory.
-- Dependabot doesn't open PRs for vendored folders: `dependabot.yml` lists
-  them in an npm entry that ignores every dependency, so their updates come
-  only from upstream syncs. The file is generated from `templates.json`
-  (`node .github/scripts/dependabot-config.mjs --write`). `validate-catalog`
-  fails when it is out of date, and `check-vendored` when a vendored folder
-  isn't excluded.
+- Dependabot opens grouped security PRs for vendored folders like any other
+  template, so they stay patched between upstream syncs. `check-vendored`
+  accepts those dependency updates (see above) and notes them in its summary.
+  An upstream sync replaces the copy with upstream's files, dropping our
+  bumps; if upstream still ships the vulnerable version, Dependabot opens the
+  PR again. `dependabot.yml` is generated from `templates/`
+  (`node .github/scripts/dependabot-config.mjs --write`), and
+  `validate-catalog` fails when it is out of date.
 - `Upstream sync` (`.github/workflows/upstream-sync.yml`) runs every Monday.
   When a template has a newer release or branch commit that passes the pin
   checks, `.github/scripts/upstream-sync.mjs` builds one commit that updates
@@ -215,8 +220,8 @@ To add one, or to import a sync too large for the bot:
 
    Remove `source.exclude` paths the same way
    (`git rm -r -q --ignore-unmatch templates/<id>/<path>`), then add `preview/`.
-3. Add or update the entry with its `source`, regenerate `dependabot.yml`,
-   and run `node .github/scripts/check-vendored.mjs --all`. The rules are in
+3. Add or update the entry with its `source`, regenerate `dependabot.yml`
+   for a new template, and run `node .github/scripts/check-vendored.mjs --all`. The rules are in
    [TEMPLATE_SCHEMA.md](skills/create-repository/TEMPLATE_SCHEMA.md#upstream-templates).
 
 ## Demo deployments
@@ -225,8 +230,8 @@ Merging a PR that adds a template (a new `templates/<id>/package.json`)
 publishes it to `https://<id>.hostingertemplates.com` through the
 `Deploy template demos` workflow. PRs that only change existing templates,
 such as Dependabot security groups and dependency bumps, do not deploy.
-Vendored templates redeploy on any change, since an upstream sync is the
-only way their code changes.
+Vendored templates redeploy on any change, upstream syncs and their
+Dependabot security updates alike.
 To redeploy existing demos, run the workflow from the Actions tab with their
 template IDs.
 

@@ -228,7 +228,9 @@ where the copy came from:
 The copy is byte-identical to the upstream tree at `commit`: same paths, blob
 SHAs and modes, minus `.github/` and `exclude`, plus our own `preview/` folder
 with the catalog screenshots (`media` points there). Never edit upstream code
-in `templates/<id>/`; fixes come from upstream. When upstream has its own
+in `templates/<id>/`; fixes come from upstream. Only Dependabot security
+updates may change the root lockfile, and the root `package.json` in the
+versions of packages it already lists and in overrides. When upstream has its own
 `preview/`, the check reports a clash: add `"preview/"` to `exclude`. Import the
 copy with `git read-tree`, not by copying files (see the README's
 [Upstream templates](../../README.md#upstream-templates) for the commands).
@@ -237,9 +239,10 @@ copy with `git read-tree`, not by copying files (see the README's
   (`skills/evaluate-repository`) at `commit`, checks that `ref` resolves to it
   (for releases) or contains it (for branches) and that the license and
   archive state still hold, fetches the commit and requires the copy to match
-  it, requires a root LICENSE, and requires `.github/dependabot.yml` to keep
-  Dependabot off the folder (`node .github/scripts/dependabot-config.mjs
-  --write` regenerates it).
+  it (apart from Dependabot's dependency updates), and requires a root
+  LICENSE. Like every template folder, the copy is listed in
+  `.github/dependabot.yml` for grouped security PRs
+  (`node .github/scripts/dependabot-config.mjs --write` regenerates it).
 - The weekly `upstream-sync` workflow opens a PR on `upstream-sync/<id>`
   when a newer release or branch commit passes the same rules. The PR updates
   the copy and the pin in one commit; its Template gate and Hostinger preview
