@@ -1,0 +1,273 @@
+name: Template candidates
+
+on:
+  workflow_run:
+    workflows: [Repository deployability]
+    types: [completed]
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      repositories:
+        description: owner/repo[:app/dir] entries separated by spaces, evaluated now instead of taking the last scan.
+        required: false
+        default: ""
+      limit:
+        description: Most PRs to open in this run.
+        required: false
+        default: "2"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: template-candidates
+  cancel-in-progress: false
+
+jobs:
+  pick:
+    if: github.event_name != 'push' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    outputs:
+      candidates: ${{ steps.pick.outputs.candidates }}
+      copy: ${{ steps.copy.outputs.enabled }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Download the scan results
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v4
+        with:
+          name: repo-deployability
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+      - name: Download the Hostinger deploy results
+        if: github.event_name == 'workflow_run'
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: repo-deployability-deploys
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+      - name: Evaluate the requested repositories
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REPOSITORIES: ${{ inputs.repositories }}
+        run: |
+          set -euo pipefail
+          if [ -z "$REPOSITORIES" ]; then
+            gh run download --repo "$GITHUB_REPOSITORY" --name repo-deployability \
+              "$(gh run list --repo "$GITHUB_REPOSITORY" --workflow repo-deployability.yml --status success --limit 1 --json databaseId --jq '.[0].databaseId')"
+          else
+            read -r -a targets <<< "$REPOSITORIES"
+            node .github/scripts/evaluate-repos.mjs "${targets[@]}" --out results.json
+          fi
+      - id: copy
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::ANTHROPIC_API_KEY is not set, so no candidate PRs are opened. The candidates below are prepared and checked only."
+          fi
+      - id: pick
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LIMIT: ${{ inputs.limit || '2' }}
+        run: node .github/scripts/template-candidates.mjs pick --results results.json --deploys deploy-outcomes.json --limit "$LIMIT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: template-candidates
+          path: candidates.json
+          retention-days: 7
+
+  prepare:
+    needs: pick
+    if: needs.pick.outputs.candidates != '[]' && needs.pick.outputs.candidates != ''
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        candidate: ${{ fromJson(needs.pick.outputs.candidates) }}
+    env:
+      ID: ${{ matrix.candidate.id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          name: template-candidates
+      - name: Copy the repository at its pin
+        id: prepare
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node .github/scripts/template-candidates.mjs prepare "$ID"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.prepare.outputs.node-version }}
+      - name: Install
+        run: node .github/scripts/template-commands.mjs install "templates/$ID"
+      - name: Build
+        run: node .github/scripts/template-commands.mjs build "templates/$ID"
+      - name: Find the build output
+        run: node .github/scripts/template-candidates.mjs settle "$ID"
+      - name: Audit
+        run: node .github/scripts/audit-regression.mjs "templates/$ID" HEAD
+      - name: Install preview scripts
+        working-directory: .github/scripts
+        run: |
+          npm ci
+          npx --yes playwright@latest install --with-deps chromium
+          sudo apt-get install -y -qq webp
+      - name: Serve and capture the screenshots
+        env:
+          PORT: 4173
+          TEMPLATE_ID: ${{ matrix.candidate.id }}
+          PREVIEW_OUT: ${{ runner.temp }}/shots
+        run: node .github/scripts/healthcheck.mjs "templates/$ID" || true
+      - name: Keep the screenshots
+        run: node .github/scripts/template-candidates.mjs capture "$ID" --from "$RUNNER_TEMP/shots" --out "$RUNNER_TEMP/prepared"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: prepared-${{ matrix.candidate.id }}
+          path: ${{ runner.temp }}/prepared
+          retention-days: 7
+
+  copy:
+    needs: [pick, prepare]
+    if: always() && needs.pick.outputs.copy == 'true' && needs.pick.outputs.candidates != '[]' && needs.pick.outputs.candidates != ''
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        candidate: ${{ fromJson(needs.pick.outputs.candidates) }}
+    env:
+      ID: ${{ matrix.candidate.id }}
+    steps:
+      - id: prepared
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: prepared-${{ matrix.candidate.id }}
+          path: ${{ runner.temp }}/prepared
+      - if: steps.prepared.outcome == 'success'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - if: steps.prepared.outcome == 'success'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Restore the prepared template
+        if: steps.prepared.outcome == 'success'
+        run: |
+          node .github/scripts/template-candidates.mjs restore "$ID" --from "$RUNNER_TEMP/prepared"
+          (cd .github/scripts && npm ci)
+      - name: Write the catalog entry and landing page
+        if: steps.prepared.outcome == 'success'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          npx --yes @anthropic-ai/claude-code@latest -p \
+            "Follow skills/evaluate-repository/CANDIDATE_COPY.md for the template described in candidate.json." \
+            --model claude-opus-5-5 \
+            --permission-mode acceptEdits \
+            --allowedTools "Read,Write,Edit,Glob,Grep,Bash(node .github/scripts/validate-catalog.mjs),Bash(node .github/scripts/lint-landing-copy.mjs --base origin/main)" \
+            --max-turns 80
+      - if: steps.prepared.outcome == 'success'
+        run: node .github/scripts/template-candidates.mjs collect-copy "$ID" --out "$RUNNER_TEMP/copy"
+      - if: steps.prepared.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: copy-${{ matrix.candidate.id }}
+          path: ${{ runner.temp }}/copy
+          retention-days: 7
+
+  publish:
+    needs: [pick, copy]
+    if: always() && needs.pick.outputs.copy == 'true' && needs.pick.outputs.candidates != '[]' && needs.pick.outputs.candidates != ''
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        candidate: ${{ fromJson(needs.pick.outputs.candidates) }}
+    env:
+      ID: ${{ matrix.candidate.id }}
+    steps:
+      - id: copied
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: copy-${{ matrix.candidate.id }}
+          path: ${{ runner.temp }}/copy
+      - if: steps.copied.outcome == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: prepared-${{ matrix.candidate.id }}
+          path: ${{ runner.temp }}/prepared
+      - name: Get a HostingerBot token
+        if: steps.copied.outcome == 'success'
+        id: token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.HOSTINGERBOT_APP_ID }}
+          private-key: ${{ secrets.HOSTINGERBOT_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: hostinger-templates
+      - if: steps.copied.outcome == 'success'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - if: steps.copied.outcome == 'success'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Open the PR
+        if: steps.copied.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+        run: |
+          (cd .github/scripts && npm ci)
+          node .github/scripts/template-candidates.mjs publish "$ID" --prepared "$RUNNER_TEMP/prepared" --copy "$RUNNER_TEMP/copy"
+
+  restack:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get a HostingerBot token
+        id: token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.HOSTINGERBOT_APP_ID }}
+          private-key: ${{ secrets.HOSTINGERBOT_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: hostinger-templates
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Rebuild conflicting candidate PRs on main
+        env:
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+        run: node .github/scripts/template-candidates.mjs restack

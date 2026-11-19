@@ -51,7 +51,8 @@ before the page can be enabled.
 A copy PR changes only `landing-pages/**`. A code PR never changes
 `landing-pages/**`. Code needs one engineering approval; copy needs the
 Web Hosting code owner's approval, which `CODEOWNERS` requests
-automatically.
+automatically. The one exception is a `template-candidates` PR, which adds a
+vendored template together with its enabled landing page.
 
 - Title: `Copy: <template name> landing page`.
 - Body: the demo link, what changed, and anything the reviewer should
