@@ -2,3 +2,4 @@ allowBuilds:
   esbuild: true
 overrides:
   '@emnapi/runtime': ^1.11.3
+  'postcss-selector-parser@^6': ^6.1.5
