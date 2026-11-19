@@ -14,6 +14,7 @@ import {
   isIdentical,
   matchesPrefix,
   onlyDependencyVersionsDiffer,
+  onlyWorkspaceOverridesDiffer,
   parseLsTree,
   previewProblems,
   splitDependencyUpdates,
@@ -127,6 +128,24 @@ test('package.json may change only dependency versions and overrides', () => {
     bump({ pnpm: { onlyBuiltDependencies: ['sharp', 'esbuild'] } }),
   ]) {
     assert.equal(onlyDependencyVersionsDiffer(upstreamManifest, changed), false, JSON.stringify(changed));
+  }
+});
+
+test('pnpm-workspace.yaml may change only its top-level overrides', () => {
+  const upstreamWorkspace = 'allowBuilds:\n  esbuild: true\n';
+  assert.ok(onlyWorkspaceOverridesDiffer(upstreamWorkspace, upstreamWorkspace));
+  assert.ok(onlyWorkspaceOverridesDiffer(upstreamWorkspace, `${upstreamWorkspace}overrides:\n  '@emnapi/runtime': ^1.11.3\n  vite: "8.3.8"\n`));
+  assert.ok(onlyWorkspaceOverridesDiffer(`overrides:\n  vite: 8.3.5\n${upstreamWorkspace}`, `overrides:\n  vite: 8.3.8\n${upstreamWorkspace}`));
+
+  for (const changed of [
+    'allowBuilds:\n  esbuild: true\n  sharp: true\n',
+    `${upstreamWorkspace}overrides:\n  vite: github:vitejs/vite\n`,
+    `${upstreamWorkspace}overrides:\n  vite: npm:evil@1.0.0\n`,
+    `${upstreamWorkspace}overrides:\n  vite:\n    esbuild: 0.25.0\n`,
+    `${upstreamWorkspace}overrides:\n  vite: 8.3.8\noverrides:\n  undici: 8.12.2\n`,
+    `${upstreamWorkspace}packageExtensions:\n  vite: {}\n`,
+  ]) {
+    assert.equal(onlyWorkspaceOverridesDiffer(upstreamWorkspace, changed), false, changed);
   }
 });
 
