@@ -98,8 +98,8 @@ function checkLayout() {
   }
 }
 
-// Every template folder must be in dependabot.yml: maintained ones get grouped
-// security PRs, vendored ones none (see dependabot-config.mjs).
+// Every template folder must be in dependabot.yml, so each one gets grouped
+// security PRs (see dependabot-config.mjs).
 function checkDependabot() {
   let expected;
   try {

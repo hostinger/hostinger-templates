@@ -2,9 +2,10 @@ import { execFileSync } from 'node:child_process';
 
 // A vendored template is templates/<id>/ holding an upstream repository's tree
 // at source.commit (the source.directory subtree when set), byte for byte:
-// same paths, blob SHAs and modes. Two things differ on purpose: paths under
-// DEFAULT_EXCLUDE and source.exclude are left out, and preview/ holds our
-// catalog screenshots. Shared by check-vendored.mjs (the Template gate) and
+// same paths, blob SHAs and modes. Three things differ on purpose: paths under
+// DEFAULT_EXCLUDE and source.exclude are left out, preview/ holds our catalog
+// screenshots, and Dependabot security updates may change the root
+// package.json and lockfile (see splitDependencyUpdates). Shared by check-vendored.mjs (the Template gate) and
 // the weekly upstream sync.
 
 const DEFAULT_EXCLUDE = ['.github/'];
@@ -103,6 +104,79 @@ export function isIdentical({ added, changed, removed }) {
 // Lockfiles the Template gate can install and audit from (see
 // template-commands.mjs and audit-regression.mjs).
 const SUPPORTED_LOCKFILES = ['package-lock.json', 'pnpm-lock.yaml'];
+const VERSION_FIELDS = ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies'];
+
+// Dependabot keeps vendored templates patched between upstream syncs, and the
+// next sync replaces its changes with upstream's files. So the root lockfile
+// may differ from upstream in any way, and the root package.json only in the
+// versions of packages it already lists and in overrides, each a plain npm
+// registry range. Returns the diff without those changes and their paths.
+export function splitDependencyUpdates(gitDir, diff) {
+  const changed = [];
+  const updated = [];
+  for (const entry of diff.changed) {
+    if (isDependencyUpdate(gitDir, entry)) {
+      updated.push(entry.path);
+    } else {
+      changed.push(entry);
+    }
+  }
+  return { diff: { ...diff, changed }, updated };
+}
+
+function isDependencyUpdate(gitDir, entry) {
+  if (entry.type !== 'blob' || entry.mode !== PLAIN_FILE || entry.from.mode !== PLAIN_FILE) {
+    return false;
+  }
+  if (SUPPORTED_LOCKFILES.includes(entry.path)) {
+    return true;
+  }
+  if (entry.path !== 'package.json') {
+    return false;
+  }
+  try {
+    return onlyDependencyVersionsDiffer(JSON.parse(readBlob(gitDir, entry.sha)), JSON.parse(readBlob(gitDir, entry.from.sha)));
+  } catch {
+    return false;
+  }
+}
+
+export function onlyDependencyVersionsDiffer(upstream, copy) {
+  const rest = (manifest) => {
+    const { overrides, resolutions, pnpm = {}, ...fields } = manifest;
+    const { overrides: pnpmOverrides, ...pnpmFields } = pnpm;
+    for (const field of VERSION_FIELDS) {
+      delete fields[field];
+    }
+    return JSON.stringify({ ...fields, pnpm: pnpmFields });
+  };
+  if (rest(upstream) !== rest(copy)) {
+    return false;
+  }
+  const versionsOk = VERSION_FIELDS.every((field) => {
+    const before = upstream[field] ?? {};
+    const after = copy[field] ?? {};
+    const names = Object.keys(before);
+    return (
+      JSON.stringify(names) === JSON.stringify(Object.keys(after)) &&
+      names.every((name) => after[name] === before[name] || isRegistryRange(after[name]))
+    );
+  });
+  const overridesOk = [copy.overrides, copy.resolutions, copy.pnpm?.overrides].every((overrides) => overrides === undefined || hasOnlyRegistryRanges(overrides));
+  return versionsOk && overridesOk;
+}
+
+function isRegistryRange(value) {
+  return typeof value === 'string' && value.trim() !== '' && !/[:/\\]/.test(value);
+}
+
+function hasOnlyRegistryRanges(overrides) {
+  return (
+    typeof overrides === 'object' &&
+    overrides !== null &&
+    Object.values(overrides).every((value) => (typeof value === 'object' ? hasOnlyRegistryRanges(value) : isRegistryRange(value)))
+  );
+}
 
 // Upstream content a copy can't hold faithfully, or that the Template gate
 // can't install and audit. problems fail the check; notes are worth a look
