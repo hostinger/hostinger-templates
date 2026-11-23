@@ -29,6 +29,10 @@ jobs:
   pick:
     if: github.event_name != 'push' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
     outputs:
       candidates: ${{ steps.pick.outputs.candidates }}
     steps:
