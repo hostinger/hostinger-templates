@@ -509,7 +509,7 @@ async function pick(args) {
   const deploysFile = optionValue(args, '--deploys');
   const deploys = deploysFile && existsSync(deploysFile) ? readJson(deploysFile) : [];
   const limit = Number(optionValue(args, '--limit') ?? 2);
-  const api = createApi(process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN, process.env.GITHUB_REPOSITORY);
+  const api = createApi(process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN, process.env.TEMPLATES_REPOSITORY ?? process.env.GITHUB_REPOSITORY);
   const pulls = [];
   for (let page = 1; ; page++) {
     const batch = await api('GET', `/pulls?state=all&per_page=100&page=${page}`);
@@ -528,6 +528,7 @@ async function pick(args) {
   });
   writeFileSync('candidates.json', JSON.stringify(picked, null, 2));
   output('candidates', JSON.stringify(picked.map(({ id, branch }) => ({ id, branch }))));
+  output('repositories', picked.map((item) => (item.appDir ? `${item.repository}:${item.appDir}` : item.repository)).join(' '));
   const lines = ['## Template candidates', ''];
   lines.push(picked.length ? `Preparing ${picked.map((item) => `\`${item.repository}\` as \`${item.id}\``).join(', ')}.` : 'No new deployable repositories.');
   if (skipped.length) {

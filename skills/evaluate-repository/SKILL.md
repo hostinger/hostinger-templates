@@ -1,6 +1,6 @@
 ---
 name: evaluate-repository
-description: Checks whether a public GitHub repository can run as a Node.js app on Hostinger web hosting before it is considered as a template, statically and optionally with a real deploy to the preview account. Use when asked whether a repository (or the most popular repositories for a topic) could become a Node.js template, or to refresh the candidates issue.
+description: Checks whether a public GitHub repository can run as a Node.js app on Hostinger web hosting before it is considered as a template, statically and optionally with a real deploy to the preview account. Use when asked whether a repository (or the most popular repositories for a topic) could become a Node.js template.
 ---
 
 # Evaluate a repository as a Node.js template
@@ -53,7 +53,8 @@ CLI, Parcel and Vite.
 
 ## 2. Real deploy (preview account)
 
-Run **Repository deployability** from the Actions tab with `deploy` ticked,
+Run **Repository deployability** in the private
+`hostinger/hostinger-templates-automation` repository with `deploy` ticked,
 or `deploy-candidates.mjs` locally with the preview account's token. Each
 repository that passed is archived at the evaluated commit with
 `git archive` (nothing from it runs on the runner), inspected like PR
@@ -62,11 +63,12 @@ artifacts, deployed to `scan-<owner>-<repo>.<preview domain>`, smoke-checked
 analysis is included for failures; reproduce on Node.js 22 before trusting
 it.
 
-The weekly run (Mondays) discovers popular repositories and keeps the open
-**Node.js template candidates** issue up to date. It never deploys on its
-own.
+The scan runs every Monday in that private repository, so the candidate list
+stays private. It keeps the **Node.js template candidates** issue there up to
+date, and it never deploys on its own. It then sends up to two new deployable
+repositories to this repository's `template-candidates` workflow.
 
-Every run, scheduled or manual, also records its results on the
+Every run, scheduled or manual, also records its results on that repository's
 `repo-scan-log` branch, which nothing merges into `main`. `scan-log/README.md`
 lists every repository scanned so far with its latest static verdict and
 whether it deployed on Hostinger. `scan-log/repositories/<owner>/<repo>.json`

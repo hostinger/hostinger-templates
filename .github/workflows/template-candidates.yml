@@ -1,18 +1,13 @@
 name: Template candidates
 
 on:
-  workflow_run:
-    workflows: [Repository deployability]
-    types: [completed]
-    branches: [main]
   push:
     branches: [main]
   workflow_dispatch:
     inputs:
       repositories:
-        description: owner/repo[:app/dir] entries separated by spaces, evaluated now instead of taking the last scan.
-        required: false
-        default: ""
+        description: owner/repo[:app/dir] entries separated by spaces. The private scan in hostinger-templates-automation sends the ones it picked.
+        required: true
       limit:
         description: Most PRs to open in this run.
         required: false
@@ -27,11 +22,10 @@ concurrency:
 
 jobs:
   pick:
-    if: github.event_name != 'push' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      actions: read
       pull-requests: read
     outputs:
       candidates: ${{ steps.pick.outputs.candidates }}
@@ -43,40 +37,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Download the scan results
-        if: github.event_name == 'workflow_run'
-        uses: actions/download-artifact@v4
-        with:
-          name: repo-deployability
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ github.token }}
-      - name: Download the Hostinger deploy results
-        if: github.event_name == 'workflow_run'
-        continue-on-error: true
-        uses: actions/download-artifact@v4
-        with:
-          name: repo-deployability-deploys
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ github.token }}
-      - name: Evaluate the requested repositories
-        if: github.event_name == 'workflow_dispatch'
+      - name: Evaluate the repositories
         env:
           GITHUB_TOKEN: ${{ github.token }}
           REPOSITORIES: ${{ inputs.repositories }}
         run: |
           set -euo pipefail
-          if [ -z "$REPOSITORIES" ]; then
-            gh run download --repo "$GITHUB_REPOSITORY" --name repo-deployability \
-              "$(gh run list --repo "$GITHUB_REPOSITORY" --workflow repo-deployability.yml --status success --limit 1 --json databaseId --jq '.[0].databaseId')"
-          else
-            read -r -a targets <<< "$REPOSITORIES"
-            node .github/scripts/evaluate-repos.mjs "${targets[@]}" --out results.json
-          fi
+          read -r -a targets <<< "$REPOSITORIES"
+          node .github/scripts/evaluate-repos.mjs "${targets[@]}" --out results.json
       - id: pick
         env:
           GH_TOKEN: ${{ github.token }}
           LIMIT: ${{ inputs.limit || '2' }}
-        run: node .github/scripts/template-candidates.mjs pick --results results.json --deploys deploy-outcomes.json --limit "$LIMIT"
+        run: node .github/scripts/template-candidates.mjs pick --results results.json --limit "$LIMIT"
       - uses: actions/upload-artifact@v4
         with:
           name: template-candidates

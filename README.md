@@ -137,16 +137,19 @@ Setup (repository admin):
 
 ## Popular repositories as templates
 
-`Repository deployability` (`.github/workflows/repo-deployability.yml`)
-checks whether public GitHub repositories can run as Node.js apps on Hostinger
-web hosting. It rejects agent skills, agents, desktop apps, extensions, CLIs
-and libraries, and anything that needs services or runtimes the platform
-doesn't offer. Optionally it deploys the ones that pass to the preview
-account. The weekly run keeps the **Node.js template candidates** issue up
-to date. See [`skills/evaluate-repository/`](skills/evaluate-repository/SKILL.md).
+The weekly `Repository deployability` scan runs in the private
+`hostinger/hostinger-templates-automation` repository, so the candidate list
+stays private. It uses this repository's scripts (`evaluate-repos.mjs`,
+`deploy-candidates.mjs`, `scan-log.mjs`) to check whether public GitHub
+repositories can run as Node.js apps on Hostinger web hosting. It rejects
+agent skills, agents, desktop apps, extensions, CLIs and libraries, and
+anything that needs services or runtimes the platform doesn't offer.
+Optionally it deploys the ones that pass to the preview account. See
+[`skills/evaluate-repository/`](skills/evaluate-repository/SKILL.md).
 
-`Template candidates` (`.github/workflows/template-candidates.yml`) runs after
-each scan and turns up to two new deployable repositories into PRs, so the
+`Template candidates` (`.github/workflows/template-candidates.yml`) runs when
+the private scan sends it up to two new deployable repositories, and turns
+them into PRs, so the
 only manual step is reviewing and merging. For each one it copies the
 repository at a pinned release or commit, installs, builds and audits it,
 and captures the screenshots, with no secrets in those jobs. HostingerBot
