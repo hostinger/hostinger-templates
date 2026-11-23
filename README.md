@@ -149,15 +149,18 @@ to date. See [`skills/evaluate-repository/`](skills/evaluate-repository/SKILL.md
 each scan and turns up to two new deployable repositories into PRs, so the
 only manual step is reviewing and merging. For each one it copies the
 repository at a pinned release or commit, installs, builds and audits it,
-captures the screenshots, then has Claude write the catalog entry and an
-enabled landing page ([CANDIDATE_COPY.md](skills/evaluate-repository/CANDIDATE_COPY.md)).
-HostingerBot opens the PR, so the Template gate runs on it. Merging deploys
-the demo and publishes the page. Closing a candidate PR declines the
-repository for good; reopen it to reconsider. After every push to `main`
-the workflow rebuilds candidate PRs that have conflicts. It needs the
-`ANTHROPIC_API_KEY` secret; without it, it prepares and checks the
-candidates but opens nothing. Run it by hand with a list of repositories to
-propose specific ones.
+and captures the screenshots, with no secrets in those jobs. HostingerBot
+then opens a draft PR built only from data checked before the upstream code
+ran. A private workflow in `hostinger/hostinger-templates-automation` has
+Claude write the catalog entry and an enabled landing page
+([CANDIDATE_COPY.md](skills/evaluate-repository/CANDIDATE_COPY.md)), checks
+the result for links and anything that looks like a credential, pushes it to
+the PR and marks it ready for review, so the Anthropic key never reaches this
+public repository. Merging deploys the demo and publishes the page. Closing a
+candidate PR declines the repository for good; reopen it to reconsider.
+After every push to `main` the workflow rebuilds candidate PRs that have
+conflicts. Run it by hand with a list of repositories to propose specific
+ones.
 
 ## Upstream templates
 

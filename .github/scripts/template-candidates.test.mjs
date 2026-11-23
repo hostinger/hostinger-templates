@@ -1,10 +1,13 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import {
+  AWAITING_COPY,
   addedEntries,
   candidateBranch,
   candidateId,
+  checkPreview,
   chooseTrack,
+  copyProblems,
   mediaFor,
   mergeCopy,
   nodeCompatibility,
@@ -13,7 +16,9 @@ import {
   publishedPage,
   rejection,
   renderBody,
+  safeOutputDirectory,
   skeletonEntry,
+  webpWidth,
   withEntry,
   withLandingPage,
 } from './template-candidates.mjs';
@@ -29,6 +34,24 @@ const result = (repository, overrides = {}) => ({
 });
 
 const catalog = (templates = [], retired = []) => ({ templates, retired });
+
+const png = (width, height) => {
+  const buffer = Buffer.alloc(33);
+  Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(buffer);
+  buffer.write('IHDR', 12, 'latin1');
+  buffer.writeUInt32BE(width, 16);
+  buffer.writeUInt32BE(height, 20);
+  return buffer;
+};
+
+const webp = (width) => {
+  const buffer = Buffer.alloc(30);
+  buffer.write('RIFF', 0, 'latin1');
+  buffer.write('WEBP', 8, 'latin1');
+  buffer.write('VP8 ', 12, 'latin1');
+  buffer.writeUInt16LE(width, 26);
+  return buffer;
+};
 
 test('candidate branches are stable per repository and app directory', () => {
   assert.equal(candidateBranch('Acme/Shop_Site'), 'template-candidate/acme-shop-site');
@@ -173,4 +196,64 @@ test('the PR body links the pin, the screenshots and the reviewer notes', () => 
   assert.match(body, /Node\.js 22/);
   assert.match(body, /- Replace the sample prices\./);
   assert.match(body, /blob\/template-candidate\/acme-shop\/templates\/shop\/preview\/shop-thumbnail\.png\?raw=true/);
+});
+
+test('the prepared screenshots must be real images of the expected sizes', () => {
+  const files = {
+    'shop-thumbnail.png': png(1440, 900),
+    'shop-homepage.png': png(1440, 5200),
+    'shop-thumbnail-480.webp': webp(480),
+    'shop-thumbnail-960.webp': webp(960),
+  };
+  assert.deepEqual(checkPreview('shop', (name) => files[name] ?? null), { problems: [], homepageHeight: 5200 });
+  assert.equal(webpWidth(Buffer.from('<svg onload="alert(1)"></svg>')), null);
+
+  const tampered = { ...files, 'shop-thumbnail.png': png(1440, 901), 'shop-homepage.png': Buffer.from('#!/bin/sh'), 'shop-thumbnail-960.webp': webp(480) };
+  assert.deepEqual(checkPreview('shop', (name) => tampered[name] ?? null), {
+    problems: ['the thumbnail is 1440×901, not 1440×900', 'shop-homepage.png is not a PNG', 'shop-thumbnail-960.webp is not a 960px WebP'],
+    homepageHeight: null,
+  });
+});
+
+test('the build output directory must be a plain relative path', () => {
+  assert.equal(safeOutputDirectory(undefined), null);
+  assert.equal(safeOutputDirectory('dist/client'), 'dist/client');
+  assert.throws(() => safeOutputDirectory('../../.github'));
+  assert.throws(() => safeOutputDirectory('/etc'));
+  assert.throws(() => safeOutputDirectory({ path: 'dist' }));
+});
+
+test('copy with credentials or outside links is never pushed', () => {
+  const source = { repository: 'acme/shop' };
+  const demoUrl = 'https://shop.hostingertemplates.com';
+  const page = { landingPage: { heroTitle: 'Launch a shop', kbUrl: 'https://www.hostinger.com/support/123-nodejs' } };
+  const notes = '- Compare the pricing table with https://shop.hostingertemplates.com/pricing and https://github.com/Acme/shop/blob/main/README.md.\n- Check https://shop.hostingertemplates.com.';
+
+  assert.deepEqual(copyProblems({ entry: { summary: 'A shop.' }, page, notes, source, demoUrl }), []);
+  assert.deepEqual(
+    copyProblems({
+      entry: { summary: 'Get it at www.cheap-pills.example', features: ['sk-ant-api03-abc'], demoUrl: 'https://ignored.example' },
+      page: { landingPage: { heroTitle: 'See javascript://evil.example' } },
+      notes: '- Read https://github.com/acme/shop-fork and https://shop.hostingertemplates.com.evil.example',
+      source,
+      demoUrl,
+    }),
+    [
+      'it contains text that looks like a credential',
+      'the copy links to www.cheap-pills.example',
+      'the copy links to javascript://evil.example',
+      'the notes link to https://github.com/acme/shop-fork',
+      'the notes link to https://shop.hostingertemplates.com.evil.example',
+    ],
+  );
+});
+
+test('a candidate PR opens as a draft that waits for its copy', () => {
+  const entry = {
+    ...skeletonEntry({ id: 'shop', name: 'shop', source: { repository: 'acme/shop', ref: 'main', commit: 'c'.repeat(40), license: 'MIT' }, deploy: { nodeVersion: 24 }, compatibility: {} }),
+    media: mediaFor('shop', 4000, 'hostinger/hostinger-templates'),
+  };
+  const body = renderBody({ candidate: { stars: null, framework: null, deployed: false, findings: [] }, entry, notes: null, repository: 'hostinger/hostinger-templates', branch: 'template-candidate/acme-shop' });
+  assert.ok(body.includes(AWAITING_COPY));
+  assert.doesNotMatch(body, /Claude wrote/);
 });

@@ -22,7 +22,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: template-candidates
+  group: template-candidates-${{ github.event_name == 'push' && 'restack' || 'candidates' }}
   cancel-in-progress: false
 
 jobs:
@@ -31,7 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       candidates: ${{ steps.pick.outputs.candidates }}
-      copy: ${{ steps.copy.outputs.enabled }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -68,16 +67,6 @@ jobs:
           else
             read -r -a targets <<< "$REPOSITORIES"
             node .github/scripts/evaluate-repos.mjs "${targets[@]}" --out results.json
-          fi
-      - id: copy
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          if [ -n "$ANTHROPIC_API_KEY" ]; then
-            echo "enabled=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::ANTHROPIC_API_KEY is not set, so no candidate PRs are opened. The candidates below are prepared and checked only."
           fi
       - id: pick
         env:
@@ -147,12 +136,13 @@ jobs:
           path: ${{ runner.temp }}/prepared
           retention-days: 7
 
-  copy:
+  open:
     needs: [pick, prepare]
-    if: always() && needs.pick.outputs.copy == 'true' && needs.pick.outputs.candidates != '[]' && needs.pick.outputs.candidates != ''
+    if: always() && needs.pick.result == 'success' && needs.pick.outputs.candidates != '[]' && needs.pick.outputs.candidates != ''
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         candidate: ${{ fromJson(needs.pick.outputs.candidates) }}
     env:
@@ -165,65 +155,12 @@ jobs:
           name: prepared-${{ matrix.candidate.id }}
           path: ${{ runner.temp }}/prepared
       - if: steps.prepared.outcome == 'success'
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-          persist-credentials: false
-      - if: steps.prepared.outcome == 'success'
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-      - name: Restore the prepared template
-        if: steps.prepared.outcome == 'success'
-        run: |
-          node .github/scripts/template-candidates.mjs restore "$ID" --from "$RUNNER_TEMP/prepared"
-          (cd .github/scripts && npm ci)
-      - name: Write the catalog entry and landing page
-        if: steps.prepared.outcome == 'success'
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          npx --yes @anthropic-ai/claude-code@latest -p \
-            "Follow skills/evaluate-repository/CANDIDATE_COPY.md for the template described in candidate.json." \
-            --model claude-opus-5-5 \
-            --permission-mode acceptEdits \
-            --allowedTools "Read,Write,Edit,Glob,Grep,Bash(node .github/scripts/validate-catalog.mjs),Bash(node .github/scripts/lint-landing-copy.mjs --base origin/main)" \
-            --max-turns 80
-      - if: steps.prepared.outcome == 'success'
-        run: node .github/scripts/template-candidates.mjs collect-copy "$ID" --out "$RUNNER_TEMP/copy"
-      - if: steps.prepared.outcome == 'success'
-        uses: actions/upload-artifact@v4
-        with:
-          name: copy-${{ matrix.candidate.id }}
-          path: ${{ runner.temp }}/copy
-          retention-days: 7
-
-  publish:
-    needs: [pick, copy]
-    if: always() && needs.pick.outputs.copy == 'true' && needs.pick.outputs.candidates != '[]' && needs.pick.outputs.candidates != ''
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      max-parallel: 1
-      matrix:
-        candidate: ${{ fromJson(needs.pick.outputs.candidates) }}
-    env:
-      ID: ${{ matrix.candidate.id }}
-    steps:
-      - id: copied
-        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
-          name: copy-${{ matrix.candidate.id }}
-          path: ${{ runner.temp }}/copy
-      - if: steps.copied.outcome == 'success'
-        uses: actions/download-artifact@v4
-        with:
-          name: prepared-${{ matrix.candidate.id }}
-          path: ${{ runner.temp }}/prepared
+          name: template-candidates
+          path: ${{ runner.temp }}/picked
       - name: Get a HostingerBot token
-        if: steps.copied.outcome == 'success'
+        if: steps.prepared.outcome == 'success'
         id: token
         uses: actions/create-github-app-token@v3
         with:
@@ -231,22 +168,20 @@ jobs:
           private-key: ${{ secrets.HOSTINGERBOT_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repositories: hostinger-templates
-      - if: steps.copied.outcome == 'success'
+      - if: steps.prepared.outcome == 'success'
         uses: actions/checkout@v4
         with:
           ref: main
           persist-credentials: false
-      - if: steps.copied.outcome == 'success'
+      - if: steps.prepared.outcome == 'success'
         uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Open the PR
-        if: steps.copied.outcome == 'success'
+      - name: Open the draft PR
+        if: steps.prepared.outcome == 'success'
         env:
           GH_TOKEN: ${{ steps.token.outputs.token }}
-        run: |
-          (cd .github/scripts && npm ci)
-          node .github/scripts/template-candidates.mjs publish "$ID" --prepared "$RUNNER_TEMP/prepared" --copy "$RUNNER_TEMP/copy"
+        run: node .github/scripts/template-candidates.mjs open "$ID" --candidates "$RUNNER_TEMP/picked/candidates.json" --prepared "$RUNNER_TEMP/prepared"
 
   restack:
     if: github.event_name == 'push'

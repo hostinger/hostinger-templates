@@ -78,8 +78,9 @@ deploy at the same commit will fail again.
 ## 3. Turning a candidate into a template
 
 The `template-candidates` workflow does this for new deployable repositories
-after each scan and opens a PR per repository, so a person only reviews and
-merges it (see the README, "Popular repositories as templates", and
+after each scan and opens a draft PR per repository. A private workflow then
+has Claude write the copy and marks the PR ready, so a person only reviews
+and merges it (see the README, "Popular repositories as templates", and
 [CANDIDATE_COPY.md](CANDIDATE_COPY.md)). The steps below are what it does,
 and how to add one by hand. Accepted repositories become vendored templates: `templates/<id>/` holds a byte-identical copy of the
 repository at a pinned commit (minus `.github/`, plus our `preview/`
