@@ -233,42 +233,35 @@ Create `templates/<template-id>/preview/` only after final verification.
 
 Use the same `1440 × 900` landscape viewport for every template:
 
-1. Start the verified local dev or preview server.
-2. From `templates/<template-id>/`, capture the viewport thumbnail:
+1. Capture both screenshots with the Template gate's own capture, from the
+   repository root. It builds nothing, so build the template first. It serves
+   the build, scrolls the page once so reveal-on-scroll sections render, and
+   captures with reduced motion:
 
    ```bash
-   npx --yes playwright@latest screenshot \
-     --browser chromium \
-     --viewport-size "1440,900" \
-     "http://127.0.0.1:<port>/" \
-     "preview/<template-id>-thumbnail.png"
+   (cd .github/scripts && npm ci && npx playwright install chromium)
+   PORT=4173 TEMPLATE_ID=<template-id> PREVIEW_OUT=/tmp/<template-id>-shots \
+     node .github/scripts/healthcheck.mjs templates/<template-id>
    ```
 
-3. Capture the whole homepage:
-
-   ```bash
-   npx --yes playwright@latest screenshot \
-     --browser chromium \
-     --viewport-size "1440,900" \
-     --full-page \
-     "http://127.0.0.1:<port>/" \
-     "preview/<template-id>-homepage.png"
-   ```
-
-4. If Chromium is missing, run
-   `npx --yes playwright@latest install chromium`, then retry.
-5. Confirm the thumbnail is exactly `1440 × 900` and record the full-page
+   For a new template it reports the missing committed screenshots as a
+   failure. That's expected.
+2. Copy `/tmp/<template-id>-shots/actual-thumbnail.png` to
+   `templates/<template-id>/preview/<template-id>-thumbnail.png` and
+   `actual-homepage.png` to
+   `templates/<template-id>/preview/<template-id>-homepage.png`.
+3. Confirm the thumbnail is exactly `1440 × 900` and record the full-page
    image's actual dimensions. On macOS:
 
    ```bash
    sips -g pixelWidth -g pixelHeight \
-     "preview/<template-id>-thumbnail.png" \
-     "preview/<template-id>-homepage.png"
+     "templates/<template-id>/preview/<template-id>-thumbnail.png" \
+     "templates/<template-id>/preview/<template-id>-homepage.png"
    ```
 
-6. For multi-page apps, use the strongest representative route for the catalog
+4. For multi-page apps, use the strongest representative route for the catalog
    images. Extra route screenshots are allowed but not required.
-7. Inspect both saved files visually for stale UI, missing fonts, clipping,
+5. Inspect both saved files visually for stale UI, missing fonts, clipping,
    broken images, excess blank
    space, and failed images.
 

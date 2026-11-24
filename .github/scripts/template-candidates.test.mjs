@@ -260,16 +260,20 @@ test('a candidate PR opens as a draft that waits for its copy', () => {
 
 test('a repository that failed to prepare is skipped until it has a new commit', () => {
   const { picked, skipped } = pickCandidates({
-    results: [result('acme/broken', { commit: 'a'.repeat(40) }), result('acme/fixed', { commit: 'c'.repeat(40) })],
+    results: [result('acme/broken', { commit: 'a'.repeat(40) }), result('acme/fixed', { commit: 'c'.repeat(40) }), result('acme/unknown')],
     failures: [
       { repository: 'ACME/broken', appDir: null, commit: 'a'.repeat(40) },
       { repository: 'acme/fixed', appDir: null, commit: 'b'.repeat(40) },
+      { repository: 'acme/unknown', appDir: null, commit: null },
     ],
     catalog: catalog(),
     pulls: [],
     limit: 5,
   });
 
-  assert.deepEqual(picked.map((item) => [item.repository, item.commit]), [['acme/fixed', 'c'.repeat(40)]]);
+  assert.deepEqual(picked.map((item) => [item.repository, item.commit]), [
+    ['acme/fixed', 'c'.repeat(40)],
+    ['acme/unknown', null],
+  ]);
   assert.deepEqual(skipped, [{ repository: 'acme/broken', reason: 'failed to prepare at aaaaaaa; tried again after a new commit' }]);
 });

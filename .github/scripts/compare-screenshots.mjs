@@ -7,6 +7,7 @@ import { PNG } from 'pngjs';
 const THUMBNAIL_FAIL_RATIO = Number(process.env.VISUAL_FAIL_RATIO ?? '0.25');
 const HOMEPAGE_FAIL_RATIO = Number(process.env.VISUAL_HOMEPAGE_FAIL_RATIO ?? '0.3');
 const PIXEL_THRESHOLD = Number(process.env.VISUAL_PIXEL_THRESHOLD ?? '0.15');
+const MAX_SCROLL = 30000;
 
 export async function comparePreviewScreenshots({
   templateId,
@@ -64,7 +65,7 @@ async function capture(port, paths, settleMs) {
 }
 
 async function revealOnScroll(page) {
-  for (let top = 0; top < (await page.evaluate(() => document.documentElement.scrollHeight)); top += 600) {
+  for (let top = 0; top < Math.min(MAX_SCROLL, await page.evaluate(() => document.documentElement.scrollHeight)); top += 600) {
     await page.evaluate((y) => window.scrollTo(0, y), top);
     await page.waitForTimeout(150);
   }

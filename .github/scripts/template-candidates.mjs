@@ -80,7 +80,7 @@ export function pickCandidates({ results, deploys = [], failures = [], catalog, 
     const branch = candidateBranch(result.repository, appDir);
     const deploy = deploys.find((item) => item.repository === result.repository && (item.appDir ?? null) === appDir);
     const pull = pulls.find((item) => item.head.ref === branch);
-    const failure = failures.find((item) => sameSource(result.repository, appDir)({ repository: item.repository, directory: item.appDir }) && item.commit === result.commit);
+    const failure = result.commit && failures.find((item) => item.commit === result.commit && sameSource(result.repository, appDir)({ repository: item.repository, directory: item.appDir }));
     if (sources.some(sameSource(result.repository, appDir))) {
       skipped.push({ repository: label, reason: 'already a template' });
     } else if (pull) {
