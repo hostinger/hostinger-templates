@@ -1,0 +1,45 @@
+{
+  "landingPage": {
+    "enabled": true,
+    "popular": false,
+    "recommended": false,
+    "heroTitle": "Dark startup and SaaS website template",
+    "heroDescription": "Tailcast is an open-source dark Astro and Tailwind CSS site for a startup or SaaS product, with pricing, blog, careers and contact pages, deployed on Hostinger at a reviewed version.",
+    "about": "Tailcast is an open-source website template for a startup or SaaS product, built with Astro and Tailwind CSS by its original author and shown as a fictional analytics company. Its dark design covers the full journey a visitor takes: a home page with a product preview, feature sections, pricing plans with a monthly and yearly switch, testimonials, a blog preview and frequently asked questions, followed by about, services, careers and contact pages. Blog posts are Markdown files, so publishing a new article means adding one file. To make it yours, replace the sample company name, copy, prices, open positions and contact details in the page and component files. The site builds to fast static pages, and Hostinger deploys the original project at a version we have checked, with its MIT license.",
+    "features": [
+      {
+        "title": "Complete startup home page",
+        "description": "A hero with a dashboard preview, feature sections, testimonials, a blog preview, FAQ and a closing call to action."
+      },
+      {
+        "title": "Monthly and yearly pricing",
+        "description": "Three pricing plans whose prices change in place when visitors switch between monthly and yearly billing."
+      },
+      {
+        "title": "Blog in Markdown",
+        "description": "Write posts as Markdown files; the blog page features the newest article and lists the rest."
+      },
+      {
+        "title": "Services and careers pages",
+        "description": "Explain your offer on a services page and list open positions and team perks on a careers page."
+      },
+      {
+        "title": "Contact page",
+        "description": "A contact form with a thank-you message and office cards, ready to connect to the email service you choose."
+      },
+      {
+        "title": "SEO and smooth navigation",
+        "description": "A sitemap, Open Graph tags and canonical URLs, with page transitions that avoid full reloads."
+      },
+      {
+        "title": "Responsive and accessible",
+        "description": "Semantic markup, keyboard navigation and a mobile-first layout that adapts to any screen size."
+      }
+    ],
+    "metaTitle": "Tailcast Dark Startup Website Template",
+    "metaDescription": "Build a startup or SaaS website with Tailcast, the open-source Astro and Tailwind CSS template with pricing, blog and careers pages. Deploy it on Hostinger.",
+    "short": "Dark Astro and Tailwind CSS startup site with pricing, blog, careers and contact pages.",
+    "long": "Tailcast is an open-source dark website template for a startup or SaaS product, built with Astro and Tailwind CSS, with a full home page, pricing with a monthly and yearly switch, a Markdown blog, and about, services, careers and contact pages.",
+    "kbUrl": null
+  }
+}
