@@ -113,7 +113,7 @@ jobs:
         run: npm ci
       - name: Install Chromium
         working-directory: .github/scripts
-        run: npx --yes playwright@latest install --with-deps chromium
+        run: npx playwright install --with-deps chromium
       - name: Lint
         id: lint
         run: node ../../.github/scripts/template-commands.mjs lint "$PWD"

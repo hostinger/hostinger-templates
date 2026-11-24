@@ -257,3 +257,19 @@ test('a candidate PR opens as a draft that waits for its copy', () => {
   assert.ok(body.includes(AWAITING_COPY));
   assert.doesNotMatch(body, /Claude wrote/);
 });
+
+test('a repository that failed to prepare is skipped until it has a new commit', () => {
+  const { picked, skipped } = pickCandidates({
+    results: [result('acme/broken', { commit: 'a'.repeat(40) }), result('acme/fixed', { commit: 'c'.repeat(40) })],
+    failures: [
+      { repository: 'ACME/broken', appDir: null, commit: 'a'.repeat(40) },
+      { repository: 'acme/fixed', appDir: null, commit: 'b'.repeat(40) },
+    ],
+    catalog: catalog(),
+    pulls: [],
+    limit: 5,
+  });
+
+  assert.deepEqual(picked.map((item) => [item.repository, item.commit]), [['acme/fixed', 'c'.repeat(40)]]);
+  assert.deepEqual(skipped, [{ repository: 'acme/broken', reason: 'failed to prepare at aaaaaaa; tried again after a new commit' }]);
+});

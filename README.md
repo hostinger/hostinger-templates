@@ -167,7 +167,8 @@ The private workflow also rebuilds candidate PRs that have conflicts, and
 sends the hostinger.com rebuild that `Catalog published` queues.
 
 Merging deploys the demo and publishes the page. Closing a candidate PR
-declines the repository for good; reopen it to reconsider. Run `Template
+declines the repository for good; reopen it to reconsider. A repository whose
+preparation fails isn't picked again until it has a new commit. Run `Template
 candidates` by hand with a list of repositories to propose specific ones.
 
 ## Upstream templates

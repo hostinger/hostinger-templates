@@ -81,7 +81,7 @@ try {
   }
 
   mkdirSync(outDir, { recursive: true });
-  const visual = comparePreviewScreenshots({
+  const visual = await comparePreviewScreenshots({
     templateId,
     templateDir,
     port,
