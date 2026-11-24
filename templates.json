@@ -6502,6 +6502,81 @@
         "astro docs",
         "tailwind marketing site"
       ]
+    },
+    {
+      "id": "tailcast",
+      "name": "Tailcast",
+      "summary": "",
+      "description": "",
+      "bucket": "Technical and SaaS",
+      "categories": [],
+      "whoItsFor": "",
+      "demoUrl": "https://tailcast.hostingertemplates.com",
+      "classification": {
+        "categories": [],
+        "useCases": [],
+        "frameworks": []
+      },
+      "features": [],
+      "technology": {
+        "languages": [],
+        "frameworks": [],
+        "styling": [],
+        "data": [],
+        "deployment": []
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.0+"
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "outputDirectory": "dist",
+        "nodeVersion": 24
+      },
+      "routes": [
+        "/"
+      ],
+      "source": {
+        "repository": "matt765/Tailcast",
+        "track": "releases",
+        "ref": "2.0.0",
+        "commit": "a80f8b55c7ba36bde928ae527f8fd684381d0820",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/tailcast/preview/tailcast-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/tailcast/preview/tailcast-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/tailcast/preview/tailcast-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/tailcast/preview/tailcast-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "templates/tailcast/preview/tailcast-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/tailcast/preview/tailcast-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 9148
+        }
+      },
+      "searchTerms": []
     }
   ],
   "retired": []

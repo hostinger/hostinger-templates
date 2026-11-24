@@ -51,6 +51,7 @@ updates:
       - "/templates/storefront"
       - "/templates/sunday-league"
       - "/templates/supper-club"
+      - "/templates/tailcast"
       - "/templates/tap-list"
       - "/templates/terminal"
       - "/templates/the-big-day"
