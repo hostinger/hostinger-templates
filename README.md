@@ -148,22 +148,27 @@ Optionally it deploys the ones that pass to the preview account. See
 [`skills/evaluate-repository/`](skills/evaluate-repository/SKILL.md).
 
 `Template candidates` (`.github/workflows/template-candidates.yml`) runs when
-the private scan sends it up to two new deployable repositories, and turns
-them into PRs, so the
-only manual step is reviewing and merging. For each one it copies the
-repository at a pinned release or commit, installs, builds and audits it,
-and captures the screenshots, with no secrets in those jobs. HostingerBot
-then opens a draft PR built only from data checked before the upstream code
-ran. A private workflow in `hostinger/hostinger-templates-automation` has
-Claude write the catalog entry and an enabled landing page
-([CANDIDATE_COPY.md](skills/evaluate-repository/CANDIDATE_COPY.md)), checks
-the result for links and anything that looks like a credential, pushes it to
-the PR and marks it ready for review, so the Anthropic key never reaches this
-public repository. Merging deploys the demo and publishes the page. Closing a
-candidate PR declines the repository for good; reopen it to reconsider.
-After every push to `main` the workflow rebuilds candidate PRs that have
-conflicts. Run it by hand with a list of repositories to propose specific
-ones.
+the private scan sends it up to two new deployable repositories. For each one
+it copies the repository at a pinned release or commit, installs, builds and
+audits it, and captures the screenshots, with no secrets in those jobs. The
+rest happens in the private `hostinger/hostinger-templates-automation`
+repository, so neither the HostingerBot key nor the Anthropic key reaches
+this public repository:
+
+1. Its `Publish to hostinger-templates` workflow picks up the prepared
+   candidates. HostingerBot then opens a draft PR built only from data checked
+   before the upstream code ran.
+2. Claude writes the catalog entry and an enabled landing page
+   ([CANDIDATE_COPY.md](skills/evaluate-repository/CANDIDATE_COPY.md)).
+3. The result is checked for links and anything that looks like a credential,
+   pushed to the PR, and the PR is marked ready for review.
+
+The private workflow also rebuilds candidate PRs that have conflicts, and
+sends the hostinger.com rebuild that `Catalog published` queues.
+
+Merging deploys the demo and publishes the page. Closing a candidate PR
+declines the repository for good; reopen it to reconsider. Run `Template
+candidates` by hand with a list of repositories to propose specific ones.
 
 ## Upstream templates
 
@@ -209,7 +214,9 @@ push can't change what they deploy without review.
   PR again. `dependabot.yml` is generated from `templates/`
   (`node .github/scripts/dependabot-config.mjs --write`), and
   `validate-catalog` fails when it is out of date.
-- `Upstream sync` (`.github/workflows/upstream-sync.yml`) runs every Monday.
+- `Upstream sync` runs every Monday in the private
+  `hostinger/hostinger-templates-automation` repository, which holds the
+  HostingerBot key this public repository has no secrets for.
   When a template has a newer release or branch commit that passes the pin
   checks, `.github/scripts/upstream-sync.mjs` builds one commit that updates
   `templates/<id>/` and the pin, signed by GitHub, and opens or refreshes the

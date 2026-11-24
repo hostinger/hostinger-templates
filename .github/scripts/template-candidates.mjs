@@ -8,7 +8,7 @@ import { SUPPORTED_NODE_MAJORS, satisfiesMajor } from './repo-evaluation/rules.m
 import { latestPin } from './repo-evaluation/upstream.mjs';
 import { staticOutputDir } from './template-commands.mjs';
 import { dropFetchedCommit, expectedEntries, fetchCommit, hasLicense, inspectEntries, readBlob, templateRoot } from './upstream-copy.mjs';
-import { MAX_BLOBS, createApi, toAsciiJson, uploadBlob } from './upstream-sync.mjs';
+import { MAX_BLOBS, createApi, templatesRepository, toAsciiJson, uploadBlob } from './upstream-sync.mjs';
 
 export const BRANCH_PREFIX = 'template-candidate/';
 export const RELEASE_MAX_AGE_DAYS = 365;
@@ -161,7 +161,7 @@ export function skeletonEntry({ id, name, source, deploy, compatibility }) {
   };
 }
 
-export function mediaFor(id, homepageHeight, repository = process.env.GITHUB_REPOSITORY ?? 'hostinger/hostinger-templates') {
+export function mediaFor(id, homepageHeight, repository = templatesRepository() ?? 'hostinger/hostinger-templates') {
   const folder = `${templateRoot(id)}/preview`;
   const url = (path) => `https://github.com/${repository}/blob/main/${path}?raw=true`;
   const thumbnail = `${folder}/${id}-thumbnail.png`;
@@ -509,7 +509,7 @@ async function pick(args) {
   const deploysFile = optionValue(args, '--deploys');
   const deploys = deploysFile && existsSync(deploysFile) ? readJson(deploysFile) : [];
   const limit = Number(optionValue(args, '--limit') ?? 2);
-  const api = createApi(process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN, process.env.TEMPLATES_REPOSITORY ?? process.env.GITHUB_REPOSITORY);
+  const api = createApi(process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN, templatesRepository());
   const pulls = [];
   for (let page = 1; ; page++) {
     const batch = await api('GET', `/pulls?state=all&per_page=100&page=${page}`);
@@ -607,7 +607,7 @@ async function open(id, args) {
   const candidate = loadCandidate(args, id);
   const prepared = resolve(optionValue(args, '--prepared'));
   const dryRun = args.includes('--dry-run');
-  const repository = process.env.GITHUB_REPOSITORY ?? 'hostinger/hostinger-templates';
+  const repository = templatesRepository() ?? 'hostinger/hostinger-templates';
   const branch = candidateBranch(candidate.repository, candidate.appDir);
   const gitDir = process.cwd();
   const base = git(gitDir, 'rev-parse', 'HEAD');
@@ -659,6 +659,7 @@ async function open(id, args) {
     tree.push(...(await uploadFiles(api, files)));
     const sha = await commitTree(api, { base, tree, message: title, branch });
     const pull = await api('POST', '/pulls', { title, head: branch, base: 'main', body, draft: true });
+    output('pull', String(pull.number));
     report(`Opened the draft #${pull.number} from ${branch} at ${sha.slice(0, 7)}: ${title}`);
   } finally {
     if (!dryRun) {
@@ -713,7 +714,7 @@ async function applyCopy(_id, args) {
   const number = Number(optionValue(args, '--pull'));
   const copy = resolve(optionValue(args, '--copy'));
   const dryRun = args.includes('--dry-run');
-  const repository = process.env.TEMPLATES_REPOSITORY ?? 'hostinger/hostinger-templates';
+  const repository = templatesRepository() ?? 'hostinger/hostinger-templates';
   const api = createApi(process.env.GH_TOKEN, repository);
   const gitDir = process.cwd();
   const pull = await api('GET', `/pulls/${number}`);
@@ -785,7 +786,7 @@ async function applyCopy(_id, args) {
 }
 
 async function restack() {
-  const api = createApi(process.env.GH_TOKEN, process.env.GITHUB_REPOSITORY);
+  const api = createApi(process.env.GH_TOKEN, templatesRepository());
   const gitDir = process.cwd();
   const base = git(gitDir, 'rev-parse', 'HEAD');
   const open = (await api('GET', '/pulls?state=open&per_page=100')).filter((pull) => pull.head.ref.startsWith(BRANCH_PREFIX));

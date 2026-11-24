@@ -1,9 +1,11 @@
 name: Catalog published
 
-# Tells hostinger.com (hostinger/hwebsites-frontend) to rebuild
+# Queues a hostinger.com (hostinger/hwebsites-frontend) rebuild of
 # /applications when an enabled landing page, its template or the retired
-# list changes on main. The frontend always rebuilds from the full catalog;
-# the ids in the event are for its logs.
+# list changes on main: the catalog-dispatch artifact. The publish workflow in
+# the private hostinger-templates-automation repository sends it with
+# HostingerBot, which this public repository has no secrets for. The frontend
+# always rebuilds from the full catalog; the ids in the event are for its logs.
 on:
   push:
     branches: [main]
@@ -88,27 +90,18 @@ jobs:
             jq -n --arg text "$message" '{text: $text}' | curl -fsS -X POST -H 'Content-Type: application/json' --data @- "$SLACK_WEBHOOK_URL"
           fi
 
-  dispatch:
+  queue:
     needs: changes
     if: needs.changes.outputs.dispatch == 'true'
     runs-on: ubuntu-latest
     steps:
-      - name: Get a HostingerBot token for hwebsites-frontend
-        id: token
-        uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
-        with:
-          app-id: ${{ secrets.HOSTINGERBOT_APP_ID }}
-          private-key: ${{ secrets.HOSTINGERBOT_PRIVATE_KEY }}
-          owner: hostinger
-          repositories: hwebsites-frontend
-      - name: Send node-templates-updated
+      - name: Queue the hostinger.com rebuild
         env:
-          GH_TOKEN: ${{ steps.token.outputs.token }}
           IDS: ${{ needs.changes.outputs.ids }}
         run: |
-          set -euo pipefail
-          gh api repos/hostinger/hwebsites-frontend/dispatches \
-            -f event_type=node-templates-updated \
-            -f "client_payload[ids]=$IDS" \
-            -f "client_payload[sha]=$GITHUB_SHA"
-          echo "Sent node-templates-updated (ids: ${IDS:-none})"
+          jq -n --arg ids "$IDS" --arg sha "$GITHUB_SHA" '{ids: $ids, sha: $sha}' > catalog-dispatch.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: catalog-dispatch
+          path: catalog-dispatch.json
+          retention-days: 7
