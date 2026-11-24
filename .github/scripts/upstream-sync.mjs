@@ -182,7 +182,7 @@ async function push(id, { base, dryRun }) {
       return;
     }
 
-    const api = createApi(process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN, process.env.GITHUB_REPOSITORY);
+    const api = createApi(process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN, templatesRepository());
     const skip = await skipReason(api, { id, branch, title, commit: row.to.commit, baseCommit });
     if (skip) {
       console.log(skip);
@@ -218,7 +218,7 @@ async function push(id, { base, dryRun }) {
 
 // Why push must leave the branch alone, or null when it may move it.
 async function skipReason(api, { id, branch, title, commit, baseCommit }) {
-  const [owner] = process.env.GITHUB_REPOSITORY.split('/');
+  const [owner] = templatesRepository().split('/');
   const pulls = await api('GET', `/pulls?state=all&per_page=100&head=${encodeURIComponent(`${owner}:${branch}`)}`);
   const declined = declinedPull(pulls, title);
   if (declined) {
@@ -265,9 +265,13 @@ export async function uploadBlob(api, content, expectedSha) {
   }
 }
 
+export function templatesRepository() {
+  return process.env.TEMPLATES_REPOSITORY ?? process.env.GITHUB_REPOSITORY;
+}
+
 export function createApi(token, repository) {
   if (!token || !repository) {
-    fail('push needs GH_TOKEN (or GITHUB_TOKEN) and GITHUB_REPOSITORY; use --dry-run to only print the plan');
+    fail('push needs GH_TOKEN (or GITHUB_TOKEN) and TEMPLATES_REPOSITORY (or GITHUB_REPOSITORY); use --dry-run to only print the plan');
   }
   const headers = {
     Accept: 'application/vnd.github+json',
