@@ -66,7 +66,7 @@ function pullState(pull) {
   return pull.merged_at ? `#${pull.number} was merged` : `#${pull.number} was closed without merging`;
 }
 
-export function pickCandidates({ results, deploys = [], catalog, pulls, takenIds = [], limit }) {
+export function pickCandidates({ results, deploys = [], failures = [], catalog, pulls, takenIds = [], limit }) {
   const sources = catalog.templates.filter((entry) => entry.source).map((entry) => entry.source);
   const taken = new Set([...takenIds, ...catalog.templates.map((entry) => entry.id), ...(catalog.retired ?? []).map((entry) => entry.id)]);
   const eligible = [];
@@ -80,10 +80,13 @@ export function pickCandidates({ results, deploys = [], catalog, pulls, takenIds
     const branch = candidateBranch(result.repository, appDir);
     const deploy = deploys.find((item) => item.repository === result.repository && (item.appDir ?? null) === appDir);
     const pull = pulls.find((item) => item.head.ref === branch);
+    const failure = result.commit && failures.find((item) => item.commit === result.commit && sameSource(result.repository, appDir)({ repository: item.repository, directory: item.appDir }));
     if (sources.some(sameSource(result.repository, appDir))) {
       skipped.push({ repository: label, reason: 'already a template' });
     } else if (pull) {
       skipped.push({ repository: label, reason: pullState(pull) });
+    } else if (failure) {
+      skipped.push({ repository: label, reason: `failed to prepare at ${result.commit.slice(0, 7)}; tried again after a new commit` });
     } else if (deploy && !deploy.ok) {
       skipped.push({ repository: label, reason: `failed to deploy on Hostinger: ${deploy.error ?? 'unknown error'}` });
     } else {
@@ -105,6 +108,7 @@ export function pickCandidates({ results, deploys = [], catalog, pulls, takenIds
       repository: item.result.repository,
       appDir: item.appDir,
       branch: item.branch,
+      commit: item.result.commit ?? null,
       stars: item.result.stars ?? null,
       framework: item.result.framework ?? null,
       deployed: item.deployed,
@@ -508,6 +512,8 @@ async function pick(args) {
   const results = readJson(optionValue(args, '--results'));
   const deploysFile = optionValue(args, '--deploys');
   const deploys = deploysFile && existsSync(deploysFile) ? readJson(deploysFile) : [];
+  const failuresFile = optionValue(args, '--failures');
+  const failures = failuresFile && existsSync(failuresFile) ? readJson(failuresFile) : [];
   const limit = Number(optionValue(args, '--limit') ?? 2);
   const api = createApi(process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN, templatesRepository());
   const pulls = [];
@@ -521,6 +527,7 @@ async function pick(args) {
   const { picked, skipped } = pickCandidates({
     results,
     deploys,
+    failures,
     catalog: readJson(CATALOG),
     pulls,
     takenIds: await readApplicationSlugs(),
@@ -848,7 +855,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   try {
     if (!COMMANDS[command]) {
       throw new Error(
-        'Usage: template-candidates.mjs pick --results results.json [--deploys deploy-outcomes.json] [--limit 2] | prepare <id> | settle <id> | capture <id> --from <dir> --out <dir> | open <id> --prepared <dir> [--dry-run] | brief | collect-copy <id> --out <dir> | apply-copy --pull <number> --copy <dir> [--dry-run] | restack',
+        'Usage: template-candidates.mjs pick --results results.json [--deploys deploy-outcomes.json] [--failures prepare-failures.json] [--limit 2] | prepare <id> | settle <id> | capture <id> --from <dir> --out <dir> | open <id> --prepared <dir> [--dry-run] | brief | collect-copy <id> --out <dir> | apply-copy --pull <number> --copy <dir> [--dry-run] | restack',
       );
     }
     await COMMANDS[command](id, rest);

@@ -1,16 +1,15 @@
-import { execFileSync } from 'node:child_process';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import pixelmatch from 'pixelmatch';
+import { chromium } from 'playwright';
 import { PNG } from 'pngjs';
 
-const scriptsDir = dirname(fileURLToPath(import.meta.url));
 const THUMBNAIL_FAIL_RATIO = Number(process.env.VISUAL_FAIL_RATIO ?? '0.25');
 const HOMEPAGE_FAIL_RATIO = Number(process.env.VISUAL_HOMEPAGE_FAIL_RATIO ?? '0.3');
 const PIXEL_THRESHOLD = Number(process.env.VISUAL_PIXEL_THRESHOLD ?? '0.15');
+const MAX_SCROLL = 30000;
 
-export function comparePreviewScreenshots({
+export async function comparePreviewScreenshots({
   templateId,
   templateDir,
   port,
@@ -24,8 +23,7 @@ export function comparePreviewScreenshots({
   const actualThumbnail = join(outDir, 'actual-thumbnail.png');
   const actualHomepage = join(outDir, 'actual-homepage.png');
 
-  capture(port, actualThumbnail, false, settleMs);
-  capture(port, actualHomepage, true, settleMs);
+  await capture(port, { thumbnail: actualThumbnail, homepage: actualHomepage }, settleMs);
 
   const thumbnail = comparePair({
     name: 'thumbnail',
@@ -52,31 +50,27 @@ export function comparePreviewScreenshots({
   return result;
 }
 
-function capture(port, dest, fullPage, settleMs) {
-  const args = [
-    '--yes',
-    'playwright@latest',
-    'screenshot',
-    '--browser',
-    'chromium',
-    '--viewport-size',
-    '1440,900',
-  ];
-
-  if (fullPage) {
-    args.push('--full-page');
+async function capture(port, paths, settleMs) {
+  const browser = await chromium.launch();
+  try {
+    const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
+    await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: 'load' });
+    await page.waitForTimeout(settleMs);
+    await revealOnScroll(page);
+    await page.screenshot({ path: paths.thumbnail });
+    await page.screenshot({ path: paths.homepage, fullPage: true });
+  } finally {
+    await browser.close();
   }
+}
 
-  if (settleMs) {
-    args.push('--wait-for-timeout', String(settleMs));
+async function revealOnScroll(page) {
+  for (let top = 0; top < Math.min(MAX_SCROLL, await page.evaluate(() => document.documentElement.scrollHeight)); top += 600) {
+    await page.evaluate((y) => window.scrollTo(0, y), top);
+    await page.waitForTimeout(150);
   }
-
-  args.push(`http://127.0.0.1:${port}/`, dest);
-
-  execFileSync('npx', args, {
-    stdio: 'pipe',
-    cwd: scriptsDir,
-  });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(1500);
 }
 
 function comparePair({ name, expectedPath, actualPath, diffPath, failRatio }) {

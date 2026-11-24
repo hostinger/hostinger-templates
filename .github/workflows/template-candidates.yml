@@ -94,7 +94,7 @@ jobs:
         working-directory: .github/scripts
         run: |
           npm ci
-          npx --yes playwright@latest install --with-deps chromium
+          npx playwright install --with-deps chromium
           sudo apt-get install -y -qq webp
       - name: Serve and capture the screenshots
         env:
