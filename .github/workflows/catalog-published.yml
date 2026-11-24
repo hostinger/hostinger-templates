@@ -32,11 +32,11 @@ jobs:
       failed: ${{ steps.changes.outputs.failed }}
       dispatch: ${{ steps.changes.outputs.dispatch }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: main
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
       # Most demo deploy runs deploy nothing (Dependabot merges only run
@@ -95,7 +95,7 @@ jobs:
     steps:
       - name: Get a HostingerBot token for hwebsites-frontend
         id: token
-        uses: actions/create-github-app-token@v3
+        uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
         with:
           app-id: ${{ secrets.HOSTINGERBOT_APP_ID }}
           private-key: ${{ secrets.HOSTINGERBOT_PRIVATE_KEY }}

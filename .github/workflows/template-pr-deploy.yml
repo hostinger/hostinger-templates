@@ -41,10 +41,10 @@ jobs:
       pr: ${{ steps.plan.outputs.pr }}
       ids: ${{ steps.plan.outputs.ids }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           sparse-checkout: .github/scripts
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
       - id: plan
@@ -53,7 +53,7 @@ jobs:
           HEAD_REPOSITORY: ${{ github.event.workflow_run.head_repository.full_name }}
           ALLOW_UNSCANNED_SAME_REPO: ${{ vars.PREVIEW_ALLOW_UNSCANNED }}
         run: node .github/scripts/pr-deploy-plan.mjs
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: pr-deploy-plan
           path: plan.json
@@ -89,16 +89,16 @@ jobs:
       matrix:
         template: ${{ fromJson(needs.plan.outputs.ids) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           sparse-checkout: .github/scripts
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: pr-deploy-plan
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: pr-demo-${{ matrix.template }}
           path: ${{ runner.temp }}/incoming
@@ -123,7 +123,7 @@ jobs:
           TEMPLATES="$(jq -cn --arg id "$TEMPLATE" '[$id]')"
           export TEMPLATES
           node .github/scripts/deploy-demos.mjs "$RUNNER_TEMP/staged"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: pr-result-${{ matrix.template }}
@@ -136,16 +136,16 @@ jobs:
     if: ${{ !cancelled() && needs.plan.outputs.decision == 'deploy' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           sparse-checkout: .github/scripts
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: pr-deploy-plan
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           pattern: pr-result-*
           merge-multiple: true
