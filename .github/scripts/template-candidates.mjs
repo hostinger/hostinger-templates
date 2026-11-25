@@ -514,7 +514,7 @@ async function pick(args) {
   const deploys = deploysFile && existsSync(deploysFile) ? readJson(deploysFile) : [];
   const failuresFile = optionValue(args, '--failures');
   const failures = failuresFile && existsSync(failuresFile) ? readJson(failuresFile) : [];
-  const limit = Number(optionValue(args, '--limit') ?? 2);
+  const limit = Number(optionValue(args, '--limit') ?? 5);
   const api = createApi(process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN, templatesRepository());
   const pulls = [];
   for (let page = 1; ; page++) {
@@ -855,7 +855,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   try {
     if (!COMMANDS[command]) {
       throw new Error(
-        'Usage: template-candidates.mjs pick --results results.json [--deploys deploy-outcomes.json] [--failures prepare-failures.json] [--limit 2] | prepare <id> | settle <id> | capture <id> --from <dir> --out <dir> | open <id> --prepared <dir> [--dry-run] | brief | collect-copy <id> --out <dir> | apply-copy --pull <number> --copy <dir> [--dry-run] | restack',
+        'Usage: template-candidates.mjs pick --results results.json [--deploys deploy-outcomes.json] [--failures prepare-failures.json] [--limit 5] | prepare <id> | settle <id> | capture <id> --from <dir> --out <dir> | open <id> --prepared <dir> [--dry-run] | brief | collect-copy <id> --out <dir> | apply-copy --pull <number> --copy <dir> [--dry-run] | restack',
       );
     }
     await COMMANDS[command](id, rest);

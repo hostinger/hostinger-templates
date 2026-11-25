@@ -9,7 +9,7 @@ on:
       limit:
         description: Most PRs to open in this run.
         required: false
-        default: "2"
+        default: "5"
 
 permissions:
   contents: read
@@ -45,7 +45,7 @@ jobs:
       - id: pick
         env:
           GH_TOKEN: ${{ github.token }}
-          LIMIT: ${{ inputs.limit || '2' }}
+          LIMIT: ${{ inputs.limit || '5' }}
         run: node .github/scripts/template-candidates.mjs pick --results results.json --limit "$LIMIT"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
