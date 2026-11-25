@@ -86,9 +86,9 @@ export async function collectFacts(fullName, { appDir = null, ref = null, token 
   };
 }
 
-export async function searchRepositories(query, { limit = 20, token = process.env.GITHUB_TOKEN } = {}) {
+export async function searchRepositories(query, { limit = 20, page = 1, token = process.env.GITHUB_TOKEN } = {}) {
   const github = createClient(token);
-  const params = new URLSearchParams({ q: query, sort: 'stars', order: 'desc', per_page: String(Math.min(limit, 100)) });
+  const params = new URLSearchParams({ q: query, sort: 'stars', order: 'desc', per_page: String(Math.min(limit, 100)), page: String(page) });
   const { items } = await github.json(`/search/repositories?${params}`);
   return items.map((item) => item.full_name);
 }

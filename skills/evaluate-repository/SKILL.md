@@ -65,8 +65,10 @@ it.
 
 The scan runs every Monday in that private repository, so the candidate list
 stays private. It keeps the **Node.js template candidates** issue there up to
-date, and it never deploys on its own. It then sends up to two new deployable
-repositories to this repository's `template-candidates` workflow.
+date, and it never deploys on its own. It then sends up to five new deployable
+repositories to this repository's `template-candidates` workflow. When the
+most-starred results hold fewer than five, it reads deeper pages of the
+discovery queries until it finds five or runs out of pages.
 
 Every run, scheduled or manual, also records its results on that repository's
 `repo-scan-log` branch, which nothing merges into `main`. `scan-log/README.md`

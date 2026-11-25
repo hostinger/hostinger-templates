@@ -148,7 +148,7 @@ Optionally it deploys the ones that pass to the preview account. See
 [`skills/evaluate-repository/`](skills/evaluate-repository/SKILL.md).
 
 `Template candidates` (`.github/workflows/template-candidates.yml`) runs when
-the private scan sends it up to two new deployable repositories. For each one
+the private scan sends it up to five new deployable repositories. For each one
 it copies the repository at a pinned release or commit, installs, builds and
 audits it, and captures the screenshots, with no secrets in those jobs. The
 rest happens in the private `hostinger/hostinger-templates-automation`

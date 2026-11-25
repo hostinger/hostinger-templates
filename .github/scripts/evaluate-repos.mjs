@@ -1,4 +1,4 @@
-import { appendFileSync, writeFileSync } from 'node:fs';
+import { appendFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { collectFacts, searchRepositories } from './repo-evaluation/github.mjs';
 import { evaluateRepository } from './repo-evaluation/rules.mjs';
 
@@ -6,7 +6,7 @@ import { evaluateRepository } from './repo-evaluation/rules.mjs';
 // Hostinger web hosting, without cloning or running them.
 //
 //   node .github/scripts/evaluate-repos.mjs owner/repo[:app/dir][@ref] ...
-//   node .github/scripts/evaluate-repos.mjs --discover [--limit 20]
+//   node .github/scripts/evaluate-repos.mjs --discover [--limit 20] [--page 2] [--known results.json]
 //
 // --out <file> writes the JSON results. GITHUB_TOKEN raises the API rate limit.
 
@@ -23,13 +23,16 @@ const DISCOVERY_QUERIES = [
 
 const args = process.argv.slice(2);
 const limit = Number(valueOf('--limit') ?? 15);
+const page = Number(valueOf('--page') ?? 1);
 const out = valueOf('--out');
-const targets = args.filter((arg, index) => !arg.startsWith('--') && !['--limit', '--out', '--query'].includes(args[index - 1]));
+const knownFile = valueOf('--known');
+const known = knownFile && existsSync(knownFile) ? JSON.parse(readFileSync(knownFile, 'utf8')) : [];
+const targets = args.filter((arg, index) => !arg.startsWith('--') && !['--limit', '--page', '--known', '--out', '--query'].includes(args[index - 1]));
 
 if (args.includes('--discover')) {
   const queries = valueOf('--query') ? [valueOf('--query')] : DISCOVERY_QUERIES;
   for (const query of queries) {
-    for (const name of await searchRepositories(query, { limit })) {
+    for (const name of await searchRepositories(query, { limit, page })) {
       if (!targets.includes(name)) targets.push(name);
     }
   }
@@ -42,15 +45,18 @@ if (invalid.length) {
   process.exit(1);
 }
 
-if (!targets.length) {
-  console.error('Usage: evaluate-repos.mjs owner/repo[:app/dir] ... | --discover [--query "<GitHub search>"] [--limit N] [--out results.json]');
+if (!targets.length && !known.length) {
+  console.error('Usage: evaluate-repos.mjs owner/repo[:app/dir] ... | --discover [--query "<GitHub search>"] [--limit N] [--page N] [--known results.json] [--out results.json]');
   process.exit(1);
 }
 
-const results = [];
+const results = [...known];
 for (const target of targets) {
   const [location, ref = null] = target.split('@');
   const [fullName, appDir = null] = location.split(':');
+  if (known.some((result) => result.repository === fullName && (result.appDir ?? null) === appDir)) {
+    continue;
+  }
   try {
     results.push(evaluateRepository(await collectFacts(fullName, { appDir, ref })));
   } catch (error) {
