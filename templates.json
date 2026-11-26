@@ -6502,6 +6502,135 @@
         "astro docs",
         "tailwind marketing site"
       ]
+    },
+    {
+      "id": "tailcast",
+      "name": "Tailcast",
+      "summary": "A dark multi-page Astro and Tailwind CSS site for a startup or SaaS product, with pricing, a blog, careers and contact pages.",
+      "description": "Tailcast is an open-source dark-themed website template built with Astro and Tailwind CSS, shown as a fictional analytics startup, for teams that want a polished SaaS marketing site they can rebrand. It covers the full visitor journey with a feature-rich home page, pricing with a monthly and yearly switch, a Markdown blog, and about, services, careers and contact pages.",
+      "bucket": "Technical and SaaS",
+      "categories": [
+        "SaaS",
+        "Marketing"
+      ],
+      "whoItsFor": "A developer launching a startup or SaaS marketing site",
+      "demoUrl": "https://tailcast.hostingertemplates.com",
+      "classification": {
+        "categories": [
+          "saas",
+          "startup",
+          "marketing"
+        ],
+        "useCases": [
+          "marketing",
+          "pricing",
+          "blogging",
+          "hiring"
+        ],
+        "frameworks": [
+          "astro",
+          "tailwindcss"
+        ]
+      },
+      "features": [
+        {
+          "id": "multi-page-startup-site",
+          "name": "Multi-page startup site",
+          "description": "Home, about, services, blog, article, careers, contact and 404 pages sharing one dark design."
+        },
+        {
+          "id": "pricing-toggle",
+          "name": "Monthly and yearly pricing",
+          "description": "Three pricing plans whose prices switch in place between monthly and yearly billing."
+        },
+        {
+          "id": "markdown-blog",
+          "name": "Markdown blog",
+          "description": "Blog posts written as Markdown files, with a featured newest post and a page for every article."
+        },
+        {
+          "id": "seo-and-transitions",
+          "name": "SEO and smooth navigation",
+          "description": "A sitemap, Open Graph tags and canonical URLs, with page transitions that avoid full reloads."
+        }
+      ],
+      "technology": {
+        "languages": [
+          "TypeScript"
+        ],
+        "frameworks": [
+          "Astro"
+        ],
+        "styling": [
+          "Tailwind CSS"
+        ],
+        "data": [
+          "Markdown content collections",
+          "Typed TypeScript content and configuration"
+        ],
+        "deployment": [
+          "Static production output in dist/"
+        ]
+      },
+      "compatibility": {
+        "runtimes": [
+          {
+            "name": "Node.js",
+            "versions": [
+              "22.0+"
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "outputDirectory": "dist",
+        "nodeVersion": 24
+      },
+      "routes": [
+        "/"
+      ],
+      "source": {
+        "repository": "matt765/Tailcast",
+        "track": "releases",
+        "ref": "2.0.0",
+        "commit": "a80f8b55c7ba36bde928ae527f8fd684381d0820",
+        "license": "MIT"
+      },
+      "media": {
+        "thumbnail": {
+          "path": "templates/tailcast/preview/tailcast-thumbnail.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/tailcast/preview/tailcast-thumbnail.png?raw=true",
+          "source": "viewport",
+          "width": 1440,
+          "height": 900,
+          "aspectRatio": "16:10",
+          "variants": [
+            {
+              "width": 480,
+              "path": "templates/tailcast/preview/tailcast-thumbnail-480.webp"
+            },
+            {
+              "width": 960,
+              "path": "templates/tailcast/preview/tailcast-thumbnail-960.webp"
+            }
+          ]
+        },
+        "preview": {
+          "path": "templates/tailcast/preview/tailcast-homepage.png",
+          "url": "https://github.com/hostinger/hostinger-templates/blob/main/templates/tailcast/preview/tailcast-homepage.png?raw=true",
+          "source": "fullPage",
+          "width": 1440,
+          "height": 9148
+        }
+      },
+      "searchTerms": [
+        "dark website template",
+        "startup website",
+        "saas landing page",
+        "analytics product site",
+        "tailwind marketing site",
+        "astro starter"
+      ]
     }
   ],
   "retired": []
